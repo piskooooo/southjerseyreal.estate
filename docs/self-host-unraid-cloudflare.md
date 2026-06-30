@@ -45,8 +45,10 @@ Fill `LEAD_SMTP_PASS` only in your private `.env` file on Unraid.
 Webhook delivery:
 
 ```bash
-LEAD_WEBHOOK_URL=https://hooks.zapier.com/hooks/catch/...
+LEAD_WEBHOOK_URL=
 ```
+
+Fill this with your private Zapier, Make, Pipedream, Google Apps Script, Airtable, or CRM webhook URL only in `.env`.
 
 If the webhook needs an auth header:
 
@@ -56,6 +58,14 @@ LEAD_WEBHOOK_HEADER_VALUE=Bearer your-token
 ```
 
 ## Local Build and Run
+
+Use the prebuilt GHCR images:
+
+```bash
+docker compose --env-file .env up -d
+```
+
+Or rebuild from source locally:
 
 ```bash
 docker compose --env-file .env up -d --build
@@ -140,10 +150,25 @@ compose.yml
 
 Use `.env` for private values. Do not paste SMTP passwords into tracked files.
 
+The stack pulls these prebuilt images by default:
+
+```text
+ghcr.io/piskooooo/southjerseyreal.estate:latest
+ghcr.io/piskooooo/southjerseyreal.estate-lead-api:latest
+```
+
+If the GHCR packages remain private, Unraid must log in before pulling:
+
+```bash
+docker login ghcr.io -u piskooooo
+```
+
+Use a GitHub personal access token with package read access as the password. If you make the GHCR packages public, Unraid can pull them without logging in.
+
 If using Unraid's Docker UI instead of Compose, create two containers:
 
-- `southjerseyreal-estate-web`: build from `Dockerfile`, map host `8080` to container `8080`.
-- `southjerseyreal-estate-lead-api`: build from `lead-api/Dockerfile`, join the same custom Docker network, and expose container port `3000` internally.
+- `southjerseyreal-estate-web`: image `ghcr.io/piskooooo/southjerseyreal.estate:latest`, map host `8080` to container `8080`.
+- `southjerseyreal-estate-lead-api`: image `ghcr.io/piskooooo/southjerseyreal.estate-lead-api:latest`, join the same custom Docker network, and expose container port `3000` internally.
 
 Caddy expects to reach the API by the Docker DNS name `lead-api:3000`, so Compose is the smoother path.
 

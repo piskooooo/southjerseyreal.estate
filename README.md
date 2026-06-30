@@ -19,6 +19,9 @@ Self-hosting:
 
 - Copy `.env.example` to `.env`, configure a real lead destination, then run `docker compose --env-file .env up -d --build`.
 - The Docker build uses `VITE_GA_MEASUREMENT_ID=G-97H86MNHP8`.
+- GitHub Actions publishes pullable images for Unraid:
+  - `ghcr.io/piskooooo/southjerseyreal.estate:latest`
+  - `ghcr.io/piskooooo/southjerseyreal.estate-lead-api:latest`
 - See `docs/self-host-unraid-cloudflare.md` for Unraid, Cloudflare Tunnel, preview hostname, and lead testing steps.
 
 Analytics setup:

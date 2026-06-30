@@ -8,7 +8,7 @@ services:
       args:
         VITE_GA_MEASUREMENT_ID: ${VITE_GA_MEASUREMENT_ID:-G-97H86MNHP8}
         VITE_LEAD_API_PATH: ${VITE_LEAD_API_PATH:-/api/leads}
-    image: southjerseyreal-estate-web:latest
+    image: ${WEB_IMAGE:-ghcr.io/piskooooo/southjerseyreal.estate:latest}
     restart: unless-stopped
     depends_on:
       lead-api:
@@ -27,7 +27,7 @@ services:
     build:
       context: ./lead-api
       dockerfile: Dockerfile
-    image: southjerseyreal-estate-lead-api:latest
+    image: ${LEAD_API_IMAGE:-ghcr.io/piskooooo/southjerseyreal.estate-lead-api:latest}
     restart: unless-stopped
     environment:
       NODE_ENV: production

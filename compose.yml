@@ -1,0 +1,79 @@
+name: southjerseyreal-estate
+
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        VITE_GA_MEASUREMENT_ID: ${VITE_GA_MEASUREMENT_ID:-G-97H86MNHP8}
+        VITE_LEAD_API_PATH: ${VITE_LEAD_API_PATH:-/api/leads}
+    image: southjerseyreal-estate-web:latest
+    restart: unless-stopped
+    depends_on:
+      lead-api:
+        condition: service_healthy
+    ports:
+      - "${WEB_PORT:-8080}:8080"
+    networks:
+      - sjre
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://127.0.0.1:8080/"]
+      interval: 30s
+      timeout: 5s
+      retries: 5
+
+  lead-api:
+    build:
+      context: ./lead-api
+      dockerfile: Dockerfile
+    image: southjerseyreal-estate-lead-api:latest
+    restart: unless-stopped
+    environment:
+      NODE_ENV: production
+      PORT: 3000
+      ALLOWED_ORIGINS: ${ALLOWED_ORIGINS:-https://preview.southjerseyreal.estate,https://southjerseyreal.estate,https://www.southjerseyreal.estate}
+      MAX_BODY_BYTES: ${MAX_BODY_BYTES:-32768}
+      LEAD_TO_EMAIL: ${LEAD_TO_EMAIL:-}
+      LEAD_FROM_EMAIL: ${LEAD_FROM_EMAIL:-}
+      LEAD_SMTP_HOST: ${LEAD_SMTP_HOST:-}
+      LEAD_SMTP_PORT: ${LEAD_SMTP_PORT:-587}
+      LEAD_SMTP_SECURE: ${LEAD_SMTP_SECURE:-false}
+      LEAD_SMTP_USER: ${LEAD_SMTP_USER:-}
+      LEAD_SMTP_PASS: ${LEAD_SMTP_PASS:-}
+      LEAD_WEBHOOK_URL: ${LEAD_WEBHOOK_URL:-}
+      LEAD_WEBHOOK_HEADER_NAME: ${LEAD_WEBHOOK_HEADER_NAME:-}
+      LEAD_WEBHOOK_HEADER_VALUE: ${LEAD_WEBHOOK_HEADER_VALUE:-}
+      RATE_LIMIT_WINDOW_MS: ${RATE_LIMIT_WINDOW_MS:-900000}
+      RATE_LIMIT_MAX: ${RATE_LIMIT_MAX:-20}
+    expose:
+      - "3000"
+    networks:
+      - sjre
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "node",
+          "-e",
+          "fetch('http://127.0.0.1:3000/api/health').then((r)=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"
+        ]
+      interval: 30s
+      timeout: 5s
+      retries: 5
+
+  cloudflared:
+    image: cloudflare/cloudflared:latest
+    profiles:
+      - tunnel
+    restart: unless-stopped
+    command: tunnel --no-autoupdate run --token ${CLOUDFLARED_TUNNEL_TOKEN}
+    depends_on:
+      web:
+        condition: service_healthy
+    networks:
+      - sjre
+
+networks:
+  sjre:
+    name: southjerseyreal-estate

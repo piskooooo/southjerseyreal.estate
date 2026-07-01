@@ -1,5 +1,6 @@
 import { useState, type KeyboardEvent, type MouseEvent, type ReactNode } from "react";
-import { trackEvent } from "../analytics";
+import { trackEvent, trackLinkClick } from "../analytics";
+import { comparisonGuides, type ComparisonGuide } from "../content/comparisonGuides";
 import type { ContentBlock, PageSection, SitePage } from "../content/types";
 import { Blocks } from "./Blocks";
 
@@ -196,6 +197,86 @@ function SplitCardSection({ className = "", section, navigate }: { className?: s
         ))}
       </div>
     </section>
+  );
+}
+
+function GuideInternalLink({ guide, navigate }: { guide: ComparisonGuide; navigate: (path: string) => void }) {
+  return (
+    <a
+      href={guide.closingLink.href}
+      className="button"
+      onClick={(event) => {
+        event.preventDefault();
+        trackLinkClick(guide.closingLink.href, guide.closingLink.label, "comparison_guide");
+        navigate(guide.closingLink.href);
+      }}
+    >
+      {guide.closingLink.label}
+    </a>
+  );
+}
+
+export function ComparisonGuidePage({ page, navigate }: PageProps) {
+  const guide = comparisonGuides[page.path];
+  const actionSection = page.sections.find(isActionSection);
+
+  if (!guide) return <StandardPage page={page} navigate={navigate} />;
+
+  return (
+    <div className="comparison-guide-page">
+      <section className="section guide-hero-section">
+        <div>
+          <h1>{guide.title}</h1>
+          <p>{guide.intro}</p>
+        </div>
+        <p>{guide.supportText}</p>
+      </section>
+
+      <section className="section guide-accordion-section">
+        <div className="guide-accordion">
+          {guide.panels.map((panel) => (
+            <details key={panel.id} className="guide-panel">
+              <summary>
+                <span className="guide-panel-title">{panel.title}</span>
+                <span className="guide-panel-summary">{panel.summary}</span>
+                <span className="guide-panel-icon" aria-hidden="true" />
+              </summary>
+              <div className="guide-panel-content">
+                {panel.topics.map((topic) => (
+                  <article key={topic.heading} className="guide-topic">
+                    <h2>{topic.heading}</h2>
+                    <div className="guide-topic-grid">
+                      <div>
+                        <h3>{panel.primaryLabel}</h3>
+                        <p>{topic.primary}</p>
+                      </div>
+                      <div>
+                        <h3>{panel.secondaryLabel}</h3>
+                        <p>{topic.secondary}</p>
+                      </div>
+                    </div>
+                    <p className="guide-topic-takeaway">
+                      <strong>Takeaway:</strong> {topic.takeaway}
+                    </p>
+                  </article>
+                ))}
+                <p className="guide-bottom-line">{panel.bottomLine}</p>
+              </div>
+            </details>
+          ))}
+        </div>
+      </section>
+
+      <section className="section guide-closing-section">
+        <div>
+          <h2>{guide.closingTitle}</h2>
+          <p>{guide.closingText}</p>
+          <GuideInternalLink guide={guide} navigate={navigate} />
+        </div>
+      </section>
+
+      {actionSection && <ActionSection section={actionSection} navigate={navigate} />}
+    </div>
   );
 }
 

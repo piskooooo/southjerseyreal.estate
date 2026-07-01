@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 import { generatedPages } from "./content/generatedSiteData";
 import { Header } from "./components/Header";
 import { Footer } from "./components/Footer";
-import { HomePage, CountyPage, ContactPage, StandardPage } from "./components/Layouts";
+import { HomePage, CountyPage, ContactPage, ComparisonGuidePage, StandardPage } from "./components/Layouts";
 import { buildStructuredData, getSeoForPath, normalizeRoutePath } from "./content/seo";
 import type { SitePage } from "./content/types";
 import { trackPageView } from "./analytics";
@@ -100,6 +100,7 @@ export default function App() {
   const renderPage = (currentPage: SitePage) => {
     if (path === "/") return <HomePage page={currentPage} navigate={navigate} />;
     if (path === "/contact") return <ContactPage page={currentPage} navigate={navigate} />;
+    if (path === "/why-new-jersey" || path === "/why-south-jersey") return <ComparisonGuidePage page={currentPage} navigate={navigate} />;
     if (countyPaths.has(path)) return <CountyPage page={currentPage} navigate={navigate} />;
     return <StandardPage page={currentPage} navigate={navigate} />;
   };

@@ -5,10 +5,15 @@ type FooterProps = {
   navigate: (path: string) => void;
 };
 
-function EqualHousingMark() {
+function FooterCredentialLogos() {
   return (
-    <div className="equal-housing-mark">
-      <img src="/assets/equal-housing-opportunity-logo.webp" alt="Equal Housing Opportunity" width="1130" height="1209" />
+    <div className="footer-credential-logos">
+      <div className="footer-credential-logo">
+        <img src="/assets/equal-housing-opportunity-logo.webp" alt="Equal Housing Opportunity" width="1130" height="1209" />
+      </div>
+      <div className="footer-credential-logo">
+        <img src="/assets/realtor-logo.png" alt="REALTOR logo" width="1963" height="2331" />
+      </div>
     </div>
   );
 }
@@ -38,7 +43,7 @@ export function Footer({ navigate }: FooterProps) {
             ))}
           </p>
         </div>
-        <EqualHousingMark />
+        <FooterCredentialLogos />
       </div>
     </footer>
   );

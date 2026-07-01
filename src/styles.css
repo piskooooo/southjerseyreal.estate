@@ -953,17 +953,23 @@ p a {
   text-underline-offset: 0.25em;
 }
 
-.equal-housing-mark {
+.footer-credential-logos {
+  display: flex;
+  align-items: flex-end;
+  gap: 0.8rem;
+}
+
+.footer-credential-logo {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: clamp(5.4rem, 7vw, 6.6rem);
+  width: clamp(4.85rem, 6vw, 5.85rem);
   flex: 0 0 auto;
-  padding: 0.38rem;
+  padding: 0.34rem;
   background: #fff;
 }
 
-.equal-housing-mark img {
+.footer-credential-logo img {
   width: 100%;
   height: auto;
 }

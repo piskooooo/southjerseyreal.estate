@@ -4,6 +4,7 @@ import { Header } from "./components/Header";
 import { Footer } from "./components/Footer";
 import { HomePage, CountyPage, ContactPage, ComparisonGuidePage, StandardPage } from "./components/Layouts";
 import { buildStructuredData, getSeoForPath, normalizeRoutePath } from "./content/seo";
+import { pageOverrides } from "./content/pageOverrides";
 import type { SitePage } from "./content/types";
 import { trackPageView } from "./analytics";
 
@@ -52,7 +53,7 @@ export default function App() {
   const [path, setPath] = useState(() => normalizeRoutePath(window.location.pathname));
 
   const pageByPath = useMemo(() => {
-    return new Map(generatedPages.map((page) => [normalizeRoutePath(page.path), page]));
+    return new Map([...generatedPages, ...pageOverrides].map((page) => [normalizeRoutePath(page.path), page]));
   }, []);
 
   const page = pageByPath.get(path) || pageByPath.get("/")!;

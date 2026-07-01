@@ -87,6 +87,9 @@ const escapedLinkPattern = linkTargets.map((target) => target.label.replace(/[.*
 const linkPattern = new RegExp(`(${escapedLinkPattern})`, "gi");
 const escapedCountySeriesPattern = countySeriesLinks.map((target) => target.label.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")).join("|");
 const countySeriesPattern = new RegExp(`(${escapedCountySeriesPattern})`, "gi");
+const autoLinkPattern =
+  /([A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}|(?:\+?1[-.\s]?)?\(?\d{3}\)?[-.\s]\d{3}[-.\s]\d{4}|(?:https?:\/\/|www\.)[^\s),]+|(?:[A-Z0-9-]+\.)+[A-Z]{2,})(?=[\s),.]|$)/gi;
+const phonePattern = /(?:\+?1[-.\s]?)?\(?\d{3}\)?[-.\s]\d{3}[-.\s]\d{4}/;
 
 const renderTextLink = (href: string, children: string, key: string, navigate?: (path: string) => void) => {
   const isLocal = href.startsWith("/");
@@ -138,12 +141,37 @@ const renderCountySeries = (matchedText: string, key: string, navigate?: (path: 
 const linkifyKnownTargets = (text: string, navigate?: (path: string) => void, keyPrefix = "link") => {
   const parts = text.split(linkPattern);
 
-  if (parts.length === 1) return text;
+  if (parts.length === 1) return linkifyAutoTargets(text, navigate, keyPrefix);
 
   return parts.map((part, index) => {
     const href = linkTargetMap.get(part.toLowerCase());
-    if (!href) return part;
+    if (!href) return linkifyAutoTargets(part, navigate, `${keyPrefix}-${index}`);
     return renderTextLink(href, part, `${keyPrefix}-${part}-${index}`, navigate);
+  });
+};
+
+const linkifyAutoTargets = (text: string, navigate?: (path: string) => void, keyPrefix = "auto") => {
+  const parts = text.split(autoLinkPattern);
+
+  if (parts.length === 1) return text;
+
+  return parts.map((part, index) => {
+    if (!part) return part;
+
+    if (/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(part)) {
+      return renderTextLink(`mailto:${part}`, part, `${keyPrefix}-email-${index}`, navigate);
+    }
+
+    if (phonePattern.test(part)) {
+      return renderTextLink(`tel:${part.replace(/[^\d+]/g, "")}`, part, `${keyPrefix}-phone-${index}`, navigate);
+    }
+
+    if (/^(?:https?:\/\/|www\.|(?:[A-Z0-9-]+\.)+[A-Z]{2,})/i.test(part)) {
+      const href = part.startsWith("http") ? part : `https://${part}`;
+      return renderTextLink(href, part, `${keyPrefix}-url-${index}`, navigate);
+    }
+
+    return part;
   });
 };
 

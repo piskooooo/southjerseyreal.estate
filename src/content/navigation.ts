@@ -26,6 +26,6 @@ export const footerNav = [
 ];
 
 export const socialLinks = [
-  { label: "Facebook", shortLabel: "f", href: "https://www.facebook.com/arthurpiskoREA" },
-  { label: "Instagram", shortLabel: "◎", href: "https://www.instagram.com/arthurpisko" },
+  { label: "Facebook", icon: "facebook", href: "https://www.facebook.com/arthurpiskoREA" },
+  { label: "Instagram", icon: "instagram", href: "https://www.instagram.com/arthurpisko" },
 ];

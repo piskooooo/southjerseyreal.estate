@@ -9,6 +9,24 @@ type HeaderProps = {
 
 const isInternal = (href: string) => href.startsWith("/");
 
+function SocialIcon({ icon }: { icon: string }) {
+  if (icon === "facebook") {
+    return (
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+        <path d="M14.2 8.4V6.7c0-.8.5-1 1-1h1.8V2.6c-.3 0-1.4-.1-2.7-.1-2.7 0-4.6 1.7-4.6 4.7v1.2H6.8v3.5h2.9v9.6h3.6v-9.6h3l.5-3.5h-3.1Z" />
+      </svg>
+    );
+  }
+
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <rect x="4" y="4" width="16" height="16" rx="4.5" ry="4.5" fill="none" stroke="currentColor" strokeWidth="1.9" />
+      <circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" strokeWidth="1.9" />
+      <circle cx="16.8" cy="7.2" r="1.1" fill="currentColor" />
+    </svg>
+  );
+}
+
 export function Header({ currentPath, navigate }: HeaderProps) {
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -90,7 +108,7 @@ export function Header({ currentPath, navigate }: HeaderProps) {
               rel="noreferrer"
               onClick={() => trackLinkClick(item.href, item.label, "header_social")}
             >
-              {item.shortLabel}
+              <SocialIcon icon={item.icon} />
             </a>
           ))}
         </div>

@@ -1,6 +1,7 @@
 import { useState, type KeyboardEvent, type MouseEvent, type ReactNode } from "react";
 import { trackEvent, trackLinkClick } from "../analytics";
 import { comparisonGuides, type ComparisonGuide } from "../content/comparisonGuides";
+import { resourcePages, type ResourcePage } from "../content/resourcePages";
 import type { ContentBlock, PageSection, SitePage } from "../content/types";
 import { Blocks } from "./Blocks";
 
@@ -272,6 +273,184 @@ export function ComparisonGuidePage({ page, navigate }: PageProps) {
           <h2>{guide.closingTitle}</h2>
           <p>{guide.closingText}</p>
           <GuideInternalLink guide={guide} navigate={navigate} />
+        </div>
+      </section>
+
+      {actionSection && <ActionSection section={actionSection} navigate={navigate} />}
+    </div>
+  );
+}
+
+function ResourceInternalLink({ resource, navigate }: { resource: ResourcePage; navigate: (path: string) => void }) {
+  const link = resource.closingLink;
+  if (!link) return null;
+
+  return (
+    <a
+      href={link.href}
+      className="button"
+      onClick={(event) => {
+        trackLinkClick(link.href, link.label, "resource_page");
+        if (link.href.startsWith("/")) {
+          event.preventDefault();
+          navigate(link.href);
+        }
+      }}
+    >
+      {link.label}
+    </a>
+  );
+}
+
+export function ResourceAccordionPage({ page, navigate }: PageProps) {
+  const resource = resourcePages[page.path];
+  const actionSection = page.sections.find(isActionSection);
+
+  if (!resource) return <StandardPage page={page} navigate={navigate} />;
+
+  return (
+    <div className="comparison-guide-page resource-page">
+      <section className="section guide-hero-section">
+        <div>
+          <h1>{resource.title}</h1>
+          <p>{resource.intro}</p>
+        </div>
+        <p>{resource.supportText}</p>
+      </section>
+
+      <section className="section guide-accordion-section">
+        <div className="guide-accordion">
+          {resource.panels.map((panel) => (
+            <details key={panel.id} id={panel.id} className="guide-panel resource-panel">
+              <summary>
+                <span className="guide-panel-title">{panel.title}</span>
+                <span className="guide-panel-summary">{panel.summary}</span>
+                <span className="guide-panel-icon" aria-hidden="true" />
+              </summary>
+              <div className="guide-panel-content resource-panel-content">
+                <Blocks blocks={panel.blocks} navigate={navigate} headingLevel="compact" />
+              </div>
+            </details>
+          ))}
+        </div>
+      </section>
+
+      {(resource.closingTitle || resource.closingText || resource.closingLink) && (
+        <section className="section guide-closing-section">
+          <div>
+            {resource.closingTitle && <h2>{resource.closingTitle}</h2>}
+            {resource.closingText && <p>{resource.closingText}</p>}
+            <ResourceInternalLink resource={resource} navigate={navigate} />
+          </div>
+        </section>
+      )}
+
+      {actionSection && <ActionSection section={actionSection} navigate={navigate} />}
+    </div>
+  );
+}
+
+export function AboutPage({ page, navigate }: PageProps) {
+  const profileSection = page.sections[0];
+  const actionSection = page.sections.find(isActionSection);
+  const introBlocks = profileSection.blocks.slice(0, 4);
+  const profileImage = profileSection.images[0];
+
+  return (
+    <div className="about-page">
+      <section className="section about-hero-section">
+        {profileImage && (
+          <div className="about-portrait">
+            <img src={profileImage.src} alt={profileImage.alt} />
+          </div>
+        )}
+        <div className="about-hero-copy">
+          <Blocks blocks={introBlocks} navigate={navigate} promoteFirstHeading />
+          <a
+            href="/contact"
+            className="button"
+            onClick={(event) => {
+              event.preventDefault();
+              trackLinkClick("/contact", "Start a Conversation", "about_page");
+              navigate("/contact");
+            }}
+          >
+            Start a Conversation
+          </a>
+        </div>
+      </section>
+
+      <section className="section about-details-section">
+        <div className="about-detail-card">
+          <Blocks
+            blocks={[
+              { tag: "H3", text: "Connect Online" },
+              { tag: "P", text: "Instagram" },
+              { tag: "P", text: "ArthurPisko.Realtor" },
+              { tag: "P", text: "Facebook" },
+              { tag: "P", text: "Google Business Page" },
+              { tag: "P", text: "Realtor.com" },
+              { tag: "P", text: "Zillow" },
+            ]}
+            navigate={navigate}
+            headingLevel="compact"
+          />
+        </div>
+        <div className="about-detail-card">
+          <Blocks
+            blocks={[
+              { tag: "H3", text: "Contact" },
+              { tag: "P", text: "Arthur Pisko Jr." },
+              { tag: "P", text: "856-493-7501" },
+              { tag: "P", text: "arthurpisko@gmail.com" },
+              { tag: "P", text: "NJ Real Estate License #: 2187170" },
+              { tag: "P", text: "The Plum Real Estate Group" },
+            ]}
+            navigate={navigate}
+            headingLevel="compact"
+          />
+        </div>
+      </section>
+
+      <section className="section about-proof-section">
+        <div className="about-proof-card">
+          <Blocks
+            blocks={[
+              { tag: "H3", text: "Areas Served" },
+              {
+                tag: "P",
+                text: "I represent clients across South Jersey, including Atlantic, Burlington, Camden, Cape May, Cumberland, Gloucester, and Salem Counties.",
+              },
+            ]}
+            navigate={navigate}
+            headingLevel="compact"
+          />
+        </div>
+        <div className="about-proof-card">
+          <Blocks
+            blocks={[
+              { tag: "H3", text: "What You Can Expect" },
+              {
+                tag: "P",
+                text: "Consistent communication, local market expertise, and a streamlined selling process from listing strategy through closing.",
+              },
+            ]}
+            navigate={navigate}
+            headingLevel="compact"
+          />
+        </div>
+        <div className="about-proof-card">
+          <Blocks
+            blocks={[
+              { tag: "H3", text: "Client Note" },
+              {
+                tag: "P",
+                text: "\"Arthur was able to get us an offer before the open house was over. The entire process was smooth and stress-free.\" - Bruce & Nichole V.",
+              },
+            ]}
+            navigate={navigate}
+            headingLevel="compact"
+          />
         </div>
       </section>
 

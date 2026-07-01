@@ -1,4 +1,4 @@
-import { footerNav } from "../content/navigation";
+import { footerLinkGroups } from "../content/navigation";
 import { trackLinkClick } from "../analytics";
 
 type FooterProps = {
@@ -22,13 +22,17 @@ export function Footer({ navigate }: FooterProps) {
   return (
     <footer className="site-footer">
       <div className="site-footer-main">
-        <div>
+        <div className="site-footer-brand">
           <h2>South Jersey Real Estate</h2>
-          <p>
-            © 2025 South Jersey Real Estate | All rights reserved |{" "}
-            {footerNav.map((item) => (
-              <span key={item.path}>
+          <p>© 2026 South Jersey Real Estate</p>
+        </div>
+        <nav className="site-footer-links" aria-label="Footer navigation">
+          {footerLinkGroups.map((group) => (
+            <div key={group.label}>
+              <h3>{group.label}</h3>
+              {group.links.map((item) => (
                 <a
+                  key={item.path}
                   href={item.path}
                   onClick={(event) => {
                     event.preventDefault();
@@ -37,12 +41,11 @@ export function Footer({ navigate }: FooterProps) {
                   }}
                 >
                   {item.label}
-                </a>{" "}
-                |
-              </span>
-            ))}
-          </p>
-        </div>
+                </a>
+              ))}
+            </div>
+          ))}
+        </nav>
         <FooterCredentialLogos />
       </div>
     </footer>

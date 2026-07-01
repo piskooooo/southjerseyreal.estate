@@ -18,11 +18,42 @@ export const connectNav = [
 ];
 
 export const footerNav = [
-  { label: "Privacy Policy", path: "/privacy-policy" },
-  { label: "Disclaimer", path: "/disclaimer" },
-  { label: "Terms of Service", path: "/terms-of-service" },
   { label: "Contact", path: "/contact" },
   { label: "FAQ", path: "/faq" },
+  { label: "About", path: "/about" },
+  { label: "Partners", path: "/partners" },
+  { label: "Advertise", path: "/advertise" },
+  { label: "Privacy Policy", path: "/privacy-policy" },
+  { label: "Terms of Service", path: "/terms-of-service" },
+  { label: "Disclaimer", path: "/disclaimer" },
+];
+
+export const footerLinkGroups = [
+  {
+    label: "Start Here",
+    links: [
+      { label: "Contact", path: "/contact" },
+      { label: "FAQ", path: "/faq" },
+      { label: "About", path: "/about" },
+    ],
+  },
+  {
+    label: "Resources",
+    links: [
+      { label: "Partners", path: "/partners" },
+      { label: "Advertise", path: "/advertise" },
+      { label: "Why South Jersey?", path: "/why-south-jersey" },
+      { label: "Why New Jersey?", path: "/why-new-jersey" },
+    ],
+  },
+  {
+    label: "Legal",
+    links: [
+      { label: "Privacy Policy", path: "/privacy-policy" },
+      { label: "Terms of Service", path: "/terms-of-service" },
+      { label: "Disclaimer", path: "/disclaimer" },
+    ],
+  },
 ];
 
 export const socialLinks = [

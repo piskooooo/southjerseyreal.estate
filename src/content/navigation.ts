@@ -10,6 +10,7 @@ export const countyNav = [
 
 export const connectNav = [
   { label: "About", path: "/about" },
+  { label: "Newsletter", path: "/newsletter" },
   { label: "Why New Jersey?", path: "/why-new-jersey" },
   { label: "Why South Jersey?", path: "/why-south-jersey" },
   { label: "Contact", path: "/contact" },
@@ -33,6 +34,7 @@ export const footerLinkGroups = [
     label: "Start Here",
     links: [
       { label: "Contact", path: "/contact" },
+      { label: "Newsletter", path: "/newsletter" },
       { label: "FAQ", path: "/faq" },
       { label: "About", path: "/about" },
     ],

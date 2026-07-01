@@ -5,6 +5,8 @@ import { connectNav, countyNav, socialLinks } from "../content/navigation";
 type HeaderProps = {
   currentPath: string;
   navigate: (path: string) => void;
+  onToggleTheme: () => void;
+  theme: "dark" | "light";
 };
 
 const isInternal = (href: string) => href.startsWith("/");
@@ -27,7 +29,36 @@ function SocialIcon({ icon }: { icon: string }) {
   );
 }
 
-export function Header({ currentPath, navigate }: HeaderProps) {
+function ThemeIcon({ theme }: { theme: "dark" | "light" }) {
+  if (theme === "dark") {
+    return (
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+        <circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" strokeWidth="1.8" />
+        <path
+          d="M12 2.8v2.5M12 18.7v2.5M4.1 4.1l1.8 1.8M18.1 18.1l1.8 1.8M2.8 12h2.5M18.7 12h2.5M4.1 19.9l1.8-1.8M18.1 5.9l1.8-1.8"
+          fill="none"
+          stroke="currentColor"
+          strokeLinecap="round"
+          strokeWidth="1.8"
+        />
+      </svg>
+    );
+  }
+
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <path
+        d="M19.2 15.1A7.5 7.5 0 0 1 9 4.8a7.7 7.7 0 1 0 10.2 10.3Z"
+        fill="none"
+        stroke="currentColor"
+        strokeLinejoin="round"
+        strokeWidth="1.8"
+      />
+    </svg>
+  );
+}
+
+export function Header({ currentPath, navigate, onToggleTheme, theme }: HeaderProps) {
   const [menuOpen, setMenuOpen] = useState(false);
 
   const go = (path: string) => {
@@ -98,6 +129,15 @@ export function Header({ currentPath, navigate }: HeaderProps) {
       </nav>
 
       <div className="header-actions">
+        <button
+          type="button"
+          className="theme-toggle"
+          aria-label={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
+          title={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
+          onClick={onToggleTheme}
+        >
+          <ThemeIcon theme={theme} />
+        </button>
         <div className="social-links" aria-label="Social links">
           {socialLinks.map((item) => (
             <a

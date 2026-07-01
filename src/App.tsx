@@ -1,13 +1,15 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useLayoutEffect, useMemo, useState } from "react";
 import { generatedPages } from "./content/generatedSiteData";
 import { Header } from "./components/Header";
 import { Footer } from "./components/Footer";
-import { HomePage, CountyPage, ContactPage, ComparisonGuidePage, ResourceAccordionPage, AboutPage, StandardPage } from "./components/Layouts";
+import { HomePage, CountyPage, ContactPage, ComparisonGuidePage, ResourceAccordionPage, AboutPage, NewsletterPage, StandardPage } from "./components/Layouts";
 import { buildStructuredData, getSeoForPath, normalizeRoutePath } from "./content/seo";
 import { pageOverrides } from "./content/pageOverrides";
 import { resourcePages } from "./content/resourcePages";
 import type { SitePage } from "./content/types";
 import { trackPageView } from "./analytics";
+
+type SiteTheme = "dark" | "light";
 
 const countyPaths = new Set([
   "/atlantic-county",
@@ -50,8 +52,17 @@ const upsertStructuredData = (data: ReturnType<typeof buildStructuredData>) => {
   script.textContent = JSON.stringify(data);
 };
 
+const getStoredTheme = (): SiteTheme => {
+  try {
+    return window.localStorage.getItem("site-theme") === "light" ? "light" : "dark";
+  } catch {
+    return "dark";
+  }
+};
+
 export default function App() {
   const [path, setPath] = useState(() => normalizeRoutePath(window.location.pathname));
+  const [theme, setTheme] = useState<SiteTheme>(getStoredTheme);
 
   const pageByPath = useMemo(() => {
     return new Map([...generatedPages, ...pageOverrides].map((page) => [normalizeRoutePath(page.path), page]));
@@ -92,6 +103,18 @@ export default function App() {
     return () => window.removeEventListener("popstate", onPopState);
   }, []);
 
+  useLayoutEffect(() => {
+    document.documentElement.dataset.theme = theme;
+  }, [theme]);
+
+  useEffect(() => {
+    try {
+      window.localStorage.setItem("site-theme", theme);
+    } catch {
+      // Local storage can be unavailable in private or restricted browsing.
+    }
+  }, [theme]);
+
   const navigate = (nextPath: string) => {
     const normalized = normalizeRoutePath(nextPath);
     if (normalized === path) return;
@@ -100,9 +123,10 @@ export default function App() {
   };
 
   const renderPage = (currentPage: SitePage) => {
-    if (path === "/") return <HomePage page={currentPage} navigate={navigate} />;
+    if (path === "/") return <HomePage page={currentPage} navigate={navigate} theme={theme} />;
     if (path === "/about") return <AboutPage page={currentPage} navigate={navigate} />;
     if (path === "/contact") return <ContactPage page={currentPage} navigate={navigate} />;
+    if (path === "/newsletter") return <NewsletterPage navigate={navigate} />;
     if (path === "/why-new-jersey" || path === "/why-south-jersey") return <ComparisonGuidePage page={currentPage} navigate={navigate} />;
     if (resourcePages[path]) return <ResourceAccordionPage page={currentPage} navigate={navigate} />;
     if (countyPaths.has(path)) return <CountyPage page={currentPage} navigate={navigate} />;
@@ -111,7 +135,7 @@ export default function App() {
 
   return (
     <>
-      <Header currentPath={path} navigate={navigate} />
+      <Header currentPath={path} navigate={navigate} theme={theme} onToggleTheme={() => setTheme((current) => (current === "dark" ? "light" : "dark"))} />
       <main id="page">{renderPage(page)}</main>
       <Footer navigate={navigate} />
     </>

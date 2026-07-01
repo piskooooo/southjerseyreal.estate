@@ -112,6 +112,13 @@ export const seoEntries: SeoEntry[] = [
     priority: "0.75",
   },
   {
+    path: "/newsletter",
+    title: "South Jersey Real Estate Newsletter | Market Updates",
+    description:
+      "Sign up for South Jersey real estate market updates, local housing trends, county notes, buyer tips, seller guidance, and new community resources.",
+    priority: "0.6",
+  },
+  {
     path: "/partners",
     title: "South Jersey Real Estate Partners | Local Resources",
     description:

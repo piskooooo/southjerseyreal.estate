@@ -5,7 +5,7 @@ import type { SitePage } from "./types";
 export const generatedPages: SitePage[] = [
   {
     "path": "/",
-    "title": "South Jersey Homes for Sale | South Jersey Real Estate & REALTORS®",
+    "title": "South Jersey Homes for Sale | South Jersey Real Estate & REALTOR® Services",
     "sections": [
       {
         "id": "67e4acac53d91164e2fbe9e7",
@@ -185,8 +185,15 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "👉 Looking to make a move in Atlantic County? Get your free home value estimate or request a custom home list today.",
+            "text": "Planning your next step in Atlantic County? I can help you compare towns, review pricing, and decide whether buying, selling, or waiting makes the most sense.",
             "href": "",
+            "type": "",
+            "placeholder": ""
+          },
+          {
+            "tag": "A",
+            "text": "Start the Conversation",
+            "href": "/contact",
             "type": "",
             "placeholder": ""
           }
@@ -2496,8 +2503,15 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "If you’re ready to explore homes in Burlington County—or want a free evaluation of your property—reach out today and let’s get started.",
+            "text": "Planning your next step in Burlington County? I can help you compare towns, review pricing, and decide whether buying, selling, or waiting makes the most sense.",
             "href": "",
+            "type": "",
+            "placeholder": ""
+          },
+          {
+            "tag": "A",
+            "text": "Start the Conversation",
+            "href": "/contact",
             "type": "",
             "placeholder": ""
           }
@@ -6426,6 +6440,20 @@ export const generatedPages: SitePage[] = [
             "href": "",
             "type": "",
             "placeholder": ""
+          },
+          {
+            "tag": "P",
+            "text": "Planning your next step in Camden County? I can help you compare towns, review pricing, and decide whether buying, selling, or waiting makes the most sense.",
+            "href": "",
+            "type": "",
+            "placeholder": ""
+          },
+          {
+            "tag": "A",
+            "text": "Start the Conversation",
+            "href": "/contact",
+            "type": "",
+            "placeholder": ""
           }
         ],
         "images": [
@@ -10261,8 +10289,15 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "👉 Thinking about buying or selling in Cape May County? Get your free home value estimate or request a custom home list today.",
+            "text": "Planning your next step in Cape May County? I can help you compare towns, review pricing, and decide whether buying, selling, or waiting makes the most sense.",
             "href": "",
+            "type": "",
+            "placeholder": ""
+          },
+          {
+            "tag": "A",
+            "text": "Start the Conversation",
+            "href": "/contact",
             "type": "",
             "placeholder": ""
           }
@@ -11900,8 +11935,15 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "Thinking of making Cumberland County your home? Get your free home value estimate or request a custom home list today.",
+            "text": "Planning your next step in Cumberland County? I can help you compare towns, review pricing, and decide whether buying, selling, or waiting makes the most sense.",
             "href": "",
+            "type": "",
+            "placeholder": ""
+          },
+          {
+            "tag": "A",
+            "text": "Start the Conversation",
+            "href": "/contact",
             "type": "",
             "placeholder": ""
           }
@@ -13358,6 +13400,20 @@ export const generatedPages: SitePage[] = [
             "tag": "P",
             "text": "Whether you're looking for a quiet suburban neighborhood or a vibrant town center, Gloucester County offers a welcoming community you’ll be proud to call home.",
             "href": "",
+            "type": "",
+            "placeholder": ""
+          },
+          {
+            "tag": "P",
+            "text": "Planning your next step in Gloucester County? I can help you compare towns, review pricing, and decide whether buying, selling, or waiting makes the most sense.",
+            "href": "",
+            "type": "",
+            "placeholder": ""
+          },
+          {
+            "tag": "A",
+            "text": "Start the Conversation",
+            "href": "/contact",
             "type": "",
             "placeholder": ""
           }
@@ -15757,6 +15813,20 @@ export const generatedPages: SitePage[] = [
             "tag": "P",
             "text": "If you're searching for a place where you can put down roots, enjoy open space, and become part of a genuine community, Salem County, NJ is well worth exploring. It’s a hidden gem for homebuyers looking for comfort, character, and room to grow.",
             "href": "",
+            "type": "",
+            "placeholder": ""
+          },
+          {
+            "tag": "P",
+            "text": "Planning your next step in Salem County? I can help you compare towns, review pricing, and decide whether buying, selling, or waiting makes the most sense.",
+            "href": "",
+            "type": "",
+            "placeholder": ""
+          },
+          {
+            "tag": "A",
+            "text": "Start the Conversation",
+            "href": "/contact",
             "type": "",
             "placeholder": ""
           }
@@ -18182,35 +18252,35 @@ export const generatedPages: SitePage[] = [
   },
   {
     "path": "/contact",
-    "title": "Contact South Jersey Realtor | Get in Touch with Arthur Pisko Jr. — South Jersey Real Estate",
+    "title": "Contact South Jersey REALTOR® | Get in Touch with Arthur Pisko Jr. — South Jersey Real Estate",
     "sections": [
       {
         "id": "67e1ec493382bf36e28274d7",
         "blocks": [
           {
             "tag": "H2",
-            "text": "📬 Get in Touch",
+            "text": "Contact Arthur",
             "href": "",
             "type": "",
             "placeholder": ""
           },
           {
             "tag": "P",
-            "text": "Whether you're thinking about selling your home or starting your search for a new one, I’d be happy to help. I work with both buyers and sellers across South Jersey — including Atlantic, Burlington, Camden, Cape May, Cumberland, Gloucester, and Salem counties.",
+            "text": "Whether you are planning to buy, sell, or simply want a clearer read on the South Jersey market, send a note and I’ll point you in the right direction.",
             "href": "",
             "type": "",
             "placeholder": ""
           },
           {
             "tag": "P",
-            "text": "Please fill out the form and I’ll get back to you as soon as possible. No pressure, no spam — just real advice and clear answers to your real estate questions.",
+            "text": "I work with buyers and sellers across Atlantic, Burlington, Camden, Cape May, Cumberland, Gloucester, and Salem counties.",
             "href": "",
             "type": "",
             "placeholder": ""
           },
           {
             "tag": "P",
-            "text": "Have questions about the South Jersey real estate market? Curious about your home’s value or what’s available in your area? I’m here to help with buying, selling, or just planning ahead.",
+            "text": "Tell me what you are considering, your timeline, and the towns you care about. You will get a straightforward response, not a sales blast.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -18245,14 +18315,14 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "LABEL",
-            "text": "Dropdown (required)",
+            "text": "What can I help with? (required)",
             "href": "",
             "type": "",
             "placeholder": ""
           },
           {
             "tag": "P",
-            "text": "I am looking to...",
+            "text": "Choose a topic",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -18266,7 +18336,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "BUTTON",
-            "text": "Submit",
+            "text": "Send Message",
             "href": "",
             "type": "submit",
             "placeholder": ""
@@ -18279,43 +18349,43 @@ export const generatedPages: SitePage[] = [
         "blocks": [
           {
             "tag": "H3",
-            "text": "Looking to Partner With Us?",
+            "text": "Real Estate Partners",
             "href": "",
             "type": "",
             "placeholder": ""
           },
           {
             "tag": "P",
-            "text": "We collaborate with professionals directly involved in the real estate process — including title companies, lenders, inspectors, and contractors.",
+            "text": "If you are a transaction-related professional such as a lender, title company, inspector, contractor, or photographer, review the guidelines to see how local resources are handled.",
             "href": "",
             "type": "",
             "placeholder": ""
           },
           {
-            "tag": "P",
-            "text": "👉 Learn More on Our Partners Page",
-            "href": "",
+            "tag": "A",
+            "text": "View Partnerships",
+            "href": "/partners",
             "type": "",
             "placeholder": ""
           },
           {
             "tag": "H3",
-            "text": "Advertise With Us",
+            "text": "Local Advertising",
             "href": "",
             "type": "",
             "placeholder": ""
           },
           {
             "tag": "P",
-            "text": "Are you a local business serving South Jersey residents — such as a restaurant, retail shop, or community service provider? Promote your business on our county and town pages to reach homeowners and buyers in the area.",
+            "text": "If you own a South Jersey business that serves local residents outside the real estate transaction, review the advertising options for county and town page visibility.",
             "href": "",
             "type": "",
             "placeholder": ""
           },
           {
-            "tag": "P",
-            "text": "👉 See Advertising Opportunities",
-            "href": "",
+            "tag": "A",
+            "text": "View Advertising Options",
+            "href": "/advertise",
             "type": "",
             "placeholder": ""
           }
@@ -18853,8 +18923,15 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "👉 Looking to make a move in Atlantic County? Get your free home value estimate or request a custom home list today.",
+            "text": "Planning your next step in Atlantic County? I can help you compare towns, review pricing, and decide whether buying, selling, or waiting makes the most sense.",
             "href": "",
+            "type": "",
+            "placeholder": ""
+          },
+          {
+            "tag": "A",
+            "text": "Start the Conversation",
+            "href": "/contact",
             "type": "",
             "placeholder": ""
           }
@@ -21584,7 +21661,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "Arthur Pisko Jr. is a licensed NJ Realtor® operating independently under The Plum Real Estate Group. Nothing on this site is intended to imply agency representation without a formal agreement in place.",
+            "text": "Arthur Pisko Jr. is a licensed NJ REALTOR® operating independently under The Plum Real Estate Group. Nothing on this site is intended to imply agency representation without a formal agreement in place.",
             "href": "",
             "type": "",
             "placeholder": ""

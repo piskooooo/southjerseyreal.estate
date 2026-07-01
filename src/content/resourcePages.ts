@@ -249,7 +249,7 @@ export const resourcePages: Record<string, ResourcePage> = {
     title: "Advertise With Us",
     intro: "Promote your business to South Jersey homeowners, buyers, and sellers through targeted local exposure.",
     supportText:
-      "Advertising is for non-real-estate businesses. Title companies, lenders, inspectors, appraisers, REALTORS, and other transaction providers should use the Partnerships page.",
+      "Advertising is for non-real-estate businesses. Title companies, lenders, inspectors, appraisers, REALTOR® professionals, and other transaction providers should use the Partnerships page.",
     panels: [
       {
         id: "advertise-why",
@@ -276,7 +276,7 @@ export const resourcePages: Record<string, ResourcePage> = {
           { tag: "P", text: "Title companies" },
           { tag: "P", text: "Lenders & mortgage brokers" },
           { tag: "P", text: "Inspectors & appraisers" },
-          { tag: "P", text: "REALTORS or brokerage services" },
+          { tag: "P", text: "REALTOR® professionals or brokerage services" },
           { tag: "P", text: "Any real estate transaction service" },
         ],
       },

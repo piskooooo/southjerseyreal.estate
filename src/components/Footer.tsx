@@ -9,10 +9,10 @@ function FooterCredentialLogos() {
   return (
     <div className="footer-credential-logos">
       <div className="footer-credential-logo">
-        <img src="/assets/equal-housing-opportunity-logo.webp" alt="Equal Housing Opportunity" width="1130" height="1209" />
+        <img src="/assets/equal-housing-opportunity-logo.webp" alt="Equal Housing Opportunity" width="1963" height="2331" />
       </div>
       <div className="footer-credential-logo">
-        <img src="/assets/realtor-logo.png" alt="REALTOR logo" width="1963" height="2331" />
+        <img src="/assets/realtor-logo.png" alt="REALTOR® logo" width="1963" height="2331" />
       </div>
     </div>
   );

@@ -243,7 +243,7 @@ export const pageOverrides: SitePage[] = [
           { tag: "P", text: "Title companies" },
           { tag: "P", text: "Lenders & mortgage brokers" },
           { tag: "P", text: "Inspectors & appraisers" },
-          { tag: "P", text: "Realtors or brokerage services" },
+          { tag: "P", text: "REALTOR® professionals or brokerage services" },
           { tag: "P", text: "Any real estate transaction service" },
         ],
         images: [],

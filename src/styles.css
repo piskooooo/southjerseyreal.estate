@@ -956,24 +956,16 @@ p a {
 .equal-housing-mark {
   display: inline-flex;
   align-items: center;
-  gap: 0.65rem;
-  color: var(--muted);
-  font-size: 0.74rem;
-  font-weight: 750;
-  letter-spacing: 0.08em;
-  line-height: 1.2;
-  text-transform: uppercase;
+  justify-content: center;
+  width: clamp(5.4rem, 7vw, 6.6rem);
+  flex: 0 0 auto;
+  padding: 0.38rem;
+  background: #fff;
 }
 
-.equal-housing-mark svg {
-  width: 2.8rem;
-  height: 2.8rem;
-  flex: 0 0 auto;
-  fill: none;
-  stroke: currentColor;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  stroke-width: 3.5;
+.equal-housing-mark img {
+  width: 100%;
+  height: auto;
 }
 
 @media (max-width: 980px) {

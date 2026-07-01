@@ -7,14 +7,8 @@ type FooterProps = {
 
 function EqualHousingMark() {
   return (
-    <div className="equal-housing-mark" aria-label="Equal Housing Opportunity">
-      <svg viewBox="0 0 64 64" role="img" aria-hidden="true" focusable="false">
-        <path d="M8 30 32 10l24 20" />
-        <path d="M14 28v27h36V28" />
-        <path d="M22 36h20" />
-        <path d="M22 45h20" />
-      </svg>
-      <span>Equal Housing Opportunity</span>
+    <div className="equal-housing-mark">
+      <img src="/assets/equal-housing-opportunity-logo.webp" alt="Equal Housing Opportunity" width="1130" height="1209" />
     </div>
   );
 }

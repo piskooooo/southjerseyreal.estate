@@ -965,13 +965,12 @@ p a {
   justify-content: center;
   width: clamp(4.85rem, 6vw, 5.85rem);
   flex: 0 0 auto;
-  padding: 0.34rem;
-  background: #fff;
 }
 
 .footer-credential-logo img {
   width: 100%;
   height: auto;
+  filter: invert(1);
 }
 
 @media (max-width: 980px) {

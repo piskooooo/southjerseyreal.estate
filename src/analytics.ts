@@ -1,5 +1,6 @@
 type GtagValue = string | number | boolean | Date | Record<string, unknown>;
 type Gtag = (command: string, target: string | Date, params?: Record<string, unknown>) => void;
+export type AnalyticsConsent = "granted" | "denied";
 
 declare global {
   interface Window {
@@ -9,13 +10,45 @@ declare global {
 }
 
 const measurementId = import.meta.env.VITE_GA_MEASUREMENT_ID?.trim();
+const analyticsConsentKey = "analytics-consent";
 let initialized = false;
 let lastPageView = "";
 
 const isBrowser = () => typeof window !== "undefined" && typeof document !== "undefined";
 
+export const getAnalyticsConsent = (): AnalyticsConsent | null => {
+  if (!isBrowser()) return null;
+
+  try {
+    const value = window.localStorage.getItem(analyticsConsentKey);
+    return value === "granted" || value === "denied" ? value : null;
+  } catch {
+    return null;
+  }
+};
+
+export const setAnalyticsConsent = (consent: AnalyticsConsent) => {
+  if (!isBrowser()) return;
+
+  try {
+    window.localStorage.setItem(analyticsConsentKey, consent);
+  } catch {
+    // Local storage can be unavailable in private or restricted browsing.
+  }
+
+  if (window.gtag) {
+    window.gtag("consent", "update", {
+      ad_personalization: "denied",
+      ad_storage: "denied",
+      ad_user_data: "denied",
+      analytics_storage: consent,
+    });
+  }
+};
+
 const ensureAnalytics = () => {
   if (!isBrowser()) return false;
+  if (getAnalyticsConsent() !== "granted") return false;
   if (window.gtag) return true;
   if (!measurementId) return false;
 
@@ -33,6 +66,12 @@ const ensureAnalytics = () => {
   }
 
   if (!initialized) {
+    window.gtag("consent", "default", {
+      ad_personalization: "denied",
+      ad_storage: "denied",
+      ad_user_data: "denied",
+      analytics_storage: "granted",
+    });
     window.gtag("js", new Date());
     window.gtag("config", measurementId, { send_page_view: false });
     initialized = true;

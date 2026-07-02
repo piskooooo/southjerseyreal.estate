@@ -44,6 +44,26 @@ export const pageOverrides: SitePage[] = [
           { tag: "P", text: "Home inspectors" },
           { tag: "P", text: "Contractors & repair services" },
           { tag: "P", text: "Photographers & other transaction-related providers" },
+          { tag: "P", text: "Brokerage and agent tools" },
+        ],
+        images: [],
+      },
+      {
+        id: "brokerage-tools",
+        blocks: [
+          { tag: "H2", text: "Brokerage & Agent Tools" },
+          { tag: "H3", text: "The Plum Real Estate Group" },
+          {
+            tag: "P",
+            text: "Arthur Pisko Jr. is affiliated with The Plum Real Estate Group, a New Jersey real estate brokerage supporting buyers, sellers, and agents.",
+          },
+          { tag: "A", text: "Visit The Plum Real Estate Group", href: "https://www.theplumrealestategroup.com/" },
+          { tag: "H3", text: "HomeBase CRM" },
+          {
+            tag: "P",
+            text: "HomeBase CRM is a self-hostable real estate CRM built for solo agents to organize contacts, pipeline stages, follow-ups, imports, exports, and client notes.",
+          },
+          { tag: "A", text: "Visit HomeBase CRM", href: "https://homebasecrm.com" },
         ],
         images: [],
       },

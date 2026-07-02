@@ -84,7 +84,7 @@ export function Header({ currentPath, navigate, onToggleTheme, theme }: HeaderPr
 
       <nav className="desktop-nav" aria-label="Primary navigation">
         <div className="nav-folder">
-          <button type="button" className={countyNav.some((item) => item.path === currentPath) ? "is-active" : ""}>
+          <button type="button" aria-haspopup="true" className={countyNav.some((item) => item.path === currentPath) ? "is-active" : ""}>
             Counties
           </button>
           <div className="nav-menu">
@@ -106,7 +106,7 @@ export function Header({ currentPath, navigate, onToggleTheme, theme }: HeaderPr
         </div>
 
         <div className="nav-folder">
-          <button type="button" className={connectNav.some((item) => item.path === currentPath) ? "is-active" : ""}>
+          <button type="button" aria-haspopup="true" className={connectNav.some((item) => item.path === currentPath) ? "is-active" : ""}>
             Connect
           </button>
           <div className="nav-menu">
@@ -166,6 +166,7 @@ export function Header({ currentPath, navigate, onToggleTheme, theme }: HeaderPr
         <button
           type="button"
           className="menu-button"
+          aria-label={menuOpen ? "Close navigation menu" : "Open navigation menu"}
           aria-expanded={menuOpen}
           aria-controls="mobile-menu"
           onClick={() => setMenuOpen((open) => !open)}

@@ -230,7 +230,7 @@ export const buildStructuredData = (path: string, page?: SitePage) => {
         memberOf: {
           "@type": "RealEstateAgent",
           name: "The Plum Real Estate Group",
-          url: "https://www.theplumrealestategroup.com/our-team",
+          url: "https://www.theplumrealestategroup.com/",
         },
         sameAs: [
           "https://www.instagram.com/arthurpisko/",

@@ -7,7 +7,7 @@ import { buildStructuredData, getSeoForPath, normalizeRoutePath } from "./conten
 import { pageOverrides } from "./content/pageOverrides";
 import { resourcePages } from "./content/resourcePages";
 import type { SitePage } from "./content/types";
-import { trackPageView } from "./analytics";
+import { getAnalyticsConsent, setAnalyticsConsent, trackPageView, type AnalyticsConsent } from "./analytics";
 
 type SiteTheme = "dark" | "light";
 
@@ -63,6 +63,7 @@ const getStoredTheme = (): SiteTheme => {
 export default function App() {
   const [path, setPath] = useState(() => normalizeRoutePath(window.location.pathname));
   const [theme, setTheme] = useState<SiteTheme>(getStoredTheme);
+  const [analyticsConsentChoice, setAnalyticsConsentChoice] = useState<AnalyticsConsent | null>(getAnalyticsConsent);
 
   const pageByPath = useMemo(() => {
     return new Map([...generatedPages, ...pageOverrides].map((page) => [normalizeRoutePath(page.path), page]));
@@ -122,6 +123,16 @@ export default function App() {
     setPath(normalized);
   };
 
+  const chooseAnalyticsConsent = (consent: AnalyticsConsent) => {
+    setAnalyticsConsent(consent);
+    setAnalyticsConsentChoice(consent);
+
+    if (consent === "granted") {
+      const seo = getSeoForPath(path, page);
+      trackPageView(seo.canonicalPath, seo.title, seo.canonicalUrl);
+    }
+  };
+
   const renderPage = (currentPage: SitePage) => {
     if (path === "/") return <HomePage page={currentPage} navigate={navigate} theme={theme} />;
     if (path === "/about") return <AboutPage page={currentPage} navigate={navigate} />;
@@ -137,7 +148,29 @@ export default function App() {
     <>
       <Header currentPath={path} navigate={navigate} theme={theme} onToggleTheme={() => setTheme((current) => (current === "dark" ? "light" : "dark"))} />
       <main id="page">{renderPage(page)}</main>
-      <Footer navigate={navigate} />
+      <Footer navigate={navigate} onManagePrivacy={() => setAnalyticsConsentChoice(null)} />
+      {analyticsConsentChoice === null && (
+        <section className="privacy-banner" aria-label="Privacy choices">
+          <div>
+            <p>
+              This site uses optional analytics cookies to understand visits and improve local real estate content.
+            </p>
+            <a
+              href="/privacy-policy"
+              onClick={(event) => {
+                event.preventDefault();
+                navigate("/privacy-policy");
+              }}
+            >
+              Privacy Policy
+            </a>
+          </div>
+          <div className="privacy-banner-actions">
+            <button type="button" onClick={() => chooseAnalyticsConsent("denied")}>Decline</button>
+            <button type="button" onClick={() => chooseAnalyticsConsent("granted")}>Accept Analytics</button>
+          </div>
+        </section>
+      )}
     </>
   );
 }

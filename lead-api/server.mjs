@@ -86,13 +86,23 @@ const readJson = (req) => {
 };
 
 const clean = (value, max = 500) => String(value || "").replace(/\s+/g, " ").trim().slice(0, max);
+const escapeHtml = (value = "") => String(value).replace(/[&<>"']/g, (char) => ({
+  "&": "&amp;",
+  "<": "&lt;",
+  ">": "&gt;",
+  '"': "&quot;",
+  "'": "&#39;",
+})[char]);
 
 const validateLead = (payload) => {
   const lead = {
+    formType: clean(payload.formType, 40),
+    name: clean(payload.name, 160),
     firstName: clean(payload.firstName, 80),
     lastName: clean(payload.lastName, 80),
     email: clean(payload.email, 160),
     phone: clean(payload.phone, 80),
+    county: clean(payload.county, 80),
     interest: clean(payload.interest, 80),
     message: clean(payload.message, 3000),
     sourceUrl: clean(payload.sourceUrl, 500),
@@ -103,41 +113,59 @@ const validateLead = (payload) => {
   if (lead.company) return { lead, bot: true, errors: [] };
 
   const errors = [];
-  for (const field of ["firstName", "lastName", "email", "phone", "interest", "message"]) {
-    if (!lead[field]) errors.push(`${field} is required`);
+  if (lead.formType === "newsletter") {
+    for (const field of ["email", "interest"]) {
+      if (!lead[field]) errors.push(`${field} is required`);
+    }
+  } else {
+    for (const field of ["firstName", "lastName", "email", "phone", "interest", "message"]) {
+      if (!lead[field]) errors.push(`${field} is required`);
+    }
   }
   if (lead.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(lead.email)) errors.push("email is invalid");
 
   return { lead, bot: false, errors };
 };
 
+const displayName = (lead) => lead.name || `${lead.firstName} ${lead.lastName}`.trim() || "Not provided";
+
 const leadText = (lead, meta) => [
   "New South Jersey Real Estate lead",
   "",
-  `Name: ${lead.firstName} ${lead.lastName}`,
+  `Form: ${lead.formType || "contact"}`,
+  `Name: ${displayName(lead)}`,
   `Email: ${lead.email}`,
-  `Phone: ${lead.phone}`,
+  `Phone: ${lead.phone || "Not provided"}`,
+  `County: ${lead.county || "Not provided"}`,
   `Interest: ${lead.interest}`,
   `Source: ${lead.sourceUrl || lead.pagePath || "unknown"}`,
   `Submitted: ${meta.submittedAt}`,
   `IP: ${meta.ip}`,
   "",
   "Message:",
-  lead.message,
+  lead.message || "Not provided",
 ].join("\n");
 
-const leadHtml = (lead, meta) => `
-  <h2>New South Jersey Real Estate lead</h2>
-  <p><strong>Name:</strong> ${lead.firstName} ${lead.lastName}</p>
-  <p><strong>Email:</strong> <a href="mailto:${lead.email}">${lead.email}</a></p>
-  <p><strong>Phone:</strong> <a href="tel:${lead.phone}">${lead.phone}</a></p>
-  <p><strong>Interest:</strong> ${lead.interest}</p>
-  <p><strong>Source:</strong> ${lead.sourceUrl || lead.pagePath || "unknown"}</p>
-  <p><strong>Submitted:</strong> ${meta.submittedAt}</p>
-  <p><strong>IP:</strong> ${meta.ip}</p>
-  <h3>Message</h3>
-  <p>${lead.message.replace(/\n/g, "<br>")}</p>
-`;
+const leadHtml = (lead, meta) => {
+  const phoneHtml = lead.phone
+    ? `<a href="tel:${escapeHtml(lead.phone)}">${escapeHtml(lead.phone)}</a>`
+    : "Not provided";
+
+  return `
+    <h2>New South Jersey Real Estate lead</h2>
+    <p><strong>Form:</strong> ${escapeHtml(lead.formType || "contact")}</p>
+    <p><strong>Name:</strong> ${escapeHtml(displayName(lead))}</p>
+    <p><strong>Email:</strong> <a href="mailto:${escapeHtml(lead.email)}">${escapeHtml(lead.email)}</a></p>
+    <p><strong>Phone:</strong> ${phoneHtml}</p>
+    <p><strong>County:</strong> ${escapeHtml(lead.county || "Not provided")}</p>
+    <p><strong>Interest:</strong> ${escapeHtml(lead.interest)}</p>
+    <p><strong>Source:</strong> ${escapeHtml(lead.sourceUrl || lead.pagePath || "unknown")}</p>
+    <p><strong>Submitted:</strong> ${escapeHtml(meta.submittedAt)}</p>
+    <p><strong>IP:</strong> ${escapeHtml(meta.ip)}</p>
+    <h3>Message</h3>
+    <p>${escapeHtml(lead.message || "Not provided").replace(/\n/g, "<br>")}</p>
+  `;
+};
 
 const sendSmtp = async (lead, meta) => {
   if (!hasSmtp) return undefined;
@@ -156,7 +184,7 @@ const sendSmtp = async (lead, meta) => {
     from: env.LEAD_FROM_EMAIL || env.LEAD_SMTP_USER || "South Jersey Real Estate <leads@southjerseyreal.estate>",
     to: env.LEAD_TO_EMAIL,
     replyTo: lead.email,
-    subject: `New real estate lead: ${lead.firstName} ${lead.lastName} (${lead.interest})`,
+    subject: `New real estate lead: ${displayName(lead)} (${lead.interest})`,
     text: leadText(lead, meta),
     html: leadHtml(lead, meta),
   });

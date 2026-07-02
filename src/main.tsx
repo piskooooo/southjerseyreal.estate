@@ -5,6 +5,7 @@ import "./styles.css";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
+    <a className="skip-link" href="#page">Skip to content</a>
     <App />
   </StrictMode>,
 );

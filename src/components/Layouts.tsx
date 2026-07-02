@@ -19,6 +19,21 @@ const LIGHT_MODE_HOME_HERO_IMAGE: ImageAsset = {
 
 const CONTACT_FORM_PLACEHOLDER_TEXT = new Set(["I am looking to...", "Choose a topic"]);
 
+function PrivacyInlineLink({ navigate, children = "Privacy Policy" }: { navigate: (path: string) => void; children?: string }) {
+  return (
+    <a
+      href="/privacy-policy"
+      onClick={(event) => {
+        event.preventDefault();
+        trackLinkClick("/privacy-policy", children, "form_disclosure");
+        navigate("/privacy-policy");
+      }}
+    >
+      {children}
+    </a>
+  );
+}
+
 const isActionSection = (section: PageSection) => {
   const headings = section.blocks.filter((block) => block.tag === "H2").map((block) => block.text);
   return headings.includes("Thinking of Selling?") && headings.includes("Looking to Buy?");
@@ -727,6 +742,10 @@ export function NewsletterPage({ navigate }: { navigate: (path: string) => void 
           <button className="button" type="submit" disabled={submitState === "submitting"}>
             {submitState === "submitting" ? "Signing up..." : "Sign Up"}
           </button>
+          <p className="form-disclosure">
+            By signing up, you agree to receive South Jersey real estate emails. You can ask to be removed at any time. See the{" "}
+            <PrivacyInlineLink navigate={navigate} />.
+          </p>
           {submitMessage && (
             <p className={`form-status ${submitState === "error" ? "form-status-error" : ""}`} role="status">
               {submitMessage}
@@ -830,22 +849,22 @@ export function ContactPage({ page, navigate }: PageProps) {
             <legend>Name</legend>
             <label>
               First Name <span>(required)</span>
-              <input required name="firstName" />
+              <input required name="firstName" autoComplete="given-name" />
             </label>
             <label>
               Last Name <span>(required)</span>
-              <input required name="lastName" />
+              <input required name="lastName" autoComplete="family-name" />
             </label>
           </fieldset>
 
           <label>
             Email <span>(required)</span>
-            <input required name="email" type="email" />
+            <input required name="email" type="email" autoComplete="email" />
           </label>
 
           <label>
             Phone <span>(required)</span>
-            <input required name="phone" type="tel" />
+            <input required name="phone" type="tel" autoComplete="tel" />
           </label>
 
           <label>
@@ -867,6 +886,10 @@ export function ContactPage({ page, navigate }: PageProps) {
           <button className="button" type="submit" disabled={submitState === "submitting"}>
             {submitState === "submitting" ? "Sending..." : "Send Message"}
           </button>
+          <p className="form-disclosure">
+            By submitting, you agree to be contacted about your inquiry by phone, text, or email. See the{" "}
+            <PrivacyInlineLink navigate={navigate} />.
+          </p>
           {submitMessage && (
             <p className={`form-status ${submitState === "error" ? "form-status-error" : ""}`} role="status">
               {submitMessage}

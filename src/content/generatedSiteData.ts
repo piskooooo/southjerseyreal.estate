@@ -21425,13 +21425,13 @@ export const generatedPages: SitePage[] = [
   },
   {
     "path": "/privacy-policy",
-    "title": "Privacy Policy | Learn More & Protect Privacy — South Jersey Real Estate",
+    "title": "Privacy Policy | South Jersey Real Estate",
     "sections": [
       {
         "id": "68824189de1f6f6348c4b68a",
         "blocks": [
           {
-            "tag": "P",
+            "tag": "H1",
             "text": "Privacy Policy",
             "href": "",
             "type": "",
@@ -21439,20 +21439,20 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "Effective Date: July 24, 2025",
+            "text": "Last updated: July 1, 2026",
             "href": "",
             "type": "",
             "placeholder": ""
           },
           {
             "tag": "P",
-            "text": "This Privacy Policy describes how personal information is collected, used, and protected when you visit or interact with southjerseyreal.estate, operated by Arthur Pisko Jr., a licensed New Jersey real estate agent with The Plum Real Estate Group.",
+            "text": "This Privacy Policy explains how southjerseyreal.estate collects, uses, and protects information submitted through this website. The site is operated by Arthur Pisko Jr., a licensed New Jersey real estate agent affiliated with The Plum Real Estate Group.",
             "href": "",
             "type": "",
             "placeholder": ""
           },
           {
-            "tag": "P",
+            "tag": "H2",
             "text": "1. Information We Collect",
             "href": "",
             "type": "",
@@ -21460,91 +21460,126 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "We may collect the following types of information:",
+            "text": "We collect information you choose to submit, such as your name, email address, phone number, county or topic of interest, newsletter preferences, and message details.",
             "href": "",
             "type": "",
             "placeholder": ""
           },
           {
             "tag": "P",
-            "text": "2. How We Use Your Information",
+            "text": "We may also receive technical information related to your visit, such as page URL, browser or device information, approximate usage data, timestamps, and basic form-delivery metadata used to operate the site and reduce spam.",
+            "href": "",
+            "type": "",
+            "placeholder": ""
+          },
+          {
+            "tag": "H2",
+            "text": "2. How We Use Information",
             "href": "",
             "type": "",
             "placeholder": ""
           },
           {
             "tag": "P",
-            "text": "Your information may be used to:",
+            "text": "We use submitted information to respond to inquiries, provide requested real estate information, send newsletter updates when requested, deliver form submissions, operate and improve the website, prevent spam or misuse, and comply with applicable legal or brokerage obligations.",
+            "href": "",
+            "type": "",
+            "placeholder": ""
+          },
+          {
+            "tag": "H2",
+            "text": "3. Cookies and Analytics",
             "href": "",
             "type": "",
             "placeholder": ""
           },
           {
             "tag": "P",
-            "text": "3. Cookies and Tracking Technologies",
+            "text": "This website uses optional analytics cookies only after a visitor accepts analytics. When enabled, Google Analytics may use cookies and similar technologies to measure site traffic and page usage. You can decline analytics from the cookie notice or reopen Cookie Settings in the footer.",
+            "href": "",
+            "type": "",
+            "placeholder": ""
+          },
+          {
+            "tag": "H2",
+            "text": "4. Sharing Information",
             "href": "",
             "type": "",
             "placeholder": ""
           },
           {
             "tag": "P",
-            "text": "This website uses cookies for analytics and advertising. Third-party vendors, including Google, use cookies to serve ads based on your visit to this and other websites. You may opt out of personalized advertising by visiting Google Ad Settings.",
+            "text": "Lead and newsletter submissions may be delivered to Arthur Pisko Jr. through configured email, webhook, CRM, or similar service providers. Information may be shared with The Plum Real Estate Group or transaction-related service providers when needed to respond to your request or support a real estate transaction.",
             "href": "",
             "type": "",
             "placeholder": ""
           },
           {
             "tag": "P",
-            "text": "4. Third-Party Services",
+            "text": "We do not knowingly sell personal information submitted through this website.",
+            "href": "",
+            "type": "",
+            "placeholder": ""
+          },
+          {
+            "tag": "H2",
+            "text": "5. Privacy Choices and Requests",
             "href": "",
             "type": "",
             "placeholder": ""
           },
           {
             "tag": "P",
-            "text": "This site may use:",
+            "text": "You may request access to, correction of, or deletion of personal information you submitted through this website by emailing arthurpisko@gmail.com. New Jersey residents may have additional rights under the New Jersey Data Privacy Law when that law applies, including the right to opt out of certain targeted advertising, sale of personal data, or profiling.",
+            "href": "",
+            "type": "",
+            "placeholder": ""
+          },
+          {
+            "tag": "H2",
+            "text": "6. Data Retention and Security",
             "href": "",
             "type": "",
             "placeholder": ""
           },
           {
             "tag": "P",
-            "text": "These services may collect data in accordance with their own privacy policies.",
+            "text": "We keep submitted information only as long as reasonably needed for the purposes described above, unless a longer period is required by law, brokerage recordkeeping, dispute resolution, or legitimate business needs. No website or email system can guarantee complete security, but reasonable safeguards should be used for submitted lead information.",
+            "href": "",
+            "type": "",
+            "placeholder": ""
+          },
+          {
+            "tag": "H2",
+            "text": "7. Children",
             "href": "",
             "type": "",
             "placeholder": ""
           },
           {
             "tag": "P",
-            "text": "5. Your Rights",
+            "text": "This website is not intended for children under 13, and we do not knowingly collect personal information from children through this site.",
+            "href": "",
+            "type": "",
+            "placeholder": ""
+          },
+          {
+            "tag": "H2",
+            "text": "8. Broker Affiliation and Fair Housing",
             "href": "",
             "type": "",
             "placeholder": ""
           },
           {
             "tag": "P",
-            "text": "You may request to view, update, or delete your submitted personal information by contacting us at arthurpisko@gmail.com.",
+            "text": "Arthur Pisko Jr. is a licensed New Jersey real estate agent, License #2187170, affiliated with The Plum Real Estate Group. Real estate services are offered in accordance with applicable fair housing laws.",
             "href": "",
             "type": "",
             "placeholder": ""
           },
           {
-            "tag": "P",
-            "text": "6. Broker Affiliation",
-            "href": "",
-            "type": "",
-            "placeholder": ""
-          },
-          {
-            "tag": "P",
-            "text": "Arthur Pisko Jr. is a licensed New Jersey real estate agent (License #2187170) affiliated with The Plum Real Estate Group. This site operates independently for branding and lead generation purposes.",
-            "href": "",
-            "type": "",
-            "placeholder": ""
-          },
-          {
-            "tag": "P",
-            "text": "7. Changes to This Policy",
+            "tag": "H2",
+            "text": "9. Changes to This Policy",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -21557,8 +21592,8 @@ export const generatedPages: SitePage[] = [
             "placeholder": ""
           },
           {
-            "tag": "P",
-            "text": "8. Contact",
+            "tag": "H2",
+            "text": "10. Contact",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -21577,13 +21612,13 @@ export const generatedPages: SitePage[] = [
   },
   {
     "path": "/disclaimer",
-    "title": "Disclaimer | Learn More Today — South Jersey Real Estate",
+    "title": "Disclaimer | South Jersey Real Estate",
     "sections": [
       {
         "id": "6882421045e6ae76123ba446",
         "blocks": [
           {
-            "tag": "P",
+            "tag": "H1",
             "text": "Disclaimer",
             "href": "",
             "type": "",
@@ -21591,7 +21626,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "Effective Date: July 24, 2025",
+            "text": "Last updated: July 1, 2026",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -21604,7 +21639,7 @@ export const generatedPages: SitePage[] = [
             "placeholder": ""
           },
           {
-            "tag": "P",
+            "tag": "H2",
             "text": "Real Estate Accuracy",
             "href": "",
             "type": "",
@@ -21618,7 +21653,21 @@ export const generatedPages: SitePage[] = [
             "placeholder": ""
           },
           {
+            "tag": "H2",
+            "text": "No Agency Relationship",
+            "href": "",
+            "type": "",
+            "placeholder": ""
+          },
+          {
             "tag": "P",
+            "text": "Contacting Arthur Pisko Jr. through this website does not create an agency relationship, brokerage agreement, attorney-client relationship, or fiduciary relationship. Agency representation begins only through an appropriate written agreement.",
+            "href": "",
+            "type": "",
+            "placeholder": ""
+          },
+          {
+            "tag": "H2",
             "text": "Affiliate and Advertising Disclaimer",
             "href": "",
             "type": "",
@@ -21626,7 +21675,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "This site may contain affiliate links or display ads through platforms such as Google AdSense. If you click these links or view these ads, we may earn a commission or fee at no additional cost to you.",
+            "text": "This site may include paid placements, local business advertising, referral relationships, or affiliate links. If compensation applies, it should not increase your cost, and advertising relationships do not guarantee endorsement of a provider's work.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -21639,7 +21688,7 @@ export const generatedPages: SitePage[] = [
             "placeholder": ""
           },
           {
-            "tag": "P",
+            "tag": "H2",
             "text": "Third-Party Content",
             "href": "",
             "type": "",
@@ -21653,7 +21702,7 @@ export const generatedPages: SitePage[] = [
             "placeholder": ""
           },
           {
-            "tag": "P",
+            "tag": "H2",
             "text": "Brokerage Notice",
             "href": "",
             "type": "",
@@ -21661,13 +21710,27 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "Arthur Pisko Jr. is a licensed NJ REALTOR® operating independently under The Plum Real Estate Group. Nothing on this site is intended to imply agency representation without a formal agreement in place.",
+            "text": "Arthur Pisko Jr. is a licensed New Jersey real estate agent, License #2187170, affiliated with The Plum Real Estate Group. South Jersey Real Estate is a website brand and lead-generation site, not a separate brokerage.",
+            "href": "",
+            "type": "",
+            "placeholder": ""
+          },
+          {
+            "tag": "H2",
+            "text": "Fair Housing",
             "href": "",
             "type": "",
             "placeholder": ""
           },
           {
             "tag": "P",
+            "text": "Real estate services advertised on this site are intended to be offered without discrimination based on race, color, religion, sex, disability, familial status, national origin, or other protected classes under applicable federal, state, and local fair housing laws.",
+            "href": "",
+            "type": "",
+            "placeholder": ""
+          },
+          {
+            "tag": "H2",
             "text": "Use of Site",
             "href": "",
             "type": "",
@@ -21687,14 +21750,21 @@ export const generatedPages: SitePage[] = [
   },
   {
     "path": "/terms-of-service",
-    "title": "Terms of Service | Explore Terms & Get Started Today — South Jersey Real Estate",
+    "title": "Terms of Service | South Jersey Real Estate",
     "sections": [
       {
         "id": "6885694813f705516bfbff93",
         "blocks": [
           {
+            "tag": "H1",
+            "text": "Terms of Service",
+            "href": "",
+            "type": "",
+            "placeholder": ""
+          },
+          {
             "tag": "P",
-            "text": "Terms of Service Last Updated: [July 26, 2025]",
+            "text": "Last updated: July 1, 2026",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -21729,7 +21799,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "All content on this website — including text, images, logos, and graphics — is the property of South Jersey Real Estate or its content providers and is protected by applicable copyright and intellectual property laws. You may not copy, distribute, or reuse content without written permission.",
+            "text": "All content on this website, including text, images, logos, and graphics, is the property of South Jersey Real Estate or its content providers and is protected by applicable copyright and intellectual property laws. You may not copy, distribute, or reuse content without written permission.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -21771,14 +21841,28 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "The information provided on this website does not constitute legal, financial, or real estate advice. For specific advice, consult with a licensed professional.",
+            "text": "The information provided on this website is general information and does not constitute legal, tax, financial, mortgage, inspection, or appraisal advice. For specific advice, consult an appropriately licensed professional.",
             "href": "",
             "type": "",
             "placeholder": ""
           },
           {
             "tag": "H3",
-            "text": "6. Limitation of Liability",
+            "text": "6. No Agency Relationship",
+            "href": "",
+            "type": "",
+            "placeholder": ""
+          },
+          {
+            "tag": "P",
+            "text": "Submitting a form, calling, texting, or emailing through this website does not create an agency relationship unless and until an appropriate written agreement is signed.",
+            "href": "",
+            "type": "",
+            "placeholder": ""
+          },
+          {
+            "tag": "H3",
+            "text": "7. Limitation of Liability",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -21792,7 +21876,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "H3",
-            "text": "7. Changes to These Terms",
+            "text": "8. Changes to These Terms",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -21806,14 +21890,14 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "H3",
-            "text": "8. Contact",
+            "text": "9. Contact",
             "href": "",
             "type": "",
             "placeholder": ""
           },
           {
             "tag": "P",
-            "text": "If you have any questions about these terms, please contact: 📧 arthur@southjerseyreal.estate",
+            "text": "If you have any questions about these terms, please contact arthurpisko@gmail.com.",
             "href": "",
             "type": "",
             "placeholder": ""

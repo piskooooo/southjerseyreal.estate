@@ -52,7 +52,7 @@ const localTextLinks = [
   { label: "Partnerships page", href: "/partners" },
   { label: "Advertising Opportunities", href: "/advertise" },
   { label: "Advertising page", href: "/advertise" },
-  { label: "The Plum Real Estate Group", href: "https://www.theplumrealestategroup.com/our-team" },
+  { label: "The Plum Real Estate Group", href: "https://www.theplumrealestategroup.com/" },
   { label: "ArthurPisko.Realtor", href: "https://www.arthurpisko.realtor/" },
   { label: "Google Business Page", href: "https://g.co/kgs/xMPHGmV" },
   { label: "Realtor.com", href: "https://www.realtor.com/realestateagents/659c35c962a5ff070b97f4b8" },

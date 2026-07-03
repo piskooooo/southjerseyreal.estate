@@ -27,7 +27,7 @@ export function Footer({ navigate, onManagePrivacy }: FooterProps) {
           <h2>South Jersey Real Estate</h2>
           <p>© 2026 South Jersey Real Estate</p>
           <p className="site-footer-disclosure">
-            Brokerage: <strong>The Plum Real Estate Group</strong>. Arthur Pisko Jr., NJ Real Estate License #2187170.
+            Arthur Pisko Jr., NJ Real Estate License #2187170.
           </p>
           <p className="site-footer-disclosure">
             Call or text <a href="tel:8564937501" onClick={() => trackLinkClick("tel:8564937501", "856-493-7501", "footer_disclosure")}>856-493-7501</a>.

@@ -62,7 +62,7 @@ const localTextLinks = [
 ];
 
 const phone = "856-493-7501";
-const email = "arthurpisko@gmail.com";
+const email = "arthur@southjerseyreal.estate";
 const countyNames = ["Atlantic", "Burlington", "Camden", "Cape May", "Cumberland", "Gloucester", "Salem"];
 const countyPathByName = new Map(countyNames.map((name) => [name, `/${name.toLowerCase().replace(/\s+/g, "-")}-county`]));
 const countySeriesLinks = [

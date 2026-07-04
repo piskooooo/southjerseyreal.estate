@@ -17404,7 +17404,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "📧 arthurpisko@gmail.com",
+            "text": "📧 arthur@southjerseyreal.estate",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -18287,7 +18287,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "Prefer to reach out directly? Call or text 856-493-7501 or email arthurpisko@gmail.com.",
+            "text": "Prefer to reach out directly? Call or text 856-493-7501 or email arthur@southjerseyreal.estate.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -21318,7 +21318,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "📧 arthurpisko@gmail.com",
+            "text": "📧 arthur@southjerseyreal.estate",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -21530,7 +21530,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "You may request access to, correction of, or deletion of personal information you submitted through this website by emailing arthurpisko@gmail.com. New Jersey residents may have additional rights under the New Jersey Data Privacy Law when that law applies, including the right to opt out of certain targeted advertising, sale of personal data, or profiling.",
+            "text": "You may request access to, correction of, or deletion of personal information you submitted through this website by emailing arthur@southjerseyreal.estate. New Jersey residents may have additional rights under the New Jersey Data Privacy Law when that law applies, including the right to opt out of certain targeted advertising, sale of personal data, or profiling.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -21600,7 +21600,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "For any questions or requests, email arthurpisko@gmail.com.",
+            "text": "For any questions or requests, email arthur@southjerseyreal.estate.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -21897,7 +21897,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "If you have any questions about these terms, please contact arthurpisko@gmail.com.",
+            "text": "If you have any questions about these terms, please contact arthur@southjerseyreal.estate.",
             "href": "",
             "type": "",
             "placeholder": ""

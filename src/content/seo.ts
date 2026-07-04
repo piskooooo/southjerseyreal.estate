@@ -210,7 +210,7 @@ export const buildStructuredData = (path: string, page?: SitePage) => {
         url: `${siteUrl}/about`,
         image: `${siteUrl}/assets/live/arthur-pisko-jr-picture-jpg.jpg`,
         telephone: "+1-856-493-7501",
-        email: "arthurpisko@gmail.com",
+        email: "arthur@southjerseyreal.estate",
         priceRange: "$$",
         address: {
           "@type": "PostalAddress",

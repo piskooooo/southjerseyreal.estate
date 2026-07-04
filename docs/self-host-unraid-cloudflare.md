@@ -31,7 +31,7 @@ Configure at least one real destination before cutover. The API intentionally re
 SMTP email delivery:
 
 ```bash
-LEAD_TO_EMAIL=arthurpisko@gmail.com
+LEAD_TO_EMAIL=leads@southjerseyreal.estate
 LEAD_FROM_EMAIL="South Jersey Real Estate <leads@southjerseyreal.estate>"
 LEAD_SMTP_HOST=smtp.example.com
 LEAD_SMTP_PORT=587
@@ -40,7 +40,16 @@ LEAD_SMTP_USER=your-smtp-user
 LEAD_SMTP_PASS=
 ```
 
-Fill `LEAD_SMTP_PASS` only in your private `.env` file on Unraid.
+Now that Cloudflare Email Routing is active, the public aliases can be routed to the destination mailbox from Cloudflare:
+
+```text
+arthur@southjerseyreal.estate
+leads@southjerseyreal.estate
+partners@southjerseyreal.estate
+advertise@southjerseyreal.estate
+```
+
+Cloudflare Email Routing handles inbound forwarding only. It does not provide SMTP for outbound form notifications, so keep configuring SMTP or webhook delivery for the lead API. If SMTP is used, use a sender address your SMTP provider permits and fill `LEAD_SMTP_PASS` only in your private `.env` file on Unraid.
 
 Webhook delivery:
 

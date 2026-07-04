@@ -466,7 +466,7 @@ export function AboutPage({ page, navigate }: PageProps) {
               { tag: "H3", text: "Contact" },
               { tag: "P", text: "Arthur Pisko Jr." },
               { tag: "P", text: "856-493-7501" },
-              { tag: "P", text: "arthurpisko@gmail.com" },
+              { tag: "P", text: "arthur@southjerseyreal.estate" },
               { tag: "P", text: "NJ Real Estate License #: 2187170" },
               { tag: "P", text: "The Plum Real Estate Group" },
             ]}

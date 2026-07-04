@@ -11,7 +11,8 @@ services:
     image: ${WEB_IMAGE:-ghcr.io/piskooooo/southjerseyreal.estate:latest}
     restart: unless-stopped
     labels:
-      net.unraid.docker.icon: "https://raw.githubusercontent.com/piskooooo/southjerseyreal.estate/main/public/assets/unraid-icon.png"
+      net.unraid.docker.managed: "composeman"
+      net.unraid.docker.icon: "https://southjerseyreal.estate/assets/unraid-icon.png"
       net.unraid.docker.webui: "https://southjerseyreal.estate/"
     depends_on:
       lead-api:
@@ -33,7 +34,8 @@ services:
     image: ${LEAD_API_IMAGE:-ghcr.io/piskooooo/southjerseyreal.estate-lead-api:latest}
     restart: unless-stopped
     labels:
-      net.unraid.docker.icon: "https://raw.githubusercontent.com/piskooooo/southjerseyreal.estate/main/public/assets/unraid-icon.png"
+      net.unraid.docker.managed: "composeman"
+      net.unraid.docker.icon: "https://southjerseyreal.estate/assets/unraid-icon.png"
     environment:
       NODE_ENV: production
       PORT: 3000

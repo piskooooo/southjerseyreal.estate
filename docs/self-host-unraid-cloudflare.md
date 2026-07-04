@@ -159,13 +159,22 @@ compose.yml
 
 Use `.env` for private values. Do not paste SMTP passwords into tracked files.
 
-The Compose file includes Unraid Docker labels for the site icon and WebUI link. The icon URL is:
+The Compose file includes Unraid Docker labels for the site icon and WebUI link. The preferred icon URL is served by the site itself:
 
 ```text
-https://raw.githubusercontent.com/piskooooo/southjerseyreal.estate/main/public/assets/unraid-icon.png
+https://southjerseyreal.estate/assets/unraid-icon.png
 ```
 
-If you create the containers manually through Unraid's Docker UI instead of Compose, paste that URL into the advanced `Icon URL` field. If an existing Compose stack does not refresh the icon, remove and recreate the containers or clear any manually saved UI labels so Unraid reads the labels from `compose.yml`.
+If you create the containers manually through Unraid's Docker UI instead of Compose, paste that URL into the advanced `Icon URL` field.
+
+If you use Docker Compose Manager and the icon does not appear, check the stack's UI Labels or generated override file. Compose Manager may create blank `net.unraid.docker.icon` values in `/boot/config/plugins/compose.manager/projects/<stack-name>/docker-compose.override.yml`, and those blank values override the labels from `compose.yml`. Set the UI Label icon to the URL above, or copy the labels from `compose.unraid.override.yml` into the stack override. Then recreate the containers so Docker stores the updated labels.
+
+To verify the labels on Unraid:
+
+```bash
+docker inspect $(docker ps -q --filter "name=southjerseyreal") \
+  --format '{{.Name}} {{index .Config.Labels "net.unraid.docker.icon"}}'
+```
 
 The stack pulls these prebuilt images by default:
 

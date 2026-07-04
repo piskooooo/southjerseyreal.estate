@@ -1,0 +1,11 @@
+services:
+  web:
+    labels:
+      net.unraid.docker.managed: "composeman"
+      net.unraid.docker.icon: "https://southjerseyreal.estate/assets/unraid-icon.png"
+      net.unraid.docker.webui: "https://southjerseyreal.estate/"
+
+  lead-api:
+    labels:
+      net.unraid.docker.managed: "composeman"
+      net.unraid.docker.icon: "https://southjerseyreal.estate/assets/unraid-icon.png"

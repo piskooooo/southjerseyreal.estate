@@ -159,7 +159,7 @@ compose.yml
 
 Use `.env` for private values. Do not paste SMTP passwords into tracked files.
 
-The Compose file includes Unraid Docker labels for the site icon and WebUI link. The preferred icon URL is served by the site itself:
+The Docker images and Compose file include Unraid labels for the site icon and WebUI link, matching the HomeBase CRM setup. The preferred icon URL is served by the site itself:
 
 ```text
 https://southjerseyreal.estate/assets/unraid-icon.png

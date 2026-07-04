@@ -12,6 +12,11 @@ COPY . .
 RUN npm run build
 
 FROM caddy:2-alpine AS web
+LABEL org.opencontainers.image.title="South Jersey Real Estate" \
+      org.opencontainers.image.description="South Jersey real estate site and lead capture frontend." \
+      org.opencontainers.image.source="https://github.com/piskooooo/southjerseyreal.estate" \
+      net.unraid.docker.webui="http://[IP]:[PORT:8080]/" \
+      net.unraid.docker.icon="https://southjerseyreal.estate/assets/unraid-icon.png"
 COPY Caddyfile /etc/caddy/Caddyfile
 COPY --from=build /app/dist /srv
 EXPOSE 8080

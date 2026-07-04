@@ -13,7 +13,7 @@ services:
     labels:
       net.unraid.docker.managed: "composeman"
       net.unraid.docker.icon: "https://southjerseyreal.estate/assets/unraid-icon.png"
-      net.unraid.docker.webui: "https://southjerseyreal.estate/"
+      net.unraid.docker.webui: "http://[IP]:[PORT:8080]/"
     depends_on:
       lead-api:
         condition: service_healthy

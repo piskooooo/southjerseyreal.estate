@@ -159,6 +159,14 @@ compose.yml
 
 Use `.env` for private values. Do not paste SMTP passwords into tracked files.
 
+The Compose file includes Unraid Docker labels for the site icon and WebUI link. The icon URL is:
+
+```text
+https://raw.githubusercontent.com/piskooooo/southjerseyreal.estate/main/public/assets/unraid-icon.png
+```
+
+If you create the containers manually through Unraid's Docker UI instead of Compose, paste that URL into the advanced `Icon URL` field. If an existing Compose stack does not refresh the icon, remove and recreate the containers or clear any manually saved UI labels so Unraid reads the labels from `compose.yml`.
+
 The stack pulls these prebuilt images by default:
 
 ```text

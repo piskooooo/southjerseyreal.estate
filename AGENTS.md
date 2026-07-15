@@ -8,6 +8,18 @@ Guidance for future Codex work on the South Jersey Real Estate site.
 - At the start of new project threads, confirm `pwd` is this folder and run `git status --short --branch`.
 - This repo is already in a top-level project folder; do not use older generated Codex wrapper folders for active work.
 
+## Repository Identity and Push Target
+
+- This project is the **South Jersey Real Estate website**, not HomeBase CRM and not The Plum Real Estate Group website.
+- Canonical GitHub repository: `https://github.com/piskooooo/southjerseyreal.estate`
+- Expected Git remote: `origin https://github.com/piskooooo/southjerseyreal.estate.git`
+- Production branch: `main`
+- Normal push target: `origin/main`
+- HomeBase CRM is a separate project at `/Users/pisko/Documents/homebase-crm`. Never stage, commit, or push HomeBase CRM files while working on this project.
+- Before every commit or push, run `pwd`, `git status --short --branch`, and `git remote -v`. Stop if the project root, branch, or `origin` does not match the values above.
+- Only push when the user asks for a push or the current request clearly includes publishing the completed changes. Push this repository with `git push origin main` unless the user explicitly requests another branch or pull-request workflow.
+- After pushing, verify that local `main` is synchronized with `origin/main`. For Docker/deployment changes, also verify the GitHub Actions image publish workflow before telling the user to update Unraid.
+
 ## Product Goal
 
 This is a React/Vite rebuild of `southjerseyreal.estate`, originally cloned from the Squarespace site and intended to be more editable, self-hostable, and visually polished. Keep content editable as structured sections, not as page-sized blobs.
@@ -52,5 +64,4 @@ docker compose --env-file .env up -d --build
 - Prefer real content and actual site assets over placeholder marketing copy.
 - When changing pages or shared layout, run `npm run build`.
 - When changing contact form or lead API behavior, check `/api/health` and test a safe sample lead against the configured preview environment when possible.
-- If pushing Docker/deployment changes, verify the GitHub Actions image publish workflow before telling the user to update Unraid.
 - Keep `.env`, `.env.local`, lead submissions, SMTP passwords, webhook secrets, and generated private data out of git.

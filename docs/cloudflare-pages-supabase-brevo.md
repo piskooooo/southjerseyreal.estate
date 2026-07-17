@@ -104,6 +104,12 @@ Deploy database migrations before functions when a function depends on a new RPC
 
 Cloudflare Pages automatically deploys each push to `main`. Pull requests and non-production branches receive preview deployments.
 
+The GitHub App installation named `Cloudflare Workers and Pages` must include the
+`piskooooo/southjerseyreal.estate` repository. If the Pages dashboard reports that
+the project is disconnected, open the repository's Pages settings, select
+**Manage** beside the Git repository, add this repository to the GitHub App's
+repository access, save, and then confirm the warning disappears before pushing.
+
 ## Test the Forms
 
 Use clearly labeled test information that can be removed afterward.

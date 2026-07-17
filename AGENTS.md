@@ -18,7 +18,7 @@ Guidance for future Codex work on the South Jersey Real Estate site.
 - HomeBase CRM is a separate project at `/Users/pisko/Documents/homebase-crm`. Never stage, commit, or push HomeBase CRM files while working on this project.
 - Before every commit or push, run `pwd`, `git status --short --branch`, and `git remote -v`. Stop if the project root, branch, or `origin` does not match the values above.
 - Only push when the user asks for a push or the current request clearly includes publishing the completed changes. Push this repository with `git push origin main` unless the user explicitly requests another branch or pull-request workflow.
-- After pushing, verify that local `main` is synchronized with `origin/main`. For Docker/deployment changes, also verify the GitHub Actions image publish workflow before telling the user to update Unraid.
+- After pushing, verify that local `main` is synchronized with `origin/main` and that the Cloudflare Pages deployment succeeds. For Docker fallback changes, also verify the GitHub Actions image publish workflow.
 
 ## Product Goal
 
@@ -26,7 +26,8 @@ This is a React/Vite rebuild of `southjerseyreal.estate`, originally cloned from
 
 ## Start Here
 
-- Read `README.md`, then `docs/self-host-unraid-cloudflare.md`, then the specific files you plan to touch.
+- Read `README.md`, then `docs/project-todo.md`, then `docs/cloudflare-pages-supabase-brevo.md`, then the specific files you plan to touch. Read `docs/self-host-unraid-cloudflare.md` only when working on the legacy NAS rollback path.
+- Treat `docs/project-todo.md` as the source of truth for unfinished work. Update its checkboxes and completion details when a listed task is actually finished.
 - Keep the public site safe for production: do not commit real SMTP secrets, webhook URLs, private emails beyond approved public-facing addresses, lead data, or local `.env` files.
 - Preserve the separation between content and layout.
 
@@ -36,8 +37,12 @@ This is a React/Vite rebuild of `southjerseyreal.estate`, originally cloned from
 - `src/content/navigation.ts` controls header dropdowns, footer links, and social links.
 - `src/components/Layouts.tsx` contains reusable page renderers for home, county pages, contact, and standard content pages.
 - `src/components/Blocks.tsx` renders editable text blocks into headings, paragraphs, links, and buttons.
-- `lead-api/server.mjs` accepts lead form submissions and delivers them through SMTP, webhook, or both.
-- `docs/self-host-unraid-cloudflare.md` covers Unraid, Cloudflare Tunnel, preview hostname, and lead testing.
+- `src/cloudForms.ts` sends public form requests to Supabase Edge Functions.
+- `supabase/functions` contains the Turnstile-protected contact and newsletter handlers.
+- `supabase/migrations` contains private form storage, rate limiting, retention, and the notification schedule.
+- `.codex/skills/turnstile-spin` contains the reusable, project-local Turnstile setup and validation workflow.
+- `lead-api/server.mjs` is retained only for the temporary Unraid rollback stack.
+- `docs/cloudflare-pages-supabase-brevo.md` covers production deployment, testing, cutover, and rollback.
 
 ## Commands
 
@@ -46,15 +51,19 @@ npm install
 npm run dev
 npm run build
 npm run import:live
+npx supabase db push
+npx supabase functions deploy contact-submit --no-verify-jwt
+npx supabase functions deploy newsletter-subscribe --no-verify-jwt
 docker compose --env-file .env up -d --build
 ```
 
 ## Deployment Expectations
 
-- Main site image: `ghcr.io/piskooooo/southjerseyreal.estate:latest`
-- Lead API image: `ghcr.io/piskooooo/southjerseyreal.estate-lead-api:latest`
-- The stack serves the Vite build through Caddy and proxies `/api/*` to the lead API.
-- Cloudflare Tunnel fronts the Unraid-hosted stack. Preview traffic should use `preview.southjerseyreal.estate` before production cutover.
+- Primary frontend: Cloudflare Pages project `southjerseyreal-estate`, deployed from `origin/main` with Node 22.
+- Primary form backend: Supabase project ref `sinbxruqlaywvbzcvfli`; functions `contact-submit` and `newsletter-subscribe` are intentionally public endpoints and enforce origin checks plus server-side Turnstile validation.
+- Contact notifications and newsletter double opt-in use the personal Brevo workspace. Never commit the Brevo key or Turnstile secret.
+- Pages build variables are `VITE_GA_MEASUREMENT_ID`, `VITE_SUPABASE_URL`, and `VITE_TURNSTILE_SITE_KEY`; all three are browser-visible by design.
+- The Unraid images remain a temporary rollback path: `ghcr.io/piskooooo/southjerseyreal.estate:latest` and `ghcr.io/piskooooo/southjerseyreal.estate-lead-api:latest`.
 - Keep `VITE_GA_MEASUREMENT_ID=G-97H86MNHP8` unless the user gives a new GA4 measurement ID.
 
 ## Conventions
@@ -63,5 +72,5 @@ docker compose --env-file .env up -d --build
 - Keep changes scoped and consistent with the current React/Vite structure.
 - Prefer real content and actual site assets over placeholder marketing copy.
 - When changing pages or shared layout, run `npm run build`.
-- When changing contact form or lead API behavior, check `/api/health` and test a safe sample lead against the configured preview environment when possible.
+- When changing public forms or Edge Functions, validate Turnstile, test a clearly labeled submission against the preview environment, confirm delivery without printing personal data, and remove the test record afterward.
 - Keep `.env`, `.env.local`, lead submissions, SMTP passwords, webhook secrets, and generated private data out of git.

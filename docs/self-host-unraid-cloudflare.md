@@ -1,6 +1,8 @@
 # Self-Hosting on Unraid Behind Cloudflare Tunnel
 
-This stack builds the Vite site into static files, serves it through Caddy, and proxies contact form submissions to a small lead API.
+> Legacy rollback guide, last reviewed July 17, 2026. Production is moving to Cloudflare Pages with Supabase, Brevo, and Turnstile. Use [`cloudflare-pages-supabase-brevo.md`](./cloudflare-pages-supabase-brevo.md) for the current architecture. Keep this stack only until the Pages cutover has been stable long enough to retire the NAS path.
+
+This stack builds the Vite site into static files, serves it through Caddy, and retains the former lead API. Current frontend builds call Supabase directly; the local lead API remains documented here only for rollback and historical recovery.
 
 ## Services
 

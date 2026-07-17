@@ -1,9 +1,20 @@
 import { useState, type KeyboardEvent, type MouseEvent, type ReactNode } from "react";
 import { trackEvent, trackLinkClick } from "../analytics";
+import {
+  areCloudFormsConfigured,
+  CONTACT_TURNSTILE_ACTION,
+  contactErrorMessage,
+  NEWSLETTER_TURNSTILE_ACTION,
+  newsletterErrorMessage,
+  submitContactInquiry,
+  subscribeToNewsletter,
+  turnstileSiteKey,
+} from "../cloudForms";
 import { comparisonGuides, type ComparisonGuide } from "../content/comparisonGuides";
 import { resourcePages, type ResourcePage } from "../content/resourcePages";
 import type { ContentBlock, ImageAsset, PageSection, SitePage } from "../content/types";
 import { Blocks } from "./Blocks";
+import { TurnstileWidget } from "./TurnstileWidget";
 
 type SiteTheme = "dark" | "light";
 
@@ -634,7 +645,10 @@ export function StandardPage({ page, navigate }: PageProps) {
 export function NewsletterPage({ navigate }: { navigate: (path: string) => void }) {
   const [submitState, setSubmitState] = useState<"idle" | "submitting" | "success" | "error">("idle");
   const [submitMessage, setSubmitMessage] = useState("");
-  const leadApiPath = import.meta.env.VITE_LEAD_API_PATH || "/api/leads";
+  const [turnstileToken, setTurnstileToken] = useState("");
+  const [turnstileResetSignal, setTurnstileResetSignal] = useState(0);
+  const isConfirmed = new URLSearchParams(window.location.search).get("confirmed") === "1";
+  const isSubmitting = submitState === "submitting";
 
   return (
     <div className="newsletter-page">
@@ -654,38 +668,35 @@ export function NewsletterPage({ navigate }: { navigate: (path: string) => void 
           <p className="newsletter-note">
             No spam. No daily blast. Just useful local notes focused on South Jersey once a week.
           </p>
+          {isConfirmed && (
+            <p className="newsletter-confirmed" role="status">
+              Your email is confirmed. Welcome to the newsletter.
+            </p>
+          )}
         </div>
 
         <form
           className="contact-form newsletter-form"
+          aria-busy={isSubmitting}
           onSubmit={async (event) => {
             event.preventDefault();
             const form = event.currentTarget;
             const formData = new FormData(form);
-            const lead = Object.fromEntries(formData.entries());
             const interest = String(formData.get("interest") || "market updates");
 
             setSubmitState("submitting");
             setSubmitMessage("");
 
             try {
-              const response = await fetch(leadApiPath, {
-                method: "POST",
-                headers: {
-                  "content-type": "application/json",
-                },
-                body: JSON.stringify({
-                  ...lead,
-                  formType: "newsletter",
-                  sourceUrl: window.location.href,
-                  pagePath: window.location.pathname,
-                }),
+              const result = await subscribeToNewsletter({
+                email: formData.get("email"),
+                name: formData.get("name"),
+                county: formData.get("county"),
+                interest: formData.get("interest"),
+                company: formData.get("company"),
+                consent: formData.get("consent") === "yes",
+                turnstileToken,
               });
-
-              if (!response.ok) {
-                const payload = await response.json().catch(() => ({}));
-                throw new Error(payload.error || "Newsletter signup failed.");
-              }
 
               trackEvent("generate_lead", {
                 form_name: "newsletter",
@@ -693,10 +704,13 @@ export function NewsletterPage({ navigate }: { navigate: (path: string) => void 
               });
               form.reset();
               setSubmitState("success");
-              setSubmitMessage("Thanks. You're on the newsletter list.");
+              setSubmitMessage(result.message);
             } catch (error) {
               setSubmitState("error");
-              setSubmitMessage(error instanceof Error ? error.message : "Newsletter signup failed.");
+              setSubmitMessage(newsletterErrorMessage(error));
+            } finally {
+              setTurnstileToken("");
+              setTurnstileResetSignal((value) => value + 1);
             }
           }}
         >
@@ -707,17 +721,17 @@ export function NewsletterPage({ navigate }: { navigate: (path: string) => void 
 
           <label>
             Name
-            <input name="name" autoComplete="name" />
+            <input name="name" autoComplete="name" maxLength={120} disabled={isSubmitting} />
           </label>
 
           <label>
             Email <span>(required)</span>
-            <input required name="email" type="email" autoComplete="email" />
+            <input required name="email" type="email" autoComplete="email" maxLength={320} disabled={isSubmitting} />
           </label>
 
           <label>
             County of interest
-            <select name="county" defaultValue="">
+            <select name="county" defaultValue="" disabled={isSubmitting}>
               <option value="">Anywhere in South Jersey</option>
               <option>Atlantic County</option>
               <option>Burlington County</option>
@@ -731,7 +745,7 @@ export function NewsletterPage({ navigate }: { navigate: (path: string) => void 
 
           <label>
             Main interest
-            <select name="interest" defaultValue="Market updates">
+            <select name="interest" defaultValue="Market updates" disabled={isSubmitting}>
               <option>Market updates</option>
               <option>Buying in South Jersey</option>
               <option>Selling in South Jersey</option>
@@ -739,15 +753,39 @@ export function NewsletterPage({ navigate }: { navigate: (path: string) => void 
             </select>
           </label>
 
-          <button className="button" type="submit" disabled={submitState === "submitting"}>
-            {submitState === "submitting" ? "Signing up..." : "Sign Up"}
+          <label className="newsletter-consent-checkbox">
+            <input name="consent" type="checkbox" value="yes" required disabled={isSubmitting} />
+            <span>
+              I agree to receive South Jersey real estate emails and understand I can unsubscribe at any time. See the{" "}
+              <PrivacyInlineLink navigate={navigate} />.
+            </span>
+          </label>
+
+          {areCloudFormsConfigured ? (
+            <TurnstileWidget
+              siteKey={turnstileSiteKey}
+              action={NEWSLETTER_TURNSTILE_ACTION}
+              onTokenChange={setTurnstileToken}
+              resetSignal={turnstileResetSignal}
+            />
+          ) : (
+            <p className="form-status form-status-error" role="alert">
+              Newsletter signup is temporarily unavailable. Please try again later.
+            </p>
+          )}
+
+          <button
+            className="button"
+            type="submit"
+            disabled={isSubmitting || !areCloudFormsConfigured || !turnstileToken}
+          >
+            {isSubmitting ? "Signing up..." : "Sign Up"}
           </button>
-          <p className="form-disclosure">
-            By signing up, you agree to receive South Jersey real estate emails. You can ask to be removed at any time. See the{" "}
-            <PrivacyInlineLink navigate={navigate} />.
-          </p>
           {submitMessage && (
-            <p className={`form-status ${submitState === "error" ? "form-status-error" : ""}`} role="status">
+            <p
+              className={`form-status ${submitState === "error" ? "form-status-error" : ""}`}
+              role={submitState === "error" ? "alert" : "status"}
+            >
               {submitMessage}
             </p>
           )}
@@ -781,10 +819,13 @@ export function ContactPage({ page, navigate }: PageProps) {
   const [intro, promos] = page.sections;
   const [submitState, setSubmitState] = useState<"idle" | "submitting" | "success" | "error">("idle");
   const [submitMessage, setSubmitMessage] = useState("");
+  const [requestId, setRequestId] = useState(() => window.crypto.randomUUID());
+  const [turnstileToken, setTurnstileToken] = useState("");
+  const [turnstileResetSignal, setTurnstileResetSignal] = useState(0);
   const contactIntroBlocks = intro.blocks
     .filter((block) => !["LABEL", "BUTTON"].includes(block.tag) && !CONTACT_FORM_PLACEHOLDER_TEXT.has(block.text))
     .map((block) => (block.tag === "H2" ? { ...block, text: block.text.replace("📬 ", "") } : block));
-  const leadApiPath = import.meta.env.VITE_LEAD_API_PATH || "/api/leads";
+  const isSubmitting = submitState === "submitting";
 
   return (
     <>
@@ -799,44 +840,44 @@ export function ContactPage({ page, navigate }: PageProps) {
         </div>
         <form
           className="contact-form"
+          aria-busy={isSubmitting}
           onSubmit={async (event) => {
             event.preventDefault();
             const form = event.currentTarget;
             const formData = new FormData(form);
-            const lead = Object.fromEntries(formData.entries());
             const interest = String(formData.get("interest") || "unknown");
 
             setSubmitState("submitting");
             setSubmitMessage("");
 
             try {
-              const response = await fetch(leadApiPath, {
-                method: "POST",
-                headers: {
-                  "content-type": "application/json",
-                },
-                body: JSON.stringify({
-                  ...lead,
-                  sourceUrl: window.location.href,
-                  pagePath: window.location.pathname,
-                }),
+              const result = await submitContactInquiry({
+                requestId,
+                firstName: formData.get("firstName"),
+                lastName: formData.get("lastName"),
+                email: formData.get("email"),
+                phone: formData.get("phone"),
+                interest: formData.get("interest"),
+                message: formData.get("message"),
+                company: formData.get("company"),
+                turnstileToken,
+                sourcePath: `${window.location.pathname}${window.location.search}`,
               });
-
-              if (!response.ok) {
-                const payload = await response.json().catch(() => ({}));
-                throw new Error(payload.error || "Lead delivery failed.");
-              }
 
               trackEvent("generate_lead", {
                 form_name: "contact",
                 lead_type: interest,
               });
               form.reset();
+              setRequestId(window.crypto.randomUUID());
               setSubmitState("success");
-              setSubmitMessage("Thanks. Your message was sent successfully.");
+              setSubmitMessage(result.message);
             } catch (error) {
               setSubmitState("error");
-              setSubmitMessage(error instanceof Error ? error.message : "Lead delivery failed.");
+              setSubmitMessage(contactErrorMessage(error));
+            } finally {
+              setTurnstileToken("");
+              setTurnstileResetSignal((value) => value + 1);
             }
           }}
         >
@@ -849,27 +890,27 @@ export function ContactPage({ page, navigate }: PageProps) {
             <legend>Name</legend>
             <label>
               First Name <span>(required)</span>
-              <input required name="firstName" autoComplete="given-name" />
+              <input required name="firstName" autoComplete="given-name" maxLength={60} disabled={isSubmitting} />
             </label>
             <label>
               Last Name <span>(required)</span>
-              <input required name="lastName" autoComplete="family-name" />
+              <input required name="lastName" autoComplete="family-name" maxLength={60} disabled={isSubmitting} />
             </label>
           </fieldset>
 
           <label>
             Email <span>(required)</span>
-            <input required name="email" type="email" autoComplete="email" />
+            <input required name="email" type="email" autoComplete="email" maxLength={320} disabled={isSubmitting} />
           </label>
 
           <label>
             Phone <span>(required)</span>
-            <input required name="phone" type="tel" autoComplete="tel" />
+            <input required name="phone" type="tel" autoComplete="tel" maxLength={60} disabled={isSubmitting} />
           </label>
 
           <label>
             What can I help with? <span>(required)</span>
-            <select required name="interest" defaultValue="">
+            <select required name="interest" defaultValue="" disabled={isSubmitting}>
               <option value="" disabled>Choose a topic</option>
               <option>Sell a home</option>
               <option>Buy a home</option>
@@ -880,18 +921,39 @@ export function ContactPage({ page, navigate }: PageProps) {
 
           <label>
             Message <span>(required)</span>
-            <textarea required name="message" rows={5} />
+            <textarea required name="message" rows={5} maxLength={5000} disabled={isSubmitting} />
           </label>
 
-          <button className="button" type="submit" disabled={submitState === "submitting"}>
-            {submitState === "submitting" ? "Sending..." : "Send Message"}
-          </button>
           <p className="form-disclosure">
-            By submitting, you agree to be contacted about your inquiry by phone, text, or email. See the{" "}
+            This information is used to respond to your inquiry. Sending a message does not subscribe you to newsletters. See the{" "}
             <PrivacyInlineLink navigate={navigate} />.
           </p>
+
+          {areCloudFormsConfigured ? (
+            <TurnstileWidget
+              siteKey={turnstileSiteKey}
+              action={CONTACT_TURNSTILE_ACTION}
+              onTokenChange={setTurnstileToken}
+              resetSignal={turnstileResetSignal}
+            />
+          ) : (
+            <p className="form-status form-status-error" role="alert">
+              The contact form is temporarily unavailable. Please email arthur@southjerseyreal.estate.
+            </p>
+          )}
+
+          <button
+            className="button"
+            type="submit"
+            disabled={isSubmitting || !areCloudFormsConfigured || !turnstileToken}
+          >
+            {isSubmitting ? "Sending..." : "Send Message"}
+          </button>
           {submitMessage && (
-            <p className={`form-status ${submitState === "error" ? "form-status-error" : ""}`} role="status">
+            <p
+              className={`form-status ${submitState === "error" ? "form-status-error" : ""}`}
+              role={submitState === "error" ? "alert" : "status"}
+            >
               {submitMessage}
             </p>
           )}

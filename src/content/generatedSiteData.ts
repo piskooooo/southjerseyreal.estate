@@ -21439,7 +21439,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "Last updated: July 1, 2026",
+            "text": "Last updated: July 17, 2026",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -21467,7 +21467,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "We may also receive technical information related to your visit, such as page URL, browser or device information, approximate usage data, timestamps, and basic form-delivery metadata used to operate the site and reduce spam.",
+            "text": "We may also receive technical information related to your visit, such as page URL, browser or device information, approximate usage data, timestamps, and basic form-delivery metadata used to operate the site, enforce request limits, and reduce spam. Raw visitor IP addresses are not retained in the website's form database.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -21509,7 +21509,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "Lead and newsletter submissions may be delivered to Arthur Pisko Jr. through configured email, webhook, CRM, or similar service providers. Information may be shared with The Plum Real Estate Group or transaction-related service providers when needed to respond to your request or support a real estate transaction.",
+            "text": "Contact inquiries are privately processed and stored by Supabase, protected from automated abuse by Cloudflare Turnstile, and delivered to Arthur Pisko Jr. through Brevo. Newsletter signups use Brevo's double-opt-in process; Brevo remains the authoritative record of confirmed newsletter membership. Information may be shared with The Plum Real Estate Group or transaction-related service providers when needed to respond to your request or support a real estate transaction.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -21544,7 +21544,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "We keep submitted information only as long as reasonably needed for the purposes described above, unless a longer period is required by law, brokerage recordkeeping, dispute resolution, or legitimate business needs. No website or email system can guarantee complete security, but reasonable safeguards should be used for submitted lead information.",
+            "text": "Private website copies of contact inquiries and the email-hash-only newsletter request ledger are scheduled for deletion 12 months after submission. Copies delivered to an email inbox or retained by Brevo may be kept as ordinary business or subscription records until they are no longer needed, the subscriber unsubscribes, or a longer period is required by law, brokerage recordkeeping, dispute resolution, or legitimate business needs. No website or email system can guarantee complete security, but reasonable safeguards are used for submitted information.",
             "href": "",
             "type": "",
             "placeholder": ""

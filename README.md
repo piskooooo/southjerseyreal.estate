@@ -1,31 +1,47 @@
-# South Jersey Real Estate Clone
+# South Jersey Real Estate
 
-This is a React/Vite clone of the live `southjerseyreal.estate` site.
+React/Vite source for `southjerseyreal.estate`.
 
-Content is intentionally separated from layout:
+Project status and unfinished work are tracked in [`docs/project-todo.md`](docs/project-todo.md). Cloud deployment and recovery procedures are in [`docs/cloudflare-pages-supabase-brevo.md`](docs/cloudflare-pages-supabase-brevo.md).
+
+## Project Layout
 
 - `src/content/generatedSiteData.ts` contains editable page sections, county/town copy, image paths, and legal/FAQ content.
 - `src/content/navigation.ts` controls header dropdowns, footer links, and social links.
-- `src/components/Layouts.tsx` contains reusable page renderers for home, county pages, contact, and standard content pages.
-- `src/components/Blocks.tsx` renders editable text blocks into headings, paragraphs, links, and buttons.
+- `src/components/Layouts.tsx` contains reusable page renderers and the public forms.
+- `src/cloudForms.ts` calls the public form endpoints without exposing backend credentials.
+- `supabase/functions` contains the Turnstile-protected contact and newsletter handlers.
+- `supabase/migrations` contains the private form storage, rate limiting, retention, and notification schedule.
 
-Useful commands:
+## Local Commands
 
-- `npm run dev` starts the local site.
-- `npm run build` type-checks and builds the app.
-- `npm run import:live` regenerates `src/content/generatedSiteData.ts` from `/tmp/sjre-pages-full.json` and downloads referenced images into `public/assets/live`.
+```bash
+npm install
+npm run dev
+npm run build
+npm run import:live
+```
 
-Self-hosting:
+Create an ignored `.env.local` from `.env.example` for local Vite builds. The only browser-visible settings are the GA4 measurement ID, Supabase project URL, and Turnstile site key.
 
-- Copy `.env.example` to `.env`, configure a real lead destination, then run `docker compose --env-file .env up -d --build`.
-- The Docker build uses `VITE_GA_MEASUREMENT_ID=G-97H86MNHP8`.
-- GitHub Actions publishes pullable images for Unraid:
-  - `ghcr.io/piskooooo/southjerseyreal.estate:latest`
-  - `ghcr.io/piskooooo/southjerseyreal.estate-lead-api:latest`
-- See `docs/self-host-unraid-cloudflare.md` for Unraid, Cloudflare Tunnel, preview hostname, and lead testing steps.
+## Production Hosting
 
-Analytics setup:
+- Cloudflare Pages project: `southjerseyreal-estate`
+- Production branch: `main`
+- Build command: `npm run build`
+- Output directory: `dist`
+- Default build image: v3 with Node 22
+- Public site hostnames: `southjerseyreal.estate`, `www.southjerseyreal.estate`, and `southjerseyreal-estate.pages.dev`
+- Form backend: Supabase project `sinbxruqlaywvbzcvfli`
+- Contact delivery and newsletter double opt-in: Brevo
+- Bot protection: Cloudflare Turnstile
 
-- Set `VITE_GA_MEASUREMENT_ID` to the site's GA4 measurement ID, for example `G-XXXXXXXXXX`, in the deployment environment.
-- The app sends SPA `page_view` events, contact/nav/link click events, and a `generate_lead` event when the contact form is submitted.
-- In GA4, mark `generate_lead` as a key event once it appears in Admin > Events.
+Pushing `main` triggers a Cloudflare Pages deployment. Supabase migrations and Edge Functions are deployed separately with the Supabase CLI as described in the deployment guide.
+
+## Legacy Rollback
+
+The Docker, Caddy, `lead-api`, GHCR workflow, and Unraid guide remain in the repository as a temporary rollback path. They are no longer the intended production architecture. The Docker frontend uses the same Supabase and Turnstile endpoints as Pages.
+
+## Analytics
+
+The site uses consent-gated GA4 measurement ID `G-97H86MNHP8`. It sends SPA `page_view` events, contact/navigation/link events, and `generate_lead` after a successful form response. Mark `generate_lead` as a key event in GA4 after it appears in Realtime or DebugView.

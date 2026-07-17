@@ -54,7 +54,8 @@ jobs:
           push: true
           build-args: |
             VITE_GA_MEASUREMENT_ID=G-97H86MNHP8
-            VITE_LEAD_API_PATH=/api/leads
+            VITE_SUPABASE_URL=https://sinbxruqlaywvbzcvfli.supabase.co
+            VITE_TURNSTILE_SITE_KEY=0x4AAAAAAD4GwgGgH6mUSw5r
           tags: |
             ${{ env.REGISTRY }}/${{ matrix.image }}:latest
             ${{ env.REGISTRY }}/${{ matrix.image }}:${{ github.sha }}

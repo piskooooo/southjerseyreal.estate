@@ -1087,6 +1087,15 @@ p a {
   color: var(--muted);
 }
 
+.newsletter-confirmed {
+  max-width: 34rem;
+  padding: 0.9rem 1rem;
+  border-left: 3px solid var(--interactive-border);
+  background: var(--surface);
+  color: var(--text);
+  font-weight: 750;
+}
+
 .newsletter-form {
   position: sticky;
   top: clamp(6.25rem, 9vw, 7.5rem);
@@ -1195,6 +1204,55 @@ p a {
 .contact-form textarea {
   min-height: 7.5rem;
   resize: vertical;
+}
+
+.contact-form input:disabled,
+.contact-form select:disabled,
+.contact-form textarea:disabled {
+  cursor: wait;
+  opacity: 0.72;
+}
+
+.contact-form .newsletter-consent-checkbox {
+  display: grid;
+  grid-template-columns: 1.1rem minmax(0, 1fr);
+  align-items: start;
+  gap: 0.7rem;
+}
+
+.contact-form .newsletter-consent-checkbox input {
+  width: 1.1rem;
+  min-height: 1.1rem;
+  margin: 0.12rem 0 0;
+  padding: 0;
+  accent-color: var(--interactive-border);
+}
+
+.contact-form .newsletter-consent-checkbox span {
+  line-height: 1.55;
+}
+
+.turnstile-challenge {
+  display: grid;
+  min-width: 0;
+  min-height: 4.75rem;
+  gap: 0.35rem;
+}
+
+.turnstile-widget {
+  width: 100%;
+  min-height: 1px;
+}
+
+.turnstile-verification-status {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.78rem;
+  line-height: 1.45;
+}
+
+.turnstile-verification-status.is-error {
+  color: var(--error);
 }
 
 .contact-form .button {

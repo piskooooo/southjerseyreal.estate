@@ -1,13 +1,16 @@
 import { createClient } from "npm:@supabase/supabase-js@2.110.6";
+import {
+  MAX_NEWSLETTER_REQUEST_BYTES,
+  NEWSLETTER_TURNSTILE_ACTION,
+  type NewsletterRequestBody,
+  validateNewsletterRequest,
+} from "./validation.ts";
 
 const BREVO_DOI_ENDPOINT =
   "https://api.brevo.com/v3/contacts/doubleOptinConfirmation";
 const TURNSTILE_SITEVERIFY_ENDPOINT =
   "https://challenges.cloudflare.com/turnstile/v0/siteverify";
-const TURNSTILE_ACTION = "turnstile-spin-v2";
 const SUCCESS_MESSAGE = "Check your email to confirm your subscription.";
-const MAX_REQUEST_BYTES = 8_192;
-const MAX_TURNSTILE_TOKEN_LENGTH = 2_048;
 const DEFAULT_ALLOWED_ORIGINS = [
   "https://southjerseyreal-estate.pages.dev",
   "https://southjerseyreal.estate",
@@ -22,17 +25,6 @@ const DEFAULT_EXPECTED_HOSTNAMES = [
   "localhost",
   "127.0.0.1",
 ];
-
-type SignupRequest = {
-  email?: unknown;
-  name?: unknown;
-  county?: unknown;
-  interest?: unknown;
-  consent?: unknown;
-  company?: unknown;
-  turnstileToken?: unknown;
-  source?: unknown;
-};
 
 type TurnstileResult = {
   success?: boolean;
@@ -119,35 +111,25 @@ function jsonResponse(
   });
 }
 
-function normalizedLine(value: unknown, maximum: number): string | null {
-  if (typeof value !== "string") return null;
-  const normalized = value.trim().replaceAll(/\s+/g, " ");
-  if (normalized.length > maximum || /[\u0000-\u001f\u007f]/.test(value)) {
-    return null;
-  }
-  return normalized;
-}
-
-function normalizedEmail(value: unknown): string | null {
-  const email = normalizedLine(value, 320)?.toLowerCase() || "";
-  if (email.length < 3) return null;
-  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) ? email : null;
-}
-
 function clientIp(request: Request): string | null {
   const connectingIp = request.headers.get("cf-connecting-ip")?.trim();
   if (connectingIp) return connectingIp;
   return request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || null;
 }
 
-async function parseRequest(request: Request): Promise<SignupRequest> {
+async function parseRequest(request: Request): Promise<NewsletterRequestBody> {
   const contentLength = Number(request.headers.get("content-length") || 0);
-  if (Number.isFinite(contentLength) && contentLength > MAX_REQUEST_BYTES) {
+  if (
+    Number.isFinite(contentLength) &&
+    contentLength > MAX_NEWSLETTER_REQUEST_BYTES
+  ) {
     throw new RangeError("Request body is too large.");
   }
 
   const text = await request.text();
-  if (new TextEncoder().encode(text).byteLength > MAX_REQUEST_BYTES) {
+  if (
+    new TextEncoder().encode(text).byteLength > MAX_NEWSLETTER_REQUEST_BYTES
+  ) {
     throw new RangeError("Request body is too large.");
   }
 
@@ -155,7 +137,7 @@ async function parseRequest(request: Request): Promise<SignupRequest> {
   if (!parsed || typeof parsed !== "object" || Array.isArray(parsed)) {
     throw new SyntaxError("Request body must be a JSON object.");
   }
-  return parsed as SignupRequest;
+  return parsed as NewsletterRequestBody;
 }
 
 async function verifyTurnstile(
@@ -184,7 +166,7 @@ async function verifyTurnstile(
   if (result.success !== true) return false;
 
   const expectedAction = Deno.env.get("NEWSLETTER_TURNSTILE_EXPECTED_ACTION")
-    ?.trim() || TURNSTILE_ACTION;
+    ?.trim() || NEWSLETTER_TURNSTILE_ACTION;
   if (result.action !== expectedAction) return false;
 
   const expectedHostnames = commaSeparatedEnv(
@@ -317,7 +299,7 @@ Deno.serve(async (request) => {
     }, 405);
   }
 
-  let body: SignupRequest;
+  let body: NewsletterRequestBody;
   try {
     body = await parseRequest(request);
   } catch (error) {
@@ -330,58 +312,33 @@ Deno.serve(async (request) => {
     }, error instanceof RangeError ? 413 : 400);
   }
 
-  if (typeof body.company === "string" && body.company.trim()) {
+  const validation = validateNewsletterRequest(body);
+  if (!validation.ok) {
+    const message = validation.code === "invalid_email"
+      ? "Enter a valid email address."
+      : validation.code === "consent_required"
+      ? "Consent is required to subscribe."
+      : validation.code === "invalid_source"
+      ? "Invalid signup source."
+      : validation.code === "turnstile_invalid"
+      ? "Complete the security check and try again."
+      : "Check the signup information and try again.";
+    return jsonResponse(allowedOrigin, {
+      ok: false,
+      code: validation.code,
+      message,
+    }, 400);
+  }
+  if (validation.spam) {
     return jsonResponse(allowedOrigin, { ok: true, message: SUCCESS_MESSAGE });
   }
 
-  const email = normalizedEmail(body.email);
-  if (!email) {
-    return jsonResponse(allowedOrigin, {
-      ok: false,
-      code: "invalid_email",
-      message: "Enter a valid email address.",
-    }, 400);
-  }
-  const name = normalizedLine(body.name ?? "", 120);
-  const county = normalizedLine(body.county ?? "", 80);
-  const interest = normalizedLine(body.interest ?? "", 80);
-  if (name === null || county === null || interest === null) {
-    return jsonResponse(allowedOrigin, {
-      ok: false,
-      code: "invalid_request",
-      message: "Check the signup information and try again.",
-    }, 400);
-  }
-  if (body.consent !== true) {
-    return jsonResponse(allowedOrigin, {
-      ok: false,
-      code: "consent_required",
-      message: "Consent is required to subscribe.",
-    }, 400);
-  }
-  if (body.source !== "newsletter_page") {
-    return jsonResponse(allowedOrigin, {
-      ok: false,
-      code: "invalid_source",
-      message: "Invalid signup source.",
-    }, 400);
-  }
-  if (
-    typeof body.turnstileToken !== "string" ||
-    !body.turnstileToken.trim() ||
-    body.turnstileToken.length > MAX_TURNSTILE_TOKEN_LENGTH
-  ) {
-    return jsonResponse(allowedOrigin, {
-      ok: false,
-      code: "turnstile_invalid",
-      message: "Complete the security check and try again.",
-    }, 400);
-  }
+  const signup = validation.value;
 
   try {
     const turnstileValid = await verifyTurnstile(
       request,
-      body.turnstileToken.trim(),
+      signup.turnstileToken,
     );
     if (!turnstileValid) {
       return jsonResponse(allowedOrigin, {
@@ -393,12 +350,12 @@ Deno.serve(async (request) => {
 
     const admin = createAdminClient();
     const attemptId = crypto.randomUUID();
-    const hashedEmail = await emailHash(email);
+    const hashedEmail = await emailHash(signup.email);
     const { data: shouldRequestConfirmation, error: auditError } = await admin.rpc(
       "begin_newsletter_signup_request",
       {
         p_email_hash: hashedEmail,
-        p_source: body.source,
+        p_source: signup.source,
         p_attempt_id: attemptId,
       },
     );
@@ -409,13 +366,13 @@ Deno.serve(async (request) => {
     }
 
     const attributes: Record<string, string> = {};
-    if (name) attributes.FIRSTNAME = name;
-    if (county) attributes.SJ_COUNTY = county;
-    if (interest) attributes.SJ_INTEREST = interest;
+    if (signup.name) attributes.FIRSTNAME = signup.name;
+    if (signup.county) attributes.SJ_COUNTY = signup.county;
+    if (signup.interest) attributes.SJ_INTEREST = signup.interest;
 
     let brevo: Awaited<ReturnType<typeof requestBrevoDoubleOptIn>>;
     try {
-      brevo = await requestBrevoDoubleOptIn(email, attributes);
+      brevo = await requestBrevoDoubleOptIn(signup.email, attributes);
     } catch (providerError) {
       try {
         await updateAuditStatus(

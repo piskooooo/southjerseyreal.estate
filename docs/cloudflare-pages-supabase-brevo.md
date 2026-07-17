@@ -26,6 +26,7 @@ flowchart LR
 - Newsletter: Brevo list ID `8`, double-opt-in template ID `2`.
 - Abuse controls: Cloudflare Turnstile, honeypots, bounded request bodies, HMAC-only rate-limit identifiers, and provider cooldowns.
 - Retention: private inquiry and newsletter-audit rows expire after 12 months; HMAC-only rate events expire after 48 hours.
+- Private inquiry access: the authenticated Supabase Dashboard SQL Editor. The site has no public inquiry viewer, browser service-role key, or admin data endpoint.
 
 ## Current Production State
 
@@ -38,6 +39,10 @@ The Pages cutover completed on July 17, 2026.
 - Saved rollback target: `f2cb0161-75ae-4bc1-8bf2-c5f321ad1417.cfargotunnel.com`.
 - `BREVO_DOI_REDIRECT_URL` points to `https://southjerseyreal.estate/newsletter?confirmed=1`.
 - The old Unraid route is outside public DNS and should remain available only for the observation period described in the project checklist.
+- Cloudflare Bot Fight Mode is off because its Free-plan behavior challenged every route and could not be scoped. Browser Integrity Check remains on. Form POSTs continue to be protected by server-verified Turnstile, exact origin allowlists, honeypots, and application rate limits.
+- Google Search Console live URL inspection reported the apex URL available to Google and indexable on July 17, 2026.
+
+Both public forms intentionally use the Turnstile action `turnstile-spin-v2`. This shared action is required by the saved Turnstile Spin workflow and its telemetry. It is not an endpoint ambiguity: each Edge Function independently checks the exact action, expected hostname, and browser origin before processing its own request shape.
 
 ## Public Build Variables
 
@@ -125,6 +130,72 @@ Use clearly labeled test information that can be removed afterward.
 
 Do not use a Turnstile test key in production. The repository's validation script may use a dummy token only to prove the configured secret reaches Siteverify; a rejected dummy response is expected.
 
+Run the automated checks before every forms deployment:
+
+```bash
+npm test
+npm run build
+npx deno check --node-modules-dir=auto supabase/functions/contact-submit/index.ts
+npx deno check --node-modules-dir=auto supabase/functions/newsletter-subscribe/index.ts
+```
+
+Run the transactional database checks when Docker and the local Supabase stack are available:
+
+```bash
+npx supabase start
+npm run test:db
+```
+
+The database test runs inside a transaction and covers private-schema privileges, contact idempotency and rate limits, notification state transitions, newsletter cooldowns, retention, and cron configuration.
+
+## View Private Contact Inquiries
+
+Use the Supabase Dashboard SQL Editor while signed in to the project-owner account with MFA. Do not create shared dashboard accounts, expose the `private` schema through the Data API, export inquiries to an unmanaged file, or add a service-role key to the browser.
+
+```sql
+select
+  request_id,
+  created_at,
+  name,
+  email,
+  phone,
+  interest,
+  message,
+  source_path,
+  notification_status,
+  notification_attempt_count,
+  last_notification_attempt_at,
+  sent_at,
+  expires_at
+from private.contact_inquiries
+order by created_at desc
+limit 100;
+```
+
+For a production test, inspect only the delivery metadata needed for verification. Copy the exact `request_id` UUID from the clearly labeled test row, then remove only that request and its rate events in one transaction:
+
+```sql
+begin;
+
+delete from private.contact_rate_limit_events
+where request_id = '<replace-with-exact-request-id>'::uuid;
+
+delete from private.contact_inquiries
+where request_id = '<replace-with-exact-request-id>'::uuid;
+
+commit;
+
+select count(*) as inquiry_rows_remaining
+from private.contact_inquiries
+where request_id = '<replace-with-exact-request-id>'::uuid;
+
+select count(*) as rate_event_rows_remaining
+from private.contact_rate_limit_events
+where request_id = '<replace-with-exact-request-id>'::uuid;
+```
+
+Both counts must return zero. Never paste real inquiry data into logs, tickets, commits, or chat transcripts.
+
 ## Production Domain Cutover
 
 Do this only after the `pages.dev` deployment and both forms pass.
@@ -148,3 +219,14 @@ If Pages or the custom-domain cutover fails:
 5. Record the failure in [`project-todo.md`](./project-todo.md) before attempting another cutover.
 
 After production has remained stable and backups are satisfactory, the old Tunnel route, `lead-api` container, and NAS-hosting secrets can be retired in a separate, deliberate cleanup.
+
+The `home-server` Tunnel also serves HomeBase CRM. Never delete the Tunnel itself. During the scheduled retirement window:
+
+1. Confirm Pages, both Supabase functions, scheduled contact delivery, and current backups are healthy.
+2. Record the final rollback image tags and keep the saved DNS target above.
+3. Remove only the `southjerseyreal.estate` and `www.southjerseyreal.estate` ingress entries from the Tunnel configuration; keep every HomeBase route and the terminal `404` rule.
+4. Stop and remove only the South Jersey Real Estate web and legacy `lead-api` containers and their project-scoped secrets. Do not touch HomeBase containers, volumes, routes, or credentials.
+5. Verify the public hostnames still resolve to Pages and that HomeBase remains healthy through the shared Tunnel.
+6. After the agreed rollback-retention period, retire the two SJRE GHCR image publications in a separate commit.
+
+Do not perform these steps on the same day as a production cutover or before the observation period and backup review are explicitly complete.

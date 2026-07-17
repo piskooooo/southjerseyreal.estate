@@ -7,7 +7,7 @@ Use this file as the source of truth for unfinished work on `southjerseyreal.est
 ## Current Priorities
 
 - [ ] 1. Observe the Pages deployment, then retire the NAS route
-- [ ] 2. Confirm the production URLs in Google Search Console
+- [x] 2. Confirm the production URL in Google Search Console
 - [ ] 3. Finish the GA4 lead-conversion setup
 - [ ] 4. Get a final real-estate compliance review
 - [ ] 5. Select and integrate a Bright IDX provider
@@ -55,6 +55,8 @@ Reference: [cloudflare-pages-supabase-brevo.md](./cloudflare-pages-supabase-brev
 - [x] Require explicit newsletter consent and Brevo double opt-in.
 - [x] Keep contact inquiries separate from newsletter subscriptions.
 - [x] Confirm scheduled notification processing returns a healthy empty-queue response.
+- [x] Approve the Supabase Dashboard SQL Editor as the private inquiry viewer; no public admin endpoint or service-role browser key was added.
+- [x] Add automated frontend, validation, Brevo-client, notification-lifecycle, and transactional database regression tests.
 
 ### End-to-End Checks
 
@@ -67,7 +69,9 @@ Reference: [cloudflare-pages-supabase-brevo.md](./cloudflare-pages-supabase-brev
 - [x] Confirm there are no CSP, CORS, Turnstile, or mixed-content errors on desktop or mobile.
 - [x] Remove the contact test, rate events, newsletter audit rows, and Brevo test contact.
 - [x] Confirm ordinary production pages load without a Cloudflare challenge in a normal browser.
-- [ ] Run Google Search Console URL Inspection against the Pages-hosted production URL and confirm crawling is allowed.
+- [x] Run Google Search Console URL Inspection against the Pages-hosted production URL and confirm crawling is allowed.
+
+Google Search Console live-tested the apex URL on July 17, 2026 and reported that the URL was available to Google and could be indexed. Cloudflare Bot Fight Mode was disabled because the Free-plan feature challenged the whole hostname and cannot be scoped; Browser Integrity Check remains enabled.
 
 **Done when:** Both forms complete in a normal browser, delivery and double opt-in are confirmed, test data is removed, and ordinary visitors/search crawlers are not blocked.
 
@@ -79,11 +83,11 @@ The site already sends the GA4 event `generate_lead` after a successful form sub
 
 ### Steps
 
-- [ ] Accept analytics cookies on the public site for the test session.
-- [ ] Submit one safe test form.
-- [ ] Open the GA4 property using measurement ID `G-97H86MNHP8`.
+- [x] Accept analytics cookies on the public site for the test session.
+- [x] Submit one safe test form.
+- [x] Open the GA4 property using measurement ID `G-97H86MNHP8`.
 - [ ] Confirm `generate_lead` appears in Realtime or DebugView.
-- [ ] In GA4 Admin, mark `generate_lead` as a key event.
+- [x] In GA4 Admin, mark `generate_lead` as a key event.
 - [ ] Confirm ordinary page views and navigation events still appear.
 - [ ] Record the completion date below.
 
@@ -112,6 +116,8 @@ Reviewer: ____________________
 Approval date: ____________________
 
 **Done when:** The responsible broker or attorney approves the site or all requested changes have been implemented and approved.
+
+Reference: [compliance-review-checklist.md](./compliance-review-checklist.md)
 
 ## 5. Add Bright IDX Property Search
 
@@ -171,3 +177,5 @@ Approval date: ____________________
 - [x] Move contact and newsletter handling to Supabase, Turnstile, and Brevo.
 - [x] Verify contact delivery and newsletter double opt-in end to end, then remove all test records.
 - [x] Save the reusable Turnstile Spin workflow under `.codex/skills/turnstile-spin` for future chats.
+- [x] Add 45 automated form and analytics tests plus a transactional Supabase pgTAP regression suite, and gate GHCR publishing on the 45-test Vitest run.
+- [x] Document private inquiry access, production test cleanup, scoped NAS retirement, and the final human compliance handoff.

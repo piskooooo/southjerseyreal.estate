@@ -53,8 +53,15 @@ const ensureAnalytics = () => {
   if (!measurementId) return false;
 
   window.dataLayer = window.dataLayer || [];
-  window.gtag = (...args: [string, string | Date, Record<string, unknown>?]) => {
-    window.dataLayer?.push(args);
+  window.gtag = function gtag(
+    _command: string,
+    _target: string | Date,
+    _params?: Record<string, unknown>,
+  ) {
+    // Google Tag's loader expects the standard array-like `arguments` object.
+    // Pushing a rest-parameter Array looks similar but is not the documented
+    // gtag.js command queue format and can leave the stream inactive.
+    window.dataLayer?.push(arguments);
   };
 
   if (!document.querySelector<HTMLScriptElement>("#ga4-script")) {

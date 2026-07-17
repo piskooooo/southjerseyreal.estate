@@ -20,7 +20,13 @@ npm install
 npm run dev
 npm run build
 npm run import:live
+npm test
+npm run test:db
 ```
+
+`npm test` runs the frontend and Edge Function unit/component suite. `npm run test:db`
+runs the transactional Supabase regression suite against the local Supabase stack and
+therefore requires Docker and `supabase start`.
 
 Create an ignored `.env.local` from `.env.example` for local Vite builds. The only browser-visible settings are the GA4 measurement ID, Supabase project URL, and Turnstile site key.
 
@@ -44,4 +50,4 @@ The Docker, Caddy, `lead-api`, GHCR workflow, and Unraid guide remain in the rep
 
 ## Analytics
 
-The site uses consent-gated GA4 measurement ID `G-97H86MNHP8`. It sends SPA `page_view` events, contact/navigation/link events, and `generate_lead` after a successful form response. Mark `generate_lead` as a key event in GA4 after it appears in Realtime or DebugView.
+The site uses consent-gated GA4 measurement ID `G-97H86MNHP8`. It sends SPA `page_view` events, contact/navigation/link events, and `generate_lead` after a successful form response. `generate_lead` is configured as a GA4 key event.

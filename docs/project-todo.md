@@ -8,7 +8,7 @@ Use this file as the source of truth for unfinished work on `southjerseyreal.est
 
 - [ ] 1. Observe the Pages deployment, then retire the NAS route
 - [x] 2. Confirm the production URL in Google Search Console
-- [ ] 3. Finish the GA4 lead-conversion setup
+- [x] 3. Finish the GA4 lead-conversion setup
 - [ ] 4. Get a final real-estate compliance review
 - [ ] 5. Select and integrate a Bright IDX provider
 
@@ -86,12 +86,12 @@ The site already sends the GA4 event `generate_lead` after a successful form sub
 - [x] Accept analytics cookies on the public site for the test session.
 - [x] Submit one safe test form.
 - [x] Open the GA4 property using measurement ID `G-97H86MNHP8`.
-- [ ] Confirm `generate_lead` appears in Realtime or DebugView.
+- [x] Confirm `generate_lead` appears in Realtime or DebugView.
 - [x] In GA4 Admin, mark `generate_lead` as a key event.
-- [ ] Confirm ordinary page views and navigation events still appear.
-- [ ] Record the completion date below.
+- [x] Confirm ordinary page views and navigation events still appear.
+- [x] Record the completion date below.
 
-Completion date: ____________________
+Completion date: July 17, 2026
 
 **Done when:** GA4 receives `generate_lead` and identifies it as a key event.
 

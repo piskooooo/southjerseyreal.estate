@@ -2,7 +2,7 @@
 
 React/Vite source for `southjerseyreal.estate`.
 
-Project status and unfinished work are tracked in [`docs/project-todo.md`](docs/project-todo.md). Cloud deployment and recovery procedures are in [`docs/cloudflare-pages-supabase-brevo.md`](docs/cloudflare-pages-supabase-brevo.md).
+Project status and unfinished work are tracked in [`docs/project-todo.md`](docs/project-todo.md). The approved visual color direction and current light-theme implementation are recorded in [`docs/color-palette.md`](docs/color-palette.md). Cloud deployment and recovery procedures are in [`docs/cloudflare-pages-supabase-brevo.md`](docs/cloudflare-pages-supabase-brevo.md).
 
 ## Project Layout
 

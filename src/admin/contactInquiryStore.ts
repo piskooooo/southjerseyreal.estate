@@ -13,14 +13,17 @@ export type ContactInquiry = {
   expiresAt: string;
 };
 
+export type ContactInquiryCursor = Pick<ContactInquiry, "createdAt" | "id">;
+
 export async function loadContactInquiries({
   limit = 50,
   before,
-}: { limit?: number; before?: string | null } = {}): Promise<ContactInquiry[]> {
+}: { limit?: number; before?: ContactInquiryCursor | null } = {}): Promise<ContactInquiry[]> {
   if (!supabase) throw new Error("The private contact inbox is not connected to Supabase yet.");
   const { data, error } = await supabase.rpc("list_contact_inquiries", {
     p_limit: Math.min(100, Math.max(1, limit)),
-    p_before: before || null,
+    p_before_created_at: before?.createdAt || null,
+    p_before_id: before?.id || null,
   });
   if (error) throw new Error(`Unable to load contact inquiries: ${error.message}`);
   return (data || []).map((row: Record<string, unknown>) => ({

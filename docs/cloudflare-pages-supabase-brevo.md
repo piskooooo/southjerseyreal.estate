@@ -9,10 +9,14 @@ This is the production deployment guide for `southjerseyreal.estate`. It intenti
 ```mermaid
 flowchart LR
   Visitor[Website visitor] --> Pages[Cloudflare Pages]
+  Admin[Authorized owner] --> Pages
+  Admin --> Auth[Supabase Auth]
   Pages --> Turnstile[Cloudflare Turnstile]
   Pages --> Functions[Supabase Edge Functions]
+  Admin --> Database
   Functions --> Turnstile
   Functions --> Database[(Private Supabase schema)]
+  Functions --> DeployHook[Cloudflare Pages deploy hook]
   Functions --> Brevo[Brevo API]
   Brevo --> Leads[leads@southjerseyreal.estate]
   Brevo --> DOI[Newsletter double opt-in]
@@ -22,6 +26,7 @@ flowchart LR
 - Build: Node 22 on Pages build image v3, `npm run build`, output directory `dist`.
 - Backend: Supabase project ref `sinbxruqlaywvbzcvfli` in `us-east-1`.
 - Public functions: `contact-submit` and `newsletter-subscribe`. JWT verification is disabled because visitors are anonymous; each function instead enforces an origin allowlist and server-side Turnstile verification.
+- Authenticated function: `site-rebuild`. Gateway JWT verification is disabled so the function can return controlled responses, but it verifies the bearer user, exact allowed origin, private administrator slot, and protected hook URL before queueing a build.
 - Email: Brevo sender `South Jersey Real Estate <arthur@southjerseyreal.estate>`.
 - Newsletter: Brevo list ID `8`, double-opt-in template ID `2`.
 - Abuse controls: Cloudflare Turnstile, honeypots, bounded request bodies, HMAC-only rate-limit identifiers, and provider cooldowns.
@@ -36,9 +41,8 @@ The Pages cutover completed on July 17, 2026.
 - Both proxied CNAME records point to `southjerseyreal-estate.pages.dev` and retain their original record IDs.
 - Apex record ID: `a3ea2f26be68facb42220974e3168a40`.
 - `www` record ID: `9fd184438d7ff9223f0922222167b081`.
-- Saved rollback target: `f2cb0161-75ae-4bc1-8bf2-c5f321ad1417.cfargotunnel.com`.
 - `BREVO_DOI_REDIRECT_URL` points to `https://southjerseyreal.estate/newsletter?confirmed=1`.
-- The old Unraid route is outside public DNS and should remain available only for the observation period described in the project checklist.
+- The old Unraid application route and GHCR publishing workflow are retired. The shared `home-server` Tunnel remains because HomeBase CRM uses it; it is not part of this site's recovery path.
 - Cloudflare Bot Fight Mode is off because its Free-plan behavior challenged every route and could not be scoped. Browser Integrity Check remains on. Form POSTs continue to be protected by server-verified Turnstile, exact origin allowlists, honeypots, and application rate limits.
 - Google Search Console live URL inspection reported the apex URL available to Google and indexable on July 17, 2026.
 
@@ -220,37 +224,12 @@ where request_id = '<replace-with-exact-request-id>'::uuid;
 
 Both counts must return zero. Never paste real inquiry data into logs, tickets, commits, or chat transcripts.
 
-## Production Domain Cutover
+## Production Domain Verification
 
-Do this only after the `pages.dev` deployment and both forms pass.
+The Pages cutover is complete. After deployment changes, confirm that the apex, `www`, and `pages.dev` hostnames serve the expected revision, that the apex and `www` Pages custom domains remain active with valid SSL, and that both public forms still use the production Brevo redirect and Supabase endpoints.
 
-1. Add `southjerseyreal.estate` and `www.southjerseyreal.estate` as custom domains on the Pages project.
-2. Save the current Tunnel DNS record IDs and target for rollback.
-3. Replace the apex and `www` Tunnel records with the Pages-managed records Cloudflare requests.
-4. Wait until both custom domains report active SSL.
-5. Update `BREVO_DOI_REDIRECT_URL` to `https://southjerseyreal.estate/newsletter?confirmed=1` and redeploy `newsletter-subscribe` only if the platform requires a redeploy after a secret change.
-6. Repeat the page, form, analytics-consent, security-header, and mobile checks on the production hostnames.
-7. Keep the Unraid stack available but out of DNS during the initial observation period.
+## Recovery
 
-## Rollback
+If a frontend release fails, redeploy the last known-good Cloudflare Pages deployment or revert the faulty Git revision and push `main`. Leave Supabase, Brevo, Turnstile, and the Pages custom-domain DNS records in place unless the incident is isolated to one of those services. If a database or Edge Function release fails, restore the last known-good function and apply a forward migration; never rewrite production migration history.
 
-If Pages or the custom-domain cutover fails:
-
-1. Restore the saved proxied apex and `www` CNAME records to the previous Cloudflare Tunnel target.
-2. Confirm the Unraid web container is healthy and serving the current image.
-3. Leave Supabase, Brevo, and Turnstile running; current Docker frontend builds use those same services.
-4. If the rollback image predates the cloud-form migration, also restore the legacy lead API configuration documented in [`self-host-unraid-cloudflare.md`](./self-host-unraid-cloudflare.md).
-5. Record the failure in [`project-todo.md`](./project-todo.md) before attempting another cutover.
-
-After production has remained stable and backups are satisfactory, the old Tunnel route, `lead-api` container, and NAS-hosting secrets can be retired in a separate, deliberate cleanup.
-
-The `home-server` Tunnel also serves HomeBase CRM. Never delete the Tunnel itself. During the scheduled retirement window:
-
-1. Confirm Pages, both Supabase functions, scheduled contact delivery, and current backups are healthy.
-2. Record the final rollback image tags and keep the saved DNS target above.
-3. Remove only the `southjerseyreal.estate` and `www.southjerseyreal.estate` ingress entries from the Tunnel configuration; keep every HomeBase route and the terminal `404` rule.
-4. Stop and remove only the South Jersey Real Estate web and legacy `lead-api` containers and their project-scoped secrets. Do not touch HomeBase containers, volumes, routes, or credentials.
-5. Verify the public hostnames still resolve to Pages and that HomeBase remains healthy through the shared Tunnel.
-6. After the agreed rollback-retention period, retire the two SJRE GHCR image publications in a separate commit.
-
-Do not perform these steps on the same day as a production cutover or before the observation period and backup review are explicitly complete.
+The retired Unraid containers, GHCR packages, and any South Jersey Real Estate ingress entries are not required for recovery. If they still exist outside this repository, remove only project-scoped resources during routine infrastructure maintenance. Never delete or alter the shared `home-server` Tunnel or HomeBase CRM routes while maintaining this site.

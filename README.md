@@ -12,8 +12,8 @@ Project status and unfinished work are tracked in [`docs/project-todo.md`](docs/
 - `src/content/navigation.ts` controls header dropdowns, footer links, and social links.
 - `src/components/Layouts.tsx` contains reusable page renderers and the public forms.
 - `src/cloudForms.ts` calls the public form endpoints without exposing backend credentials.
-- `supabase/functions` contains the Turnstile-protected contact and newsletter handlers.
-- `supabase/migrations` contains the private form storage, rate limiting, retention, and notification schedule.
+- `supabase/functions` contains the Turnstile-protected form handlers and authenticated Pages-rebuild handler.
+- `supabase/migrations` contains form storage, rate limiting, retention, notification scheduling, and the private editor schema.
 
 ## Local Commands
 
@@ -43,12 +43,9 @@ Create an ignored `.env.local` from `.env.example` for local Vite builds. The br
 - Form backend: Supabase project `sinbxruqlaywvbzcvfli`
 - Contact delivery and newsletter double opt-in: Brevo
 - Bot protection: Cloudflare Turnstile
+- Private content management: Supabase Auth/database/storage at `/admin`
 
-Pushing `main` triggers a Cloudflare Pages deployment. Supabase migrations and Edge Functions are deployed separately with the Supabase CLI as described in the deployment guide.
-
-## Legacy Rollback
-
-The Docker, Caddy, `lead-api`, GHCR workflow, and Unraid guide remain in the repository as a temporary rollback path. They are no longer the intended production architecture. The Docker frontend uses the same Supabase and Turnstile endpoints as Pages.
+Pushing `main` triggers a Cloudflare Pages deployment. Supabase migrations and Edge Functions are deployed separately with the Supabase CLI as described in the deployment guide. Recovery uses a prior known-good Git revision and Cloudflare Pages deployment; the retired Unraid/GHCR application stack is no longer part of this repository.
 
 ## Analytics
 

@@ -92,8 +92,13 @@ export function ContactInquiryManager({ active = true }: { active?: boolean }) {
   const [hasMore, setHasMore] = useState(false);
   const [error, setError] = useState("");
 
-  const latestTimestamp = useMemo(
-    () => inquiries.length ? inquiries[inquiries.length - 1].createdAt : null,
+  const oldestCursor = useMemo(
+    () => inquiries.length
+      ? {
+          createdAt: inquiries[inquiries.length - 1].createdAt,
+          id: inquiries[inquiries.length - 1].id,
+        }
+      : null,
     [inquiries],
   );
 
@@ -117,13 +122,13 @@ export function ContactInquiryManager({ active = true }: { active?: boolean }) {
   }, [active, loaded, loading, refresh]);
 
   const loadMore = async () => {
-    if (!latestTimestamp || loadingMore) return;
+    if (!oldestCursor || loadingMore) return;
     setLoadingMore(true);
     setError("");
     try {
       const next = await loadContactInquiries({
         limit: PAGE_SIZE,
-        before: latestTimestamp,
+        before: oldestCursor,
       });
       setInquiries((current) => {
         const known = new Set(current.map((inquiry) => inquiry.id));

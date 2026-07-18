@@ -1,4 +1,4 @@
-import { mkdir, readFile, writeFile } from "node:fs/promises";
+import { readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -169,8 +169,7 @@ for (const entry of routeEntries) {
 
   const outputPath = entry.path === "/"
     ? path.join(distRoot, "index.html")
-    : path.join(distRoot, entry.path.slice(1), "index.html");
-  await mkdir(path.dirname(outputPath), { recursive: true });
+    : path.join(distRoot, `${entry.path.slice(1)}.html`);
   await writeFile(outputPath, html);
 
   sitemapRows.push({

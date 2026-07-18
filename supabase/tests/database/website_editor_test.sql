@@ -2,7 +2,7 @@ begin;
 
 set local statement_timeout = '20s';
 
-select plan(5);
+select plan(6);
 
 do $$
 begin
@@ -28,6 +28,10 @@ begin
     'anon',
     'public.list_contact_inquiries(integer,timestamptz)',
     'execute'
+  ) or has_function_privilege(
+    'anon',
+    'public.list_contact_inquiries(integer,timestamptz,uuid)',
+    'execute'
   ) then
     raise exception 'Anonymous visitors can execute a website-editor RPC.';
   end if;
@@ -47,6 +51,10 @@ begin
   ) or not has_function_privilege(
     'authenticated',
     'public.list_contact_inquiries(integer,timestamptz)',
+    'execute'
+  ) or not has_function_privilege(
+    'authenticated',
+    'public.list_contact_inquiries(integer,timestamptz,uuid)',
     'execute'
   ) then
     raise exception 'An authenticated administrator cannot execute an editor RPC.';
@@ -185,6 +193,9 @@ values
     null
   );
 
+with cursor_boundary as (
+  select clock_timestamp() as created_at
+)
 insert into private.contact_inquiries (
   id,
   request_id,
@@ -193,18 +204,38 @@ insert into private.contact_inquiries (
   phone,
   interest,
   message,
-  source_path
+  source_path,
+  created_at
 )
-values (
-  '72000000-0000-4000-8000-000000000001',
-  '72000000-0000-4000-8000-000000000002',
-  'Website Editor Inbox Test',
+select
+  inquiry.id,
+  inquiry.request_id,
+  inquiry.name,
   'website-editor-inbox-test@example.invalid',
   '856-555-0100',
   'General question',
   'Testing the private administrator inbox.',
-  '/contact?source=website-editor-test'
-);
+  '/contact?source=website-editor-test',
+  cursor_boundary.created_at
+from cursor_boundary
+cross join (
+  values
+    (
+      '72000000-0000-4000-8000-000000000001'::uuid,
+      '73000000-0000-4000-8000-000000000001'::uuid,
+      'Website Editor Inbox Test 1'
+    ),
+    (
+      '72000000-0000-4000-8000-000000000002'::uuid,
+      '73000000-0000-4000-8000-000000000002'::uuid,
+      'Website Editor Inbox Test 2'
+    ),
+    (
+      '72000000-0000-4000-8000-000000000003'::uuid,
+      '73000000-0000-4000-8000-000000000003'::uuid,
+      'Website Editor Inbox Test 3'
+    )
+) as inquiry(id, request_id, name);
 
 set local role anon;
 
@@ -285,7 +316,7 @@ begin
 
   begin
     perform *
-    from public.list_contact_inquiries(10, null);
+    from public.list_contact_inquiries(10, null, null);
     raise exception 'A non-administrator listed private contact inquiries.';
   exception
     when insufficient_privilege then null;
@@ -407,9 +438,9 @@ begin
 
   if not exists (
     select 1
-    from public.list_contact_inquiries(10, null)
+    from public.list_contact_inquiries(10, null, null)
     where inquiry_id = '72000000-0000-4000-8000-000000000001'
-      and inquiry_name = 'Website Editor Inbox Test'
+      and inquiry_name = 'Website Editor Inbox Test 1'
       and inquiry_source_path = '/contact?source=website-editor-test'
   ) then
     raise exception 'The administrator could not read the private contact inbox.';
@@ -425,6 +456,65 @@ end;
 $$;
 
 select pass('the administrator can draft, publish, revert, audit, delete, and read inquiries');
+
+do $$
+declare
+  v_cursor_created_at timestamptz;
+  v_cursor_id uuid;
+  v_first_page uuid[];
+  v_second_page uuid[];
+begin
+  select array_agg(
+    inquiry.inquiry_id
+    order by inquiry.inquiry_created_at desc, inquiry.inquiry_id desc
+  )
+  into v_first_page
+  from public.list_contact_inquiries(2, null, null) as inquiry;
+
+  if v_first_page <> array[
+    '72000000-0000-4000-8000-000000000003'::uuid,
+    '72000000-0000-4000-8000-000000000002'::uuid
+  ] then
+    raise exception 'The first inquiry page was not ordered by the complete cursor.';
+  end if;
+
+  select
+    inquiry.inquiry_created_at,
+    inquiry.inquiry_id
+  into v_cursor_created_at, v_cursor_id
+  from public.list_contact_inquiries(2, null, null) as inquiry
+  order by inquiry.inquiry_created_at desc, inquiry.inquiry_id desc
+  offset 1
+  limit 1;
+
+  select array_agg(
+    inquiry.inquiry_id
+    order by inquiry.inquiry_created_at desc, inquiry.inquiry_id desc
+  )
+  into v_second_page
+  from public.list_contact_inquiries(
+    2,
+    v_cursor_created_at,
+    v_cursor_id
+  ) as inquiry;
+
+  if v_second_page <> array[
+    '72000000-0000-4000-8000-000000000001'::uuid
+  ] then
+    raise exception 'The composite inquiry cursor skipped or duplicated a boundary row.';
+  end if;
+
+  begin
+    perform *
+    from public.list_contact_inquiries(2, v_cursor_created_at, null);
+    raise exception 'The inquiry RPC accepted an incomplete cursor.';
+  exception
+    when invalid_parameter_value then null;
+  end;
+end;
+$$;
+
+select pass('contact inquiry pagination preserves rows that share a timestamp');
 
 reset role;
 

@@ -11,7 +11,7 @@ Use this file as the source of truth for unfinished work on `southjerseyreal.est
 - [x] 3. Finish the GA4 lead-conversion setup
 - [ ] 4. Get a final real-estate compliance review
 - [ ] 5. Select and integrate a Bright IDX provider
-- [ ] 6. Deploy and verify the private website editor
+- [x] 6. Deploy and verify the private website editor
 
 ## 1. Complete the Cloudflare Pages Cutover
 
@@ -179,40 +179,39 @@ Approval date: ____________________
 - [x] Add the local Supabase migration for the one-slot UUID administrator table, public published-only content, private drafts, RLS/grants, audited publish/revert/inquiry RPCs, and the admin-write-only `site-images` storage policies.
 - [x] Add the authenticated `site-rebuild` Edge Function with origin validation, JWT/user verification, UUID administrator verification, strict deploy-hook URL validation, and fail-closed error handling.
 - [x] Connect the public layouts to published Supabase content with compiled fallbacks, and add route-specific HTML/metadata plus sitemap prerendering for crawler-visible SEO changes.
-- [x] Add editor content/inbox tests and transactional pgTAP coverage. The current verification passes 51 Vitest tests, 49 database checks, the production build, Deno formatting/type checks, and public/fail-closed browser checks.
-- [x] Push implementation commit `d98b8f5` to `origin/main`; confirm the Cloudflare Pages production deployment, GitHub web-test job, and both GHCR image builds succeed.
+- [x] Add editor content/inbox/image tests and transactional pgTAP coverage. The current verification passes 54 Vitest tests, 49 database checks, the production build, Deno formatting/type checks, and public/fail-closed browser checks.
+- [x] Push implementation commit `d98b8f5`, activation/retirement commit `1698230`, and Pages routing fix `5ead7ea` to `origin/main`; confirm the Cloudflare Pages production deployments and GitHub test workflow succeed.
 
 ### Production Activation and Acceptance
 
 - [x] Apply both website-editor migrations to the production Supabase project, including the stable composite inbox cursor.
-- [x] Keep public signup disabled, create only the approved owner account, and send its invitation through Supabase Auth.
-- [ ] Have the owner accept the invitation and choose the permanent password; never record or share it.
+- [x] Keep public signup disabled, create only the approved owner account, confirm invitation delivery, and accept the invitation through Supabase Auth.
+- [x] Have the owner choose the permanent password and confirm password sign-in/sign-out; never record or share it.
 - [x] Bind that account's UUID to slot `1` in `private.site_admins`, verify the one-slot constraint, and confirm no second production Auth account exists.
 - [x] Configure the Supabase Auth site URL and production, `www`, Pages-preview, and local `/admin` callback URLs.
 - [x] Add `VITE_SUPABASE_PUBLISHABLE_KEY` to both Pages production and preview variables. Never use the service-role key in the browser.
-- [ ] Rebuild Pages with the publishable key and confirm `/admin` advances past the fail-closed configuration gate.
+- [x] Rebuild Pages with the publishable key and confirm `/admin` advances past the fail-closed configuration gate while signed-out requests remain non-indexable and non-cacheable.
 - [x] Create the `main` Pages Deploy Hook named `website-editor`.
 - [x] Save the hook URL only as the Supabase secret `CLOUDFLARE_PAGES_DEPLOY_HOOK_URL`.
 - [x] Deploy `site-rebuild` with JWT verification disabled at the gateway because the function verifies the bearer user and UUID membership itself, then confirm the function is active.
 - [x] Run the linked database lint and verify the migration ledger, function, secret name, image bucket, sole-admin binding, grants, and anonymous inbox/write denials in production.
-- [ ] Test password sign-in, magic-link sign-in, password recovery, session reload, sign-out, signed-out access, and a non-administrator denial. Verify Auth email delivery; configure dedicated Auth SMTP only if the built-in delivery is not reliable.
-- [ ] Confirm every sitewide/page document loads from its compiled seed, a first draft save creates its row without changing the public page, refresh preserves the draft, publish changes only the intended public fields, discard restores the published revision, and a stale second tab cannot overwrite newer work.
-- [ ] Upload, replace, publish, and remove a test image; confirm full and admin variants render, unsupported/oversized images are rejected, replaced files are cleaned up, and desktop/tablet/mobile layouts remain correct.
-- [ ] Verify the contact inbox returns retained inquiries only to the assigned UUID, paginates correctly, exposes nothing to anonymous/non-admin sessions, and does not print or commit inquiry data during testing.
-- [ ] Publish a temporary SEO title/description/image test, confirm the deploy hook starts a successful Pages build and the rebuilt route HTML, canonical/social metadata, and sitemap use the published values, then restore the intended copy and confirm the restoration rebuild.
-- [ ] Repeat the authorized editor workflow on production desktop, tablet, and mobile, check the browser console/network log, remove temporary content/images/test records, and record the completion date.
+- [x] Verify invitation/magic-link authentication, session reload, signed-out access, password sign-in/sign-out, the complete recovery-email/callback/password flow, exact one-user Auth state, and automated anonymous/non-administrator denials.
+- [x] Confirm all 20 sitewide/page documents load from compiled seeds, a first draft creates only a private row, refresh preserves it, publish changes only the intended fields, live Discard restores the published revision, unsafe links are blocked, and a stale second tab cannot overwrite the newer revision.
+- [x] Upload, replace, and remove a temporary image in a private draft; publish and publicly render a storage-backed full-size image while the editor uses its admin variant; publish its removal; verify replacement/removal cleanup and final zero-object cleanup; and cover unsupported, oversized, and unsafe-dimension rejection with automated tests.
+- [x] Verify the assigned UUID can open the private contact inbox, anonymous access/draft columns remain denied, the stable composite cursor passes database pagination coverage, and no inquiry data is printed or committed.
+- [x] Publish temporary FAQ title, description, image, and content markers; confirm the protected hook starts successful Pages builds and the rebuilt title, description, canonical/social metadata, structured data, and sitemap update; then delete the two exact test-only page rows and rebuild the original compiled content.
+- [x] Complete the authorized edit/publish workflow on desktop and responsive editor/inbox checks at `768×1024`, `390×844`, and `360×800`; confirm no horizontal overflow or browser warnings/errors and remove every temporary content/image/database record.
 - [x] Retire the obsolete Unraid/Caddy/legacy lead API and GHCR publishing path; keep Docker only for local Supabase regression tests.
 
-Production provisioning verified July 17, 2026: both editor migrations are applied and lint clean; the sole invited Auth UUID owns slot `1`; callback URLs and both Pages variables are configured; the protected deploy-hook secret exists; and all three Edge Functions are active. The remaining acceptance work begins after the owner accepts the invitation and the next Pages build publishes the configured frontend.
+Production provisioning and acceptance verified July 17, 2026: both editor migrations are applied and lint clean; the sole confirmed Auth UUID owns slot `1`; the email provider supports password/recovery login while public signup remains disabled; callback URLs and the publishable key are configured in both Pages environments; the protected deploy-hook secret exists; all three Edge Functions are active; and authentication, draft/publish/discard/concurrency/image/inbox/SEO/responsive checks passed with exact QA cleanup.
 
 **Done when:** Only the assigned Auth UUID can use `/admin`, published edits appear on the public site, crawler metadata rebuilds successfully, private inquiries remain protected, and desktop/tablet/mobile verification passes.
 
 ## Completed Work
 
-- [x] Rebuild and self-host the React/Vite site.
+- [x] Rebuild the public site as a React/Vite application.
 - [x] Retire the former Unraid/Caddy/legacy lead API deployment files and stop GHCR image publishing after the Pages cutover.
 - [x] Add privacy controls, legal pages, accessibility improvements, and security headers.
-- [x] Add contact and newsletter form support to the lead API.
 - [x] Add HomeBase CRM and The Plum Real Estate Group to the Partners page.
 - [x] Use routed `southjerseyreal.estate` email addresses in public content.
 - [x] Add favicon and Apple touch icon metadata.
@@ -223,6 +222,6 @@ Production provisioning verified July 17, 2026: both editor migrations are appli
 - [x] Move contact and newsletter handling to Supabase, Turnstile, and Brevo.
 - [x] Verify contact delivery and newsletter double opt-in end to end, then remove all test records.
 - [x] Save the reusable Turnstile Spin workflow under `.codex/skills/turnstile-spin` for future chats.
-- [x] Add 51 Vitest tests plus a 49-check transactional Supabase pgTAP suite, and keep the GitHub test workflow on every push.
+- [x] Add 54 Vitest tests plus a 49-check transactional Supabase pgTAP suite, and keep the GitHub test workflow on every push.
 - [x] Build and publish the private website-editor frontend, database migration, image/inbox support, managed public-content adapter, and SEO rebuild implementation while keeping production access fail-closed until provisioning is complete.
 - [x] Document private inquiry access, production test cleanup, Pages recovery, retired NAS resources, and the final human compliance handoff.

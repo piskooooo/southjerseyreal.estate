@@ -108,7 +108,7 @@ Deploy database migrations before functions when a function depends on a new RPC
 
 ### Provision the private website editor
 
-1. In Supabase Auth, keep public signup disabled and add `/admin` callback URLs for the production, Pages preview, and local origins.
+1. In Supabase Auth, keep global public signup disabled and add `/admin` callback URLs for the production, Pages preview, and local origins. Keep the email provider enabled so the invited owner can use password and recovery login: `[auth] enable_signup = false` blocks new accounts while `[auth.email] enable_signup = true` keeps email authentication available to the existing account.
 2. Create the sole administrator Auth account through the dashboard. Do not add its email address to source code or browser authorization logic.
 3. Copy that account's Auth user UUID and bind the private single-user slot in the SQL Editor:
 

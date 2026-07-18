@@ -1,6 +1,6 @@
 # South Jersey Real Estate Project Checklist
 
-Last reviewed: July 17, 2026
+Last reviewed: July 18, 2026
 
 Use this file as the source of truth for unfinished work on `southjerseyreal.estate`. Check an item only after completing its **Done when** test. Never place passwords, SMTP credentials, webhook URLs, lead data, or other secrets in this file.
 
@@ -12,6 +12,8 @@ Use this file as the source of truth for unfinished work on `southjerseyreal.est
 - [ ] 4. Get a final real-estate compliance review
 - [ ] 5. Select and integrate a Bright IDX provider
 - [x] 6. Deploy and verify the private website editor
+- [ ] 7. Refine the dark theme color palette
+- [ ] 8. Add destination pages for the Counties and Connect header items
 
 ## 1. Complete the Cloudflare Pages Cutover
 
@@ -206,6 +208,51 @@ Approval date: ____________________
 Production provisioning and acceptance verified July 17, 2026: both editor migrations are applied and lint clean; the sole confirmed Auth UUID owns slot `1`; the email provider supports password/recovery login while public signup remains disabled; callback URLs and the publishable key are configured in both Pages environments; the protected deploy-hook secret exists; all three Edge Functions are active; and authentication, draft/publish/discard/concurrency/image/inbox/SEO/responsive checks passed with exact QA cleanup.
 
 **Done when:** Only the assigned Auth UUID can use `/admin`, published edits appear on the public site, crawler metadata rebuilds successfully, private inquiries remain protected, and desktop/tablet/mobile verification passes.
+
+## 7. Refine the Dark Theme Color Palette
+
+**Goal:** Give the dark theme a more intentional, balanced palette while preserving readability, accessibility, and the established South Jersey Real Estate identity.
+
+### Design and Implementation
+
+- [ ] Audit the current dark-theme tokens and identify surfaces that feel too flat, harsh, or dominated by one color family.
+- [ ] Prepare two or three restrained palette directions using distinct background, surface, border, text, link, action, success, warning, and error colors.
+- [ ] Choose the preferred palette before replacing production colors.
+- [ ] Map the chosen colors to semantic CSS variables instead of scattering one-off values through components.
+- [ ] Apply the palette consistently to the public site, forms, menus, footer, cookie controls, and private editor without changing the light theme unintentionally.
+- [ ] Confirm logos, photography, focus states, disabled states, and form validation remain clear against the new colors.
+
+### Verification
+
+- [ ] Check text, link, control, and focus contrast against WCAG AA targets.
+- [ ] Inspect representative home, county, form, legal, and `/admin` screens at desktop, tablet, and mobile widths.
+- [ ] Confirm there is no clipping, overlap, unreadable state, or horizontal overflow in either theme.
+- [ ] Obtain final visual approval before publishing the palette.
+
+**Done when:** The approved dark palette is consistent across public and private surfaces, meets contrast expectations, and passes desktop/tablet/mobile visual checks without regressing the light theme.
+
+## 8. Add Counties and Connect Hub Pages
+
+**Goal:** Make the `Counties` and `Connect` header labels lead to useful destination pages while preserving their dropdown menus and keyboard-accessible navigation.
+
+### Content and Routing
+
+- [ ] Confirm `/counties` and `/connect` as the final route names and decide the content hierarchy for each page.
+- [ ] Build a Counties hub introducing the South Jersey coverage area and linking clearly to all seven county guides.
+- [ ] Build a Connect hub that organizes the relevant About, Contact, Newsletter, resource, partner, and advertising destinations without duplicating their full content.
+- [ ] Add both pages to the structured content model and private editor with compiled fallbacks.
+- [ ] Add route-specific titles, descriptions, canonical/social metadata, structured data where appropriate, and sitemap entries.
+
+### Header Behavior and Verification
+
+- [ ] Make each header label navigate to its hub page, using a separate menu control where needed so the dropdown remains usable with mouse, touch, and keyboard input.
+- [ ] Fix the overlapping-dropdown bug: when one menu has been opened by click, hovering or opening the other menu must close the first menu immediately in both the `Counties` to `Connect` and `Connect` to `Counties` directions.
+- [ ] Preserve clear active, hover, focus, expanded, and collapsed states on desktop and mobile.
+- [ ] Add regression coverage for click-to-open, hover-to-switch, focus-to-switch, outside-click, and Escape-key behavior so no two header dropdowns can remain visible at once.
+- [ ] Test direct navigation, dropdown links, browser history, mobile-menu behavior, keyboard navigation, analytics events, and nonexistent-route handling.
+- [ ] Verify both hub pages and header controls at desktop, tablet, and mobile widths with no clipping, overlap, or horizontal overflow.
+
+**Done when:** Clicking or activating either header label opens its useful hub page, both dropdowns remain accessible and functional, and the new routes are editable, indexable, responsive, and fully tested.
 
 ## Completed Work
 

@@ -6,7 +6,10 @@ const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "
 const distRoot = path.join(projectRoot, "dist");
 const siteUrl = "https://southjerseyreal.estate";
 const defaultImage = "/assets/live/philly-skyline-from-camden-city-camden-jpg.jpg";
-const defaultSiteName = "South Jersey Real Estate";
+const defaultSiteName = "South Jersey Real Estate Guide";
+const compliance = JSON.parse(
+  await readFile(path.join(projectRoot, "src/content/complianceData.json"), "utf8"),
+);
 
 const routeEntries = JSON.parse(
   await readFile(path.join(projectRoot, "src/content/seoEntries.json"), "utf8"),
@@ -50,38 +53,50 @@ const buildStructuredData = ({ canonicalUrl, description, imageUrl, title }) => 
   "@context": "https://schema.org",
   "@graph": [
     {
+      "@type": ["RealEstateAgent", "Organization"],
+      "@id": `${siteUrl}/#brokerage`,
+      name: compliance.brokerLegalName,
+      description: compliance.brokerDescriptor,
+      url: compliance.brokerWebsite,
+      telephone: compliance.licensedOfficePhoneHref.replace("tel:", ""),
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: compliance.licensedOfficeStreetAddress,
+        addressLocality: compliance.licensedOfficeLocality,
+        postalCode: compliance.licensedOfficePostalCode,
+        addressRegion: compliance.licensedOfficeRegion,
+        addressCountry: "US",
+      },
+      identifier: {
+        "@type": "PropertyValue",
+        name: "NJDOBI reference number",
+        value: compliance.brokerLicenseReferenceNumber,
+      },
+    },
+    {
+      "@type": "Person",
+      "@id": `${siteUrl}/#agent`,
+      name: compliance.agentLicensedName,
+      jobTitle: compliance.agentLicenseType,
+      url: `${siteUrl}/about`,
+      image: `${siteUrl}/assets/live/arthur-pisko-jr-picture-jpg.jpg`,
+      telephone: compliance.agentPhoneHref.replace("tel:", ""),
+      email: compliance.agentEmail,
+      worksFor: { "@id": `${siteUrl}/#brokerage` },
+      identifier: {
+        "@type": "PropertyValue",
+        name: "New Jersey real estate license number",
+        value: compliance.agentLicenseNumber,
+      },
+    },
+    {
       "@type": "WebSite",
       "@id": `${siteUrl}/#website`,
       url: `${siteUrl}/`,
       name: defaultSiteName,
-      description: "South Jersey real estate information for buyers and sellers across Atlantic, Burlington, Camden, Cape May, Cumberland, Gloucester, and Salem Counties.",
-      publisher: { "@id": `${siteUrl}/#agent` },
+      description: "Neutral South Jersey community guides and New Jersey residential real-estate information.",
+      publisher: { "@id": `${siteUrl}/#brokerage` },
       inLanguage: "en-US",
-    },
-    {
-      "@type": ["RealEstateAgent", "LocalBusiness"],
-      "@id": `${siteUrl}/#agent`,
-      name: "Arthur Pisko Jr.",
-      url: `${siteUrl}/about`,
-      image: `${siteUrl}/assets/live/arthur-pisko-jr-picture-jpg.jpg`,
-      telephone: "+1-856-493-7501",
-      email: "arthur@southjerseyreal.estate",
-      priceRange: "$$",
-      address: {
-        "@type": "PostalAddress",
-        addressLocality: "Deptford Township",
-        addressRegion: "NJ",
-        addressCountry: "US",
-      },
-      areaServed: [
-        "Atlantic County, NJ",
-        "Burlington County, NJ",
-        "Camden County, NJ",
-        "Cape May County, NJ",
-        "Cumberland County, NJ",
-        "Gloucester County, NJ",
-        "Salem County, NJ",
-      ],
     },
     {
       "@type": "WebPage",
@@ -90,7 +105,7 @@ const buildStructuredData = ({ canonicalUrl, description, imageUrl, title }) => 
       name: title,
       description,
       isPartOf: { "@id": `${siteUrl}/#website` },
-      about: { "@id": `${siteUrl}/#agent` },
+      about: [{ "@id": `${siteUrl}/#brokerage` }, { "@id": `${siteUrl}/#agent` }],
       primaryImageOfPage: { "@type": "ImageObject", url: imageUrl },
       inLanguage: "en-US",
     },
@@ -138,11 +153,14 @@ const sitemapRows = [];
 for (const entry of routeEntries) {
   const published = publishedByPath.get(entry.path);
   const publishedSeo = published?.published_content?.seo;
-  const title = typeof publishedSeo?.title === "string" && publishedSeo.title.trim()
-    ? publishedSeo.title.trim()
+  const publishedTitle = typeof publishedSeo?.title === "string" ? publishedSeo.title.trim() : "";
+  const publishedDescription = typeof publishedSeo?.description === "string" ? publishedSeo.description.trim() : "";
+  const unsafeSeoPattern = /REALTOR|homes? for sale|search homes?|trusted providers?/i;
+  const title = publishedTitle && !unsafeSeoPattern.test(publishedTitle)
+    ? publishedTitle
     : entry.title;
-  const description = typeof publishedSeo?.description === "string" && publishedSeo.description.trim()
-    ? publishedSeo.description.trim()
+  const description = publishedDescription && !unsafeSeoPattern.test(publishedDescription)
+    ? publishedDescription
     : entry.description;
   const image = typeof publishedSeo?.image === "string" && publishedSeo.image.trim()
     ? publishedSeo.image.trim()

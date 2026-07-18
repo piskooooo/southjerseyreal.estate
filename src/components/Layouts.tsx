@@ -11,10 +11,17 @@ import {
   turnstileSiteKey,
 } from "../cloudForms";
 import type { ComparisonGuide } from "../content/comparisonGuides";
+import { compliance } from "../content/compliance";
 import type { ResourcePage } from "../content/resourcePages";
 import type { NewsletterContent } from "../content/siteEditor";
 import type { ContentBlock, ImageAsset, PageSection, SitePage } from "../content/types";
 import { Blocks } from "./Blocks";
+import {
+  CommunityInformationDisclaimer,
+  ContactConsent,
+  NewsletterConsent,
+  ProviderChoiceDisclosure,
+} from "./Compliance";
 import { TurnstileWidget } from "./TurnstileWidget";
 
 type SiteTheme = "dark" | "light";
@@ -33,33 +40,18 @@ const DEFAULT_NEWSLETTER_CONTENT: NewsletterContent = {
   eyebrow: "South Jersey market updates",
   heading: "Newsletter",
   introduction: "A weekly real estate email for South New Jersey homeowners, buyers, and locals who want to keep an eye on the market without digging through scattered reports.",
-  topics: ["📈 Local housing trends", "📍 County and town notes", "🏠 Buyer and seller tips", "🧭 New site guides"],
+  topics: ["Local housing trends", "County and town notes", "Buyer and seller tips", "New site guides"],
   note: "No spam. No daily blast. Just useful local notes focused on South Jersey once a week.",
   confirmationMessage: "Your email is confirmed. Welcome to the newsletter.",
   submitLabel: "Sign Up",
   submittingLabel: "Signing up...",
   followupHeading: "Want something more specific?",
-  followupCopy: "If you want a custom home list, a home value estimate, or direct advice about a move, the contact page is still the best place to start.",
+  followupCopy: "For a property-specific list, value discussion, or question about a move, use the contact page to start an inquiry.",
   followupLabel: "Start the Conversation",
   followupPath: "/contact",
 };
 
 const CONTACT_FORM_PLACEHOLDER_TEXT = new Set(["I am looking to...", "Choose a topic"]);
-
-function PrivacyInlineLink({ navigate, children = "Privacy Policy" }: { navigate: (path: string) => void; children?: string }) {
-  return (
-    <a
-      href="/privacy-policy"
-      onClick={(event) => {
-        event.preventDefault();
-        trackLinkClick("/privacy-policy", children, "form_disclosure");
-        navigate("/privacy-policy");
-      }}
-    >
-      {children}
-    </a>
-  );
-}
 
 const isActionSection = (section: PageSection) => {
   if (section.kind === "action") return true;
@@ -362,6 +354,8 @@ export function ComparisonGuidePage({ page, guide, navigate }: PageProps & { gui
         </div>
       </section>
 
+      <CommunityInformationDisclaimer />
+
       {actionSection && <ActionSection section={actionSection} navigate={navigate} />}
     </div>
   );
@@ -402,6 +396,8 @@ export function ResourceAccordionPage({ page, resource, navigate }: PageProps & 
         </div>
         <p>{resource.supportText}</p>
       </section>
+
+      {page.path === "/partners" && <ProviderChoiceDisclosure />}
 
       <section className="section guide-accordion-section">
         <div className="guide-accordion">
@@ -580,6 +576,7 @@ export function CountyPage({ page, navigate }: PageProps) {
   return (
     <div className="county-page">
       {renderedSections}
+      <CommunityInformationDisclaimer />
     </div>
   );
 }
@@ -606,6 +603,67 @@ export function StandardPage({ page, navigate }: PageProps) {
           </section>
         );
       })}
+    </div>
+  );
+}
+
+export function HubPage({ page, navigate }: PageProps) {
+  const intro = page.sections.find((section) => section.kind === "intro") || page.sections[0];
+  const cards = page.sections.filter((section) => section !== intro && !isActionSection(section));
+  const actions = page.sections.filter(isActionSection);
+
+  return (
+    <div className={`hub-page hub-page-${page.path.slice(1)}`}>
+      {intro && (
+        <section className="section hub-hero-section">
+          <Blocks blocks={intro.blocks} navigate={navigate} promoteFirstHeading />
+        </section>
+      )}
+
+      <section className="section hub-directory-section" aria-label={`${page.title} destinations`}>
+        <div className="hub-card-grid">
+          {cards.map((section, index) => (
+            <article key={section.id || index} className={`hub-card ${section.images.length ? "has-image" : ""}`}>
+              {section.images[0] && (
+                <div className="hub-card-media">
+                  <img src={section.images[0].src} alt={section.images[0].alt} />
+                </div>
+              )}
+              <Blocks blocks={section.blocks} navigate={navigate} headingLevel="compact" className="hub-card-body" />
+            </article>
+          ))}
+        </div>
+      </section>
+
+      {page.path === "/counties" && <CommunityInformationDisclaimer />}
+      {actions.map((section, index) => (
+        <ActionSection key={section.id || index} section={section} navigate={navigate} />
+      ))}
+    </div>
+  );
+}
+
+export function NotFoundPage({ navigate }: { navigate: (path: string) => void }) {
+  return (
+    <div className="standard-page not-found-page">
+      <section className="section text-section">
+        <div>
+          <p className="section-eyebrow">Page not found</p>
+          <h1>This page is not available.</h1>
+          <p>The address may have changed, or the page may no longer exist.</p>
+          <a
+            href="/"
+            className="button"
+            onClick={(event) => {
+              event.preventDefault();
+              trackLinkClick("/", "Return Home", "not_found");
+              navigate("/");
+            }}
+          >
+            Return Home
+          </a>
+        </div>
+      </section>
     </div>
   );
 }
@@ -714,14 +772,6 @@ export function NewsletterPage({ content = DEFAULT_NEWSLETTER_CONTENT, navigate 
             </select>
           </label>
 
-          <label className="newsletter-consent-checkbox">
-            <input name="consent" type="checkbox" value="yes" required disabled={isSubmitting} />
-            <span>
-              I agree to receive South Jersey real estate emails and understand I can unsubscribe at any time. See the{" "}
-              <PrivacyInlineLink navigate={navigate} />.
-            </span>
-          </label>
-
           {areCloudFormsConfigured ? (
             <TurnstileWidget
               siteKey={turnstileSiteKey}
@@ -734,6 +784,11 @@ export function NewsletterPage({ content = DEFAULT_NEWSLETTER_CONTENT, navigate 
               Newsletter signup is temporarily unavailable. Please try again later.
             </p>
           )}
+
+          <label className="newsletter-consent-checkbox">
+            <input name="consent" type="checkbox" value="yes" required disabled={isSubmitting} />
+            <NewsletterConsent navigate={navigate} />
+          </label>
 
           <button
             className="button"
@@ -883,11 +938,6 @@ export function ContactPage({ page, navigate }: PageProps) {
             <textarea required name="message" rows={5} maxLength={5000} disabled={isSubmitting} />
           </label>
 
-          <p className="form-disclosure">
-            This information is used to respond to your inquiry. Sending a message does not subscribe you to newsletters. See the{" "}
-            <PrivacyInlineLink navigate={navigate} />.
-          </p>
-
           {areCloudFormsConfigured ? (
             <TurnstileWidget
               siteKey={turnstileSiteKey}
@@ -897,9 +947,11 @@ export function ContactPage({ page, navigate }: PageProps) {
             />
           ) : (
             <p className="form-status form-status-error" role="alert">
-              The contact form is temporarily unavailable. Please email arthur@southjerseyreal.estate.
+              The contact form is temporarily unavailable. Please call the licensed brokerage office at {compliance.licensedOfficePhone}.
             </p>
           )}
+
+          <ContactConsent navigate={navigate} />
 
           <button
             className="button"

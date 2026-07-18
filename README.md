@@ -2,11 +2,12 @@
 
 React/Vite source for `southjerseyreal.estate`.
 
-Project status and unfinished work are tracked in [`docs/project-todo.md`](docs/project-todo.md). The approved visual color direction and current light-theme implementation are recorded in [`docs/color-palette.md`](docs/color-palette.md). Cloud deployment and recovery procedures are in [`docs/cloudflare-pages-supabase-brevo.md`](docs/cloudflare-pages-supabase-brevo.md).
+Project status and unfinished work are tracked in [`docs/project-todo.md`](docs/project-todo.md). The compliance implementation and remaining human approvals are recorded in [`docs/compliance-review-checklist.md`](docs/compliance-review-checklist.md). The approved visual color direction and current light-theme implementation are recorded in [`docs/color-palette.md`](docs/color-palette.md). Cloud deployment and recovery procedures are in [`docs/cloudflare-pages-supabase-brevo.md`](docs/cloudflare-pages-supabase-brevo.md).
 
 ## Project Layout
 
-- `src/content/generatedSiteData.ts` contains the compiled fallback page sections, county/town copy, image paths, and legal content.
+- `src/content/generatedSiteData.ts` contains compliance-reduced county/community fallback structure and image paths.
+- `src/content/complianceData.json` is the single source for verified brokerage, office, and salesperson facts.
 - `src/content/siteEditor.ts` maps those fallbacks into the draft/published website-content model.
 - `src/admin` contains the private, single-administrator website editor and contact inbox served at `/admin`.
 - `src/content/navigation.ts` controls header dropdowns, footer links, and social links.
@@ -23,10 +24,13 @@ npm run dev
 npm run build
 npm run import:live
 npm test
+npm run test:compliance
 npm run test:db
 ```
 
-`npm test` runs the frontend and Edge Function unit/component suite. `npm run test:db`
+`npm test` runs the frontend and Edge Function unit/component suite. `npm run test:compliance`
+builds the production site and runs the full hydrated-route, metadata, keyboard, screenshot,
+and automated accessibility suite in Chrome. `npm run test:db`
 runs the transactional Supabase regression suite against the local Supabase stack and
 therefore requires Docker and `supabase start`.
 

@@ -91,22 +91,16 @@ describe("consent-gated GA4 tracking", () => {
     ]);
   });
 
-  it("updates consent through the same command queue", async () => {
+  it("revokes analytics and removes the loader when consent is denied", async () => {
     const { setAnalyticsConsent, trackPageView } = await import("./analytics");
 
     setAnalyticsConsent("granted");
     trackPageView("/", "Home", "https://example.com/");
     setAnalyticsConsent("denied");
 
-    expect(queuedCommands().at(-1)).toEqual([
-      "consent",
-      "update",
-      {
-        ad_personalization: "denied",
-        ad_storage: "denied",
-        ad_user_data: "denied",
-        analytics_storage: "denied",
-      },
-    ]);
+    expect(window.localStorage.getItem("analytics-consent")).toBe("denied");
+    expect(document.querySelector("#ga4-script")).toBeNull();
+    expect(window.gtag).toBeUndefined();
+    expect(window.dataLayer).toBeUndefined();
   });
 });

@@ -16,6 +16,27 @@ let lastPageView = "";
 
 const isBrowser = () => typeof window !== "undefined" && typeof document !== "undefined";
 
+const clearAnalyticsCookies = () => {
+  const parentDomain = window.location.hostname.split(".").slice(-2).join(".");
+  document.cookie.split(";").forEach((cookie) => {
+    const name = cookie.split("=")[0]?.trim();
+    if (!name || !/^_ga(?:_|$)/.test(name)) return;
+    document.cookie = `${name}=; Max-Age=0; Path=/; SameSite=Lax`;
+    if (parentDomain.includes(".")) {
+      document.cookie = `${name}=; Max-Age=0; Path=/; Domain=.${parentDomain}; SameSite=Lax`;
+    }
+  });
+};
+
+const disableAnalytics = () => {
+  document.querySelector<HTMLScriptElement>("#ga4-script")?.remove();
+  clearAnalyticsCookies();
+  delete window.gtag;
+  delete window.dataLayer;
+  initialized = false;
+  lastPageView = "";
+};
+
 export const getAnalyticsConsent = (): AnalyticsConsent | null => {
   if (!isBrowser()) return null;
 
@@ -44,6 +65,8 @@ export const setAnalyticsConsent = (consent: AnalyticsConsent) => {
       analytics_storage: consent,
     });
   }
+
+  if (consent === "denied") disableAnalytics();
 };
 
 const ensureAnalytics = () => {

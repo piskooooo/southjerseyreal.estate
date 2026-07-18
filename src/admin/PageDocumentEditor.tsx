@@ -536,7 +536,7 @@ export function PageDocumentEditor({
   const publish = async () => {
     if (busyRef.current) return;
     try {
-      validateManagedContentForPublish(record.draft);
+      validateManagedContentForPublish(record.pageKey, record.draft);
     } catch (error) {
       setNotice(error instanceof Error ? error.message : "Check the page links and image descriptions before publishing.");
       return;

@@ -1,5 +1,6 @@
 import type { ContentBlock } from "../content/types";
 import { trackLinkClick } from "../analytics";
+import { compliance } from "../content/compliance";
 
 type BlocksProps = {
   blocks: ContentBlock[];
@@ -24,8 +25,6 @@ const fieldLabels = new Set([
   "Population",
   "Government",
   "Services",
-  "Median Sold Price",
-  "Average Property Tax",
   "Schools",
   "Parks & Recreation",
   "Shopping & Dining",
@@ -52,17 +51,16 @@ const localTextLinks = [
   { label: "Partnerships page", href: "/partners" },
   { label: "Advertising Opportunities", href: "/advertise" },
   { label: "Advertising page", href: "/advertise" },
-  { label: "The Plum Real Estate Group", href: "https://www.theplumrealestategroup.com/" },
-  { label: "ArthurPisko.Realtor", href: "https://www.arthurpisko.realtor/" },
+  { label: compliance.brokerLegalName, href: compliance.brokerWebsite },
+  { label: "The Plum Real Estate Group", href: compliance.brokerWebsite },
   { label: "Google Business Page", href: "https://g.co/kgs/xMPHGmV" },
-  { label: "Realtor.com", href: "https://www.realtor.com/realestateagents/659c35c962a5ff070b97f4b8" },
   { label: "Instagram", href: "https://www.instagram.com/arthurpisko/" },
   { label: "Facebook", href: "https://www.facebook.com/arthurpiskoREA/" },
   { label: "Zillow", href: "https://www.zillow.com/profile/arthurpisko" },
 ];
 
-const phone = "856-493-7501";
-const email = "arthur@southjerseyreal.estate";
+const phone = compliance.agentPhone;
+const email = compliance.agentEmail;
 const countyNames = ["Atlantic", "Burlington", "Camden", "Cape May", "Cumberland", "Gloucester", "Salem"];
 const countyPathByName = new Map(countyNames.map((name) => [name, `/${name.toLowerCase().replace(/\s+/g, "-")}-county`]));
 const countySeriesLinks = [
@@ -78,6 +76,7 @@ const countySeriesLinks = [
 
 const linkTargets = [
   { label: phone, href: `tel:${phone}` },
+  { label: compliance.licensedOfficePhone, href: compliance.licensedOfficePhoneHref },
   { label: email, href: `mailto:${email}` },
   ...localTextLinks,
 ].sort((a, b) => b.label.length - a.label.length);

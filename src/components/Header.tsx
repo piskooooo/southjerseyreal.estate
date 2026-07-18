@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { ChevronDown } from "lucide-react";
 import { trackLinkClick } from "../analytics";
 import type { SitewideContent } from "../content/siteEditor";
 
@@ -62,17 +63,55 @@ function ThemeIcon({ theme }: { theme: "dark" | "light" }) {
 
 export function Header({ brandName, content, currentPath, navigate, onToggleTheme, theme }: HeaderProps) {
   const [menuOpen, setMenuOpen] = useState(false);
-  const { connectLinks, connectLabel, contactLabel, countyLinks, countiesLabel, socialLinks } = content;
+  const [openFolder, setOpenFolder] = useState<"counties" | "connect" | null>(null);
+  const headerRef = useRef<HTMLElement>(null);
+  const countiesButtonRef = useRef<HTMLButtonElement>(null);
+  const connectButtonRef = useRef<HTMLButtonElement>(null);
+  const {
+    connectLinks,
+    connectLabel,
+    connectPath,
+    contactLabel,
+    countyLinks,
+    countiesLabel,
+    countiesPath,
+    socialLinks,
+  } = content;
+
+  useEffect(() => {
+    const closeFromOutside = (event: PointerEvent) => {
+      if (!headerRef.current?.contains(event.target as Node)) {
+        setOpenFolder(null);
+        setMenuOpen(false);
+      }
+    };
+    const closeFromEscape = (event: globalThis.KeyboardEvent) => {
+      if (event.key !== "Escape") return;
+      const folderToFocus = openFolder;
+      setOpenFolder(null);
+      setMenuOpen(false);
+      if (folderToFocus === "counties") countiesButtonRef.current?.focus();
+      if (folderToFocus === "connect") connectButtonRef.current?.focus();
+    };
+
+    document.addEventListener("pointerdown", closeFromOutside);
+    document.addEventListener("keydown", closeFromEscape);
+    return () => {
+      document.removeEventListener("pointerdown", closeFromOutside);
+      document.removeEventListener("keydown", closeFromEscape);
+    };
+  }, [openFolder]);
 
   const go = (path: string) => {
     navigate(path);
     setMenuOpen(false);
+    setOpenFolder(null);
   };
 
   const linkClass = (path: string) => (currentPath === path ? "is-active" : "");
 
   return (
-    <header className="site-header">
+    <header ref={headerRef} className="site-header">
       <a
         href="/"
         className="brand"
@@ -85,17 +124,49 @@ export function Header({ brandName, content, currentPath, navigate, onToggleThem
         {brandName}
       </a>
 
-      <nav className="desktop-nav" aria-label="Primary navigation">
-        <div className="nav-folder">
-          <button type="button" aria-haspopup="true" className={countyLinks.some((item) => item.path === currentPath) ? "is-active" : ""}>
-            {countiesLabel}
-          </button>
-          <div className="nav-menu">
+      <nav
+        className="desktop-nav"
+        aria-label="Primary navigation"
+        onMouseLeave={() => setOpenFolder(null)}
+        onBlur={(event) => {
+          if (!event.currentTarget.contains(event.relatedTarget)) setOpenFolder(null);
+        }}
+      >
+        <div className={`nav-folder ${openFolder === "counties" ? "is-open" : ""}`} onMouseEnter={() => setOpenFolder("counties")}>
+          <div className="nav-folder-control">
+            <a
+              href={countiesPath}
+              className={currentPath === countiesPath || countyLinks.some((item) => item.path === currentPath) ? "is-active" : ""}
+              aria-current={currentPath === countiesPath ? "page" : undefined}
+              onClick={(event) => {
+                event.preventDefault();
+                trackLinkClick(countiesPath, countiesLabel, "header_hub");
+                go(countiesPath);
+              }}
+              onFocus={() => setOpenFolder("counties")}
+            >
+              {countiesLabel}
+            </a>
+            <button
+              ref={countiesButtonRef}
+              type="button"
+              aria-label={`${countiesLabel} menu`}
+              aria-haspopup="true"
+              aria-expanded={openFolder === "counties"}
+              aria-controls="counties-menu"
+              onClick={() => setOpenFolder("counties")}
+              onFocus={() => setOpenFolder("counties")}
+            >
+              <ChevronDown aria-hidden="true" size={16} strokeWidth={2} />
+            </button>
+          </div>
+          <div id="counties-menu" className="nav-menu" hidden={openFolder !== "counties"}>
             {countyLinks.map((item) => (
               <a
                 key={item.path}
                 href={item.path}
                 className={linkClass(item.path)}
+                aria-current={currentPath === item.path ? "page" : undefined}
                 onClick={(event) => {
                   trackLinkClick(item.path, item.label, "header_nav");
                   if (isInternal(item.path)) {
@@ -110,16 +181,41 @@ export function Header({ brandName, content, currentPath, navigate, onToggleThem
           </div>
         </div>
 
-        <div className="nav-folder">
-          <button type="button" aria-haspopup="true" className={connectLinks.some((item) => item.path === currentPath) ? "is-active" : ""}>
-            {connectLabel}
-          </button>
-          <div className="nav-menu">
+        <div className={`nav-folder ${openFolder === "connect" ? "is-open" : ""}`} onMouseEnter={() => setOpenFolder("connect")}>
+          <div className="nav-folder-control">
+            <a
+              href={connectPath}
+              className={currentPath === connectPath || connectLinks.some((item) => item.path === currentPath) ? "is-active" : ""}
+              aria-current={currentPath === connectPath ? "page" : undefined}
+              onClick={(event) => {
+                event.preventDefault();
+                trackLinkClick(connectPath, connectLabel, "header_hub");
+                go(connectPath);
+              }}
+              onFocus={() => setOpenFolder("connect")}
+            >
+              {connectLabel}
+            </a>
+            <button
+              ref={connectButtonRef}
+              type="button"
+              aria-label={`${connectLabel} menu`}
+              aria-haspopup="true"
+              aria-expanded={openFolder === "connect"}
+              aria-controls="connect-menu"
+              onClick={() => setOpenFolder("connect")}
+              onFocus={() => setOpenFolder("connect")}
+            >
+              <ChevronDown aria-hidden="true" size={16} strokeWidth={2} />
+            </button>
+          </div>
+          <div id="connect-menu" className="nav-menu" hidden={openFolder !== "connect"}>
             {connectLinks.map((item) => (
               <a
                 key={item.path}
                 href={item.path}
                 className={linkClass(item.path)}
+                aria-current={currentPath === item.path ? "page" : undefined}
                 onClick={(event) => {
                   trackLinkClick(item.path, item.label, "header_nav");
                   if (isInternal(item.path)) {
@@ -176,7 +272,10 @@ export function Header({ brandName, content, currentPath, navigate, onToggleThem
           aria-label={menuOpen ? "Close navigation menu" : "Open navigation menu"}
           aria-expanded={menuOpen}
           aria-controls="mobile-menu"
-          onClick={() => setMenuOpen((open) => !open)}
+          onClick={() => {
+            setOpenFolder(null);
+            setMenuOpen((open) => !open);
+          }}
         >
           <span />
           <span />
@@ -186,7 +285,11 @@ export function Header({ brandName, content, currentPath, navigate, onToggleThem
 
       <div id="mobile-menu" className={`mobile-menu ${menuOpen ? "is-open" : ""}`}>
         <div>
-          <p>{countiesLabel}</p>
+          <a className="mobile-menu-heading" href={countiesPath} onClick={(event) => {
+            event.preventDefault();
+            trackLinkClick(countiesPath, countiesLabel, "mobile_hub");
+            go(countiesPath);
+          }}>{countiesLabel}</a>
           {countyLinks.map((item) => (
             <a key={item.path} href={item.path} onClick={(event) => {
               trackLinkClick(item.path, item.label, "mobile_nav");
@@ -200,7 +303,11 @@ export function Header({ brandName, content, currentPath, navigate, onToggleThem
           ))}
         </div>
         <div>
-          <p>{connectLabel}</p>
+          <a className="mobile-menu-heading" href={connectPath} onClick={(event) => {
+            event.preventDefault();
+            trackLinkClick(connectPath, connectLabel, "mobile_hub");
+            go(connectPath);
+          }}>{connectLabel}</a>
           {connectLinks.map((item) => (
             <a key={item.path} href={item.path} onClick={(event) => {
               trackLinkClick(item.path, item.label, "mobile_nav");

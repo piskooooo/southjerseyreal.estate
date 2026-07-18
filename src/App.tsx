@@ -1,7 +1,8 @@
 import { useEffect, useLayoutEffect, useMemo, useState } from "react";
 import { Header } from "./components/Header";
 import { Footer } from "./components/Footer";
-import { HomePage, CountyPage, ContactPage, ComparisonGuidePage, ResourceAccordionPage, AboutPage, NewsletterPage, StandardPage } from "./components/Layouts";
+import { BrokerageDisclosure } from "./components/Compliance";
+import { HomePage, CountyPage, ContactPage, ComparisonGuidePage, ResourceAccordionPage, AboutPage, HubPage, NewsletterPage, NotFoundPage, StandardPage } from "./components/Layouts";
 import { buildStructuredData, getSeoForPath, normalizeRoutePath } from "./content/seo";
 import {
   loadPublishedSiteContent,
@@ -74,6 +75,7 @@ export default function App() {
     [path, siteContent],
   );
   const page = pageDocument.page;
+  const isKnownPath = siteContent.pages.has(path);
 
   useEffect(() => {
     let active = true;
@@ -88,7 +90,13 @@ export default function App() {
 
   useEffect(() => {
     const rawPath = window.location.pathname.replace(/\/+$/, "") || "/";
-    const seo = getSeoForPath(path, page, pageDocument.seo);
+    const seo = isKnownPath
+      ? getSeoForPath(path, page, pageDocument.seo)
+      : getSeoForPath(path, undefined, {
+          title: "Page Not Found | South Jersey Real Estate Guide",
+          description: "The requested South Jersey Real Estate Guide page is not available.",
+          image: pageDocument.seo.image,
+        });
 
     if (rawPath !== seo.canonicalPath) {
       window.history.replaceState({}, "", seo.canonicalPath);
@@ -96,7 +104,7 @@ export default function App() {
 
     document.title = seo.title;
     upsertMeta("name", "description", seo.description);
-    upsertMeta("name", "robots", "index, follow, max-image-preview:large");
+    upsertMeta("name", "robots", isKnownPath ? "index, follow, max-image-preview:large" : "noindex, follow");
     upsertMeta("property", "og:title", seo.title);
     upsertMeta("property", "og:description", seo.description);
     upsertMeta("property", "og:type", "website");
@@ -108,15 +116,25 @@ export default function App() {
     upsertMeta("name", "twitter:description", seo.description);
     upsertMeta("name", "twitter:image", seo.imageUrl);
     upsertLink("canonical", seo.canonicalUrl);
-    upsertStructuredData(buildStructuredData(path, page, pageDocument.seo));
+    upsertStructuredData(buildStructuredData(path, isKnownPath ? page : undefined, {
+      title: seo.title,
+      description: seo.description,
+      image: seo.imageUrl,
+    }));
     window.scrollTo({ top: 0, behavior: "instant" });
-  }, [pageDocument.seo, page, path, siteContent.sitewide.brandName]);
+  }, [isKnownPath, pageDocument.seo, page, path, siteContent.sitewide.brandName]);
 
   useEffect(() => {
     if (loadedContentPath !== path) return;
-    const seo = getSeoForPath(path, page, pageDocument.seo);
+    const seo = isKnownPath
+      ? getSeoForPath(path, page, pageDocument.seo)
+      : getSeoForPath(path, undefined, {
+          title: "Page Not Found | South Jersey Real Estate Guide",
+          description: "The requested South Jersey Real Estate Guide page is not available.",
+          image: pageDocument.seo.image,
+        });
     trackPageView(seo.canonicalPath, seo.title, seo.canonicalUrl);
-  }, [loadedContentPath, pageDocument.seo, page, path]);
+  }, [isKnownPath, loadedContentPath, pageDocument.seo, page, path]);
 
   useEffect(() => {
     const onPopState = () => setPath(normalizeRoutePath(window.location.pathname));
@@ -155,7 +173,9 @@ export default function App() {
 
   const renderPage = (current: ManagedPageDocument) => {
     const currentPage = current.page;
+    if (!isKnownPath) return <NotFoundPage navigate={navigate} />;
     if (path === "/") return <HomePage page={currentPage} navigate={navigate} theme={theme} />;
+    if (path === "/counties" || path === "/connect") return <HubPage page={currentPage} navigate={navigate} />;
     if (path === "/about") return <AboutPage page={currentPage} navigate={navigate} />;
     if (path === "/contact") return <ContactPage page={currentPage} navigate={navigate} />;
     if (path === "/newsletter") return <NewsletterPage content={current.newsletter} navigate={navigate} />;
@@ -167,6 +187,7 @@ export default function App() {
 
   return (
     <>
+      <BrokerageDisclosure placement="header" />
       <Header
         brandName={siteContent.sitewide.brandName}
         content={siteContent.sitewide.header}
@@ -182,6 +203,9 @@ export default function App() {
           <div>
             <p>
               {siteContent.sitewide.privacyBanner.message}
+            </p>
+            <p className="privacy-banner-categories">
+              <strong>Necessary:</strong> always active. <strong>Analytics:</strong> optional and off until accepted.
             </p>
             <a
               href="/privacy-policy"

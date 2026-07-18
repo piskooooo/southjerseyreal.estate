@@ -13,7 +13,7 @@ Use this file as the source of truth for unfinished work on `southjerseyreal.est
 - [ ] 5. Select and integrate a Bright IDX provider
 - [x] 6. Deploy and verify the private website editor
 - [ ] 7. Refine the dark theme color palette
-- [ ] 8. Add destination pages for the Counties and Connect header items
+- [x] 8. Add destination pages for the Counties and Connect header items
 
 ## 1. Complete the Cloudflare Pages Cutover
 
@@ -105,17 +105,23 @@ Completion date: July 17, 2026
 
 **Goal:** Have the public-facing legal and advertising details reviewed by someone responsible for New Jersey real-estate compliance.
 
-The technical compliance pass is complete, but it is not a legal certification. The footer currently identifies Arthur Pisko Jr. and NJ real-estate license number `2187170`; the brokerage name is available elsewhere but was intentionally removed from the footer.
+The July 18 technical remediation is complete, but it is not a legal certification. The exact brokerage name, descriptor, licensed-office phone, broker link, salesperson license type, and salesperson license number now appear in visible header and footer disclosures. Unverified REALTOR membership marks and unverified settlement-service provider entries are withheld.
 
 ### Steps
 
 - [ ] Ask the broker of record or a New Jersey real-estate attorney to review the site.
-- [ ] Confirm whether brokerage identification is sufficiently prominent on every required page or advertisement.
-- [ ] Review the Privacy Policy, Disclaimer, and Terms of Service.
-- [ ] Confirm the Equal Housing Opportunity and REALTOR(R) logo usage is appropriate.
+- [x] Implement sitewide broker identity, office-phone, license, fair-housing, neutral-community-copy, consent, privacy, provider, metadata, and publishing guardrails from the July 18 audit.
+- [x] Run the audit scans plus production build, 62 unit tests, 49 tracked database checks, and 35 rendered-route/browser acceptance checks across 21 public routes.
+- [x] Recheck the implemented license, brokerage, broker-of-record, licensed-office, and affiliation facts against NJDOBI public records.
+- [x] Audit the production Cloudflare Pages, Supabase, Brevo, and GA4 configuration inventories without recording secret values or personal data.
+- [ ] Confirm brokerage identification and hierarchy are sufficiently prominent on every required page or advertisement.
+- [ ] Review and approve the Privacy Policy, Disclaimer, Terms of Service, Fair Housing statement, and Equal Housing Opportunity treatment.
 - [ ] Confirm contact forms, newsletter consent, analytics consent, and partner/advertising disclosures are acceptable.
+- [ ] Confirm the HomeBase CRM relationship wording and that no current directory relationship/payment disclosure is missing.
+- [x] Leave the REALTOR mark absent because public profile corroboration is not a substitute for current membership documentation and broker approval.
 - [ ] Save the reviewer and approval date below. Do not store privileged legal advice in this public repository.
 - [ ] Give Codex any approved wording changes to implement and test.
+- [x] Schedule a quarterly license, office-fact, credential, tracker, provider-relationship, and public-claim review. The Codex automation runs every three months beginning October 18, 2026.
 
 Reviewer: ____________________
 
@@ -174,14 +180,14 @@ Approval date: ____________________
 
 - [x] Add a lazy-loaded `/admin` application that is separate from the public header/footer, uses the South Jersey visual theme, works at desktop and mobile widths, and is protected by page-level and HTTP `noindex` directives.
 - [x] Build password, magic-link, password-recovery, session-refresh, unauthorized, configuration-error, and sign-out states without exposing public signup or committing the administrator email.
-- [x] Cover sitewide navigation, footer, and privacy content plus all 19 public routes, including the seven county guides, resource/comparison pages, FAQ, and legal pages, as structured editable documents with compiled fallbacks.
+- [x] Cover sitewide navigation, footer, and privacy content plus all 21 public routes, including both hub pages, the seven county guides, resource/comparison pages, FAQ, and legal pages, as structured editable documents with compiled fallbacks.
 - [x] Add recursive field editing, unsaved/saved/published status, draft save, atomic publish, discard-to-published, optimistic-concurrency checks, safe-link validation, and required image alt-text validation.
 - [x] Add JPG, PNG, WebP, and AVIF uploads with file and decoded-dimension limits, optimized page/admin variants, replacement/removal handling, and storage cleanup warnings.
 - [x] Add the private, paginated contact-inquiry inbox without exposing the `private` schema or a service-role key to the browser.
 - [x] Add the local Supabase migration for the one-slot UUID administrator table, public published-only content, private drafts, RLS/grants, audited publish/revert/inquiry RPCs, and the admin-write-only `site-images` storage policies.
 - [x] Add the authenticated `site-rebuild` Edge Function with origin validation, JWT/user verification, UUID administrator verification, strict deploy-hook URL validation, and fail-closed error handling.
 - [x] Connect the public layouts to published Supabase content with compiled fallbacks, and add route-specific HTML/metadata plus sitemap prerendering for crawler-visible SEO changes.
-- [x] Add editor content/inbox/image tests and transactional pgTAP coverage. The current verification passes 54 Vitest tests, 49 database checks, the production build, Deno formatting/type checks, and public/fail-closed browser checks.
+- [x] Add editor content/inbox/image tests and transactional pgTAP coverage. The current verification passes 62 Vitest tests, 49 database checks, the production build, Deno formatting/type checks, and public/fail-closed browser checks.
 - [x] Push implementation commit `d98b8f5`, activation/retirement commit `1698230`, and Pages routing fix `5ead7ea` to `origin/main`; confirm the Cloudflare Pages production deployments and GitHub test workflow succeed.
 
 ### Production Activation and Acceptance
@@ -198,7 +204,7 @@ Approval date: ____________________
 - [x] Deploy `site-rebuild` with JWT verification disabled at the gateway because the function verifies the bearer user and UUID membership itself, then confirm the function is active.
 - [x] Run the linked database lint and verify the migration ledger, function, secret name, image bucket, sole-admin binding, grants, and anonymous inbox/write denials in production.
 - [x] Verify invitation/magic-link authentication, session reload, signed-out access, password sign-in/sign-out, the complete recovery-email/callback/password flow, exact one-user Auth state, and automated anonymous/non-administrator denials.
-- [x] Confirm all 20 sitewide/page documents load from compiled seeds, a first draft creates only a private row, refresh preserves it, publish changes only the intended fields, live Discard restores the published revision, unsafe links are blocked, and a stale second tab cannot overwrite the newer revision.
+- [x] Confirm all 22 sitewide/page documents load from compiled seeds, a first draft creates only a private row, refresh preserves it, publish changes only the intended fields, live Discard restores the published revision, unsafe links are blocked, and a stale second tab cannot overwrite the newer revision.
 - [x] Upload, replace, and remove a temporary image in a private draft; publish and publicly render a storage-backed full-size image while the editor uses its admin variant; publish its removal; verify replacement/removal cleanup and final zero-object cleanup; and cover unsupported, oversized, and unsafe-dimension rejection with automated tests.
 - [x] Verify the assigned UUID can open the private contact inbox, anonymous access/draft columns remain denied, the stable composite cursor passes database pagination coverage, and no inquiry data is printed or committed.
 - [x] Publish temporary FAQ title, description, image, and content markers; confirm the protected hook starts successful Pages builds and the rebuilt title, description, canonical/social metadata, structured data, and sitemap update; then delete the two exact test-only page rows and rebuild the original compiled content.
@@ -237,20 +243,24 @@ Production provisioning and acceptance verified July 17, 2026: both editor migra
 
 ### Content and Routing
 
-- [ ] Confirm `/counties` and `/connect` as the final route names and decide the content hierarchy for each page.
-- [ ] Build a Counties hub introducing the South Jersey coverage area and linking clearly to all seven county guides.
-- [ ] Build a Connect hub that organizes the relevant About, Contact, Newsletter, resource, partner, and advertising destinations without duplicating their full content.
-- [ ] Add both pages to the structured content model and private editor with compiled fallbacks.
-- [ ] Add route-specific titles, descriptions, canonical/social metadata, structured data where appropriate, and sitemap entries.
+- [x] Confirm `/counties` and `/connect` as the final route names and decide the content hierarchy for each page.
+- [x] Build a Counties hub introducing the South Jersey coverage area and linking clearly to all seven county guides.
+- [x] Build a Connect hub that organizes the relevant About, Contact, Newsletter, resource, partner, and advertising destinations without duplicating their full content.
+- [x] Add both pages to the structured content model and private editor with compiled fallbacks.
+- [x] Add route-specific titles, descriptions, canonical/social metadata, structured data where appropriate, and sitemap entries.
 
 ### Header Behavior and Verification
 
-- [ ] Make each header label navigate to its hub page, using a separate menu control where needed so the dropdown remains usable with mouse, touch, and keyboard input.
-- [ ] Fix the overlapping-dropdown bug: when one menu has been opened by click, hovering or opening the other menu must close the first menu immediately in both the `Counties` to `Connect` and `Connect` to `Counties` directions.
-- [ ] Preserve clear active, hover, focus, expanded, and collapsed states on desktop and mobile.
-- [ ] Add regression coverage for click-to-open, hover-to-switch, focus-to-switch, outside-click, and Escape-key behavior so no two header dropdowns can remain visible at once.
-- [ ] Test direct navigation, dropdown links, browser history, mobile-menu behavior, keyboard navigation, analytics events, and nonexistent-route handling.
-- [ ] Verify both hub pages and header controls at desktop, tablet, and mobile widths with no clipping, overlap, or horizontal overflow.
+- [x] Make each header label navigate to its hub page, using a separate menu control where needed so the dropdown remains usable with mouse, touch, and keyboard input.
+- [x] Fix the overlapping-dropdown bug: when one menu has been opened by click, hovering or opening the other menu must close the first menu immediately in both the `Counties` to `Connect` and `Connect` to `Counties` directions.
+- [x] Preserve clear active, hover, focus, expanded, and collapsed states on desktop and mobile.
+- [x] Add regression coverage for click-to-open, hover-to-switch, focus-to-switch, outside-click, and Escape-key behavior so no two header dropdowns can remain visible at once.
+- [x] Test direct navigation, dropdown links, browser history, mobile-menu behavior, keyboard navigation, analytics events, and nonexistent-route handling.
+- [x] Verify both hub pages and header controls at desktop, tablet, and mobile widths with no clipping, overlap, or horizontal overflow.
+
+Completion date: July 18, 2026
+
+Implemented both editable, indexable hubs; split each desktop label from its dropdown control; added direct mobile hub links and a real noindex 404; and passed the 35-check rendered acceptance suite across desktop, tablet, and mobile viewports.
 
 **Done when:** Clicking or activating either header label opens its useful hub page, both dropdowns remain accessible and functional, and the new routes are editable, indexable, responsive, and fully tested.
 
@@ -269,6 +279,6 @@ Production provisioning and acceptance verified July 17, 2026: both editor migra
 - [x] Move contact and newsletter handling to Supabase, Turnstile, and Brevo.
 - [x] Verify contact delivery and newsletter double opt-in end to end, then remove all test records.
 - [x] Save the reusable Turnstile Spin workflow under `.codex/skills/turnstile-spin` for future chats.
-- [x] Add 54 Vitest tests plus a 49-check transactional Supabase pgTAP suite, and keep the GitHub test workflow on every push.
+- [x] Add 62 Vitest tests, 35 rendered-route compliance checks, and a 49-check transactional Supabase pgTAP suite, and keep the GitHub test workflow on every push.
 - [x] Build and publish the private website-editor frontend, database migration, image/inbox support, managed public-content adapter, and SEO rebuild implementation while keeping production access fail-closed until provisioning is complete.
 - [x] Document private inquiry access, production test cleanup, Pages recovery, retired NAS resources, and the final human compliance handoff.

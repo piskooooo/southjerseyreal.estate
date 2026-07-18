@@ -1,4 +1,5 @@
 import { comparisonGuides, type ComparisonGuide } from "./comparisonGuides";
+import { compliance } from "./compliance";
 import { generatedPages } from "./generatedSiteData";
 import {
   connectNav,
@@ -28,7 +29,9 @@ export type SitewideContent = {
   brandName: string;
   header: {
     countiesLabel: string;
+    countiesPath: string;
     connectLabel: string;
+    connectPath: string;
     contactLabel: string;
     countyLinks: SiteLink[];
     connectLinks: SiteLink[];
@@ -39,9 +42,6 @@ export type SitewideContent = {
     copyright: string;
     creatorCredit: string;
     creatorHref: string;
-    licenseDisclosure: string;
-    phoneLabel: string;
-    phoneHref: string;
     cookieSettingsLabel: string;
     linkGroups: Array<{ label: string; links: SiteLink[] }>;
   };
@@ -93,23 +93,22 @@ export type ManagedContentRecord = {
 };
 
 export const sitewideSeed: SitewideContent = {
-  brandName: "South Jersey Real Estate",
+  brandName: "South Jersey Real Estate Guide",
   header: {
     countiesLabel: "Counties",
+    countiesPath: "/counties",
     connectLabel: "Connect",
+    connectPath: "/connect",
     contactLabel: "Contact",
     countyLinks: countyNav.map((item) => ({ ...item })),
     connectLinks: connectNav.map((item) => ({ ...item })),
     socialLinks: socialLinks.map((item) => ({ ...item })),
   },
   footer: {
-    brandName: "South Jersey Real Estate",
-    copyright: "© 2026 South Jersey Real Estate",
+    brandName: "South Jersey Real Estate Guide",
+    copyright: "© 2026 South Jersey Real Estate Guide",
     creatorCredit: "Website created and maintained by Fat Cat Finance, LLC.",
     creatorHref: "https://fatcat.finance",
-    licenseDisclosure: "Arthur Pisko Jr., NJ Real Estate License #2187170.",
-    phoneLabel: "856-493-7501",
-    phoneHref: "tel:8564937501",
     cookieSettingsLabel: "Cookie Settings",
     linkGroups: footerLinkGroups.map((group) => ({
       label: group.label,
@@ -129,17 +128,17 @@ const newsletterSeed: NewsletterContent = {
   heading: "Newsletter",
   introduction: "A weekly real estate email for South New Jersey homeowners, buyers, and locals who want to keep an eye on the market without digging through scattered reports.",
   topics: [
-    "📈 Local housing trends",
-    "📍 County and town notes",
-    "🏠 Buyer and seller tips",
-    "🧭 New site guides",
+    "Local housing trends",
+    "County and town notes",
+    "Buyer and seller tips",
+    "New site guides",
   ],
   note: "No spam. No daily blast. Just useful local notes focused on South Jersey once a week.",
   confirmationMessage: "Your email is confirmed. Welcome to the newsletter.",
   submitLabel: "Sign Up",
   submittingLabel: "Signing up...",
   followupHeading: "Want something more specific?",
-  followupCopy: "If you want a custom home list, a home value estimate, or direct advice about a move, the contact page is still the best place to start.",
+  followupCopy: "For a property-specific list, value discussion, or question about a move, use the contact page to start an inquiry.",
   followupLabel: "Start the Conversation",
   followupPath: "/contact",
 };
@@ -148,7 +147,7 @@ const defaultActionBlocks: ContentBlock[] = [
   { tag: "H2", text: "Thinking about buying or selling in South Jersey?" },
   {
     tag: "P",
-    text: "I help homeowners price strategically, prep efficiently, and market aggressively, and I help buyers find the right homes, understand neighborhoods, and submit strong offers. Whether you’re just exploring or ready to move forward, you’ll get clear guidance from start to finish across Atlantic, Burlington, Camden, Cape May, Cumberland, Gloucester, and Salem Counties.",
+    text: "Arthur helps New Jersey buyers and sellers plan, communicate, and manage the steps of a real-estate transaction across Atlantic, Burlington, Camden, Cape May, Cumberland, Gloucester, and Salem Counties.",
   },
   { tag: "A", text: "Start the Conversation", href: "/contact" },
 ];
@@ -174,16 +173,18 @@ const isLegacyActionSection = (section: PageSection) => {
 const withImageMetadata = (page: SitePage): SitePage => ({
   ...page,
   sections: page.sections.map((section, index) => {
-    let kind: PageSection["kind"] = "standard";
-    if (isLegacyActionSection(section)) kind = "action";
-    else if (page.path === "/" && index === 0) kind = "hero";
-    else if (page.path === "/" && index === 1) kind = "profile";
-    else if (page.path === "/about" && index === 0) kind = "profile";
-    else if (page.path === "/contact" && index === 0) kind = "intro";
-    else if (page.path === "/contact") kind = "promo";
-    else if (page.path.endsWith("-county") && index === 0) kind = "intro";
-    else if (page.path.endsWith("-county") && section.images.length > 0) kind = "town";
-    else if (page.path.endsWith("-county") && section.images.length === 0) kind = "support";
+    let kind: PageSection["kind"] = section.kind || "standard";
+    if (!section.kind) {
+      if (isLegacyActionSection(section)) kind = "action";
+      else if (page.path === "/" && index === 0) kind = "hero";
+      else if (page.path === "/" && index === 1) kind = "profile";
+      else if (page.path === "/about" && index === 0) kind = "profile";
+      else if (page.path === "/contact" && index === 0) kind = "intro";
+      else if (page.path === "/contact") kind = "promo";
+      else if (page.path.endsWith("-county") && index === 0) kind = "intro";
+      else if (page.path.endsWith("-county") && section.images.length > 0) kind = "town";
+      else if (page.path.endsWith("-county") && section.images.length === 0) kind = "support";
+    }
 
     const sourceBlocks = kind === "action"
       ? defaultActionBlocks
@@ -379,7 +380,99 @@ function isAllowedManagedUrl(value: string, imageOnly: boolean) {
   }
 }
 
-export function validateManagedContentForPublish(value: ManagedContent) {
+const communityPageKeys = new Set([
+  "/counties",
+  "/atlantic-county",
+  "/burlington-county",
+  "/camden-county",
+  "/cape-may-county",
+  "/cumberland-county",
+  "/gloucester-county",
+  "/salem-county",
+  "/why-new-jersey",
+  "/why-south-jersey",
+]);
+
+const prohibitedMarketingClaims = [
+  /\bfamily[- ]friendly\b/i,
+  /\b(?:perfect|ideal|great|best) (?:for|place|community|neighbou?rhood|town|schools?)\b/i,
+  /\b(?:young professionals?|retirees?|empty nesters?)\b/i,
+  /\b(?:safe(?:st)? neighbou?rhoods?|low crime|crime[- ]free)\b/i,
+  /\b(?:top[- ]rated|excellent|good|strong) schools?\b/i,
+  /\b(?:prestigious|exclusive|up[- ]and[- ]coming)\b/i,
+  /\b(?:guaranteed|maximum exposure|winning offers?)\b/i,
+];
+
+const unsupportedCommunityFacts = [
+  /\bmedian (?:sale|sold|home|listing) price\b/i,
+  /\baverage property tax\b/i,
+  /\b(?:crime|school) ratings?\b/i,
+  /\b\d+(?:\.\d+)?%\b/,
+];
+
+const allTextValues = (value: unknown) => {
+  const values: string[] = [];
+  const visit = (current: unknown) => {
+    if (typeof current === "string") {
+      values.push(current);
+      return;
+    }
+    if (Array.isArray(current)) {
+      current.forEach(visit);
+      return;
+    }
+    if (isObject(current)) Object.values(current).forEach(visit);
+  };
+  visit(value);
+  return values;
+};
+
+function assertComplianceCopy(pageKey: string, value: ManagedContent) {
+  const textValues = allTextValues(value);
+  const combinedText = textValues.join("\n");
+
+  if (!compliance.realtorMembershipVerified && textValues.some((text) => /REALTOR(?:®|\(R\))?/i.test(text))) {
+    throw new Error("REALTOR membership has not been verified. Remove the REALTOR mark or document the credential before publishing.");
+  }
+
+  if (!compliance.idxListingsEnabled && /\b(?:homes? for sale|search homes?)\b/i.test(combinedText)) {
+    throw new Error("Listing-search language cannot be published before an approved IDX integration is enabled.");
+  }
+
+  const prohibited = prohibitedMarketingClaims.find((pattern) => textValues.some((text) => pattern.test(text)));
+  if (prohibited) {
+    throw new Error(`Remove subjective, steering, or performance language matching ${prohibited} before publishing.`);
+  }
+
+  if (communityPageKeys.has(pageKey)) {
+    const unsupported = unsupportedCommunityFacts.find((pattern) => textValues.some((text) => pattern.test(text)));
+    if (unsupported) {
+      throw new Error(`Document and date an authoritative source before publishing community data matching ${unsupported}.`);
+    }
+  }
+
+  if (pageKey === "/partners" && !compliance.providerDirectoryVerificationComplete) {
+    const seedResource = (managedContentSeeds.get(pageKey) as ManagedPageDocument | undefined)?.resourcePage;
+    const candidateResource = (value as ManagedPageDocument).resourcePage;
+    if (JSON.stringify(candidateResource) !== JSON.stringify(seedResource)) {
+      throw new Error("Provider-directory changes are locked until identity, credentials, material relationships, referral arrangements, and paid status are verified.");
+    }
+  }
+
+  const requiredMarkers: Partial<Record<string, string[]>> = {
+    "/advertise": ["Sponsored", "Paid advertisement", "material relationship"],
+    "/faq": ["Broker compensation is not set by law and is fully negotiable", "You are free to choose any provider"],
+    "/privacy-policy": ["Cloudflare", "Supabase", "Brevo", "Google Analytics", "not loaded until Analytics is accepted"],
+    "/disclaimer": ["No agency relationship", "You are free to choose any provider", compliance.brokerLegalName],
+    "/terms-of-service": ["appropriate written agreement", compliance.brokerLegalName],
+  };
+  const missingMarker = requiredMarkers[pageKey]?.find((marker) => !combinedText.includes(marker));
+  if (missingMarker) {
+    throw new Error(`Required compliance language is missing from ${pageKey}: ${missingMarker}`);
+  }
+}
+
+export function validateManagedContentForPublish(pageKey: string, value: ManagedContent) {
   const visit = (current: unknown, path: string[]) => {
     if (Array.isArray(current)) {
       current.forEach((item, index) => visit(item, [...path, String(index + 1)]));
@@ -404,6 +497,7 @@ export function validateManagedContentForPublish(value: ManagedContent) {
   };
 
   visit(value, []);
+  assertComplianceCopy(pageKey, value);
 }
 
 function fieldLabelForValidation(key: string) {
@@ -479,6 +573,11 @@ export async function loadPublishedSiteContent(pageKey?: string): Promise<Public
       const pageKey = String(row.page_key || "");
       if (!managedContentSeeds.has(pageKey)) continue;
       const published = normalizeManagedContent(pageKey, row.published_content);
+      try {
+        assertComplianceCopy(pageKey, published);
+      } catch {
+        continue;
+      }
       if (pageKey === SITEWIDE_CONTENT_KEY) {
         fallback.sitewide = published as SitewideContent;
       } else {

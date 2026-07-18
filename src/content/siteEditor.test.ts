@@ -41,6 +41,49 @@ describe("website editor content normalization", () => {
     }
   });
 
+  it("keeps both navigation hubs editable with their complete destination sets", () => {
+    const counties = managedContentSeeds.get("/counties") as ManagedPageDocument;
+    const connect = managedContentSeeds.get("/connect") as ManagedPageDocument;
+    const countyLinks = counties.page.sections
+      .flatMap((section) => section.blocks)
+      .filter((block) => block.tag === "A")
+      .map((block) => block.href);
+    const connectLinks = connect.page.sections
+      .flatMap((section) => section.blocks)
+      .filter((block) => block.tag === "A")
+      .map((block) => block.href);
+
+    expect(countyLinks).toEqual([
+      "/atlantic-county",
+      "/burlington-county",
+      "/camden-county",
+      "/cape-may-county",
+      "/cumberland-county",
+      "/gloucester-county",
+      "/salem-county",
+      "/contact",
+    ]);
+    expect(connectLinks).toEqual(expect.arrayContaining([
+      "/about",
+      "/contact",
+      "/newsletter",
+      "/faq",
+      "/partners",
+      "/advertise",
+    ]));
+  });
+
+  it("adds the fixed hub paths when normalizing older sitewide content", () => {
+    const legacy = structuredClone(managedContentSeeds.get(SITEWIDE_CONTENT_KEY)) as SitewideContent;
+    const legacyHeader = legacy.header as Partial<SitewideContent["header"]>;
+    delete legacyHeader.countiesPath;
+    delete legacyHeader.connectPath;
+
+    const normalized = normalizeManagedContent(SITEWIDE_CONTENT_KEY, legacy) as SitewideContent;
+    expect(normalized.header.countiesPath).toBe("/counties");
+    expect(normalized.header.connectPath).toBe("/connect");
+  });
+
   it("rejects unsafe links and missing image descriptions before publish", () => {
     const unsafe = structuredClone(managedContentSeeds.get("/")) as ManagedPageDocument;
     const actionLink = unsafe.page.sections
@@ -48,16 +91,16 @@ describe("website editor content normalization", () => {
       .find((block) => block.tag === "A");
     expect(actionLink).toBeDefined();
     actionLink!.href = "javascript:alert(1)";
-    expect(() => validateManagedContentForPublish(unsafe)).toThrow(/allowed/i);
+    expect(() => validateManagedContentForPublish("/", unsafe)).toThrow(/allowed/i);
 
     const unsafeFooter = structuredClone(
       managedContentSeeds.get(SITEWIDE_CONTENT_KEY),
     ) as SitewideContent;
     unsafeFooter.footer.creatorHref = "javascript:alert(1)";
-    expect(() => validateManagedContentForPublish(unsafeFooter)).toThrow(/allowed/i);
+    expect(() => validateManagedContentForPublish(SITEWIDE_CONTENT_KEY, unsafeFooter)).toThrow(/allowed/i);
 
     const missingAlt = structuredClone(managedContentSeeds.get("/")) as ManagedPageDocument;
     missingAlt.page.sections[0].images[0].alt = "";
-    expect(() => validateManagedContentForPublish(missingAlt)).toThrow(/alt text/i);
+    expect(() => validateManagedContentForPublish("/", missingAlt)).toThrow(/alt text/i);
   });
 });

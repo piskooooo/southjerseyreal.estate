@@ -1,3 +1,5 @@
+import { compliance } from "./content/compliance";
+
 const supabaseUrl = String(import.meta.env.VITE_SUPABASE_URL || "")
   .trim()
   .replace(/\/+$/, "");
@@ -137,9 +139,9 @@ export function contactErrorMessage(error: unknown): string {
     return "Spam protection expired or could not be verified. Please complete it again.";
   }
   if (code === "configuration_error") {
-    return "The contact form is temporarily unavailable. Please email arthur@southjerseyreal.estate.";
+    return `The contact form is temporarily unavailable. Please call the licensed brokerage office at ${compliance.licensedOfficePhone}.`;
   }
-  return "Your message could not be received. Please try again or email arthur@southjerseyreal.estate.";
+  return `Your message could not be received. Please try again or call the licensed brokerage office at ${compliance.licensedOfficePhone}.`;
 }
 
 export function newsletterErrorMessage(error: unknown): string {

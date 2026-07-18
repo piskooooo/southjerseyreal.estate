@@ -146,6 +146,7 @@ export function TurnstileWidget({
         className="turnstile-widget"
         data-sitekey={siteKey}
         data-action={action}
+        role="group"
         aria-label="Spam protection"
       />
       <p

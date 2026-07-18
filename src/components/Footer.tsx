@@ -1,5 +1,6 @@
 import { trackLinkClick } from "../analytics";
 import type { SitewideContent } from "../content/siteEditor";
+import { BrokerageDisclosure, FairHousingNotice } from "./Compliance";
 
 type FooterProps = {
   content: SitewideContent["footer"];
@@ -7,22 +8,10 @@ type FooterProps = {
   onManagePrivacy: () => void;
 };
 
-function FooterCredentialLogos() {
-  return (
-    <div className="footer-credential-logos">
-      <div className="footer-credential-logo">
-        <img src="/assets/equal-housing-opportunity-logo.webp" alt="Equal Housing Opportunity" width="1963" height="2331" />
-      </div>
-      <div className="footer-credential-logo">
-        <img src="/assets/realtor-logo.png" alt="REALTOR® logo" width="1963" height="2331" />
-      </div>
-    </div>
-  );
-}
-
 export function Footer({ content, navigate, onManagePrivacy }: FooterProps) {
   return (
     <footer className="site-footer">
+      <BrokerageDisclosure placement="footer" />
       <div className="site-footer-main">
         <div className="site-footer-brand">
           <h2>{content.brandName}</h2>
@@ -34,12 +23,6 @@ export function Footer({ content, navigate, onManagePrivacy }: FooterProps) {
             >
               {content.creatorCredit}
             </a>
-          </p>
-          <p className="site-footer-disclosure">
-            {content.licenseDisclosure}
-          </p>
-          <p className="site-footer-disclosure">
-            Call or text <a href={content.phoneHref} onClick={() => trackLinkClick(content.phoneHref, content.phoneLabel, "footer_disclosure")}>{content.phoneLabel}</a>.
           </p>
           <button type="button" className="footer-privacy-button" onClick={onManagePrivacy}>
             {content.cookieSettingsLabel}
@@ -67,7 +50,7 @@ export function Footer({ content, navigate, onManagePrivacy }: FooterProps) {
             </div>
           ))}
         </nav>
-        <FooterCredentialLogos />
+        <FairHousingNotice />
       </div>
     </footer>
   );

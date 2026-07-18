@@ -1,126 +1,140 @@
 [
   {
     "path": "/",
-    "title": "South Jersey Real Estate | Homes for Sale & Local REALTOR®",
-    "description": "Search South Jersey real estate and learn about homes for sale across Atlantic, Burlington, Camden, Cape May, Cumberland, Gloucester, and Salem Counties.",
+    "title": "South Jersey Real Estate Guide | Arthur Pisko Jr.",
+    "description": "Neutral community guides and New Jersey residential real-estate information for Atlantic, Burlington, Camden, Cape May, Cumberland, Gloucester, and Salem Counties.",
     "priority": "1.0"
   },
   {
+    "path": "/counties",
+    "title": "South Jersey County Guides",
+    "description": "Browse neutral municipality directories for Atlantic, Burlington, Camden, Cape May, Cumberland, Gloucester, and Salem Counties in New Jersey.",
+    "image": "/assets/live/camden-county-map-png.png",
+    "priority": "0.9"
+  },
+  {
+    "path": "/connect",
+    "title": "Connect and Explore | South Jersey Real Estate Guide",
+    "description": "Find the About, Contact, Newsletter, comparison guides, FAQ, provider directory, and advertising destinations for this website.",
+    "image": "/assets/live/pitman-gloucester-jpg.jpg",
+    "priority": "0.75"
+  },
+  {
     "path": "/atlantic-county",
-    "title": "Atlantic County NJ Homes for Sale | Real Estate Guide",
-    "description": "Explore Atlantic County NJ homes for sale, real estate market info, schools, transportation, parks, and local highlights for towns throughout Atlantic County.",
+    "title": "Atlantic County NJ Community Guide",
+    "description": "A neutral directory of communities associated with Atlantic County, New Jersey, with reminders to verify current information through official sources.",
     "image": "/assets/live/atlantic-county-map-png.png",
     "priority": "0.9"
   },
   {
     "path": "/burlington-county",
-    "title": "Burlington County NJ Homes for Sale | Real Estate Guide",
-    "description": "Explore Burlington County NJ homes for sale, real estate market info, schools, transportation, parks, and local highlights from river towns to the Pinelands.",
+    "title": "Burlington County NJ Community Guide",
+    "description": "A neutral directory of communities associated with Burlington County, New Jersey, with reminders to verify current information through official sources.",
     "image": "/assets/live/burlington-county-map-png.png",
     "priority": "0.9"
   },
   {
     "path": "/camden-county",
-    "title": "Camden County NJ Homes for Sale | Real Estate Guide",
-    "description": "Explore Camden County NJ homes for sale, real estate market info, schools, transportation, parks, and local highlights near Philadelphia and South Jersey.",
+    "title": "Camden County NJ Community Guide",
+    "description": "A neutral directory of communities associated with Camden County, New Jersey, with reminders to verify current information through official sources.",
     "image": "/assets/live/camden-county-map-png.png",
     "priority": "0.9"
   },
   {
     "path": "/cape-may-county",
-    "title": "Cape May County NJ Homes for Sale | Shore Real Estate Guide",
-    "description": "Explore Cape May County NJ homes for sale, shore real estate, schools, beaches, transportation, and local highlights across South Jersey beach towns.",
+    "title": "Cape May County NJ Community Guide",
+    "description": "A neutral directory of communities associated with Cape May County, New Jersey, with reminders to verify current information through official sources.",
     "image": "/assets/live/cape-may-county-map-png.png",
     "priority": "0.85"
   },
   {
     "path": "/cumberland-county",
-    "title": "Cumberland County NJ Homes for Sale | Real Estate Guide",
-    "description": "Explore Cumberland County NJ homes for sale, real estate market info, schools, parks, transportation, and local highlights in Vineland, Millville, Bridgeton, and more.",
+    "title": "Cumberland County NJ Community Guide",
+    "description": "A neutral directory of communities associated with Cumberland County, New Jersey, with reminders to verify current information through official sources.",
     "image": "/assets/live/cumberland-county-map-png.png",
     "priority": "0.9"
   },
   {
     "path": "/gloucester-county",
-    "title": "Gloucester County NJ Homes for Sale | Real Estate Guide",
-    "description": "Explore Gloucester County NJ homes for sale, real estate market info, schools, parks, transportation, and local highlights near Philadelphia and South Jersey.",
+    "title": "Gloucester County NJ Community Guide",
+    "description": "A neutral directory of communities associated with Gloucester County, New Jersey, with reminders to verify current information through official sources.",
     "image": "/assets/live/gloucester-county-map-png.png",
     "priority": "0.9"
   },
   {
     "path": "/salem-county",
-    "title": "Salem County NJ Homes for Sale | Real Estate Guide",
-    "description": "Explore Salem County NJ homes for sale, real estate market info, schools, parks, transportation, and local highlights near Delaware and Pennsylvania.",
+    "title": "Salem County NJ Community Guide",
+    "description": "A neutral directory of communities associated with Salem County, New Jersey, with reminders to verify current information through official sources.",
     "image": "/assets/live/salem-county-map-png.png",
     "priority": "0.85"
   },
   {
     "path": "/about",
-    "title": "About Arthur Pisko Jr. | South Jersey REALTOR®",
-    "description": "Meet Arthur Pisko Jr., a South Jersey real estate professional helping buyers and sellers across Gloucester, Camden, Burlington, Atlantic, Cape May, Cumberland, and Salem Counties.",
+    "title": "About Arthur Pisko Jr. | New Jersey Real Estate Salesperson",
+    "description": "Arthur Pisko Jr. is a New Jersey real estate salesperson affiliated with THE PLUM REAL ESTATE GROUP LLC.",
     "image": "/assets/live/arthur-pisko-jr-picture-jpg.jpg",
     "priority": "0.7"
   },
   {
     "path": "/why-new-jersey",
-    "title": "Why New Jersey? | NJ vs PA, DE & NY Living Guide",
-    "description": "Compare New Jersey vs Pennsylvania, Delaware, and New York for commuting, lifestyle, shore access, and real estate decisions in South Jersey.",
-    "priority": "0.8"
+    "title": "New Jersey Regional Comparison | South Jersey Guide",
+    "description": "Neutral questions for comparing New Jersey with neighboring states using current, property-specific, and official information.",
+    "priority": "0.7"
   },
   {
     "path": "/why-south-jersey",
-    "title": "Why South Jersey? | Living & Real Estate Guide",
-    "description": "Learn why South Jersey is a smart place to live, buy, and sell, from affordability and shore access to Philadelphia commutes and local communities.",
-    "priority": "0.8"
+    "title": "North and South Jersey Regional Comparison",
+    "description": "A neutral framework for comparing specific New Jersey locations without ranking communities or making resident, school, or safety claims.",
+    "priority": "0.7"
   },
   {
     "path": "/contact",
-    "title": "Contact Arthur Pisko Jr. | South Jersey REALTOR®",
-    "description": "Contact Arthur Pisko Jr. for South Jersey home selling help, buyer guidance, local real estate questions, and custom home search support.",
+    "title": "Contact Arthur Pisko Jr. | New Jersey Real Estate",
+    "description": "Contact Arthur Pisko Jr., a New Jersey real estate salesperson affiliated with THE PLUM REAL ESTATE GROUP LLC, about a residential real-estate inquiry.",
     "priority": "0.75"
   },
   {
     "path": "/newsletter",
-    "title": "South Jersey Real Estate Newsletter | Market Updates",
-    "description": "Sign up for South Jersey real estate market updates, local housing trends, county notes, buyer tips, seller guidance, and new community resources.",
+    "title": "South Jersey Real Estate Newsletter",
+    "description": "Sign up with explicit consent and double opt-in for South Jersey real-estate and local-information emails.",
     "priority": "0.6"
   },
   {
     "path": "/partners",
-    "title": "South Jersey Real Estate Partners | Local Resources",
-    "description": "Find trusted South Jersey real estate partners and local resources for lending, title, inspections, contractors, and transaction support.",
-    "priority": "0.55"
+    "title": "Local Provider Directory | South Jersey Real Estate",
+    "description": "A limited provider directory with provider-choice, material-relationship, and paid-placement disclosures.",
+    "priority": "0.45"
   },
   {
     "path": "/advertise",
-    "title": "Advertise With South Jersey Real Estate | Local Visibility",
-    "description": "Advertise your South Jersey local business to home buyers, sellers, and residents through relevant county and town real estate pages.",
-    "priority": "0.5"
+    "title": "Local Advertising Information | South Jersey Real Estate",
+    "description": "Requirements for clearly labeled local paid placements, relationship disclosures, eligibility review, and advertising inquiries.",
+    "priority": "0.4"
   },
   {
     "path": "/faq",
-    "title": "South Jersey Real Estate FAQ | Buyers, Sellers & Partners",
-    "description": "Answers to common questions about buying, selling, partnerships, advertising, and working with a South Jersey real estate professional.",
-    "priority": "0.45"
+    "title": "South Jersey Real Estate FAQ",
+    "description": "General answers about New Jersey real-estate inquiries, written representation, newsletter consent, providers, and advertising.",
+    "priority": "0.4"
   },
   {
     "path": "/privacy-policy",
     "title": "Privacy Policy | South Jersey Real Estate",
-    "description": "Privacy policy for South Jersey Real Estate and Arthur Pisko Jr.",
+    "description": "Privacy policy for South Jersey Real Estate, including forms, Supabase, Brevo, Turnstile, and optional Google Analytics.",
     "changefreq": "yearly",
     "priority": "0.2"
   },
   {
     "path": "/disclaimer",
     "title": "Disclaimer | South Jersey Real Estate",
-    "description": "Website disclaimer for South Jersey Real Estate and Arthur Pisko Jr.",
+    "description": "Website, community-information, provider-choice, fair-housing, and agency disclaimer for South Jersey Real Estate.",
     "changefreq": "yearly",
     "priority": "0.2"
   },
   {
     "path": "/terms-of-service",
     "title": "Terms of Service | South Jersey Real Estate",
-    "description": "Terms of service for South Jersey Real Estate and Arthur Pisko Jr.",
+    "description": "Terms for lawful use of the South Jersey Real Estate website, forms, newsletter, directory, and advertising information.",
     "changefreq": "yearly",
     "priority": "0.2"
   }

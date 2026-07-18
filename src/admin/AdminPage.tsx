@@ -13,6 +13,7 @@ import {
   BookOpenText,
   Building2,
   CircleHelp,
+  Compass,
   Contact,
   ExternalLink,
   FileText,
@@ -77,6 +78,8 @@ const navigationGroups: AdminNavGroup[] = [
     label: "Pages",
     items: [
       { key: "/", label: "Home", icon: Home, viewPath: "/" },
+      { key: "/counties", label: "Counties hub", icon: Map, viewPath: "/counties" },
+      { key: "/connect", label: "Connect hub", icon: Compass, viewPath: "/connect" },
       { key: "/about", label: "About", icon: BadgeInfo, viewPath: "/about" },
       { key: "/contact", label: "Contact", icon: Contact, viewPath: "/contact" },
       { key: "/newsletter", label: "Newsletter", icon: Newspaper, viewPath: "/newsletter" },

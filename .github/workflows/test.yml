@@ -1,4 +1,4 @@
-name: Test web forms
+name: Test site
 
 on:
   push:
@@ -11,7 +11,7 @@ permissions:
 
 jobs:
   test:
-    name: Test web forms
+    name: Unit and compliance tests
     runs-on: ubuntu-latest
 
     steps:
@@ -29,3 +29,11 @@ jobs:
 
       - name: Run tests
         run: npm test
+
+      - name: Install compliance-test browser
+        run: npx playwright install --with-deps chromium
+
+      - name: Run rendered compliance tests
+        run: npm run test:compliance
+        env:
+          VITE_GA_MEASUREMENT_ID: G-TEST123

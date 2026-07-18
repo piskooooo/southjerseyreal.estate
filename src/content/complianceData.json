@@ -1,0 +1,27 @@
+{
+  "brokerLegalName": "THE PLUM REAL ESTATE GROUP LLC",
+  "brokerDescriptor": "New Jersey Real Estate Broker",
+  "brokerWebsite": "https://www.theplumrealestategroup.com/",
+  "brokerLicenseReferenceNumber": "2080680",
+  "licensedOfficePhone": "(856) 537-5464",
+  "licensedOfficePhoneHref": "tel:+18565375464",
+  "licensedOfficeAddress": "901 Cooper St, Suite 2, Deptford, NJ 08096",
+  "licensedOfficeStreetAddress": "901 Cooper St, Suite 2",
+  "licensedOfficeLocality": "Deptford",
+  "licensedOfficeRegion": "NJ",
+  "licensedOfficePostalCode": "08096",
+  "agentLicensedName": "Arthur Pisko Jr.",
+  "agentLicenseType": "New Jersey Real Estate Salesperson",
+  "agentLicenseNumber": "2187170",
+  "agentPhone": "856-493-7501",
+  "agentPhoneHref": "tel:+18564937501",
+  "agentEmail": "arthur@southjerseyreal.estate",
+  "verificationDate": "2026-07-18",
+  "realtorMembershipVerified": false,
+  "providerDirectoryVerificationComplete": false,
+  "idxListingsEnabled": false,
+  "sources": {
+    "licenseSearch": "https://www-dobi.nj.gov/DOBI_LicSearch/recSearch.jsp",
+    "brokerWebsite": "https://www.theplumrealestategroup.com/"
+  }
+}

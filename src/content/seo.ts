@@ -18,6 +18,10 @@ export type SeoEntry = {
   priority?: string;
 };
 
+export type SeoOverrides = Pick<SeoEntry, "title" | "description"> & {
+  image: string;
+};
+
 export const seoEntries: SeoEntry[] = [
   {
     path: "/",
@@ -168,26 +172,31 @@ export const normalizeRoutePath = (path: string) => {
 
 export const absoluteUrl = (path: string) => `${siteUrl}${path === "/" ? "/" : path}`;
 
-export const getSeoForPath = (path: string, page?: SitePage) => {
+const absoluteImageUrl = (image: string) => {
+  if (/^https?:\/\//i.test(image)) return image;
+  return `${siteUrl}${image.startsWith("/") ? image : `/${image}`}`;
+};
+
+export const getSeoForPath = (path: string, page?: SitePage, overrides?: SeoOverrides) => {
   const canonicalPath = normalizeRoutePath(path);
   const entry = seoByPath.get(canonicalPath);
-  const title = entry?.title || page?.title || siteName;
+  const title = overrides?.title || entry?.title || page?.title || siteName;
   const description =
-    entry?.description ||
+    overrides?.description || entry?.description ||
     "South Jersey Real Estate information for buyers and sellers across Atlantic, Burlington, Camden, Cape May, Cumberland, Gloucester, and Salem Counties.";
-  const image = entry?.image || defaultImage;
+  const image = overrides?.image || entry?.image || defaultImage;
 
   return {
     canonicalPath,
     canonicalUrl: absoluteUrl(canonicalPath),
     description,
-    imageUrl: `${siteUrl}${image}`,
+    imageUrl: absoluteImageUrl(image),
     title,
   };
 };
 
-export const buildStructuredData = (path: string, page?: SitePage) => {
-  const seo = getSeoForPath(path, page);
+export const buildStructuredData = (path: string, page?: SitePage, overrides?: SeoOverrides) => {
+  const seo = getSeoForPath(path, page, overrides);
   const pageName = seo.title.replace(/\s+\|\s+South Jersey Real Estate$/, "");
 
   return {

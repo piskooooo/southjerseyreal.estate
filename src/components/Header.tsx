@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { trackLinkClick } from "../analytics";
-import { connectNav, countyNav, socialLinks } from "../content/navigation";
+import type { SitewideContent } from "../content/siteEditor";
 
 type HeaderProps = {
+  brandName: string;
+  content: SitewideContent["header"];
   currentPath: string;
   navigate: (path: string) => void;
   onToggleTheme: () => void;
@@ -58,8 +60,9 @@ function ThemeIcon({ theme }: { theme: "dark" | "light" }) {
   );
 }
 
-export function Header({ currentPath, navigate, onToggleTheme, theme }: HeaderProps) {
+export function Header({ brandName, content, currentPath, navigate, onToggleTheme, theme }: HeaderProps) {
   const [menuOpen, setMenuOpen] = useState(false);
+  const { connectLinks, connectLabel, contactLabel, countyLinks, countiesLabel, socialLinks } = content;
 
   const go = (path: string) => {
     navigate(path);
@@ -75,28 +78,30 @@ export function Header({ currentPath, navigate, onToggleTheme, theme }: HeaderPr
         className="brand"
         onClick={(event) => {
           event.preventDefault();
-          trackLinkClick("/", "South Jersey Real Estate", "header_brand");
+          trackLinkClick("/", brandName, "header_brand");
           go("/");
         }}
       >
-        South Jersey Real Estate
+        {brandName}
       </a>
 
       <nav className="desktop-nav" aria-label="Primary navigation">
         <div className="nav-folder">
-          <button type="button" aria-haspopup="true" className={countyNav.some((item) => item.path === currentPath) ? "is-active" : ""}>
-            Counties
+          <button type="button" aria-haspopup="true" className={countyLinks.some((item) => item.path === currentPath) ? "is-active" : ""}>
+            {countiesLabel}
           </button>
           <div className="nav-menu">
-            {countyNav.map((item) => (
+            {countyLinks.map((item) => (
               <a
                 key={item.path}
                 href={item.path}
                 className={linkClass(item.path)}
                 onClick={(event) => {
-                  event.preventDefault();
                   trackLinkClick(item.path, item.label, "header_nav");
-                  go(item.path);
+                  if (isInternal(item.path)) {
+                    event.preventDefault();
+                    go(item.path);
+                  }
                 }}
               >
                 {item.label}
@@ -106,19 +111,21 @@ export function Header({ currentPath, navigate, onToggleTheme, theme }: HeaderPr
         </div>
 
         <div className="nav-folder">
-          <button type="button" aria-haspopup="true" className={connectNav.some((item) => item.path === currentPath) ? "is-active" : ""}>
-            Connect
+          <button type="button" aria-haspopup="true" className={connectLinks.some((item) => item.path === currentPath) ? "is-active" : ""}>
+            {connectLabel}
           </button>
           <div className="nav-menu">
-            {connectNav.map((item) => (
+            {connectLinks.map((item) => (
               <a
                 key={item.path}
                 href={item.path}
                 className={linkClass(item.path)}
                 onClick={(event) => {
-                  event.preventDefault();
                   trackLinkClick(item.path, item.label, "header_nav");
-                  go(item.path);
+                  if (isInternal(item.path)) {
+                    event.preventDefault();
+                    go(item.path);
+                  }
                 }}
               >
                 {item.label}
@@ -161,7 +168,7 @@ export function Header({ currentPath, navigate, onToggleTheme, theme }: HeaderPr
             go("/contact");
           }}
         >
-          Contact
+          {contactLabel}
         </a>
         <button
           type="button"
@@ -179,24 +186,28 @@ export function Header({ currentPath, navigate, onToggleTheme, theme }: HeaderPr
 
       <div id="mobile-menu" className={`mobile-menu ${menuOpen ? "is-open" : ""}`}>
         <div>
-          <p>Counties</p>
-          {countyNav.map((item) => (
+          <p>{countiesLabel}</p>
+          {countyLinks.map((item) => (
             <a key={item.path} href={item.path} onClick={(event) => {
-              event.preventDefault();
               trackLinkClick(item.path, item.label, "mobile_nav");
-              go(item.path);
+              if (isInternal(item.path)) {
+                event.preventDefault();
+                go(item.path);
+              }
             }}>
               {item.label}
             </a>
           ))}
         </div>
         <div>
-          <p>Connect</p>
-          {connectNav.map((item) => (
+          <p>{connectLabel}</p>
+          {connectLinks.map((item) => (
             <a key={item.path} href={item.path} onClick={(event) => {
-              event.preventDefault();
               trackLinkClick(item.path, item.label, "mobile_nav");
-              go(item.path);
+              if (isInternal(item.path)) {
+                event.preventDefault();
+                go(item.path);
+              }
             }}>
               {item.label}
             </a>

@@ -10,8 +10,9 @@ import {
   subscribeToNewsletter,
   turnstileSiteKey,
 } from "../cloudForms";
-import { comparisonGuides, type ComparisonGuide } from "../content/comparisonGuides";
-import { resourcePages, type ResourcePage } from "../content/resourcePages";
+import type { ComparisonGuide } from "../content/comparisonGuides";
+import type { ResourcePage } from "../content/resourcePages";
+import type { NewsletterContent } from "../content/siteEditor";
 import type { ContentBlock, ImageAsset, PageSection, SitePage } from "../content/types";
 import { Blocks } from "./Blocks";
 import { TurnstileWidget } from "./TurnstileWidget";
@@ -26,6 +27,21 @@ type PageProps = {
 const LIGHT_MODE_HOME_HERO_IMAGE: ImageAsset = {
   src: "/assets/home-light-hero-beach-sunrise.jpg",
   alt: "Sunrise over a South Jersey beach with ocean waves, glowing sky, and shoreline in the foreground.",
+};
+
+const DEFAULT_NEWSLETTER_CONTENT: NewsletterContent = {
+  eyebrow: "South Jersey market updates",
+  heading: "Newsletter",
+  introduction: "A weekly real estate email for South New Jersey homeowners, buyers, and locals who want to keep an eye on the market without digging through scattered reports.",
+  topics: ["📈 Local housing trends", "📍 County and town notes", "🏠 Buyer and seller tips", "🧭 New site guides"],
+  note: "No spam. No daily blast. Just useful local notes focused on South Jersey once a week.",
+  confirmationMessage: "Your email is confirmed. Welcome to the newsletter.",
+  submitLabel: "Sign Up",
+  submittingLabel: "Signing up...",
+  followupHeading: "Want something more specific?",
+  followupCopy: "If you want a custom home list, a home value estimate, or direct advice about a move, the contact page is still the best place to start.",
+  followupLabel: "Start the Conversation",
+  followupPath: "/contact",
 };
 
 const CONTACT_FORM_PLACEHOLDER_TEXT = new Set(["I am looking to...", "Choose a topic"]);
@@ -46,13 +62,16 @@ function PrivacyInlineLink({ navigate, children = "Privacy Policy" }: { navigate
 }
 
 const isActionSection = (section: PageSection) => {
+  if (section.kind === "action") return true;
   const headings = section.blocks.filter((block) => block.tag === "H2").map((block) => block.text);
   return headings.includes("Thinking of Selling?") && headings.includes("Looking to Buy?");
 };
 
 const TOWN_GRID_COLUMNS = 3;
 const townColumnNames = ["left", "center", "right"] as const;
-const isTownSection = (section: PageSection, index: number) => index > 0 && section.images.length > 0 && !isActionSection(section);
+const isTownSection = (section: PageSection, index: number) => (
+  section.kind === "town" || (index > 0 && section.images.length > 0 && !isActionSection(section))
+);
 const isInteractiveTarget = (target: EventTarget | null) => target instanceof Element && Boolean(target.closest("a, button, input, select, textarea, label"));
 const townSectionKey = (section: PageSection, index: number) => section.id || String(index);
 const scrollTownCardIntoView = (key: string) => {
@@ -62,19 +81,12 @@ const scrollTownCardIntoView = (key: string) => {
   });
 };
 
-function ActionSection({ navigate }: { section: PageSection; navigate: (path: string) => void }) {
+function ActionSection({ section, navigate }: { section: PageSection; navigate: (path: string) => void }) {
   return (
     <section className="section section-actions section-actions-combined">
       <div>
         <Blocks
-          blocks={[
-            { tag: "H2", text: "Thinking about buying or selling in South Jersey?" },
-            {
-              tag: "P",
-              text: "I help homeowners price strategically, prep efficiently, and market aggressively, and I help buyers find the right homes, understand neighborhoods, and submit strong offers. Whether you’re just exploring or ready to move forward, you’ll get clear guidance from start to finish across Atlantic, Burlington, Camden, Cape May, Cumberland, Gloucester, and Salem Counties.",
-            },
-            { tag: "A", text: "Start the Conversation", href: "/contact" },
-          ]}
+          blocks={section.blocks}
           navigate={navigate}
           headingLevel="compact"
         />
@@ -292,8 +304,7 @@ function GuideInternalLink({ guide, navigate }: { guide: ComparisonGuide; naviga
   );
 }
 
-export function ComparisonGuidePage({ page, navigate }: PageProps) {
-  const guide = comparisonGuides[page.path];
+export function ComparisonGuidePage({ page, guide, navigate }: PageProps & { guide?: ComparisonGuide }) {
   const actionSection = page.sections.find(isActionSection);
 
   if (!guide) return <StandardPage page={page} navigate={navigate} />;
@@ -377,8 +388,7 @@ function ResourceInternalLink({ resource, navigate }: { resource: ResourcePage; 
   );
 }
 
-export function ResourceAccordionPage({ page, navigate }: PageProps) {
-  const resource = resourcePages[page.path];
+export function ResourceAccordionPage({ page, resource, navigate }: PageProps & { resource?: ResourcePage }) {
   const actionSection = page.sections.find(isActionSection);
 
   if (!resource) return <StandardPage page={page} navigate={navigate} />;
@@ -425,11 +435,28 @@ export function ResourceAccordionPage({ page, navigate }: PageProps) {
   );
 }
 
+const splitAboutGroups = (blocks: ContentBlock[]) => {
+  const firstDetailHeading = blocks.findIndex((block, index) => index > 0 && block.tag === "H3");
+  const introEnd = firstDetailHeading < 0 ? blocks.length : firstDetailHeading;
+  const intro = blocks.slice(0, introEnd);
+  const groups = blocks.slice(introEnd).reduce<ContentBlock[][]>((result, block) => {
+    if (["H2", "H3"].includes(block.tag) || !result.length) result.push([block]);
+    else result[result.length - 1].push(block);
+    return result;
+  }, []);
+
+  return {
+    intro,
+    details: groups.filter((group) => group[0]?.tag === "H3"),
+    proof: groups.filter((group) => group[0]?.tag === "H2"),
+  };
+};
+
 export function AboutPage({ page, navigate }: PageProps) {
-  const profileSection = page.sections[0];
+  const profileSection = page.sections.find((section) => section.kind === "profile") || page.sections[0];
   const actionSection = page.sections.find(isActionSection);
-  const introBlocks = profileSection.blocks.slice(0, 4);
-  const profileImage = profileSection.images[0];
+  const { details, intro, proof } = splitAboutGroups(profileSection?.blocks || []);
+  const profileImage = profileSection?.images[0];
 
   return (
     <div className="about-page">
@@ -440,94 +467,29 @@ export function AboutPage({ page, navigate }: PageProps) {
           </div>
         )}
         <div className="about-hero-copy">
-          <Blocks blocks={introBlocks} navigate={navigate} promoteFirstHeading />
-          <a
-            href="/contact"
-            className="button"
-            onClick={(event) => {
-              event.preventDefault();
-              trackLinkClick("/contact", "Start a Conversation", "about_page");
-              navigate("/contact");
-            }}
-          >
-            Start a Conversation
-          </a>
+          <Blocks blocks={intro} navigate={navigate} promoteFirstHeading />
         </div>
       </section>
 
-      <section className="section about-details-section">
-        <div className="about-detail-card">
-          <Blocks
-            blocks={[
-              { tag: "H3", text: "Connect Online" },
-              { tag: "P", text: "Instagram" },
-              { tag: "P", text: "ArthurPisko.Realtor" },
-              { tag: "P", text: "Facebook" },
-              { tag: "P", text: "Google Business Page" },
-              { tag: "P", text: "Realtor.com" },
-              { tag: "P", text: "Zillow" },
-            ]}
-            navigate={navigate}
-            headingLevel="compact"
-          />
-        </div>
-        <div className="about-detail-card">
-          <Blocks
-            blocks={[
-              { tag: "H3", text: "Contact" },
-              { tag: "P", text: "Arthur Pisko Jr." },
-              { tag: "P", text: "856-493-7501" },
-              { tag: "P", text: "arthur@southjerseyreal.estate" },
-              { tag: "P", text: "NJ Real Estate License #: 2187170" },
-              { tag: "P", text: "The Plum Real Estate Group" },
-            ]}
-            navigate={navigate}
-            headingLevel="compact"
-          />
-        </div>
-      </section>
+      {details.length > 0 && (
+        <section className="section about-details-section">
+          {details.map((blocks, index) => (
+            <div key={`${blocks[0]?.text || "detail"}-${index}`} className="about-detail-card">
+              <Blocks blocks={blocks} navigate={navigate} headingLevel="compact" />
+            </div>
+          ))}
+        </section>
+      )}
 
-      <section className="section about-proof-section">
-        <div className="about-proof-card">
-          <Blocks
-            blocks={[
-              { tag: "H3", text: "Areas Served" },
-              {
-                tag: "P",
-                text: "I represent clients across South Jersey, including Atlantic, Burlington, Camden, Cape May, Cumberland, Gloucester, and Salem Counties.",
-              },
-            ]}
-            navigate={navigate}
-            headingLevel="compact"
-          />
-        </div>
-        <div className="about-proof-card">
-          <Blocks
-            blocks={[
-              { tag: "H3", text: "What You Can Expect" },
-              {
-                tag: "P",
-                text: "Consistent communication, local market expertise, and a streamlined selling process from listing strategy through closing.",
-              },
-            ]}
-            navigate={navigate}
-            headingLevel="compact"
-          />
-        </div>
-        <div className="about-proof-card">
-          <Blocks
-            blocks={[
-              { tag: "H3", text: "Client Note" },
-              {
-                tag: "P",
-                text: "\"Arthur was able to get us an offer before the open house was over. The entire process was smooth and stress-free.\" - Bruce & Nichole V.",
-              },
-            ]}
-            navigate={navigate}
-            headingLevel="compact"
-          />
-        </div>
-      </section>
+      {proof.length > 0 && (
+        <section className="section about-proof-section">
+          {proof.map((blocks, index) => (
+            <div key={`${blocks[0]?.text || "proof"}-${index}`} className="about-proof-card">
+              <Blocks blocks={blocks} navigate={navigate} headingLevel="compact" demoteHeadings />
+            </div>
+          ))}
+        </section>
+      )}
 
       {actionSection && <ActionSection section={actionSection} navigate={navigate} />}
     </div>
@@ -535,22 +497,28 @@ export function AboutPage({ page, navigate }: PageProps) {
 }
 
 export function HomePage({ page, navigate, theme = "dark" }: PageProps & { theme?: SiteTheme }) {
-  const [hero, about, actions] = page.sections;
-  const heroImage = theme === "light" ? LIGHT_MODE_HOME_HERO_IMAGE : hero.images[0];
+  const hero = page.sections.find((section) => section.kind === "hero") || page.sections[0];
+  const about = page.sections.find((section) => section.kind === "profile") || page.sections[1];
+  const actions = page.sections.find(isActionSection);
+  const heroImage = theme === "light"
+    ? hero?.images[1] || LIGHT_MODE_HOME_HERO_IMAGE
+    : hero?.images[0];
 
   return (
     <>
       <section className="section hero-section">
         <div className="hero-copy">
-          <Blocks blocks={hero.blocks} navigate={navigate} promoteFirstHeading />
+          <Blocks blocks={hero?.blocks || []} navigate={navigate} promoteFirstHeading />
         </div>
         {heroImage && <img className="hero-image" src={heroImage.src} alt={heroImage.alt} />}
       </section>
 
-      <section className="section image-copy-section about-teaser">
-        {about.images[0] && <img src={about.images[0].src} alt={about.images[0].alt} />}
-        <Blocks blocks={about.blocks} navigate={navigate} />
-      </section>
+      {about && (
+        <section className="section image-copy-section about-teaser">
+          {about.images[0] && <img src={about.images[0].src} alt={about.images[0].alt} />}
+          <Blocks blocks={about.blocks} navigate={navigate} />
+        </section>
+      )}
 
       {actions && <ActionSection section={actions} navigate={navigate} />}
     </>
@@ -642,7 +610,7 @@ export function StandardPage({ page, navigate }: PageProps) {
   );
 }
 
-export function NewsletterPage({ navigate }: { navigate: (path: string) => void }) {
+export function NewsletterPage({ content = DEFAULT_NEWSLETTER_CONTENT, navigate }: { content?: NewsletterContent; navigate: (path: string) => void }) {
   const [submitState, setSubmitState] = useState<"idle" | "submitting" | "success" | "error">("idle");
   const [submitMessage, setSubmitMessage] = useState("");
   const [turnstileToken, setTurnstileToken] = useState("");
@@ -654,23 +622,16 @@ export function NewsletterPage({ navigate }: { navigate: (path: string) => void 
     <div className="newsletter-page">
       <section className="section newsletter-section">
         <div className="newsletter-copy">
-          <p className="section-eyebrow">South Jersey market updates</p>
-          <h1>Newsletter</h1>
-          <p>
-            A weekly real estate email for South New Jersey homeowners, buyers, and locals who want to keep an eye on the market without digging through scattered reports.
-          </p>
+          <p className="section-eyebrow">{content.eyebrow}</p>
+          <h1>{content.heading}</h1>
+          <p>{content.introduction}</p>
           <div className="newsletter-feature-list" aria-label="Newsletter topics">
-            <span>📈 Local housing trends</span>
-            <span>📍 County and town notes</span>
-            <span>🏠 Buyer and seller tips</span>
-            <span>🧭 New site guides</span>
+            {content.topics.map((topic, index) => <span key={`${topic}-${index}`}>{topic}</span>)}
           </div>
-          <p className="newsletter-note">
-            No spam. No daily blast. Just useful local notes focused on South Jersey once a week.
-          </p>
+          <p className="newsletter-note">{content.note}</p>
           {isConfirmed && (
             <p className="newsletter-confirmed" role="status">
-              Your email is confirmed. Welcome to the newsletter.
+              {content.confirmationMessage}
             </p>
           )}
         </div>
@@ -779,7 +740,7 @@ export function NewsletterPage({ navigate }: { navigate: (path: string) => void 
             type="submit"
             disabled={isSubmitting || !areCloudFormsConfigured || !turnstileToken}
           >
-            {isSubmitting ? "Signing up..." : "Sign Up"}
+            {isSubmitting ? content.submittingLabel : content.submitLabel}
           </button>
           {submitMessage && (
             <p
@@ -794,20 +755,18 @@ export function NewsletterPage({ navigate }: { navigate: (path: string) => void 
 
       <section className="section newsletter-followup-section">
         <div>
-          <h2>Want something more specific?</h2>
-          <p>
-            If you want a custom home list, a home value estimate, or direct advice about a move, the contact page is still the best place to start.
-          </p>
+          <h2>{content.followupHeading}</h2>
+          <p>{content.followupCopy}</p>
           <a
-            href="/contact"
+            href={content.followupPath}
             className="button"
             onClick={(event) => {
               event.preventDefault();
-              trackLinkClick("/contact", "Start the Conversation", "newsletter_page");
-              navigate("/contact");
+              trackLinkClick(content.followupPath, content.followupLabel, "newsletter_page");
+              navigate(content.followupPath);
             }}
           >
-            Start the Conversation
+            {content.followupLabel}
           </a>
         </div>
       </section>

@@ -26,7 +26,7 @@ flowchart LR
 - Newsletter: Brevo list ID `8`, double-opt-in template ID `2`.
 - Abuse controls: Cloudflare Turnstile, honeypots, bounded request bodies, HMAC-only rate-limit identifiers, and provider cooldowns.
 - Retention: private inquiry and newsletter-audit rows expire after 12 months; HMAC-only rate events expire after 48 hours.
-- Private inquiry access: the authenticated Supabase Dashboard SQL Editor. The site has no public inquiry viewer, browser service-role key, or admin data endpoint.
+- Private inquiry access: the authenticated, single-administrator `/admin` inbox backed by a UUID membership check. The browser never receives a service-role key, and the `private` schema remains outside the Data API.
 
 ## Current Production State
 
@@ -51,6 +51,7 @@ Configure these in both the Pages production and preview environments. They are 
 ```text
 VITE_GA_MEASUREMENT_ID=G-97H86MNHP8
 VITE_SUPABASE_URL=https://sinbxruqlaywvbzcvfli.supabase.co
+VITE_SUPABASE_PUBLISHABLE_KEY=<browser-safe Supabase publishable key>
 VITE_TURNSTILE_SITE_KEY=0x4AAAAAAD4GwgGgH6mUSw5r
 NODE_VERSION=22
 ```
@@ -76,6 +77,7 @@ NEWSLETTER_AUDIT_HMAC_KEY
 NEWSLETTER_TURNSTILE_EXPECTED_ACTION
 TURNSTILE_EXPECTED_HOSTNAMES
 TURNSTILE_SECRET
+CLOUDFLARE_PAGES_DEPLOY_HOOK_URL
 ```
 
 Supabase Vault also stores the protected scheduled-worker URL and cron secret under these names:
@@ -94,10 +96,30 @@ npx supabase link --project-ref sinbxruqlaywvbzcvfli
 npx supabase db push
 npx supabase functions deploy contact-submit --no-verify-jwt
 npx supabase functions deploy newsletter-subscribe --no-verify-jwt
+npx supabase functions deploy site-rebuild --no-verify-jwt
 npx supabase db lint --linked --level warning
 ```
 
-Deploy database migrations before functions when a function depends on a new RPC or table. Confirm both functions remain active and show `verify_jwt: false` after deployment.
+Deploy database migrations before functions when a function depends on a new RPC or table. Confirm all three functions remain active and show `verify_jwt: false` after deployment; each function performs its own request validation.
+
+### Provision the private website editor
+
+1. In Supabase Auth, keep public signup disabled and add `/admin` callback URLs for the production, Pages preview, and local origins.
+2. Create the sole administrator Auth account through the dashboard. Do not add its email address to source code or browser authorization logic.
+3. Copy that account's Auth user UUID and bind the private single-user slot in the SQL Editor:
+
+```sql
+insert into private.site_admins (slot, user_id)
+values (1, '<AUTH_USER_UUID>'::uuid)
+on conflict (slot) do update
+set user_id = excluded.user_id,
+    updated_at = clock_timestamp();
+```
+
+4. In Cloudflare Pages, create a Deploy Hook named `website-editor` for `main`. Store its URL only as the Supabase Edge Function secret `CLOUDFLARE_PAGES_DEPLOY_HOOK_URL`.
+5. Add `VITE_SUPABASE_PUBLISHABLE_KEY` to both Pages production and preview build variables. It is browser-safe; never substitute the service-role key.
+6. Deploy `site-rebuild`, then test password sign-in, magic-link sign-in, draft save, publish, discard, image replacement, the private inquiry inbox, and sign-out.
+7. After publishing an SEO-title test, confirm the hook starts a Pages build and the rebuilt route HTML contains the new `<title>`, description, canonical URL, social metadata, and `<!-- seo-prerendered -->` marker.
 
 ## Deploy the Frontend
 
@@ -150,7 +172,9 @@ The database test runs inside a transaction and covers private-schema privileges
 
 ## View Private Contact Inquiries
 
-Use the Supabase Dashboard SQL Editor while signed in to the project-owner account with MFA. Do not create shared dashboard accounts, expose the `private` schema through the Data API, export inquiries to an unmanaged file, or add a service-role key to the browser.
+Use `/admin`, open **Contact**, and select **Manage inquiries**. Access is granted only when the signed-in Auth user UUID owns the private administrator slot. For recovery or database auditing, the Supabase Dashboard SQL Editor remains available while signed in to the project-owner account with MFA.
+
+Do not create shared accounts, expose the `private` schema through the Data API, export inquiries to an unmanaged file, or add a service-role key to the browser.
 
 ```sql
 select

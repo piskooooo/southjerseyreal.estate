@@ -11,6 +11,7 @@ Use this file as the source of truth for unfinished work on `southjerseyreal.est
 - [x] 3. Finish the GA4 lead-conversion setup
 - [ ] 4. Get a final real-estate compliance review
 - [ ] 5. Select and integrate a Bright IDX provider
+- [ ] 6. Deploy and verify the private website editor
 
 ## 1. Observe the Cloudflare Pages Cutover
 
@@ -55,7 +56,7 @@ Reference: [cloudflare-pages-supabase-brevo.md](./cloudflare-pages-supabase-brev
 - [x] Require explicit newsletter consent and Brevo double opt-in.
 - [x] Keep contact inquiries separate from newsletter subscriptions.
 - [x] Confirm scheduled notification processing returns a healthy empty-queue response.
-- [x] Approve the Supabase Dashboard SQL Editor as the private inquiry viewer; no public admin endpoint or service-role browser key was added.
+- [x] Keep the Supabase Dashboard SQL Editor as the recovery/audit inquiry viewer and keep the service-role key out of the browser.
 - [x] Add automated frontend, validation, Brevo-client, notification-lifecycle, and transactional database regression tests.
 
 ### End-to-End Checks
@@ -159,6 +160,24 @@ Approval date: ____________________
 - [ ] Verify the production integration and document its renewal and support details.
 
 **Done when:** The approved property search is live, compliant, mobile-friendly, and successfully delivers a test listing inquiry.
+
+## 6. Deploy the Private Website Editor
+
+**Goal:** Manage the real public-site content from a private `/admin` page using one UUID-authorized Supabase account.
+
+- [x] Build the responsive South Jersey-themed editor with password, magic-link, and recovery flows.
+- [x] Add structured draft, publish, discard, image-upload, optimistic-concurrency, private-inbox, and SEO-rebuild support.
+- [x] Add a single-slot private administrator table, fail-closed RLS/RPC checks, storage policies, and database regression tests without committing the administrator email.
+- [x] Connect all public page layouts, navigation, footer, privacy copy, comparison/resource content, and SEO fields to published documents with compiled fallbacks.
+- [ ] Apply the website-editor migration to the production Supabase project.
+- [ ] Create the sole Auth account and bind its UUID to slot `1` in `private.site_admins`.
+- [ ] Configure production and preview Auth callback URLs plus `VITE_SUPABASE_PUBLISHABLE_KEY`.
+- [ ] Create the `main` Pages Deploy Hook, save it as `CLOUDFLARE_PAGES_DEPLOY_HOOK_URL`, and deploy `site-rebuild`.
+- [ ] Push the implementation to `origin/main` and confirm the Pages deployment succeeds.
+- [ ] Test sign-in, fail-closed unauthorized access, draft/save/publish/discard, image replacement, contact-inbox privacy, mobile layout, and sign-out.
+- [ ] Publish an SEO test and confirm the rebuilt route HTML and sitemap use the new metadata, then restore the intended copy.
+
+**Done when:** Only the assigned Auth UUID can use `/admin`, published edits appear on the public site, crawler metadata rebuilds successfully, private inquiries remain protected, and desktop/mobile verification passes.
 
 ## Completed Work
 

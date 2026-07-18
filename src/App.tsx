@@ -1,12 +1,14 @@
 import { useEffect, useLayoutEffect, useMemo, useState } from "react";
-import { generatedPages } from "./content/generatedSiteData";
 import { Header } from "./components/Header";
 import { Footer } from "./components/Footer";
 import { HomePage, CountyPage, ContactPage, ComparisonGuidePage, ResourceAccordionPage, AboutPage, NewsletterPage, StandardPage } from "./components/Layouts";
 import { buildStructuredData, getSeoForPath, normalizeRoutePath } from "./content/seo";
-import { pageOverrides } from "./content/pageOverrides";
-import { resourcePages } from "./content/resourcePages";
-import type { SitePage } from "./content/types";
+import {
+  loadPublishedSiteContent,
+  seedPublicSiteContent,
+  type ManagedPageDocument,
+  type PublicSiteContent,
+} from "./content/siteEditor";
 import { getAnalyticsConsent, setAnalyticsConsent, trackPageView, type AnalyticsConsent } from "./analytics";
 
 type SiteTheme = "dark" | "light";
@@ -64,16 +66,29 @@ export default function App() {
   const [path, setPath] = useState(() => normalizeRoutePath(window.location.pathname));
   const [theme, setTheme] = useState<SiteTheme>(getStoredTheme);
   const [analyticsConsentChoice, setAnalyticsConsentChoice] = useState<AnalyticsConsent | null>(getAnalyticsConsent);
+  const [siteContent, setSiteContent] = useState<PublicSiteContent>(seedPublicSiteContent);
+  const [loadedContentPath, setLoadedContentPath] = useState("");
 
-  const pageByPath = useMemo(() => {
-    return new Map([...generatedPages, ...pageOverrides].map((page) => [normalizeRoutePath(page.path), page]));
-  }, []);
+  const pageDocument = useMemo(
+    () => siteContent.pages.get(path) || siteContent.pages.get("/")!,
+    [path, siteContent],
+  );
+  const page = pageDocument.page;
 
-  const page = pageByPath.get(path) || pageByPath.get("/")!;
+  useEffect(() => {
+    let active = true;
+    setLoadedContentPath("");
+    loadPublishedSiteContent(path).then((published) => {
+      if (!active) return;
+      setSiteContent(published);
+      setLoadedContentPath(path);
+    });
+    return () => { active = false; };
+  }, [path]);
 
   useEffect(() => {
     const rawPath = window.location.pathname.replace(/\/+$/, "") || "/";
-    const seo = getSeoForPath(path, page);
+    const seo = getSeoForPath(path, page, pageDocument.seo);
 
     if (rawPath !== seo.canonicalPath) {
       window.history.replaceState({}, "", seo.canonicalPath);
@@ -87,16 +102,21 @@ export default function App() {
     upsertMeta("property", "og:type", "website");
     upsertMeta("property", "og:url", seo.canonicalUrl);
     upsertMeta("property", "og:image", seo.imageUrl);
-    upsertMeta("property", "og:site_name", "South Jersey Real Estate");
+    upsertMeta("property", "og:site_name", siteContent.sitewide.brandName);
     upsertMeta("name", "twitter:card", "summary_large_image");
     upsertMeta("name", "twitter:title", seo.title);
     upsertMeta("name", "twitter:description", seo.description);
     upsertMeta("name", "twitter:image", seo.imageUrl);
     upsertLink("canonical", seo.canonicalUrl);
-    upsertStructuredData(buildStructuredData(path, page));
-    trackPageView(seo.canonicalPath, seo.title, seo.canonicalUrl);
+    upsertStructuredData(buildStructuredData(path, page, pageDocument.seo));
     window.scrollTo({ top: 0, behavior: "instant" });
-  }, [page, path]);
+  }, [pageDocument.seo, page, path, siteContent.sitewide.brandName]);
+
+  useEffect(() => {
+    if (loadedContentPath !== path) return;
+    const seo = getSeoForPath(path, page, pageDocument.seo);
+    trackPageView(seo.canonicalPath, seo.title, seo.canonicalUrl);
+  }, [loadedContentPath, pageDocument.seo, page, path]);
 
   useEffect(() => {
     const onPopState = () => setPath(normalizeRoutePath(window.location.pathname));
@@ -128,32 +148,40 @@ export default function App() {
     setAnalyticsConsentChoice(consent);
 
     if (consent === "granted") {
-      const seo = getSeoForPath(path, page);
+      const seo = getSeoForPath(path, page, pageDocument.seo);
       trackPageView(seo.canonicalPath, seo.title, seo.canonicalUrl);
     }
   };
 
-  const renderPage = (currentPage: SitePage) => {
+  const renderPage = (current: ManagedPageDocument) => {
+    const currentPage = current.page;
     if (path === "/") return <HomePage page={currentPage} navigate={navigate} theme={theme} />;
     if (path === "/about") return <AboutPage page={currentPage} navigate={navigate} />;
     if (path === "/contact") return <ContactPage page={currentPage} navigate={navigate} />;
-    if (path === "/newsletter") return <NewsletterPage navigate={navigate} />;
-    if (path === "/why-new-jersey" || path === "/why-south-jersey") return <ComparisonGuidePage page={currentPage} navigate={navigate} />;
-    if (resourcePages[path]) return <ResourceAccordionPage page={currentPage} navigate={navigate} />;
+    if (path === "/newsletter") return <NewsletterPage content={current.newsletter} navigate={navigate} />;
+    if (current.comparisonGuide) return <ComparisonGuidePage page={currentPage} guide={current.comparisonGuide} navigate={navigate} />;
+    if (current.resourcePage) return <ResourceAccordionPage page={currentPage} resource={current.resourcePage} navigate={navigate} />;
     if (countyPaths.has(path)) return <CountyPage page={currentPage} navigate={navigate} />;
     return <StandardPage page={currentPage} navigate={navigate} />;
   };
 
   return (
     <>
-      <Header currentPath={path} navigate={navigate} theme={theme} onToggleTheme={() => setTheme((current) => (current === "dark" ? "light" : "dark"))} />
-      <main id="page">{renderPage(page)}</main>
-      <Footer navigate={navigate} onManagePrivacy={() => setAnalyticsConsentChoice(null)} />
+      <Header
+        brandName={siteContent.sitewide.brandName}
+        content={siteContent.sitewide.header}
+        currentPath={path}
+        navigate={navigate}
+        theme={theme}
+        onToggleTheme={() => setTheme((current) => (current === "dark" ? "light" : "dark"))}
+      />
+      <main id="page">{renderPage(pageDocument)}</main>
+      <Footer content={siteContent.sitewide.footer} navigate={navigate} onManagePrivacy={() => setAnalyticsConsentChoice(null)} />
       {analyticsConsentChoice === null && (
         <section className="privacy-banner" aria-label="Privacy choices">
           <div>
             <p>
-              This site uses optional analytics cookies to understand visits and improve local real estate content.
+              {siteContent.sitewide.privacyBanner.message}
             </p>
             <a
               href="/privacy-policy"
@@ -162,12 +190,12 @@ export default function App() {
                 navigate("/privacy-policy");
               }}
             >
-              Privacy Policy
+              {siteContent.sitewide.privacyBanner.policyLabel}
             </a>
           </div>
           <div className="privacy-banner-actions">
-            <button type="button" onClick={() => chooseAnalyticsConsent("denied")}>Decline</button>
-            <button type="button" onClick={() => chooseAnalyticsConsent("granted")}>Accept Analytics</button>
+            <button type="button" onClick={() => chooseAnalyticsConsent("denied")}>{siteContent.sitewide.privacyBanner.declineLabel}</button>
+            <button type="button" onClick={() => chooseAnalyticsConsent("granted")}>{siteContent.sitewide.privacyBanner.acceptLabel}</button>
           </div>
         </section>
       )}

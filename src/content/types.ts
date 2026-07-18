@@ -9,10 +9,14 @@ export type ContentBlock = {
 export type ImageAsset = {
   src: string;
   alt: string;
+  storagePath?: string;
+  thumbnail?: string;
+  thumbnailPath?: string;
 };
 
 export type PageSection = {
   id: string;
+  kind?: "hero" | "profile" | "intro" | "town" | "support" | "action" | "promo" | "standard";
   blocks: ContentBlock[];
   images: ImageAsset[];
 };

@@ -9,13 +9,16 @@
   "scripts": {
     "dev": "vite --host 0.0.0.0",
     "build": "tsc && vite build",
+    "postbuild": "node scripts/prerender-seo.mjs",
     "preview": "vite preview --host 0.0.0.0",
     "import:live": "node scripts/import-live-content.mjs",
     "test": "vitest run",
     "test:watch": "vitest",
-    "test:db": "npx --yes supabase@2.109.1 test db supabase/tests/database/cloud_forms_test.sql --local"
+    "test:db": "npx --yes supabase@2.109.1 test db supabase/tests/database --local"
   },
   "dependencies": {
+    "@supabase/supabase-js": "^2.52.0",
+    "lucide-react": "^0.468.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0"
   },
@@ -25,10 +28,10 @@
     "@testing-library/react": "^16.3.2",
     "@testing-library/user-event": "^14.6.1",
     "@types/node": "^22.20.1",
-    "@vitejs/plugin-react": "^5.0.0",
-    "jsdom": "^29.1.1",
     "@types/react": "^19.2.17",
     "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^5.0.0",
+    "jsdom": "^29.1.1",
     "typescript": "^5.8.0",
     "vite": "^7.0.0",
     "vitest": "^4.1.10"

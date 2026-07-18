@@ -1,7 +1,8 @@
-import { footerLinkGroups } from "../content/navigation";
 import { trackLinkClick } from "../analytics";
+import type { SitewideContent } from "../content/siteEditor";
 
 type FooterProps = {
+  content: SitewideContent["footer"];
   navigate: (path: string) => void;
   onManagePrivacy: () => void;
 };
@@ -19,25 +20,25 @@ function FooterCredentialLogos() {
   );
 }
 
-export function Footer({ navigate, onManagePrivacy }: FooterProps) {
+export function Footer({ content, navigate, onManagePrivacy }: FooterProps) {
   return (
     <footer className="site-footer">
       <div className="site-footer-main">
         <div className="site-footer-brand">
-          <h2>South Jersey Real Estate</h2>
-          <p>© 2026 South Jersey Real Estate</p>
+          <h2>{content.brandName}</h2>
+          <p>{content.copyright}</p>
           <p className="site-footer-disclosure">
-            Arthur Pisko Jr., NJ Real Estate License #2187170.
+            {content.licenseDisclosure}
           </p>
           <p className="site-footer-disclosure">
-            Call or text <a href="tel:8564937501" onClick={() => trackLinkClick("tel:8564937501", "856-493-7501", "footer_disclosure")}>856-493-7501</a>.
+            Call or text <a href={content.phoneHref} onClick={() => trackLinkClick(content.phoneHref, content.phoneLabel, "footer_disclosure")}>{content.phoneLabel}</a>.
           </p>
           <button type="button" className="footer-privacy-button" onClick={onManagePrivacy}>
-            Cookie Settings
+            {content.cookieSettingsLabel}
           </button>
         </div>
         <nav className="site-footer-links" aria-label="Footer navigation">
-          {footerLinkGroups.map((group) => (
+          {content.linkGroups.map((group) => (
             <div key={group.label}>
               <h3>{group.label}</h3>
               {group.links.map((item) => (
@@ -45,9 +46,11 @@ export function Footer({ navigate, onManagePrivacy }: FooterProps) {
                   key={item.path}
                   href={item.path}
                   onClick={(event) => {
-                    event.preventDefault();
                     trackLinkClick(item.path, item.label, "footer_nav");
-                    navigate(item.path);
+                    if (item.path.startsWith("/")) {
+                      event.preventDefault();
+                      navigate(item.path);
+                    }
                   }}
                 >
                   {item.label}

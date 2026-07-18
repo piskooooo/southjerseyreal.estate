@@ -6,7 +6,9 @@ Project status and unfinished work are tracked in [`docs/project-todo.md`](docs/
 
 ## Project Layout
 
-- `src/content/generatedSiteData.ts` contains editable page sections, county/town copy, image paths, and legal/FAQ content.
+- `src/content/generatedSiteData.ts` contains the compiled fallback page sections, county/town copy, image paths, and legal content.
+- `src/content/siteEditor.ts` maps those fallbacks into the draft/published website-content model.
+- `src/admin` contains the private, single-administrator website editor and contact inbox served at `/admin`.
 - `src/content/navigation.ts` controls header dropdowns, footer links, and social links.
 - `src/components/Layouts.tsx` contains reusable page renderers and the public forms.
 - `src/cloudForms.ts` calls the public form endpoints without exposing backend credentials.
@@ -28,7 +30,7 @@ npm run test:db
 runs the transactional Supabase regression suite against the local Supabase stack and
 therefore requires Docker and `supabase start`.
 
-Create an ignored `.env.local` from `.env.example` for local Vite builds. The only browser-visible settings are the GA4 measurement ID, Supabase project URL, and Turnstile site key.
+Create an ignored `.env.local` from `.env.example` for local Vite builds. The browser-visible settings are the GA4 measurement ID, Supabase project URL, Supabase publishable key, and Turnstile site key; none is a service-role credential.
 
 ## Production Hosting
 

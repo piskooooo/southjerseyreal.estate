@@ -173,9 +173,11 @@ Approval date: ____________________
 - [ ] Create the sole Auth account and bind its UUID to slot `1` in `private.site_admins`.
 - [ ] Configure production and preview Auth callback URLs plus `VITE_SUPABASE_PUBLISHABLE_KEY`.
 - [ ] Create the `main` Pages Deploy Hook, save it as `CLOUDFLARE_PAGES_DEPLOY_HOOK_URL`, and deploy `site-rebuild`.
-- [ ] Push the implementation to `origin/main` and confirm the Pages deployment succeeds.
+- [x] Push the implementation to `origin/main` and confirm the Pages deployment succeeds.
 - [ ] Test sign-in, fail-closed unauthorized access, draft/save/publish/discard, image replacement, contact-inbox privacy, mobile layout, and sign-out.
 - [ ] Publish an SEO test and confirm the rebuilt route HTML and sitemap use the new metadata, then restore the intended copy.
+
+Implementation commit `d98b8f5` was pushed to `origin/main` on July 17, 2026. The Cloudflare Pages deployment, web-form test job, and both GHCR image builds succeeded. Production database/authentication configuration, `site-rebuild` deployment, and live editor verification remain outstanding.
 
 **Done when:** Only the assigned Auth UUID can use `/admin`, published edits appear on the public site, crawler metadata rebuilds successfully, private inquiries remain protected, and desktop/mobile verification passes.
 

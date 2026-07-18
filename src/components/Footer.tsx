@@ -28,6 +28,14 @@ export function Footer({ content, navigate, onManagePrivacy }: FooterProps) {
           <h2>{content.brandName}</h2>
           <p>{content.copyright}</p>
           <p className="site-footer-disclosure">
+            <a
+              href={content.creatorHref}
+              onClick={() => trackLinkClick(content.creatorHref, content.creatorCredit, "footer_credit")}
+            >
+              {content.creatorCredit}
+            </a>
+          </p>
+          <p className="site-footer-disclosure">
             {content.licenseDisclosure}
           </p>
           <p className="site-footer-disclosure">

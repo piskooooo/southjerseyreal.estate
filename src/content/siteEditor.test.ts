@@ -2,8 +2,10 @@ import { describe, expect, it } from "vitest";
 import {
   managedContentSeeds,
   normalizeManagedContent,
+  SITEWIDE_CONTENT_KEY,
   validateManagedContentForPublish,
   type ManagedPageDocument,
+  type SitewideContent,
 } from "./siteEditor";
 
 describe("website editor content normalization", () => {
@@ -47,6 +49,12 @@ describe("website editor content normalization", () => {
     expect(actionLink).toBeDefined();
     actionLink!.href = "javascript:alert(1)";
     expect(() => validateManagedContentForPublish(unsafe)).toThrow(/allowed/i);
+
+    const unsafeFooter = structuredClone(
+      managedContentSeeds.get(SITEWIDE_CONTENT_KEY),
+    ) as SitewideContent;
+    unsafeFooter.footer.creatorHref = "javascript:alert(1)";
+    expect(() => validateManagedContentForPublish(unsafeFooter)).toThrow(/allowed/i);
 
     const missingAlt = structuredClone(managedContentSeeds.get("/")) as ManagedPageDocument;
     missingAlt.page.sections[0].images[0].alt = "";

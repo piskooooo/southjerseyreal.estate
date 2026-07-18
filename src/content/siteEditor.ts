@@ -37,6 +37,8 @@ export type SitewideContent = {
   footer: {
     brandName: string;
     copyright: string;
+    creatorCredit: string;
+    creatorHref: string;
     licenseDisclosure: string;
     phoneLabel: string;
     phoneHref: string;
@@ -103,6 +105,8 @@ export const sitewideSeed: SitewideContent = {
   footer: {
     brandName: "South Jersey Real Estate",
     copyright: "© 2026 South Jersey Real Estate",
+    creatorCredit: "Website created and maintained by Fat Cat Finance, LLC.",
+    creatorHref: "https://fatcat.finance",
     licenseDisclosure: "Arthur Pisko Jr., NJ Real Estate License #2187170.",
     phoneLabel: "856-493-7501",
     phoneHref: "tel:8564937501",
@@ -358,7 +362,7 @@ export function normalizeManagedContent(pageKey: string, value: unknown): Manage
   return normalizeAgainstSeed(value, seed) as ManagedContent;
 }
 
-const linkFieldNames = new Set(["followupPath", "href", "path", "phoneHref"]);
+const linkFieldNames = new Set(["creatorHref", "followupPath", "href", "path", "phoneHref"]);
 const imageFieldNames = new Set(["image", "src", "thumbnail"]);
 
 function isAllowedManagedUrl(value: string, imageOnly: boolean) {

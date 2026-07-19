@@ -1350,6 +1350,31 @@ p a:focus-visible {
   text-underline-offset: 0.22em;
 }
 
+.content-source-note {
+  margin-top: 1rem;
+  padding: 0.7rem 0.8rem;
+  background: var(--surface-note);
+  border-left: 3px solid var(--section-line);
+  color: var(--muted);
+  font-size: 0.78rem;
+  line-height: 1.5;
+}
+
+.content-source-note strong {
+  color: var(--text);
+}
+
+.content-source-note a {
+  color: var(--link);
+  font-weight: 700;
+  text-underline-offset: 0.2em;
+}
+
+.content-source-note span {
+  display: block;
+  margin-top: 0.2rem;
+}
+
 .provider-choice-disclosure {
   width: min(100%, calc(var(--max) + var(--gutter) * 2));
   margin: 0 auto;

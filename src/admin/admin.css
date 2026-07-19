@@ -775,6 +775,7 @@ body.is-admin-route textarea {
 }
 
 .admin-document-section-heading > button,
+.admin-document-section-actions > button,
 .admin-document-image-actions > button,
 .admin-document-array-item-head button {
   display: inline-flex;
@@ -793,6 +794,7 @@ body.is-admin-route textarea {
 }
 
 .admin-document-section-heading > button:hover:not(:disabled),
+.admin-document-section-actions > button:hover:not(:disabled),
 .admin-document-image-actions > button:hover:not(:disabled),
 .admin-document-array-item-head button:hover:not(:disabled) {
   background: #ecece8;
@@ -803,6 +805,14 @@ body.is-admin-route textarea {
 .admin-document-array-item-head button:disabled {
   cursor: not-allowed;
   opacity: 0.35;
+}
+
+.admin-document-section-actions {
+  display: flex;
+  flex: 0 0 auto;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  justify-content: flex-end;
 }
 
 .admin-document-array-list {

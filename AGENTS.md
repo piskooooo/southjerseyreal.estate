@@ -26,7 +26,7 @@ This is a React/Vite rebuild of `southjerseyreal.estate`, originally cloned from
 
 ## Start Here
 
-- Read `README.md`, then `docs/project-todo.md`, `docs/compliance-review-checklist.md`, and `docs/cloudflare-pages-supabase-brevo.md`, then the specific files you plan to touch.
+- Read `README.md`, then `docs/project-todo.md`, `docs/compliance-review-checklist.md`, and `docs/cloudflare-pages-supabase-brevo.md`, then the specific files you plan to touch. For county writing, also read `docs/community-profile-drafts.md`; for dark-theme work, read `docs/dark-theme-palette-review.md` and preserve the owner's pause unless it is explicitly reopened.
 - Treat `docs/project-todo.md` as the source of truth for unfinished work. Update its checkboxes and completion details when a listed task is actually finished.
 - Keep the public site safe for production: do not commit real SMTP secrets, webhook URLs, private emails beyond approved public-facing addresses, lead data, or local `.env` files.
 - Preserve the separation between content and layout.
@@ -37,6 +37,7 @@ This is a React/Vite rebuild of `southjerseyreal.estate`, originally cloned from
 - `src/content/complianceData.json` is the single source for verified brokerage, licensed-office, and salesperson facts. Do not duplicate or invent those values.
 - `src/components/Compliance.tsx` renders the required brokerage, fair-housing, community-information, provider-choice, and form-consent disclosures.
 - `src/content/siteEditor.ts` maps compiled fallbacks into the structured draft/published content model.
+- `docs/community-profile-drafts.md` holds unpublished, government-sourced writing drafts; do not publish a county batch without the recorded owner review.
 - `src/admin` contains the private single-administrator editor and contact inbox served at `/admin`.
 - `src/content/navigation.ts` controls header dropdowns, footer links, and social links.
 - `src/components/Layouts.tsx` contains reusable page renderers for home, county pages, contact, and standard content pages.

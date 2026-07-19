@@ -31,6 +31,24 @@ describe("website editor content normalization", () => {
     expect(actualLinks?.every(Boolean)).toBe(true);
   });
 
+  it("preserves dated source notes in content-block arrays", () => {
+    const draft = structuredClone(managedContentSeeds.get("/gloucester-county")) as ManagedPageDocument;
+    draft.page.sections[1].blocks.push({
+      tag: "SOURCE",
+      text: "New Jersey Municipalities",
+      href: "https://www.nj.gov/infobank/revmuni.htm",
+      accessed: "2026-07-18",
+    });
+
+    const normalized = normalizeManagedContent("/gloucester-county", draft) as ManagedPageDocument;
+    expect(normalized.page.sections[1].blocks.at(-1)).toEqual({
+      tag: "SOURCE",
+      text: "New Jersey Municipalities",
+      href: "https://www.nj.gov/infobank/revmuni.htm",
+      accessed: "2026-07-18",
+    });
+  });
+
   it("does not expose duplicate legacy sections that public structured layouts ignore", () => {
     const home = managedContentSeeds.get("/") as ManagedPageDocument;
     expect(home.page.sections.map((section) => section.kind)).toEqual(["hero", "profile", "action"]);
@@ -102,5 +120,29 @@ describe("website editor content normalization", () => {
     const missingAlt = structuredClone(managedContentSeeds.get("/")) as ManagedPageDocument;
     missingAlt.page.sections[0].images[0].alt = "";
     expect(() => validateManagedContentForPublish("/", missingAlt)).toThrow(/alt text/i);
+  });
+
+  it("requires complete HTTPS source notes and keeps volatile community facts beside a source", () => {
+    const sourced = structuredClone(managedContentSeeds.get("/gloucester-county")) as ManagedPageDocument;
+    sourced.page.sections[1].blocks[1].text = "The municipality reports that preserved land covers 25% of this example area.";
+    sourced.page.sections[1].blocks.push({
+      tag: "SOURCE",
+      text: "Official municipal open-space plan",
+      href: "https://example.nj.gov/open-space",
+      accessed: "2026-07-18",
+    });
+    expect(() => validateManagedContentForPublish("/gloucester-county", sourced)).not.toThrow();
+
+    const unsourced = structuredClone(sourced);
+    unsourced.page.sections[1].blocks.pop();
+    expect(() => validateManagedContentForPublish("/gloucester-county", unsourced)).toThrow(/dated authoritative source/i);
+
+    const insecure = structuredClone(sourced);
+    insecure.page.sections[1].blocks.at(-1)!.href = "http://example.nj.gov/open-space";
+    expect(() => validateManagedContentForPublish("/gloucester-county", insecure)).toThrow(/credential-free HTTPS link/i);
+
+    const invalidDate = structuredClone(sourced);
+    invalidDate.page.sections[1].blocks.at(-1)!.accessed = "2026-02-30";
+    expect(() => validateManagedContentForPublish("/gloucester-county", invalidDate)).toThrow(/valid accessed date/i);
   });
 });

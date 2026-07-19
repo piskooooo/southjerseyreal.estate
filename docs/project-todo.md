@@ -121,9 +121,10 @@ The July 18 technical remediation is complete, but it is not a legal certificati
 
 - [x] Obtain responsible review. The owner reports broad broker consent, and the owner's attorney advised replacing the repeated compliance-heavy presentation with layered disclosures.
 - [x] Implement sitewide broker identity, office-phone, license, fair-housing, neutral-community-copy, consent, privacy, provider, metadata, and publishing guardrails from the July 18 audit.
-- [x] Run the audit scans plus production build, 73 unit tests, 49 tracked database checks, and 37 rendered-route/browser acceptance checks across 21 public routes.
+- [x] Run the audit scans plus production build, 79 unit tests, 49 tracked database checks, and 37 rendered-route/browser acceptance checks across 21 public routes.
 - [x] Recheck the implemented license, brokerage, broker-of-record, licensed-office, and affiliation facts against NJDOBI public records.
 - [x] Audit the production Cloudflare Pages, Supabase, Brevo, and GA4 configuration inventories without recording secret values or personal data.
+- [x] Measure the brokerage-disclosure hierarchy and contrast at desktop and mobile widths, capture rendered evidence, and prepare the concise [compliance review packet](./compliance-review-packet.md) for the human reviewer.
 - [ ] Confirm brokerage identification and hierarchy are sufficiently prominent on every required page or advertisement.
 - [ ] Review and approve the Privacy Policy, Disclaimer, Terms of Service, Fair Housing statement, and Equal Housing Opportunity treatment.
 - [ ] Confirm contact forms, newsletter consent, analytics consent, and partner/advertising disclosures are acceptable.
@@ -160,7 +161,7 @@ Bright IDX and property-search planning is not part of the current `southjerseyr
 - [x] Add the local Supabase migration for the one-slot UUID administrator table, public published-only content, private drafts, RLS/grants, audited publish/revert/inquiry RPCs, and the admin-write-only `site-images` storage policies.
 - [x] Add the authenticated `site-rebuild` Edge Function with origin validation, JWT/user verification, UUID administrator verification, strict deploy-hook URL validation, and fail-closed error handling.
 - [x] Connect the public layouts to published Supabase content with compiled fallbacks, and add route-specific HTML/metadata plus sitemap prerendering for crawler-visible SEO changes.
-- [x] Add editor content/inbox/image tests and transactional pgTAP coverage. The current verification passes 73 Vitest tests, 49 database checks, the production build, Deno formatting/type checks, and public/fail-closed browser checks.
+- [x] Add editor content/inbox/image tests and transactional pgTAP coverage. The current verification passes 79 Vitest tests, 49 database checks, the production build, Deno formatting/type checks, and public/fail-closed browser checks.
 - [x] Push implementation commit `d98b8f5`, activation/retirement commit `1698230`, and Pages routing fix `5ead7ea` to `origin/main`; confirm the Cloudflare Pages production deployments and GitHub test workflow succeed.
 
 ### Production Activation and Acceptance
@@ -194,10 +195,12 @@ Production provisioning and acceptance verified July 17, 2026: both editor migra
 
 Paused by owner decision on July 18, 2026. Keep the current dark palette unchanged unless this item is reopened.
 
+Research completed July 18, 2026. The review-only [palette report](./dark-theme-palette-review.md), [interactive comparison](./dark-theme-palette-preview.html), and desktop/mobile screenshots preserve the current production palette while the owner considers three tested directions.
+
 ### Design and Implementation
 
-- [ ] Audit the current dark-theme tokens and identify surfaces that feel too flat, harsh, or dominated by one color family.
-- [ ] Prepare two or three restrained palette directions using distinct background, surface, border, text, link, action, success, warning, and error colors.
+- [x] Audit the current dark-theme tokens and identify surfaces that feel too flat, harsh, or dominated by one color family.
+- [x] Prepare two or three restrained palette directions using distinct background, surface, border, text, link, action, success, warning, and error colors.
 - [ ] Choose the preferred palette before replacing production colors.
 - [ ] Map the chosen colors to semantic CSS variables instead of scattering one-off values through components.
 - [ ] Apply the palette consistently to the public site, forms, menus, footer, cookie controls, and private editor without changing the light theme unintentionally.
@@ -205,7 +208,7 @@ Paused by owner decision on July 18, 2026. Keep the current dark palette unchang
 
 ### Verification
 
-- [ ] Check text, link, control, and focus contrast against WCAG AA targets.
+- [x] Check text, link, control, and focus contrast against WCAG AA targets for all three proposed directions.
 - [ ] Inspect representative home, county, form, legal, and `/admin` screens at desktop, tablet, and mobile widths.
 - [ ] Confirm there is no clipping, overlap, unreadable state, or horizontal overflow in either theme.
 - [ ] Obtain final visual approval before publishing the palette.
@@ -245,18 +248,20 @@ Implemented both editable, indexable hubs; split each desktop label from its dro
 
 Editorial direction selected by the owner on July 18, 2026: casual but professional. Final county copy still requires owner review before publication.
 
+First-batch progress: source blocks are now supported by the structured editor, preserved by normalization, rendered accessibly, and required beside volatile community facts. Seven county introductions plus all 24 Gloucester County municipality summaries are researched in the unpublished [community profile draft](./community-profile-drafts.md); the six remaining town-level county batches have not been written.
+
 ### Content Work
 
 - [ ] Review the pre-remediation town narratives one community at a time and recover only objective, still-useful material.
 - [ ] Replace volatile price, tax, school, flood, transit, and market statements with current, dated sources when those facts genuinely help a visitor.
-- [ ] Keep resident profiles, protected-class signals, subjective rankings, and unsupported performance claims out of the guides.
+- [x] Keep resident profiles, protected-class signals, subjective rankings, and unsupported performance claims out of compiled guides and the Gloucester pilot, with publishing guardrails preventing their reintroduction.
 - [ ] Write in the approved casual-but-professional local voice and keep one concise page-level verification note instead of repeating warnings in every card.
-- [ ] Add citations or source notes to the structured content model where a factual claim needs ongoing maintenance.
+- [x] Add citations or source notes to the structured content model where a factual claim needs ongoing maintenance.
 
 ### Verification
 
 - [ ] Review each completed county for factual accuracy, fair-housing concerns, stale links, and image accuracy.
-- [ ] Run the publishing guardrails, unit tests, full compliance crawl, and desktop/tablet/mobile visual checks after each county batch.
+- [x] Run the publishing guardrails, 79 unit tests, 49 tracked database checks, production build, full 37-check compliance crawl, automated accessibility checks, and desktop/mobile visual checks after the source-support and Gloucester-draft batch.
 - [ ] Obtain owner approval on the restored editorial tone before publishing all seven counties.
 
 **Done when:** Every community card contains useful, human-written, supportable information without repetitive legal prose or unsupported claims.

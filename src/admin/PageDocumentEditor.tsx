@@ -7,6 +7,7 @@ import {
   type SetStateAction,
 } from "react";
 import {
+  BookOpen,
   ChevronDown,
   ChevronUp,
   ImagePlus,
@@ -52,7 +53,7 @@ const multilineKeys = new Set([
   "text",
 ]);
 
-const blockTags = ["H1", "H2", "H3", "H4", "P", "A", "BUTTON", "LABEL"];
+const blockTags = ["H1", "H2", "H3", "H4", "P", "A", "BUTTON", "LABEL", "SOURCE"];
 
 function fieldLabel(key: string) {
   return key
@@ -224,6 +225,15 @@ function PrimitiveField({
     );
   }
 
+  if (fieldKey === "accessed" && typeof value === "string") {
+    return (
+      <label className="wide" htmlFor={id}>
+        Accessed
+        <input id={id} type="date" value={value} onChange={(event) => onUpdate(path, event.target.value)} disabled={disabled} />
+      </label>
+    );
+  }
+
   const text = value == null ? "" : String(value);
   if (shouldUseTextarea(fieldKey, text)) {
     return (
@@ -314,9 +324,22 @@ function ArrayField({
   const templateValue = templateAtPath(templateRoot, path);
   const template = value[0]
     ?? (Array.isArray(templateValue) ? templateValue[0] : undefined)
-    ?? (fieldKey === "images" ? emptyImageTemplate : undefined);
+    ?? (fieldKey === "images" ? emptyImageTemplate : undefined)
+    ?? (fieldKey === "blocks" ? { tag: "P", text: "" } : undefined);
   const addItem = () => {
     onUpdate(path, [...value, template === undefined ? "" : blankLike(template)]);
+  };
+  const addSource = () => {
+    const now = new Date();
+    const accessed = new Date(now.valueOf() - now.getTimezoneOffset() * 60_000)
+      .toISOString()
+      .slice(0, 10);
+    onUpdate(path, [...value, {
+      tag: "SOURCE",
+      text: "",
+      href: "https://",
+      accessed,
+    }]);
   };
   const removeItem = (index: number) => {
     onUpdate(path, value.filter((_, itemIndex) => itemIndex !== index));
@@ -337,7 +360,12 @@ function ArrayField({
           <p>{value.length} {value.length === 1 ? "item" : "items"}. {fixedSectionTopology ? "The page layout order is fixed." : "Use the arrows to change the public order."}</p>
         </div>
         {!fixedSectionTopology && template !== undefined ? (
-          <button type="button" onClick={addItem} disabled={disabled || value.length >= 100}><Plus size={15} /> Add</button>
+          <div className="admin-document-section-actions">
+            {fieldKey === "blocks" ? (
+              <button type="button" onClick={addSource} disabled={disabled || value.length >= 100}><BookOpen size={15} /> Add source</button>
+            ) : null}
+            <button type="button" onClick={addItem} disabled={disabled || value.length >= 100}><Plus size={15} /> Add</button>
+          </div>
         ) : null}
       </div>
       <div className="admin-document-array-list">

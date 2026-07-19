@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>South Jersey Real Estate Dark Palette Review</title>
+    <style>
+      * { box-sizing: border-box; }
+      html { background: #eef1ef; color: #171717; font-family: Inter, "Helvetica Neue", Arial, sans-serif; }
+      body { margin: 0; }
+      .review-header { width: min(100%, 1500px); margin: 0 auto; padding: 2rem clamp(1rem, 3vw, 2.5rem) 1.25rem; }
+      .review-header p { max-width: 70ch; margin: 0.5rem 0 0; color: #46504b; line-height: 1.55; }
+      h1 { margin: 0; font-size: clamp(2rem, 4vw, 3.75rem); letter-spacing: 0; }
+      .palette-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; width: min(100%, 1500px); margin: 0 auto; padding: 1rem clamp(1rem, 3vw, 2.5rem) 3rem; }
+      .palette { --bg: #1c1c1c; --surface: #242424; --strong: #252525; --sunken: #141414; --text: #fafafa; --muted: #c9c9c9; --brand: #fafafa; --link: #fafafa; --button: #dcdcdc; --button-hover: #eeeeee; --button-text: #050505; --focus: #fafafa; --success: #bce6ba; --warning: #f2cf82; --error: #ffb8b8; overflow: hidden; min-width: 0; background: var(--bg); color: var(--text); border: 1px solid #b9c1bc; border-radius: 8px; box-shadow: 0 10px 28px rgba(24, 34, 28, 0.1); }
+      .palette.pine { --bg: #171b18; --surface: #293229; --strong: #334033; --sunken: #0e120f; --text: #f7f8f6; --muted: #bec9c0; --brand: #91b49a; --link: #8fc2df; --button: #d7bd7a; --button-hover: #e4cd96; --button-text: #171717; --focus: #f0d32b; --success: #a9d49e; --warning: #e6c46f; --error: #f4a6b8; }
+      .palette.atlantic { --bg: #141a1d; --surface: #24323a; --strong: #2d3e48; --sunken: #0b1013; --text: #f7f8f6; --muted: #bac7cd; --brand: #78add0; --link: #82c7ca; --button: #78add0; --button-hover: #92bed9; --button-text: #101619; --focus: #f0d32b; --success: #9fc99b; --warning: #e7c274; --error: #f4a6b8; }
+      .palette.cranberry { --bg: #1a1719; --surface: #382d34; --strong: #44363e; --sunken: #0f0c0e; --text: #faf7f8; --muted: #d0c2c7; --brand: #e27a98; --link: #a9d5d1; --button: #9fcbc6; --button-hover: #b8dcd8; --button-text: #171717; --focus: #f0d32b; --success: #a8d6a3; --warning: #eac77a; --error: #f3a2b6; }
+      .palette-label { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; padding: 0.8rem 1rem; background: var(--sunken); border-bottom: 1px solid color-mix(in srgb, var(--text) 16%, transparent); }
+      .palette-label strong { color: var(--brand); font-size: 1rem; }
+      .palette-label span { color: var(--muted); font-size: 0.75rem; }
+      .mini-header { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 1rem; padding: 1rem; background: color-mix(in srgb, var(--bg) 92%, transparent); border-bottom: 1px solid color-mix(in srgb, var(--text) 14%, transparent); }
+      .mini-brand { color: var(--brand); font-size: 1.1rem; font-weight: 800; }
+      .mini-nav { display: flex; align-items: center; gap: 0.75rem; color: var(--muted); font-size: 0.74rem; }
+      .hero { position: relative; min-height: 260px; display: grid; align-items: end; overflow: hidden; }
+      .hero img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.48; filter: saturate(0.72) contrast(1.08); }
+      .hero::after { position: absolute; inset: 0; background: linear-gradient(to top, var(--bg) 4%, transparent 72%); content: ""; }
+      .hero-copy { position: relative; z-index: 1; max-width: 34rem; padding: 1.25rem; }
+      .eyebrow { margin: 0 0 0.45rem; color: var(--link); font-size: 0.72rem; font-weight: 800; text-transform: uppercase; }
+      .hero h2 { margin: 0; max-width: 15ch; font-size: clamp(1.8rem, 4vw, 3rem); letter-spacing: 0; line-height: 1; }
+      .hero p { margin: 0.7rem 0 0; color: var(--muted); line-height: 1.5; }
+      .button { display: inline-flex; align-items: center; justify-content: center; min-height: 2.55rem; margin-top: 0.9rem; padding: 0.65rem 0.9rem; background: var(--button); color: var(--button-text); border: 1px solid transparent; border-radius: 4px; font-size: 0.78rem; font-weight: 800; text-decoration: none; }
+      .content { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 0.85rem; padding: 1rem; }
+      .panel { min-width: 0; padding: 1rem; background: var(--surface); border: 1px solid color-mix(in srgb, var(--text) 18%, transparent); border-radius: 6px; }
+      .panel h3 { margin: 0; font-size: 1rem; letter-spacing: 0; }
+      .panel p { margin: 0.55rem 0 0; color: var(--muted); font-size: 0.8rem; line-height: 1.5; }
+      .panel a { color: var(--link); font-weight: 750; }
+      .panel a.button { color: var(--button-text); }
+      .status-row { display: grid; gap: 0.45rem; margin-top: 0.85rem; }
+      .status { display: flex; align-items: center; gap: 0.5rem; padding: 0.55rem 0.65rem; background: var(--strong); border-left: 3px solid currentColor; font-size: 0.72rem; }
+      .status.success { color: var(--success); }
+      .status.warning { color: var(--warning); }
+      .status.error { color: var(--error); }
+      .mini-form { display: grid; gap: 0.55rem; }
+      .mini-form label { color: var(--muted); font-size: 0.7rem; font-weight: 700; }
+      .mini-form input { width: 100%; min-height: 2.35rem; margin-top: 0.25rem; padding: 0.55rem; background: var(--strong); color: var(--text); border: 1px solid color-mix(in srgb, var(--text) 32%, transparent); border-radius: 3px; }
+      .mini-form input:focus { outline: 2px solid var(--focus); outline-offset: 2px; }
+      .swatches { display: grid; grid-template-columns: repeat(6, 1fr); gap: 0.35rem; padding: 0 1rem 1rem; }
+      .swatch { height: 1.35rem; border: 1px solid color-mix(in srgb, var(--text) 24%, transparent); border-radius: 3px; }
+      .swatch:nth-child(1) { background: var(--brand); }
+      .swatch:nth-child(2) { background: var(--link); }
+      .swatch:nth-child(3) { background: var(--button); }
+      .swatch:nth-child(4) { background: var(--focus); }
+      .swatch:nth-child(5) { background: var(--success); }
+      .swatch:nth-child(6) { background: var(--error); }
+      .disclosure { padding: 0.75rem 1rem; background: var(--sunken); border-top: 1px solid color-mix(in srgb, var(--text) 15%, transparent); text-align: center; }
+      .disclosure strong { display: block; font-size: 0.83rem; }
+      .disclosure span { display: block; margin-top: 0.25rem; color: var(--muted); font-size: 0.64rem; line-height: 1.4; }
+      @media (max-width: 900px) { .palette-grid { grid-template-columns: 1fr; } }
+      @media (max-width: 560px) {
+        .review-header { padding-top: 1.25rem; }
+        .palette-grid { padding-inline: 0.6rem; }
+        .mini-header { grid-template-columns: 1fr; }
+        .mini-nav { justify-content: space-between; }
+        .hero { min-height: 230px; }
+        .content { grid-template-columns: 1fr; }
+        .palette-label { align-items: flex-start; flex-direction: column; gap: 0.25rem; }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="review-header">
+      <h1>Dark Theme Palette Review</h1>
+      <p>Current treatment and three review-only directions. Each frame uses the same content, hierarchy, controls, status colors, and licensed-brokerage band.</p>
+    </header>
+    <main class="palette-grid">
+      <section class="palette current" aria-label="Current neutral charcoal palette">
+        <div class="palette-label"><strong>Current</strong><span>Neutral charcoal baseline</span></div>
+        <div class="mini-header"><span class="mini-brand">South Jersey Real Estate</span><nav class="mini-nav"><span>Counties</span><span>Connect</span><span>Contact</span></nav></div>
+        <div class="hero"><img src="../public/assets/live/philly-skyline-from-camden-city-camden-jpg.webp" alt="Philadelphia skyline viewed from South Jersey" /><div class="hero-copy"><p class="eyebrow">County guides</p><h2>Explore South Jersey</h2><p>Clear local information, organized county by county.</p><a class="button" href="#current-content">Browse guides</a></div></div>
+        <div class="content" id="current-content"><article class="panel"><h3>Gloucester County</h3><p>Review communities, public resources, and objective source notes. <a href="#current-content">View county guide</a></p><div class="status-row"><div class="status success">Source reviewed</div><div class="status warning">Owner review pending</div><div class="status error">Example validation error</div></div></article><form class="panel mini-form"><h3>Start a conversation</h3><label>Email<input type="email" value="name@example.com" aria-label="Current palette email example" /></label><a class="button" href="#current-content">Continue</a></form></div>
+        <div class="swatches" aria-label="Current color swatches"><span class="swatch"></span><span class="swatch"></span><span class="swatch"></span><span class="swatch"></span><span class="swatch"></span><span class="swatch"></span></div>
+        <div class="disclosure"><strong>THE PLUM REAL ESTATE GROUP LLC</strong><span>New Jersey Real Estate Broker | Licensed brokerage office: (856) 537-5464</span></div>
+      </section>
+      <section class="palette pine" aria-label="Pine and Gold palette option">
+        <div class="palette-label"><strong>Pine and Gold</strong><span>Recommended starting point</span></div>
+        <div class="mini-header"><span class="mini-brand">South Jersey Real Estate</span><nav class="mini-nav"><span>Counties</span><span>Connect</span><span>Contact</span></nav></div>
+        <div class="hero"><img src="../public/assets/live/philly-skyline-from-camden-city-camden-jpg.webp" alt="Philadelphia skyline viewed from South Jersey" /><div class="hero-copy"><p class="eyebrow">County guides</p><h2>Explore South Jersey</h2><p>Clear local information, organized county by county.</p><a class="button" href="#pine-content">Browse guides</a></div></div>
+        <div class="content" id="pine-content"><article class="panel"><h3>Gloucester County</h3><p>Review communities, public resources, and objective source notes. <a href="#pine-content">View county guide</a></p><div class="status-row"><div class="status success">Source reviewed</div><div class="status warning">Owner review pending</div><div class="status error">Example validation error</div></div></article><form class="panel mini-form"><h3>Start a conversation</h3><label>Email<input type="email" value="name@example.com" aria-label="Pine and Gold email example" /></label><a class="button" href="#pine-content">Continue</a></form></div>
+        <div class="swatches" aria-label="Pine and Gold color swatches"><span class="swatch"></span><span class="swatch"></span><span class="swatch"></span><span class="swatch"></span><span class="swatch"></span><span class="swatch"></span></div>
+        <div class="disclosure"><strong>THE PLUM REAL ESTATE GROUP LLC</strong><span>New Jersey Real Estate Broker | Licensed brokerage office: (856) 537-5464</span></div>
+      </section>
+      <section class="palette atlantic" aria-label="Atlantic Signal palette option">
+        <div class="palette-label"><strong>Atlantic Signal</strong><span>Closest to the light theme</span></div>
+        <div class="mini-header"><span class="mini-brand">South Jersey Real Estate</span><nav class="mini-nav"><span>Counties</span><span>Connect</span><span>Contact</span></nav></div>
+        <div class="hero"><img src="../public/assets/live/philly-skyline-from-camden-city-camden-jpg.webp" alt="Philadelphia skyline viewed from South Jersey" /><div class="hero-copy"><p class="eyebrow">County guides</p><h2>Explore South Jersey</h2><p>Clear local information, organized county by county.</p><a class="button" href="#atlantic-content">Browse guides</a></div></div>
+        <div class="content" id="atlantic-content"><article class="panel"><h3>Gloucester County</h3><p>Review communities, public resources, and objective source notes. <a href="#atlantic-content">View county guide</a></p><div class="status-row"><div class="status success">Source reviewed</div><div class="status warning">Owner review pending</div><div class="status error">Example validation error</div></div></article><form class="panel mini-form"><h3>Start a conversation</h3><label>Email<input type="email" value="name@example.com" aria-label="Atlantic Signal email example" /></label><a class="button" href="#atlantic-content">Continue</a></form></div>
+        <div class="swatches" aria-label="Atlantic Signal color swatches"><span class="swatch"></span><span class="swatch"></span><span class="swatch"></span><span class="swatch"></span><span class="swatch"></span><span class="swatch"></span></div>
+        <div class="disclosure"><strong>THE PLUM REAL ESTATE GROUP LLC</strong><span>New Jersey Real Estate Broker | Licensed brokerage office: (856) 537-5464</span></div>
+      </section>
+      <section class="palette cranberry" aria-label="Cranberry and Sea Glass palette option">
+        <div class="palette-label"><strong>Cranberry and Sea Glass</strong><span>Warmest editorial direction</span></div>
+        <div class="mini-header"><span class="mini-brand">South Jersey Real Estate</span><nav class="mini-nav"><span>Counties</span><span>Connect</span><span>Contact</span></nav></div>
+        <div class="hero"><img src="../public/assets/live/philly-skyline-from-camden-city-camden-jpg.webp" alt="Philadelphia skyline viewed from South Jersey" /><div class="hero-copy"><p class="eyebrow">County guides</p><h2>Explore South Jersey</h2><p>Clear local information, organized county by county.</p><a class="button" href="#cranberry-content">Browse guides</a></div></div>
+        <div class="content" id="cranberry-content"><article class="panel"><h3>Gloucester County</h3><p>Review communities, public resources, and objective source notes. <a href="#cranberry-content">View county guide</a></p><div class="status-row"><div class="status success">Source reviewed</div><div class="status warning">Owner review pending</div><div class="status error">Example validation error</div></div></article><form class="panel mini-form"><h3>Start a conversation</h3><label>Email<input type="email" value="name@example.com" aria-label="Cranberry and Sea Glass email example" /></label><a class="button" href="#cranberry-content">Continue</a></form></div>
+        <div class="swatches" aria-label="Cranberry and Sea Glass color swatches"><span class="swatch"></span><span class="swatch"></span><span class="swatch"></span><span class="swatch"></span><span class="swatch"></span><span class="swatch"></span></div>
+        <div class="disclosure"><strong>THE PLUM REAL ESTATE GROUP LLC</strong><span>New Jersey Real Estate Broker | Licensed brokerage office: (856) 537-5464</span></div>
+      </section>
+    </main>
+  </body>
+</html>

@@ -126,7 +126,7 @@ export const sitewideSeed: SitewideContent = {
 const newsletterSeed: NewsletterContent = {
   eyebrow: "South Jersey market updates",
   heading: "Newsletter",
-  introduction: "A weekly real estate email for South New Jersey homeowners, buyers, and locals who want to keep an eye on the market without digging through scattered reports.",
+  introduction: "A weekly real estate email for South Jersey homeowners, buyers, and locals who want to keep an eye on the market without digging through scattered reports.",
   topics: [
     "Local housing trends",
     "County and town notes",
@@ -302,12 +302,20 @@ const objectArraySchemaCache = new WeakMap<unknown[], ObjectArraySchema>();
 function objectArraySchema(seed: unknown[], objectSeeds: Array<Record<string, unknown>>) {
   const cached = objectArraySchemaCache.get(seed);
   if (cached) return cached;
-  const allowedKeys = [...new Set(objectSeeds.flatMap((item) => Object.keys(item)))];
+  const contentBlockKeys = ["href", "type", "placeholder", "accessed"];
+  const isContentBlockArray = objectSeeds.every((item) => (
+    typeof item.tag === "string" && typeof item.text === "string"
+  ));
+  const allowedKeys = [...new Set([
+    ...objectSeeds.flatMap((item) => Object.keys(item)),
+    ...(isContentBlockArray ? contentBlockKeys : []),
+  ])];
   const schema = {
     allowedKeys,
     keySeeds: new Map(allowedKeys.map((key) => [
       key,
-      mergeSeedValues(objectSeeds.map((candidate) => candidate[key])),
+      mergeSeedValues(objectSeeds.map((candidate) => candidate[key]))
+        ?? (isContentBlockArray && contentBlockKeys.includes(key) ? "" : undefined),
     ])),
     requiredKeys: new Set(allowedKeys.filter((key) => objectSeeds.every((item) => key in item))),
   };
@@ -407,8 +415,28 @@ const unsupportedCommunityFacts = [
   /\bmedian (?:sale|sold|home|listing) price\b/i,
   /\baverage property tax\b/i,
   /\b(?:crime|school) ratings?\b/i,
-  /\b\d+(?:\.\d+)?%\b/,
+  /\b\d+(?:\.\d+)?%/,
 ];
+
+function isValidDateStamp(value: string) {
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(value)) return false;
+  const date = new Date(`${value}T00:00:00Z`);
+  return !Number.isNaN(date.valueOf()) && date.toISOString().slice(0, 10) === value;
+}
+
+function isValidSourceBlock(value: unknown): value is ContentBlock {
+  if (!isObject(value) || value.tag !== "SOURCE") return false;
+  const text = typeof value.text === "string" ? value.text.trim() : "";
+  const href = typeof value.href === "string" ? value.href.trim() : "";
+  const accessed = typeof value.accessed === "string" ? value.accessed.trim() : "";
+  if (!text || !isValidDateStamp(accessed)) return false;
+  try {
+    const url = new URL(href);
+    return url.protocol === "https:" && !url.username && !url.password;
+  } catch {
+    return false;
+  }
+}
 
 const allTextValues = (value: unknown) => {
   const values: string[] = [];
@@ -445,9 +473,17 @@ function assertComplianceCopy(pageKey: string, value: ManagedContent) {
   }
 
   if (communityPageKeys.has(pageKey)) {
-    const unsupported = unsupportedCommunityFacts.find((pattern) => textValues.some((text) => pattern.test(text)));
-    if (unsupported) {
-      throw new Error(`Document and date an authoritative source before publishing community data matching ${unsupported}.`);
+    const document = value as ManagedPageDocument;
+    for (const section of document.page?.sections || []) {
+      const sectionText = section.blocks
+        .filter((block) => block.tag !== "SOURCE")
+        .map((block) => block.text);
+      const unsupported = unsupportedCommunityFacts.find((pattern) => (
+        sectionText.some((text) => pattern.test(text))
+      ));
+      if (unsupported && !section.blocks.some(isValidSourceBlock)) {
+        throw new Error(`Add a dated authoritative source to this section before publishing community data matching ${unsupported}.`);
+      }
     }
   }
 
@@ -483,6 +519,10 @@ export function validateManagedContentForPublish(pageKey: string, value: Managed
     const src = typeof current.src === "string" ? current.src.trim() : "";
     if (src && (typeof current.alt !== "string" || !current.alt.trim())) {
       throw new Error(`Add descriptive alt text before publishing the image at ${path.join(" → ") || "this page"}.`);
+    }
+
+    if (current.tag === "SOURCE" && !isValidSourceBlock(current)) {
+      throw new Error(`Source note at ${path.join(" → ") || "this page"} needs a title, a credential-free HTTPS link, and a valid accessed date in YYYY-MM-DD format.`);
     }
 
     for (const [key, child] of Object.entries(current)) {

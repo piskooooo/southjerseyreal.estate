@@ -21,6 +21,16 @@ const ctaMap: Record<string, string> = {
 
 const cleanHref = (href?: string) => href || "";
 
+const cleanSourceHref = (href?: string) => {
+  if (!href) return "";
+  try {
+    const url = new URL(href);
+    return url.protocol === "https:" && !url.username && !url.password ? url.href : "";
+  } catch {
+    return "";
+  }
+};
+
 const fieldLabels = new Set([
   "Population",
   "Government",
@@ -246,6 +256,26 @@ export function Blocks({
 
         if (block.tag === "H4") {
           return <h4 key={key}>{block.text}</h4>;
+        }
+
+        if (block.tag === "SOURCE") {
+          const sourceHref = cleanSourceHref(block.href);
+          return (
+            <p key={key} className="content-source-note">
+              <strong>Source:</strong>{" "}
+              {sourceHref ? (
+                <a
+                  href={sourceHref}
+                  target="_blank"
+                  rel="noreferrer"
+                  onClick={() => trackLinkClick(sourceHref, block.text, "community_source")}
+                >
+                  {block.text}
+                </a>
+              ) : block.text}
+              {block.accessed ? <span>Accessed {block.accessed}.</span> : null}
+            </p>
+          );
         }
 
         if (block.tag === "A" || ctaMap[block.text]) {

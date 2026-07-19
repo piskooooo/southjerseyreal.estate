@@ -112,7 +112,7 @@ describe("consent-gated GA4 tracking", () => {
   });
 
   it("keeps Tag Assistant debug mode out of Analytics while preserving the browser signal", async () => {
-    const { setAnalyticsConsent, trackPageView } = await import("./analytics");
+    const { setAnalyticsConsent, trackEvent, trackPageView } = await import("./analytics");
 
     window.history.replaceState(
       {},
@@ -143,6 +143,16 @@ describe("consent-gated GA4 tracking", () => {
         allow_google_signals: false,
         debug_mode: true,
         send_page_view: false,
+      },
+    ]);
+
+    trackEvent("test_event", { form_name: "contact" });
+    expect(queuedCommands().at(-1)).toEqual([
+      "event",
+      "test_event",
+      {
+        form_name: "contact",
+        page_location: `${window.location.origin}/contact?utm_source=google`,
       },
     ]);
   });

@@ -297,7 +297,16 @@ export const trackPageView = (path: string, title: string) => {
 
 export const trackEvent = (name: string, params: Record<string, GtagValue> = {}) => {
   if (!ensureAnalytics()) return;
-  window.gtag?.("event", name, sanitizeEventParams(params));
+  const safeParams = sanitizeEventParams(params);
+
+  // Tag Assistant's browser signal must remain in the address bar, but it
+  // should not become the automatic page_location on custom events.
+  if (getTagAssistantDebugValue()) {
+    const pageLocation = sanitizeHttpUrl(window.location.href, true);
+    if (pageLocation) safeParams.page_location = pageLocation;
+  }
+
+  window.gtag?.("event", name, safeParams);
 };
 
 export const trackFormSuccess = (formName: AnalyticsFormName, interest: string) => {

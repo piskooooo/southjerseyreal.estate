@@ -45,7 +45,8 @@ The owner confirmed active REALTOR® membership on July 18, 2026, and current pu
 - [x] Add editor phrase/credential checks and runtime rejection of noncompliant published content.
 - [x] Fix overlapping desktop dropdowns and cover click, hover, focus, outside-click, and Escape behavior.
 - [x] Run the audit's exact high-risk phrase scan and phone/email scan and manually classify all remaining hits.
-- [x] Pass the production build, 73 unit tests, and 37 Playwright checks covering all 21 public routes, prerendered and hydrated DOM, metadata, JSON-LD, forms, analytics consent, providers, hub navigation, keyboard behavior, 320-pixel layout, screenshots, overflow, alt text, and automated WCAG checks.
+- [x] Measure the production brokerage disclosure at desktop and mobile widths, confirm its hierarchy, contrast, and zero overflow, and capture the evidence in [compliance-review-packet.md](./compliance-review-packet.md).
+- [x] Pass the production build, 79 unit tests, and 37 Playwright checks covering all 21 public routes, prerendered and hydrated DOM, metadata, JSON-LD, forms, analytics consent, providers, hub navigation, keyboard behavior, 320-pixel layout, screenshots, overflow, alt text, and automated WCAG checks.
 
 ## July 18 Technical Reverification
 
@@ -56,7 +57,7 @@ The owner confirmed active REALTOR® membership on July 18, 2026, and current pu
 - [x] Audited GA4 property `Main Website`. Its production stream uses measurement ID `G-97H86MNHP8`; data retention is 14 months; email plus configured sensitive query parameters are redacted; manual SPA and outbound-click tracking are de-duplicated; `form_name`, `lead_type`, and `link_source` are registered; and only the direct `contact_lead` event is marked as an editable lead key event.
 - [x] Rechecked public credential evidence. [Realtor.com](https://www.realtor.com/realestateagents/659c35c962a5ff070b97f4b8) and the [brokerage roster](https://www.plum-realestate.com/agents.php) display a REALTOR® claim for Arthur, and Arthur confirmed active membership on July 18, 2026. Private membership and MLS identifiers are not recorded here.
 - [x] Scheduled the Codex automation `Quarterly South Jersey Compliance Review` to run every three months on the 18th at 9:00 AM local time, beginning October 18, 2026.
-- [x] Re-ran the audit phrase and contact scans, production build, 73 unit tests, 49 tracked database checks, and 37 Playwright checks after implementing the Counties and Connect hubs plus the Google analytics, crawler, schema, sitemap, and media remediations.
+- [x] Re-ran the audit phrase and contact scans, production build, 79 unit tests, 49 tracked database checks, and 37 Playwright checks after implementing the Google analytics hardening, source-note guardrails, compliance evidence packet, and review-only design/community artifacts.
 
 This technical record does not satisfy the broker, owner, credential-holder, or legal approvals below.
 

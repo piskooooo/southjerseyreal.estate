@@ -2,6 +2,7 @@ export type ContentBlock = {
   tag: string;
   text: string;
   href?: string;
+  accessed?: string;
   type?: string;
   placeholder?: string;
 };

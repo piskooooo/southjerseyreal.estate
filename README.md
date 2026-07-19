@@ -2,13 +2,14 @@
 
 React/Vite source for `southjerseyreal.estate`.
 
-Project status and unfinished work are tracked in [`docs/project-todo.md`](docs/project-todo.md). The compliance implementation and remaining human approvals are recorded in [`docs/compliance-review-checklist.md`](docs/compliance-review-checklist.md). The approved visual color direction and current light-theme implementation are recorded in [`docs/color-palette.md`](docs/color-palette.md). Cloud deployment and recovery procedures are in [`docs/cloudflare-pages-supabase-brevo.md`](docs/cloudflare-pages-supabase-brevo.md).
+Project status and unfinished work are tracked in [`docs/project-todo.md`](docs/project-todo.md). The compliance implementation and remaining human approvals are recorded in [`docs/compliance-review-checklist.md`](docs/compliance-review-checklist.md), with a concise handoff in [`docs/compliance-review-packet.md`](docs/compliance-review-packet.md). The current visual system is documented in [`docs/color-palette.md`](docs/color-palette.md), and the paused dark-theme options are in [`docs/dark-theme-palette-review.md`](docs/dark-theme-palette-review.md). Cloud deployment and recovery procedures are in [`docs/cloudflare-pages-supabase-brevo.md`](docs/cloudflare-pages-supabase-brevo.md).
 
 ## Project Layout
 
 - `src/content/generatedSiteData.ts` contains compliance-reduced county/community fallback structure and image paths.
 - `src/content/complianceData.json` is the single source for verified brokerage, office, and salesperson facts.
 - `src/content/siteEditor.ts` maps those fallbacks into the draft/published website-content model.
+- `docs/community-profile-drafts.md` contains unpublished, sourced county/community copy awaiting owner review.
 - `src/admin` contains the private, single-administrator website editor and contact inbox served at `/admin`.
 - `src/content/navigation.ts` controls header dropdowns, footer links, and social links.
 - `src/components/Layouts.tsx` contains reusable page renderers and the public forms.
@@ -53,4 +54,4 @@ Pushing `main` triggers a Cloudflare Pages deployment. Supabase migrations and E
 
 ## Analytics
 
-The site uses consent-gated GA4 measurement ID `G-97H86MNHP8`. It sends SPA `page_view` events, contact/navigation/link events, and `generate_lead` after a successful form response. `generate_lead` is configured as a GA4 key event.
+The site uses consent-gated GA4 measurement ID `G-97H86MNHP8`. It sends SPA `page_view` events, contact/navigation/link events, `generate_lead` plus `contact_lead` after a successful contact inquiry, and `sign_up` after a successful newsletter subscription. Only the direct `contact_lead` event is configured as the editable lead key event.

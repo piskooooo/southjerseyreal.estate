@@ -102,9 +102,22 @@ entry.
 ## Current Scope
 
 The site does not currently publish property listings, paid provider cards,
-reviews, testimonials, awards, a multi-agent roster, or automated marketing
-calls/texts. Those features require a new review before publication. Future
-Bright MLS/IDX work remains deferred in `bright-idx-backlog.md`.
+awards, a multi-agent roster, or automated marketing calls/texts. Future Bright
+MLS/IDX work remains deferred in `bright-idx-backlog.md` and requires its own
+data-display review.
+
+Client feedback is limited to the About page. A genuine public review does not
+require a separate written-consent record merely because it is displayed here.
+The Google section uses Google-provided review and author attribution data,
+preserves Google's relevance order, and links every card to its source. It
+clearly states that this website displays only returned 4- and 5-star reviews
+and links to the complete Google review profile, so the selected cards are not
+presented as the complete or representative review history. Facebook, Zillow,
+and Realtor.com are direct source links unless a current platform-supported
+display method is later implemented. The site must not gate review requests,
+condition incentives on positive sentiment, alter source reviews, or suppress
+reviews on the source platforms. Private messages, customer photos or video,
+and other separately protected content are not treated as public reviews.
 
 All seven richer county/community batches have been researched as unpublished
 editorial drafts. They are outside the current rendered-site approval until the

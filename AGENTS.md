@@ -43,7 +43,8 @@ This is a React/Vite rebuild of `southjerseyreal.estate`, originally cloned from
 - `src/components/Layouts.tsx` contains reusable page renderers for home, county pages, contact, and standard content pages.
 - `src/components/Blocks.tsx` renders editable text blocks into headings, paragraphs, links, and buttons.
 - `src/cloudForms.ts` sends public form requests to Supabase Edge Functions.
-- `supabase/functions` contains the Turnstile-protected form handlers and authenticated `site-rebuild` handler.
+- `src/reviews.ts` loads the no-cache Google review feed used only by the About page.
+- `supabase/functions` contains the protected public form/review handlers and authenticated `site-rebuild` handler.
 - `supabase/migrations` contains private form storage, rate limiting, retention, notification scheduling, and the editor schema.
 - `.codex/skills/turnstile-spin` contains the reusable, project-local Turnstile setup and validation workflow.
 - `docs/cloudflare-pages-supabase-brevo.md` covers production deployment, testing, editor provisioning, and recovery.
@@ -67,7 +68,7 @@ npx supabase functions deploy site-rebuild --no-verify-jwt
 ## Deployment Expectations
 
 - Primary frontend: Cloudflare Pages project `southjerseyreal-estate`, deployed from `origin/main` with Node 22.
-- Primary backend: Supabase project ref `sinbxruqlaywvbzcvfli`; `contact-submit` and `newsletter-subscribe` are intentionally public endpoints and enforce origin checks plus server-side Turnstile validation. `site-rebuild` is an authenticated endpoint that verifies the bearer user and the private administrator slot itself.
+- Primary backend: Supabase project ref `sinbxruqlaywvbzcvfli`; `contact-submit` and `newsletter-subscribe` are intentionally public endpoints and enforce origin checks plus server-side Turnstile validation. `google-reviews` is a public GET endpoint with an exact origin allowlist, no caching, and a server-side Places API key. `site-rebuild` is an authenticated endpoint that verifies the bearer user and the private administrator slot itself.
 - Contact notifications and newsletter double opt-in use the personal Brevo workspace. Never commit the Brevo key or Turnstile secret.
 - Pages build variables are `VITE_GA_MEASUREMENT_ID`, `VITE_SUPABASE_URL`, `VITE_SUPABASE_PUBLISHABLE_KEY`, and `VITE_TURNSTILE_SITE_KEY`; all four are browser-visible by design.
 - Cloudflare Pages is the only supported production frontend. Docker is still useful for the local Supabase test stack, but the former Unraid/GHCR deployment path is retired.

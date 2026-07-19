@@ -23,6 +23,7 @@ import {
   ProviderChoiceDisclosure,
 } from "./Compliance";
 import { TurnstileWidget } from "./TurnstileWidget";
+import { AboutReviewsSection } from "./Reviews";
 
 type SiteTheme = "dark" | "light";
 
@@ -455,6 +456,7 @@ const splitAboutGroups = (blocks: ContentBlock[]) => {
 
 export function AboutPage({ page, navigate }: PageProps) {
   const profileSection = page.sections.find((section) => section.kind === "profile") || page.sections[0];
+  const reviewsSection = page.sections.find((section) => section.kind === "promo");
   const actionSection = page.sections.find(isActionSection);
   const { details, intro, proof } = splitAboutGroups(profileSection?.blocks || []);
   const profileImage = profileSection?.images[0];
@@ -491,6 +493,8 @@ export function AboutPage({ page, navigate }: PageProps) {
           ))}
         </section>
       )}
+
+      {reviewsSection && <AboutReviewsSection section={reviewsSection} navigate={navigate} />}
 
       {actionSection && <ActionSection section={actionSection} navigate={navigate} />}
     </div>

@@ -18,6 +18,7 @@ flowchart LR
   Functions --> Database[(Private Supabase schema)]
   Functions --> DeployHook[Cloudflare Pages deploy hook]
   Functions --> Brevo[Brevo API]
+  Functions --> GoogleReviews[Google Places API]
   Brevo --> Leads[leads@southjerseyreal.estate]
   Brevo --> DOI[Newsletter double opt-in]
 ```
@@ -25,7 +26,7 @@ flowchart LR
 - Frontend: Cloudflare Pages project `southjerseyreal-estate`, connected to `piskooooo/southjerseyreal.estate`, production branch `main`.
 - Build: Node 22 on Pages build image v3, `npm run build`, output directory `dist`.
 - Backend: Supabase project ref `sinbxruqlaywvbzcvfli` in `us-east-1`.
-- Public functions: `contact-submit` and `newsletter-subscribe`. JWT verification is disabled because visitors are anonymous; each function instead enforces an origin allowlist and server-side Turnstile verification.
+- Public functions: `contact-submit`, `newsletter-subscribe`, and `google-reviews`. JWT verification is disabled because visitors are anonymous. The form functions enforce an origin allowlist plus server-side Turnstile verification; `google-reviews` accepts only GET requests from its exact origin allowlist and returns public review data without exposing the Places API key.
 - Authenticated function: `site-rebuild`. Gateway JWT verification is disabled so the function can return controlled responses, but it verifies the bearer user, exact allowed origin, private administrator slot, and protected hook URL before queueing a build.
 - Email: Brevo sender `South Jersey Real Estate <arthur@southjerseyreal.estate>`.
 - Newsletter: Brevo list ID `8`, double-opt-in template ID `2`.
@@ -84,6 +85,9 @@ NEWSLETTER_TURNSTILE_EXPECTED_ACTION
 TURNSTILE_EXPECTED_HOSTNAMES
 TURNSTILE_SECRET
 CLOUDFLARE_PAGES_DEPLOY_HOOK_URL
+GOOGLE_PLACES_API_KEY
+GOOGLE_PLACE_ID
+REVIEWS_ALLOWED_ORIGINS
 ```
 
 Supabase Vault also stores the protected scheduled-worker URL and cron secret under these names:
@@ -102,11 +106,30 @@ npx supabase link --project-ref sinbxruqlaywvbzcvfli
 npx supabase db push
 npx supabase functions deploy contact-submit --no-verify-jwt
 npx supabase functions deploy newsletter-subscribe --no-verify-jwt
+npx supabase functions deploy google-reviews --no-verify-jwt
 npx supabase functions deploy site-rebuild --no-verify-jwt
 npx supabase db lint --linked --level warning
 ```
 
-Deploy database migrations before functions when a function depends on a new RPC or table. Confirm all three functions remain active and show `verify_jwt: false` after deployment; each function performs its own request validation.
+Deploy database migrations before functions when a function depends on a new RPC or table. Confirm all four functions remain active and show `verify_jwt: false` after deployment; each function performs its own request validation.
+
+### Configure About-page Google reviews
+
+The About page is the only public page that requests review content. The homepage,
+county guides, resource pages, and navigation do not call the Places API.
+
+1. Create or select a Google Cloud project with billing attached, then enable **Places API (New)**.
+2. Create an API key restricted to **Places API (New)**. Store it only as the Supabase secret `GOOGLE_PLACES_API_KEY`; do not add it to a Vite variable or repository file.
+3. Resolve the verified Google Business listing to its stable Place ID and store only that identifier as `GOOGLE_PLACE_ID`.
+4. Set `REVIEWS_ALLOWED_ORIGINS` to the exact production, `www`, Pages, and approved local origins.
+5. Set the Google Cloud quota for **Places API Place Details Enterprise + Atmosphere** below the 1,000-request monthly free cap. A limit of 30 requests per day keeps a full month below 1,000 while allowing normal About-page traffic.
+6. Deploy `google-reviews` with `--no-verify-jwt`, then open `/about` and confirm the review cards, author attribution, reviewer images, dates, rating-selection notice, and source links render without CSP or CORS errors.
+
+Google currently categorizes the `reviews` field under Place Details Enterprise +
+Atmosphere, with 1,000 free billable events per month. The function and browser use
+`Cache-Control: no-store` because Places content cannot be stored or cached under
+the standard API policy. When Google returns an error or the quota is exhausted,
+the About page falls back to direct Google, Facebook, Zillow, and Realtor.com links.
 
 ### Provision the private website editor
 
@@ -165,6 +188,7 @@ npm test
 npm run build
 npx deno check --node-modules-dir=auto supabase/functions/contact-submit/index.ts
 npx deno check --node-modules-dir=auto supabase/functions/newsletter-subscribe/index.ts
+npx deno check --node-modules-dir=auto supabase/functions/google-reviews/index.ts
 ```
 
 Run the transactional database checks when Docker and the local Supabase stack are available:

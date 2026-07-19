@@ -400,6 +400,12 @@ verify_jwt = false
 [functions.newsletter-subscribe]
 verify_jwt = false
 
+# Public review requests expose only current Google Maps review data. The
+# function enforces an exact browser-origin allowlist and keeps the Places API
+# key server-side.
+[functions.google-reviews]
+verify_jwt = false
+
 # The function performs explicit bearer-token and private admin-membership
 # validation before it can enqueue a Cloudflare Pages rebuild.
 [functions.site-rebuild]

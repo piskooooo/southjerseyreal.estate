@@ -14,6 +14,7 @@ Use this file as the source of truth for unfinished work on `southjerseyreal.est
 - [ ] 7. Refine the dark theme color palette (paused; keep the current palette)
 - [x] 8. Add destination pages for the Counties and Connect header items
 - [ ] 9. Rebuild richer, sourced community profiles
+- [ ] 10. Add client reviews to the About page
 
 ## 1. Complete the Cloudflare Pages Cutover
 
@@ -270,6 +271,35 @@ Drafting progress: source blocks are supported by the structured editor, preserv
 - [ ] Convert approved drafts into structured editor content, replace the stale `Pine Hill & Pine Valley` card title, publish in manageable county batches, and rerun rendered source, accessibility, compliance, and responsive checks after each batch.
 
 **Done when:** Every community card contains useful, human-written, supportable information without repetitive legal prose or unsupported claims.
+
+## 10. Add Client Reviews to the About Page
+
+**Goal:** Show useful public client feedback without changing the site's primary
+mission as a South Jersey real-estate and community resource. Reviews remain
+contained within `/about`; there is no reviews route, navigation item, or homepage
+review promotion.
+
+### Implementation
+
+- [x] Add an editable `Client feedback` section to the existing About-page content model.
+- [x] Add a no-cache Supabase `google-reviews` function that keeps the Places API key server-side and accepts only exact allowed browser origins.
+- [x] Render Google-provided author photos, names, profile links, ratings, dates, full review text, Google Maps attribution, and a direct source link for every displayed review.
+- [x] Display only returned 4- and 5-star reviews, state that selection beside the cards, preserve Google's relevance order, and link clearly to the complete Google review profile.
+- [x] Add direct Google, Facebook, Zillow, and Realtor.com review-profile links and a graceful fallback when live Google data is unavailable.
+- [x] Update the Privacy Policy, Terms of Service, CSP, deployment guide, and automated tests for the Google Maps content request.
+
+### Production Setup and Verification
+
+- [ ] Enable Places API (New) in the correct Google Cloud project with billing attached.
+- [ ] Create an API-restricted key, resolve the stable Place ID, and save `GOOGLE_PLACES_API_KEY`, `GOOGLE_PLACE_ID`, and `REVIEWS_ALLOWED_ORIGINS` only as Supabase secrets.
+- [ ] Cap Place Details Enterprise + Atmosphere at 30 requests per day to remain below its current 1,000-request monthly free allowance.
+- [ ] Deploy `google-reviews --no-verify-jwt`, then verify live author images, text, source links, filtering disclosure, CORS, CSP, timeout, quota, and unavailable-provider states.
+- [ ] Push the frontend, confirm GitHub tests and Cloudflare Pages deployment, and inspect `/about` at desktop and mobile widths in both themes.
+
+**Done when:** The production About page shows properly attributed 4- and 5-star
+Google review cards, links to every complete review profile, fails cleanly when
+Google is unavailable, stays within the configured free quota, and the rest of
+the site remains focused on South Jersey real estate.
 
 ## Completed Work
 

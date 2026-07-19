@@ -226,7 +226,7 @@ const placeholderPage = (path: string, title: string): SitePage => ({
 const keepRenderedSections = (page: SitePage, hasStructuredBody: boolean): SitePage => {
   let allowedKinds: PageSection["kind"][] | undefined;
   if (page.path === "/") allowedKinds = ["hero", "profile", "action"];
-  else if (page.path === "/about") allowedKinds = ["profile", "action"];
+  else if (page.path === "/about") allowedKinds = ["profile", "promo", "action"];
   else if (page.path === "/contact") allowedKinds = ["intro", "promo"];
   else if (page.path === "/newsletter") allowedKinds = [];
   else if (hasStructuredBody) allowedKinds = ["action"];

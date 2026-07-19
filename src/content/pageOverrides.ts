@@ -282,6 +282,18 @@ export const pageOverrides: SitePage[] = [
           },
         ],
       },
+      {
+        id: "about-reviews",
+        kind: "promo",
+        blocks: [
+          { tag: "H2", text: "Client feedback" },
+          {
+            tag: "P",
+            text: "Read public feedback from people who have worked with Arthur, with each review linked back to its original source.",
+          },
+        ],
+        images: [],
+      },
       actionSection("about-action"),
     ],
   },
@@ -346,7 +358,7 @@ export const pageOverrides: SitePage[] = [
         id: "privacy-policy",
         blocks: [
           { tag: "H1", text: "Privacy Policy" },
-          { tag: "P", text: "Last updated: July 18, 2026" },
+          { tag: "P", text: "Last updated: July 19, 2026" },
           { tag: "P", text: operatorDisclosureText },
           { tag: "H2", text: "Information collected" },
           {
@@ -366,6 +378,10 @@ export const pageOverrides: SitePage[] = [
           {
             tag: "P",
             text: "Cloudflare hosts and protects the website. Supabase processes and stores private form records. Brevo delivers contact notifications and newsletter double opt-in email. Google Analytics measures website use only after analytics consent is accepted. Information may also be shared with the affiliated brokerage or a transaction-related provider when needed to respond to a request.",
+          },
+          {
+            tag: "P",
+            text: "Google Maps Platform supplies public Google review content on the About page. When that section loads, review data and reviewer profile images may be requested from Google. Google's handling of information is described in the Google Privacy Policy.",
           },
           { tag: "H2", text: "Cookies and analytics choices" },
           {
@@ -445,7 +461,7 @@ export const pageOverrides: SitePage[] = [
         id: "terms-of-service",
         blocks: [
           { tag: "H1", text: "Terms of Service" },
-          { tag: "P", text: "Last updated: July 18, 2026" },
+          { tag: "P", text: "Last updated: July 19, 2026" },
           { tag: "P", text: operatorDisclosureText },
           { tag: "H2", text: "Use of the website" },
           {
@@ -456,6 +472,10 @@ export const pageOverrides: SitePage[] = [
           {
             tag: "P",
             text: "Website content may not be copied or redistributed except as permitted by law or with permission from the applicable owner. External websites have their own terms, content, and privacy practices.",
+          },
+          {
+            tag: "P",
+            text: "Google review content displayed on the About page is provided through Google Maps Platform and remains subject to the Google Maps Platform Terms of Service and Google Privacy Policy. The website may show a clearly disclosed selection of 4- and 5-star reviews while linking visitors to the complete Google review profile.",
           },
           { tag: "H2", text: "Accuracy and professional advice" },
           {

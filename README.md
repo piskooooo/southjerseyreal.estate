@@ -14,7 +14,8 @@ Project status and unfinished work are tracked in [`docs/project-todo.md`](docs/
 - `src/content/navigation.ts` controls header dropdowns, footer links, and social links.
 - `src/components/Layouts.tsx` contains reusable page renderers and the public forms.
 - `src/cloudForms.ts` calls the public form endpoints without exposing backend credentials.
-- `supabase/functions` contains the Turnstile-protected form handlers and authenticated Pages-rebuild handler.
+- `src/reviews.ts` loads the public Google review feed used only on the About page.
+- `supabase/functions` contains the protected public form/review handlers and authenticated Pages-rebuild handler.
 - `supabase/migrations` contains form storage, rate limiting, retention, notification scheduling, and the private editor schema.
 
 ## Local Commands

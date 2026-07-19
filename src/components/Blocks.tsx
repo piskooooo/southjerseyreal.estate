@@ -64,6 +64,8 @@ const localTextLinks = [
   { label: compliance.brokerLegalName, href: compliance.brokerWebsite },
   { label: "The Plum Real Estate Group", href: compliance.brokerWebsite },
   { label: "Google Business Page", href: "https://g.co/kgs/xMPHGmV" },
+  { label: "Google Maps Platform Terms of Service", href: "https://cloud.google.com/maps-platform/terms" },
+  { label: "Google Privacy Policy", href: "https://policies.google.com/privacy" },
   { label: "Instagram", href: "https://www.instagram.com/arthurpisko/" },
   { label: "Facebook", href: "https://www.facebook.com/arthurpiskoREA/" },
   { label: "Zillow", href: "https://www.zillow.com/profile/arthurpisko" },

@@ -2,6 +2,7 @@ import { mkdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { sanitizeImportedPages, serializeGeneratedPages } from "./content-compliance.mjs";
+import { extensionForImageResponse } from "./live-asset-utils.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const root = path.resolve(__dirname, "..");
@@ -16,13 +17,6 @@ const slugify = (value) =>
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/^-+|-+$/g, "")
     .slice(0, 90);
-
-const extensionFor = (url) => {
-  const pathname = new URL(url).pathname;
-  const ext = path.extname(pathname).toLowerCase();
-  if ([".jpg", ".jpeg", ".png", ".webp", ".gif"].includes(ext)) return ext;
-  return ".jpg";
-};
 
 const cleanHref = (href) => {
   if (!href) return "";
@@ -45,11 +39,11 @@ for (const page of source.pages) {
       const url = image.src.replace(/\?format=\d+w$/, "?format=1500w");
       if (!assetUrls.has(url)) {
         const baseName = decodeURIComponent(new URL(url).pathname.split("/").pop() || "asset");
-        const fileName = `${slugify(baseName)}${extensionFor(url)}`;
         assetUrls.set(url, {
           original: url,
-          publicPath: `/assets/live/${fileName}`,
-          localPath: path.join(publicAssetDir, fileName),
+          baseName,
+          publicPath: "",
+          localPath: "",
         });
       }
     }
@@ -63,6 +57,14 @@ for (const asset of assetUrls.values()) {
     const response = await fetch(asset.original);
     if (!response.ok) throw new Error(`${response.status} ${response.statusText}`);
     const bytes = Buffer.from(await response.arrayBuffer());
+    const extension = extensionForImageResponse({
+      bytes,
+      contentType: response.headers.get("content-type") || "",
+      sourceUrl: asset.original,
+    });
+    const fileName = `${slugify(asset.baseName)}${extension}`;
+    asset.publicPath = `/assets/live/${fileName}`;
+    asset.localPath = path.join(publicAssetDir, fileName);
     await writeFile(asset.localPath, bytes);
   } catch (error) {
     console.warn(`Could not download ${asset.original}: ${error.message}`);

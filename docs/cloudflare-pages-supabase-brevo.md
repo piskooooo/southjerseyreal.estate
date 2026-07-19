@@ -50,7 +50,7 @@ Both public forms intentionally use the Turnstile action `turnstile-spin-v2`. Th
 
 ## Public Build Variables
 
-Configure these in both the Pages production and preview environments. They are compiled into the browser bundle and are not secrets.
+Configure the Supabase, Turnstile, and Node values in both the Pages production and preview environments. They are compiled into the browser bundle and are not secrets. Configure the production GA4 measurement ID only in the production environment; leave it unset in preview. As a defense in depth, the client refuses to load a non-test Analytics ID anywhere except the exact canonical hostname `southjerseyreal.estate`, so local QA, `www`, and `*.pages.dev` traffic cannot enter the production property.
 
 ```text
 VITE_GA_MEASUREMENT_ID=G-97H86MNHP8
@@ -59,6 +59,8 @@ VITE_SUPABASE_PUBLISHABLE_KEY=<browser-safe Supabase publishable key>
 VITE_TURNSTILE_SITE_KEY=0x4AAAAAAD4GwgGgH6mUSw5r
 NODE_VERSION=22
 ```
+
+For CI browser tests only, the workflow builds with `VITE_GA_MEASUREMENT_ID=G-TEST123`. The client permits that inert test ID on `localhost` and `127.0.0.1`; do not use the production measurement ID for local or preview testing.
 
 ## Backend Secrets
 

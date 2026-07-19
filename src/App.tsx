@@ -24,18 +24,26 @@ const countyPaths = new Set([
   "/salem-county",
 ]);
 
-const upsertMeta = (attribute: "name" | "property", key: string, content: string) => {
+const upsertMeta = (attribute: "name" | "property", key: string, content?: string | number) => {
   let meta = document.head.querySelector<HTMLMetaElement>(`meta[${attribute}="${key}"]`);
+  if (content === undefined || content === "") {
+    meta?.remove();
+    return;
+  }
   if (!meta) {
     meta = document.createElement("meta");
     meta.setAttribute(attribute, key);
     document.head.appendChild(meta);
   }
-  meta.content = content;
+  meta.content = String(content);
 };
 
-const upsertLink = (rel: string, href: string) => {
+const upsertLink = (rel: string, href?: string) => {
   let link = document.head.querySelector<HTMLLinkElement>(`link[rel="${rel}"]`);
+  if (!href) {
+    link?.remove();
+    return;
+  }
   if (!link) {
     link = document.createElement("link");
     link.rel = rel;
@@ -55,6 +63,10 @@ const upsertStructuredData = (data: ReturnType<typeof buildStructuredData>) => {
   script.textContent = JSON.stringify(data);
 };
 
+const removeStructuredData = () => {
+  document.head.querySelector("#structured-data")?.remove();
+};
+
 const getStoredTheme = (): SiteTheme => {
   try {
     return window.localStorage.getItem("site-theme") === "light" ? "light" : "dark";
@@ -68,7 +80,6 @@ export default function App() {
   const [theme, setTheme] = useState<SiteTheme>(getStoredTheme);
   const [analyticsConsentChoice, setAnalyticsConsentChoice] = useState<AnalyticsConsent | null>(getAnalyticsConsent);
   const [siteContent, setSiteContent] = useState<PublicSiteContent>(seedPublicSiteContent);
-  const [loadedContentPath, setLoadedContentPath] = useState("");
 
   const pageDocument = useMemo(
     () => siteContent.pages.get(path) || siteContent.pages.get("/")!,
@@ -79,11 +90,9 @@ export default function App() {
 
   useEffect(() => {
     let active = true;
-    setLoadedContentPath("");
     loadPublishedSiteContent(path).then((published) => {
       if (!active) return;
       setSiteContent(published);
-      setLoadedContentPath(path);
     });
     return () => { active = false; };
   }, [path]);
@@ -103,29 +112,41 @@ export default function App() {
     }
 
     document.title = seo.title;
+    upsertMeta("name", "application-name", siteContent.sitewide.brandName);
+    upsertMeta("name", "apple-mobile-web-app-title", siteContent.sitewide.brandName);
     upsertMeta("name", "description", seo.description);
     upsertMeta("name", "robots", isKnownPath ? "index, follow, max-image-preview:large" : "noindex, follow");
     upsertMeta("property", "og:title", seo.title);
     upsertMeta("property", "og:description", seo.description);
     upsertMeta("property", "og:type", "website");
-    upsertMeta("property", "og:url", seo.canonicalUrl);
+    upsertMeta("property", "og:locale", "en_US");
+    upsertMeta("property", "og:url", isKnownPath ? seo.canonicalUrl : undefined);
     upsertMeta("property", "og:image", seo.imageUrl);
+    upsertMeta("property", "og:image:secure_url", seo.imageUrl);
+    upsertMeta("property", "og:image:type", seo.imageType);
+    upsertMeta("property", "og:image:width", seo.imageWidth);
+    upsertMeta("property", "og:image:height", seo.imageHeight);
+    upsertMeta("property", "og:image:alt", seo.imageAlt);
     upsertMeta("property", "og:site_name", siteContent.sitewide.brandName);
     upsertMeta("name", "twitter:card", "summary_large_image");
     upsertMeta("name", "twitter:title", seo.title);
     upsertMeta("name", "twitter:description", seo.description);
     upsertMeta("name", "twitter:image", seo.imageUrl);
-    upsertLink("canonical", seo.canonicalUrl);
-    upsertStructuredData(buildStructuredData(path, isKnownPath ? page : undefined, {
-      title: seo.title,
-      description: seo.description,
-      image: seo.imageUrl,
-    }));
+    upsertMeta("name", "twitter:image:alt", seo.imageAlt);
+    upsertLink("canonical", isKnownPath ? seo.canonicalUrl : undefined);
+    if (isKnownPath) {
+      upsertStructuredData(buildStructuredData(path, page, {
+        title: seo.title,
+        description: seo.description,
+        image: seo.imageUrl,
+      }, siteContent.sitewide.brandName));
+    } else {
+      removeStructuredData();
+    }
     window.scrollTo({ top: 0, behavior: "instant" });
   }, [isKnownPath, pageDocument.seo, page, path, siteContent.sitewide.brandName]);
 
   useEffect(() => {
-    if (loadedContentPath !== path) return;
     const seo = isKnownPath
       ? getSeoForPath(path, page, pageDocument.seo)
       : getSeoForPath(path, undefined, {
@@ -133,8 +154,8 @@ export default function App() {
           description: "The requested South Jersey Real Estate Guide page is not available.",
           image: pageDocument.seo.image,
         });
-    trackPageView(seo.canonicalPath, seo.title, seo.canonicalUrl);
-  }, [isKnownPath, loadedContentPath, pageDocument.seo, page, path]);
+    trackPageView(seo.canonicalPath, seo.title);
+  }, [isKnownPath, pageDocument.seo, page, path]);
 
   useEffect(() => {
     const onPopState = () => setPath(normalizeRoutePath(window.location.pathname));
@@ -166,8 +187,14 @@ export default function App() {
     setAnalyticsConsentChoice(consent);
 
     if (consent === "granted") {
-      const seo = getSeoForPath(path, page, pageDocument.seo);
-      trackPageView(seo.canonicalPath, seo.title, seo.canonicalUrl);
+      const seo = isKnownPath
+        ? getSeoForPath(path, page, pageDocument.seo)
+        : getSeoForPath(path, undefined, {
+            title: "Page Not Found | South Jersey Real Estate Guide",
+            description: "The requested South Jersey Real Estate Guide page is not available.",
+            image: pageDocument.seo.image,
+          });
+      trackPageView(seo.canonicalPath, seo.title);
     }
   };
 

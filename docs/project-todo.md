@@ -83,9 +83,9 @@ Google Search Console live-tested the apex URL on July 17, 2026 and reported tha
 
 ## 3. Finish GA4 Lead Tracking
 
-**Goal:** Count successful contact and newsletter submissions as conversions.
+**Goal:** Count successful contact inquiries as leads and keep newsletter subscriptions analytically distinct.
 
-The site already sends the GA4 event `generate_lead` after a successful form submission.
+The site sends the recommended GA4 event `generate_lead` plus the direct key event `contact_lead` after a successful contact inquiry, and `sign_up` after a successful newsletter subscription. These carry only allowlisted, low-cardinality form parameters; none sends form contents, email addresses, phone numbers, or link labels.
 
 ### Steps
 
@@ -93,13 +93,23 @@ The site already sends the GA4 event `generate_lead` after a successful form sub
 - [x] Submit one safe test form.
 - [x] Open the GA4 property using measurement ID `G-97H86MNHP8`.
 - [x] Confirm `generate_lead` appears in Realtime or DebugView.
-- [x] In GA4 Admin, mark `generate_lead` as a key event.
+- [x] Confirm the former `generate_lead` key designation was replaced by the direct `contact_lead` key event.
 - [x] Confirm ordinary page views and navigation events still appear.
+- [x] Restrict the production measurement ID to the exact canonical production hostname.
+- [x] Strip non-attribution queries and fragments from page locations, carry the prior virtual URL as the SPA referrer, and suppress duplicate virtual page views.
+- [x] Remove raw `mailto:`, `tel:`, link-label, query-string, and fragment values from click events.
+- [x] In Enhanced Measurement, turn off **Outbound clicks** because the site now sends a sanitized custom outbound-click event and the automatic listener can capture an unsanitized destination URL.
+- [x] Make the initial page view independent of the remote published-content request.
+- [x] On consent withdrawal, set the GA disable flag, remove GA cookies and the loader, and reload production into a clean denied-consent runtime.
+- [x] In Enhanced Measurement, turn off **Page changes based on browser history events** while retaining the site's manual SPA page views.
+- [x] Register event-scoped custom dimensions for `form_name`, `lead_type`, and `link_source`.
+- [x] Mark direct `contact_lead` as the only editable lead key event; keep `generate_lead` as a standard non-key event and newsletter `sign_up` as a non-key event.
+- [ ] Recheck DebugView after deployment: exactly one `page_view` per route, the previous virtual URL as `page_referrer`, contact as one `contact_lead` plus one `generate_lead`, and newsletter as `sign_up` without `contact_lead`.
 - [x] Record the completion date below.
 
-Completion date: July 17, 2026
+Initial lead-event completion: July 17, 2026. Privacy and SPA measurement hardening: July 18, 2026.
 
-**Done when:** GA4 receives `generate_lead` and identifies it as a key event.
+**Done when:** GA4 receives one privacy-safe page view per route, records contact inquiries as one `contact_lead` plus one standard `generate_lead`, records newsletters separately as `sign_up`, and identifies only `contact_lead` as the editable lead key event.
 
 ## 4. Complete the Human Compliance Review
 
@@ -111,7 +121,7 @@ The July 18 technical remediation is complete, but it is not a legal certificati
 
 - [ ] Ask the broker of record or a New Jersey real-estate attorney to review the site.
 - [x] Implement sitewide broker identity, office-phone, license, fair-housing, neutral-community-copy, consent, privacy, provider, metadata, and publishing guardrails from the July 18 audit.
-- [x] Run the audit scans plus production build, 62 unit tests, 49 tracked database checks, and 35 rendered-route/browser acceptance checks across 21 public routes.
+- [x] Run the audit scans plus production build, 73 unit tests, 49 tracked database checks, and 37 rendered-route/browser acceptance checks across 21 public routes.
 - [x] Recheck the implemented license, brokerage, broker-of-record, licensed-office, and affiliation facts against NJDOBI public records.
 - [x] Audit the production Cloudflare Pages, Supabase, Brevo, and GA4 configuration inventories without recording secret values or personal data.
 - [ ] Confirm brokerage identification and hierarchy are sufficiently prominent on every required page or advertisement.
@@ -187,7 +197,7 @@ Approval date: ____________________
 - [x] Add the local Supabase migration for the one-slot UUID administrator table, public published-only content, private drafts, RLS/grants, audited publish/revert/inquiry RPCs, and the admin-write-only `site-images` storage policies.
 - [x] Add the authenticated `site-rebuild` Edge Function with origin validation, JWT/user verification, UUID administrator verification, strict deploy-hook URL validation, and fail-closed error handling.
 - [x] Connect the public layouts to published Supabase content with compiled fallbacks, and add route-specific HTML/metadata plus sitemap prerendering for crawler-visible SEO changes.
-- [x] Add editor content/inbox/image tests and transactional pgTAP coverage. The current verification passes 62 Vitest tests, 49 database checks, the production build, Deno formatting/type checks, and public/fail-closed browser checks.
+- [x] Add editor content/inbox/image tests and transactional pgTAP coverage. The current verification passes 73 Vitest tests, 49 database checks, the production build, Deno formatting/type checks, and public/fail-closed browser checks.
 - [x] Push implementation commit `d98b8f5`, activation/retirement commit `1698230`, and Pages routing fix `5ead7ea` to `origin/main`; confirm the Cloudflare Pages production deployments and GitHub test workflow succeed.
 
 ### Production Activation and Acceptance
@@ -279,6 +289,6 @@ Implemented both editable, indexable hubs; split each desktop label from its dro
 - [x] Move contact and newsletter handling to Supabase, Turnstile, and Brevo.
 - [x] Verify contact delivery and newsletter double opt-in end to end, then remove all test records.
 - [x] Save the reusable Turnstile Spin workflow under `.codex/skills/turnstile-spin` for future chats.
-- [x] Add 62 Vitest tests, 35 rendered-route compliance checks, and a 49-check transactional Supabase pgTAP suite, and keep the GitHub test workflow on every push.
+- [x] Add 73 Vitest tests, 37 rendered-route compliance checks, and a 49-check transactional Supabase pgTAP suite, and keep the GitHub test workflow on every push.
 - [x] Build and publish the private website-editor frontend, database migration, image/inbox support, managed public-content adapter, and SEO rebuild implementation while keeping production access fail-closed until provisioning is complete.
 - [x] Document private inquiry access, production test cleanup, Pages recovery, retired NAS resources, and the final human compliance handoff.

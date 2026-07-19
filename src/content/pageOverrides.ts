@@ -22,13 +22,13 @@ const actionSection = (id: string) => ({
 });
 
 const countyHubImages: Record<string, { src: string; alt: string }> = {
-  "/atlantic-county": { src: "/assets/live/atlantic-county-map-png.png", alt: "Atlantic County, New Jersey locator map." },
-  "/burlington-county": { src: "/assets/live/burlington-county-map-png.png", alt: "Burlington County, New Jersey locator map." },
-  "/camden-county": { src: "/assets/live/camden-county-map-png.png", alt: "Camden County, New Jersey locator map." },
-  "/cape-may-county": { src: "/assets/live/cape-may-county-map-png.png", alt: "Cape May County, New Jersey locator map." },
-  "/cumberland-county": { src: "/assets/live/cumberland-county-map-png.png", alt: "Cumberland County, New Jersey locator map." },
-  "/gloucester-county": { src: "/assets/live/gloucester-county-map-png.png", alt: "Gloucester County, New Jersey locator map." },
-  "/salem-county": { src: "/assets/live/salem-county-map-png.png", alt: "Salem County, New Jersey locator map." },
+  "/atlantic-county": { src: "/assets/live/atlantic-county-map-png.webp", alt: "Atlantic County, New Jersey locator map." },
+  "/burlington-county": { src: "/assets/live/burlington-county-map-png.webp", alt: "Burlington County, New Jersey locator map." },
+  "/camden-county": { src: "/assets/live/camden-county-map-png.webp", alt: "Camden County, New Jersey locator map." },
+  "/cape-may-county": { src: "/assets/live/cape-may-county-map-png.webp", alt: "Cape May County, New Jersey locator map." },
+  "/cumberland-county": { src: "/assets/live/cumberland-county-map-png.webp", alt: "Cumberland County, New Jersey locator map." },
+  "/gloucester-county": { src: "/assets/live/gloucester-county-map-png.webp", alt: "Gloucester County, New Jersey locator map." },
+  "/salem-county": { src: "/assets/live/salem-county-map-png.webp", alt: "Salem County, New Jersey locator map." },
 };
 
 const countyHubSections = countyNav.map((county) => ({
@@ -53,7 +53,7 @@ const connectHubSections = [
     label: "About Arthur",
     href: "/about",
     image: {
-      src: "/assets/live/arthur-pisko-jr-picture-jpg.jpg",
+      src: "/assets/live/arthur-pisko-jr-picture-jpg.webp",
       alt: "Portrait of Arthur Pisko Jr. wearing glasses, a black shirt, and a plaid tie against a plain background.",
     },
   },
@@ -64,7 +64,7 @@ const connectHubSections = [
     label: "Contact Arthur",
     href: "/contact",
     image: {
-      src: "/assets/live/pitman-gloucester-jpg.jpg",
+      src: "/assets/live/pitman-gloucester-jpg.webp",
       alt: "Brick storefronts, cars, traffic lights, and motorcycles along a South Jersey commercial street.",
     },
   },
@@ -86,7 +86,7 @@ const connectHubSections = [
     label: "Compare Regional Questions",
     href: "/why-new-jersey",
     image: {
-      src: "/assets/live/philly-skyline-from-camden-city-camden-jpg.jpg",
+      src: "/assets/live/philly-skyline-from-camden-city-camden-jpg.webp",
       alt: "Philadelphia skyline viewed from South Jersey beyond trees and nearby homes.",
     },
   },
@@ -97,7 +97,7 @@ const connectHubSections = [
     label: "Explore the Comparison Guide",
     href: "/why-south-jersey",
     image: {
-      src: "/assets/live/camden-county-map-png.png",
+      src: "/assets/live/camden-county-map-png.webp",
       alt: "Camden County, New Jersey locator map.",
     },
   },
@@ -150,7 +150,7 @@ export const pageOverrides: SitePage[] = [
         ],
         images: [
           {
-            src: "/assets/live/philly-skyline-from-camden-city-camden-jpg.jpg",
+            src: "/assets/live/philly-skyline-from-camden-city-camden-jpg.webp",
             alt: "Philadelphia skyline viewed from South Jersey beyond trees and nearby homes.",
           },
         ],
@@ -171,7 +171,7 @@ export const pageOverrides: SitePage[] = [
         ],
         images: [
           {
-            src: "/assets/live/pitman-gloucester-jpg.jpg",
+            src: "/assets/live/pitman-gloucester-jpg.webp",
             alt: "Brick storefronts, cars, traffic lights, and motorcycles along a South Jersey commercial street.",
           },
         ],
@@ -247,7 +247,7 @@ export const pageOverrides: SitePage[] = [
         ],
         images: [
           {
-            src: "/assets/live/arthur-pisko-jr-picture-jpg.jpg",
+            src: "/assets/live/arthur-pisko-jr-picture-jpg.webp",
             alt: "Portrait of Arthur Pisko Jr. wearing glasses, a black shirt, and a plaid tie against a plain background.",
           },
         ],

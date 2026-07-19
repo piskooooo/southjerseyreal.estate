@@ -157,8 +157,14 @@ describe("public cloud forms", () => {
   it("renders the double-opt-in confirmation state from the redirect URL", () => {
     window.history.replaceState({}, "", "/newsletter?confirmed=1");
 
-    render(<NewsletterPage navigate={vi.fn()} />);
+    const view = render(<NewsletterPage navigate={vi.fn()} />);
 
+    expect(screen.getByText(
+      "Your email is confirmed. Welcome to the newsletter.",
+    )).toHaveAttribute("role", "status");
+
+    window.history.replaceState({}, "", "/newsletter");
+    view.rerender(<NewsletterPage navigate={vi.fn()} />);
     expect(screen.getByText(
       "Your email is confirmed. Welcome to the newsletter.",
     )).toHaveAttribute("role", "status");

@@ -1,13 +1,13 @@
 import { lazy, StrictMode, Suspense } from "react";
 import { createRoot } from "react-dom/client";
 import { routeAuthCallbackToAdmin } from "./admin/authCallback";
+import PublicApp from "./App";
 import "./styles.css";
 
 routeAuthCallbackToAdmin();
 
 const isAdminPath = (window.location.pathname.replace(/\/+$/, "") || "/") === "/admin";
 const AdminPage = lazy(() => import("./admin/AdminPage"));
-const PublicApp = lazy(() => import("./App"));
 
 if (isAdminPath) {
   document.documentElement.dataset.theme = "light";
@@ -30,9 +30,7 @@ createRoot(document.getElementById("root")!).render(
     ) : (
       <>
         <a className="skip-link" href="#page">Skip to content</a>
-        <Suspense fallback={<main id="page" aria-busy="true" />}>
-          <PublicApp />
-        </Suspense>
+        <PublicApp />
       </>
     )}
   </StrictMode>,

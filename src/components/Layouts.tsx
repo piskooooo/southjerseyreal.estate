@@ -1,5 +1,5 @@
 import { useState, type KeyboardEvent, type MouseEvent, type ReactNode } from "react";
-import { trackEvent, trackLinkClick } from "../analytics";
+import { trackFormSuccess, trackLinkClick } from "../analytics";
 import {
   areCloudFormsConfigured,
   CONTACT_TURNSTILE_ACTION,
@@ -673,7 +673,9 @@ export function NewsletterPage({ content = DEFAULT_NEWSLETTER_CONTENT, navigate 
   const [submitMessage, setSubmitMessage] = useState("");
   const [turnstileToken, setTurnstileToken] = useState("");
   const [turnstileResetSignal, setTurnstileResetSignal] = useState(0);
-  const isConfirmed = new URLSearchParams(window.location.search).get("confirmed") === "1";
+  const [isConfirmed] = useState(
+    () => new URLSearchParams(window.location.search).get("confirmed") === "1",
+  );
   const isSubmitting = submitState === "submitting";
 
   return (
@@ -717,10 +719,7 @@ export function NewsletterPage({ content = DEFAULT_NEWSLETTER_CONTENT, navigate 
                 turnstileToken,
               });
 
-              trackEvent("generate_lead", {
-                form_name: "newsletter",
-                lead_type: interest,
-              });
+              trackFormSuccess("newsletter", interest);
               form.reset();
               setSubmitState("success");
               setSubmitMessage(result.message);
@@ -878,10 +877,7 @@ export function ContactPage({ page, navigate }: PageProps) {
                 sourcePath: `${window.location.pathname}${window.location.search}`,
               });
 
-              trackEvent("generate_lead", {
-                form_name: "contact",
-                lead_type: interest,
-              });
+              trackFormSuccess("contact", interest);
               form.reset();
               setRequestId(window.crypto.randomUUID());
               setSubmitState("success");

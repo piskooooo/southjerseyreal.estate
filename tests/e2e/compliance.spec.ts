@@ -13,6 +13,20 @@ const routes = seoEntries.map((entry) => entry.path);
 const siteUrl = "https://southjerseyreal.estate";
 const screenshotDir = "test-results/compliance-screenshots";
 
+const readDistFile = (fileName: string) => readFileSync(
+  new URL(`../../dist/${fileName}`, import.meta.url),
+  "utf8",
+);
+
+const prerenderedHtmlForPath = (path: string) => readDistFile(
+  path === "/" ? "index.html" : `${path.slice(1)}.html`,
+);
+
+const structuredDataFromHtml = (html: string) => {
+  const match = html.match(/<script id="structured-data" type="application\/ld\+json">([\s\S]*?)<\/script>/);
+  return match ? JSON.parse(match[1]) as Record<string, unknown> : undefined;
+};
+
 async function denyAnalyticsBeforeLoad(page: Page) {
   await page.addInitScript(() => window.localStorage.setItem("analytics-consent", "denied"));
 }
@@ -20,6 +34,7 @@ async function denyAnalyticsBeforeLoad(page: Page) {
 async function openHydratedRoute(page: Page, path: string) {
   await denyAnalyticsBeforeLoad(page);
   await page.goto(path, { waitUntil: "domcontentloaded" });
+  await expect(page.locator('[data-seo-prerendered="true"]')).toHaveCount(0);
   await expect(page.locator("#page h1")).toHaveCount(1);
   await expect(page.locator("#page h1")).toBeVisible();
   await page.waitForTimeout(250);
@@ -63,16 +78,60 @@ test.describe("compliance route crawl", () => {
       );
 
       const structuredData = await page.locator("#structured-data").textContent();
-      const graph = JSON.parse(structuredData || "{}")["@graph"] as Array<Record<string, unknown>>;
+      const parsedStructuredData = JSON.parse(structuredData || "{}") as Record<string, unknown>;
+      const graph = parsedStructuredData["@graph"] as Array<Record<string, unknown>>;
       expect(graph[0]?.name).toBe(compliance.brokerLegalName);
       expect(graph[0]?.description).toBe(compliance.brokerDescriptor);
       expect(graph[0]?.telephone).toBe(compliance.licensedOfficePhoneHref.replace("tel:", ""));
       expect((graph[1]?.worksFor as Record<string, unknown>)?.["@id"]).toBe(`${siteUrl}/#brokerage`);
 
+      const prerenderedHtml = prerenderedHtmlForPath(entry.path);
+      expect(prerenderedHtml).toContain('data-seo-prerendered="true"');
+      expect(prerenderedHtml).toMatch(/<h1>[^<]+<\/h1>/);
+      expect(prerenderedHtml).toMatch(/<nav aria-label="Related pages">/);
+      expect(structuredDataFromHtml(prerenderedHtml)).toEqual(parsedStructuredData);
+
       const overflow = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
       expect(overflow).toBeLessThanOrEqual(1);
     });
   }
+});
+
+test("prerendered breadcrumbs use the site hierarchy and omit a one-item home trail", () => {
+  const homeGraph = structuredDataFromHtml(prerenderedHtmlForPath("/"))?.["@graph"] as Array<Record<string, unknown>>;
+  expect(homeGraph.some((item) => item["@type"] === "BreadcrumbList")).toBe(false);
+
+  const countyGraph = structuredDataFromHtml(prerenderedHtmlForPath("/atlantic-county"))?.["@graph"] as Array<Record<string, unknown>>;
+  const breadcrumbs = countyGraph.find((item) => item["@type"] === "BreadcrumbList");
+  expect(breadcrumbs?.itemListElement).toEqual([
+    expect.objectContaining({ position: 1, name: "Home", item: `${siteUrl}/` }),
+    expect.objectContaining({ position: 2, name: "Counties", item: `${siteUrl}/counties` }),
+    expect.objectContaining({ position: 3, item: `${siteUrl}/atlantic-county` }),
+  ]);
+});
+
+test("production artifacts include truthful sitemap metadata, canonical redirects, and non-indexable special entries", () => {
+  const sitemap = readDistFile("sitemap.xml");
+  expect(sitemap.match(/<url>/g)).toHaveLength(routes.length);
+  for (const lastmod of sitemap.matchAll(/<lastmod>([^<]+)<\/lastmod>/g)) {
+    expect(lastmod[1]).toMatch(/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{3}Z$/);
+  }
+
+  const redirects = readDistFile("_redirects");
+  expect(redirects).toContain("/home / 301");
+  expect(redirects).toContain("/main / 301");
+
+  const notFound = readDistFile("404.html");
+  expect(notFound).toContain('<meta name="robots" content="noindex, follow"');
+  expect(notFound).toContain("This page is not available.");
+  expect(notFound).not.toContain('rel="canonical"');
+  expect(notFound).not.toContain('id="structured-data"');
+
+  const admin = readDistFile("admin.html");
+  expect(admin).toContain('<meta name="robots" content="noindex, nofollow, noarchive"');
+  expect(admin).toContain("Opening website editor…");
+  expect(admin).not.toContain('rel="canonical"');
+  expect(admin).not.toContain('id="structured-data"');
 });
 
 test("sitewide disclosure remains prominent and readable at 320 pixels", async ({ page }) => {
@@ -128,6 +187,11 @@ test("analytics remains off before opt-in and unloads after withdrawal", async (
   await page.getByRole("button", { name: "Decline" }).click();
   await expect(page.locator("#ga4-script")).toHaveCount(0);
   expect(await page.evaluate(() => window.localStorage.getItem("analytics-consent"))).toBe("denied");
+
+  await page.getByRole("button", { name: "Cookie Settings" }).click();
+  await page.getByRole("button", { name: "Accept Analytics" }).click();
+  await expect(page.locator("#ga4-script")).toHaveCount(1);
+  expect(await page.evaluate(() => window.localStorage.getItem("analytics-consent"))).toBe("granted");
 });
 
 test("provider directory shows choice and relationship disclosures", async ({ page }) => {
@@ -191,9 +255,23 @@ test("hub labels, history, mobile navigation, analytics, and missing routes beha
   const analyticsCommands = await page.evaluate(() => (window.dataLayer || []).map((entry) => Array.from(entry as ArrayLike<unknown>)));
   expect(analyticsCommands).toEqual(expect.arrayContaining([
     expect.arrayContaining(["event", "internal_link_click", expect.objectContaining({
+      destination_type: "internal",
       link_url: "/counties",
       link_source: "header_hub",
     })]),
+  ]));
+  expect(JSON.stringify(analyticsCommands)).not.toContain("link_text");
+
+  const pageViews = analyticsCommands.filter((entry) => entry[0] === "event" && entry[1] === "page_view");
+  expect(pageViews).toHaveLength(2);
+  expect(pageViews[1]).toEqual(expect.arrayContaining([
+    "event",
+    "page_view",
+    expect.objectContaining({
+      page_location: "http://127.0.0.1:4173/counties",
+      page_path: "/counties",
+      page_referrer: "http://127.0.0.1:4173/",
+    }),
   ]));
 
   await desktopNav.getByRole("link", { name: "Connect", exact: true }).click();
@@ -213,6 +291,9 @@ test("hub labels, history, mobile navigation, analytics, and missing routes beha
   await expect(page.getByRole("heading", { level: 1, name: "This page is not available." })).toBeVisible();
   await expect(page).toHaveTitle("Page Not Found | South Jersey Real Estate Guide");
   await expect(page.locator('meta[name="robots"]')).toHaveAttribute("content", "noindex, follow");
+  await expect(page.locator('meta[property="og:url"]')).toHaveCount(0);
+  await expect(page.locator('link[rel="canonical"]')).toHaveCount(0);
+  await expect(page.locator("#structured-data")).toHaveCount(0);
   await page.getByRole("link", { name: "Return Home" }).click();
   await expect(page).toHaveURL(/\/$/);
 });

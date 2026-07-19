@@ -9,70 +9,70 @@
     "path": "/counties",
     "title": "South Jersey County Guides",
     "description": "Browse neutral municipality directories for Atlantic, Burlington, Camden, Cape May, Cumberland, Gloucester, and Salem Counties in New Jersey.",
-    "image": "/assets/live/camden-county-map-png.png",
+    "image": "/assets/live/camden-county-map-png.webp",
     "priority": "0.9"
   },
   {
     "path": "/connect",
     "title": "Connect and Explore | South Jersey Real Estate Guide",
     "description": "Find the About, Contact, Newsletter, comparison guides, FAQ, provider directory, and advertising destinations for this website.",
-    "image": "/assets/live/pitman-gloucester-jpg.jpg",
+    "image": "/assets/live/pitman-gloucester-jpg.webp",
     "priority": "0.75"
   },
   {
     "path": "/atlantic-county",
     "title": "Atlantic County NJ Community Guide",
     "description": "A neutral directory of communities associated with Atlantic County, New Jersey, with reminders to verify current information through official sources.",
-    "image": "/assets/live/atlantic-county-map-png.png",
+    "image": "/assets/live/atlantic-county-map-png.webp",
     "priority": "0.9"
   },
   {
     "path": "/burlington-county",
     "title": "Burlington County NJ Community Guide",
     "description": "A neutral directory of communities associated with Burlington County, New Jersey, with reminders to verify current information through official sources.",
-    "image": "/assets/live/burlington-county-map-png.png",
+    "image": "/assets/live/burlington-county-map-png.webp",
     "priority": "0.9"
   },
   {
     "path": "/camden-county",
     "title": "Camden County NJ Community Guide",
     "description": "A neutral directory of communities associated with Camden County, New Jersey, with reminders to verify current information through official sources.",
-    "image": "/assets/live/camden-county-map-png.png",
+    "image": "/assets/live/camden-county-map-png.webp",
     "priority": "0.9"
   },
   {
     "path": "/cape-may-county",
     "title": "Cape May County NJ Community Guide",
     "description": "A neutral directory of communities associated with Cape May County, New Jersey, with reminders to verify current information through official sources.",
-    "image": "/assets/live/cape-may-county-map-png.png",
+    "image": "/assets/live/cape-may-county-map-png.webp",
     "priority": "0.85"
   },
   {
     "path": "/cumberland-county",
     "title": "Cumberland County NJ Community Guide",
     "description": "A neutral directory of communities associated with Cumberland County, New Jersey, with reminders to verify current information through official sources.",
-    "image": "/assets/live/cumberland-county-map-png.png",
+    "image": "/assets/live/cumberland-county-map-png.webp",
     "priority": "0.9"
   },
   {
     "path": "/gloucester-county",
     "title": "Gloucester County NJ Community Guide",
     "description": "A neutral directory of communities associated with Gloucester County, New Jersey, with reminders to verify current information through official sources.",
-    "image": "/assets/live/gloucester-county-map-png.png",
+    "image": "/assets/live/gloucester-county-map-png.webp",
     "priority": "0.9"
   },
   {
     "path": "/salem-county",
     "title": "Salem County NJ Community Guide",
     "description": "A neutral directory of communities associated with Salem County, New Jersey, with reminders to verify current information through official sources.",
-    "image": "/assets/live/salem-county-map-png.png",
+    "image": "/assets/live/salem-county-map-png.webp",
     "priority": "0.85"
   },
   {
     "path": "/about",
     "title": "About Arthur Pisko Jr. | New Jersey Real Estate Salesperson",
     "description": "Arthur Pisko Jr. is a New Jersey real estate salesperson affiliated with THE PLUM REAL ESTATE GROUP LLC.",
-    "image": "/assets/live/arthur-pisko-jr-picture-jpg.jpg",
+    "image": "/assets/live/arthur-pisko-jr-picture-jpg.webp",
     "priority": "0.7"
   },
   {

@@ -43,18 +43,18 @@ The public site does not claim current REALTOR membership. The membership mark a
 - [x] Add editor phrase/credential checks and runtime rejection of noncompliant published content.
 - [x] Fix overlapping desktop dropdowns and cover click, hover, focus, outside-click, and Escape behavior.
 - [x] Run the audit's exact high-risk phrase scan and phone/email scan and manually classify all remaining hits.
-- [x] Pass the production build, 62 unit tests, and 35 Playwright checks covering all 21 public routes, hydrated DOM, metadata, JSON-LD, forms, analytics consent, providers, hub navigation, keyboard behavior, 320-pixel layout, screenshots, overflow, alt text, and automated WCAG checks.
+- [x] Pass the production build, 73 unit tests, and 37 Playwright checks covering all 21 public routes, prerendered and hydrated DOM, metadata, JSON-LD, forms, analytics consent, providers, hub navigation, keyboard behavior, 320-pixel layout, screenshots, overflow, alt text, and automated WCAG checks.
 
 ## July 18 Technical Reverification
 
 - [x] Rechecked the NJDOBI licensee-search records for the salesperson, brokerage affiliation, company, broker of record, and licensed office facts. The implemented facts remain consistent with the public records listed above.
-- [x] Audited the production Cloudflare Pages project. It remains connected to `piskooooo/southjerseyreal.estate`, deploys `main` automatically with `npm run build`, publishes `dist`, uses Node 22, has the five expected public build-variable names, and serves the apex, `www`, and Pages hostnames.
+- [x] Audited the production Cloudflare Pages project. It remains connected to `piskooooo/southjerseyreal.estate`, deploys `main` automatically with `npm run build`, publishes `dist`, uses Node 22, has the five expected public production build-variable names, omits the production GA4 ID from preview builds, and serves the apex, `www`, and Pages hostnames.
 - [x] Audited the production Supabase project without recording secret values or personal data. The project is healthy; `contact-submit`, `newsletter-subscribe`, and `site-rebuild` are deployed; the expected custom secret names are present; and a read-only count confirmed one Auth user and one private site-administrator slot.
 - [x] Audited the personal Brevo workspace without recording contact data. Website signups target list `8`, the double-opt-in template `2` is active, and the `southjerseyreal.estate` sending domain and sender are verified.
-- [x] Audited GA4 property `Main Website`. Its production stream uses measurement ID `G-97H86MNHP8`, reports recent traffic, and `generate_lead` remains marked as a key event.
+- [x] Audited GA4 property `Main Website`. Its production stream uses measurement ID `G-97H86MNHP8`; data retention is 14 months; email plus configured sensitive query parameters are redacted; manual SPA and outbound-click tracking are de-duplicated; `form_name`, `lead_type`, and `link_source` are registered; and only the direct `contact_lead` event is marked as an editable lead key event.
 - [x] Rechecked public credential evidence. [Realtor.com](https://www.realtor.com/realestateagents/659c35c962a5ff070b97f4b8) and the [brokerage roster](https://www.plum-realestate.com/agents.php) currently display a REALTOR claim for Arthur, but these public pages do not replace current membership documentation and broker approval. The public-site mark remains absent.
 - [x] Scheduled the Codex automation `Quarterly South Jersey Compliance Review` to run every three months on the 18th at 9:00 AM local time, beginning October 18, 2026.
-- [x] Re-ran the audit phrase and contact scans, production build, 62 unit tests, 49 tracked database checks, and 35 Playwright checks after implementing the Counties and Connect hubs.
+- [x] Re-ran the audit phrase and contact scans, production build, 73 unit tests, 49 tracked database checks, and 37 Playwright checks after implementing the Counties and Connect hubs plus the Google analytics, crawler, schema, sitemap, and media remediations.
 
 This technical record does not satisfy the broker, owner, credential-holder, or legal approvals below.
 

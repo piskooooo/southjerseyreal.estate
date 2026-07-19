@@ -28,7 +28,7 @@ export const generatedPages: SitePage[] = [
         ],
         "images": [
           {
-            "src": "/assets/live/atlantic-county-map-png.png",
+            "src": "/assets/live/atlantic-county-map-png.webp",
             "alt": "Atlantic County, New Jersey locator map."
           }
         ]
@@ -80,7 +80,7 @@ export const generatedPages: SitePage[] = [
         ],
         "images": [
           {
-            "src": "/assets/live/atlantic-city-jpg.jpg",
+            "src": "/assets/live/atlantic-city-jpg.webp",
             "alt": "Image accompanying the Atlantic City, New Jersey community entry."
           }
         ]
@@ -106,7 +106,7 @@ export const generatedPages: SitePage[] = [
         ],
         "images": [
           {
-            "src": "/assets/live/brigantine-jpg.jpg",
+            "src": "/assets/live/brigantine-jpg.webp",
             "alt": "Image accompanying the Brigantine, New Jersey community entry."
           }
         ]
@@ -132,7 +132,7 @@ export const generatedPages: SitePage[] = [
         ],
         "images": [
           {
-            "src": "/assets/live/buena-jpg.jpg",
+            "src": "/assets/live/buena-jpg.webp",
             "alt": "Image accompanying the Buena Borough, New Jersey community entry."
           }
         ]
@@ -158,7 +158,7 @@ export const generatedPages: SitePage[] = [
         ],
         "images": [
           {
-            "src": "/assets/live/buena-vista-township-jpg.jpg",
+            "src": "/assets/live/buena-vista-township-jpg.webp",
             "alt": "Image accompanying the Buena Vista Township, New Jersey community entry."
           }
         ]
@@ -184,7 +184,7 @@ export const generatedPages: SitePage[] = [
         ],
         "images": [
           {
-            "src": "/assets/live/corbin-city-jpg.jpg",
+            "src": "/assets/live/corbin-city-jpg.webp",
             "alt": "Image accompanying the Corbin City, New Jersey community entry."
           }
         ]
@@ -210,7 +210,7 @@ export const generatedPages: SitePage[] = [
         ],
         "images": [
           {
-            "src": "/assets/live/egg-harbor-city-jpg.jpg",
+            "src": "/assets/live/egg-harbor-city-jpg.webp",
             "alt": "Image accompanying the Egg Harbor City, New Jersey community entry."
           }
         ]
@@ -236,7 +236,7 @@ export const generatedPages: SitePage[] = [
         ],
         "images": [
           {
-            "src": "/assets/live/egg-harbor-township-jpg.jpg",
+            "src": "/assets/live/egg-harbor-township-jpg.webp",
             "alt": "Image accompanying the Egg Harbor Township, New Jersey community entry."
           }
         ]
@@ -288,7 +288,7 @@ export const generatedPages: SitePage[] = [
         ],
         "images": [
           {
-            "src": "/assets/live/folsom-borough-jpg.jpg",
+            "src": "/assets/live/folsom-borough-jpg.webp",
             "alt": "Image accompanying the Folsom, New Jersey community entry."
           }
         ]
@@ -314,7 +314,7 @@ export const generatedPages: SitePage[] = [
         ],
         "images": [
           {
-            "src": "/assets/live/galloway-township-jpg.jpg",
+            "src": "/assets/live/galloway-township-jpg.webp",
             "alt": "Image accompanying the Galloway Township, New Jersey community entry."
           }
         ]
@@ -340,7 +340,7 @@ export const generatedPages: SitePage[] = [
         ],
         "images": [
           {
-            "src": "/assets/live/hamilton-mays-landing-jpg.jpg",
+            "src": "/assets/live/hamilton-mays-landing-jpg.webp",
             "alt": "Image accompanying the Hamilton Township (Mays Landing), New Jersey community entry."
           }
         ]
@@ -366,7 +366,7 @@ export const generatedPages: SitePage[] = [
         ],
         "images": [
           {
-            "src": "/assets/live/hammonton-jpg.jpg",
+            "src": "/assets/live/hammonton-jpg.webp",
             "alt": "Image accompanying the Hammonton, New Jersey community entry."
           }
         ]
@@ -392,7 +392,7 @@ export const generatedPages: SitePage[] = [
         ],
         "images": [
           {
-            "src": "/assets/live/linwood-jpg.jpg",
+            "src": "/assets/live/linwood-jpg.webp",
             "alt": "Image accompanying the Linwood, New Jersey community entry."
           }
         ]
@@ -418,7 +418,7 @@ export const generatedPages: SitePage[] = [
         ],
         "images": [
           {
-            "src": "/assets/live/longport-jpg.jpg",
+            "src": "/assets/live/longport-jpg.webp",
             "alt": "Image accompanying the Longport, New Jersey community entry."
           }
         ]
@@ -470,7 +470,7 @@ export const generatedPages: SitePage[] = [
         ],
         "images": [
           {
-            "src": "/assets/live/mullica-township-jpg.jpg",
+            "src": "/assets/live/mullica-township-jpg.webp",
             "alt": "Image accompanying the Mullica Township, New Jersey community entry."
           }
         ]
@@ -496,7 +496,7 @@ export const generatedPages: SitePage[] = [
         ],
         "images": [
           {
-            "src": "/assets/live/pleasantville-northfield-jpg.jpg",
+            "src": "/assets/live/pleasantville-northfield-jpg.webp",
             "alt": "Image accompanying the Northfield, New Jersey community entry."
           }
         ]
@@ -522,7 +522,7 @@ export const generatedPages: SitePage[] = [
         ],
         "images": [
           {
-            "src": "/assets/live/pleasantville-northfield-jpg.jpg",
+            "src": "/assets/live/pleasantville-northfield-jpg.webp",
             "alt": "Image accompanying the Pleasantville, New Jersey community entry."
           }
         ]
@@ -548,7 +548,7 @@ export const generatedPages: SitePage[] = [
         ],
         "images": [
           {
-            "src": "/assets/live/port-republic-jpg.jpg",
+            "src": "/assets/live/port-republic-jpg.webp",
             "alt": "Image accompanying the Port Republic, New Jersey community entry."
           }
         ]
@@ -574,7 +574,7 @@ export const generatedPages: SitePage[] = [
         ],
         "images": [
           {
-            "src": "/assets/live/somers-point-jpg.jpg",
+            "src": "/assets/live/somers-point-jpg.webp",
             "alt": "Image accompanying the Somers Point, New Jersey community entry."
           }
         ]
@@ -600,7 +600,7 @@ export const generatedPages: SitePage[] = [
         ],
         "images": [
           {
-            "src": "/assets/live/ventnor-city-jpg.jpg",
+            "src": "/assets/live/ventnor-city-jpg.webp",
             "alt": "Image accompanying the Ventnor City, New Jersey community entry."
           }
         ]
@@ -626,7 +626,7 @@ export const generatedPages: SitePage[] = [
         ],
         "images": [
           {
-            "src": "/assets/live/weymouth-jpg.jpg",
+            "src": "/assets/live/weymouth-jpg.webp",
             "alt": "Image accompanying the Weymouth Township, New Jersey community entry."
           }
         ]
@@ -686,7 +686,7 @@ export const generatedPages: SitePage[] = [
         ],
         "images": [
           {
-            "src": "/assets/live/burlington-county-map-png.png",
+            "src": "/assets/live/burlington-county-map-png.webp",
             "alt": "Burlington County, New Jersey locator map."
           }
         ]
@@ -712,7 +712,7 @@ export const generatedPages: SitePage[] = [
         ],
         "images": [
           {
-            "src": "/assets/live/bass-river-township-jpg.jpg",
+            "src": "/assets/live/bass-river-township-jpg.webp",
             "alt": "Image accompanying the Bass River Township, New Jersey community entry."
           }
         ]
@@ -738,7 +738,7 @@ export const generatedPages: SitePage[] = [
         ],
         "images": [
           {
-            "src": "/assets/live/beverly-city-jpg.jpg",
+            "src": "/assets/live/beverly-city-jpg.webp",
             "alt": "Image accompanying the Beverly City, New Jersey community entry."
           }
         ]
@@ -764,7 +764,7 @@ export const generatedPages: SitePage[] = [
         ],
         "images": [
           {
-            "src": "/assets/live/bordentown-city-jpeg.jpeg",
+            "src": "/assets/live/bordentown-city-jpeg.webp",
             "alt": "Image accompanying the Bordentown City, New Jersey community entry."
           }
         ]
@@ -790,7 +790,7 @@ export const generatedPages: SitePage[] = [
         ],
         "images": [
           {
-            "src": "/assets/live/bordentown-township-jpg.jpg",
+            "src": "/assets/live/bordentown-township-jpg.webp",
             "alt": "Image accompanying the Bordentown Township, New Jersey community entry."
           }
         ]
@@ -816,7 +816,7 @@ export const generatedPages: SitePage[] = [
         ],
         "images": [
           {
-            "src": "/assets/live/burlington-city-jpeg.jpeg",
+            "src": "/assets/live/burlington-city-jpeg.webp",
             "alt": "Image accompanying the Burlington City, New Jersey community entry."
           }
         ]
@@ -842,7 +842,7 @@ export const generatedPages: SitePage[] = [
         ],
         "images": [
           {
-            "src": "/assets/live/burlington-township-jpg.jpg",
+            "src": "/assets/live/burlington-township-jpg.webp",
             "alt": "Image accompanying the Burlington Township, New Jersey community entry."
           }
         ]
@@ -868,7 +868,7 @@ export const generatedPages: SitePage[] = [
         ],
         "images": [
           {
-            "src": "/assets/live/chesterfield-township-jpg.jpg",
+            "src": "/assets/live/chesterfield-township-jpg.webp",
             "alt": "Image accompanying the Chesterfield Township, New Jersey community entry."
           }
         ]
@@ -894,7 +894,7 @@ export const generatedPages: SitePage[] = [
         ],
         "images": [
           {
-            "src": "/assets/live/cinnaminson-township-jpg.jpg",
+            "src": "/assets/live/cinnaminson-township-jpg.webp",
             "alt": "Image accompanying the Cinnaminson Township, New Jersey community entry."
           }
         ]
@@ -920,7 +920,7 @@ export const generatedPages: SitePage[] = [
         ],
         "images": [
           {
-            "src": "/assets/live/delanco-township-jpg.jpg",
+            "src": "/assets/live/delanco-township-jpg.webp",
             "alt": "Image accompanying the Delanco Township, New Jersey community entry."
           }
         ]
@@ -946,7 +946,7 @@ export const generatedPages: SitePage[] = [
         ],
         "images": [
           {
-            "src": "/assets/live/delran-township-jpg.jpg",
+            "src": "/assets/live/delran-township-jpg.webp",
             "alt": "Image accompanying the Delran Township, New Jersey community entry."
           }
         ]
@@ -972,7 +972,7 @@ export const generatedPages: SitePage[] = [
         ],
         "images": [
           {
-            "src": "/assets/live/eastampton-township-jpg.jpg",
+            "src": "/assets/live/eastampton-township-jpg.webp",
             "alt": "Image accompanying the Eastampton Township, New Jersey community entry."
           }
         ]
@@ -998,7 +998,7 @@ export const generatedPages: SitePage[] = [
         ],
         "images": [
           {
-            "src": "/assets/live/edgewater-park-township-jpg.jpg",
+            "src": "/assets/live/edgewater-park-township-jpg.webp",
             "alt": "Image accompanying the Edgewater Park Township, New Jersey community entry."
           }
         ]
@@ -1024,7 +1024,7 @@ export const generatedPages: SitePage[] = [
         ],
         "images": [
           {
-            "src": "/assets/live/evesham-township-jpg.jpg",
+            "src": "/assets/live/evesham-township-jpg.webp",
             "alt": "Image accompanying the Evesham Township (Marlton), New Jersey community entry."
           }
         ]
@@ -1050,7 +1050,7 @@ export const generatedPages: SitePage[] = [
         ],
         "images": [
           {
-            "src": "/assets/live/fieldsboro-borough-jpg.jpg",
+            "src": "/assets/live/fieldsboro-borough-jpg.webp",
             "alt": "Image accompanying the Fieldsboro Borough, New Jersey community entry."
           }
         ]
@@ -1102,7 +1102,7 @@ export const generatedPages: SitePage[] = [
         ],
         "images": [
           {
-            "src": "/assets/live/hainesport-township-jpg.jpg",
+            "src": "/assets/live/hainesport-township-jpg.webp",
             "alt": "Image accompanying the Hainesport Township, New Jersey community entry."
           }
         ]
@@ -1128,7 +1128,7 @@ export const generatedPages: SitePage[] = [
         ],
         "images": [
           {
-            "src": "/assets/live/lumberton-township-jpg.jpg",
+            "src": "/assets/live/lumberton-township-jpg.webp",
             "alt": "Image accompanying the Lumberton Township, New Jersey community entry."
           }
         ]
@@ -1154,7 +1154,7 @@ export const generatedPages: SitePage[] = [
         ],
         "images": [
           {
-            "src": "/assets/live/mansfield-township-jpg.jpg",
+            "src": "/assets/live/mansfield-township-jpg.webp",
             "alt": "Image accompanying the Mansfield Township, New Jersey community entry."
           }
         ]
@@ -1180,7 +1180,7 @@ export const generatedPages: SitePage[] = [
         ],
         "images": [
           {
-            "src": "/assets/live/maple-shade-township-jpg.jpg",
+            "src": "/assets/live/maple-shade-township-jpg.webp",
             "alt": "Image accompanying the Maple Shade Township, New Jersey community entry."
           }
         ]
@@ -1206,7 +1206,7 @@ export const generatedPages: SitePage[] = [
         ],
         "images": [
           {
-            "src": "/assets/live/medford-township-jpeg.jpeg",
+            "src": "/assets/live/medford-township-jpeg.webp",
             "alt": "Image accompanying the Medford Township, New Jersey community entry."
           }
         ]
@@ -1232,7 +1232,7 @@ export const generatedPages: SitePage[] = [
         ],
         "images": [
           {
-            "src": "/assets/live/medford-lakes-borough-jpg.jpg",
+            "src": "/assets/live/medford-lakes-borough-jpg.webp",
             "alt": "Image accompanying the Medford Lakes Borough, New Jersey community entry."
           }
         ]
@@ -1258,7 +1258,7 @@ export const generatedPages: SitePage[] = [
         ],
         "images": [
           {
-            "src": "/assets/live/moorestown-township-jpg.jpg",
+            "src": "/assets/live/moorestown-township-jpg.webp",
             "alt": "Image accompanying the Moorestown Township, New Jersey community entry."
           }
         ]
@@ -1284,7 +1284,7 @@ export const generatedPages: SitePage[] = [
         ],
         "images": [
           {
-            "src": "/assets/live/mount-holly-township-jpg.jpg",
+            "src": "/assets/live/mount-holly-township-jpg.webp",
             "alt": "Image accompanying the Mount Holly Township, New Jersey community entry."
           }
         ]
@@ -1310,7 +1310,7 @@ export const generatedPages: SitePage[] = [
         ],
         "images": [
           {
-            "src": "/assets/live/mount-laurel-township-jpg.jpg",
+            "src": "/assets/live/mount-laurel-township-jpg.webp",
             "alt": "Image accompanying the Mount Laurel Township, New Jersey community entry."
           }
         ]
@@ -1336,7 +1336,7 @@ export const generatedPages: SitePage[] = [
         ],
         "images": [
           {
-            "src": "/assets/live/new-hanover-township-png.png",
+            "src": "/assets/live/new-hanover-township-png.webp",
             "alt": "Image accompanying the New Hanover Township, New Jersey community entry."
           }
         ]
@@ -1362,7 +1362,7 @@ export const generatedPages: SitePage[] = [
         ],
         "images": [
           {
-            "src": "/assets/live/north-hanover-township-jpg.jpg",
+            "src": "/assets/live/north-hanover-township-jpg.webp",
             "alt": "Image accompanying the North Hanover Township, New Jersey community entry."
           }
         ]
@@ -1388,7 +1388,7 @@ export const generatedPages: SitePage[] = [
         ],
         "images": [
           {
-            "src": "/assets/live/palmyra-borough-jpg.jpg",
+            "src": "/assets/live/palmyra-borough-jpg.webp",
             "alt": "Image accompanying the Palmyra Borough, New Jersey community entry."
           }
         ]
@@ -1414,7 +1414,7 @@ export const generatedPages: SitePage[] = [
         ],
         "images": [
           {
-            "src": "/assets/live/pemberton-borough-jpg.jpg",
+            "src": "/assets/live/pemberton-borough-jpg.webp",
             "alt": "Image accompanying the Pemberton Borough, New Jersey community entry."
           }
         ]
@@ -1440,7 +1440,7 @@ export const generatedPages: SitePage[] = [
         ],
         "images": [
           {
-            "src": "/assets/live/pemberton-township-jpg.jpg",
+            "src": "/assets/live/pemberton-township-jpg.webp",
             "alt": "Image accompanying the Pemberton Township, New Jersey community entry."
           }
         ]
@@ -1466,7 +1466,7 @@ export const generatedPages: SitePage[] = [
         ],
         "images": [
           {
-            "src": "/assets/live/riverside-township-jpg.jpg",
+            "src": "/assets/live/riverside-township-jpg.webp",
             "alt": "Image accompanying the Riverside Township, New Jersey community entry."
           }
         ]
@@ -1492,7 +1492,7 @@ export const generatedPages: SitePage[] = [
         ],
         "images": [
           {
-            "src": "/assets/live/riverton-borough-jpg.jpg",
+            "src": "/assets/live/riverton-borough-jpg.webp",
             "alt": "Image accompanying the Riverton Borough, New Jersey community entry."
           }
         ]
@@ -1518,7 +1518,7 @@ export const generatedPages: SitePage[] = [
         ],
         "images": [
           {
-            "src": "/assets/live/shamong-township-jpg.jpg",
+            "src": "/assets/live/shamong-township-jpg.webp",
             "alt": "Image accompanying the Shamong Township, New Jersey community entry."
           }
         ]
@@ -1544,7 +1544,7 @@ export const generatedPages: SitePage[] = [
         ],
         "images": [
           {
-            "src": "/assets/live/southampton-township-jpg.jpg",
+            "src": "/assets/live/southampton-township-jpg.webp",
             "alt": "Image accompanying the Southampton Township, New Jersey community entry."
           }
         ]
@@ -1570,7 +1570,7 @@ export const generatedPages: SitePage[] = [
         ],
         "images": [
           {
-            "src": "/assets/live/springfield-township-jpg.jpg",
+            "src": "/assets/live/springfield-township-jpg.webp",
             "alt": "Image accompanying the Springfield Township, New Jersey community entry."
           }
         ]
@@ -1596,7 +1596,7 @@ export const generatedPages: SitePage[] = [
         ],
         "images": [
           {
-            "src": "/assets/live/tabernacle-township-jpg.jpg",
+            "src": "/assets/live/tabernacle-township-jpg.webp",
             "alt": "Image accompanying the Tabernacle Township, New Jersey community entry."
           }
         ]
@@ -1622,7 +1622,7 @@ export const generatedPages: SitePage[] = [
         ],
         "images": [
           {
-            "src": "/assets/live/washington-township-jpg.jpg",
+            "src": "/assets/live/washington-township-jpg.webp",
             "alt": "Image accompanying the Washington Township (Burlington County), New Jersey community entry."
           }
         ]
@@ -1648,7 +1648,7 @@ export const generatedPages: SitePage[] = [
         ],
         "images": [
           {
-            "src": "/assets/live/westampton-township-jpg.jpg",
+            "src": "/assets/live/westampton-township-jpg.webp",
             "alt": "Image accompanying the Westampton Township, New Jersey community entry."
           }
         ]
@@ -1674,7 +1674,7 @@ export const generatedPages: SitePage[] = [
         ],
         "images": [
           {
-            "src": "/assets/live/willingboro-township-jpg.jpg",
+            "src": "/assets/live/willingboro-township-jpg.webp",
             "alt": "Image accompanying the Willingboro Township, New Jersey community entry."
           }
         ]
@@ -1700,7 +1700,7 @@ export const generatedPages: SitePage[] = [
         ],
         "images": [
           {
-            "src": "/assets/live/woodland-township-jpg.jpg",
+            "src": "/assets/live/woodland-township-jpg.webp",
             "alt": "Image accompanying the Woodland Township, New Jersey community entry."
           }
         ]
@@ -1726,7 +1726,7 @@ export const generatedPages: SitePage[] = [
         ],
         "images": [
           {
-            "src": "/assets/live/woodland-township-jpg.jpg",
+            "src": "/assets/live/woodland-township-jpg.webp",
             "alt": "Image accompanying the Wrightstown Borough, New Jersey community entry."
           }
         ]
@@ -1786,7 +1786,7 @@ export const generatedPages: SitePage[] = [
         ],
         "images": [
           {
-            "src": "/assets/live/camden-county-map-png.png",
+            "src": "/assets/live/camden-county-map-png.webp",
             "alt": "Camden County, New Jersey locator map."
           }
         ]
@@ -1812,7 +1812,7 @@ export const generatedPages: SitePage[] = [
         ],
         "images": [
           {
-            "src": "/assets/live/audobon-jpg.jpg",
+            "src": "/assets/live/audobon-jpg.webp",
             "alt": "Image accompanying the Audubon & Audubon Park, New Jersey community entry."
           }
         ]
@@ -1838,7 +1838,7 @@ export const generatedPages: SitePage[] = [
         ],
         "images": [
           {
-            "src": "/assets/live/barrington-jpg.jpg",
+            "src": "/assets/live/barrington-jpg.webp",
             "alt": "Image accompanying the Barrington, New Jersey community entry."
           }
         ]
@@ -1864,7 +1864,7 @@ export const generatedPages: SitePage[] = [
         ],
         "images": [
           {
-            "src": "/assets/live/bellmawr-jpg.jpg",
+            "src": "/assets/live/bellmawr-jpg.webp",
             "alt": "Image accompanying the Bellmawr, New Jersey community entry."
           }
         ]
@@ -1890,7 +1890,7 @@ export const generatedPages: SitePage[] = [
         ],
         "images": [
           {
-            "src": "/assets/live/berlin-jpg.jpg",
+            "src": "/assets/live/berlin-jpg.webp",
             "alt": "Image accompanying the Berlin Borough & Berlin Township, New Jersey community entry."
           }
         ]
@@ -1916,7 +1916,7 @@ export const generatedPages: SitePage[] = [
         ],
         "images": [
           {
-            "src": "/assets/live/brooklawn-jpg.jpg",
+            "src": "/assets/live/brooklawn-jpg.webp",
             "alt": "Image accompanying the Brooklawn, New Jersey community entry."
           }
         ]
@@ -1942,7 +1942,7 @@ export const generatedPages: SitePage[] = [
         ],
         "images": [
           {
-            "src": "/assets/live/camden-city-jpg.jpg",
+            "src": "/assets/live/camden-city-jpg.webp",
             "alt": "Image accompanying the Camden City, New Jersey community entry."
           }
         ]
@@ -1968,7 +1968,7 @@ export const generatedPages: SitePage[] = [
         ],
         "images": [
           {
-            "src": "/assets/live/cherry-hill-jpg.jpg",
+            "src": "/assets/live/cherry-hill-jpg.webp",
             "alt": "Image accompanying the Cherry Hill, New Jersey community entry."
           }
         ]
@@ -1994,7 +1994,7 @@ export const generatedPages: SitePage[] = [
         ],
         "images": [
           {
-            "src": "/assets/live/cherry-hill-jpg.jpg",
+            "src": "/assets/live/cherry-hill-jpg.webp",
             "alt": "Image accompanying the Chesilhurst, New Jersey community entry."
           }
         ]
@@ -2020,7 +2020,7 @@ export const generatedPages: SitePage[] = [
         ],
         "images": [
           {
-            "src": "/assets/live/clementon-jpg.jpg",
+            "src": "/assets/live/clementon-jpg.webp",
             "alt": "Image accompanying the Clementon, New Jersey community entry."
           }
         ]
@@ -2046,7 +2046,7 @@ export const generatedPages: SitePage[] = [
         ],
         "images": [
           {
-            "src": "/assets/live/collingswood-jpg.jpg",
+            "src": "/assets/live/collingswood-jpg.webp",
             "alt": "Image accompanying the Collingswood, New Jersey community entry."
           }
         ]
@@ -2072,7 +2072,7 @@ export const generatedPages: SitePage[] = [
         ],
         "images": [
           {
-            "src": "/assets/live/gibbsboro-camden-jpg.jpg",
+            "src": "/assets/live/gibbsboro-camden-jpg.webp",
             "alt": "Image accompanying the Gibbsboro, New Jersey community entry."
           }
         ]
@@ -2098,7 +2098,7 @@ export const generatedPages: SitePage[] = [
         ],
         "images": [
           {
-            "src": "/assets/live/gloucester-city-camden-jpg.jpg",
+            "src": "/assets/live/gloucester-city-camden-jpg.webp",
             "alt": "Image accompanying the Gloucester City, New Jersey community entry."
           }
         ]
@@ -2124,7 +2124,7 @@ export const generatedPages: SitePage[] = [
         ],
         "images": [
           {
-            "src": "/assets/live/gloucester-township-camden-jpg.jpg",
+            "src": "/assets/live/gloucester-township-camden-jpg.webp",
             "alt": "Image accompanying the Gloucester Township, New Jersey community entry."
           }
         ]
@@ -2150,7 +2150,7 @@ export const generatedPages: SitePage[] = [
         ],
         "images": [
           {
-            "src": "/assets/live/haddon-heights-camden-jpg.jpg",
+            "src": "/assets/live/haddon-heights-camden-jpg.webp",
             "alt": "Image accompanying the Haddon Heights, New Jersey community entry."
           }
         ]
@@ -2176,7 +2176,7 @@ export const generatedPages: SitePage[] = [
         ],
         "images": [
           {
-            "src": "/assets/live/haddon-township-camden-jpg.jpg",
+            "src": "/assets/live/haddon-township-camden-jpg.webp",
             "alt": "Image accompanying the Haddon Township, New Jersey community entry."
           }
         ]
@@ -2202,7 +2202,7 @@ export const generatedPages: SitePage[] = [
         ],
         "images": [
           {
-            "src": "/assets/live/haddonfield-camden-jpg.jpg",
+            "src": "/assets/live/haddonfield-camden-jpg.webp",
             "alt": "Image accompanying the Haddonfield, New Jersey community entry."
           }
         ]
@@ -2228,7 +2228,7 @@ export const generatedPages: SitePage[] = [
         ],
         "images": [
           {
-            "src": "/assets/live/hi-nella-camden-jpeg.jpeg",
+            "src": "/assets/live/hi-nella-camden-jpeg.webp",
             "alt": "Image accompanying the Hi-Nella, New Jersey community entry."
           }
         ]
@@ -2254,7 +2254,7 @@ export const generatedPages: SitePage[] = [
         ],
         "images": [
           {
-            "src": "/assets/live/laurel-springs-camden-jpg.jpg",
+            "src": "/assets/live/laurel-springs-camden-jpg.webp",
             "alt": "Image accompanying the Laurel Springs, New Jersey community entry."
           }
         ]
@@ -2280,7 +2280,7 @@ export const generatedPages: SitePage[] = [
         ],
         "images": [
           {
-            "src": "/assets/live/lawnside-camden-jpg.jpg",
+            "src": "/assets/live/lawnside-camden-jpg.webp",
             "alt": "Image accompanying the Lawnside, New Jersey community entry."
           }
         ]
@@ -2306,7 +2306,7 @@ export const generatedPages: SitePage[] = [
         ],
         "images": [
           {
-            "src": "/assets/live/lindenwold-camden-jpg.jpg",
+            "src": "/assets/live/lindenwold-camden-jpg.webp",
             "alt": "Image accompanying the Lindenwold, New Jersey community entry."
           }
         ]
@@ -2332,7 +2332,7 @@ export const generatedPages: SitePage[] = [
         ],
         "images": [
           {
-            "src": "/assets/live/magnolia-camden-jpg.jpg",
+            "src": "/assets/live/magnolia-camden-jpg.webp",
             "alt": "Image accompanying the Magnolia, New Jersey community entry."
           }
         ]
@@ -2358,7 +2358,7 @@ export const generatedPages: SitePage[] = [
         ],
         "images": [
           {
-            "src": "/assets/live/merchantville-camden-jpg.jpg",
+            "src": "/assets/live/merchantville-camden-jpg.webp",
             "alt": "Image accompanying the Merchantville, New Jersey community entry."
           }
         ]
@@ -2384,7 +2384,7 @@ export const generatedPages: SitePage[] = [
         ],
         "images": [
           {
-            "src": "/assets/live/mount-ephraim-camden-jpg.jpg",
+            "src": "/assets/live/mount-ephraim-camden-jpg.webp",
             "alt": "Image accompanying the Mount Ephraim, New Jersey community entry."
           }
         ]
@@ -2410,7 +2410,7 @@ export const generatedPages: SitePage[] = [
         ],
         "images": [
           {
-            "src": "/assets/live/oaklyn-camden-jpeg.jpeg",
+            "src": "/assets/live/oaklyn-camden-jpeg.webp",
             "alt": "Image accompanying the Oaklyn, New Jersey community entry."
           }
         ]
@@ -2436,7 +2436,7 @@ export const generatedPages: SitePage[] = [
         ],
         "images": [
           {
-            "src": "/assets/live/pennsauken-camden-jpg.jpg",
+            "src": "/assets/live/pennsauken-camden-jpg.webp",
             "alt": "Image accompanying the Pennsauken, New Jersey community entry."
           }
         ]
@@ -2462,7 +2462,7 @@ export const generatedPages: SitePage[] = [
         ],
         "images": [
           {
-            "src": "/assets/live/pine-hill-camden-jpg.jpg",
+            "src": "/assets/live/pine-hill-camden-jpg.webp",
             "alt": "Image accompanying the Pine Hill & Pine Valley, New Jersey community entry."
           }
         ]
@@ -2488,7 +2488,7 @@ export const generatedPages: SitePage[] = [
         ],
         "images": [
           {
-            "src": "/assets/live/runnemede-camden-jpg.jpg",
+            "src": "/assets/live/runnemede-camden-jpg.webp",
             "alt": "Image accompanying the Runnemede, New Jersey community entry."
           }
         ]
@@ -2514,7 +2514,7 @@ export const generatedPages: SitePage[] = [
         ],
         "images": [
           {
-            "src": "/assets/live/somerdale-camden-jpg.jpg",
+            "src": "/assets/live/somerdale-camden-jpg.webp",
             "alt": "Image accompanying the Somerdale, New Jersey community entry."
           }
         ]
@@ -2540,7 +2540,7 @@ export const generatedPages: SitePage[] = [
         ],
         "images": [
           {
-            "src": "/assets/live/stratford-camden-jpg.jpg",
+            "src": "/assets/live/stratford-camden-jpg.webp",
             "alt": "Image accompanying the Stratford, New Jersey community entry."
           }
         ]
@@ -2566,7 +2566,7 @@ export const generatedPages: SitePage[] = [
         ],
         "images": [
           {
-            "src": "/assets/live/tavistock-camden-jpg.jpg",
+            "src": "/assets/live/tavistock-camden-jpg.webp",
             "alt": "Image accompanying the Tavistock, New Jersey community entry."
           }
         ]
@@ -2592,7 +2592,7 @@ export const generatedPages: SitePage[] = [
         ],
         "images": [
           {
-            "src": "/assets/live/voorhees-camden-jpg.jpg",
+            "src": "/assets/live/voorhees-camden-jpg.webp",
             "alt": "Image accompanying the Voorhees, New Jersey community entry."
           }
         ]
@@ -2618,7 +2618,7 @@ export const generatedPages: SitePage[] = [
         ],
         "images": [
           {
-            "src": "/assets/live/waterford-camden-jpg.jpg",
+            "src": "/assets/live/waterford-camden-jpg.webp",
             "alt": "Image accompanying the Waterford Township, New Jersey community entry."
           }
         ]
@@ -2644,7 +2644,7 @@ export const generatedPages: SitePage[] = [
         ],
         "images": [
           {
-            "src": "/assets/live/waterford-camden-jpg.jpg",
+            "src": "/assets/live/waterford-camden-jpg.webp",
             "alt": "Image accompanying the Winslow, New Jersey community entry."
           }
         ]
@@ -2670,7 +2670,7 @@ export const generatedPages: SitePage[] = [
         ],
         "images": [
           {
-            "src": "/assets/live/woodlynne-camden-jpg.jpg",
+            "src": "/assets/live/woodlynne-camden-jpg.webp",
             "alt": "Image accompanying the Woodlynne, New Jersey community entry."
           }
         ]
@@ -2730,7 +2730,7 @@ export const generatedPages: SitePage[] = [
         ],
         "images": [
           {
-            "src": "/assets/live/cape-may-county-map-png.png",
+            "src": "/assets/live/cape-may-county-map-png.webp",
             "alt": "Cape May County, New Jersey locator map."
           }
         ]
@@ -2756,7 +2756,7 @@ export const generatedPages: SitePage[] = [
         ],
         "images": [
           {
-            "src": "/assets/live/avalon-borough-jpg.jpg",
+            "src": "/assets/live/avalon-borough-jpg.webp",
             "alt": "Image accompanying the Avalon, New Jersey community entry."
           }
         ]
@@ -2782,7 +2782,7 @@ export const generatedPages: SitePage[] = [
         ],
         "images": [
           {
-            "src": "/assets/live/cape-may-city-jpg.jpg",
+            "src": "/assets/live/cape-may-city-jpg.webp",
             "alt": "Image accompanying the Cape May, New Jersey community entry."
           }
         ]
@@ -2808,7 +2808,7 @@ export const generatedPages: SitePage[] = [
         ],
         "images": [
           {
-            "src": "/assets/live/cape-may-point-borough-jpg.jpg",
+            "src": "/assets/live/cape-may-point-borough-jpg.webp",
             "alt": "Image accompanying the Cape May Point, New Jersey community entry."
           }
         ]
@@ -2834,7 +2834,7 @@ export const generatedPages: SitePage[] = [
         ],
         "images": [
           {
-            "src": "/assets/live/dennis-township-jpg.jpg",
+            "src": "/assets/live/dennis-township-jpg.webp",
             "alt": "Image accompanying the Dennis Township, New Jersey community entry."
           }
         ]
@@ -2860,7 +2860,7 @@ export const generatedPages: SitePage[] = [
         ],
         "images": [
           {
-            "src": "/assets/live/lower-township-represented-by-jake-s-landing-jpg.jpg",
+            "src": "/assets/live/lower-township-represented-by-jake-s-landing-jpg.webp",
             "alt": "Image accompanying the Lower Township, New Jersey community entry."
           }
         ]
@@ -2886,7 +2886,7 @@ export const generatedPages: SitePage[] = [
         ],
         "images": [
           {
-            "src": "/assets/live/middle-township-represented-by-agricultural-land-jpg.jpg",
+            "src": "/assets/live/middle-township-represented-by-agricultural-land-jpg.webp",
             "alt": "Image accompanying the Middle Township, New Jersey community entry."
           }
         ]
@@ -2912,7 +2912,7 @@ export const generatedPages: SitePage[] = [
         ],
         "images": [
           {
-            "src": "/assets/live/north-wildwood-jpg.jpg",
+            "src": "/assets/live/north-wildwood-jpg.webp",
             "alt": "Image accompanying the North Wildwood, New Jersey community entry."
           }
         ]
@@ -2964,7 +2964,7 @@ export const generatedPages: SitePage[] = [
         ],
         "images": [
           {
-            "src": "/assets/live/sea-isle-city-jpg.jpg",
+            "src": "/assets/live/sea-isle-city-jpg.webp",
             "alt": "Image accompanying the Sea Isle City, New Jersey community entry."
           }
         ]
@@ -2990,7 +2990,7 @@ export const generatedPages: SitePage[] = [
         ],
         "images": [
           {
-            "src": "/assets/live/stone-harbor-jpeg.jpeg",
+            "src": "/assets/live/stone-harbor-jpeg.webp",
             "alt": "Image accompanying the Stone Harbor, New Jersey community entry."
           }
         ]
@@ -3016,7 +3016,7 @@ export const generatedPages: SitePage[] = [
         ],
         "images": [
           {
-            "src": "/assets/live/upper-township-jpg.jpg",
+            "src": "/assets/live/upper-township-jpg.webp",
             "alt": "Image accompanying the Upper Township, New Jersey community entry."
           }
         ]
@@ -3068,7 +3068,7 @@ export const generatedPages: SitePage[] = [
         ],
         "images": [
           {
-            "src": "/assets/live/west-wildwood-jpg.jpg",
+            "src": "/assets/live/west-wildwood-jpg.webp",
             "alt": "Image accompanying the West Wildwood, New Jersey community entry."
           }
         ]
@@ -3094,7 +3094,7 @@ export const generatedPages: SitePage[] = [
         ],
         "images": [
           {
-            "src": "/assets/live/wildwood-jpg.jpg",
+            "src": "/assets/live/wildwood-jpg.webp",
             "alt": "Image accompanying the Wildwood, New Jersey community entry."
           }
         ]
@@ -3120,7 +3120,7 @@ export const generatedPages: SitePage[] = [
         ],
         "images": [
           {
-            "src": "/assets/live/wildwood-crest-jpg.jpg",
+            "src": "/assets/live/wildwood-crest-jpg.webp",
             "alt": "Image accompanying the Wildwood Crest, New Jersey community entry."
           }
         ]
@@ -3146,7 +3146,7 @@ export const generatedPages: SitePage[] = [
         ],
         "images": [
           {
-            "src": "/assets/live/woodbine-jpg.jpg",
+            "src": "/assets/live/woodbine-jpg.webp",
             "alt": "Image accompanying the Woodbine, New Jersey community entry."
           }
         ]
@@ -3206,7 +3206,7 @@ export const generatedPages: SitePage[] = [
         ],
         "images": [
           {
-            "src": "/assets/live/cumberland-county-map-png.png",
+            "src": "/assets/live/cumberland-county-map-png.webp",
             "alt": "Cumberland County, New Jersey locator map."
           }
         ]
@@ -3232,7 +3232,7 @@ export const generatedPages: SitePage[] = [
         ],
         "images": [
           {
-            "src": "/assets/live/bridgeton-jpg.jpg",
+            "src": "/assets/live/bridgeton-jpg.webp",
             "alt": "Image accompanying the Bridgeton, New Jersey community entry."
           }
         ]
@@ -3258,7 +3258,7 @@ export const generatedPages: SitePage[] = [
         ],
         "images": [
           {
-            "src": "/assets/live/commercial-township-png.png",
+            "src": "/assets/live/commercial-township-png.webp",
             "alt": "Image accompanying the Commercial Township, New Jersey community entry."
           }
         ]
@@ -3284,7 +3284,7 @@ export const generatedPages: SitePage[] = [
         ],
         "images": [
           {
-            "src": "/assets/live/deerfield-township-png.png",
+            "src": "/assets/live/deerfield-township-png.webp",
             "alt": "Image accompanying the Deerfield Township, New Jersey community entry."
           }
         ]
@@ -3310,7 +3310,7 @@ export const generatedPages: SitePage[] = [
         ],
         "images": [
           {
-            "src": "/assets/live/downe-township-jpg.jpg",
+            "src": "/assets/live/downe-township-jpg.webp",
             "alt": "Image accompanying the Downe Township, New Jersey community entry."
           }
         ]
@@ -3336,7 +3336,7 @@ export const generatedPages: SitePage[] = [
         ],
         "images": [
           {
-            "src": "/assets/live/fairfield-township-jpg.jpg",
+            "src": "/assets/live/fairfield-township-jpg.webp",
             "alt": "Image accompanying the Fairfield Township, New Jersey community entry."
           }
         ]
@@ -3362,7 +3362,7 @@ export const generatedPages: SitePage[] = [
         ],
         "images": [
           {
-            "src": "/assets/live/greenwich-township-jpg.jpg",
+            "src": "/assets/live/greenwich-township-jpg.webp",
             "alt": "Image accompanying the Greenwich Township, New Jersey community entry."
           }
         ]
@@ -3388,7 +3388,7 @@ export const generatedPages: SitePage[] = [
         ],
         "images": [
           {
-            "src": "/assets/live/hopewell-township-jpg.jpg",
+            "src": "/assets/live/hopewell-township-jpg.webp",
             "alt": "Image accompanying the Hopewell Township, New Jersey community entry."
           }
         ]
@@ -3414,7 +3414,7 @@ export const generatedPages: SitePage[] = [
         ],
         "images": [
           {
-            "src": "/assets/live/lawrence-township-jpg.jpg",
+            "src": "/assets/live/lawrence-township-jpg.webp",
             "alt": "Image accompanying the Lawrence Township, New Jersey community entry."
           }
         ]
@@ -3440,7 +3440,7 @@ export const generatedPages: SitePage[] = [
         ],
         "images": [
           {
-            "src": "/assets/live/maurice-river-township-jpg.jpg",
+            "src": "/assets/live/maurice-river-township-jpg.webp",
             "alt": "Image accompanying the Maurice River Township, New Jersey community entry."
           }
         ]
@@ -3466,7 +3466,7 @@ export const generatedPages: SitePage[] = [
         ],
         "images": [
           {
-            "src": "/assets/live/millville-jpg.jpg",
+            "src": "/assets/live/millville-jpg.webp",
             "alt": "Image accompanying the Millville, New Jersey community entry."
           }
         ]
@@ -3492,7 +3492,7 @@ export const generatedPages: SitePage[] = [
         ],
         "images": [
           {
-            "src": "/assets/live/shiloh-borough-jpg.jpg",
+            "src": "/assets/live/shiloh-borough-jpg.webp",
             "alt": "Image accompanying the Shiloh Borough, New Jersey community entry."
           }
         ]
@@ -3518,7 +3518,7 @@ export const generatedPages: SitePage[] = [
         ],
         "images": [
           {
-            "src": "/assets/live/stow-creek-township-jpg.jpg",
+            "src": "/assets/live/stow-creek-township-jpg.webp",
             "alt": "Image accompanying the Stow Creek Township, New Jersey community entry."
           }
         ]
@@ -3544,7 +3544,7 @@ export const generatedPages: SitePage[] = [
         ],
         "images": [
           {
-            "src": "/assets/live/upper-deerfield-township-png.png",
+            "src": "/assets/live/upper-deerfield-township-png.webp",
             "alt": "Image accompanying the Upper Deerfield Township, New Jersey community entry."
           }
         ]
@@ -3570,7 +3570,7 @@ export const generatedPages: SitePage[] = [
         ],
         "images": [
           {
-            "src": "/assets/live/vineland-city-jpg.jpg",
+            "src": "/assets/live/vineland-city-jpg.webp",
             "alt": "Image accompanying the Vineland, New Jersey community entry."
           }
         ]
@@ -3630,7 +3630,7 @@ export const generatedPages: SitePage[] = [
         ],
         "images": [
           {
-            "src": "/assets/live/gloucester-county-map-png.png",
+            "src": "/assets/live/gloucester-county-map-png.webp",
             "alt": "Gloucester County, New Jersey locator map."
           }
         ]
@@ -3656,7 +3656,7 @@ export const generatedPages: SitePage[] = [
         ],
         "images": [
           {
-            "src": "/assets/live/clayton-gloucester-jpg.jpg",
+            "src": "/assets/live/clayton-gloucester-jpg.webp",
             "alt": "Image accompanying the Clayton, New Jersey community entry."
           }
         ]
@@ -3682,7 +3682,7 @@ export const generatedPages: SitePage[] = [
         ],
         "images": [
           {
-            "src": "/assets/live/deptford-township-gloucester-jpg.jpg",
+            "src": "/assets/live/deptford-township-gloucester-jpg.webp",
             "alt": "Image accompanying the Deptford Township, New Jersey community entry."
           }
         ]
@@ -3708,7 +3708,7 @@ export const generatedPages: SitePage[] = [
         ],
         "images": [
           {
-            "src": "/assets/live/east-greenwich-township-jpg.jpg",
+            "src": "/assets/live/east-greenwich-township-jpg.webp",
             "alt": "Image accompanying the East Greenwich Township, New Jersey community entry."
           }
         ]
@@ -3734,7 +3734,7 @@ export const generatedPages: SitePage[] = [
         ],
         "images": [
           {
-            "src": "/assets/live/elk-township-png.png",
+            "src": "/assets/live/elk-township-png.webp",
             "alt": "Image accompanying the Elk Township, New Jersey community entry."
           }
         ]
@@ -3760,7 +3760,7 @@ export const generatedPages: SitePage[] = [
         ],
         "images": [
           {
-            "src": "/assets/live/franklin-township-png.png",
+            "src": "/assets/live/franklin-township-png.webp",
             "alt": "Image accompanying the Franklin Township, New Jersey community entry."
           }
         ]
@@ -3786,7 +3786,7 @@ export const generatedPages: SitePage[] = [
         ],
         "images": [
           {
-            "src": "/assets/live/glassboro-jpg.jpg",
+            "src": "/assets/live/glassboro-jpg.webp",
             "alt": "Image accompanying the Glassboro, New Jersey community entry."
           }
         ]
@@ -3812,7 +3812,7 @@ export const generatedPages: SitePage[] = [
         ],
         "images": [
           {
-            "src": "/assets/live/greenwich-township-jpg.jpg",
+            "src": "/assets/live/greenwich-township-jpg.webp",
             "alt": "Image accompanying the Greenwich Township, New Jersey community entry."
           }
         ]
@@ -3838,7 +3838,7 @@ export const generatedPages: SitePage[] = [
         ],
         "images": [
           {
-            "src": "/assets/live/harrison-township-mullica-hill-jpg.jpg",
+            "src": "/assets/live/harrison-township-mullica-hill-jpg.webp",
             "alt": "Image accompanying the Harrison Township (Mullica Hill), New Jersey community entry."
           }
         ]
@@ -3864,7 +3864,7 @@ export const generatedPages: SitePage[] = [
         ],
         "images": [
           {
-            "src": "/assets/live/logan-township-png.png",
+            "src": "/assets/live/logan-township-png.webp",
             "alt": "Image accompanying the Logan Township, New Jersey community entry."
           }
         ]
@@ -3890,7 +3890,7 @@ export const generatedPages: SitePage[] = [
         ],
         "images": [
           {
-            "src": "/assets/live/mantua-township-jpg.jpg",
+            "src": "/assets/live/mantua-township-jpg.webp",
             "alt": "Image accompanying the Mantua Township, New Jersey community entry."
           }
         ]
@@ -3916,7 +3916,7 @@ export const generatedPages: SitePage[] = [
         ],
         "images": [
           {
-            "src": "/assets/live/monroe-township-jpg.jpg",
+            "src": "/assets/live/monroe-township-jpg.webp",
             "alt": "Image accompanying the Monroe Township, New Jersey community entry."
           }
         ]
@@ -3942,7 +3942,7 @@ export const generatedPages: SitePage[] = [
         ],
         "images": [
           {
-            "src": "/assets/live/national-park-jpeg.jpeg",
+            "src": "/assets/live/national-park-jpeg.webp",
             "alt": "Image accompanying the National Park, New Jersey community entry."
           }
         ]
@@ -3968,7 +3968,7 @@ export const generatedPages: SitePage[] = [
         ],
         "images": [
           {
-            "src": "/assets/live/newfield-jpg.jpg",
+            "src": "/assets/live/newfield-jpg.webp",
             "alt": "Image accompanying the Newfield, New Jersey community entry."
           }
         ]
@@ -3994,7 +3994,7 @@ export const generatedPages: SitePage[] = [
         ],
         "images": [
           {
-            "src": "/assets/live/paulsboro-jpg.jpg",
+            "src": "/assets/live/paulsboro-jpg.webp",
             "alt": "Image accompanying the Paulsboro, New Jersey community entry."
           }
         ]
@@ -4020,7 +4020,7 @@ export const generatedPages: SitePage[] = [
         ],
         "images": [
           {
-            "src": "/assets/live/pitman-gloucester-jpg.jpg",
+            "src": "/assets/live/pitman-gloucester-jpg.webp",
             "alt": "Image accompanying the Pitman, New Jersey community entry."
           }
         ]
@@ -4046,7 +4046,7 @@ export const generatedPages: SitePage[] = [
         ],
         "images": [
           {
-            "src": "/assets/live/south-harrison-township-jpg.jpg",
+            "src": "/assets/live/south-harrison-township-jpg.webp",
             "alt": "Image accompanying the South Harrison Township, New Jersey community entry."
           }
         ]
@@ -4072,7 +4072,7 @@ export const generatedPages: SitePage[] = [
         ],
         "images": [
           {
-            "src": "/assets/live/swedesboro-jpg.jpg",
+            "src": "/assets/live/swedesboro-jpg.webp",
             "alt": "Image accompanying the Swedesboro, New Jersey community entry."
           }
         ]
@@ -4098,7 +4098,7 @@ export const generatedPages: SitePage[] = [
         ],
         "images": [
           {
-            "src": "/assets/live/washington-township-jpg.jpg",
+            "src": "/assets/live/washington-township-jpg.webp",
             "alt": "Image accompanying the Washington Township, New Jersey community entry."
           }
         ]
@@ -4124,7 +4124,7 @@ export const generatedPages: SitePage[] = [
         ],
         "images": [
           {
-            "src": "/assets/live/wenonah-jpg.jpg",
+            "src": "/assets/live/wenonah-jpg.webp",
             "alt": "Image accompanying the Wenonah, New Jersey community entry."
           }
         ]
@@ -4150,7 +4150,7 @@ export const generatedPages: SitePage[] = [
         ],
         "images": [
           {
-            "src": "/assets/live/west-deptford-township-jpg.jpg",
+            "src": "/assets/live/west-deptford-township-jpg.webp",
             "alt": "Image accompanying the West Deptford Township, New Jersey community entry."
           }
         ]
@@ -4202,7 +4202,7 @@ export const generatedPages: SitePage[] = [
         ],
         "images": [
           {
-            "src": "/assets/live/woodbury-jpg.jpg",
+            "src": "/assets/live/woodbury-jpg.webp",
             "alt": "Image accompanying the Woodbury, New Jersey community entry."
           }
         ]
@@ -4228,7 +4228,7 @@ export const generatedPages: SitePage[] = [
         ],
         "images": [
           {
-            "src": "/assets/live/woodbury-heights-borough-jpeg.jpeg",
+            "src": "/assets/live/woodbury-heights-borough-jpeg.webp",
             "alt": "Image accompanying the Woodbury Heights Borough, New Jersey community entry."
           }
         ]
@@ -4254,7 +4254,7 @@ export const generatedPages: SitePage[] = [
         ],
         "images": [
           {
-            "src": "/assets/live/swedesboro-jpg.jpg",
+            "src": "/assets/live/swedesboro-jpg.webp",
             "alt": "Image accompanying the Woolwich Township, New Jersey community entry."
           }
         ]
@@ -4314,7 +4314,7 @@ export const generatedPages: SitePage[] = [
         ],
         "images": [
           {
-            "src": "/assets/live/salem-county-map-png.png",
+            "src": "/assets/live/salem-county-map-png.webp",
             "alt": "Salem County, New Jersey locator map."
           }
         ]
@@ -4340,7 +4340,7 @@ export const generatedPages: SitePage[] = [
         ],
         "images": [
           {
-            "src": "/assets/live/alloway-salem-jpg.jpg",
+            "src": "/assets/live/alloway-salem-jpg.webp",
             "alt": "Image accompanying the Alloway Township, New Jersey community entry."
           }
         ]
@@ -4366,7 +4366,7 @@ export const generatedPages: SitePage[] = [
         ],
         "images": [
           {
-            "src": "/assets/live/d2-organization-salem-commerce-park-crop-jpg.jpg",
+            "src": "/assets/live/d2-organization-salem-commerce-park-crop-jpg.webp",
             "alt": "Image accompanying the Carneys Point, New Jersey community entry."
           }
         ]
@@ -4392,7 +4392,7 @@ export const generatedPages: SitePage[] = [
         ],
         "images": [
           {
-            "src": "/assets/live/476743388-920395646947504-8629727985455799871-n-jpg.jpg",
+            "src": "/assets/live/476743388-920395646947504-8629727985455799871-n-jpg.webp",
             "alt": "Image accompanying the Elmer, New Jersey community entry."
           }
         ]
@@ -4418,7 +4418,7 @@ export const generatedPages: SitePage[] = [
         ],
         "images": [
           {
-            "src": "/assets/live/woodstown-pilesgrove-nj-2-jpg.jpg",
+            "src": "/assets/live/woodstown-pilesgrove-nj-2-jpg.webp",
             "alt": "Image accompanying the Elsinboro Township, New Jersey community entry."
           }
         ]
@@ -4444,7 +4444,7 @@ export const generatedPages: SitePage[] = [
         ],
         "images": [
           {
-            "src": "/assets/live/woodstown-pilesgrove-nj-2-jpg.jpg",
+            "src": "/assets/live/woodstown-pilesgrove-nj-2-jpg.webp",
             "alt": "Image accompanying the Lower Alloways Creek Township, New Jersey community entry."
           }
         ]
@@ -4470,7 +4470,7 @@ export const generatedPages: SitePage[] = [
         ],
         "images": [
           {
-            "src": "/assets/live/woodstown-pilesgrove-nj-2-jpg.jpg",
+            "src": "/assets/live/woodstown-pilesgrove-nj-2-jpg.webp",
             "alt": "Image accompanying the Mannington Township, New Jersey community entry."
           }
         ]
@@ -4496,7 +4496,7 @@ export const generatedPages: SitePage[] = [
         ],
         "images": [
           {
-            "src": "/assets/live/woodstown-pilesgrove-nj-2-jpg.jpg",
+            "src": "/assets/live/woodstown-pilesgrove-nj-2-jpg.webp",
             "alt": "Image accompanying the Oldmans Township, New Jersey community entry."
           }
         ]
@@ -4522,7 +4522,7 @@ export const generatedPages: SitePage[] = [
         ],
         "images": [
           {
-            "src": "/assets/live/woodstown-pilesgrove-nj-2-jpg.jpg",
+            "src": "/assets/live/woodstown-pilesgrove-nj-2-jpg.webp",
             "alt": "Image accompanying the Penns Grove Borough, New Jersey community entry."
           }
         ]
@@ -4548,7 +4548,7 @@ export const generatedPages: SitePage[] = [
         ],
         "images": [
           {
-            "src": "/assets/live/pennsville-salem-jpg.jpg",
+            "src": "/assets/live/pennsville-salem-jpg.webp",
             "alt": "Image accompanying the Pennsville, New Jersey community entry."
           }
         ]
@@ -4574,7 +4574,7 @@ export const generatedPages: SitePage[] = [
         ],
         "images": [
           {
-            "src": "/assets/live/pennsville-salem-jpg.jpg",
+            "src": "/assets/live/pennsville-salem-jpg.webp",
             "alt": "Image accompanying the Pilesgrove Township, New Jersey community entry."
           }
         ]
@@ -4600,7 +4600,7 @@ export const generatedPages: SitePage[] = [
         ],
         "images": [
           {
-            "src": "/assets/live/pittsgrove-salem-jpg.jpg",
+            "src": "/assets/live/pittsgrove-salem-jpg.webp",
             "alt": "Image accompanying the Pittsgrove, New Jersey community entry."
           }
         ]
@@ -4626,7 +4626,7 @@ export const generatedPages: SitePage[] = [
         ],
         "images": [
           {
-            "src": "/assets/live/pittsgrove-salem-jpg.jpg",
+            "src": "/assets/live/pittsgrove-salem-jpg.webp",
             "alt": "Image accompanying the Quinton Township, New Jersey community entry."
           }
         ]
@@ -4652,7 +4652,7 @@ export const generatedPages: SitePage[] = [
         ],
         "images": [
           {
-            "src": "/assets/live/salem-city-salem-jpg.jpg",
+            "src": "/assets/live/salem-city-salem-jpg.webp",
             "alt": "Image accompanying the Salem City, New Jersey community entry."
           }
         ]
@@ -4678,7 +4678,7 @@ export const generatedPages: SitePage[] = [
         ],
         "images": [
           {
-            "src": "/assets/live/upper-pittsgrove-salem-jpg.jpg",
+            "src": "/assets/live/upper-pittsgrove-salem-jpg.webp",
             "alt": "Image accompanying the Upper Pittsgrove, New Jersey community entry."
           }
         ]
@@ -4704,7 +4704,7 @@ export const generatedPages: SitePage[] = [
         ],
         "images": [
           {
-            "src": "/assets/live/woodstown-pilesgrove-nj-2-jpg.jpg",
+            "src": "/assets/live/woodstown-pilesgrove-nj-2-jpg.webp",
             "alt": "Image accompanying the Woodstown, New Jersey community entry."
           }
         ]

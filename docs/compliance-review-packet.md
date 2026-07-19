@@ -1,6 +1,6 @@
 # South Jersey Real Estate Compliance Review Packet
 
-Prepared: July 18, 2026
+Prepared: July 19, 2026
 
 Review target: <https://southjerseyreal.estate/>
 
@@ -72,6 +72,17 @@ output for every public route, checks broker prominence at 320 pixels, scans for
 horizontal overflow, and runs WCAG 2.0 through 2.2 AA checks on representative
 routes. Final run totals are recorded in the detailed checklist after release.
 
+## Production Verification
+
+The July 19 production pass confirmed the current Cloudflare Pages deployment,
+successful contact and newsletter submission paths, exact synthetic-data
+cleanup in Supabase and Brevo, and accepted GA4 debug-mode collection requests.
+Google accepted one page view per tested route, the prior virtual URL as the SPA
+referrer, contact `generate_lead` plus `contact_lead`, and newsletter `sign_up`
+without a contact lead event. The DebugView visual panel nevertheless displayed
+zero debug devices, so that Google-interface check remains open and is not
+represented as a completed visual-timeline test.
+
 ## Provider Relationship Record
 
 HomeBase CRM is presented only as a technology vendor in the provider
@@ -94,6 +105,11 @@ The site does not currently publish property listings, paid provider cards,
 reviews, testimonials, awards, a multi-agent roster, or automated marketing
 calls/texts. Those features require a new review before publication. Future
 Bright MLS/IDX work remains deferred in `bright-idx-backlog.md`.
+
+All seven richer county/community batches have been researched as unpublished
+editorial drafts. They are outside the current rendered-site approval until the
+owner reviews their text and municipality images and publishes them in the
+structured editor.
 
 ## Signoff
 

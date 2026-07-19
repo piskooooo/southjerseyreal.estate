@@ -26,8 +26,11 @@ describe("validateContactRequest", () => {
     const result = validateContactRequest(validRequest());
 
     expect(result.ok).toBe(true);
+    if (!result.ok) {
+      throw new Error(`Unexpected validation error: ${result.code}`);
+    }
     expect(result.spam).toBe(false);
-    if (!result.ok || result.spam) return;
+    if (result.spam) return;
     expect(result.value).toMatchObject({
       name: "Test Visitor",
       email: "test@example.com",
@@ -67,10 +70,11 @@ describe("validateContactRequest", () => {
   });
 
   it("rejects missing or oversized Turnstile tokens", () => {
-    expect(validateContactRequest(validRequest({ turnstileToken: "" }))).toEqual({
-      ok: false,
-      code: "turnstile_invalid",
-    });
+    expect(validateContactRequest(validRequest({ turnstileToken: "" })))
+      .toEqual({
+        ok: false,
+        code: "turnstile_invalid",
+      });
     expect(validateContactRequest(validRequest({
       turnstileToken: "x".repeat(MAX_TURNSTILE_TOKEN_LENGTH + 1),
     }))).toEqual({ ok: false, code: "turnstile_invalid" });
@@ -84,7 +88,8 @@ describe("normalizedEmail", () => {
       "person+listing@example.com",
     );
     expect(normalizedEmail("person @example.com")).toBeNull();
-    expect(normalizedEmail("victim@example.com?bcc=evil@example.com")).toBeNull();
+    expect(normalizedEmail("victim@example.com?bcc=evil@example.com"))
+      .toBeNull();
     expect(normalizedEmail("victim%40example.com@example.com")).toBeNull();
     expect(normalizedEmail(".person@example.com")).toBeNull();
   });

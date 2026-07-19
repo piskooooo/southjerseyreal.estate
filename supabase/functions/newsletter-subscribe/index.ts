@@ -257,12 +257,15 @@ async function updateAuditStatus(
     | "provider_error",
   providerCode: string | null,
 ): Promise<void> {
-  const { data, error } = await admin.rpc("complete_newsletter_signup_request", {
-    p_email_hash: hashedEmail,
-    p_attempt_id: attemptId,
-    p_provider_status: providerStatus,
-    p_provider_code: providerCode,
-  });
+  const { data, error } = await admin.rpc(
+    "complete_newsletter_signup_request",
+    {
+      p_email_hash: hashedEmail,
+      p_attempt_id: attemptId,
+      p_provider_status: providerStatus,
+      p_provider_code: providerCode,
+    },
+  );
   if (error || data !== true) {
     throw new Error("The newsletter audit status could not be updated.");
   }
@@ -351,18 +354,22 @@ Deno.serve(async (request) => {
     const admin = createAdminClient();
     const attemptId = crypto.randomUUID();
     const hashedEmail = await emailHash(signup.email);
-    const { data: shouldRequestConfirmation, error: auditError } = await admin.rpc(
-      "begin_newsletter_signup_request",
-      {
-        p_email_hash: hashedEmail,
-        p_source: signup.source,
-        p_attempt_id: attemptId,
-      },
-    );
+    const { data: shouldRequestConfirmation, error: auditError } = await admin
+      .rpc(
+        "begin_newsletter_signup_request",
+        {
+          p_email_hash: hashedEmail,
+          p_source: signup.source,
+          p_attempt_id: attemptId,
+        },
+      );
     if (auditError) throw auditError;
 
     if (shouldRequestConfirmation !== true) {
-      return jsonResponse(allowedOrigin, { ok: true, message: SUCCESS_MESSAGE });
+      return jsonResponse(allowedOrigin, {
+        ok: true,
+        message: SUCCESS_MESSAGE,
+      });
     }
 
     const attributes: Record<string, string> = {};
@@ -417,14 +424,18 @@ Deno.serve(async (request) => {
     }
 
     if (brevo.accepted || brevo.duplicate) {
-      return jsonResponse(allowedOrigin, { ok: true, message: SUCCESS_MESSAGE });
+      return jsonResponse(allowedOrigin, {
+        ok: true,
+        message: SUCCESS_MESSAGE,
+      });
     }
 
     console.error("Brevo DOI request failed", { attemptId, code: brevo.code });
     return jsonResponse(allowedOrigin, {
       ok: false,
       code: "provider_unavailable",
-      message: "We could not start the confirmation email. Please try again shortly.",
+      message:
+        "We could not start the confirmation email. Please try again shortly.",
     }, 502);
   } catch (error) {
     const configurationFailure = error instanceof ConfigurationError;
@@ -434,8 +445,11 @@ Deno.serve(async (request) => {
     });
     return jsonResponse(allowedOrigin, {
       ok: false,
-      code: configurationFailure ? "configuration_error" : "service_unavailable",
-      message: "Newsletter signup is temporarily unavailable. Please try again shortly.",
+      code: configurationFailure
+        ? "configuration_error"
+        : "service_unavailable",
+      message:
+        "Newsletter signup is temporarily unavailable. Please try again shortly.",
     }, configurationFailure ? 503 : 502);
   }
 });

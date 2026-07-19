@@ -1,6 +1,6 @@
 # South Jersey Real Estate Project Checklist
 
-Last reviewed: July 18, 2026
+Last reviewed: July 19, 2026
 
 Use this file as the source of truth for unfinished work on `southjerseyreal.estate`. Check an item only after completing its **Done when** test. Never place passwords, SMTP credentials, webhook URLs, lead data, or other secrets in this file.
 
@@ -104,10 +104,12 @@ The site sends the recommended GA4 event `generate_lead` plus the direct key eve
 - [x] In Enhanced Measurement, turn off **Page changes based on browser history events** while retaining the site's manual SPA page views.
 - [x] Register event-scoped custom dimensions for `form_name`, `lead_type`, and `link_source`.
 - [x] Mark direct `contact_lead` as the only editable lead key event; keep `generate_lead` as a standard non-key event and newsletter `sign_up` as a non-key event.
-- [ ] Recheck DebugView after deployment: exactly one `page_view` per route, the previous virtual URL as `page_referrer`, contact as one `contact_lead` plus one `generate_lead`, and newsletter as `sign_up` without `contact_lead`.
+- [ ] Confirm that the already accepted debug events populate Google Analytics' visual DebugView timeline; the panel still reports zero debug devices.
 - [x] Record the completion date below.
 
 Initial lead-event completion: July 17, 2026. Privacy and SPA measurement hardening: July 18, 2026.
+
+Production collection was reverified on July 19, 2026. Google accepted debug-mode requests for exactly one home `page_view`, one Counties SPA `page_view` with the home URL as `page_referrer`, `generate_lead`, `contact_lead`, and newsletter `sign_up`, all under `G-97H86MNHP8`. Clearly labeled production contact and newsletter submissions completed successfully, and the exact Supabase, rate-limit, newsletter-audit, and Brevo test records were removed. Google Analytics still showed `0` debug devices in the DebugView panel despite the accepted `204` collection requests, so the visual DebugView-timeline check remains open as a Google-interface follow-up.
 
 **Done when:** GA4 receives one privacy-safe page view per route, records contact inquiries as one `contact_lead` plus one standard `generate_lead`, records newsletters separately as `sign_up`, and identifies only `contact_lead` as the editable lead key event.
 
@@ -248,21 +250,24 @@ Implemented both editable, indexable hubs; split each desktop label from its dro
 
 Editorial direction selected by the owner on July 18, 2026: casual but professional. Final county copy still requires owner review before publication.
 
-First-batch progress: source blocks are now supported by the structured editor, preserved by normalization, rendered accessibly, and required beside volatile community facts. Seven county introductions plus all 24 Gloucester County municipality summaries are researched in the unpublished [community profile draft](./community-profile-drafts.md); the six remaining town-level county batches have not been written.
+Drafting progress: source blocks are supported by the structured editor, preserved by normalization, rendered accessibly, and required beside volatile community facts. Seven county introductions and all 168 current municipalities are researched in the unpublished [community profile draft](./community-profile-drafts.md), represented across 166 cards: Gloucester 24, Atlantic 23, Burlington 40, Camden 34, Cape May 16, Cumberland 14, and Salem 15. The Camden card count is lower than its municipality count because two pairs share cards.
 
 ### Content Work
 
-- [ ] Review the pre-remediation town narratives one community at a time and recover only objective, still-useful material.
-- [ ] Replace volatile price, tax, school, flood, transit, and market statements with current, dated sources when those facts genuinely help a visitor.
-- [x] Keep resident profiles, protected-class signals, subjective rankings, and unsupported performance claims out of compiled guides and the Gloucester pilot, with publishing guardrails preventing their reintroduction.
-- [ ] Write in the approved casual-but-professional local voice and keep one concise page-level verification note instead of repeating warnings in every card.
+- [x] Review the pre-remediation town narratives one community at a time and recover only objective, still-useful material.
+- [x] Omit stale price, tax, school, flood, transit, and market claims; use current, dated primary sources only where a time-sensitive fact genuinely helps a visitor.
+- [x] Keep resident profiles, protected-class signals, subjective rankings, and unsupported performance claims out of compiled guides and all seven county drafts, with publishing guardrails preventing their reintroduction.
+- [x] Write in the approved casual-but-professional local voice and keep one concise page-level verification note instead of repeating warnings in every card.
 - [x] Add citations or source notes to the structured content model where a factual claim needs ongoing maintenance.
 
 ### Verification
 
-- [ ] Review each completed county for factual accuracy, fair-housing concerns, stale links, and image accuracy.
+- [x] Review all seven draft batches for supportable factual scope, fair-housing concerns, protected-class targeting, subjective rankings, and stale-link failures. The July 19 source audit found 148 direct `2xx` responses and 28 bot-oriented `403` responses across 176 unique sources, with zero hard failures.
+- [ ] Recheck the 28 anti-bot-challenged sources in an interactive human browser and verify each municipality image before its county batch is published.
 - [x] Run the publishing guardrails, 79 unit tests, 49 tracked database checks, production build, full 37-check compliance crawl, automated accessibility checks, and desktop/mobile visual checks after the source-support and Gloucester-draft batch.
-- [ ] Obtain owner approval on the restored editorial tone before publishing all seven counties.
+- [x] Obtain owner approval for the casual-but-professional editorial direction.
+- [ ] Obtain owner approval of the actual profile drafts and images before publication.
+- [ ] Convert approved drafts into structured editor content, replace the stale `Pine Hill & Pine Valley` card title, publish in manageable county batches, and rerun rendered source, accessibility, compliance, and responsive checks after each batch.
 
 **Done when:** Every community card contains useful, human-written, supportable information without repetitive legal prose or unsupported claims.
 
@@ -281,6 +286,6 @@ First-batch progress: source blocks are now supported by the structured editor, 
 - [x] Move contact and newsletter handling to Supabase, Turnstile, and Brevo.
 - [x] Verify contact delivery and newsletter double opt-in end to end, then remove all test records.
 - [x] Save the reusable Turnstile Spin workflow under `.codex/skills/turnstile-spin` for future chats.
-- [x] Add 73 Vitest tests, 37 rendered-route compliance checks, and a 49-check transactional Supabase pgTAP suite, and keep the GitHub test workflow on every push.
+- [x] Add 79 Vitest tests, 37 rendered-route compliance checks, and a 49-check transactional Supabase pgTAP suite, and keep the GitHub test workflow on every push.
 - [x] Build and publish the private website-editor frontend, database migration, image/inbox support, managed public-content adapter, and SEO rebuild implementation while keeping production access fail-closed until provisioning is complete.
 - [x] Document private inquiry access, production test cleanup, Pages recovery, retired NAS resources, and the final human compliance handoff.

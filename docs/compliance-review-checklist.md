@@ -1,6 +1,6 @@
 # Human Compliance Review Handoff
 
-Last prepared: July 18, 2026
+Last prepared: July 19, 2026
 
 This is an implementation and review record, not legal advice or a compliance certification. The broker of record and, where appropriate, New Jersey counsel must approve the public wording. Keep privileged advice outside this public repository; record only the reviewer, date, status, and final approved wording.
 
@@ -48,15 +48,18 @@ The owner confirmed active REALTOR® membership on July 18, 2026, and current pu
 - [x] Measure the production brokerage disclosure at desktop and mobile widths, confirm its hierarchy, contrast, and zero overflow, and capture the evidence in [compliance-review-packet.md](./compliance-review-packet.md).
 - [x] Pass the production build, 79 unit tests, and 37 Playwright checks covering all 21 public routes, prerendered and hydrated DOM, metadata, JSON-LD, forms, analytics consent, providers, hub navigation, keyboard behavior, 320-pixel layout, screenshots, overflow, alt text, and automated WCAG checks.
 
-## July 18 Technical Reverification
+## July 18-19 Technical Reverification
 
 - [x] Rechecked the NJDOBI licensee-search records for the salesperson, brokerage affiliation, company, broker of record, and licensed office facts. The implemented facts remain consistent with the public records listed above.
 - [x] Audited the production Cloudflare Pages project. It remains connected to `piskooooo/southjerseyreal.estate`, deploys `main` automatically with `npm run build`, publishes `dist`, uses Node 22, has the five expected public production build-variable names, omits the production GA4 ID from preview builds, and serves the apex, `www`, and Pages hostnames.
 - [x] Audited the production Supabase project without recording secret values or personal data. The project is healthy; `contact-submit`, `newsletter-subscribe`, and `site-rebuild` are deployed; the expected custom secret names are present; and a read-only count confirmed one Auth user and one private site-administrator slot.
 - [x] Audited the personal Brevo workspace without recording contact data. Website signups target list `8`, the double-opt-in template `2` is active, and the `southjerseyreal.estate` sending domain and sender are verified.
 - [x] Audited GA4 property `Main Website`. Its production stream uses measurement ID `G-97H86MNHP8`; data retention is 14 months; email plus configured sensitive query parameters are redacted; manual SPA and outbound-click tracking are de-duplicated; `form_name`, `lead_type`, and `link_source` are registered; and only the direct `contact_lead` event is marked as an editable lead key event.
+- [x] Reverified production GA4 collection on July 19. Google returned `204` for debug-mode home and Counties page views, preserved the previous virtual home URL as the Counties referrer, accepted contact `generate_lead` plus `contact_lead`, and accepted newsletter `sign_up` without contact lead events. DebugView's visual panel still reported zero debug devices, so that Google-interface anomaly remains an explicit follow-up rather than a claimed pass.
+- [x] Submitted clearly labeled production contact and newsletter tests, confirmed the contact notification reached `sent` and the newsletter reached `confirmation_requested`, then removed the exact inquiry, rate-limit, newsletter-audit, and Brevo test records.
 - [x] Rechecked public credential evidence. [Realtor.com](https://www.realtor.com/realestateagents/659c35c962a5ff070b97f4b8) and the [brokerage roster](https://www.plum-realestate.com/agents.php) display a REALTOR® claim for Arthur, and Arthur confirmed active membership on July 18, 2026. Private membership and MLS identifiers are not recorded here.
 - [x] Scheduled the Codex automation `Quarterly South Jersey Compliance Review` to run every three months on the 18th at 9:00 AM local time, beginning October 18, 2026.
+- [x] Added source-note support and drafted seven county introductions plus all 168 current municipalities across 166 profile cards from primary government or public-agency sources. The drafts remain unpublished pending owner content/image review; the source audit found no hard link failures.
 - [x] Re-ran the audit phrase and contact scans, production build, 79 unit tests, 49 tracked database checks, and 37 Playwright checks after implementing the Google analytics hardening, source-note guardrails, compliance evidence packet, and review-only design/community artifacts.
 
 This technical record does not satisfy the broker, owner, credential-holder, or legal approvals below.
@@ -103,6 +106,6 @@ Legal review, if obtained: ____________________  Date: __________
 
 Final rendered-site audit: ____________________  Date: __________
 
-Codex technical reverification: completed  Date: July 18, 2026
+Codex technical reverification: completed  Date: July 19, 2026
 
 Status: Approved / Approved with changes / Not approved

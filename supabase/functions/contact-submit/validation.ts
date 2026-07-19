@@ -8,7 +8,8 @@ const EMAIL_LOCAL_PATTERN = /^[a-z0-9.!$'*+\-/=_`{|}~^]+$/i;
 const EMAIL_DOMAIN_PATTERN =
   /^(?:[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?$/i;
 const SINGLE_LINE_CONTROL_PATTERN = /[\u0000-\u001f\u007f]/;
-const MESSAGE_CONTROL_PATTERN = /[\u0000-\u0008\u000b\u000c\u000e-\u001f\u007f]/;
+const MESSAGE_CONTROL_PATTERN =
+  /[\u0000-\u0008\u000b\u000c\u000e-\u001f\u007f]/;
 
 export type ContactRequestBody = {
   requestId?: unknown;
@@ -51,7 +52,8 @@ function normalizedLine(value: unknown, maximum: number): string | null {
 
 function normalizedMessage(value: unknown): string | null {
   if (typeof value !== "string") return null;
-  const normalized = value.replaceAll("\r\n", "\n").replaceAll("\r", "\n").trim();
+  const normalized = value.replaceAll("\r\n", "\n").replaceAll("\r", "\n")
+    .trim();
   if (
     normalized.length < 1 ||
     normalized.length > 5_000 ||
@@ -82,13 +84,19 @@ export function normalizedEmail(value: unknown): string | null {
   return email;
 }
 
-export function validateContactRequest(body: ContactRequestBody): ContactValidationResult {
+export function validateContactRequest(
+  body: ContactRequestBody,
+): ContactValidationResult {
   if (typeof body.company === "string" && body.company.trim()) {
     return { ok: true, spam: true };
   }
 
-  if (body.source !== "contact_page") return { ok: false, code: "invalid_source" };
-  if (typeof body.requestId !== "string" || !UUID_V4_PATTERN.test(body.requestId)) {
+  if (body.source !== "contact_page") {
+    return { ok: false, code: "invalid_source" };
+  }
+  if (
+    typeof body.requestId !== "string" || !UUID_V4_PATTERN.test(body.requestId)
+  ) {
     return { ok: false, code: "invalid_request_id" };
   }
 

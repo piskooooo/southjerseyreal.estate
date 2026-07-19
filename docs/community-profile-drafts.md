@@ -1,6 +1,6 @@
 # Community Profile Drafts
 
-Last researched: July 18, 2026
+Last researched: July 19, 2026
 
 Status: **Editorial draft only. Not published. Owner review is required before any county batch is moved into the website editor.**
 
@@ -70,9 +70,9 @@ Salem County's communities include boroughs, a city, and townships along the cou
 
 Sources: [About Salem County](https://www.salemcountynj.gov/about-salem-county/) and [New Jersey Municipalities](https://www.nj.gov/infobank/revmuni.htm), accessed July 18, 2026.
 
-## Gloucester County Pilot
+## Gloucester County Draft
 
-This is the first complete county writing pilot. Every municipality has review-ready summary copy and at least one government source. Facts from retired narratives were kept only when a current official page supported them.
+Gloucester County was the first complete writing pilot. Every municipality has review-ready summary copy and at least one government source. Facts from retired narratives were kept only when a current official page supported them.
 
 ### Clayton
 
@@ -160,9 +160,9 @@ Sources: [Borough of Paulsboro](https://paulsboronj.org/) and [New Jersey Munici
 
 ### Pitman
 
-Pitman is a borough with municipal resources for parks and recreation, public works, water and sewer, the library, public notices, and local business information. Its official calendar and event pages are the right places to confirm what is happening now rather than carrying seasonal details forward indefinitely.
+Pitman is a Gloucester County borough with its municipal offices on South Broadway. County and state directories are the stable cross-checks for its current government identity and contact information; time-sensitive local services and events should be confirmed directly before publication.
 
-Sources: [Borough of Pitman](https://www.pitman.org/) and [New Jersey Municipalities](https://www.nj.gov/infobank/revmuni.htm), accessed July 18, 2026.
+Sources: [Gloucester County Municipalities](https://www.gloucestercountynj.gov/831/Municipalities) and [New Jersey Municipalities](https://www.nj.gov/infobank/revmuni.htm), accessed July 19, 2026. The direct borough site timed out during the automated source check and should be retested before publication.
 
 ### South Harrison Township
 
@@ -218,14 +218,879 @@ Woolwich is a Gloucester County township. Its official municipal site should be 
 
 Sources: [Woolwich Township](https://www.woolwichtwp.org/) and [Gloucester County Municipalities](https://www.gloucestercountynj.gov/831/Municipalities), accessed July 18, 2026.
 
+## Atlantic County Draft
+
+### Absecon
+
+Absecon is a city on the mainland side of Atlantic County. Its municipal and county pages are useful starting points for current council information, public notices, local forms, and the services available from the Mill Road municipal complex.
+
+Source: [Atlantic County Municipal Governments](https://www.atlanticcountynj.gov/government/government-information/municipal-governments), accessed July 19, 2026.
+
+### Atlantic City
+
+Atlantic City is a city on Absecon Island and one of the county's shore municipalities. The city website separates resident services, public meetings, planning material, beach information, and visitor resources, which makes it more useful than an undated neighborhood summary.
+
+Sources: [City of Atlantic City](https://www.acnj.gov/) and [Atlantic County Municipal Governments](https://www.atlanticcountynj.gov/government/government-information/municipal-governments), accessed July 19, 2026.
+
+### Brigantine
+
+Brigantine is a city on the barrier island north of Atlantic City. Check the city's current pages for beach rules, permits, public meetings, recreation, and municipal services before planning a visit or comparing properties.
+
+Source: [City of Brigantine](https://brigantinebeach.org/), accessed July 19, 2026.
+
+### Buena Borough
+
+Buena is a borough in western Atlantic County, with its municipal complex in the Minotola section. The borough site is the current source for meetings, departments, public works, recreation, forms, and local notices.
+
+Source: [Borough of Buena](https://www.buenaboro.org/), accessed July 19, 2026.
+
+### Buena Vista Township
+
+Buena Vista is a township made up of several named communities rather than one compact downtown. Its official site organizes township meetings, public notices, land-use material, recreation, and service contacts for those different areas.
+
+Source: [Buena Vista Township](https://www.buenavistanj.com/), accessed July 19, 2026.
+
+### Corbin City
+
+Corbin City retains a city form of government despite its small scale. The official page and county directory provide the clearest current route to meeting records, municipal contacts, public notices, and local service information.
+
+Sources: [Corbin City](https://sites.google.com/view/corbincitynj) and [Atlantic County Municipal Governments](https://www.atlanticcountynj.gov/government/government-information/municipal-governments), accessed July 19, 2026.
+
+### Egg Harbor City
+
+Egg Harbor City is an inland city along the White Horse Pike corridor. Its municipal site brings together council material, departments, permits, recreation, public notices, and the city's event calendar.
+
+Source: [Egg Harbor City](https://www.eggharborcity.org/), accessed July 19, 2026.
+
+### Egg Harbor Township
+
+Egg Harbor Township is a large mainland municipality whose services and neighborhoods span several named sections. Use the township site for current departments, meeting calendars, parks and recreation, development information, and online requests.
+
+Source: [Egg Harbor Township](https://www.ehtnj.gov/), accessed July 19, 2026.
+
+### Estell Manor
+
+Estell Manor is a city in the wooded southern part of Atlantic County. The county's Estell Manor Park resources add practical trail, nature-center, picnic, camping, and historic-site information to the city's local-government material.
+
+Sources: [Atlantic County Municipal Governments](https://www.atlanticcountynj.gov/government/government-information/municipal-governments) and [Estell Manor Park](https://www.atlanticcountynj.gov/government/county-departments/department-of-public-works/division-of-parks-and-recreation/estell-manor-park), accessed July 19, 2026.
+
+### Folsom
+
+Folsom is a borough in western Atlantic County and part of the state-designated Pinelands Area. The county and Pinelands pages are stable starting points for confirming the municipality and current regional land-use context; the borough's direct site had an expired certificate during this review.
+
+Sources: [Atlantic County Municipal Governments](https://www.atlanticcountynj.gov/government/government-information/municipal-governments) and [New Jersey Pinelands Commission](https://www.nj.gov/pinelands/), accessed July 19, 2026.
+
+### Galloway Township
+
+Galloway is a township that includes several named communities and Stockton University's main campus. Township and university sources are the reliable places to separate local-government information from campus events, facilities, and visitor details.
+
+Sources: [Galloway Township](https://www.gtnj.org/) and [Stockton University](https://stockton.edu/), accessed July 19, 2026.
+
+### Hamilton Township (Mays Landing)
+
+Hamilton Township includes Mays Landing, the Atlantic County seat. The township and county pages cover different needs: municipal services and meetings on one side, and county offices, Lake Lenape Park, and regional services on the other.
+
+Sources: [Hamilton Township](https://www.townshipofhamilton.com/) and [Atlantic County](https://www.atlanticcountynj.gov/), accessed July 19, 2026.
+
+### Hammonton
+
+Hammonton is a town in western Atlantic County with a defined downtown and a separate municipal calendar. Its official site is the current source for government services, public meetings, parks, events, business resources, and local forms.
+
+Source: [Town of Hammonton](https://www.townofhammonton.org/), accessed July 19, 2026.
+
+### Linwood
+
+Linwood is a city in Atlantic County's mainland shore corridor. The county's municipal-government directory is the stable cross-check for the correct local-government site and contact information; time-sensitive city services and notices should be confirmed directly before publication.
+
+Source: [Atlantic County Municipal Governments](https://www.atlanticcountynj.gov/government/government-information/municipal-governments), accessed July 19, 2026. The direct city site had an automated TLS-handshake failure and should be retested before publication.
+
+### Longport
+
+Longport is a borough at the southern end of Absecon Island. Its official site is the right place to verify beach rules, badges, parking and public-safety notices, meetings, construction information, and seasonal service changes.
+
+Source: [Borough of Longport](https://www.longportnj.gov/), accessed July 19, 2026.
+
+### Margate City
+
+Margate is a city on Absecon Island between Ventnor and Longport. The municipal site keeps beach information, meetings, departments, recreation, construction guidance, and public notices in one current location.
+
+Source: [Margate City](https://www.margate-nj.com/), accessed July 19, 2026.
+
+### Mullica Township
+
+Mullica is an inland township that includes the Elwood municipal area and other named communities. Use its official pages for township meetings, departments, trash and recycling guidance, permits, recreation, and emergency notices.
+
+Source: [Mullica Township](https://www.mullicatownship.org/), accessed July 19, 2026.
+
+### Northfield
+
+Northfield is a city in Atlantic County's mainland corridor. Its official site connects visitors with council records, city departments, public works, recreation, the library, forms, and current announcements.
+
+Source: [City of Northfield](https://www.cityofnorthfield.org/), accessed July 19, 2026.
+
+### Pleasantville
+
+Pleasantville is a city immediately inland from Absecon Island. The city website is the practical source for government meetings, departments, planning and development, public works, recreation, and resident-service updates.
+
+Source: [City of Pleasantville](https://www.pleasantville-nj.org/), accessed July 19, 2026.
+
+### Port Republic
+
+Port Republic is a city along the Mullica River side of Atlantic County. Its municipal page provides current meeting information, public notices, forms, emergency contacts, and local service details without relying on broad lifestyle labels.
+
+Source: [City of Port Republic](https://www.portrepublicnj.org/), accessed July 19, 2026.
+
+### Somers Point
+
+Somers Point is a city on the Great Egg Harbor Bay side of the mainland. City resources cover meetings and services as well as parks, recreation, boating access, events, and visitor information.
+
+Source: [City of Somers Point](https://www.somerspointgov.org/), accessed July 19, 2026.
+
+### Ventnor City
+
+Ventnor is a city on Absecon Island next to Atlantic City. Its official site is the current source for beach and boardwalk rules, meetings, departments, permits, recreation, parking notices, and seasonal updates.
+
+Source: [Ventnor City](https://www.ventnorcity.org/), accessed July 19, 2026.
+
+### Weymouth Township
+
+Weymouth is an inland township with municipal offices in Dorothy. The township and county directories provide current contacts, meeting information, local forms, public notices, and the correct municipal identity for records that use a community mailing name.
+
+Sources: [Weymouth Township](https://www.weymouthnj.org/) and [Atlantic County Municipal Governments](https://www.atlanticcountynj.gov/government/government-information/municipal-governments), accessed July 19, 2026.
+
+## Burlington County Draft
+
+### Bass River Township
+
+Bass River is a township in southeastern Burlington County within the Pinelands region. Its municipal site is the current source for township meetings, public notices, permits, emergency information, and services for the New Gretna area and surrounding communities.
+
+Sources: [Bass River Township](https://www.bassriver-nj.org/) and [New Jersey Pinelands Commission](https://www.nj.gov/pinelands/), accessed July 19, 2026.
+
+### Beverly City
+
+Beverly is a city along the Delaware River in western Burlington County. The city site collects council records, departments, public works information, forms, recreation, and current announcements.
+
+Source: [City of Beverly](https://thecityofbeverly.com/), accessed July 19, 2026.
+
+### Bordentown City
+
+Bordentown City is a compact municipality with its own government, separate from the surrounding township. Its official pages cover commission meetings and services as well as the historic district, local events, parking, and downtown resources.
+
+Source: [City of Bordentown](https://cityofbordentown.com/), accessed July 19, 2026.
+
+### Bordentown Township
+
+Bordentown Township is a separate municipality from Bordentown City, even though addresses and local destinations may use the same place name. The township site is the correct source for its meetings, departments, parks, permits, public works, and land-use records.
+
+Source: [Bordentown Township](https://www.bordentowntownship.com/), accessed July 19, 2026.
+
+### Burlington City
+
+Burlington City is a Delaware River city with its own municipal government, distinct from Burlington Township. Its official site combines council and department information with historic-district, waterfront, business, event, and resident-service resources.
+
+Source: [City of Burlington](https://www.burlingtonnj.us/), accessed July 19, 2026.
+
+### Burlington Township
+
+Burlington Township surrounds parts of Burlington City but maintains separate records, services, and elected government. Use the township site for meetings, departments, recreation, permits, public works, and local notices.
+
+Source: [Burlington Township](https://twp.burlington.nj.us/), accessed July 19, 2026.
+
+### Chesterfield Township
+
+Chesterfield is a township in northern Burlington County with municipal offices in the Crosswicks area. Its official site is the place to verify current meeting schedules, planning records, parks and recreation, forms, and public notices.
+
+Source: [Chesterfield Township](https://www.chesterfieldtwpnj.gov/), accessed July 19, 2026.
+
+### Cinnaminson Township
+
+Cinnaminson is a township in the county's Delaware River corridor. The municipal site provides current committee records, departments, parks and recreation, construction and zoning guidance, public works information, and online forms.
+
+Source: [Cinnaminson Township](https://cinnaminsonnj.org/), accessed July 19, 2026.
+
+### Delanco Township
+
+Delanco is a township on the Delaware River and Rancocas Creek. Its official pages cover meetings, public works, construction and zoning, parks, forms, and local notices for the township's riverfront and inland streets.
+
+Source: [Delanco Township](https://www.delancotownship.com/), accessed July 19, 2026.
+
+### Delran Township
+
+Delran is a township between the Delaware River and Rancocas Creek area. The township site is the current source for council business, departments, parks, public works, permits, and community announcements.
+
+Source: [Delran Township](https://www.delrantownship.org/), accessed July 19, 2026.
+
+### Eastampton Township
+
+Eastampton is a township near Mount Holly in central Burlington County. Its municipal site brings together meetings, departments, parks and recreation, trash and recycling guidance, land-use records, forms, and alerts.
+
+Source: [Eastampton Township](https://www.eastampton.com/), accessed July 19, 2026.
+
+### Edgewater Park Township
+
+Edgewater Park is a township in the Delaware River corridor, north of Burlington City. Use its official site for committee records, departments, public works, recreation, permits, and current municipal notices.
+
+Source: [Edgewater Park Township](https://www.edgewaterpark-nj.com/), accessed July 19, 2026.
+
+### Evesham Township (Marlton)
+
+Evesham is the municipality; Marlton is the place name used for many addresses and destinations within it. The township site is the right source for government records, parks, programs, public works, planning, and services across the full municipality.
+
+Source: [Evesham Township](https://evesham-nj.org/), accessed July 19, 2026.
+
+### Fieldsboro Borough
+
+Fieldsboro is a borough next to Bordentown City and Township, but it remains a separate municipality. Because it does not maintain a link in the county's municipal directory, use county and state records to confirm current contacts and the correct jurisdiction before relying on a nearby Bordentown address.
+
+Sources: [Burlington County Municipalities](https://www.burlingtoncountynj.gov/507/Municipalities) and [New Jersey Municipalities](https://www.nj.gov/infobank/revmuni.htm), accessed July 19, 2026.
+
+### Florence Township
+
+Florence Township includes Florence and Roebling place names along the Delaware River corridor. Its official site separates township meetings and services from recreation, public works, construction, planning, and local history resources.
+
+Source: [Florence Township](https://www.florence-nj.gov/), accessed July 19, 2026.
+
+### Hainesport Township
+
+Hainesport is a township along the Rancocas Creek area in central Burlington County. Its municipal site provides current committee records, departments, recreation, public works, construction information, forms, and notices.
+
+Source: [Hainesport Township](https://www.hainesporttownship.com/), accessed July 19, 2026.
+
+### Lumberton Township
+
+Lumberton is a township in central Burlington County. The township site is the practical source for meetings, departments, parks and recreation, public works, permits, emergency information, and local updates.
+
+Source: [Lumberton Township](https://www.lumbertontwp.com/), accessed July 19, 2026.
+
+### Mansfield Township
+
+Mansfield is a township whose municipal records may use several local mailing names. Its official site keeps government meetings, planning and zoning, public works, recreation, forms, and notices tied to the correct township.
+
+Source: [Mansfield Township](https://www.mansfieldtwp.com/), accessed July 19, 2026.
+
+### Maple Shade Township
+
+Maple Shade is a township near the Camden County line. Its official site connects visitors with council records, municipal departments, public works, recreation, permits, business information, and current announcements.
+
+Source: [Maple Shade Township](https://mapleshade.com/), accessed July 19, 2026.
+
+### Medford Township
+
+Medford Township is separate from Medford Lakes Borough and includes a larger municipal area around the Medford place name. Use the township site for council records, public works, parks, planning, construction, events, and resident services.
+
+Source: [Medford Township](https://medfordtownship.com/), accessed July 19, 2026.
+
+### Medford Lakes Borough
+
+Medford Lakes is a borough enclosed by Medford Township but governed independently. Its official site is the current source for borough meetings, permits, public works, recreation, lake-related municipal information, and public notices.
+
+Source: [Medford Lakes Borough](https://www.medfordlakes.com/), accessed July 19, 2026.
+
+### Moorestown Township
+
+Moorestown is a township with a municipal center along Main Street and a larger surrounding area. The township site covers council and board records, parks and recreation, construction, planning, public works, events, and business resources.
+
+Source: [Moorestown Township](https://www.moorestown.nj.us/), accessed July 19, 2026.
+
+### Mount Holly Township
+
+Mount Holly is a township and the county seat of Burlington County. Municipal and county sources serve different purposes here: the township handles local meetings and services, while county offices provide courts, records, programs, and regional departments.
+
+Sources: [Mount Holly Township](https://twp.mountholly.nj.us/) and [Burlington County](https://www.burlingtoncountynj.gov/), accessed July 19, 2026.
+
+### Mount Laurel Township
+
+Mount Laurel is a township near the Camden County line with municipal services spread across a broad suburban area. Its official site organizes council business, planning and zoning, construction, parks, public works, police information, and online requests.
+
+Source: [Mount Laurel Township](https://mountlaurel.com/), accessed July 19, 2026.
+
+### New Hanover Township
+
+New Hanover is a township that should not be confused with neighboring North Hanover. The municipal site is the correct place to confirm its meetings, departments, construction and land-use material, public works, recreation, and notices.
+
+Source: [New Hanover Township](https://www.newhanovertwp.com/), accessed July 19, 2026.
+
+### North Hanover Township
+
+North Hanover is a separate township east of Chesterfield and north of New Hanover. Its official pages cover committee records, public notices, forms, parks and recreation, construction, public works, and local services.
+
+Source: [North Hanover Township](https://www.northhanovertwp.com/), accessed July 19, 2026.
+
+### Palmyra Borough
+
+Palmyra is a Burlington County borough on the Delaware River beside the Tacony-Palmyra Bridge. County and Bridge Commission sources establish the municipality and bridge location; current borough services, meetings, and notices should be confirmed directly before publication.
+
+Sources: [Burlington County Municipalities](https://www.burlingtoncountynj.gov/507/Municipalities) and [Burlington County Bridge Commission](https://www.bcbridges.org/contact-us/), accessed July 19, 2026. The direct borough site timed out during the automated source check and should be retested before publication.
+
+### Pemberton Borough
+
+Pemberton Borough is an independent municipality enclosed by Pemberton Township. Its official site is the place to distinguish borough meetings, utilities, public works, permits, and notices from township services with a similar name.
+
+Source: [Pemberton Borough](https://www.pembertonborough.us/), accessed July 19, 2026.
+
+### Pemberton Township
+
+Pemberton Township covers a much larger area than Pemberton Borough and includes several named communities. Use the township site for its council records, departments, parks, public works, planning, construction, and community updates.
+
+Source: [Pemberton Township](https://www.pemberton-twp.com/), accessed July 19, 2026.
+
+### Riverside Township
+
+Riverside is a township along the Delaware River, across Rancocas Creek from Delanco. Its municipal site provides current meetings, departments, public works, permits, recreation, and local notices.
+
+Source: [Riverside Township](https://riversidetwp.org/), accessed July 19, 2026.
+
+### Riverton Borough
+
+Riverton is a borough on the Delaware River between Palmyra and Cinnaminson. The borough site combines council and board records with public works, parks, forms, local history, and community announcements.
+
+Source: [Borough of Riverton](https://www.riverton-nj.com/), accessed July 19, 2026.
+
+### Shamong Township
+
+Shamong is a township in Burlington County's Pinelands area. Its official site is the current source for committee meetings, planning and construction, public works, recreation, emergency information, and notices for its named communities.
+
+Sources: [Shamong Township](https://www.shamong.net/) and [New Jersey Pinelands Commission](https://www.nj.gov/pinelands/), accessed July 19, 2026.
+
+### Southampton Township
+
+Southampton is a township that includes several established place names and a substantial Pinelands area. The municipal site keeps township meetings, public works, recreation, land-use material, forms, and announcements in one current record.
+
+Sources: [Southampton Township](https://www.southamptonnj.org/) and [New Jersey Pinelands Commission](https://www.nj.gov/pinelands/), accessed July 19, 2026.
+
+### Springfield Township
+
+Springfield is a township in northern Burlington County. Its official site provides current committee records, tax and construction information, public works, recreation, forms, and public notices.
+
+Source: [Springfield Township](https://www.springfieldtownshipnj.org/), accessed July 19, 2026.
+
+### Tabernacle Township
+
+Tabernacle is a township in the Pinelands portion of Burlington County. The county and Pinelands pages are stable sources for its current municipal identity and regional land-use context; the municipality's listed direct domain did not resolve during this review and should be rechecked before publication.
+
+Sources: [Burlington County Municipalities](https://www.burlingtoncountynj.gov/507/Municipalities) and [New Jersey Pinelands Commission](https://www.nj.gov/pinelands/), accessed July 19, 2026.
+
+### Washington Township (Burlington County)
+
+This Washington Township is the Burlington County municipality, not the Gloucester County township with the same name. Its official URL and the county directory are useful identity checks before using tax, meeting, permit, or service records.
+
+Sources: [Washington Township, Burlington County](https://wtbcnj.org/) and [Burlington County Municipalities](https://www.burlingtoncountynj.gov/507/Municipalities), accessed July 19, 2026.
+
+### Westampton Township
+
+Westampton is a township next to Mount Holly in central Burlington County. The township site covers meetings, departments, parks and recreation, construction, public works, emergency notices, and online services.
+
+Source: [Westampton Township](https://www.westamptonnj.gov/), accessed July 19, 2026.
+
+### Willingboro Township
+
+Willingboro is a township in the county's Delaware River corridor. Its municipal site organizes council business, departments, parks and recreation, public works, permits, library links, and resident programs.
+
+Source: [Willingboro Township](https://www.willingboronj.gov/), accessed July 19, 2026.
+
+### Woodland Township
+
+Woodland is a township in the Pinelands, with municipal offices serving a wide rural area that includes the Chatsworth place name. The township and Pinelands sites are the current sources for local records, land-use context, services, and notices.
+
+Sources: [Woodland Township](https://www.woodlandtownship.org/) and [New Jersey Pinelands Commission](https://www.nj.gov/pinelands/), accessed July 19, 2026.
+
+### Wrightstown Borough
+
+Wrightstown is a borough next to the Joint Base McGuire-Dix-Lakehurst area but remains a separate civilian municipality. Use borough sources for local meetings, departments, permits, public works, and notices, and base sources for installation-specific access or facility information.
+
+Sources: [Wrightstown Borough](https://wrightstownborough.com/) and [Joint Base McGuire-Dix-Lakehurst](https://www.jbmdl.jb.mil/), accessed July 19, 2026.
+
+## Camden County Draft
+
+### Audubon and Audubon Park
+
+Audubon and Audubon Park are neighboring boroughs with separate municipal governments. Their official sites should be checked independently for meetings, public works, permits, recreation, and notices rather than treating the two names as one jurisdiction.
+
+Sources: [Borough of Audubon](https://www.audubonnj.com/) and [Borough of Audubon Park](https://www.audubonparknj.org/), accessed July 19, 2026.
+
+### Barrington
+
+Barrington is a borough in western Camden County. Its official site brings together council records, public works schedules, construction and zoning information, recreation, forms, and current borough announcements.
+
+Source: [Borough of Barrington](https://barringtonboro.com/), accessed July 19, 2026.
+
+### Bellmawr
+
+Bellmawr is a borough near the junction of several major South Jersey roadways. The borough site is the current source for council meetings, municipal departments, public works, recreation, permits, and traffic or service notices.
+
+Source: [Borough of Bellmawr](https://www.bellmawr.com/), accessed July 19, 2026.
+
+### Berlin Borough and Berlin Township
+
+Berlin Borough and Berlin Township are separate municipalities that share the Berlin place name. Use each official site for the correct meetings, departments, public works, recreation, and land-use records before attaching a fact to either one.
+
+Sources: [Berlin Borough](https://www.berlinnj.org/) and [Berlin Township](https://www.berlintwp.com/), accessed July 19, 2026.
+
+### Brooklawn
+
+Brooklawn is a borough near the Delaware River and Big Timber Creek area. Its official site provides current council records, departments, public works information, recreation, forms, and notices.
+
+Source: [Borough of Brooklawn](https://www.brooklawn-nj.com/), accessed July 19, 2026.
+
+### Camden City
+
+Camden is a city on the Delaware River and the Camden County seat. City and county sources cover different layers of government, while the city site also provides planning, development, parks, public works, meeting, and resident-service information.
+
+Sources: [City of Camden](https://www.ci.camden.nj.us/) and [Camden County](https://www.camdencounty.com/), accessed July 19, 2026.
+
+### Cherry Hill
+
+Cherry Hill is a township with several named neighborhoods and commercial districts rather than one traditional municipal center. The township site is the current source for council records, parks, public works, planning, construction, events, and online services.
+
+Source: [Cherry Hill Township](https://www.cherryhill-nj.com/), accessed July 19, 2026.
+
+### Chesilhurst
+
+Chesilhurst is a borough in southeastern Camden County. Its official site provides current borough meetings, departments, public notices, forms, public works information, and local contacts.
+
+Source: [Borough of Chesilhurst](https://chesilhurstboro.org/), accessed July 19, 2026.
+
+### Clementon
+
+Clementon is a borough in central Camden County. The borough site is the practical place to check council records, departments, construction and zoning, public works, recreation, and current notices.
+
+Source: [Borough of Clementon](https://www.clementon-nj.com/), accessed July 19, 2026.
+
+### Collingswood
+
+Collingswood is a borough along the PATCO corridor, with a municipal center on Haddon Avenue. Borough and transit sources provide current government records, parking and event information, parks, business resources, and station schedules.
+
+Sources: [Borough of Collingswood](https://www.collingswood.com/) and [PATCO](https://www.ridepatco.org/), accessed July 19, 2026.
+
+### Gibbsboro
+
+Gibbsboro is a borough between Voorhees and the Berlin area. Its official site keeps council meetings, departments, public works, recreation, environmental information, forms, and public notices tied to the correct municipality.
+
+Source: [Borough of Gibbsboro](https://www.gibbsborotownhall.com/), accessed July 19, 2026.
+
+### Gloucester City
+
+Gloucester City is a city on the Delaware River, distinct from Gloucester Township elsewhere in Camden County. The city site is the correct source for council business, departments, public works, development, recreation, forms, and events.
+
+Source: [Gloucester City](https://www.cityofgloucester.org/), accessed July 19, 2026.
+
+### Gloucester Township
+
+Gloucester Township is a separate municipality from Gloucester City and includes several named communities. Its official site covers council and board records, parks, public works, permits, police information, events, and township services.
+
+Source: [Gloucester Township](https://www.glotwp.com/), accessed July 19, 2026.
+
+### Haddon Heights
+
+Haddon Heights is a borough with a municipal center along Station Avenue. The borough site provides current meetings, public works, permits, parks and recreation, business information, events, and public notices.
+
+Source: [Borough of Haddon Heights](https://www.haddonhts.com/), accessed July 19, 2026.
+
+### Haddon Township
+
+Haddon Township is a township that includes several place names and is not the same municipality as Haddonfield or Haddon Heights. Township and PATCO sources cover local government, events, parks, public works, permits, and current rail information.
+
+Sources: [Haddon Township](https://www.haddontwp.com/) and [PATCO](https://www.ridepatco.org/), accessed July 19, 2026.
+
+### Haddonfield
+
+Haddonfield is a borough with its own government and a historic commercial district along Kings Highway. Its official site separates commission and board records from parking, business, event, parks, public works, and preservation resources.
+
+Source: [Borough of Haddonfield](https://www.haddonfieldnj.org/), accessed July 19, 2026.
+
+### Hi-Nella
+
+Hi-Nella is a borough with its own municipal government despite its small geographic footprint. Use the borough and county directories for current contacts, meetings, records, and service information rather than assigning it to a neighboring municipality.
+
+Sources: [Borough of Hi-Nella](https://hinellaboro.org/) and [Camden County Municipalities](https://www.camdencounty.com/your-government/municipalities-camden-county/), accessed July 19, 2026.
+
+### Laurel Springs
+
+Laurel Springs is a borough along the White Horse Pike corridor. Its official site provides council records, departments, public works, construction information, recreation, forms, and current announcements.
+
+Source: [Borough of Laurel Springs](https://laurelsprings-nj.com/), accessed July 19, 2026.
+
+### Lawnside
+
+Lawnside is a borough between Barrington and Magnolia. Its municipal site is the current source for council and board records, departments, public works, permits, recreation, forms, and local notices.
+
+Source: [Borough of Lawnside](https://www.lawnside.net/), accessed July 19, 2026.
+
+### Lindenwold
+
+Lindenwold is a Camden County borough and the eastern terminus of PATCO service. County and transit sources establish the municipality and rail connection; current borough services and notices should be confirmed directly, and train schedules should always come from PATCO.
+
+Sources: [Camden County Municipalities](https://www.camdencounty.com/your-government/municipalities-camden-county/) and [PATCO](https://www.ridepatco.org/), accessed July 19, 2026. The direct borough site reset the automated connection and should be retested before publication.
+
+### Magnolia
+
+Magnolia is a borough along the White Horse Pike corridor. Its official site is the place to check council records, departments, public works schedules, construction and zoning, recreation, forms, and public notices.
+
+Source: [Borough of Magnolia](https://www.magnolia-nj.org/), accessed July 19, 2026.
+
+### Merchantville
+
+Merchantville is a borough bordered by Pennsauken and Cherry Hill. The borough site combines government records and services with parks, events, business information, public works, permits, and current community notices.
+
+Source: [Borough of Merchantville](https://merchantvillenj.gov/), accessed July 19, 2026.
+
+### Mount Ephraim
+
+Mount Ephraim is a borough near the western Camden County roadway network. Its official site provides council records, departments, public works, permits, recreation, forms, and notices for the borough itself.
+
+Source: [Borough of Mount Ephraim](https://www.mountephraim-nj.com/), accessed July 19, 2026.
+
+### Oaklyn
+
+Oaklyn is a borough next to Collingswood and Haddon Township. Its municipal site covers meetings, departments, public works, permits, parks and recreation, business resources, events, and public notices.
+
+Source: [Borough of Oaklyn](https://www.oaklyn-nj.net/), accessed July 19, 2026.
+
+### Pennsauken
+
+Pennsauken is a township along the Delaware River corridor, with municipal services covering several named neighborhoods and business areas. Its official site organizes meetings, departments, parks, public works, permits, events, and local notices.
+
+Source: [Pennsauken Township](https://www.twp.pennsauken.nj.us/), accessed July 19, 2026.
+
+### Pine Hill (including the former Pine Valley Borough)
+
+Pine Hill is the current municipality. The former Pine Valley Borough was consolidated into Pine Hill effective January 1, 2022, so future site content should retire the old two-municipality card title and direct current records to Pine Hill.
+
+Sources: [Borough of Pine Hill](https://www.pinehillboronj.com/) and [New Jersey Government Records Council decision documenting the consolidation](https://www.nj.gov/grc/decisions/pdf/2021-341.pdf), accessed July 19, 2026.
+
+### Runnemede
+
+Runnemede is a borough near the Route 42 and New Jersey Turnpike corridor. Its official site is the current source for borough meetings, departments, public works, permits, recreation, and local announcements.
+
+Source: [Borough of Runnemede](https://www.runnemedenj.org/), accessed July 19, 2026.
+
+### Somerdale
+
+Somerdale is a borough between Magnolia, Stratford, and Voorhees. The borough site brings together council records, departments, public works, construction information, recreation, forms, and public notices.
+
+Source: [Borough of Somerdale](https://www.somerdale-nj.com/), accessed July 19, 2026.
+
+### Stratford
+
+Stratford is a borough along the White Horse Pike corridor. Its official site provides meetings, departments, public works, construction and zoning, recreation, forms, and current borough notices.
+
+Source: [Borough of Stratford](https://www.stratfordnj.org/), accessed July 19, 2026.
+
+### Tavistock
+
+Tavistock remains a separate borough even though it has a very small municipal footprint. County and borough sources should be used to confirm its current government contacts and jurisdiction rather than folding its records into a neighboring town.
+
+Sources: [Borough of Tavistock](https://tavistocknj.org/) and [Camden County Municipalities](https://www.camdencounty.com/your-government/municipalities-camden-county/), accessed July 19, 2026.
+
+### Voorhees
+
+Voorhees is a township with several named communities and commercial areas. The township site is the current source for committee records, parks and recreation, public works, planning, permits, police information, events, and services.
+
+Source: [Voorhees Township](https://www.voorheesnj.com/), accessed July 19, 2026.
+
+### Waterford Township
+
+Waterford is a township in eastern Camden County whose municipal center uses the Atco place name. Its official site keeps meetings, departments, public works, recreation, land-use material, forms, and notices tied to the correct township.
+
+Source: [Waterford Township](https://www.waterfordtwp.org/), accessed July 19, 2026.
+
+### Winslow Township
+
+Winslow is a township covering a broad area in southeastern Camden County with several named communities. Use the township site for council records, public works, recreation, planning, permits, police information, and local notices across the municipality.
+
+Source: [Winslow Township](https://www.winslowtownship.com/), accessed July 19, 2026.
+
+### Woodlynne
+
+Woodlynne is a borough between Camden and Collingswood. Its official site and the county directory provide current borough contacts, meetings, departments, public works, forms, and public notices.
+
+Sources: [Borough of Woodlynne](https://www.woodlynnenj.org/) and [Camden County Municipalities](https://www.camdencounty.com/your-government/municipalities-camden-county/), accessed July 19, 2026.
+
+## Cape May County Draft
+
+### Avalon
+
+Avalon is a borough on Seven Mile Island, sharing the island with Stone Harbor but maintaining separate government and services. The borough site is the current source for beach information, meetings, permits, parking, public works, recreation, and seasonal notices.
+
+Source: [Borough of Avalon](https://avalonboro.net/), accessed July 19, 2026.
+
+### Cape May
+
+Cape May is a city at the southern end of the Cape May Peninsula. Its official site separates city meetings and services from beach information, parking, historic-preservation material, events, and visitor resources.
+
+Source: [City of Cape May](https://www.capemaycity.com/), accessed July 19, 2026.
+
+### Cape May Point
+
+Cape May Point is a borough west of Cape May City and next to Cape May Point State Park. Borough and state sources provide current municipal records, beach rules, nature programs, trails, lighthouse information, and park conditions.
+
+Sources: [Cape May Point](https://capemaypoint.org/) and [Cape May Point State Park](https://nj.gov/dep/parksandforests/parks/capemaypointstatepark.html), accessed July 19, 2026.
+
+### Dennis Township
+
+Dennis is a mainland township made up of several named communities rather than one incorporated downtown. Its official site is the current source for township meetings, public works, recreation, construction, planning, forms, and notices across those areas.
+
+Source: [Dennis Township](https://www.dennistwp.org/), accessed July 19, 2026.
+
+### Lower Township
+
+Lower Township covers the southern mainland portion of the county and includes several distinct place names outside Cape May City. Use the township site for council records, parks and recreation, public works, planning, permits, police information, and local notices.
+
+Source: [Lower Township](https://townshipoflower.org/), accessed July 19, 2026.
+
+### Middle Township
+
+Middle Township is a mainland municipality that includes Cape May Court House, where many county offices use a mailing address. Township and county sources help distinguish municipal services from county courts, records, parks, and regional departments.
+
+Sources: [Middle Township](https://middletownship.com/) and [Cape May County](https://www.capemaycountynj.gov/), accessed July 19, 2026.
+
+### North Wildwood
+
+North Wildwood is a city at the northern end of Five Mile Island, separate from Wildwood, West Wildwood, and Wildwood Crest. Its official site provides current meetings, beach and boardwalk information, parking, permits, public works, recreation, and seasonal notices.
+
+Source: [City of North Wildwood](https://northwildwood.com/), accessed July 19, 2026.
+
+### Ocean City
+
+Ocean City is a city on a barrier island in northern Cape May County. The municipal site is the current source for council records, beach and boardwalk rules, parking, public works, recreation, events, construction information, and emergency updates.
+
+Source: [Ocean City](https://www.ocnj.us/), accessed July 19, 2026.
+
+### Sea Isle City
+
+Sea Isle City is a city on a barrier island between Ocean City and Avalon. Its official site keeps beach rules, parking, meetings, construction guidance, public works, recreation, events, and seasonal service changes together.
+
+Source: [Sea Isle City](https://seaislecitynj.us/), accessed July 19, 2026.
+
+### Stone Harbor
+
+Stone Harbor is a borough on Seven Mile Island, south of Avalon and governed separately. The borough site is the right place to verify beach information, parking, meetings, permits, public works, recreation, and current notices.
+
+Source: [Borough of Stone Harbor](https://stoneharbornj.org/), accessed July 19, 2026.
+
+### Upper Township
+
+Upper Township includes mainland communities as well as the Strathmere shore area. Its official site covers township-wide meetings, public works, recreation, beach information, planning, construction, emergency services, and current notices.
+
+Source: [Upper Township](https://uppertownship.com/), accessed July 19, 2026.
+
+### West Cape May
+
+West Cape May is a borough immediately west of Cape May City with its own government and records. The borough site provides meetings, public works, construction and zoning, parks, events, forms, and community notices.
+
+Source: [Borough of West Cape May](https://westcapemay.us/), accessed July 19, 2026.
+
+### West Wildwood
+
+West Wildwood is a borough on a small island west of Wildwood and remains a separate Cape May County municipality. County sources establish its location and separate property-tax jurisdiction; current borough services and emergency notices should be confirmed directly before publication.
+
+Sources: [Cape May County West Wildwood profile](https://www.capemaycountynj.gov/419/West-Wildwood) and [Cape May County Property Tax Lookup](https://www.capemaycountynj.gov/1737/Cape-May-County-Property-Tax-Lookup), accessed July 19, 2026. The direct borough site timed out during the automated source check and should be retested before publication.
+
+### Wildwood
+
+Wildwood is a city on Five Mile Island, with separate municipal boundaries from North Wildwood, West Wildwood, and Wildwood Crest. Its official site is the current source for city meetings, beach and boardwalk information, parking, permits, public works, recreation, and events.
+
+Source: [City of Wildwood](https://www.wildwoodnj.org/), accessed July 19, 2026.
+
+### Wildwood Crest
+
+Wildwood Crest is a borough at the southern end of Five Mile Island. The borough site provides current meetings, beach information, parking and transportation notices, public works, recreation, permits, and events.
+
+Source: [Borough of Wildwood Crest](https://wildwoodcrest.org/), accessed July 19, 2026.
+
+### Woodbine
+
+Woodbine is an inland borough in northern Cape May County. Its official site connects visitors with borough meetings, departments, public works, construction and zoning, recreation, forms, history resources, and current notices.
+
+Source: [Borough of Woodbine](https://www.boroughofwoodbine.net/), accessed July 19, 2026.
+
+## Cumberland County Draft
+
+### Bridgeton
+
+Bridgeton is a city and the Cumberland County seat. City and county pages cover different layers of government, while the city site also provides current meetings, departments, parks, development information, public works, permits, and resident services.
+
+Sources: [City of Bridgeton](https://www.cityofbridgeton.com/) and [Cumberland County](https://www.cumberlandcountynj.gov/), accessed July 19, 2026.
+
+### Commercial Township
+
+Commercial Township includes Port Norris and other named Bayshore communities. Its official site is the current source for township meetings, departments, public works, recreation, planning, construction, forms, and local notices across those areas.
+
+Source: [Commercial Township](https://www.commercialtwp.com/), accessed July 19, 2026.
+
+### Deerfield Township
+
+Deerfield is a township with municipal offices in the Rosenhayn area. The township and county pages provide current committee records, public works information, permits, recreation, forms, notices, and the correct jurisdiction for local records.
+
+Sources: [Deerfield Township](https://sites.google.com/view/deerfieldtownship) and [Cumberland County Municipalities](https://www.cumberlandcountynj.gov/municipalities), accessed July 19, 2026.
+
+### Downe Township
+
+Downe is a township along the Delaware Bay side of Cumberland County and includes several named communities. Its official site covers township meetings, emergency information, public works, planning, construction, recreation, forms, and notices.
+
+Source: [Downe Township](https://www.downetwpnj.org/), accessed July 19, 2026.
+
+### Fairfield Township
+
+Fairfield is a township with municipal offices in the Fairton area. The county directory provides the stable current municipal contact and identity record; the linked township domain had a TLS error during this review and should be rechecked before publication.
+
+Source: [Cumberland County Municipalities](https://www.cumberlandcountynj.gov/municipalities), accessed July 19, 2026.
+
+### Greenwich Township
+
+Greenwich is a township on the Cohansey River side of Cumberland County. Its official site combines municipal records and services with current historic-district, public-notice, meeting, and local-resource information.
+
+Source: [Greenwich Township](https://www.historicgreenwichnj.org/), accessed July 19, 2026.
+
+### Hopewell Township
+
+Hopewell is a township west of Bridgeton and should be identified with Cumberland County when searching records because New Jersey has another municipality with the same name. Its official site covers meetings, public works, planning, permits, recreation, forms, and notices.
+
+Source: [Hopewell Township, Cumberland County](https://hopewelltwp-nj.com/), accessed July 19, 2026.
+
+### Lawrence Township
+
+Lawrence is a township whose municipal offices use the Cedarville place name. The township site keeps committee records, departments, public works, planning, construction, recreation, forms, and local notices tied to the correct municipality.
+
+Source: [Lawrence Township, Cumberland County](https://www.lawrencetwpcumberlandnj.com/), accessed July 19, 2026.
+
+### Maurice River Township
+
+Maurice River is a township with municipal offices in Leesburg and several named communities along river, forest, and Bayshore areas. Township sources provide current meetings, services, planning, permits, recreation, forms, and public notices without flattening those places into one neighborhood description.
+
+Source: [Maurice River Township](https://www.mauricerivertwp.org/), accessed July 19, 2026.
+
+### Millville
+
+Millville is a city along the Maurice River and Route 55 corridor. Its official site is the current source for commission records, city departments, parks and recreation, development, public works, construction, events, and online services.
+
+Source: [City of Millville](https://www.millvillenj.gov/), accessed July 19, 2026.
+
+### Shiloh Borough
+
+Shiloh is a borough west of Bridgeton with its own government and records. Borough and county sources provide current contacts, meetings, public works, permits, forms, and notices without assigning the borough to a surrounding township.
+
+Sources: [Shiloh Borough](https://shilohborough.com/) and [Cumberland County Municipalities](https://www.cumberlandcountynj.gov/municipalities), accessed July 19, 2026.
+
+### Stow Creek Township
+
+Stow Creek is a township in western Cumberland County with municipal offices outside Bridgeton. Its official site is the place to check committee records, departments, public works, planning, permits, recreation, forms, and local notices.
+
+Source: [Stow Creek Township](https://www.stowcreektwp.com/), accessed July 19, 2026.
+
+### Upper Deerfield Township
+
+Upper Deerfield is a separate township from Deerfield Township and includes several local place names. Use its official site for township meetings, departments, public works, parks and recreation, planning, construction, forms, and announcements.
+
+Source: [Upper Deerfield Township](https://upperdeerfield.com/), accessed July 19, 2026.
+
+### Vineland
+
+Vineland is a city covering a broad area in northeastern Cumberland County. The city site organizes council records, departments, parks and recreation, planning and development, public works, permits, business information, and public notices.
+
+Source: [City of Vineland](https://www.vinelandcity.org/), accessed July 19, 2026.
+
+## Salem County Draft
+
+### Alloway Township
+
+Alloway is a township in central Salem County with municipal records covering several local place names. Its official site is the current source for meetings, departments, public works, planning, permits, recreation, forms, and notices.
+
+Source: [Alloway Township](https://www.allowaytownship.com/), accessed July 19, 2026.
+
+### Carneys Point Township
+
+Carneys Point is a township in northwestern Salem County near Penns Grove, but the two are separate municipalities. County and state directories are the reliable starting points for current township contacts and the correct jurisdiction for meetings, permits, services, and property records.
+
+Sources: [Salem County Municipalities](https://www.salemcountynj.gov/about-salem-county/#municipalities) and [New Jersey Municipalities](https://www.nj.gov/infobank/revmuni.htm), accessed July 19, 2026.
+
+### Elmer Borough
+
+Elmer is a borough along the Route 40 corridor with its own local government. Its official site provides current meetings, departments, public works, construction and zoning, recreation, forms, and borough announcements.
+
+Source: [Elmer Borough](https://elmerboroughnj.gov/), accessed July 19, 2026.
+
+### Elsinboro Township
+
+Elsinboro is a township west of Salem City along the Delaware River side of the county. Because the county directory does not link a dedicated municipal site, use county and state records to verify current contacts, meetings, services, and the correct local jurisdiction.
+
+Sources: [Salem County Municipalities](https://www.salemcountynj.gov/about-salem-county/#municipalities) and [New Jersey Municipalities](https://www.nj.gov/infobank/revmuni.htm), accessed July 19, 2026.
+
+### Lower Alloways Creek Township
+
+Lower Alloways Creek is a township in southwestern Salem County that includes several named communities. County and state sources provide the stable identity check for township contacts and records, while current local notices should be rechecked immediately before publication.
+
+Sources: [Salem County Municipalities](https://www.salemcountynj.gov/about-salem-county/#municipalities) and [New Jersey Municipalities](https://www.nj.gov/infobank/revmuni.htm), accessed July 19, 2026.
+
+### Mannington Township
+
+Mannington is a township surrounding parts of the Salem City area and extending into the county's inland landscape. Its official site is the current source for committee records, departments, public works, planning, permits, forms, and notices.
+
+Source: [Mannington Township](https://www.manningtontwp.com/), accessed July 19, 2026.
+
+### Oldmans Township
+
+Oldmans is a township in northern Salem County that includes the Pedricktown place name. Its official site keeps township meetings, departments, public works, planning, construction, recreation, forms, and announcements tied to the correct municipality.
+
+Source: [Oldmans Township](https://www.oldmanstownship.com/), accessed July 19, 2026.
+
+### Penns Grove Borough
+
+Penns Grove is a borough on the Delaware River, adjacent to but separate from Carneys Point Township. The borough site is the current source for council records, departments, public works, permits, recreation, forms, and notices.
+
+Source: [Borough of Penns Grove](https://www.pennsgrove-nj.org/), accessed July 19, 2026.
+
+### Pennsville Township
+
+Pennsville is a township along the Delaware River and includes the Fort Mott area. Township sources cover meetings and services, while the state park page provides current hours, facilities, history, and access information for Fort Mott.
+
+Sources: [Pennsville Township](https://www.pennsville.org/) and [Fort Mott State Park](https://nj.gov/dep/parksandforests/parks/fortmottstatepark.html), accessed July 19, 2026.
+
+### Pilesgrove Township
+
+Pilesgrove is a township surrounding Woodstown Borough, but the two maintain separate governments and records. County and state directories are the starting point for confirming township contacts and the correct jurisdiction before using a Woodstown mailing address.
+
+Sources: [Salem County Municipalities](https://www.salemcountynj.gov/about-salem-county/#municipalities) and [New Jersey Municipalities](https://www.nj.gov/infobank/revmuni.htm), accessed July 19, 2026.
+
+### Pittsgrove Township
+
+Pittsgrove is a township in eastern Salem County and should be distinguished from Upper Pittsgrove. Its official site covers township meetings, departments, public works, parks and recreation, planning, construction, forms, and public notices.
+
+Source: [Pittsgrove Township](https://www.pittsgrovetownship.com/), accessed July 19, 2026.
+
+### Quinton Township
+
+Quinton is a township southeast of Salem City. Its official site is the current source for committee records, departments, public works, planning, permits, recreation, forms, and township notices.
+
+Source: [Quinton Township](https://www.quintonnj.com/), accessed July 19, 2026.
+
+### Salem City
+
+Salem is a city on the Salem River and the Salem County seat. City and county sources cover separate layers of government, while the city site provides meetings, departments, public works, planning, permits, parks, events, and local notices.
+
+Sources: [City of Salem](https://www.cityofsalemnj.gov/) and [Salem County](https://www.salemcountynj.gov/), accessed July 19, 2026.
+
+### Upper Pittsgrove Township
+
+Upper Pittsgrove is a separate township north of Pittsgrove Township, and records should always include the full municipal name. Its official site covers committee meetings, public works, planning, construction, recreation, forms, and notices.
+
+Source: [Upper Pittsgrove Township](https://upperpittsgrovenj.org/), accessed July 19, 2026.
+
+### Woodstown Borough
+
+Woodstown is a borough enclosed by Pilesgrove Township but governed independently. Its official site combines council and board records with public works, permits, parks, events, business resources, forms, and local notices.
+
+Source: [Borough of Woodstown](https://www.historicwoodstown.org/), accessed July 19, 2026.
+
 ## Editorial Review Checklist
 
-Automated link check on July 18, 2026: 26 of 32 unique HTTPS sources returned a final `2xx` response. Harrison and Wenonah had certificate-name errors, Washington timed out, Logan and Salem returned bot-oriented `403` responses, and Gloucester County returned a transient `500` despite loading in a browser. Direct Harrison, Wenonah, and Washington links were removed from these drafts; all six exceptions need a human browser recheck before the affected content is published.
+Automated link check on July 19, 2026: 148 of 176 unique HTTPS sources returned a final `2xx` response. The other 28 returned bot-oriented `403` responses, with no missing pages, certificate errors, connection failures, or timeouts remaining. An automated Chromium follow-up reached an anti-bot challenge on all 28, so they need an interactive human-browser recheck before the affected county batch is published.
 
-- [ ] Owner approves the county-introduction voice.
-- [ ] Owner approves the Gloucester pilot voice before it is entered as a private website draft.
+- [x] Owner selected the casual-but-professional writing direction for county introductions and community cards.
+- [x] All seven county introductions and all 168 current municipalities are researched and represented across 166 profile cards.
+- [ ] Owner reviews and approves the actual county introductions and community-card drafts before publication.
 - [ ] Every retained local detail is checked again on the cited page immediately before publication.
 - [ ] Every source URL is tested from the rendered card.
 - [ ] Images are checked against the named municipality; generic or mismatched images are replaced or omitted.
 - [ ] Publishing guardrails, compliance crawl, accessibility checks, and responsive screenshots pass for the county batch.
-- [ ] Remaining six county pilots are researched and reviewed in manageable batches.
+- [ ] Replace the stale `Pine Hill & Pine Valley` website card with `Pine Hill (including the former Pine Valley Borough)` before publishing the Camden County batch.

@@ -26,7 +26,10 @@ export function renderContactNotification(work: ContactNotificationWork): {
   subject: string;
   textContent: string;
 } {
-  const subject = `[Website Inquiry] ${work.interest} - ${work.name}`.slice(0, 180);
+  const subject = `[Website Inquiry] ${work.interest} - ${work.name}`.slice(
+    0,
+    180,
+  );
   const lines = [
     "A new South Jersey Real Estate website inquiry was received.",
     "",

@@ -1,8 +1,5 @@
 import { createClient } from "npm:@supabase/supabase-js@2.110.6";
-import {
-  BrevoTransactionalClient,
-  BrevoTransactionalError,
-} from "./brevo.ts";
+import { BrevoTransactionalClient, BrevoTransactionalError } from "./brevo.ts";
 import {
   type ContactNotificationWork,
   renderContactNotification,
@@ -124,7 +121,9 @@ function clientIp(request: Request): string {
 
 async function parseJsonBody(request: Request): Promise<ContactRequestBody> {
   const contentLength = Number(request.headers.get("content-length") || 0);
-  if (Number.isFinite(contentLength) && contentLength > MAX_CONTACT_REQUEST_BYTES) {
+  if (
+    Number.isFinite(contentLength) && contentLength > MAX_CONTACT_REQUEST_BYTES
+  ) {
     throw new RangeError("Request body is too large.");
   }
   const text = await request.text();
@@ -138,7 +137,10 @@ async function parseJsonBody(request: Request): Promise<ContactRequestBody> {
   return parsed as ContactRequestBody;
 }
 
-async function verifyTurnstile(request: Request, token: string): Promise<boolean> {
+async function verifyTurnstile(
+  request: Request,
+  token: string,
+): Promise<boolean> {
   const payload = new URLSearchParams({
     secret: env("TURNSTILE_SECRET"),
     response: token,
@@ -219,7 +221,9 @@ async function rpcTransition(
   parameters: Record<string, unknown>,
 ): Promise<void> {
   const { data, error } = await admin.rpc(name, parameters);
-  if (error || data !== true) throw new Error(`Database transition failed: ${name}.`);
+  if (error || data !== true) {
+    throw new Error(`Database transition failed: ${name}.`);
+  }
 }
 
 async function processNotification(
@@ -302,7 +306,8 @@ async function processNotification(
 
 async function processScheduledRequest(request: Request): Promise<Response> {
   const configuredSecret = env("CONTACT_NOTIFICATION_CRON_SECRET");
-  const suppliedSecret = request.headers.get("x-contact-notification-secret") || "";
+  const suppliedSecret = request.headers.get("x-contact-notification-secret") ||
+    "";
   if (!constantTimeEqual(configuredSecret, suppliedSecret)) {
     return jsonResponse(null, { ok: false, code: "unauthorized" }, 401);
   }
@@ -345,7 +350,10 @@ Deno.serve(async (request) => {
       }, 403);
     }
     if (request.method === "OPTIONS") {
-      return new Response(null, { status: 204, headers: corsHeaders(allowedOrigin) });
+      return new Response(null, {
+        status: 204,
+        headers: corsHeaders(allowedOrigin),
+      });
     }
     if (request.method !== "POST") {
       return jsonResponse(allowedOrigin, {
@@ -377,7 +385,10 @@ Deno.serve(async (request) => {
       }, 400);
     }
     if (validation.spam) {
-      return jsonResponse(allowedOrigin, { ok: true, message: SUCCESS_MESSAGE });
+      return jsonResponse(allowedOrigin, {
+        ok: true,
+        message: SUCCESS_MESSAGE,
+      });
     }
 
     let turnstileValid: boolean;
@@ -425,10 +436,13 @@ Deno.serve(async (request) => {
         code: acceptance.reason === "rate_limited"
           ? "rate_limited"
           : "not_accepted",
-        message: "Too many messages were submitted. Please wait before trying again.",
+        message:
+          "Too many messages were submitted. Please wait before trying again.",
       }, 429);
     }
-    if (!acceptance.inquiryId) throw new Error("The inquiry ID was not returned.");
+    if (!acceptance.inquiryId) {
+      throw new Error("The inquiry ID was not returned.");
+    }
 
     let notificationState = acceptance.notificationStatus || "pending";
     try {

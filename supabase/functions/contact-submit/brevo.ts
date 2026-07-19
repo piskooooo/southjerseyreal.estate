@@ -21,7 +21,12 @@ export class BrevoTransactionalError extends Error {
   readonly code: string;
   readonly ambiguous: boolean;
 
-  constructor(message: string, status: number, code: string, ambiguous = false) {
+  constructor(
+    message: string,
+    status: number,
+    code: string,
+    ambiguous = false,
+  ) {
     super(message);
     this.name = "BrevoTransactionalError";
     this.status = status;

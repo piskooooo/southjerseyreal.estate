@@ -23,8 +23,11 @@ describe("validateNewsletterRequest", () => {
     const result = validateNewsletterRequest(validRequest());
 
     expect(result.ok).toBe(true);
+    if (!result.ok) {
+      throw new Error(`Unexpected validation error: ${result.code}`);
+    }
     expect(result.spam).toBe(false);
-    if (!result.ok || result.spam) return;
+    if (result.spam) return;
     expect(result.value).toEqual({
       email: "reader@example.com",
       name: "Newsletter Reader",
@@ -69,14 +72,17 @@ describe("validateNewsletterRequest", () => {
   });
 
   it("requires explicit consent and the newsletter source", () => {
-    expect(validateNewsletterRequest(validRequest({ consent: false }))).toEqual({
-      ok: false,
-      code: "consent_required",
-    });
-    expect(validateNewsletterRequest(validRequest({ source: "contact_page" }))).toEqual({
-      ok: false,
-      code: "invalid_source",
-    });
+    expect(validateNewsletterRequest(validRequest({ consent: false }))).toEqual(
+      {
+        ok: false,
+        code: "consent_required",
+      },
+    );
+    expect(validateNewsletterRequest(validRequest({ source: "contact_page" })))
+      .toEqual({
+        ok: false,
+        code: "invalid_source",
+      });
   });
 
   it("requires a bounded Turnstile token", () => {

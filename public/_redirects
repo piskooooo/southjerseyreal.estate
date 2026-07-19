@@ -2,6 +2,20 @@
 /home/ / 301
 /main / 301
 /main/ / 301
+/atlantic /atlantic-county 301
+/atlantic/ /atlantic-county 301
+/burlington /burlington-county 301
+/burlington/ /burlington-county 301
+/camden /camden-county 301
+/camden/ /camden-county 301
+/cape-may /cape-may-county 301
+/cape-may/ /cape-may-county 301
+/cumberland /cumberland-county 301
+/cumberland/ /cumberland-county 301
+/gloucester /gloucester-county 301
+/gloucester/ /gloucester-county 301
+/salem /salem-county 301
+/salem/ /salem-county 301
 /:slug/ /:slug 301
 
 # Preserve legacy image URLs after correcting WebP filename extensions.

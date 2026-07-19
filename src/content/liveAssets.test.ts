@@ -72,7 +72,7 @@ describe("live image assets", () => {
     expect([...missingReferences]).toEqual([]);
   });
 
-  it("permanently redirects every renamed legacy image URL to its WebP file", async () => {
+  it("permanently redirects every renamed legacy URL to its canonical destination", async () => {
     const assetNames = await readdir(liveAssetDir);
     const expectedRedirects = new Map<string, string>();
     for (const assetName of assetNames) {
@@ -100,6 +100,22 @@ describe("live image assets", () => {
       const rule = legacyRules.find(([ruleSource]) => ruleSource === source);
       expect(rule?.[2], source).toBe("301");
       await expect(access(path.join(root, "public", destination))).resolves.toBeUndefined();
+    }
+
+    const routeRules = new Map(
+      redirectsSource
+        .split(/\r?\n/)
+        .map((line) => line.trim().split(/\s+/))
+        .filter(([source]) => /^\/(?:atlantic|burlington|camden|cape-may|cumberland|gloucester|salem)\/?$/.test(source))
+        .map(([source, destination, status]) => [source, { destination, status }]),
+    );
+    for (const county of ["atlantic", "burlington", "camden", "cape-may", "cumberland", "gloucester", "salem"]) {
+      for (const suffix of ["", "/"]) {
+        expect(routeRules.get(`/${county}${suffix}`)).toEqual({
+          destination: `/${county}-county`,
+          status: "301",
+        });
+      }
     }
   });
 });

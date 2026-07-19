@@ -131,12 +131,13 @@ export const resourcePages: Record<string, ResourcePage> = {
       {
         id: "homebase-crm",
         title: "HomeBase CRM",
-        summary: "Real-estate contact-management software.",
+        summary: "Customer relationship management software.",
         blocks: [
           {
             tag: "P",
-            text: "HomeBase CRM is a separate software project created by Arthur Pisko Jr., which is why it appears in this directory.",
+            text: "HomeBase CRM is a separate software product owned by Fat Cat Finance, LLC, the company credited with creating and maintaining this website. It appears here as a technology vendor.",
           },
+          { tag: "P", text: "This directory entry is unpaid, and HomeBase CRM does not share ownership with South Jersey Real Estate or the affiliated brokerage." },
           { tag: "P", text: "HomeBase CRM is not a real-estate brokerage or settlement-service provider." },
           { tag: "A", text: "Visit HomeBase CRM", href: "https://homebasecrm.com" },
         ],

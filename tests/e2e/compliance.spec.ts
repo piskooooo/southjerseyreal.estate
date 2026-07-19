@@ -217,7 +217,9 @@ test("provider directory shows choice and relationship disclosures", async ({ pa
   const main = page.locator("main");
   await expect(main).toContainText("You are free to choose any provider");
   await expect(main).toContainText("not a guarantee or warranty");
-  await expect(main).toContainText("created by Arthur Pisko Jr.");
+  await expect(main).toContainText("owned by Fat Cat Finance, LLC");
+  await expect(main).toContainText("This directory entry is unpaid");
+  await expect(main).toContainText("does not share ownership");
   await expect(main).toContainText(compliance.brokerLegalName);
   await expect(main).not.toContainText("NJDOBI reference numbers");
   await page.locator("#homebase-crm summary").click();

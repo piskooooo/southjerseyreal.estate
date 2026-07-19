@@ -11,7 +11,7 @@ Use this file as the source of truth for unfinished work on `southjerseyreal.est
 - [x] 3. Finish the GA4 lead-conversion setup
 - [ ] 4. Get a final real-estate compliance review
 - [x] 6. Deploy and verify the private website editor
-- [ ] 7. Refine the dark theme color palette
+- [ ] 7. Refine the dark theme color palette (paused; keep the current palette)
 - [x] 8. Add destination pages for the Counties and Connect header items
 - [ ] 9. Rebuild richer, sourced community profiles
 
@@ -127,7 +127,7 @@ The July 18 technical remediation is complete, but it is not a legal certificati
 - [ ] Confirm brokerage identification and hierarchy are sufficiently prominent on every required page or advertisement.
 - [ ] Review and approve the Privacy Policy, Disclaimer, Terms of Service, Fair Housing statement, and Equal Housing Opportunity treatment.
 - [ ] Confirm contact forms, newsletter consent, analytics consent, and partner/advertising disclosures are acceptable.
-- [ ] Confirm the HomeBase CRM relationship wording and that no current directory relationship/payment disclosure is missing.
+- [x] Confirm the HomeBase CRM relationship wording: it is owned by Fat Cat Finance, LLC, appears as a separate technology vendor, receives no payment for the directory entry, and shares no ownership with this website or the affiliated brokerage.
 - [x] Restore the REALTOR® mark after owner confirmation and public-profile corroboration; keep private membership and MLS identifiers outside the repository.
 - [ ] Save the reviewer and approval date below. Do not store privileged legal advice in this public repository.
 - [x] Implement the attorney's presentation feedback by keeping concise sitewide identity and form notices, moving full explanations to legal pages, and restoring normal editorial voice.
@@ -192,6 +192,8 @@ Production provisioning and acceptance verified July 17, 2026: both editor migra
 
 **Goal:** Give the dark theme a more intentional, balanced palette while preserving readability, accessibility, and the established South Jersey Real Estate identity.
 
+Paused by owner decision on July 18, 2026. Keep the current dark palette unchanged unless this item is reopened.
+
 ### Design and Implementation
 
 - [ ] Audit the current dark-theme tokens and identify surfaces that feel too flat, harsh, or dominated by one color family.
@@ -241,12 +243,14 @@ Implemented both editable, indexable hubs; split each desktop label from its dro
 
 **Goal:** Restore useful town-level context without bringing back stale market figures, demographic targeting, school or safety characterizations, or repeated disclaimer copy.
 
+Editorial direction selected by the owner on July 18, 2026: casual but professional. Final county copy still requires owner review before publication.
+
 ### Content Work
 
 - [ ] Review the pre-remediation town narratives one community at a time and recover only objective, still-useful material.
 - [ ] Replace volatile price, tax, school, flood, transit, and market statements with current, dated sources when those facts genuinely help a visitor.
 - [ ] Keep resident profiles, protected-class signals, subjective rankings, and unsupported performance claims out of the guides.
-- [ ] Write in a natural local voice and keep one concise page-level verification note instead of repeating warnings in every card.
+- [ ] Write in the approved casual-but-professional local voice and keep one concise page-level verification note instead of repeating warnings in every card.
 - [ ] Add citations or source notes to the structured content model where a factual claim needs ongoing maintenance.
 
 ### Verification

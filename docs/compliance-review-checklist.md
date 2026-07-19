@@ -75,8 +75,8 @@ This technical record does not satisfy the broker, owner, credential-holder, or 
 - [ ] Broker of record approves the exact broker name, descriptor, office phone/address, disclosure hierarchy, and placement.
 - [ ] Broker or New Jersey counsel approves the Fair Housing statement and Equal Housing Opportunity treatment.
 - [ ] Broker or New Jersey counsel approves the Privacy Policy, Terms of Service, Disclaimer, ordinary-inquiry authorization, and newsletter consent.
-- [ ] Owner confirms the public HomeBase CRM relationship wording is exact: `HomeBase CRM is a separate software project created by Arthur Pisko Jr.`
-- [ ] Owner and broker confirm there is no payment, referral, ownership, affiliate, family, or transaction-based arrangement omitted from either current directory entry.
+- [x] Owner confirms the public HomeBase CRM relationship wording: HomeBase CRM is owned by Fat Cat Finance, LLC, the company credited with creating and maintaining this website; it appears as a separate technology vendor, the directory entry is unpaid, and it shares no ownership with this website or the affiliated brokerage.
+- [ ] Broker confirms there is no referral, affiliate, family, or transaction-based arrangement omitted from either current directory entry.
 - [ ] Counsel reviews any future settlement-service advertising or affiliated-business arrangement before publication.
 - [ ] A responsible human confirms the tracker/processor inventory against the production Cloudflare, Supabase, Brevo, and GA4 dashboards.
 - [x] Current REALTOR® membership is treated as owner-verified and publicly corroborated; the mark is restored without storing private membership identifiers.

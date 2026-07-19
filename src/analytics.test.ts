@@ -111,6 +111,32 @@ describe("consent-gated GA4 tracking", () => {
     );
   });
 
+  it("keeps Tag Assistant debug mode out of Analytics while preserving the browser signal", async () => {
+    const { setAnalyticsConsent, trackPageView } = await import("./analytics");
+
+    window.history.replaceState(
+      {},
+      "",
+      "/contact?gtm_debug=x123_test&utm_source=google&email=person%40example.com",
+    );
+    setAnalyticsConsent("granted");
+    trackPageView("/contact", "Contact");
+
+    expect(queuedCommands().at(-1)).toEqual([
+      "event",
+      "page_view",
+      {
+        page_path: "/contact",
+        page_title: "Contact",
+        page_location: `${window.location.origin}/contact?utm_source=google`,
+        page_referrer: `${window.location.origin}/`,
+      },
+    ]);
+    expect(`${window.location.pathname}${window.location.search}`).toBe(
+      "/contact?utm_source=google&gtm_debug=x123_test",
+    );
+  });
+
   it("sends one page view per virtual location with the prior location as referrer", async () => {
     const { setAnalyticsConsent, trackPageView } = await import("./analytics");
 

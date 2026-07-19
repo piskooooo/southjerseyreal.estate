@@ -17,6 +17,8 @@ const measurementId = configuredMeasurementId && /^G-[A-Z0-9]+$/i.test(configure
 const analyticsConsentKey = "analytics-consent";
 const productionHostname = "southjerseyreal.estate";
 const testMeasurementId = "G-TEST123";
+const tagAssistantDebugParameter = "gtm_debug";
+const tagAssistantDebugValuePattern = /^[A-Za-z0-9._~-]{1,200}$/;
 const attributionParameterNames = new Set([
   "dclid",
   "gbraid",
@@ -114,6 +116,11 @@ const sanitizeHttpUrl = (rawUrl: string, includeAttribution: boolean) => {
 const replaceUnsafeBrowserLocation = (safeLocation: string) => {
   try {
     const safeUrl = new URL(safeLocation);
+    const currentUrl = new URL(window.location.href);
+    const tagAssistantDebugValue = currentUrl.searchParams.get(tagAssistantDebugParameter);
+    if (tagAssistantDebugValuePattern.test(tagAssistantDebugValue || "")) {
+      safeUrl.searchParams.set(tagAssistantDebugParameter, tagAssistantDebugValue as string);
+    }
     const safeRelativeUrl = `${safeUrl.pathname}${safeUrl.search}`;
     const currentRelativeUrl = `${window.location.pathname}${window.location.search}${window.location.hash}`;
     if (safeRelativeUrl !== currentRelativeUrl) {

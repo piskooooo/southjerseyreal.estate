@@ -24,20 +24,20 @@ describe("compiled compliance guardrails", () => {
     }
   });
 
-  it("does not publish an unverified membership mark or high-risk community copy", () => {
+  it("publishes the verified membership mark without high-risk community copy", () => {
     const publicContent = JSON.stringify({
       generatedPages,
       resources: resourcePages,
       seoEntries,
       managed: [...managedContentSeeds.values()],
     });
-    expect(compliance.realtorMembershipVerified).toBe(false);
+    expect(compliance.realtorMembershipVerified).toBe(true);
     expect(compliance.idxListingsEnabled).toBe(false);
-    expect(publicContent).not.toMatch(/REALTOR(?:®|\(R\))?/i);
+    expect(publicContent).toMatch(/REALTOR®/i);
     expect(publicContent).not.toMatch(highRiskCopy);
   });
 
-  it("limits imported content to neutral county directories", () => {
+  it("limits imported content to concise county directories", () => {
     expect(generatedPages).toHaveLength(7);
     expect(generatedPages.every((page) => page.path.endsWith("-county"))).toBe(true);
     for (const page of generatedPages) {

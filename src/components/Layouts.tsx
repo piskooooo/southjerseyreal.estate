@@ -121,7 +121,7 @@ function TownCard({
 
   return (
     <article
-      className={`town-card ${expanded ? "is-expanded" : ""} ${className}`.trim()}
+      className={`town-card ${hasDetails ? "has-details" : "is-summary-only"} ${expanded ? "is-expanded" : ""} ${className}`.trim()}
       role={hasDetails ? "button" : undefined}
       tabIndex={hasDetails ? 0 : undefined}
       aria-controls={hasDetails ? detailsId : undefined}
@@ -161,7 +161,10 @@ function TownGrid({
   navigate: (path: string) => void;
 }) {
   const [expandedCards, setExpandedCards] = useState<Set<string>>(() => new Set());
-  const allExpanded = expandedCards.size === sections.length;
+  const expandableSections = sections.filter(({ section }) => section.blocks.length > 2);
+  const allExpanded = expandableSections.length > 0 && expandableSections.every(({ section, index }) => (
+    expandedCards.has(townSectionKey(section, index))
+  ));
   const rows = sections.reduce<Array<Array<{ key: string; section: PageSection; index: number; column: number }>>>((groups, item, itemIndex) => {
     const rowIndex = Math.floor(itemIndex / TOWN_GRID_COLUMNS);
     const column = itemIndex % TOWN_GRID_COLUMNS;
@@ -171,7 +174,7 @@ function TownGrid({
 
     return groups;
   }, []);
-  const expandAll = () => setExpandedCards(new Set(sections.map(({ section, index }) => townSectionKey(section, index))));
+  const expandAll = () => setExpandedCards(new Set(expandableSections.map(({ section, index }) => townSectionKey(section, index))));
   const collapseAll = () => setExpandedCards(new Set());
   const toggleCard = (key: string) => {
     const rowKeys = rows.find((row) => row.some((item) => item.key === key))?.map((item) => item.key) || [];
@@ -195,10 +198,12 @@ function TownGrid({
     <section className="section town-grid-section">
       <div className="town-grid-toolbar">
         <p>{sections.length} communities</p>
-        <div>
-          <button type="button" onClick={expandAll} disabled={allExpanded}>Expand all</button>
-          <button type="button" onClick={collapseAll} disabled={!expandedCards.size}>Collapse all</button>
-        </div>
+        {expandableSections.length > 0 && (
+          <div>
+            <button type="button" onClick={expandAll} disabled={allExpanded}>Expand all</button>
+            <button type="button" onClick={collapseAll} disabled={!expandedCards.size}>Collapse all</button>
+          </div>
+        )}
       </div>
       <div className="town-card-grid">
         {rows.map((row, rowIndex) => {
@@ -354,7 +359,7 @@ export function ComparisonGuidePage({ page, guide, navigate }: PageProps & { gui
         </div>
       </section>
 
-      <CommunityInformationDisclaimer />
+      <CommunityInformationDisclaimer navigate={navigate} />
 
       {actionSection && <ActionSection section={actionSection} navigate={navigate} />}
     </div>
@@ -576,7 +581,7 @@ export function CountyPage({ page, navigate }: PageProps) {
   return (
     <div className="county-page">
       {renderedSections}
-      <CommunityInformationDisclaimer />
+      <CommunityInformationDisclaimer navigate={navigate} />
     </div>
   );
 }
@@ -635,7 +640,7 @@ export function HubPage({ page, navigate }: PageProps) {
         </div>
       </section>
 
-      {page.path === "/counties" && <CommunityInformationDisclaimer />}
+      {page.path === "/counties" && <CommunityInformationDisclaimer navigate={navigate} />}
       {actions.map((section, index) => (
         <ActionSection key={section.id || index} section={section} navigate={navigate} />
       ))}

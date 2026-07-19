@@ -17,22 +17,24 @@ Codex checked these values on July 18, 2026. They are centralized in `src/conten
 | Salesperson | `Arthur Pisko Jr.` | NJDOBI licensee search |
 | License type and number | `New Jersey Real Estate Salesperson`, `2187170` | NJDOBI licensee search |
 | Affiliation status | Active and affiliated with the brokerage above | NJDOBI licensee search |
+| REALTOR® membership | Active | Owner attestation plus current Realtor.com and brokerage profiles |
 
 Sources:
 
 - [NJDOBI Licensee Search](https://www-dobi.nj.gov/DOBI_LicSearch/recSearch.jsp)
 - [The Plum Real Estate Group website](https://www.theplumrealestategroup.com/)
 
-The public site does not claim current REALTOR membership. The membership mark and logo remain removed until current membership evidence and broker approval are documented.
+The owner confirmed active REALTOR® membership on July 18, 2026, and current public profiles corroborate that status. The membership mark and logo are restored as an identification of membership. Private membership and MLS identifiers are retained outside this public repository.
 
 ## Technical Work Completed
 
 - [x] Put the broker name, descriptor, licensed-office phone, broker link, salesperson license type, and salesperson license number in one visible sitewide footer disclosure.
 - [x] Make the broker identity more prominent than the salesperson identity within the footer disclosure and keep it readable at 320 pixels.
 - [x] Centralize broker, office, and salesperson facts in one configuration used by visible copy, links, metadata, and JSON-LD.
-- [x] Replace imported county and comparison narratives with neutral community directories and verification guidance.
-- [x] Add the Equal Housing Opportunity treatment and broker-specific fair-housing statement sitewide.
-- [x] Remove unverified membership marks from body copy, metadata, JSON-LD, links, alt text, and image assets.
+- [x] Replace unsupported imported county claims with concise community directories and one unobtrusive, page-level verification note.
+- [x] Add the Equal Housing Opportunity treatment sitewide and place the complete broker-specific fair-housing statement on the Disclaimer page.
+- [x] Restore the REALTOR® membership mark after owner confirmation, while keeping private membership and MLS identifiers out of the repository.
+- [x] Consolidate detailed legal explanations on the Disclaimer, Privacy Policy, and Terms pages instead of repeating them throughout ordinary editorial copy.
 - [x] Add exact ordinary-inquiry authorization plus adjacent Privacy and Terms links.
 - [x] Add required, unchecked newsletter consent plus adjacent Privacy and Terms links; retain backend consent-version and timestamp evidence.
 - [x] Confirm that no automated or prerecorded marketing call/text feature exists; no automated-marketing checkbox was added.
@@ -52,7 +54,7 @@ The public site does not claim current REALTOR membership. The membership mark a
 - [x] Audited the production Supabase project without recording secret values or personal data. The project is healthy; `contact-submit`, `newsletter-subscribe`, and `site-rebuild` are deployed; the expected custom secret names are present; and a read-only count confirmed one Auth user and one private site-administrator slot.
 - [x] Audited the personal Brevo workspace without recording contact data. Website signups target list `8`, the double-opt-in template `2` is active, and the `southjerseyreal.estate` sending domain and sender are verified.
 - [x] Audited GA4 property `Main Website`. Its production stream uses measurement ID `G-97H86MNHP8`; data retention is 14 months; email plus configured sensitive query parameters are redacted; manual SPA and outbound-click tracking are de-duplicated; `form_name`, `lead_type`, and `link_source` are registered; and only the direct `contact_lead` event is marked as an editable lead key event.
-- [x] Rechecked public credential evidence. [Realtor.com](https://www.realtor.com/realestateagents/659c35c962a5ff070b97f4b8) and the [brokerage roster](https://www.plum-realestate.com/agents.php) currently display a REALTOR claim for Arthur, but these public pages do not replace current membership documentation and broker approval. The public-site mark remains absent.
+- [x] Rechecked public credential evidence. [Realtor.com](https://www.realtor.com/realestateagents/659c35c962a5ff070b97f4b8) and the [brokerage roster](https://www.plum-realestate.com/agents.php) display a REALTOR® claim for Arthur, and Arthur confirmed active membership on July 18, 2026. Private membership and MLS identifiers are not recorded here.
 - [x] Scheduled the Codex automation `Quarterly South Jersey Compliance Review` to run every three months on the 18th at 9:00 AM local time, beginning October 18, 2026.
 - [x] Re-ran the audit phrase and contact scans, production build, 73 unit tests, 49 tracked database checks, and 37 Playwright checks after implementing the Counties and Connect hubs plus the Google analytics, crawler, schema, sitemap, and media remediations.
 
@@ -68,14 +70,16 @@ This technical record does not satisfy the broker, owner, credential-holder, or 
 
 ## Human Decisions Still Required
 
+- [x] The owner reports that the broker has given broad consent to make the changes needed for this site. Exact final wording signoff has not been recorded below.
+- [x] The owner's attorney reviewed the site's compliance presentation and advised reducing repeated, overly explanatory copy. The site now uses a layered disclosure approach; this feedback is not recorded as approval of every exact sentence.
 - [ ] Broker of record approves the exact broker name, descriptor, office phone/address, disclosure hierarchy, and placement.
 - [ ] Broker or New Jersey counsel approves the Fair Housing statement and Equal Housing Opportunity treatment.
 - [ ] Broker or New Jersey counsel approves the Privacy Policy, Terms of Service, Disclaimer, ordinary-inquiry authorization, and newsletter consent.
-- [ ] Owner confirms the public HomeBase CRM material-relationship wording is exact: `HomeBase CRM is a separate Arthur Pisko Jr. software project.`
+- [ ] Owner confirms the public HomeBase CRM relationship wording is exact: `HomeBase CRM is a separate software project created by Arthur Pisko Jr.`
 - [ ] Owner and broker confirm there is no payment, referral, ownership, affiliate, family, or transaction-based arrangement omitted from either current directory entry.
 - [ ] Counsel reviews any future settlement-service advertising or affiliated-business arrangement before publication.
 - [ ] A responsible human confirms the tracker/processor inventory against the production Cloudflare, Supabase, Brevo, and GA4 dashboards.
-- [x] Current REALTOR membership is not treated as verified; the mark is left absent pending current membership documentation and broker approval.
+- [x] Current REALTOR® membership is treated as owner-verified and publicly corroborated; the mark is restored without storing private membership identifiers.
 - [x] Schedule a quarterly review of license status, broker/office facts, credentials, processors/trackers, provider relationships, and public claims.
 
 ## Signoff Record

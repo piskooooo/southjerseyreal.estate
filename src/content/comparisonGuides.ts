@@ -36,7 +36,7 @@ export const comparisonGuides: Record<string, ComparisonGuide> = {
     path: "/why-new-jersey",
     title: "New Jersey Regional Comparison",
     intro:
-      "This general comparison identifies jurisdictional and geographic questions to research when considering New Jersey, Pennsylvania, Delaware, or New York. It does not rank locations or recommend one location for any person or household.",
+      "New Jersey sits between several distinct real estate markets. Use this guide to compare practical differences in records, services, travel, and professional licensing.",
     supportText: outOfStateServiceDisclosure,
     panels: [
       {
@@ -49,11 +49,11 @@ export const comparisonGuides: Record<string, ComparisonGuide> = {
           {
             heading: "Property records",
             primary:
-              "New Jersey property, tax, zoning, flood, school-district, and municipal-service information should be checked with the responsible New Jersey agency or municipality.",
+              "Property, tax, zoning, flood, school-district, and municipal-service records come from the responsible New Jersey agencies and municipalities.",
             secondary:
               "Pennsylvania, Delaware, and New York use their own state and local agencies, terminology, procedures, and records.",
             takeaway:
-              "Use current records from the jurisdiction where the property is located; do not rely on a cross-state summary for a transaction decision.",
+              "Compare each property using records from the state and municipality where it is located.",
           },
           {
             heading: "Professional services",
@@ -62,11 +62,11 @@ export const comparisonGuides: Record<string, ComparisonGuide> = {
             secondary:
               "A transaction outside New Jersey may require a professional licensed in that state.",
             takeaway:
-              "Confirm the professional's current license and authority in the property's jurisdiction before engaging services.",
+              "The professional helping with a transaction must be authorized to work in the state where the property is located.",
           },
         ],
         bottomLine:
-          "State and local rules vary. Verify any fact material to a transaction with the appropriate public agency and qualified professional.",
+          "The details vary by state and town, so the right source depends on the address.",
       },
       {
         id: "regional-access",
@@ -78,20 +78,20 @@ export const comparisonGuides: Record<string, ComparisonGuide> = {
           {
             heading: "Travel planning",
             primary:
-              "Check current route, transit, toll, parking, and travel-time information for the specific New Jersey address and the times you expect to travel.",
+              "Look at routes, transit, tolls, parking, and travel times for the specific New Jersey address and the times you expect to travel.",
             secondary:
               "Apply the same address-specific review to any comparison property in another state.",
             takeaway:
-              "Travel conditions and service schedules change; test the actual trip and consult the current operator or transportation agency.",
+              "Test the actual trip at the times that matter to your routine.",
           },
         ],
         bottomLine:
-          "A location's suitability is personal. This site does not characterize a neighborhood based on residents, schools, safety, or protected characteristics.",
+          "The useful comparison is the one that reflects your actual routine.",
       },
     ],
     closingTitle: "Continue with New Jersey community guides",
     closingText:
-      "The county guides provide neutral community directories. Verify current details with the municipality, county, and other responsible sources.",
+      "Start with the South Jersey county guides, then explore the towns and cities that interest you.",
     closingLink: {
       label: "Compare North and South Jersey",
       href: "/why-south-jersey",
@@ -101,9 +101,9 @@ export const comparisonGuides: Record<string, ComparisonGuide> = {
     path: "/why-south-jersey",
     title: "North and South Jersey Regional Comparison",
     intro:
-      "North Jersey and South Jersey are informal regional descriptions, not official legal boundaries. This guide offers neutral questions for comparing specific New Jersey locations.",
+      "North Jersey and South Jersey are informal regional descriptions, not official boundaries. The meaningful differences usually appear when you compare particular counties, towns, and properties.",
     supportText:
-      "No community is ranked or matched to a type of person. Use current, address-specific information from public agencies and qualified professionals.",
+      "Use the regional labels as a starting point, then narrow the comparison to the details that matter to you.",
     panels: [
       {
         id: "nj-regional-reference",
@@ -115,24 +115,24 @@ export const comparisonGuides: Record<string, ComparisonGuide> = {
           {
             heading: "Geographic description",
             primary:
-              "This site uses South Jersey to organize Atlantic, Burlington, Camden, Cape May, Cumberland, Gloucester, and Salem County guides.",
+              "This site focuses its South Jersey coverage on Atlantic, Burlington, Camden, Cape May, Cumberland, Gloucester, and Salem Counties.",
             secondary:
               "North Jersey commonly refers to counties in the northern part of the state, but definitions differ by source.",
             takeaway:
-              "Use the county and municipality name, not an informal regional label, when checking official information.",
+              "County and municipality names are more useful than regional labels once the search becomes specific.",
           },
           {
             heading: "Public information",
             primary:
-              "For a South Jersey address, consult the relevant municipality, county, school district, tax assessor, flood-map source, and transportation operator as applicable.",
+              "For a South Jersey address, the relevant town, county, school district, tax assessor, flood-map source, and transportation operator hold different pieces of the picture.",
             secondary:
               "Use the corresponding agencies and records for any North Jersey comparison address.",
             takeaway:
-              "The same verification process applies throughout New Jersey, even when the responsible agencies differ.",
+              "The research categories stay consistent even when the responsible agencies change.",
           },
         ],
         bottomLine:
-          "Regional labels are only a starting point. Property-specific due diligence should use current official and professional sources.",
+          "Regional labels help with orientation; the property and its location provide the useful detail.",
       },
       {
         id: "nj-property-comparison",
@@ -148,25 +148,25 @@ export const comparisonGuides: Record<string, ComparisonGuide> = {
             secondary:
               "Collect the same current information for the comparison address.",
             takeaway:
-              "Use the same evidence categories for both properties so the comparison is based on facts relevant to the transaction.",
+              "Using the same checklist for both properties makes the tradeoffs easier to see.",
           },
           {
             heading: "Personal criteria",
             primary:
-              "Write down your own travel, budget, property, and service priorities without asking a real-estate professional to steer you toward or away from a protected class or neighborhood.",
+              "List the travel, budget, property, and service priorities that matter to you.",
             secondary:
               "Apply those same personal criteria consistently to the comparison property.",
             takeaway:
-              "The decision belongs to the consumer; the role of this guide is to identify neutral research categories.",
+              "A consistent checklist makes the comparison more useful.",
           },
         ],
         bottomLine:
-          "Ask for objective, current information and make your own location decision based on your needs.",
+          "Focus on the facts and tradeoffs that connect to your plans.",
       },
     ],
     closingTitle: "Explore the county directories",
     closingText:
-      "Each county page lists communities without rating schools, safety, residents, value, prestige, or suitability.",
+      "Each county page introduces the towns and cities featured across that part of South Jersey.",
     closingLink: {
       label: "Explore Atlantic County",
       href: "/atlantic-county",

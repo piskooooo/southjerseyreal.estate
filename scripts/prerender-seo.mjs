@@ -207,7 +207,7 @@ const prerenderLinks = (currentPath) => {
 };
 
 const renderBrokerageDisclosure = () => `
-      <section class="brokerage-disclosure brokerage-disclosure-header" aria-label="Licensed brokerage disclosure">
+      <section class="brokerage-disclosure brokerage-disclosure-footer" aria-label="Licensed brokerage disclosure">
         <div class="brokerage-disclosure-primary">
           <a class="brokerage-legal-name" href="${htmlEscape(compliance.brokerWebsite)}">${htmlEscape(compliance.brokerLegalName)}</a>
           <span class="brokerage-descriptor">${htmlEscape(compliance.brokerDescriptor)}</span>
@@ -219,8 +219,7 @@ const renderBrokerageDisclosure = () => `
 const renderPublicShell = (document, seo) => {
   const links = prerenderLinks(seo.canonicalPath);
   const paragraphs = prerenderParagraphs(document, seo.description);
-  return `${renderBrokerageDisclosure()}
-      <header class="site-header">
+  return `<header class="site-header">
         <a class="brand" href="/">${htmlEscape(siteName)}</a>
         <nav class="desktop-nav" aria-label="Primary navigation">
           ${links.slice(0, 4).map((link) => `<a href="${htmlEscape(link.href)}"${link.href === seo.canonicalPath ? ' aria-current="page"' : ""}>${htmlEscape(link.label)}</a>`).join("\n          ")}
@@ -238,7 +237,10 @@ const renderPublicShell = (document, seo) => {
             </div>
           </section>
         </div>
-      </main>`;
+      </main>
+      <footer class="site-footer">
+        ${renderBrokerageDisclosure()}
+      </footer>`;
 };
 
 const applyPublicHead = (html, document, seo) => {

@@ -147,9 +147,9 @@ const defaultActionBlocks: ContentBlock[] = [
   { tag: "H2", text: "Thinking about buying or selling in South Jersey?" },
   {
     tag: "P",
-    text: "Arthur helps New Jersey buyers and sellers plan, communicate, and manage the steps of a real-estate transaction across Atlantic, Burlington, Camden, Cape May, Cumberland, Gloucester, and Salem Counties.",
+    text: "Tell Arthur what you're considering, even if you're still early in the process. A straightforward conversation is a good place to start.",
   },
-  { tag: "A", text: "Start the Conversation", href: "/contact" },
+  { tag: "A", text: "Start a Conversation", href: "/contact" },
 ];
 
 const aboutProfileCta: ContentBlock = {

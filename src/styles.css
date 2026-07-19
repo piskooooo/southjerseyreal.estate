@@ -744,6 +744,20 @@ p a:focus-visible {
   transition: border-color 160ms ease, transform 160ms ease;
 }
 
+.town-card.is-summary-only {
+  grid-template-rows: auto minmax(7.25rem, auto);
+  aspect-ratio: auto;
+  cursor: default;
+}
+
+.town-card.is-summary-only .town-card-media {
+  aspect-ratio: 16 / 9;
+}
+
+.town-card.is-summary-only:hover {
+  border-color: var(--card-border);
+}
+
 .town-card:hover,
 .town-card:focus-visible {
   border-color: var(--card-hover-border);
@@ -1317,21 +1331,23 @@ p a:focus-visible {
 }
 
 .community-information-disclaimer {
-  padding-top: clamp(2rem, 4vw, 3rem);
-  padding-bottom: clamp(2rem, 4vw, 3rem);
+  padding-top: 1.15rem;
+  padding-bottom: 1.15rem;
   border-top: 1px solid var(--section-line);
-}
-
-.community-information-disclaimer h2 {
-  margin-bottom: 1rem;
-  font-size: clamp(1.65rem, 3vw, 2.35rem);
-  line-height: 1.15;
+  color: var(--muted);
 }
 
 .community-information-disclaimer p {
-  max-width: 72rem;
-  font-size: 0.9rem;
-  line-height: 1.65;
+  max-width: 64rem;
+  margin: 0;
+  font-size: 0.84rem;
+  line-height: 1.55;
+}
+
+.community-information-disclaimer a {
+  color: var(--text);
+  font-weight: 700;
+  text-underline-offset: 0.22em;
 }
 
 .provider-choice-disclosure {
@@ -1814,22 +1830,45 @@ p a:focus-visible {
 
 .fair-housing-notice {
   display: flex;
-  align-items: center;
-  gap: 0.8rem;
-  max-width: 32rem;
+  align-items: flex-start;
+  gap: 0.9rem;
+  max-width: 29rem;
 }
 
-.fair-housing-notice img {
-  width: 2.8rem;
-  height: auto;
+.footer-credential-logos {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.55rem;
   flex: 0 0 auto;
-  filter: var(--logo-filter);
+}
+
+.footer-credential-logo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.8rem;
+  min-height: 3.15rem;
+  padding: 0.22rem;
+  background: #fff;
+  border-radius: 2px;
+}
+
+.footer-credential-logo img {
+  width: 100%;
+  height: auto;
 }
 
 .fair-housing-notice p {
   color: var(--footer-muted);
   font-size: 0.82rem;
   line-height: 1.45;
+}
+
+.fair-housing-notice a {
+  color: var(--footer-text);
+  font-size: inherit;
+  font-weight: 700;
+  text-decoration: underline;
 }
 
 .privacy-banner {

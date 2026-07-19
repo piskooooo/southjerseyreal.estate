@@ -1,120 +1,120 @@
 [
   {
     "path": "/",
-    "title": "South Jersey Real Estate | Arthur Pisko Jr.",
-    "description": "Neutral community guides and New Jersey residential real-estate information for Atlantic, Burlington, Camden, Cape May, Cumberland, Gloucester, and Salem Counties.",
+    "title": "South Jersey Real Estate | Arthur Pisko Jr., REALTOR®",
+    "description": "Explore South Jersey county and community guides, plus practical information for buyers and sellers from Arthur Pisko Jr., REALTOR®.",
     "priority": "1.0"
   },
   {
     "path": "/counties",
     "title": "South Jersey County Guides",
-    "description": "Browse neutral municipality directories for Atlantic, Burlington, Camden, Cape May, Cumberland, Gloucester, and Salem Counties in New Jersey.",
+    "description": "Browse towns and cities across Atlantic, Burlington, Camden, Cape May, Cumberland, Gloucester, and Salem Counties in New Jersey.",
     "image": "/assets/live/camden-county-map-png.webp",
     "priority": "0.9"
   },
   {
     "path": "/connect",
     "title": "Connect and Explore | South Jersey Real Estate",
-    "description": "Find the About, Contact, Newsletter, comparison guides, FAQ, provider directory, and advertising destinations for this website.",
+    "description": "Get to know Arthur, start a conversation, join the newsletter, or explore more South Jersey real estate resources.",
     "image": "/assets/live/pitman-gloucester-jpg.webp",
     "priority": "0.75"
   },
   {
     "path": "/atlantic-county",
     "title": "Atlantic County NJ Community Guide",
-    "description": "A neutral directory of communities associated with Atlantic County, New Jersey, with reminders to verify current information through official sources.",
+    "description": "Explore shore communities, inland municipalities, and places across the mainland in Atlantic County, New Jersey.",
     "image": "/assets/live/atlantic-county-map-png.webp",
     "priority": "0.9"
   },
   {
     "path": "/burlington-county",
     "title": "Burlington County NJ Community Guide",
-    "description": "A neutral directory of communities associated with Burlington County, New Jersey, with reminders to verify current information through official sources.",
+    "description": "Explore Delaware River communities, suburban towns, and Pinelands municipalities across Burlington County, New Jersey.",
     "image": "/assets/live/burlington-county-map-png.webp",
     "priority": "0.9"
   },
   {
     "path": "/camden-county",
     "title": "Camden County NJ Community Guide",
-    "description": "A neutral directory of communities associated with Camden County, New Jersey, with reminders to verify current information through official sources.",
+    "description": "Explore Delaware River communities, established suburbs, and eastern townships across Camden County, New Jersey.",
     "image": "/assets/live/camden-county-map-png.webp",
     "priority": "0.9"
   },
   {
     "path": "/cape-may-county",
     "title": "Cape May County NJ Community Guide",
-    "description": "A neutral directory of communities associated with Cape May County, New Jersey, with reminders to verify current information through official sources.",
+    "description": "Explore barrier-island shore towns and mainland communities across Cape May County, New Jersey.",
     "image": "/assets/live/cape-may-county-map-png.webp",
     "priority": "0.85"
   },
   {
     "path": "/cumberland-county",
     "title": "Cumberland County NJ Community Guide",
-    "description": "A neutral directory of communities associated with Cumberland County, New Jersey, with reminders to verify current information through official sources.",
+    "description": "Explore cities and smaller communities across Cumberland County's agricultural, woodland, and Delaware Bay landscapes.",
     "image": "/assets/live/cumberland-county-map-png.webp",
     "priority": "0.9"
   },
   {
     "path": "/gloucester-county",
     "title": "Gloucester County NJ Community Guide",
-    "description": "A neutral directory of communities associated with Gloucester County, New Jersey, with reminders to verify current information through official sources.",
+    "description": "Explore river communities, suburban centers, and rural landscapes across Gloucester County, New Jersey.",
     "image": "/assets/live/gloucester-county-map-png.webp",
     "priority": "0.9"
   },
   {
     "path": "/salem-county",
     "title": "Salem County NJ Community Guide",
-    "description": "A neutral directory of communities associated with Salem County, New Jersey, with reminders to verify current information through official sources.",
+    "description": "Explore small municipalities and rural landscapes along the Delaware River and Bay in Salem County, New Jersey.",
     "image": "/assets/live/salem-county-map-png.webp",
     "priority": "0.85"
   },
   {
     "path": "/about",
-    "title": "About Arthur Pisko Jr. | New Jersey Real Estate Salesperson",
-    "description": "Arthur Pisko Jr. is a New Jersey real estate salesperson affiliated with THE PLUM REAL ESTATE GROUP LLC.",
+    "title": "About Arthur Pisko Jr., REALTOR® | South Jersey",
+    "description": "Meet Arthur Pisko Jr., a South Jersey REALTOR® with local roots and a straightforward approach to helping buyers and sellers.",
     "image": "/assets/live/arthur-pisko-jr-picture-jpg.webp",
     "priority": "0.7"
   },
   {
     "path": "/why-new-jersey",
     "title": "New Jersey Regional Comparison | South Jersey Guide",
-    "description": "Neutral questions for comparing New Jersey with neighboring states using current, property-specific, and official information.",
+    "description": "Compare practical differences between New Jersey and neighboring states, including property records, services, and regional travel.",
     "priority": "0.7"
   },
   {
     "path": "/why-south-jersey",
     "title": "North and South Jersey Regional Comparison",
-    "description": "A neutral framework for comparing specific New Jersey locations without ranking communities or making resident, school, or safety claims.",
+    "description": "Compare North and South Jersey as broad regions, then focus on the counties, towns, and property details that matter to you.",
     "priority": "0.7"
   },
   {
     "path": "/contact",
     "title": "Contact Arthur Pisko Jr. | New Jersey Real Estate",
-    "description": "Contact Arthur Pisko Jr., a New Jersey real estate salesperson affiliated with THE PLUM REAL ESTATE GROUP LLC, about a residential real-estate inquiry.",
+    "description": "Contact Arthur Pisko Jr. to talk about buying, selling, a South Jersey property, or a local partnership idea.",
     "priority": "0.75"
   },
   {
     "path": "/newsletter",
     "title": "South Jersey Real Estate Newsletter",
-    "description": "Sign up with explicit consent and double opt-in for South Jersey real-estate and local-information emails.",
+    "description": "Subscribe for useful South Jersey market notes, town updates, and buyer and seller tips by email.",
     "priority": "0.6"
   },
   {
     "path": "/partners",
     "title": "Local Provider Directory | South Jersey Real Estate",
-    "description": "A limited provider directory with provider-choice, material-relationship, and paid-placement disclosures.",
+    "description": "Browse a small directory of local organizations and tools connected with Arthur or this website.",
     "priority": "0.45"
   },
   {
     "path": "/advertise",
     "title": "Local Advertising Information | South Jersey Real Estate",
-    "description": "Requirements for clearly labeled local paid placements, relationship disclosures, eligibility review, and advertising inquiries.",
+    "description": "Learn about clearly labeled advertising opportunities for South Jersey businesses and how to submit an inquiry.",
     "priority": "0.4"
   },
   {
     "path": "/faq",
     "title": "South Jersey Real Estate FAQ",
-    "description": "General answers about New Jersey real-estate inquiries, written representation, newsletter consent, providers, and advertising.",
+    "description": "Quick answers about working with Arthur, buying or selling, the newsletter, local providers, and advertising.",
     "priority": "0.4"
   },
   {

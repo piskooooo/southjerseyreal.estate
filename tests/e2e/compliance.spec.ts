@@ -6,7 +6,17 @@ const readJson = <T,>(relativePath: string): T => JSON.parse(
   readFileSync(new URL(relativePath, import.meta.url), "utf8"),
 ) as T;
 
-const compliance = readJson<Record<string, string>>("../../src/content/complianceData.json");
+type ComplianceData = {
+  agentLicensedName: string;
+  brokerDescriptor: string;
+  brokerLegalName: string;
+  brokerWebsite: string;
+  licensedOfficePhone: string;
+  licensedOfficePhoneHref: string;
+  realtorMembershipVerified: boolean;
+};
+
+const compliance = readJson<ComplianceData>("../../src/content/complianceData.json");
 const seoEntries = readJson<Array<{ path: string; title: string; description: string }>>("../../src/content/seoEntries.json");
 
 const routes = seoEntries.map((entry) => entry.path);
@@ -56,10 +66,10 @@ test.describe("compliance route crawl", () => {
       const fairHousing = page.locator(".fair-housing-notice");
       await expect(fairHousing).toContainText("Equal Housing Opportunity");
       await expect(fairHousing).toContainText(compliance.brokerLegalName);
-      await expect(fairHousing.locator("img")).toHaveAttribute("alt", "Equal Housing Opportunity");
+      await expect(fairHousing.getByAltText("Equal Housing Opportunity")).toBeVisible();
+      await expect(fairHousing.getByAltText("REALTOR® member logo")).toBeVisible();
 
       const renderedText = await page.locator("body").innerText();
-      expect(renderedText).not.toMatch(/REALTOR(?:®|\(R\))?/i);
       expect(renderedText).not.toMatch(/family[- ]friendly|ideal for families|perfect for families|young professionals?|retirees?|empty nesters?/i);
       expect(renderedText).not.toMatch(/safe(?:st)? (?:neighborhood|community|area)|great schools?|excellent schools?|strong schools?|reputable schools?|best school|good schools?/i);
       expect(renderedText).not.toMatch(/most sought[- ]after|exclusive|prestigious|top dollar|sell faster|deliver results/i);
@@ -88,6 +98,8 @@ test.describe("compliance route crawl", () => {
 
       const prerenderedHtml = prerenderedHtmlForPath(entry.path);
       expect(prerenderedHtml).toContain('data-seo-prerendered="true"');
+      expect(prerenderedHtml).not.toContain("brokerage-disclosure-header");
+      expect(prerenderedHtml).toContain("brokerage-disclosure-footer");
       expect(prerenderedHtml).toMatch(/<h1>[^<]+<\/h1>/);
       expect(prerenderedHtml).toMatch(/<nav aria-label="Related pages">/);
       expect(structuredDataFromHtml(prerenderedHtml)).toEqual(parsedStructuredData);
@@ -152,6 +164,11 @@ test("sitewide footer disclosure remains prominent and readable at 320 pixels", 
   await expect(agent).toBeVisible();
   expect(sizes.broker).toBeGreaterThan(sizes.agent);
   expect(await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth)).toBeLessThanOrEqual(1);
+
+  await page.locator(".fair-housing-notice a").click();
+  await expect(page).toHaveURL(/\/disclaimer$/);
+  await expect(page.getByRole("heading", { level: 2, name: "Fair housing" })).toBeVisible();
+  await expect(page.locator("main")).toContainText("source of lawful income used for rental or mortgage payments");
 });
 
 test("contact and newsletter forms show the required consent and legal links", async ({ page }) => {
@@ -200,10 +217,9 @@ test("provider directory shows choice and relationship disclosures", async ({ pa
   const main = page.locator("main");
   await expect(main).toContainText("You are free to choose any provider");
   await expect(main).toContainText("not a guarantee or warranty");
-  await expect(main).toContainText("Material relationship disclosure");
-  await expect(main).toContainText("Sponsored");
-  await expect(main).toContainText("Paid advertisement");
+  await expect(main).toContainText("created by Arthur Pisko Jr.");
   await expect(main).toContainText(compliance.brokerLegalName);
+  await expect(main).not.toContainText("NJDOBI reference numbers");
   await page.locator("#homebase-crm summary").click();
   await expect(main.locator('a[href="https://homebasecrm.com"]')).toBeVisible();
   await page.locator("#brokerage-affiliation summary").click();

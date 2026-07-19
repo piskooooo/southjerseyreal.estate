@@ -25,9 +25,9 @@ export const resourcePages: Record<string, ResourcePage> = {
   "/faq": {
     title: "Frequently Asked Questions",
     intro:
-      "General information about contacting Arthur, New Jersey real-estate services, the newsletter, the provider directory, and local advertising.",
+      "Quick answers about working with Arthur, buying or selling, the newsletter, local providers, and advertising.",
     supportText:
-      "These answers are informational and do not replace a written brokerage agreement or advice from an attorney, lender, inspector, insurer, tax professional, or other qualified professional.",
+      "These are starting points. Specific terms belong in written agreements, and specialized questions should go to the appropriate professional.",
     panels: [
       {
         id: "buy",
@@ -37,7 +37,7 @@ export const resourcePages: Record<string, ResourcePage> = {
           { tag: "H3", text: "How do I begin?" },
           {
             tag: "P",
-            text: "Use the contact form to describe the New Jersey location, timing, property type, and questions you want to discuss. Contacting Arthur does not create an agency relationship.",
+            text: "Tell Arthur where you are looking, your timing, the type of property you have in mind, and any questions already on your list. An initial conversation is a simple place to begin.",
           },
           { tag: "H3", text: "How are representation and compensation handled?" },
           {
@@ -47,7 +47,7 @@ export const resourcePages: Record<string, ResourcePage> = {
           { tag: "H3", text: "Can Arthur advise me about a location?" },
           {
             tag: "P",
-            text: "Arthur can help identify objective property and transaction information. Consumers should independently research schools, public safety, taxes, flood information, transportation, and other community criteria using current official sources.",
+            text: "Arthur can help find objective property and transaction information and point you toward current sources for schools, taxes, flood information, transportation, and other community details.",
           },
         ],
       },
@@ -59,7 +59,7 @@ export const resourcePages: Record<string, ResourcePage> = {
           { tag: "H3", text: "Can I request a value discussion?" },
           {
             tag: "P",
-            text: "Yes. A preliminary discussion is general and is not an appraisal, guarantee of value, or promise of a sale price. Property condition, current data, and the proposed scope of services require separate review.",
+            text: "Yes. Arthur can start with your goals and the property details, then review current market information with you. A real estate value discussion is not an appraisal and does not promise a particular sale price.",
           },
           { tag: "H3", text: "Does submitting the form create a listing agreement?" },
           {
@@ -76,12 +76,12 @@ export const resourcePages: Record<string, ResourcePage> = {
           { tag: "H3", text: "Does a contact inquiry subscribe me to email marketing?" },
           {
             tag: "P",
-            text: "No. The contact form authorizes a response to that inquiry. Newsletter signup uses a separate required consent and Brevo double opt-in confirmation.",
+            text: "No. The contact form only authorizes a response to your inquiry. Newsletter signup is separate and includes an email confirmation.",
           },
           { tag: "H3", text: "Can I unsubscribe?" },
           {
             tag: "P",
-            text: "Yes. Newsletter messages include an unsubscribe mechanism. Privacy requests may also be sent through the contact information in the Privacy Policy.",
+            text: "Yes. Every newsletter includes an unsubscribe link, and privacy requests can be sent using the contact information in the Privacy Policy.",
           },
         ],
       },
@@ -110,9 +110,9 @@ export const resourcePages: Record<string, ResourcePage> = {
   "/partners": {
     title: "South Jersey Local Provider Directory",
     intro:
-      "A limited directory of organizations and tools with a disclosed connection to this website or its operator.",
+      "A small directory of organizations and tools connected with Arthur or this website.",
     supportText:
-      "Directory entries are informational. You are free to choose any provider, and inclusion is not a recommendation, guarantee, or warranty.",
+      "You are free to choose any provider. Directory inclusion is not a guarantee or warranty, and relevant relationships are noted with each entry.",
     panels: [
       {
         id: "brokerage-affiliation",
@@ -122,7 +122,7 @@ export const resourcePages: Record<string, ResourcePage> = {
           { tag: "H3", text: compliance.brokerDescriptor },
           {
             tag: "P",
-            text: `${compliance.agentLicensedName} is a ${compliance.agentLicenseType} affiliated with ${compliance.brokerLegalName}. NJDOBI reference numbers: brokerage ${compliance.brokerLicenseReferenceNumber}; salesperson ${compliance.agentLicenseNumber}.`,
+            text: `${compliance.agentLicensedName}, REALTOR®, is a ${compliance.agentLicenseType} affiliated with ${compliance.brokerLegalName}.`,
           },
           { tag: "P", text: `Licensed brokerage office: ${compliance.licensedOfficePhone}.` },
           { tag: "A", text: "Visit the Brokerage Website", href: compliance.brokerWebsite },
@@ -135,40 +135,29 @@ export const resourcePages: Record<string, ResourcePage> = {
         blocks: [
           {
             tag: "P",
-            text: "Material relationship disclosure: HomeBase CRM is a separate Arthur Pisko Jr. software project. Its inclusion here is not an independent endorsement.",
+            text: "HomeBase CRM is a separate software project created by Arthur Pisko Jr., which is why it appears in this directory.",
           },
           { tag: "P", text: "HomeBase CRM is not a real-estate brokerage or settlement-service provider." },
           { tag: "A", text: "Visit HomeBase CRM", href: "https://homebasecrm.com" },
         ],
       },
-      {
-        id: "provider-status",
-        title: "Other providers",
-        summary: "No additional provider entries are currently published.",
-        blocks: [
-          {
-            tag: "P",
-            text: "Additional entries are withheld until the provider's identity, current credentials when applicable, website, material relationships, referral arrangements, and paid-placement status are documented.",
-          },
-        ],
-      },
     ],
-    closingTitle: "Provider choice",
+    closingTitle: "Choosing a provider",
     closingText:
-      "Evaluate providers independently, confirm current credentials where applicable, compare options, and review the provider's own terms and privacy practices.",
-    closingLink: { label: "Ask a Directory Question", href: "/contact" },
+      "Compare your options, confirm current credentials when applicable, and choose the provider that fits your needs.",
+    closingLink: { label: "Ask a Question", href: "/contact" },
   },
   "/advertise": {
     title: "Local Advertising Information",
     intro:
-      "The site may consider clearly labeled paid placements from eligible local businesses after identity, content, and relationship review.",
+      "South Jersey businesses may inquire about clearly labeled advertising placements on the site.",
     supportText:
-      "No paid placement is currently displayed. Availability, format, duration, price, and eligibility require written confirmation before publication.",
+      "No paid placements are currently displayed. Format, timing, price, and eligibility are confirmed before anything is published.",
     panels: [
       {
         id: "advertising-labels",
         title: "Required labels and disclosures",
-        summary: "Paid content must be unmistakable to visitors.",
+        summary: "Visitors should always know when content is paid.",
         blocks: [
           {
             tag: "P",
@@ -187,7 +176,7 @@ export const resourcePages: Record<string, ResourcePage> = {
       {
         id: "advertising-eligibility",
         title: "Eligibility",
-        summary: "Publication is subject to review and written approval.",
+        summary: "Businesses and proposed content are reviewed before publication.",
         blocks: [
           {
             tag: "P",
@@ -206,7 +195,7 @@ export const resourcePages: Record<string, ResourcePage> = {
       {
         id: "advertising-process",
         title: "Inquiry process",
-        summary: "Submit enough information for a compliance and content review.",
+        summary: "Share the basics needed to review an idea.",
         blocks: [
           {
             tag: "P",

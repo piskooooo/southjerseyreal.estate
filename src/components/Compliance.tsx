@@ -49,56 +49,52 @@ export function BrokerageDisclosure({ placement }: { placement: "header" | "foot
   );
 }
 
-export function FairHousingNotice() {
+function FooterCredentialMarks() {
+  return (
+    <div className="footer-credential-logos" aria-label="Professional and equal housing marks">
+      <span className="footer-credential-logo">
+        <img src="/assets/equal-housing-opportunity-logo.webp" alt="Equal Housing Opportunity" width="1963" height="2331" />
+      </span>
+      {compliance.realtorMembershipVerified && (
+        <span className="footer-credential-logo">
+          <img src="/assets/realtor-logo.png" alt="REALTOR® member logo" width="1963" height="2331" />
+        </span>
+      )}
+    </div>
+  );
+}
+
+export function FairHousingNotice({ navigate }: { navigate: Navigate }) {
   return (
     <section className="fair-housing-notice" aria-label="Fair housing notice">
-      <img src="/assets/equal-housing-opportunity-logo.webp" alt="Equal Housing Opportunity" width="1963" height="2331" />
+      <FooterCredentialMarks />
       <p>
-        <strong>Equal Housing Opportunity.</strong> {compliance.brokerLegalName} and its affiliated licensees provide
-        housing-related services without discrimination based on any characteristic protected by federal, New Jersey,
-        or applicable local law, including race, color, creed or religion, national origin, nationality, ancestry,
-        pregnancy or breastfeeding, sex, gender identity or expression, affectional or sexual orientation, familial
-        status, disability, liability for service in the Armed Forces of the United States, marital status, civil union
-        status, domestic partnership status, or source of lawful income used for rental or mortgage payments.
+        <strong>Equal Housing Opportunity.</strong> {compliance.brokerLegalName} supports fair housing and provides
+        services in accordance with federal, state, and local law.{" "}
+        <InternalLink href="/disclaimer" navigate={navigate}>Fair housing and website disclosures</InternalLink>
+        .
       </p>
     </section>
   );
 }
 
-export function CommunityInformationDisclaimer() {
+export function CommunityInformationDisclaimer({ navigate }: { navigate: Navigate }) {
   return (
-    <section className="section community-information-disclaimer" aria-labelledby="community-information-heading">
-      <h2 id="community-information-heading">Verify community information</h2>
+    <aside className="section community-information-disclaimer" aria-label="Community information note">
       <p>
-        Community, market, tax, school, flood, insurance, transportation, public-safety, and amenity information can
-        change and should be independently verified with the relevant public agency, school district, insurer,
-        attorney, inspector, association, or other qualified professional before it is used in a real-estate decision.
+        Community details can change. Confirm anything important to your decision with the appropriate source.{" "}
+        <InternalLink href="/disclaimer" navigate={navigate}>About these guides</InternalLink>
+        .
       </p>
-      <p>
-        Policy sources reviewed:{" "}
-        <a href="https://www.nj.gov/dobi/proposed/aa260120njac11_5.pdf" target="_blank" rel="noreferrer">
-          New Jersey Real Estate Commission rules
-        </a>
-        {" and "}
-        <a
-          href="https://www.nj.gov/oag/dcr/downloads/DCR-Model-Fair-Housing-Policy-12.12.2019_Final.pdf"
-          target="_blank"
-          rel="noreferrer"
-        >
-          New Jersey Division on Civil Rights fair-housing policy
-        </a>
-        . Last reviewed: July 18, 2026.
-      </p>
-    </section>
+    </aside>
   );
 }
 
 export function ProviderChoiceDisclosure() {
   return (
     <aside className="provider-choice-disclosure" aria-label="Provider choice disclosure">
-      <strong>You are free to choose any provider.</strong> Directory inclusion is not a guarantee or warranty of a
-      provider's work, fees, availability, licensing, insurance, or performance. Paid placements are labeled
-      <strong> Sponsored</strong> and <strong>Paid advertisement</strong>.
+      <strong>You are free to choose any provider.</strong> Material relationships and paid placements are identified
+      with the relevant entry.
     </aside>
   );
 }

@@ -50,7 +50,7 @@ export function Footer({ content, navigate, onManagePrivacy }: FooterProps) {
             </div>
           ))}
         </nav>
-        <FairHousingNotice />
+        <FairHousingNotice navigate={navigate} />
       </div>
     </footer>
   );

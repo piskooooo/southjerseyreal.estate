@@ -13,6 +13,7 @@ Use this file as the source of truth for unfinished work on `southjerseyreal.est
 - [x] 6. Deploy and verify the private website editor
 - [ ] 7. Refine the dark theme color palette
 - [x] 8. Add destination pages for the Counties and Connect header items
+- [ ] 9. Rebuild richer, sourced community profiles
 
 ## 1. Complete the Cloudflare Pages Cutover
 
@@ -114,11 +115,11 @@ Initial lead-event completion: July 17, 2026. Privacy and SPA measurement harden
 
 **Goal:** Have the public-facing legal and advertising details reviewed by someone responsible for New Jersey real-estate compliance.
 
-The July 18 technical remediation is complete, but it is not a legal certification. The brokerage name, descriptor, licensed-office phone, broker link, salesperson license type, and salesperson license number now appear in one visible sitewide footer disclosure. Unverified REALTOR membership marks and unverified settlement-service provider entries are withheld.
+The July 18 technical remediation is complete, but it is not a legal certification. The brokerage name, descriptor, licensed-office phone, broker link, salesperson license type, and salesperson license number appear in one visible sitewide footer disclosure. Active REALTOR® membership is owner-confirmed and publicly corroborated, so the membership mark is restored without storing private membership or MLS identifiers. Unverified settlement-service provider entries remain withheld.
 
 ### Steps
 
-- [ ] Ask the broker of record or a New Jersey real-estate attorney to review the site.
+- [x] Obtain responsible review. The owner reports broad broker consent, and the owner's attorney advised replacing the repeated compliance-heavy presentation with layered disclosures.
 - [x] Implement sitewide broker identity, office-phone, license, fair-housing, neutral-community-copy, consent, privacy, provider, metadata, and publishing guardrails from the July 18 audit.
 - [x] Run the audit scans plus production build, 73 unit tests, 49 tracked database checks, and 37 rendered-route/browser acceptance checks across 21 public routes.
 - [x] Recheck the implemented license, brokerage, broker-of-record, licensed-office, and affiliation facts against NJDOBI public records.
@@ -127,12 +128,12 @@ The July 18 technical remediation is complete, but it is not a legal certificati
 - [ ] Review and approve the Privacy Policy, Disclaimer, Terms of Service, Fair Housing statement, and Equal Housing Opportunity treatment.
 - [ ] Confirm contact forms, newsletter consent, analytics consent, and partner/advertising disclosures are acceptable.
 - [ ] Confirm the HomeBase CRM relationship wording and that no current directory relationship/payment disclosure is missing.
-- [x] Leave the REALTOR mark absent because public profile corroboration is not a substitute for current membership documentation and broker approval.
+- [x] Restore the REALTOR® mark after owner confirmation and public-profile corroboration; keep private membership and MLS identifiers outside the repository.
 - [ ] Save the reviewer and approval date below. Do not store privileged legal advice in this public repository.
-- [ ] Give Codex any approved wording changes to implement and test.
+- [x] Implement the attorney's presentation feedback by keeping concise sitewide identity and form notices, moving full explanations to legal pages, and restoring normal editorial voice.
 - [x] Schedule a quarterly license, office-fact, credential, tracker, provider-relationship, and public-claim review. The Codex automation runs every three months beginning October 18, 2026.
 
-Reviewer: ____________________
+Reviewer: Owner's attorney (name retained privately); presentation feedback received July 18, 2026. Exact final wording approval remains pending.
 
 Approval date: ____________________
 
@@ -235,6 +236,26 @@ Completion date: July 18, 2026
 Implemented both editable, indexable hubs; split each desktop label from its dropdown control; added direct mobile hub links and a real noindex 404; and passed the 35-check rendered acceptance suite across desktop, tablet, and mobile viewports.
 
 **Done when:** Clicking or activating either header label opens its useful hub page, both dropdowns remain accessible and functional, and the new routes are editable, indexable, responsive, and fully tested.
+
+## 9. Rebuild Richer Community Profiles
+
+**Goal:** Restore useful town-level context without bringing back stale market figures, demographic targeting, school or safety characterizations, or repeated disclaimer copy.
+
+### Content Work
+
+- [ ] Review the pre-remediation town narratives one community at a time and recover only objective, still-useful material.
+- [ ] Replace volatile price, tax, school, flood, transit, and market statements with current, dated sources when those facts genuinely help a visitor.
+- [ ] Keep resident profiles, protected-class signals, subjective rankings, and unsupported performance claims out of the guides.
+- [ ] Write in a natural local voice and keep one concise page-level verification note instead of repeating warnings in every card.
+- [ ] Add citations or source notes to the structured content model where a factual claim needs ongoing maintenance.
+
+### Verification
+
+- [ ] Review each completed county for factual accuracy, fair-housing concerns, stale links, and image accuracy.
+- [ ] Run the publishing guardrails, unit tests, full compliance crawl, and desktop/tablet/mobile visual checks after each county batch.
+- [ ] Obtain owner approval on the restored editorial tone before publishing all seven counties.
+
+**Done when:** Every community card contains useful, human-written, supportable information without repetitive legal prose or unsupported claims.
 
 ## Completed Work
 

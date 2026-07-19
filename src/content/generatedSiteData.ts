@@ -1,5 +1,5 @@
-// Generated from imported site data and reduced to compliance-reviewed county structure.
-// Rerun npm run import:live only with a fresh source extraction; imported marketing copy is not published.
+// Generated from imported site data and curated into concise county directories.
+// Rerun npm run import:live only with a fresh source extraction and a content review.
 import type { SitePage } from "./types";
 
 export const generatedPages: SitePage[] = [
@@ -20,7 +20,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "This guide provides a directory of communities associated with Atlantic County. It does not rank communities or make claims about who should live in them.",
+            "text": "Explore Atlantic County's shore communities, inland municipalities, and places across the mainland.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -46,7 +46,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "A community included in this Atlantic County guide. Check current public information with the relevant municipality or county before making a real-estate decision.",
+            "text": "A municipality in Atlantic County, New Jersey.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -72,7 +72,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "A community included in this Atlantic County guide. Check current public information with the relevant municipality or county before making a real-estate decision.",
+            "text": "A city in Atlantic County, New Jersey.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -98,7 +98,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "A community included in this Atlantic County guide. Check current public information with the relevant municipality or county before making a real-estate decision.",
+            "text": "A municipality in Atlantic County, New Jersey.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -124,7 +124,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "A community included in this Atlantic County guide. Check current public information with the relevant municipality or county before making a real-estate decision.",
+            "text": "A borough in Atlantic County, New Jersey.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -150,7 +150,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "A community included in this Atlantic County guide. Check current public information with the relevant municipality or county before making a real-estate decision.",
+            "text": "A township in Atlantic County, New Jersey.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -176,7 +176,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "A community included in this Atlantic County guide. Check current public information with the relevant municipality or county before making a real-estate decision.",
+            "text": "A city in Atlantic County, New Jersey.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -202,7 +202,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "A community included in this Atlantic County guide. Check current public information with the relevant municipality or county before making a real-estate decision.",
+            "text": "A city in Atlantic County, New Jersey.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -228,7 +228,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "A community included in this Atlantic County guide. Check current public information with the relevant municipality or county before making a real-estate decision.",
+            "text": "A township in Atlantic County, New Jersey.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -254,7 +254,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "A community included in this Atlantic County guide. Check current public information with the relevant municipality or county before making a real-estate decision.",
+            "text": "A municipality in Atlantic County, New Jersey.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -280,7 +280,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "A community included in this Atlantic County guide. Check current public information with the relevant municipality or county before making a real-estate decision.",
+            "text": "A municipality in Atlantic County, New Jersey.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -306,7 +306,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "A community included in this Atlantic County guide. Check current public information with the relevant municipality or county before making a real-estate decision.",
+            "text": "A township in Atlantic County, New Jersey.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -332,7 +332,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "A community included in this Atlantic County guide. Check current public information with the relevant municipality or county before making a real-estate decision.",
+            "text": "A township in Atlantic County, New Jersey.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -358,7 +358,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "A community included in this Atlantic County guide. Check current public information with the relevant municipality or county before making a real-estate decision.",
+            "text": "A municipality in Atlantic County, New Jersey.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -384,7 +384,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "A community included in this Atlantic County guide. Check current public information with the relevant municipality or county before making a real-estate decision.",
+            "text": "A municipality in Atlantic County, New Jersey.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -410,7 +410,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "A community included in this Atlantic County guide. Check current public information with the relevant municipality or county before making a real-estate decision.",
+            "text": "A municipality in Atlantic County, New Jersey.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -436,7 +436,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "A community included in this Atlantic County guide. Check current public information with the relevant municipality or county before making a real-estate decision.",
+            "text": "A city in Atlantic County, New Jersey.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -462,7 +462,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "A community included in this Atlantic County guide. Check current public information with the relevant municipality or county before making a real-estate decision.",
+            "text": "A township in Atlantic County, New Jersey.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -488,7 +488,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "A community included in this Atlantic County guide. Check current public information with the relevant municipality or county before making a real-estate decision.",
+            "text": "A municipality in Atlantic County, New Jersey.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -514,7 +514,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "A community included in this Atlantic County guide. Check current public information with the relevant municipality or county before making a real-estate decision.",
+            "text": "A municipality in Atlantic County, New Jersey.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -540,7 +540,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "A community included in this Atlantic County guide. Check current public information with the relevant municipality or county before making a real-estate decision.",
+            "text": "A municipality in Atlantic County, New Jersey.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -566,7 +566,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "A community included in this Atlantic County guide. Check current public information with the relevant municipality or county before making a real-estate decision.",
+            "text": "A municipality in Atlantic County, New Jersey.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -592,7 +592,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "A community included in this Atlantic County guide. Check current public information with the relevant municipality or county before making a real-estate decision.",
+            "text": "A city in Atlantic County, New Jersey.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -618,7 +618,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "A community included in this Atlantic County guide. Check current public information with the relevant municipality or county before making a real-estate decision.",
+            "text": "A township in Atlantic County, New Jersey.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -637,21 +637,21 @@ export const generatedPages: SitePage[] = [
         "blocks": [
           {
             "tag": "H2",
-            "text": "Planning a move in New Jersey?",
+            "text": "Thinking about buying or selling in South Jersey?",
             "href": "",
             "type": "",
             "placeholder": ""
           },
           {
             "tag": "P",
-            "text": "Arthur helps New Jersey buyers and sellers plan, communicate, and manage the steps of a residential real-estate transaction.",
+            "text": "Tell Arthur what you're considering, even if you're still early in the process. A straightforward conversation is a good place to start.",
             "href": "",
             "type": "",
             "placeholder": ""
           },
           {
             "tag": "A",
-            "text": "Start the Conversation",
+            "text": "Start a Conversation",
             "href": "/contact",
             "type": "",
             "placeholder": ""
@@ -678,7 +678,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "This guide provides a directory of communities associated with Burlington County. It does not rank communities or make claims about who should live in them.",
+            "text": "Explore communities along the Delaware River, across the county's suburban corridor, and into the Pinelands.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -704,7 +704,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "A community included in this Burlington County guide. Check current public information with the relevant municipality or county before making a real-estate decision.",
+            "text": "A township in Burlington County, New Jersey.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -730,7 +730,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "A community included in this Burlington County guide. Check current public information with the relevant municipality or county before making a real-estate decision.",
+            "text": "A city in Burlington County, New Jersey.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -756,7 +756,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "A community included in this Burlington County guide. Check current public information with the relevant municipality or county before making a real-estate decision.",
+            "text": "A city in Burlington County, New Jersey.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -782,7 +782,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "A community included in this Burlington County guide. Check current public information with the relevant municipality or county before making a real-estate decision.",
+            "text": "A township in Burlington County, New Jersey.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -808,7 +808,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "A community included in this Burlington County guide. Check current public information with the relevant municipality or county before making a real-estate decision.",
+            "text": "A city in Burlington County, New Jersey.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -834,7 +834,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "A community included in this Burlington County guide. Check current public information with the relevant municipality or county before making a real-estate decision.",
+            "text": "A township in Burlington County, New Jersey.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -860,7 +860,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "A community included in this Burlington County guide. Check current public information with the relevant municipality or county before making a real-estate decision.",
+            "text": "A township in Burlington County, New Jersey.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -886,7 +886,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "A community included in this Burlington County guide. Check current public information with the relevant municipality or county before making a real-estate decision.",
+            "text": "A township in Burlington County, New Jersey.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -912,7 +912,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "A community included in this Burlington County guide. Check current public information with the relevant municipality or county before making a real-estate decision.",
+            "text": "A township in Burlington County, New Jersey.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -938,7 +938,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "A community included in this Burlington County guide. Check current public information with the relevant municipality or county before making a real-estate decision.",
+            "text": "A township in Burlington County, New Jersey.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -964,7 +964,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "A community included in this Burlington County guide. Check current public information with the relevant municipality or county before making a real-estate decision.",
+            "text": "A township in Burlington County, New Jersey.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -990,7 +990,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "A community included in this Burlington County guide. Check current public information with the relevant municipality or county before making a real-estate decision.",
+            "text": "A township in Burlington County, New Jersey.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -1016,7 +1016,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "A community included in this Burlington County guide. Check current public information with the relevant municipality or county before making a real-estate decision.",
+            "text": "A township in Burlington County, New Jersey.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -1042,7 +1042,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "A community included in this Burlington County guide. Check current public information with the relevant municipality or county before making a real-estate decision.",
+            "text": "A borough in Burlington County, New Jersey.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -1068,7 +1068,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "A community included in this Burlington County guide. Check current public information with the relevant municipality or county before making a real-estate decision.",
+            "text": "A township in Burlington County, New Jersey.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -1094,7 +1094,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "A community included in this Burlington County guide. Check current public information with the relevant municipality or county before making a real-estate decision.",
+            "text": "A township in Burlington County, New Jersey.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -1120,7 +1120,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "A community included in this Burlington County guide. Check current public information with the relevant municipality or county before making a real-estate decision.",
+            "text": "A township in Burlington County, New Jersey.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -1146,7 +1146,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "A community included in this Burlington County guide. Check current public information with the relevant municipality or county before making a real-estate decision.",
+            "text": "A township in Burlington County, New Jersey.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -1172,7 +1172,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "A community included in this Burlington County guide. Check current public information with the relevant municipality or county before making a real-estate decision.",
+            "text": "A township in Burlington County, New Jersey.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -1198,7 +1198,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "A community included in this Burlington County guide. Check current public information with the relevant municipality or county before making a real-estate decision.",
+            "text": "A township in Burlington County, New Jersey.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -1224,7 +1224,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "A community included in this Burlington County guide. Check current public information with the relevant municipality or county before making a real-estate decision.",
+            "text": "A borough in Burlington County, New Jersey.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -1250,7 +1250,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "A community included in this Burlington County guide. Check current public information with the relevant municipality or county before making a real-estate decision.",
+            "text": "A township in Burlington County, New Jersey.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -1276,7 +1276,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "A community included in this Burlington County guide. Check current public information with the relevant municipality or county before making a real-estate decision.",
+            "text": "A township in Burlington County, New Jersey.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -1302,7 +1302,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "A community included in this Burlington County guide. Check current public information with the relevant municipality or county before making a real-estate decision.",
+            "text": "A township in Burlington County, New Jersey.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -1328,7 +1328,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "A community included in this Burlington County guide. Check current public information with the relevant municipality or county before making a real-estate decision.",
+            "text": "A township in Burlington County, New Jersey.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -1354,7 +1354,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "A community included in this Burlington County guide. Check current public information with the relevant municipality or county before making a real-estate decision.",
+            "text": "A township in Burlington County, New Jersey.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -1380,7 +1380,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "A community included in this Burlington County guide. Check current public information with the relevant municipality or county before making a real-estate decision.",
+            "text": "A borough in Burlington County, New Jersey.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -1406,7 +1406,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "A community included in this Burlington County guide. Check current public information with the relevant municipality or county before making a real-estate decision.",
+            "text": "A borough in Burlington County, New Jersey.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -1432,7 +1432,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "A community included in this Burlington County guide. Check current public information with the relevant municipality or county before making a real-estate decision.",
+            "text": "A township in Burlington County, New Jersey.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -1458,7 +1458,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "A community included in this Burlington County guide. Check current public information with the relevant municipality or county before making a real-estate decision.",
+            "text": "A township in Burlington County, New Jersey.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -1484,7 +1484,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "A community included in this Burlington County guide. Check current public information with the relevant municipality or county before making a real-estate decision.",
+            "text": "A borough in Burlington County, New Jersey.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -1510,7 +1510,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "A community included in this Burlington County guide. Check current public information with the relevant municipality or county before making a real-estate decision.",
+            "text": "A township in Burlington County, New Jersey.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -1536,7 +1536,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "A community included in this Burlington County guide. Check current public information with the relevant municipality or county before making a real-estate decision.",
+            "text": "A township in Burlington County, New Jersey.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -1562,7 +1562,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "A community included in this Burlington County guide. Check current public information with the relevant municipality or county before making a real-estate decision.",
+            "text": "A township in Burlington County, New Jersey.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -1588,7 +1588,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "A community included in this Burlington County guide. Check current public information with the relevant municipality or county before making a real-estate decision.",
+            "text": "A township in Burlington County, New Jersey.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -1614,7 +1614,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "A community included in this Burlington County guide. Check current public information with the relevant municipality or county before making a real-estate decision.",
+            "text": "A township in Burlington County, New Jersey.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -1640,7 +1640,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "A community included in this Burlington County guide. Check current public information with the relevant municipality or county before making a real-estate decision.",
+            "text": "A township in Burlington County, New Jersey.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -1666,7 +1666,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "A community included in this Burlington County guide. Check current public information with the relevant municipality or county before making a real-estate decision.",
+            "text": "A township in Burlington County, New Jersey.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -1692,7 +1692,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "A community included in this Burlington County guide. Check current public information with the relevant municipality or county before making a real-estate decision.",
+            "text": "A township in Burlington County, New Jersey.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -1718,7 +1718,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "A community included in this Burlington County guide. Check current public information with the relevant municipality or county before making a real-estate decision.",
+            "text": "A borough in Burlington County, New Jersey.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -1737,21 +1737,21 @@ export const generatedPages: SitePage[] = [
         "blocks": [
           {
             "tag": "H2",
-            "text": "Planning a move in New Jersey?",
+            "text": "Thinking about buying or selling in South Jersey?",
             "href": "",
             "type": "",
             "placeholder": ""
           },
           {
             "tag": "P",
-            "text": "Arthur helps New Jersey buyers and sellers plan, communicate, and manage the steps of a residential real-estate transaction.",
+            "text": "Tell Arthur what you're considering, even if you're still early in the process. A straightforward conversation is a good place to start.",
             "href": "",
             "type": "",
             "placeholder": ""
           },
           {
             "tag": "A",
-            "text": "Start the Conversation",
+            "text": "Start a Conversation",
             "href": "/contact",
             "type": "",
             "placeholder": ""
@@ -1778,7 +1778,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "This guide provides a directory of communities associated with Camden County. It does not rank communities or make claims about who should live in them.",
+            "text": "Explore Camden County's Delaware River communities, established suburbs, and eastern townships.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -1804,7 +1804,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "A community included in this Camden County guide. Check current public information with the relevant municipality or county before making a real-estate decision.",
+            "text": "Two communities in Camden County, New Jersey.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -1830,7 +1830,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "A community included in this Camden County guide. Check current public information with the relevant municipality or county before making a real-estate decision.",
+            "text": "A municipality in Camden County, New Jersey.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -1856,7 +1856,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "A community included in this Camden County guide. Check current public information with the relevant municipality or county before making a real-estate decision.",
+            "text": "A municipality in Camden County, New Jersey.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -1882,7 +1882,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "A community included in this Camden County guide. Check current public information with the relevant municipality or county before making a real-estate decision.",
+            "text": "Two communities in Camden County, New Jersey.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -1908,7 +1908,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "A community included in this Camden County guide. Check current public information with the relevant municipality or county before making a real-estate decision.",
+            "text": "A municipality in Camden County, New Jersey.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -1934,7 +1934,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "A community included in this Camden County guide. Check current public information with the relevant municipality or county before making a real-estate decision.",
+            "text": "A city in Camden County, New Jersey.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -1960,7 +1960,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "A community included in this Camden County guide. Check current public information with the relevant municipality or county before making a real-estate decision.",
+            "text": "A municipality in Camden County, New Jersey.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -1986,7 +1986,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "A community included in this Camden County guide. Check current public information with the relevant municipality or county before making a real-estate decision.",
+            "text": "A municipality in Camden County, New Jersey.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -2012,7 +2012,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "A community included in this Camden County guide. Check current public information with the relevant municipality or county before making a real-estate decision.",
+            "text": "A municipality in Camden County, New Jersey.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -2038,7 +2038,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "A community included in this Camden County guide. Check current public information with the relevant municipality or county before making a real-estate decision.",
+            "text": "A municipality in Camden County, New Jersey.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -2064,7 +2064,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "A community included in this Camden County guide. Check current public information with the relevant municipality or county before making a real-estate decision.",
+            "text": "A municipality in Camden County, New Jersey.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -2090,7 +2090,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "A community included in this Camden County guide. Check current public information with the relevant municipality or county before making a real-estate decision.",
+            "text": "A city in Camden County, New Jersey.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -2116,7 +2116,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "A community included in this Camden County guide. Check current public information with the relevant municipality or county before making a real-estate decision.",
+            "text": "A township in Camden County, New Jersey.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -2142,7 +2142,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "A community included in this Camden County guide. Check current public information with the relevant municipality or county before making a real-estate decision.",
+            "text": "A municipality in Camden County, New Jersey.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -2168,7 +2168,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "A community included in this Camden County guide. Check current public information with the relevant municipality or county before making a real-estate decision.",
+            "text": "A township in Camden County, New Jersey.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -2194,7 +2194,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "A community included in this Camden County guide. Check current public information with the relevant municipality or county before making a real-estate decision.",
+            "text": "A municipality in Camden County, New Jersey.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -2220,7 +2220,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "A community included in this Camden County guide. Check current public information with the relevant municipality or county before making a real-estate decision.",
+            "text": "A municipality in Camden County, New Jersey.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -2246,7 +2246,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "A community included in this Camden County guide. Check current public information with the relevant municipality or county before making a real-estate decision.",
+            "text": "A municipality in Camden County, New Jersey.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -2272,7 +2272,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "A community included in this Camden County guide. Check current public information with the relevant municipality or county before making a real-estate decision.",
+            "text": "A municipality in Camden County, New Jersey.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -2298,7 +2298,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "A community included in this Camden County guide. Check current public information with the relevant municipality or county before making a real-estate decision.",
+            "text": "A municipality in Camden County, New Jersey.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -2324,7 +2324,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "A community included in this Camden County guide. Check current public information with the relevant municipality or county before making a real-estate decision.",
+            "text": "A municipality in Camden County, New Jersey.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -2350,7 +2350,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "A community included in this Camden County guide. Check current public information with the relevant municipality or county before making a real-estate decision.",
+            "text": "A municipality in Camden County, New Jersey.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -2376,7 +2376,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "A community included in this Camden County guide. Check current public information with the relevant municipality or county before making a real-estate decision.",
+            "text": "A municipality in Camden County, New Jersey.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -2402,7 +2402,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "A community included in this Camden County guide. Check current public information with the relevant municipality or county before making a real-estate decision.",
+            "text": "A municipality in Camden County, New Jersey.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -2428,7 +2428,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "A community included in this Camden County guide. Check current public information with the relevant municipality or county before making a real-estate decision.",
+            "text": "A municipality in Camden County, New Jersey.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -2454,7 +2454,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "A community included in this Camden County guide. Check current public information with the relevant municipality or county before making a real-estate decision.",
+            "text": "Two communities in Camden County, New Jersey.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -2480,7 +2480,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "A community included in this Camden County guide. Check current public information with the relevant municipality or county before making a real-estate decision.",
+            "text": "A municipality in Camden County, New Jersey.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -2506,7 +2506,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "A community included in this Camden County guide. Check current public information with the relevant municipality or county before making a real-estate decision.",
+            "text": "A municipality in Camden County, New Jersey.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -2532,7 +2532,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "A community included in this Camden County guide. Check current public information with the relevant municipality or county before making a real-estate decision.",
+            "text": "A municipality in Camden County, New Jersey.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -2558,7 +2558,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "A community included in this Camden County guide. Check current public information with the relevant municipality or county before making a real-estate decision.",
+            "text": "A municipality in Camden County, New Jersey.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -2584,7 +2584,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "A community included in this Camden County guide. Check current public information with the relevant municipality or county before making a real-estate decision.",
+            "text": "A municipality in Camden County, New Jersey.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -2610,7 +2610,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "A community included in this Camden County guide. Check current public information with the relevant municipality or county before making a real-estate decision.",
+            "text": "A township in Camden County, New Jersey.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -2636,7 +2636,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "A community included in this Camden County guide. Check current public information with the relevant municipality or county before making a real-estate decision.",
+            "text": "A municipality in Camden County, New Jersey.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -2662,7 +2662,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "A community included in this Camden County guide. Check current public information with the relevant municipality or county before making a real-estate decision.",
+            "text": "A municipality in Camden County, New Jersey.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -2681,21 +2681,21 @@ export const generatedPages: SitePage[] = [
         "blocks": [
           {
             "tag": "H2",
-            "text": "Planning a move in New Jersey?",
+            "text": "Thinking about buying or selling in South Jersey?",
             "href": "",
             "type": "",
             "placeholder": ""
           },
           {
             "tag": "P",
-            "text": "Arthur helps New Jersey buyers and sellers plan, communicate, and manage the steps of a residential real-estate transaction.",
+            "text": "Tell Arthur what you're considering, even if you're still early in the process. A straightforward conversation is a good place to start.",
             "href": "",
             "type": "",
             "placeholder": ""
           },
           {
             "tag": "A",
-            "text": "Start the Conversation",
+            "text": "Start a Conversation",
             "href": "/contact",
             "type": "",
             "placeholder": ""
@@ -2722,7 +2722,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "This guide provides a directory of communities associated with Cape May County. It does not rank communities or make claims about who should live in them.",
+            "text": "Explore Cape May County's barrier-island shore towns and mainland communities.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -2748,7 +2748,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "A community included in this Cape May County guide. Check current public information with the relevant municipality or county before making a real-estate decision.",
+            "text": "A municipality in Cape May County, New Jersey.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -2774,7 +2774,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "A community included in this Cape May County guide. Check current public information with the relevant municipality or county before making a real-estate decision.",
+            "text": "A municipality in Cape May County, New Jersey.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -2800,7 +2800,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "A community included in this Cape May County guide. Check current public information with the relevant municipality or county before making a real-estate decision.",
+            "text": "A municipality in Cape May County, New Jersey.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -2826,7 +2826,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "A community included in this Cape May County guide. Check current public information with the relevant municipality or county before making a real-estate decision.",
+            "text": "A township in Cape May County, New Jersey.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -2852,7 +2852,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "A community included in this Cape May County guide. Check current public information with the relevant municipality or county before making a real-estate decision.",
+            "text": "A township in Cape May County, New Jersey.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -2878,7 +2878,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "A community included in this Cape May County guide. Check current public information with the relevant municipality or county before making a real-estate decision.",
+            "text": "A township in Cape May County, New Jersey.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -2904,7 +2904,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "A community included in this Cape May County guide. Check current public information with the relevant municipality or county before making a real-estate decision.",
+            "text": "A municipality in Cape May County, New Jersey.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -2930,7 +2930,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "A community included in this Cape May County guide. Check current public information with the relevant municipality or county before making a real-estate decision.",
+            "text": "A city in Cape May County, New Jersey.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -2956,7 +2956,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "A community included in this Cape May County guide. Check current public information with the relevant municipality or county before making a real-estate decision.",
+            "text": "A city in Cape May County, New Jersey.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -2982,7 +2982,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "A community included in this Cape May County guide. Check current public information with the relevant municipality or county before making a real-estate decision.",
+            "text": "A municipality in Cape May County, New Jersey.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -3008,7 +3008,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "A community included in this Cape May County guide. Check current public information with the relevant municipality or county before making a real-estate decision.",
+            "text": "A township in Cape May County, New Jersey.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -3034,7 +3034,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "A community included in this Cape May County guide. Check current public information with the relevant municipality or county before making a real-estate decision.",
+            "text": "A municipality in Cape May County, New Jersey.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -3060,7 +3060,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "A community included in this Cape May County guide. Check current public information with the relevant municipality or county before making a real-estate decision.",
+            "text": "A municipality in Cape May County, New Jersey.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -3086,7 +3086,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "A community included in this Cape May County guide. Check current public information with the relevant municipality or county before making a real-estate decision.",
+            "text": "A municipality in Cape May County, New Jersey.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -3112,7 +3112,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "A community included in this Cape May County guide. Check current public information with the relevant municipality or county before making a real-estate decision.",
+            "text": "A municipality in Cape May County, New Jersey.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -3138,7 +3138,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "A community included in this Cape May County guide. Check current public information with the relevant municipality or county before making a real-estate decision.",
+            "text": "A municipality in Cape May County, New Jersey.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -3157,21 +3157,21 @@ export const generatedPages: SitePage[] = [
         "blocks": [
           {
             "tag": "H2",
-            "text": "Planning a move in New Jersey?",
+            "text": "Thinking about buying or selling in South Jersey?",
             "href": "",
             "type": "",
             "placeholder": ""
           },
           {
             "tag": "P",
-            "text": "Arthur helps New Jersey buyers and sellers plan, communicate, and manage the steps of a residential real-estate transaction.",
+            "text": "Tell Arthur what you're considering, even if you're still early in the process. A straightforward conversation is a good place to start.",
             "href": "",
             "type": "",
             "placeholder": ""
           },
           {
             "tag": "A",
-            "text": "Start the Conversation",
+            "text": "Start a Conversation",
             "href": "/contact",
             "type": "",
             "placeholder": ""
@@ -3198,7 +3198,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "This guide provides a directory of communities associated with Cumberland County. It does not rank communities or make claims about who should live in them.",
+            "text": "Explore Cumberland County's cities and smaller communities across its agricultural, woodland, and Delaware Bay landscapes.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -3224,7 +3224,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "A community included in this Cumberland County guide. Check current public information with the relevant municipality or county before making a real-estate decision.",
+            "text": "A municipality in Cumberland County, New Jersey.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -3250,7 +3250,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "A community included in this Cumberland County guide. Check current public information with the relevant municipality or county before making a real-estate decision.",
+            "text": "A township in Cumberland County, New Jersey.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -3276,7 +3276,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "A community included in this Cumberland County guide. Check current public information with the relevant municipality or county before making a real-estate decision.",
+            "text": "A township in Cumberland County, New Jersey.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -3302,7 +3302,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "A community included in this Cumberland County guide. Check current public information with the relevant municipality or county before making a real-estate decision.",
+            "text": "A township in Cumberland County, New Jersey.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -3328,7 +3328,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "A community included in this Cumberland County guide. Check current public information with the relevant municipality or county before making a real-estate decision.",
+            "text": "A township in Cumberland County, New Jersey.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -3354,7 +3354,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "A community included in this Cumberland County guide. Check current public information with the relevant municipality or county before making a real-estate decision.",
+            "text": "A township in Cumberland County, New Jersey.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -3380,7 +3380,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "A community included in this Cumberland County guide. Check current public information with the relevant municipality or county before making a real-estate decision.",
+            "text": "A township in Cumberland County, New Jersey.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -3406,7 +3406,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "A community included in this Cumberland County guide. Check current public information with the relevant municipality or county before making a real-estate decision.",
+            "text": "A township in Cumberland County, New Jersey.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -3432,7 +3432,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "A community included in this Cumberland County guide. Check current public information with the relevant municipality or county before making a real-estate decision.",
+            "text": "A township in Cumberland County, New Jersey.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -3458,7 +3458,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "A community included in this Cumberland County guide. Check current public information with the relevant municipality or county before making a real-estate decision.",
+            "text": "A municipality in Cumberland County, New Jersey.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -3484,7 +3484,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "A community included in this Cumberland County guide. Check current public information with the relevant municipality or county before making a real-estate decision.",
+            "text": "A borough in Cumberland County, New Jersey.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -3510,7 +3510,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "A community included in this Cumberland County guide. Check current public information with the relevant municipality or county before making a real-estate decision.",
+            "text": "A township in Cumberland County, New Jersey.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -3536,7 +3536,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "A community included in this Cumberland County guide. Check current public information with the relevant municipality or county before making a real-estate decision.",
+            "text": "A township in Cumberland County, New Jersey.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -3562,7 +3562,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "A community included in this Cumberland County guide. Check current public information with the relevant municipality or county before making a real-estate decision.",
+            "text": "A municipality in Cumberland County, New Jersey.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -3581,21 +3581,21 @@ export const generatedPages: SitePage[] = [
         "blocks": [
           {
             "tag": "H2",
-            "text": "Planning a move in New Jersey?",
+            "text": "Thinking about buying or selling in South Jersey?",
             "href": "",
             "type": "",
             "placeholder": ""
           },
           {
             "tag": "P",
-            "text": "Arthur helps New Jersey buyers and sellers plan, communicate, and manage the steps of a residential real-estate transaction.",
+            "text": "Tell Arthur what you're considering, even if you're still early in the process. A straightforward conversation is a good place to start.",
             "href": "",
             "type": "",
             "placeholder": ""
           },
           {
             "tag": "A",
-            "text": "Start the Conversation",
+            "text": "Start a Conversation",
             "href": "/contact",
             "type": "",
             "placeholder": ""
@@ -3622,7 +3622,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "This guide provides a directory of communities associated with Gloucester County. It does not rank communities or make claims about who should live in them.",
+            "text": "Explore Gloucester County's river communities, suburban centers, and rural landscapes.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -3648,7 +3648,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "A community included in this Gloucester County guide. Check current public information with the relevant municipality or county before making a real-estate decision.",
+            "text": "A municipality in Gloucester County, New Jersey.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -3674,7 +3674,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "A community included in this Gloucester County guide. Check current public information with the relevant municipality or county before making a real-estate decision.",
+            "text": "A township in Gloucester County, New Jersey.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -3700,7 +3700,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "A community included in this Gloucester County guide. Check current public information with the relevant municipality or county before making a real-estate decision.",
+            "text": "A township in Gloucester County, New Jersey.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -3726,7 +3726,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "A community included in this Gloucester County guide. Check current public information with the relevant municipality or county before making a real-estate decision.",
+            "text": "A township in Gloucester County, New Jersey.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -3752,7 +3752,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "A community included in this Gloucester County guide. Check current public information with the relevant municipality or county before making a real-estate decision.",
+            "text": "A township in Gloucester County, New Jersey.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -3778,7 +3778,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "A community included in this Gloucester County guide. Check current public information with the relevant municipality or county before making a real-estate decision.",
+            "text": "A municipality in Gloucester County, New Jersey.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -3804,7 +3804,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "A community included in this Gloucester County guide. Check current public information with the relevant municipality or county before making a real-estate decision.",
+            "text": "A township in Gloucester County, New Jersey.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -3830,7 +3830,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "A community included in this Gloucester County guide. Check current public information with the relevant municipality or county before making a real-estate decision.",
+            "text": "A township in Gloucester County, New Jersey.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -3856,7 +3856,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "A community included in this Gloucester County guide. Check current public information with the relevant municipality or county before making a real-estate decision.",
+            "text": "A township in Gloucester County, New Jersey.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -3882,7 +3882,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "A community included in this Gloucester County guide. Check current public information with the relevant municipality or county before making a real-estate decision.",
+            "text": "A township in Gloucester County, New Jersey.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -3908,7 +3908,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "A community included in this Gloucester County guide. Check current public information with the relevant municipality or county before making a real-estate decision.",
+            "text": "A township in Gloucester County, New Jersey.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -3934,7 +3934,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "A community included in this Gloucester County guide. Check current public information with the relevant municipality or county before making a real-estate decision.",
+            "text": "A municipality in Gloucester County, New Jersey.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -3960,7 +3960,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "A community included in this Gloucester County guide. Check current public information with the relevant municipality or county before making a real-estate decision.",
+            "text": "A municipality in Gloucester County, New Jersey.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -3986,7 +3986,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "A community included in this Gloucester County guide. Check current public information with the relevant municipality or county before making a real-estate decision.",
+            "text": "A municipality in Gloucester County, New Jersey.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -4012,7 +4012,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "A community included in this Gloucester County guide. Check current public information with the relevant municipality or county before making a real-estate decision.",
+            "text": "A municipality in Gloucester County, New Jersey.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -4038,7 +4038,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "A community included in this Gloucester County guide. Check current public information with the relevant municipality or county before making a real-estate decision.",
+            "text": "A township in Gloucester County, New Jersey.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -4064,7 +4064,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "A community included in this Gloucester County guide. Check current public information with the relevant municipality or county before making a real-estate decision.",
+            "text": "A municipality in Gloucester County, New Jersey.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -4090,7 +4090,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "A community included in this Gloucester County guide. Check current public information with the relevant municipality or county before making a real-estate decision.",
+            "text": "A township in Gloucester County, New Jersey.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -4116,7 +4116,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "A community included in this Gloucester County guide. Check current public information with the relevant municipality or county before making a real-estate decision.",
+            "text": "A municipality in Gloucester County, New Jersey.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -4142,7 +4142,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "A community included in this Gloucester County guide. Check current public information with the relevant municipality or county before making a real-estate decision.",
+            "text": "A township in Gloucester County, New Jersey.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -4168,7 +4168,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "A community included in this Gloucester County guide. Check current public information with the relevant municipality or county before making a real-estate decision.",
+            "text": "A municipality in Gloucester County, New Jersey.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -4194,7 +4194,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "A community included in this Gloucester County guide. Check current public information with the relevant municipality or county before making a real-estate decision.",
+            "text": "A municipality in Gloucester County, New Jersey.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -4220,7 +4220,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "A community included in this Gloucester County guide. Check current public information with the relevant municipality or county before making a real-estate decision.",
+            "text": "A borough in Gloucester County, New Jersey.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -4246,7 +4246,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "A community included in this Gloucester County guide. Check current public information with the relevant municipality or county before making a real-estate decision.",
+            "text": "A township in Gloucester County, New Jersey.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -4265,21 +4265,21 @@ export const generatedPages: SitePage[] = [
         "blocks": [
           {
             "tag": "H2",
-            "text": "Planning a move in New Jersey?",
+            "text": "Thinking about buying or selling in South Jersey?",
             "href": "",
             "type": "",
             "placeholder": ""
           },
           {
             "tag": "P",
-            "text": "Arthur helps New Jersey buyers and sellers plan, communicate, and manage the steps of a residential real-estate transaction.",
+            "text": "Tell Arthur what you're considering, even if you're still early in the process. A straightforward conversation is a good place to start.",
             "href": "",
             "type": "",
             "placeholder": ""
           },
           {
             "tag": "A",
-            "text": "Start the Conversation",
+            "text": "Start a Conversation",
             "href": "/contact",
             "type": "",
             "placeholder": ""
@@ -4306,7 +4306,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "This guide provides a directory of communities associated with Salem County. It does not rank communities or make claims about who should live in them.",
+            "text": "Explore Salem County's small municipalities, farmland, woodland, and Delaware River and Bay communities.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -4332,7 +4332,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "A community included in this Salem County guide. Check current public information with the relevant municipality or county before making a real-estate decision.",
+            "text": "A township in Salem County, New Jersey.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -4358,7 +4358,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "A community included in this Salem County guide. Check current public information with the relevant municipality or county before making a real-estate decision.",
+            "text": "A municipality in Salem County, New Jersey.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -4384,7 +4384,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "A community included in this Salem County guide. Check current public information with the relevant municipality or county before making a real-estate decision.",
+            "text": "A municipality in Salem County, New Jersey.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -4410,7 +4410,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "A community included in this Salem County guide. Check current public information with the relevant municipality or county before making a real-estate decision.",
+            "text": "A township in Salem County, New Jersey.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -4436,7 +4436,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "A community included in this Salem County guide. Check current public information with the relevant municipality or county before making a real-estate decision.",
+            "text": "A township in Salem County, New Jersey.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -4462,7 +4462,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "A community included in this Salem County guide. Check current public information with the relevant municipality or county before making a real-estate decision.",
+            "text": "A township in Salem County, New Jersey.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -4488,7 +4488,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "A community included in this Salem County guide. Check current public information with the relevant municipality or county before making a real-estate decision.",
+            "text": "A township in Salem County, New Jersey.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -4514,7 +4514,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "A community included in this Salem County guide. Check current public information with the relevant municipality or county before making a real-estate decision.",
+            "text": "A borough in Salem County, New Jersey.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -4540,7 +4540,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "A community included in this Salem County guide. Check current public information with the relevant municipality or county before making a real-estate decision.",
+            "text": "A municipality in Salem County, New Jersey.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -4566,7 +4566,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "A community included in this Salem County guide. Check current public information with the relevant municipality or county before making a real-estate decision.",
+            "text": "A township in Salem County, New Jersey.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -4592,7 +4592,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "A community included in this Salem County guide. Check current public information with the relevant municipality or county before making a real-estate decision.",
+            "text": "A municipality in Salem County, New Jersey.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -4618,7 +4618,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "A community included in this Salem County guide. Check current public information with the relevant municipality or county before making a real-estate decision.",
+            "text": "A township in Salem County, New Jersey.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -4644,7 +4644,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "A community included in this Salem County guide. Check current public information with the relevant municipality or county before making a real-estate decision.",
+            "text": "A city in Salem County, New Jersey.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -4670,7 +4670,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "A community included in this Salem County guide. Check current public information with the relevant municipality or county before making a real-estate decision.",
+            "text": "A municipality in Salem County, New Jersey.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -4696,7 +4696,7 @@ export const generatedPages: SitePage[] = [
           },
           {
             "tag": "P",
-            "text": "A community included in this Salem County guide. Check current public information with the relevant municipality or county before making a real-estate decision.",
+            "text": "A municipality in Salem County, New Jersey.",
             "href": "",
             "type": "",
             "placeholder": ""
@@ -4715,21 +4715,21 @@ export const generatedPages: SitePage[] = [
         "blocks": [
           {
             "tag": "H2",
-            "text": "Planning a move in New Jersey?",
+            "text": "Thinking about buying or selling in South Jersey?",
             "href": "",
             "type": "",
             "placeholder": ""
           },
           {
             "tag": "P",
-            "text": "Arthur helps New Jersey buyers and sellers plan, communicate, and manage the steps of a residential real-estate transaction.",
+            "text": "Tell Arthur what you're considering, even if you're still early in the process. A straightforward conversation is a good place to start.",
             "href": "",
             "type": "",
             "placeholder": ""
           },
           {
             "tag": "A",
-            "text": "Start the Conversation",
+            "text": "Start a Conversation",
             "href": "/contact",
             "type": "",
             "placeholder": ""

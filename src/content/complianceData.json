@@ -17,7 +17,8 @@
   "agentPhoneHref": "tel:+18564937501",
   "agentEmail": "arthur@southjerseyreal.estate",
   "verificationDate": "2026-07-18",
-  "realtorMembershipVerified": false,
+  "realtorMembershipVerified": true,
+  "realtorMembershipVerificationDate": "2026-07-18",
   "providerDirectoryVerificationComplete": false,
   "idxListingsEnabled": false,
   "sources": {

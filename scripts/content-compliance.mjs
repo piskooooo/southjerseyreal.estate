@@ -12,6 +12,16 @@ const countyByPath = new Map([
   ["/salem-county", "Salem County"],
 ]);
 
+const countyIntroByPath = new Map([
+  ["/atlantic-county", "Explore Atlantic County's shore communities, inland municipalities, and places across the mainland."],
+  ["/burlington-county", "Explore communities along the Delaware River, across the county's suburban corridor, and into the Pinelands."],
+  ["/camden-county", "Explore Camden County's Delaware River communities, established suburbs, and eastern townships."],
+  ["/cape-may-county", "Explore Cape May County's barrier-island shore towns and mainland communities."],
+  ["/cumberland-county", "Explore Cumberland County's cities and smaller communities across its agricultural, woodland, and Delaware Bay landscapes."],
+  ["/gloucester-county", "Explore Gloucester County's river communities, suburban centers, and rural landscapes."],
+  ["/salem-county", "Explore Salem County's small municipalities, farmland, woodland, and Delaware River and Bay communities."],
+]);
+
 const textBlock = (tag, text, href = "") => ({
   tag,
   text,
@@ -28,6 +38,15 @@ const imageFor = (image, alt) => ({
   src: image?.src || "",
   alt,
 });
+
+const communityDescription = (townName, countyName) => {
+  if (townName.includes("&")) return `Two communities in ${countyName}, New Jersey.`;
+  if (/Township(?:\s*\(|$)/.test(townName)) return `A township in ${countyName}, New Jersey.`;
+  if (/Borough(?:\s*\(|$)/.test(townName)) return `A borough in ${countyName}, New Jersey.`;
+  if (/City(?:\s*\(|$)/.test(townName)) return `A city in ${countyName}, New Jersey.`;
+  if (/Town(?:\s*\(|$)/.test(townName)) return `A town in ${countyName}, New Jersey.`;
+  return `A municipality in ${countyName}, New Jersey.`;
+};
 
 export function sanitizeImportedPages(pages) {
   return pages.flatMap((page) => {
@@ -49,7 +68,7 @@ export function sanitizeImportedPages(pages) {
           textBlock("H3", townName),
           textBlock(
             "P",
-            `A community included in this ${countyName} guide. Check current public information with the relevant municipality or county before making a real-estate decision.`,
+            communityDescription(townName, countyName),
           ),
         ],
         images: [imageFor(section.images[0], `Image accompanying the ${townName}, New Jersey community entry.`)],
@@ -67,7 +86,7 @@ export function sanitizeImportedPages(pages) {
             textBlock("H1", `${countyName}, New Jersey`),
             textBlock(
               "P",
-              `This guide provides a directory of communities associated with ${countyName}. It does not rank communities or make claims about who should live in them.`,
+              countyIntroByPath.get(page.path) || `Explore the towns and cities of ${countyName}.`,
             ),
           ],
           images: introImages,
@@ -77,12 +96,12 @@ export function sanitizeImportedPages(pages) {
           id: `${page.path.slice(1)}-action`,
           kind: "action",
           blocks: [
-            textBlock("H2", "Planning a move in New Jersey?"),
+            textBlock("H2", "Thinking about buying or selling in South Jersey?"),
             textBlock(
               "P",
-              "Arthur helps New Jersey buyers and sellers plan, communicate, and manage the steps of a residential real-estate transaction.",
+              "Tell Arthur what you're considering, even if you're still early in the process. A straightforward conversation is a good place to start.",
             ),
-            textBlock("A", "Start the Conversation", "/contact"),
+            textBlock("A", "Start a Conversation", "/contact"),
           ],
           images: [],
         },
@@ -92,7 +111,7 @@ export function sanitizeImportedPages(pages) {
 }
 
 export function serializeGeneratedPages(pages) {
-  return `// Generated from imported site data and reduced to compliance-reviewed county structure.\n// Rerun npm run import:live only with a fresh source extraction; imported marketing copy is not published.\nimport type { SitePage } from "./types";\n\nexport const generatedPages: SitePage[] = ${JSON.stringify(pages, null, 2)};\n`;
+  return `// Generated from imported site data and curated into concise county directories.\n// Rerun npm run import:live only with a fresh source extraction and a content review.\nimport type { SitePage } from "./types";\n\nexport const generatedPages: SitePage[] = ${JSON.stringify(pages, null, 2)};\n`;
 }
 
 async function rewriteCurrentGeneratedFile() {

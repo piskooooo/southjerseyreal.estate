@@ -101,8 +101,8 @@ export default function App() {
     const seo = isKnownPath
       ? getSeoForPath(path, page, pageDocument.seo)
       : getSeoForPath(path, undefined, {
-          title: "Page Not Found | South Jersey Real Estate Guide",
-          description: "The requested South Jersey Real Estate Guide page is not available.",
+          title: "Page Not Found | South Jersey Real Estate",
+          description: "The requested South Jersey Real Estate page is not available.",
           image: pageDocument.seo.image,
         });
 
@@ -149,8 +149,8 @@ export default function App() {
     const seo = isKnownPath
       ? getSeoForPath(path, page, pageDocument.seo)
       : getSeoForPath(path, undefined, {
-          title: "Page Not Found | South Jersey Real Estate Guide",
-          description: "The requested South Jersey Real Estate Guide page is not available.",
+          title: "Page Not Found | South Jersey Real Estate",
+          description: "The requested South Jersey Real Estate page is not available.",
           image: pageDocument.seo.image,
         });
     trackPageView(seo.canonicalPath, seo.title);
@@ -189,8 +189,8 @@ export default function App() {
       const seo = isKnownPath
         ? getSeoForPath(path, page, pageDocument.seo)
         : getSeoForPath(path, undefined, {
-            title: "Page Not Found | South Jersey Real Estate Guide",
-            description: "The requested South Jersey Real Estate Guide page is not available.",
+            title: "Page Not Found | South Jersey Real Estate",
+            description: "The requested South Jersey Real Estate page is not available.",
             image: pageDocument.seo.image,
           });
       trackPageView(seo.canonicalPath, seo.title);

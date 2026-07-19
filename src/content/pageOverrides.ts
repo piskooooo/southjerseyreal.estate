@@ -136,12 +136,12 @@ const connectHubSections = [
 export const pageOverrides: SitePage[] = [
   {
     path: "/",
-    title: "South Jersey Real Estate Guide",
+    title: "South Jersey Real Estate",
     sections: [
       {
         id: "home-hero",
         blocks: [
-          { tag: "H1", text: "South Jersey Real Estate Guide" },
+          { tag: "H1", text: "South Jersey Real Estate" },
           {
             tag: "P",
             text: "Explore neutral, general information about municipalities across Atlantic, Burlington, Camden, Cape May, Cumberland, Gloucester, and Salem Counties.",

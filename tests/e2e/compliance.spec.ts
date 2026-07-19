@@ -290,7 +290,7 @@ test("hub labels, history, mobile navigation, analytics, and missing routes beha
 
   await page.goto("/a-page-that-does-not-exist", { waitUntil: "domcontentloaded" });
   await expect(page.getByRole("heading", { level: 1, name: "This page is not available." })).toBeVisible();
-  await expect(page).toHaveTitle("Page Not Found | South Jersey Real Estate Guide");
+  await expect(page).toHaveTitle("Page Not Found | South Jersey Real Estate");
   await expect(page.locator('meta[name="robots"]')).toHaveAttribute("content", "noindex, follow");
   await expect(page.locator('meta[property="og:url"]')).toHaveCount(0);
   await expect(page.locator('link[rel="canonical"]')).toHaveCount(0);

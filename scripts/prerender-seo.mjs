@@ -6,7 +6,7 @@ import { createServer, loadEnv } from "vite";
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const distRoot = path.join(projectRoot, "dist");
 const siteUrl = "https://southjerseyreal.estate";
-const defaultSiteName = "South Jersey Real Estate Guide";
+const defaultSiteName = "South Jersey Real Estate";
 const buildEnv = loadEnv("production", projectRoot, "VITE_");
 
 const [compliance, routeEntries, builtTemplate] = await Promise.all([
@@ -306,14 +306,14 @@ const renderNonPublicShell = (eyebrow, heading, copy, linkLabel = "", linkHref =
         </div>
       </main>`;
 
-let notFoundHtml = replaceTitle(template, "Page Not Found | South Jersey Real Estate Guide");
-notFoundHtml = replaceMeta(notFoundHtml, "name", "description", "The requested South Jersey Real Estate Guide page is not available.");
+let notFoundHtml = replaceTitle(template, "Page Not Found | South Jersey Real Estate");
+notFoundHtml = replaceMeta(notFoundHtml, "name", "description", "The requested South Jersey Real Estate page is not available.");
 notFoundHtml = replaceMeta(notFoundHtml, "name", "robots", "noindex, follow");
-notFoundHtml = replaceMeta(notFoundHtml, "property", "og:title", "Page Not Found | South Jersey Real Estate Guide");
-notFoundHtml = replaceMeta(notFoundHtml, "property", "og:description", "The requested South Jersey Real Estate Guide page is not available.");
+notFoundHtml = replaceMeta(notFoundHtml, "property", "og:title", "Page Not Found | South Jersey Real Estate");
+notFoundHtml = replaceMeta(notFoundHtml, "property", "og:description", "The requested South Jersey Real Estate page is not available.");
 notFoundHtml = replaceMeta(notFoundHtml, "property", "og:url", undefined);
-notFoundHtml = replaceMeta(notFoundHtml, "name", "twitter:title", "Page Not Found | South Jersey Real Estate Guide");
-notFoundHtml = replaceMeta(notFoundHtml, "name", "twitter:description", "The requested South Jersey Real Estate Guide page is not available.");
+notFoundHtml = replaceMeta(notFoundHtml, "name", "twitter:title", "Page Not Found | South Jersey Real Estate");
+notFoundHtml = replaceMeta(notFoundHtml, "name", "twitter:description", "The requested South Jersey Real Estate page is not available.");
 notFoundHtml = replaceCanonical(notFoundHtml, "");
 notFoundHtml = replaceStructuredData(notFoundHtml, null);
 notFoundHtml = replaceRoot(notFoundHtml, renderNonPublicShell(

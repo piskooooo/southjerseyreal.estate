@@ -6,7 +6,7 @@ const page = (path: string, title: string): SitePage => ({ path, title, sections
 
 describe("SEO metadata", () => {
   it("omits a one-item breadcrumb list on the home page", () => {
-    const graph = buildStructuredData("/", page("/", "South Jersey Real Estate Guide"))["@graph"];
+    const graph = buildStructuredData("/", page("/", "South Jersey Real Estate"))["@graph"];
     expect(graph.some((item) => item["@type"] === "BreadcrumbList")).toBe(false);
   });
 

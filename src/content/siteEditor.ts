@@ -93,7 +93,7 @@ export type ManagedContentRecord = {
 };
 
 export const sitewideSeed: SitewideContent = {
-  brandName: "South Jersey Real Estate Guide",
+  brandName: "South Jersey Real Estate",
   header: {
     countiesLabel: "Counties",
     countiesPath: "/counties",
@@ -105,8 +105,8 @@ export const sitewideSeed: SitewideContent = {
     socialLinks: socialLinks.map((item) => ({ ...item })),
   },
   footer: {
-    brandName: "South Jersey Real Estate Guide",
-    copyright: "© 2026 South Jersey Real Estate Guide",
+    brandName: "South Jersey Real Estate",
+    copyright: "© 2026 South Jersey Real Estate",
     creatorCredit: "Website created and maintained by Fat Cat Finance, LLC.",
     creatorHref: "https://fatcat.finance",
     cookieSettingsLabel: "Cookie Settings",

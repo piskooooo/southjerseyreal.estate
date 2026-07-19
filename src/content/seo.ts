@@ -3,7 +3,7 @@ import rawSeoEntries from "./seoEntries.json";
 import type { SitePage } from "./types";
 
 export const siteUrl = "https://southjerseyreal.estate";
-export const siteName = "South Jersey Real Estate Guide";
+export const siteName = "South Jersey Real Estate";
 export const defaultImage = "/assets/live/philly-skyline-from-camden-city-camden-jpg.webp";
 
 export type SeoEntry = {

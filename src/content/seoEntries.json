@@ -1,7 +1,7 @@
 [
   {
     "path": "/",
-    "title": "South Jersey Real Estate Guide | Arthur Pisko Jr.",
+    "title": "South Jersey Real Estate | Arthur Pisko Jr.",
     "description": "Neutral community guides and New Jersey residential real-estate information for Atlantic, Burlington, Camden, Cape May, Cumberland, Gloucester, and Salem Counties.",
     "priority": "1.0"
   },
@@ -14,7 +14,7 @@
   },
   {
     "path": "/connect",
-    "title": "Connect and Explore | South Jersey Real Estate Guide",
+    "title": "Connect and Explore | South Jersey Real Estate",
     "description": "Find the About, Contact, Newsletter, comparison guides, FAQ, provider directory, and advertising destinations for this website.",
     "image": "/assets/live/pitman-gloucester-jpg.webp",
     "priority": "0.75"

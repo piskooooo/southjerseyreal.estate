@@ -272,7 +272,7 @@ export const trackPageView = (path: string, title: string) => {
   const pageReferrer = previousPageLocation || sanitizeHttpUrl(document.referrer, false);
   const params: Record<string, GtagValue> = {
     page_path: sanitizePathname(path),
-    page_title: containsPotentialPersonalData(title) ? "South Jersey Real Estate Guide" : title,
+    page_title: containsPotentialPersonalData(title) ? "South Jersey Real Estate" : title,
     page_location: pageLocation,
   };
   if (pageReferrer) params.page_referrer = pageReferrer;

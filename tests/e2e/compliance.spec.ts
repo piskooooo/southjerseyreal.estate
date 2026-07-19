@@ -65,7 +65,6 @@ test.describe("compliance route crawl", () => {
 
       const fairHousing = page.locator(".fair-housing-notice");
       await expect(fairHousing).toContainText("Equal Housing Opportunity");
-      await expect(fairHousing).toContainText(compliance.brokerLegalName);
       await expect(fairHousing.getByAltText("Equal Housing Opportunity")).toBeVisible();
       await expect(fairHousing.getByAltText("REALTOR® member logo")).toBeVisible();
 
@@ -91,10 +90,19 @@ test.describe("compliance route crawl", () => {
       const structuredData = await page.locator("#structured-data").textContent();
       const parsedStructuredData = JSON.parse(structuredData || "{}") as Record<string, unknown>;
       const graph = parsedStructuredData["@graph"] as Array<Record<string, unknown>>;
-      expect(graph[0]?.name).toBe(compliance.brokerLegalName);
-      expect(graph[0]?.description).toBe(compliance.brokerDescriptor);
-      expect(graph[0]?.telephone).toBe(compliance.licensedOfficePhoneHref.replace("tel:", ""));
-      expect((graph[1]?.worksFor as Record<string, unknown>)?.["@id"]).toBe(`${siteUrl}/#brokerage`);
+      const website = graph.find((item) => item["@type"] === "WebSite");
+      const brokerage = graph.find((item) => item["@id"] === `${siteUrl}/#brokerage`);
+      const agent = graph.find((item) => item["@id"] === `${siteUrl}/#agent`);
+      expect(website?.name).toBe("South Jersey Real Estate");
+      if (["/about", "/contact"].includes(entry.path)) {
+        expect(brokerage?.name).toBe(compliance.brokerLegalName);
+        expect(brokerage?.description).toBe(compliance.brokerDescriptor);
+        expect(brokerage?.telephone).toBe(compliance.licensedOfficePhoneHref.replace("tel:", ""));
+        expect((agent?.worksFor as Record<string, unknown>)?.["@id"]).toBe(`${siteUrl}/#brokerage`);
+      } else {
+        expect(brokerage).toBeUndefined();
+        expect(agent).toBeUndefined();
+      }
 
       const prerenderedHtml = prerenderedHtmlForPath(entry.path);
       expect(prerenderedHtml).toContain('data-seo-prerendered="true"');
@@ -220,12 +228,11 @@ test("provider directory shows choice and relationship disclosures", async ({ pa
   await expect(main).toContainText("owned by Fat Cat Finance, LLC");
   await expect(main).toContainText("This directory entry is unpaid");
   await expect(main).toContainText("does not share ownership");
-  await expect(main).toContainText(compliance.brokerLegalName);
+  await expect(page.locator("footer")).toContainText(compliance.brokerLegalName);
+  await expect(main.locator("#brokerage-affiliation")).toHaveCount(0);
   await expect(main).not.toContainText("NJDOBI reference numbers");
   await page.locator("#homebase-crm summary").click();
   await expect(main.locator('a[href="https://homebasecrm.com"]')).toBeVisible();
-  await page.locator("#brokerage-affiliation summary").click();
-  await expect(main.getByRole("link", { name: "Visit the Brokerage Website" })).toBeVisible();
   await expect(main).not.toContainText("Guaranteed Rate");
   await expect(main).not.toContainText("Foundation Title");
 });

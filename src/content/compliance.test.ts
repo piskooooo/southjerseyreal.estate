@@ -54,7 +54,7 @@ describe("compiled compliance guardrails", () => {
     expect(directory).toContain("Fat Cat Finance, LLC");
     expect(directory).toContain("This directory entry is unpaid");
     expect(directory).toContain("does not share ownership");
-    expect(directory).toContain(compliance.brokerLegalName);
+    expect(directory).not.toContain(compliance.brokerLegalName);
     expect(directory).not.toContain("Real-estate contact-management software");
     expect(directory).not.toMatch(/mortgage broker|title compan|settlement agent|home inspector/i);
   });

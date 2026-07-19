@@ -134,7 +134,8 @@ describe("website editor content normalization", () => {
     expect(() => validateManagedContentForPublish("/gloucester-county", sourced)).not.toThrow();
 
     const unsourced = structuredClone(sourced);
-    unsourced.page.sections[1].blocks.pop();
+    unsourced.page.sections[1].blocks = unsourced.page.sections[1].blocks
+      .filter((block) => block.tag !== "SOURCE");
     expect(() => validateManagedContentForPublish("/gloucester-county", unsourced)).toThrow(/dated authoritative source/i);
 
     const insecure = structuredClone(sourced);

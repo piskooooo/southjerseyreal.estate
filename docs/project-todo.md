@@ -253,6 +253,8 @@ Editorial direction selected by the owner on July 18, 2026: casual but professio
 
 Drafting progress: source blocks are supported by the structured editor, preserved by normalization, rendered accessibly, and required beside volatile community facts. Seven county introductions and all 168 current municipalities are researched in the unpublished [community profile draft](./community-profile-drafts.md), represented across 166 cards: Gloucester 24, Atlantic 23, Burlington 40, Camden 34, Cape May 16, Cumberland 14, and Salem 15. The Camden card count is lower than its municipality count because two pairs share cards.
 
+Selective-restoration preview: on July 19, 2026, the sourced drafts were connected to the local compiled fallbacks for owner review, with a visible profile date and source notes. This does not mark the profiles or images as owner-approved, and the restored county content has not been published through the production editor.
+
 ### Content Work
 
 - [x] Review the pre-remediation town narratives one community at a time and recover only objective, still-useful material.
@@ -267,8 +269,9 @@ Drafting progress: source blocks are supported by the structured editor, preserv
 - [ ] Recheck the 28 anti-bot-challenged sources in an interactive human browser and verify each municipality image before its county batch is published.
 - [x] Run the publishing guardrails, 79 unit tests, 49 tracked database checks, production build, full 37-check compliance crawl, automated accessibility checks, and desktop/mobile visual checks after the source-support and Gloucester-draft batch.
 - [x] Obtain owner approval for the casual-but-professional editorial direction.
+- [x] Build a local structured-content preview of all seven sourced county batches and replace the stale `Pine Hill & Pine Valley` card title.
 - [ ] Obtain owner approval of the actual profile drafts and images before publication.
-- [ ] Convert approved drafts into structured editor content, replace the stale `Pine Hill & Pine Valley` card title, publish in manageable county batches, and rerun rendered source, accessibility, compliance, and responsive checks after each batch.
+- [ ] Publish approved profiles in manageable county batches through the structured editor, and rerun rendered source, accessibility, compliance, and responsive checks after each batch.
 
 **Done when:** Every community card contains useful, human-written, supportable information without repetitive legal prose or unsupported claims.
 

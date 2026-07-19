@@ -637,21 +637,21 @@ export const generatedPages: SitePage[] = [
         "blocks": [
           {
             "tag": "H2",
-            "text": "Thinking about buying or selling in South Jersey?",
+            "text": "Have a real estate question?",
             "href": "",
             "type": "",
             "placeholder": ""
           },
           {
             "tag": "P",
-            "text": "Tell Arthur what you're considering, even if you're still early in the process. A straightforward conversation is a good place to start.",
+            "text": "Get in touch about a property, a move, or the market.",
             "href": "",
             "type": "",
             "placeholder": ""
           },
           {
             "tag": "A",
-            "text": "Start a Conversation",
+            "text": "Contact",
             "href": "/contact",
             "type": "",
             "placeholder": ""
@@ -1737,21 +1737,21 @@ export const generatedPages: SitePage[] = [
         "blocks": [
           {
             "tag": "H2",
-            "text": "Thinking about buying or selling in South Jersey?",
+            "text": "Have a real estate question?",
             "href": "",
             "type": "",
             "placeholder": ""
           },
           {
             "tag": "P",
-            "text": "Tell Arthur what you're considering, even if you're still early in the process. A straightforward conversation is a good place to start.",
+            "text": "Get in touch about a property, a move, or the market.",
             "href": "",
             "type": "",
             "placeholder": ""
           },
           {
             "tag": "A",
-            "text": "Start a Conversation",
+            "text": "Contact",
             "href": "/contact",
             "type": "",
             "placeholder": ""
@@ -2681,21 +2681,21 @@ export const generatedPages: SitePage[] = [
         "blocks": [
           {
             "tag": "H2",
-            "text": "Thinking about buying or selling in South Jersey?",
+            "text": "Have a real estate question?",
             "href": "",
             "type": "",
             "placeholder": ""
           },
           {
             "tag": "P",
-            "text": "Tell Arthur what you're considering, even if you're still early in the process. A straightforward conversation is a good place to start.",
+            "text": "Get in touch about a property, a move, or the market.",
             "href": "",
             "type": "",
             "placeholder": ""
           },
           {
             "tag": "A",
-            "text": "Start a Conversation",
+            "text": "Contact",
             "href": "/contact",
             "type": "",
             "placeholder": ""
@@ -3157,21 +3157,21 @@ export const generatedPages: SitePage[] = [
         "blocks": [
           {
             "tag": "H2",
-            "text": "Thinking about buying or selling in South Jersey?",
+            "text": "Have a real estate question?",
             "href": "",
             "type": "",
             "placeholder": ""
           },
           {
             "tag": "P",
-            "text": "Tell Arthur what you're considering, even if you're still early in the process. A straightforward conversation is a good place to start.",
+            "text": "Get in touch about a property, a move, or the market.",
             "href": "",
             "type": "",
             "placeholder": ""
           },
           {
             "tag": "A",
-            "text": "Start a Conversation",
+            "text": "Contact",
             "href": "/contact",
             "type": "",
             "placeholder": ""
@@ -3581,21 +3581,21 @@ export const generatedPages: SitePage[] = [
         "blocks": [
           {
             "tag": "H2",
-            "text": "Thinking about buying or selling in South Jersey?",
+            "text": "Have a real estate question?",
             "href": "",
             "type": "",
             "placeholder": ""
           },
           {
             "tag": "P",
-            "text": "Tell Arthur what you're considering, even if you're still early in the process. A straightforward conversation is a good place to start.",
+            "text": "Get in touch about a property, a move, or the market.",
             "href": "",
             "type": "",
             "placeholder": ""
           },
           {
             "tag": "A",
-            "text": "Start a Conversation",
+            "text": "Contact",
             "href": "/contact",
             "type": "",
             "placeholder": ""
@@ -4265,21 +4265,21 @@ export const generatedPages: SitePage[] = [
         "blocks": [
           {
             "tag": "H2",
-            "text": "Thinking about buying or selling in South Jersey?",
+            "text": "Have a real estate question?",
             "href": "",
             "type": "",
             "placeholder": ""
           },
           {
             "tag": "P",
-            "text": "Tell Arthur what you're considering, even if you're still early in the process. A straightforward conversation is a good place to start.",
+            "text": "Get in touch about a property, a move, or the market.",
             "href": "",
             "type": "",
             "placeholder": ""
           },
           {
             "tag": "A",
-            "text": "Start a Conversation",
+            "text": "Contact",
             "href": "/contact",
             "type": "",
             "placeholder": ""
@@ -4715,21 +4715,21 @@ export const generatedPages: SitePage[] = [
         "blocks": [
           {
             "tag": "H2",
-            "text": "Thinking about buying or selling in South Jersey?",
+            "text": "Have a real estate question?",
             "href": "",
             "type": "",
             "placeholder": ""
           },
           {
             "tag": "P",
-            "text": "Tell Arthur what you're considering, even if you're still early in the process. A straightforward conversation is a good place to start.",
+            "text": "Get in touch about a property, a move, or the market.",
             "href": "",
             "type": "",
             "placeholder": ""
           },
           {
             "tag": "A",
-            "text": "Start a Conversation",
+            "text": "Contact",
             "href": "/contact",
             "type": "",
             "placeholder": ""

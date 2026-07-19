@@ -1,4 +1,3 @@
-import { compliance } from "./compliance";
 import type { ContentBlock } from "./types";
 
 export type ResourcePanel = {
@@ -25,7 +24,7 @@ export const resourcePages: Record<string, ResourcePage> = {
   "/faq": {
     title: "Frequently Asked Questions",
     intro:
-      "Quick answers about working with Arthur, buying or selling, the newsletter, local providers, and advertising.",
+      "Quick answers about real estate inquiries, the newsletter, local providers, and advertising.",
     supportText:
       "These are starting points. Specific terms belong in written agreements, and specialized questions should go to the appropriate professional.",
     panels: [
@@ -37,17 +36,17 @@ export const resourcePages: Record<string, ResourcePage> = {
           { tag: "H3", text: "How do I begin?" },
           {
             tag: "P",
-            text: "Tell Arthur where you are looking, your timing, the type of property you have in mind, and any questions already on your list. An initial conversation is a simple place to begin.",
+            text: "Use the contact form to share where you are looking, your timing, the type of property you have in mind, and any questions already on your list.",
           },
           { tag: "H3", text: "How are representation and compensation handled?" },
           {
             tag: "P",
             text: "Broker compensation is not set by law and is fully negotiable. Representation, services, and compensation must be addressed in the applicable written agreement before brokerage services begin.",
           },
-          { tag: "H3", text: "Can Arthur advise me about a location?" },
+          { tag: "H3", text: "Can I get help researching a location?" },
           {
             tag: "P",
-            text: "Arthur can help find objective property and transaction information and point you toward current sources for schools, taxes, flood information, transportation, and other community details.",
+            text: "A real estate professional can help locate objective property and transaction information and point you toward current sources for schools, taxes, flood information, transportation, and other community details.",
           },
         ],
       },
@@ -59,7 +58,7 @@ export const resourcePages: Record<string, ResourcePage> = {
           { tag: "H3", text: "Can I request a value discussion?" },
           {
             tag: "P",
-            text: "Yes. Arthur can start with your goals and the property details, then review current market information with you. A real estate value discussion is not an appraisal and does not promise a particular sale price.",
+            text: "Yes. A property value discussion can start with your goals, the property details, and current market information. It is not an appraisal and does not promise a particular sale price.",
           },
           { tag: "H3", text: "Does submitting the form create a listing agreement?" },
           {
@@ -105,29 +104,15 @@ export const resourcePages: Record<string, ResourcePage> = {
     ],
     closingTitle: "Have a property-specific question?",
     closingText: "Use the contact form for an inquiry about New Jersey residential real estate.",
-    closingLink: { label: "Contact Arthur", href: "/contact" },
+    closingLink: { label: "Contact", href: "/contact" },
   },
   "/partners": {
     title: "South Jersey Local Provider Directory",
     intro:
-      "A small directory of organizations and tools connected with Arthur or this website.",
+      "A small directory of organizations and tools connected with this website.",
     supportText:
       "You are free to choose any provider. Directory inclusion is not a guarantee or warranty, and relevant relationships are noted with each entry.",
     panels: [
-      {
-        id: "brokerage-affiliation",
-        title: compliance.brokerLegalName,
-        summary: "Licensed brokerage affiliation.",
-        blocks: [
-          { tag: "H3", text: compliance.brokerDescriptor },
-          {
-            tag: "P",
-            text: `${compliance.agentLicensedName}, REALTOR®, is a ${compliance.agentLicenseType} affiliated with ${compliance.brokerLegalName}.`,
-          },
-          { tag: "P", text: `Licensed brokerage office: ${compliance.licensedOfficePhone}.` },
-          { tag: "A", text: "Visit the Brokerage Website", href: compliance.brokerWebsite },
-        ],
-      },
       {
         id: "homebase-crm",
         title: "HomeBase CRM",
@@ -166,7 +151,7 @@ export const resourcePages: Record<string, ResourcePage> = {
           },
           {
             tag: "P",
-            text: "Any material relationship with Arthur Pisko Jr., this website, or the affiliated brokerage must be disclosed with the placement.",
+            text: "Any material relationship with the website operator or affiliated brokerage must be disclosed with the placement.",
           },
           {
             tag: "P",
@@ -200,7 +185,7 @@ export const resourcePages: Record<string, ResourcePage> = {
         blocks: [
           {
             tag: "P",
-            text: "Use the contact form and choose Partnership or advertising inquiry. Include the legal business name, public website, proposed content, desired locations, and any relationship to Arthur or the brokerage.",
+            text: "Use the contact form and choose Partnership or advertising inquiry. Include the legal business name, public website, proposed content, desired locations, and any relationship to the website operator or brokerage.",
           },
           {
             tag: "P",

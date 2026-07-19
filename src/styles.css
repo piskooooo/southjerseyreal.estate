@@ -506,7 +506,6 @@ h2 {
   width: min(72vw, 72rem);
   max-width: none;
   margin-bottom: clamp(4.5rem, 12vw, 8.5rem);
-  font-size: 5rem;
   text-wrap: balance;
   white-space: normal;
 }
@@ -635,7 +634,8 @@ p a:focus-visible {
 .section-actions .button {
   display: flex;
   margin-top: 0.75rem;
-  margin-inline: auto;
+  margin-right: auto;
+  margin-left: 0;
   width: fit-content;
 }
 
@@ -763,13 +763,8 @@ p a:focus-visible {
 }
 
 .town-card:hover,
-.town-card:focus-visible {
+.town-card:focus-within {
   border-color: var(--card-hover-border);
-}
-
-.town-card:focus-visible {
-  outline: 2px solid var(--focus);
-  outline-offset: 3px;
 }
 
 .town-card.is-expanded {
@@ -837,8 +832,16 @@ p a:focus-visible {
   height: 2rem;
   border: 1px solid var(--brand);
   border-radius: 50%;
+  padding: 0;
+  background: transparent;
   color: var(--brand);
+  cursor: pointer;
   font-size: 0;
+}
+
+.town-card-indicator:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 3px;
 }
 
 .town-card-indicator::before,
@@ -1048,7 +1051,6 @@ p a:focus-visible {
 .hub-hero-section h1 {
   max-width: 54rem;
   margin-bottom: 1.25rem;
-  font-size: 4.6rem;
   line-height: 1.02;
 }
 
@@ -2041,11 +2043,44 @@ p a:focus-visible {
   color: var(--footer-text);
 }
 
-.site-footer > .brokerage-disclosure {
-  margin-bottom: 2rem;
-  padding: 0 0 1.25rem;
+.site-footer .brokerage-disclosure-footer {
+  margin: 1.15rem 0 1rem;
+  padding: 0.9rem 0;
   background: transparent;
-  border-bottom: 1px solid var(--subtle-border);
+  border-top: 1px solid rgba(250, 250, 250, 0.18);
+  border-bottom: 1px solid rgba(250, 250, 250, 0.18);
+  color: var(--footer-text);
+}
+
+.site-footer .brokerage-disclosure-footer .brokerage-disclosure-primary {
+  display: grid;
+  justify-items: start;
+  gap: 0.16rem;
+  color: var(--footer-muted);
+  font-size: 0.78rem;
+  line-height: 1.42;
+  text-align: left;
+}
+
+.site-footer .brokerage-disclosure-footer .brokerage-legal-name {
+  color: var(--footer-text);
+  font-size: 0.96rem;
+  font-weight: 800;
+  line-height: 1.35;
+  text-decoration: underline;
+}
+
+.site-footer .brokerage-disclosure-footer .brokerage-descriptor {
+  color: var(--footer-text);
+  font-size: 0.8rem;
+}
+
+.site-footer .brokerage-disclosure-footer .agent-license-disclosure {
+  margin-top: 0.5rem;
+  color: var(--footer-muted);
+  font-size: 0.72rem;
+  line-height: 1.45;
+  text-align: left;
 }
 
 .site-footer-main {
@@ -2325,7 +2360,6 @@ p a:focus-visible {
   .hero-copy h1,
   .hero-copy h2 {
     width: auto;
-    font-size: 4rem;
     white-space: normal;
   }
 
@@ -2450,18 +2484,9 @@ p a:focus-visible {
     padding-top: 1.5rem;
   }
 
-  .hero-copy h1,
-  .hero-copy h2 {
-    font-size: 3rem;
-  }
-
   .hub-hero-section {
     padding-top: 2.5rem;
     padding-bottom: 2.4rem;
-  }
-
-  .hub-hero-section h1 {
-    font-size: 3rem;
   }
 
   .hub-card-body {

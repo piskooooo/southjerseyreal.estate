@@ -1,4 +1,4 @@
-import { useState, type KeyboardEvent, type MouseEvent, type ReactNode } from "react";
+import { useState, type MouseEvent, type ReactNode } from "react";
 import { trackFormSuccess, trackLinkClick } from "../analytics";
 import {
   areCloudFormsConfigured,
@@ -46,9 +46,9 @@ const DEFAULT_NEWSLETTER_CONTENT: NewsletterContent = {
   confirmationMessage: "Your email is confirmed. Welcome to the newsletter.",
   submitLabel: "Sign Up",
   submittingLabel: "Signing up...",
-  followupHeading: "Want something more specific?",
-  followupCopy: "For a property-specific list, value discussion, or question about a move, use the contact page to start an inquiry.",
-  followupLabel: "Start the Conversation",
+  followupHeading: "Have a question?",
+  followupCopy: "Use the contact page for a property-specific or real estate question.",
+  followupLabel: "Contact",
   followupPath: "/contact",
 };
 
@@ -114,23 +114,11 @@ function TownCard({
     if (!hasDetails || isInteractiveTarget(event.target)) return;
     onToggle();
   };
-  const toggleCardFromKeyboard = (event: KeyboardEvent<HTMLElement>) => {
-    if (!hasDetails || !["Enter", " "].includes(event.key)) return;
-    event.preventDefault();
-    onToggle();
-  };
-
   return (
     <article
       className={`town-card ${hasDetails ? "has-details" : "is-summary-only"} ${expanded ? "is-expanded" : ""} ${className}`.trim()}
-      role={hasDetails ? "button" : undefined}
-      tabIndex={hasDetails ? 0 : undefined}
-      aria-controls={hasDetails ? detailsId : undefined}
-      aria-expanded={hasDetails ? expanded : undefined}
-      aria-label={hasDetails ? `${expanded ? "Collapse" : "Expand"} ${title} details` : undefined}
       data-town-card-key={cardKey}
       onClick={toggleCard}
-      onKeyDown={toggleCardFromKeyboard}
     >
       {image && (
         <div className="town-card-media">
@@ -146,7 +134,19 @@ function TownCard({
             <div id={detailsId} className="town-card-details" hidden={!expanded}>
               <Blocks blocks={detailBlocks} navigate={navigate} headingLevel="compact" />
             </div>
-            <span className="town-card-indicator" aria-hidden="true">{expanded ? "-" : "+"}</span>
+            <button
+              type="button"
+              className="town-card-indicator"
+              aria-controls={detailsId}
+              aria-expanded={expanded}
+              aria-label={`${expanded ? "Collapse" : "Expand"} ${title} details`}
+              onClick={(event) => {
+                event.stopPropagation();
+                onToggle();
+              }}
+            >
+              {expanded ? "Collapse" : "Expand"}
+            </button>
           </>
         )}
       </div>

@@ -147,11 +147,11 @@ function GoogleReviewsLoading() {
 
 function GoogleReviewsFallback() {
   return (
-    <div className="google-reviews-fallback" role="status">
+    <div className="google-reviews-fallback">
       <MessageSquareText size={28} strokeWidth={1.6} aria-hidden="true" />
       <div>
-        <h3>Google reviews are temporarily unavailable here.</h3>
-        <p>You can still read the current reviews directly on the Google Business profile.</p>
+        <h3>Read the reviews on Google</h3>
+        <p>Open the Google Business profile for the latest ratings and review activity.</p>
         <ExternalReviewLink
           className="button button-small"
           href={googleProfileUrl}
@@ -224,8 +224,14 @@ function GoogleReviewsPanel() {
         <div className="google-reviews-fallback">
           <MessageSquareText size={28} strokeWidth={1.6} aria-hidden="true" />
           <div>
-            <h3>No 4- or 5-star written reviews were returned.</h3>
-            <p>Open the Google Business profile to see all current ratings and review activity.</p>
+            <h3>Read all Google reviews</h3>
+            <p>Open the Google Business profile for the complete set of current ratings and reviews.</p>
+            <ExternalReviewLink
+              className="button button-small"
+              href={reviewsUrl}
+              label="Open Google Reviews"
+              source="review_empty"
+            />
           </div>
         </div>
       )}

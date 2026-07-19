@@ -100,7 +100,7 @@ describe("About page reviews", () => {
     }, 503));
     render(<AboutReviewsSection section={section} navigate={vi.fn()} />);
 
-    expect(await screen.findByText("Google reviews are temporarily unavailable here.")).toBeVisible();
+    expect(await screen.findByText("Read the reviews on Google")).toBeVisible();
     expect(screen.getByRole("link", { name: /Open Google Reviews/ })).toHaveAttribute(
       "href",
       "https://g.co/kgs/xMPHGmV",

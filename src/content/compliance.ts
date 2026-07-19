@@ -16,6 +16,5 @@ export const operatorDisclosureText =
   `${compliance.brokerDescriptor}. Licensed brokerage office: ${compliance.licensedOfficePhone}.`;
 
 export const outOfStateServiceDisclosure =
-  `${compliance.agentLicensedName} is licensed to provide real-estate brokerage services in New Jersey. ` +
-  "References to Pennsylvania, Delaware, or New York are provided for general regional comparison and " +
-  "do not represent an offer of brokerage services outside New Jersey.";
+  "Nearby states are discussed for general regional comparison. Brokerage services are offered only in " +
+  "New Jersey through the licensed professional and brokerage identified in the footer.";

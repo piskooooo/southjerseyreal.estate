@@ -69,8 +69,8 @@ export function FairHousingNotice({ navigate }: { navigate: Navigate }) {
     <section className="fair-housing-notice" aria-label="Fair housing notice">
       <FooterCredentialMarks />
       <p>
-        <strong>Equal Housing Opportunity.</strong> {compliance.brokerLegalName} supports fair housing and provides
-        services in accordance with federal, state, and local law.{" "}
+        <strong>Equal Housing Opportunity.</strong> Housing-related services are provided in accordance with federal,
+        state, and local fair-housing law.{" "}
         <InternalLink href="/disclaimer" navigate={navigate}>Fair housing and website disclosures</InternalLink>
         .
       </p>

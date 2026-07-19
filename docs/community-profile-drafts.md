@@ -2,7 +2,9 @@
 
 Last researched: July 19, 2026
 
-Status: **Editorial draft only. Not published. Owner review is required before any county batch is moved into the website editor.**
+Status: **Editorial draft with a local compiled preview. Not published through the production editor. Owner review is required before any county batch is published.**
+
+Local preview prepared July 19, 2026. The preview restores the sourced county introductions and all 166 community cards for visual and editorial review while leaving production approval open.
 
 These drafts use the owner's requested casual-but-professional voice. They recover only objective ideas from the retired town narratives and replace the old targeting language, rankings, commute promises, market figures, and unsupported superlatives with current government sources.
 

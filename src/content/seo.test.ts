@@ -45,4 +45,20 @@ describe("SEO metadata", () => {
       imageWidth: 1081,
     });
   });
+
+  it("limits professional identity markup to the About and Contact pages", () => {
+    const countyGraph = buildStructuredData(
+      "/atlantic-county",
+      page("/atlantic-county", "Atlantic County, New Jersey Community Guide"),
+    )["@graph"];
+    const aboutGraph = buildStructuredData(
+      "/about",
+      page("/about", "About Arthur Pisko Jr."),
+    )["@graph"];
+
+    expect(countyGraph.some((item) => item["@id"] === `${siteUrl}/#agent`)).toBe(false);
+    expect(countyGraph.some((item) => item["@id"] === `${siteUrl}/#brokerage`)).toBe(false);
+    expect(aboutGraph.some((item) => item["@id"] === `${siteUrl}/#agent`)).toBe(true);
+    expect(aboutGraph.some((item) => item["@id"] === `${siteUrl}/#brokerage`)).toBe(true);
+  });
 });

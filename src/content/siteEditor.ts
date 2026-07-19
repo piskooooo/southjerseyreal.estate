@@ -1,5 +1,6 @@
 import { comparisonGuides, type ComparisonGuide } from "./comparisonGuides";
 import { compliance } from "./compliance";
+import { applyCommunityProfiles } from "./communityProfiles";
 import { generatedPages } from "./generatedSiteData";
 import {
   connectNav,
@@ -137,24 +138,24 @@ const newsletterSeed: NewsletterContent = {
   confirmationMessage: "Your email is confirmed. Welcome to the newsletter.",
   submitLabel: "Sign Up",
   submittingLabel: "Signing up...",
-  followupHeading: "Want something more specific?",
-  followupCopy: "For a property-specific list, value discussion, or question about a move, use the contact page to start an inquiry.",
-  followupLabel: "Start the Conversation",
+  followupHeading: "Have a question?",
+  followupCopy: "Use the contact page for a property-specific or real estate question.",
+  followupLabel: "Contact",
   followupPath: "/contact",
 };
 
 const defaultActionBlocks: ContentBlock[] = [
-  { tag: "H2", text: "Thinking about buying or selling in South Jersey?" },
+  { tag: "H2", text: "Have a real estate question?" },
   {
     tag: "P",
-    text: "Tell Arthur what you're considering, even if you're still early in the process. A straightforward conversation is a good place to start.",
+    text: "Get in touch about a property, a move, or the market.",
   },
-  { tag: "A", text: "Start a Conversation", href: "/contact" },
+  { tag: "A", text: "Contact", href: "/contact" },
 ];
 
 const aboutProfileCta: ContentBlock = {
   tag: "A",
-  text: "Start a Conversation",
+  text: "Contact",
   href: "/contact",
 };
 
@@ -214,7 +215,7 @@ const withImageMetadata = (page: SitePage): SitePage => ({
 });
 
 const canonicalSourcePages = new Map(
-  [...generatedPages, ...pageOverrides].map((page) => [page.path, page]),
+  [...applyCommunityProfiles(generatedPages), ...pageOverrides].map((page) => [page.path, page]),
 );
 
 const placeholderPage = (path: string, title: string): SitePage => ({

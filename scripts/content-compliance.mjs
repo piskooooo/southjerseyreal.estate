@@ -96,12 +96,12 @@ export function sanitizeImportedPages(pages) {
           id: `${page.path.slice(1)}-action`,
           kind: "action",
           blocks: [
-            textBlock("H2", "Thinking about buying or selling in South Jersey?"),
+            textBlock("H2", "Have a real estate question?"),
             textBlock(
               "P",
-              "Tell Arthur what you're considering, even if you're still early in the process. A straightforward conversation is a good place to start.",
+              "Get in touch about a property, a move, or the market.",
             ),
-            textBlock("A", "Start a Conversation", "/contact"),
+            textBlock("A", "Contact", "/contact"),
           ],
           images: [],
         },

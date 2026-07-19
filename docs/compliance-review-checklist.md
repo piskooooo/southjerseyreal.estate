@@ -31,7 +31,7 @@ The owner confirmed active REALTOR® membership on July 18, 2026, and current pu
 - [x] Put the broker name, descriptor, licensed-office phone, broker link, salesperson license type, and salesperson license number in one visible sitewide footer disclosure.
 - [x] Make the broker identity more prominent than the salesperson identity within the footer disclosure and keep it readable at 320 pixels.
 - [x] Centralize broker, office, and salesperson facts in one configuration used by visible copy, links, metadata, and JSON-LD.
-- [x] Replace unsupported imported county claims with concise community directories and one unobtrusive, page-level verification note.
+- [x] Keep unsupported imported county claims retired, retain one unobtrusive page-level verification note, and prepare dated, sourced community profiles for owner review.
 - [x] Add the Equal Housing Opportunity treatment sitewide and place the complete broker-specific fair-housing statement on the Disclaimer page.
 - [x] Restore the REALTOR® membership mark after owner confirmation, while keeping private membership and MLS identifiers out of the repository.
 - [x] Consolidate detailed legal explanations on the Disclaimer, Privacy Policy, and Terms pages instead of repeating them throughout ordinary editorial copy.
@@ -60,6 +60,7 @@ The owner confirmed active REALTOR® membership on July 18, 2026, and current pu
 - [x] Rechecked public credential evidence. [Realtor.com](https://www.realtor.com/realestateagents/659c35c962a5ff070b97f4b8) and the [brokerage roster](https://www.plum-realestate.com/agents.php) display a REALTOR® claim for Arthur, and Arthur confirmed active membership on July 18, 2026. Private membership and MLS identifiers are not recorded here.
 - [x] Scheduled the Codex automation `Quarterly South Jersey Compliance Review` to run every three months on the 18th at 9:00 AM local time, beginning October 18, 2026.
 - [x] Added source-note support and drafted seven county introductions plus all 168 current municipalities across 166 profile cards from primary government or public-agency sources. The drafts remain unpublished pending owner content/image review; the source audit found no hard link failures.
+- [x] Connected those drafts to a local selective-restoration preview with dated source notes, accessible expand controls, and distinct matching for similarly named municipalities. Production publication remains pending owner review.
 - [x] Re-ran the audit phrase and contact scans, production build, 79 unit tests, 49 tracked database checks, and 37 Playwright checks after implementing the Google analytics hardening, source-note guardrails, compliance evidence packet, and review-only design/community artifacts.
 
 This technical record does not satisfy the broker, owner, credential-holder, or legal approvals below.

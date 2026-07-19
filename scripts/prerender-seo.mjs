@@ -239,7 +239,7 @@ const renderPublicShell = (document, seo) => {
         </div>
       </main>
       <footer class="site-footer">
-        ${renderBrokerageDisclosure()}
+        <div class="site-footer-brand">${renderBrokerageDisclosure()}</div>
       </footer>`;
 };
 

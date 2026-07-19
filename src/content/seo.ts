@@ -152,7 +152,7 @@ export const getSeoForPath = (path: string, page?: SitePage, overrides?: SeoOver
   const entry = seoByPath.get(canonicalPath);
   const title = overrides?.title || entry?.title || page?.title || siteName;
   const description = overrides?.description || entry?.description ||
-    "Neutral South Jersey community guides and New Jersey residential real-estate information.";
+    "South Jersey county and community guides covering Atlantic, Burlington, Camden, Cape May, Cumberland, Gloucester, and Salem Counties.";
   const image = overrides?.image || entry?.image || defaultImage;
   const pageName = page?.title || pageNameFromTitle(title) || siteName;
   const imageMetadata = socialImageMetadata.get(localImagePath(image));
@@ -210,6 +210,7 @@ export const buildStructuredData = (
   const breadcrumbItems = buildBreadcrumbItems(path, page, overrides);
   const webpageId = `${seo.canonicalUrl}#webpage`;
   const breadcrumbId = `${seo.canonicalUrl}#breadcrumb`;
+  const hasProfessionalIdentity = ["/about", "/contact"].includes(seo.canonicalPath);
   const primaryImage = {
     "@type": "ImageObject",
     url: seo.imageUrl,
@@ -220,7 +221,7 @@ export const buildStructuredData = (
       : {}),
   };
 
-  const graph: Array<Record<string, unknown>> = [
+  const professionalIdentity: Array<Record<string, unknown>> = hasProfessionalIdentity ? [
     {
       "@type": ["RealEstateAgent", "Organization"],
       "@id": `${siteUrl}/#brokerage`,
@@ -258,13 +259,16 @@ export const buildStructuredData = (
         value: compliance.agentLicenseNumber,
       },
     },
+  ] : [];
+
+  const graph: Array<Record<string, unknown>> = [
+    ...professionalIdentity,
     {
       "@type": "WebSite",
       "@id": `${siteUrl}/#website`,
       url: `${siteUrl}/`,
       name: normalizedBrandName,
-      description: "Neutral South Jersey community guides and New Jersey residential real-estate information.",
-      publisher: { "@id": `${siteUrl}/#brokerage` },
+      description: "South Jersey county and community guides covering Atlantic, Burlington, Camden, Cape May, Cumberland, Gloucester, and Salem Counties.",
       inLanguage: "en-US",
     },
     {
@@ -274,10 +278,14 @@ export const buildStructuredData = (
       name: seo.pageName,
       description: seo.description,
       isPartOf: { "@id": `${siteUrl}/#website` },
-      about: [
-        { "@id": `${siteUrl}/#brokerage` },
-        { "@id": `${siteUrl}/#agent` },
-      ],
+      ...(hasProfessionalIdentity
+        ? {
+            about: [
+              { "@id": `${siteUrl}/#brokerage` },
+              { "@id": `${siteUrl}/#agent` },
+            ],
+          }
+        : {}),
       primaryImageOfPage: primaryImage,
       ...(breadcrumbItems.length ? { breadcrumb: { "@id": breadcrumbId } } : {}),
       inLanguage: "en-US",

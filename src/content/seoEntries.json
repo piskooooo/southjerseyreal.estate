@@ -1,8 +1,8 @@
 [
   {
     "path": "/",
-    "title": "South Jersey Real Estate | Arthur Pisko Jr., REALTOR®",
-    "description": "Explore South Jersey county and community guides, plus practical information for buyers and sellers from Arthur Pisko Jr., REALTOR®.",
+    "title": "South Jersey Real Estate | County and Community Guides",
+    "description": "Explore South Jersey county and community guides covering Atlantic, Burlington, Camden, Cape May, Cumberland, Gloucester, and Salem Counties.",
     "priority": "1.0"
   },
   {
@@ -15,7 +15,7 @@
   {
     "path": "/connect",
     "title": "Connect and Explore | South Jersey Real Estate",
-    "description": "Get to know Arthur, start a conversation, join the newsletter, or explore more South Jersey real estate resources.",
+    "description": "Find South Jersey comparison guides, the newsletter, contact information, and additional real estate resources.",
     "image": "/assets/live/pitman-gloucester-jpg.webp",
     "priority": "0.75"
   },
@@ -77,20 +77,20 @@
   },
   {
     "path": "/why-new-jersey",
-    "title": "New Jersey Regional Comparison | South Jersey Guide",
-    "description": "Compare practical differences between New Jersey and neighboring states, including property records, services, and regional travel.",
+    "title": "Why New Jersey? | Regional Comparison Guide",
+    "description": "Compare New Jersey with New York, Pennsylvania, and Delaware through geography, culture, transportation, coastlines, and regional identity.",
     "priority": "0.7"
   },
   {
     "path": "/why-south-jersey",
-    "title": "North and South Jersey Regional Comparison",
-    "description": "Compare North and South Jersey as broad regions, then focus on the counties, towns, and property details that matter to you.",
+    "title": "Why South Jersey? | Regional Real Estate Guide",
+    "description": "Explore South Jersey's landscape, culture, transportation, housing patterns, and differences from North Jersey.",
     "priority": "0.7"
   },
   {
     "path": "/contact",
     "title": "Contact Arthur Pisko Jr. | New Jersey Real Estate",
-    "description": "Contact Arthur Pisko Jr. to talk about buying, selling, a South Jersey property, or a local partnership idea.",
+    "description": "Contact Arthur Pisko Jr. about buying, selling, a property, or the real estate market anywhere in New Jersey.",
     "priority": "0.75"
   },
   {
@@ -102,7 +102,7 @@
   {
     "path": "/partners",
     "title": "Local Provider Directory | South Jersey Real Estate",
-    "description": "Browse a small directory of local organizations and tools connected with Arthur or this website.",
+    "description": "Browse a small directory of local organizations and tools connected with the South Jersey Real Estate website.",
     "priority": "0.45"
   },
   {
@@ -114,7 +114,7 @@
   {
     "path": "/faq",
     "title": "South Jersey Real Estate FAQ",
-    "description": "Quick answers about working with Arthur, buying or selling, the newsletter, local providers, and advertising.",
+    "description": "Quick answers about real estate inquiries, the newsletter, local providers, and advertising on South Jersey Real Estate.",
     "priority": "0.4"
   },
   {

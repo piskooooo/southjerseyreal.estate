@@ -6,12 +6,12 @@ import { countyNav } from "./navigation";
 import type { ContentBlock, SitePage } from "./types";
 
 const actionBlocks: ContentBlock[] = [
-  { tag: "H2", text: "Thinking about buying or selling in South Jersey?" },
+  { tag: "H2", text: "Have a real estate question?" },
   {
     tag: "P",
-    text: "Tell Arthur what you're considering, even if you're still early in the process. A straightforward conversation is a good place to start.",
+    text: "Get in touch about a property, a move, or the market.",
   },
-  { tag: "A", text: "Start a Conversation", href: "/contact" },
+  { tag: "A", text: "Contact", href: "/contact" },
 ];
 
 const actionSection = (id: string) => ({
@@ -49,7 +49,7 @@ const connectHubSections = [
   {
     id: "connect-about",
     title: "About Arthur",
-    description: "Get to know Arthur, his South Jersey roots, and how he works with buyers and sellers.",
+    description: "Meet the New Jersey real estate professional behind this South Jersey guide.",
     label: "About Arthur",
     href: "/about",
     image: {
@@ -59,9 +59,9 @@ const connectHubSections = [
   },
   {
     id: "connect-contact",
-    title: "Start a Conversation",
-    description: "Ask about buying, selling, a property, or an idea you would like to discuss with Arthur.",
-    label: "Contact Arthur",
+    title: "Contact",
+    description: "Use the contact form for a property or real estate question.",
+    label: "Get in Touch",
     href: "/contact",
     image: {
       src: "/assets/live/pitman-gloucester-jpg.webp",
@@ -104,14 +104,14 @@ const connectHubSections = [
   {
     id: "connect-faq",
     title: "Frequently Asked Questions",
-    description: "Find quick answers about working with Arthur, representation, the newsletter, local providers, and advertising.",
+    description: "Find quick answers about the website, real estate inquiries, the newsletter, local providers, and advertising.",
     label: "Read the FAQ",
     href: "/faq",
   },
   {
     id: "connect-providers",
     title: "Local Provider Directory",
-    description: "Browse local organizations and tools connected with Arthur or this website.",
+    description: "Browse local organizations and tools listed on this website.",
     label: "View the Provider Directory",
     href: "/partners",
   },
@@ -158,16 +158,16 @@ export const pageOverrides: SitePage[] = [
       {
         id: "home-about",
         blocks: [
-          { tag: "H2", text: "Local knowledge, straightforward guidance" },
+          { tag: "H2", text: "About this guide" },
           {
             tag: "P",
-            text: `${compliance.agentLicensedName}, REALTOR®, works with buyers and sellers across South Jersey.`,
+            text: "South Jersey Real Estate is a county-by-county guide to communities across Atlantic, Burlington, Camden, Cape May, Cumberland, Gloucester, and Salem Counties.",
           },
           {
             tag: "P",
-            text: "Born in Stratford and raised in Deptford Township, Arthur brings local roots, clear communication, and practical guidance to every conversation.",
+            text: "Start with a county, then explore the towns and cities featured throughout the region.",
           },
-          { tag: "A", text: "About Arthur", href: "/about" },
+          { tag: "A", text: "Browse County Guides", href: "/counties" },
         ],
         images: [
           {
@@ -210,7 +210,7 @@ export const pageOverrides: SitePage[] = [
           { tag: "H1", text: "Connect and Explore" },
           {
             tag: "P",
-            text: "Get to know Arthur, send a note, subscribe to the newsletter, or explore more South Jersey resources.",
+            text: "Find community comparisons, the newsletter, contact information, and additional South Jersey resources.",
           },
         ],
         images: [],
@@ -228,29 +228,29 @@ export const pageOverrides: SitePage[] = [
           { tag: "H1", text: `About ${compliance.agentLicensedName}` },
           {
             tag: "P",
-            text: "Arthur is a South Jersey real estate professional who works with buyers and sellers on residential transactions throughout the region.",
+            text: `I'm a REALTOR® and ${compliance.agentLicenseType} affiliated with ${compliance.brokerLegalName}.`,
           },
           {
             tag: "P",
-            text: "His approach centers on straightforward guidance, consistent communication, and helping clients understand each step from the first conversation through closing.",
+            text: "I created South Jersey Real Estate as a practical county-by-county guide to a region that is far too varied to describe as one market.",
           },
-          { tag: "A", text: "Start a Conversation", href: "/contact" },
+          { tag: "A", text: "Contact", href: "/contact" },
           { tag: "H3", text: "Local roots" },
           {
             tag: "P",
-            text: "Born in Stratford and raised in Deptford Township, Arthur has a firsthand connection to the South Jersey communities he serves.",
+            text: "I was born in Stratford and raised in Deptford Township. Those local roots are what first made me interested in how South Jersey's towns, shore communities, farmland, and older boroughs fit together.",
           },
-          { tag: "H3", text: "Licensed real estate practice" },
+          { tag: "H3", text: "Real estate practice" },
           {
             tag: "P",
-            text: `${compliance.agentLicensedName}, REALTOR®, is a ${compliance.agentLicenseType}, NJ Real Estate License #${compliance.agentLicenseNumber}, affiliated with ${compliance.brokerLegalName}.`,
+            text: "I work with residential buyers and sellers throughout New Jersey. My role is to explain the process clearly, keep the moving pieces organized, and help clients make their own informed decisions.",
           },
-          { tag: "H3", text: "Service area" },
+          { tag: "H3", text: "Credentials" },
           {
             tag: "P",
-            text: "New Jersey, including Atlantic, Burlington, Camden, Cape May, Cumberland, Gloucester, and Salem Counties.",
+            text: `${compliance.agentLicensedName}, REALTOR®, ${compliance.agentLicenseType}, NJ Real Estate License #${compliance.agentLicenseNumber}.`,
           },
-          { tag: "H3", text: "Connect and contact" },
+          { tag: "H3", text: "Contact" },
           {
             tag: "P",
             text: `Call or text ${compliance.agentPhone}, or email ${compliance.agentEmail}.`,
@@ -259,17 +259,17 @@ export const pageOverrides: SitePage[] = [
             tag: "P",
             text: "Find Arthur on Instagram, Facebook, Google Business Page, and Zillow.",
           },
-          { tag: "H2", text: "For sellers" },
+          { tag: "H2", text: "Why this site exists" },
           {
             tag: "P",
-            text: "Arthur helps sellers prepare a property for market, review pricing and marketing options, coordinate listing details, evaluate offers, and manage the path toward closing.",
+            text: "South Jersey has river towns, Pine Barrens communities, suburban corridors, agricultural areas, and shore markets that work very differently from one another. This site is a place to explore those differences before narrowing the research to a particular property.",
           },
-          { tag: "H2", text: "For buyers" },
+          { tag: "H2", text: "For buyers and sellers" },
           {
             tag: "P",
-            text: "Arthur helps buyers define their property criteria, review available information, arrange showings, prepare offers, and keep track of transaction milestones.",
+            text: "I help buyers define their search, review available property information, arrange showings, prepare offers, and follow transaction milestones. I help sellers prepare for market, review pricing and marketing options, evaluate offers, and coordinate the path toward closing.",
           },
-          { tag: "H2", text: "What you can expect" },
+          { tag: "H2", text: "How I work" },
           {
             tag: "P",
             text: "Clear explanations, responsive communication, and careful attention to the practical details of a New Jersey residential real estate transaction.",
@@ -289,7 +289,7 @@ export const pageOverrides: SitePage[] = [
           { tag: "H2", text: "Client feedback" },
           {
             tag: "P",
-            text: "Read public feedback from people who have worked with Arthur, with each review linked back to its original source.",
+            text: "Read public client feedback, with each review linked to its original source.",
           },
         ],
         images: [],
@@ -304,14 +304,14 @@ export const pageOverrides: SitePage[] = [
       {
         id: "contact-intro",
         blocks: [
-          { tag: "H1", text: "Contact Arthur" },
+          { tag: "H1", text: "Contact" },
           {
             tag: "P",
-            text: "Planning to buy or sell, or just looking for a clearer read on the South Jersey market? Send Arthur a note.",
+            text: "Use the form to ask about buying, selling, a property, or the New Jersey real estate market.",
           },
           {
             tag: "P",
-            text: "Share what you're considering, your timeline, and any towns or properties already on your mind. Arthur will get back to you with a straightforward response.",
+            text: "Share as much or as little detail as you have, including your timing and any locations or properties already on your mind.",
           },
           {
             tag: "P",

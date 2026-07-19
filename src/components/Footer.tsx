@@ -11,10 +11,10 @@ type FooterProps = {
 export function Footer({ content, navigate, onManagePrivacy }: FooterProps) {
   return (
     <footer className="site-footer">
-      <BrokerageDisclosure placement="footer" />
       <div className="site-footer-main">
         <div className="site-footer-brand">
           <h2>{content.brandName}</h2>
+          <BrokerageDisclosure placement="footer" />
           <p>{content.copyright}</p>
           <p className="site-footer-disclosure">
             <a

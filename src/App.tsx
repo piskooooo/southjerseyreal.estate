@@ -1,7 +1,6 @@
 import { useEffect, useLayoutEffect, useMemo, useState } from "react";
 import { Header } from "./components/Header";
 import { Footer } from "./components/Footer";
-import { BrokerageDisclosure } from "./components/Compliance";
 import { HomePage, CountyPage, ContactPage, ComparisonGuidePage, ResourceAccordionPage, AboutPage, HubPage, NewsletterPage, NotFoundPage, StandardPage } from "./components/Layouts";
 import { buildStructuredData, getSeoForPath, normalizeRoutePath } from "./content/seo";
 import {
@@ -214,7 +213,6 @@ export default function App() {
 
   return (
     <>
-      <BrokerageDisclosure placement="header" />
       <Header
         brandName={siteContent.sitewide.brandName}
         content={siteContent.sitewide.header}

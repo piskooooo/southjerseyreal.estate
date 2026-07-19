@@ -45,12 +45,13 @@ test.describe("compliance route crawl", () => {
     test(`${entry.path} has the required rendered disclosure and metadata`, async ({ page }) => {
       await openHydratedRoute(page, entry.path);
 
-      const headerDisclosure = page.locator(".brokerage-disclosure-header");
-      await expect(headerDisclosure).toBeVisible();
-      await expect(headerDisclosure).toContainText(compliance.brokerLegalName);
-      await expect(headerDisclosure).toContainText(compliance.brokerDescriptor);
-      await expect(headerDisclosure).toContainText(compliance.licensedOfficePhone);
-      await expect(headerDisclosure.locator(".brokerage-legal-name")).toHaveAttribute("href", compliance.brokerWebsite);
+      const footerDisclosure = page.locator(".brokerage-disclosure-footer");
+      await expect(page.locator(".brokerage-disclosure-header")).toHaveCount(0);
+      await expect(footerDisclosure).toBeVisible();
+      await expect(footerDisclosure).toContainText(compliance.brokerLegalName);
+      await expect(footerDisclosure).toContainText(compliance.brokerDescriptor);
+      await expect(footerDisclosure).toContainText(compliance.licensedOfficePhone);
+      await expect(footerDisclosure.locator(".brokerage-legal-name")).toHaveAttribute("href", compliance.brokerWebsite);
 
       const fairHousing = page.locator(".fair-housing-notice");
       await expect(fairHousing).toContainText("Equal Housing Opportunity");
@@ -134,16 +135,16 @@ test("production artifacts include truthful sitemap metadata, canonical redirect
   expect(admin).not.toContain('id="structured-data"');
 });
 
-test("sitewide disclosure remains prominent and readable at 320 pixels", async ({ page }) => {
+test("sitewide footer disclosure remains prominent and readable at 320 pixels", async ({ page }) => {
   await page.setViewportSize({ width: 320, height: 900 });
   await openHydratedRoute(page, "/about");
 
-  const disclosure = page.locator(".brokerage-disclosure-header");
+  const disclosure = page.locator(".brokerage-disclosure-footer");
   const broker = disclosure.locator(".brokerage-legal-name");
   const agent = disclosure.locator(".agent-license-disclosure");
   const sizes = await page.evaluate(() => ({
-    broker: Number.parseFloat(getComputedStyle(document.querySelector(".brokerage-disclosure-header .brokerage-legal-name")!).fontSize),
-    agent: Number.parseFloat(getComputedStyle(document.querySelector(".brokerage-disclosure-header .agent-license-disclosure")!).fontSize),
+    broker: Number.parseFloat(getComputedStyle(document.querySelector(".brokerage-disclosure-footer .brokerage-legal-name")!).fontSize),
+    agent: Number.parseFloat(getComputedStyle(document.querySelector(".brokerage-disclosure-footer .agent-license-disclosure")!).fontSize),
   }));
 
   await expect(disclosure).toBeVisible();
@@ -311,7 +312,8 @@ test("representative desktop and mobile screenshots render without overflow", as
     await page.setViewportSize({ width: 1440, height: 1000 });
     await openHydratedRoute(page, route);
     await page.evaluate(() => window.scrollTo(0, 0));
-    await expect(page.locator(".brokerage-disclosure-header")).toBeVisible();
+    await expect(page.locator(".brokerage-disclosure-header")).toHaveCount(0);
+    await expect(page.locator(".brokerage-disclosure-footer")).toHaveCount(1);
     await page.screenshot({ path: `${screenshotDir}/desktop-${route === "/" ? "home" : route.slice(1)}.png` });
   }
 
@@ -319,7 +321,8 @@ test("representative desktop and mobile screenshots render without overflow", as
     await page.setViewportSize({ width: 320, height: 900 });
     await openHydratedRoute(page, route);
     await page.evaluate(() => window.scrollTo(0, 0));
-    await expect(page.locator(".brokerage-disclosure-header")).toBeVisible();
+    await expect(page.locator(".brokerage-disclosure-header")).toHaveCount(0);
+    await expect(page.locator(".brokerage-disclosure-footer")).toHaveCount(1);
     await expect(page.locator("#page h1")).toBeVisible();
     expect(await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth)).toBeLessThanOrEqual(1);
     await page.screenshot({ path: `${screenshotDir}/mobile-${route === "/" ? "home" : route.slice(1)}.png` });

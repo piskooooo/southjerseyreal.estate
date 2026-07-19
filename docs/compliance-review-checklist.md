@@ -27,8 +27,8 @@ The public site does not claim current REALTOR membership. The membership mark a
 
 ## Technical Work Completed
 
-- [x] Put the exact broker name, descriptor, licensed-office phone, broker link, salesperson license type, and salesperson license number in visible header and footer disclosures.
-- [x] Make the broker identity more prominent than the salesperson identity within the disclosure and keep it visible at 320 pixels.
+- [x] Put the broker name, descriptor, licensed-office phone, broker link, salesperson license type, and salesperson license number in one visible sitewide footer disclosure.
+- [x] Make the broker identity more prominent than the salesperson identity within the footer disclosure and keep it readable at 320 pixels.
 - [x] Centralize broker, office, and salesperson facts in one configuration used by visible copy, links, metadata, and JSON-LD.
 - [x] Replace imported county and comparison narratives with neutral community directories and verification guidance.
 - [x] Add the Equal Housing Opportunity treatment and broker-specific fair-housing statement sitewide.
@@ -60,7 +60,7 @@ This technical record does not satisfy the broker, owner, credential-holder, or 
 
 ## Not Applicable Yet
 
-- **Bright IDX/listings:** Planned but not implemented. Property-ad, municipality, status, attribution, estimated-value, mortgage-availability, and listing-compensation checks are launch blockers for the later Bright IDX project, not current rendered features.
+- **Property listings/search:** Not implemented and not part of the current site roadmap. Any future listing-data project requires a separate compliance review and is tracked outside this checklist in [bright-idx-backlog.md](./bright-idx-backlog.md).
 - **Automated marketing calls/texts:** Not implemented. The ordinary inquiry expressly excludes that consent.
 - **Paid provider cards:** None are published. Any future paid entry must display both `Sponsored` and `Paid advertisement` and pass relationship/payment review first.
 - **Reviews/testimonials, awards, designations, and multi-agent roster:** These features are not currently rendered. Their audit requirements become applicable before they are added.
@@ -76,7 +76,6 @@ This technical record does not satisfy the broker, owner, credential-holder, or 
 - [ ] Counsel reviews any future settlement-service advertising or affiliated-business arrangement before publication.
 - [ ] A responsible human confirms the tracker/processor inventory against the production Cloudflare, Supabase, Brevo, and GA4 dashboards.
 - [x] Current REALTOR membership is not treated as verified; the mark is left absent pending current membership documentation and broker approval.
-- [ ] Bright and broker approval, vendor authority, attribution, and listing-display rules are completed before IDX launch.
 - [x] Schedule a quarterly review of license status, broker/office facts, credentials, processors/trackers, provider relationships, and public claims.
 
 ## Signoff Record

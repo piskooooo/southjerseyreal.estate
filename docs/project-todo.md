@@ -10,7 +10,6 @@ Use this file as the source of truth for unfinished work on `southjerseyreal.est
 - [x] 2. Confirm the production URL in Google Search Console
 - [x] 3. Finish the GA4 lead-conversion setup
 - [ ] 4. Get a final real-estate compliance review
-- [ ] 5. Select and integrate a Bright IDX provider
 - [x] 6. Deploy and verify the private website editor
 - [ ] 7. Refine the dark theme color palette
 - [x] 8. Add destination pages for the Counties and Connect header items
@@ -115,7 +114,7 @@ Initial lead-event completion: July 17, 2026. Privacy and SPA measurement harden
 
 **Goal:** Have the public-facing legal and advertising details reviewed by someone responsible for New Jersey real-estate compliance.
 
-The July 18 technical remediation is complete, but it is not a legal certification. The exact brokerage name, descriptor, licensed-office phone, broker link, salesperson license type, and salesperson license number now appear in visible header and footer disclosures. Unverified REALTOR membership marks and unverified settlement-service provider entries are withheld.
+The July 18 technical remediation is complete, but it is not a legal certification. The brokerage name, descriptor, licensed-office phone, broker link, salesperson license type, and salesperson license number now appear in one visible sitewide footer disclosure. Unverified REALTOR membership marks and unverified settlement-service provider entries are withheld.
 
 ### Steps
 
@@ -141,46 +140,9 @@ Approval date: ____________________
 
 Reference: [compliance-review-checklist.md](./compliance-review-checklist.md)
 
-## 5. Add Bright IDX Property Search
+## Separate Deferred Backlog
 
-**Goal:** Show eligible Bright IDX listings on `southjerseyreal.estate` and optionally show brokerage-only listings on The Plum Real Estate Group website.
-
-This feature is still in the research stage. Do not scrape Bright or manually republish listing data.
-
-### Phase A: Requirements and Approval
-
-- [ ] Confirm the broker of record approves IDX display on `southjerseyreal.estate`.
-- [ ] Confirm whether the personal site and brokerage site require separate Bright approvals, feeds, or subscriptions.
-- [ ] Obtain the Bright office ID needed to filter The Plum Real Estate Group listings.
-- [ ] Decide the initial geographic scope and property types for the South Jersey search.
-- [ ] Decide whether the first release needs only active listings or additional IDX-permitted statuses.
-
-### Phase B: Select a Vendor
-
-- [ ] Shortlist Bright-approved IDX vendors that support a React/Vite website.
-- [ ] Ask each vendor about JavaScript embeds, hosted search pages, APIs, map search, saved searches, lead routing, SEO, accessibility, mobile behavior, branding control, and total cost.
-- [ ] Confirm the vendor can provide both a broad IDX search and an office-ID-filtered brokerage view.
-- [ ] Confirm who handles Bright attribution, usage tracking, refresh schedules, listing removal, disclaimers, and compliance updates.
-- [ ] Choose the vendor and complete Bright/vendor approval.
-
-Selected vendor: ____________________
-
-Expected monthly cost: ____________________
-
-Approval date: ____________________
-
-### Phase C: Implement and Launch
-
-- [ ] Give Codex the vendor documentation, approved domain details, and non-secret integration identifiers.
-- [ ] Add a `Search Homes` or `Property Search` navigation item without suggesting visitors are directly searching Bright MLS.
-- [ ] Build search results, listing details, empty, loading, error, and mobile states supported by the vendor.
-- [ ] Add the vendor-required Bright attribution, listing-broker identification, contact details, and disclaimers.
-- [ ] Route listing inquiries through the configured lead destination.
-- [ ] Test search filters, maps, listing pages, inquiry forms, accessibility, mobile layouts, analytics, and expired/removed listing behavior.
-- [ ] Launch on the preview hostname and obtain any required vendor or Bright approval before production.
-- [ ] Verify the production integration and document its renewal and support details.
-
-**Done when:** The approved property search is live, compliant, mobile-friendly, and successfully delivers a test listing inquiry.
+Bright IDX and property-search planning is not part of the current `southjerseyreal.estate` roadmap. The preserved research and implementation checklist now live in [bright-idx-backlog.md](./bright-idx-backlog.md) for possible use in a different project.
 
 ## 6. Deploy the Private Website Editor
 

@@ -135,6 +135,16 @@ describe("consent-gated GA4 tracking", () => {
     expect(`${window.location.pathname}${window.location.search}`).toBe(
       "/contact?utm_source=google&gtm_debug=x123_test",
     );
+    expect(queuedCommands()).toContainEqual([
+      "config",
+      "G-TEST123",
+      {
+        allow_ad_personalization_signals: false,
+        allow_google_signals: false,
+        debug_mode: true,
+        send_page_view: false,
+      },
+    ]);
   });
 
   it("sends one page view per virtual location with the prior location as referrer", async () => {

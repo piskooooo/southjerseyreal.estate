@@ -113,13 +113,18 @@ const sanitizeHttpUrl = (rawUrl: string, includeAttribution: boolean) => {
   }
 };
 
+const getTagAssistantDebugValue = () => {
+  if (!isBrowser()) return "";
+  const value = new URL(window.location.href).searchParams.get(tagAssistantDebugParameter) || "";
+  return tagAssistantDebugValuePattern.test(value) ? value : "";
+};
+
 const replaceUnsafeBrowserLocation = (safeLocation: string) => {
   try {
     const safeUrl = new URL(safeLocation);
-    const currentUrl = new URL(window.location.href);
-    const tagAssistantDebugValue = currentUrl.searchParams.get(tagAssistantDebugParameter);
-    if (tagAssistantDebugValuePattern.test(tagAssistantDebugValue || "")) {
-      safeUrl.searchParams.set(tagAssistantDebugParameter, tagAssistantDebugValue as string);
+    const tagAssistantDebugValue = getTagAssistantDebugValue();
+    if (tagAssistantDebugValue) {
+      safeUrl.searchParams.set(tagAssistantDebugParameter, tagAssistantDebugValue);
     }
     const safeRelativeUrl = `${safeUrl.pathname}${safeUrl.search}`;
     const currentRelativeUrl = `${window.location.pathname}${window.location.search}${window.location.hash}`;
@@ -262,6 +267,7 @@ const ensureAnalytics = () => {
       allow_ad_personalization_signals: false,
       allow_google_signals: false,
       send_page_view: false,
+      ...(getTagAssistantDebugValue() ? { debug_mode: true } : {}),
     });
     initialized = true;
   }

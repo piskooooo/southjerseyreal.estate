@@ -47,16 +47,27 @@ describe("compiled compliance guardrails", () => {
     }
   });
 
-  it("withholds unverified settlement-service provider entries", () => {
+  it("publishes the verified unpaid real-estate provider directory", () => {
     const directory = JSON.stringify(resourcePages["/partners"]);
-    expect(compliance.providerDirectoryVerificationComplete).toBe(false);
-    expect(directory).toContain("HomeBase CRM");
-    expect(directory).toContain("Fat Cat Finance, LLC");
-    expect(directory).toContain("This directory entry is unpaid");
-    expect(directory).toContain("does not share ownership");
-    expect(directory).not.toContain(compliance.brokerLegalName);
-    expect(directory).not.toContain("Real-estate contact-management software");
-    expect(directory).not.toMatch(/mortgage broker|title compan|settlement agent|home inspector/i);
+    expect(compliance.providerDirectoryVerificationComplete).toBe(true);
+    expect(directory).toContain("Sam Hamilton");
+    expect(directory).toContain("NMLS #1094595");
+    expect(directory).toContain("Terri Santiago-Parker");
+    expect(directory).toContain("Drew Whipple");
+    expect(directory).toContain("Citizens");
+    expect(directory).toContain("Cape Atlantic Title Agency, LLC");
+    expect(directory).toContain("Foundation Title, LLC");
+    expect(directory).toContain("Directory listings are not sold");
+    expect(directory).not.toContain("Signature Title Agency");
+    expect(directory).not.toMatch(/trusted recommendation|go-to partner|reliable and responsive/i);
+  });
+
+  it("keeps paid local advertising separate from settlement-service listings", () => {
+    const advertising = JSON.stringify(resourcePages["/advertise"]);
+    expect(advertising).toContain("Paid advertisement");
+    expect(advertising).toContain("not part of a real estate transaction");
+    expect(advertising).toContain("material relationship");
+    expect(advertising).toContain("Placement Options");
   });
 
   it("rejects unsafe editor copy before it can be published", () => {
@@ -68,8 +79,9 @@ describe("compiled compliance guardrails", () => {
     county.page.sections[1].blocks[1].text = "A family-friendly community with great schools.";
     expect(() => validateManagedContentForPublish("/atlantic-county", county)).toThrow(/subjective|steering/i);
 
-    const directory = structuredClone(managedContentSeeds.get("/partners")) as ManagedPageDocument;
-    directory.resourcePage!.panels.push({ id: "unverified", title: "Unverified Provider", summary: "", blocks: [] });
-    expect(() => validateManagedContentForPublish("/partners", directory)).toThrow(/locked/i);
+    const advertising = structuredClone(managedContentSeeds.get("/advertise")) as ManagedPageDocument;
+    advertising.resourcePage!.supportText = "Paid placements are available.";
+    advertising.resourcePage!.panels = [];
+    expect(() => validateManagedContentForPublish("/advertise", advertising)).toThrow(/compliance language/i);
   });
 });

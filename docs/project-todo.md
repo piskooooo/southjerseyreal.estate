@@ -118,7 +118,7 @@ Production collection was reverified on July 19, 2026. Google accepted debug-mod
 
 **Goal:** Have the public-facing legal and advertising details reviewed by someone responsible for New Jersey real-estate compliance.
 
-The July 18 technical remediation is complete, but it is not a legal certification. The brokerage name, descriptor, licensed-office phone, broker link, salesperson license type, and salesperson license number appear in one visible sitewide footer disclosure. Active REALTOR® membership is owner-confirmed and publicly corroborated, so the membership mark is restored without storing private membership or MLS identifiers. Unverified settlement-service provider entries remain withheld.
+The July 18 technical remediation is complete, but it is not a legal certification. The brokerage name, descriptor, licensed-office phone, broker link, salesperson license type, and salesperson license number appear in one visible sitewide footer disclosure. Active REALTOR® membership is owner-confirmed and publicly corroborated, so the membership mark is restored without storing private membership or MLS identifiers. The unpaid real-estate provider directory is restored with current public-profile verification and remains separate from paid local advertising.
 
 ### Steps
 
@@ -131,7 +131,7 @@ The July 18 technical remediation is complete, but it is not a legal certificati
 - [ ] Confirm brokerage identification and hierarchy are sufficiently prominent on every required page or advertisement.
 - [ ] Review and approve the Privacy Policy, Disclaimer, Terms of Service, Fair Housing statement, and Equal Housing Opportunity treatment.
 - [ ] Confirm contact forms, newsletter consent, analytics consent, and partner/advertising disclosures are acceptable.
-- [x] Confirm the HomeBase CRM relationship wording: it is owned by Fat Cat Finance, LLC, appears as a separate technology vendor, receives no payment for the directory entry, and shares no ownership with this website or the affiliated brokerage.
+- [x] Restore the unpaid real-estate provider directory after checking each published lender and title-company entry against a current official profile; keep paid advertising limited to businesses outside the real-estate transaction.
 - [x] Restore the REALTOR® mark after owner confirmation and public-profile corroboration; keep private membership and MLS identifiers outside the repository.
 - [ ] Save the reviewer and approval date below. Do not store privileged legal advice in this public repository.
 - [x] Implement the attorney's presentation feedback by keeping concise sitewide identity and form notices, moving full explanations to legal pages, and restoring normal editorial voice.
@@ -247,19 +247,19 @@ Implemented both editable, indexable hubs; split each desktop label from its dro
 
 ## 9. Rebuild Richer Community Profiles
 
-**Goal:** Restore useful town-level context without bringing back stale market figures, demographic targeting, school or safety characterizations, or repeated disclaimer copy.
+**Goal:** Restore useful town-level context without presenting historical figures as current, reintroducing demographic targeting, adding school or safety characterizations, or repeating disclaimer copy.
 
 Editorial direction selected by the owner on July 18, 2026: casual but professional. Final county copy still requires owner review before publication.
 
 Drafting progress: source blocks are supported by the structured editor, preserved by normalization, rendered accessibly, and required beside volatile community facts. Seven county introductions and all 168 current municipalities are researched in the unpublished [community profile draft](./community-profile-drafts.md), represented across 166 cards: Gloucester 24, Atlantic 23, Burlington 40, Camden 34, Cape May 16, Cumberland 14, and Salem 15. The Camden card count is lower than its municipality count because two pairs share cards.
 
-Selective-restoration preview: on July 19, 2026, the sourced drafts were connected to the local compiled fallbacks for owner review, with a visible profile date and source notes. This does not mark the profiles or images as owner-approved, and the restored county content has not been published through the production editor.
+Selective-restoration preview: on July 19, 2026, the sourced drafts were connected to the local compiled fallbacks for owner review, with a visible profile date and source notes. The original site's structured population, government, services, price, tax, school, parks, shopping/dining, and transportation fields were also restored where available. Population is labeled as 2020 Census data; volatile price, tax, and school fields are explicitly labeled as 2025 site snapshots rather than current figures. This does not mark the profiles or images as owner-approved, and the restored county content has not been published through the production editor.
 
 ### Content Work
 
 - [x] Review the pre-remediation town narratives one community at a time and recover only objective, still-useful material.
-- [x] Omit stale price, tax, school, flood, transit, and market claims; use current, dated primary sources only where a time-sensitive fact genuinely helps a visitor.
-- [x] Keep resident profiles, protected-class signals, subjective rankings, and unsupported performance claims out of compiled guides and all seven county drafts, with publishing guardrails preventing their reintroduction.
+- [x] Label retained 2025 price, tax, and school snapshots as historical rather than current; omit unsupported flood, commute, and live-market claims, and use current, dated primary sources where a time-sensitive fact genuinely helps a visitor.
+- [x] Keep resident profiles, protected-class signals, subjective rankings, and unsupported performance claims out of compiled county pages and all seven county drafts, with publishing guardrails preventing their reintroduction.
 - [x] Write in the approved casual-but-professional local voice and keep one concise page-level verification note instead of repeating warnings in every card.
 - [x] Add citations or source notes to the structured content model where a factual claim needs ongoing maintenance.
 
@@ -309,7 +309,7 @@ the site remains focused on South Jersey real estate.
 - [x] Rebuild the public site as a React/Vite application.
 - [x] Retire the former Unraid/Caddy/legacy lead API deployment files and stop GHCR image publishing after the Pages cutover.
 - [x] Add privacy controls, legal pages, accessibility improvements, and security headers.
-- [x] Add HomeBase CRM and The Plum Real Estate Group to the Partners page.
+- [x] Restore separate pages for unpaid real-estate providers and paid local-business advertising, with current provider links and concise disclosures.
 - [x] Use routed `southjerseyreal.estate` email addresses in public content.
 - [x] Add favicon and Apple touch icon metadata.
 - [x] Remove the GitHub Actions Node 20 deprecation annotations.

@@ -1,0 +1,2289 @@
+{
+  "sourceRevision": "617b660",
+  "snapshotYear": 2025,
+  "counties": {
+    "/atlantic-county": [
+      {
+        "title": "Absecon",
+        "details": [
+          "Population: 9,155 (2020 Census)",
+          "Government: City",
+          "Services: Municipal services and public works; police, fire, and EMS coverage vary by address.",
+          "Average property tax (2025 site snapshot): ≈ $6,048 annually",
+          "Schools (2025 site snapshot): Served by Absecon Public School District (K–8); high school students attend Pleasantville High School or nearby charter/magnet options.",
+          "Parks & Recreation: Heritage Park offers trails, playgrounds, and sports fields; Absecon Wildlife Management Area provides scenic nature, birding, and outdoor activities.",
+          "Shopping & Dining: Local grocery stores, shops, and dining along White Horse Pike; minutes from Atlantic City for expanded retail and entertainment.",
+          "Transportation: Access to U.S. Route 30, Garden State Parkway, and NJ Transit’s Atlantic City Rail Line for commuting to Philadelphia or the shore."
+        ]
+      },
+      {
+        "title": "Atlantic City",
+        "details": [
+          "Population: 38,976 (2020 Census)",
+          "Government: City",
+          "Services: Municipal services and public works; police, fire, and EMS coverage vary by address.",
+          "Average property tax (2025 site snapshot): ≈ $4,224 annually",
+          "Schools (2025 site snapshot): Atlantic City School District (Pre-K–12); includes Atlantic City High School plus several charter and private options.",
+          "Parks & Recreation: Famous boardwalk, public beaches, Gardner’s Basin, Oscar E. McClinton Waterfront Park, and year-round entertainment venues.",
+          "Shopping & Dining: Tanger Outlets “The Walk,” local boutiques, casino dining, and a diverse mix of restaurants from casual to fine dining.",
+          "Transportation: Atlantic City Rail Terminal, multiple NJ Transit bus routes, Atlantic City Expressway, and proximity to Atlantic City International Airport."
+        ]
+      },
+      {
+        "title": "Brigantine",
+        "details": [
+          "Population: 7,723 (2020 Census)",
+          "Government: City",
+          "Services: Municipal services and public works; police, fire, and EMS coverage vary by address.",
+          "Average property tax (2025 site snapshot): ≈ $7,655 annually",
+          "Schools (2025 site snapshot): Brigantine Public Schools (Pre-K–8); high school students attend Atlantic City High School.",
+          "Parks & Recreation: Brigantine Beach, North Brigantine Natural Area, and 42nd Street Recreation Complex with sports fields and courts.",
+          "Shopping & Dining: Small-town shops, cafes, and local dining along Brigantine Boulevard; expanded options nearby in Atlantic City.",
+          "Transportation: Connected via Route 87 and the Brigantine Connector; short drive to the Atlantic City Expressway."
+        ]
+      },
+      {
+        "title": "Buena Borough",
+        "details": [
+          "Population: 4,507 (2020 Census)",
+          "Government: Borough",
+          "Services: Municipal services and public works; police, fire, and EMS coverage vary by address.",
+          "Average property tax (2025 site snapshot): ≈ $5,966 annually",
+          "Schools (2025 site snapshot): Buena Regional School District (Pre-K–12), including Buena Regional High School.",
+          "Parks & Recreation: Michael Debbi Park with sports fields and playgrounds; Access to Wharton State Forest for hiking and outdoor adventures.",
+          "Shopping & Dining: Local markets and casual restaurants in town; major shopping centers just minutes away in Vineland.",
+          "Transportation: Located near Routes 40 and 54 with quick connections to the AC Expressway."
+        ]
+      },
+      {
+        "title": "Buena Vista Township",
+        "details": [
+          "Population: 7,048 (2020 Census)",
+          "Government: Township",
+          "Services: Municipal services and public works; police, fire, and EMS coverage vary by address.",
+          "Average property tax (2025 site snapshot): ≈ $6,576 annually",
+          "Schools (2025 site snapshot): Part of the Buena Regional School District; students attend local elementary schools and Buena Regional High School.",
+          "Parks & Recreation: Richland Park, local sports fields, and access to Wharton State Forest and Pine Barrens trails for hiking, biking, and nature activities.",
+          "Shopping & Dining: Small businesses, farm markets, and diners throughout the township; larger shopping options in nearby Vineland.",
+          "Transportation: U.S. Route 40 and Route 54 run through the township; convenient to AC Expressway and Route 322."
+        ]
+      },
+      {
+        "title": "Corbin City",
+        "details": [
+          "Population: 473 (2020 Census)",
+          "Government: City",
+          "Services: Municipal services and public works; police, fire, and EMS coverage vary by address.",
+          "Average property tax (2025 site snapshot): ≈ $4,444 annually",
+          "Schools (2025 site snapshot): Part of the Upper Township School District (K–8); high school students attend Ocean City High School.",
+          "Parks & Recreation: Surrounded by the Tuckahoe Wildlife Management Area and Pine Barrens forestland — excellent for hiking, hunting, and birding.",
+          "Shopping & Dining: Few in-town options; daily needs and retail centers are located in nearby Mays Landing and Ocean View.",
+          "Transportation: Located along Route 50 with Access to the Garden State Parkway and AC Expressway."
+        ]
+      },
+      {
+        "title": "Egg Harbor City",
+        "details": [
+          "Population: 4,418 (2020 Census)",
+          "Government: City",
+          "Services: Municipal services and public works; police, fire, and EMS coverage vary by address.",
+          "Average property tax (2025 site snapshot): ≈ $6,835 annually",
+          "Schools (2025 site snapshot): Egg Harbor City School District (Pre-K–8); high school students attend Cedar Creek High School (Greater Egg Harbor Regional).",
+          "Parks & Recreation: Lincoln Park and Peace Pilgrim Park offer playgrounds, sports fields, and trails; nearby nature preserves provide outdoor escapes.",
+          "Shopping & Dining: White Horse Pike corridor includes supermarkets, takeout spots, and local shops; major retailers are just a short drive away.",
+          "Transportation: NJ Transit rail service to Atlantic City and Philadelphia; Access to Route 30 and Garden State Parkway."
+        ]
+      },
+      {
+        "title": "Egg Harbor Township",
+        "details": [
+          "Population: 47,906 (2020 Census)",
+          "Government: Township",
+          "Services: Municipal services and public works; police, fire, and EMS coverage vary by address.",
+          "Average property tax (2025 site snapshot): ≈ $7,259 annually",
+          "Schools (2025 site snapshot): Egg Harbor Township School District (Pre-K–12), including multiple elementary and middle schools.",
+          "Parks & Recreation: Tony Canale Park, Veterans Memorial Park, bike paths, sports complexes, and community centers provide year-round recreation.",
+          "Shopping & Dining: Major retail hubs like English Creek Shopping Center and Harbor Square Plaza, plus a wide variety of restaurants and everyday conveniences.",
+          "Transportation: Connections include the Garden State Parkway, Atlantic City Expressway, U.S. Routes 40/322, and proximity to Atlantic City International Airport."
+        ]
+      },
+      {
+        "title": "Estell Manor",
+        "details": [
+          "Population: 1,668 (2020 Census)",
+          "Government: City",
+          "Services: Municipal services and public works; police, fire, and EMS coverage vary by address.",
+          "Average property tax (2025 site snapshot): ≈ $5,400 annually",
+          "Schools (2025 site snapshot): Estell Manor School (K–8); high school students attend Buena Regional High School.",
+          "Parks & Recreation: Estell Manor Park is a centerpiece of the community, offering hiking, biking, camping, and picnic areas across thousands of acres of preserved forestland.",
+          "Shopping & Dining: Limited in-town services; major shopping and restaurants are located nearby in Mays Landing and Vineland.",
+          "Transportation: Route 50 runs through town, with Access to the AC Expressway and Garden State Parkway for regional commuting."
+        ]
+      },
+      {
+        "title": "Folsom",
+        "details": [
+          "Population: 1,813 (2020 Census)",
+          "Government: Borough",
+          "Services: Municipal services and public works; police, fire, and EMS coverage vary by address.",
+          "Average property tax (2025 site snapshot): ≈ $4,699 annually",
+          "Schools (2025 site snapshot): Folsom Borough School (Pre-K–8); high school students attend Hammonton High School.",
+          "Parks & Recreation: Penny Pot Park and surrounding forest areas offer trails, fishing, and outdoor recreation.",
+          "Shopping & Dining: Local shops and casual eateries in town; just minutes to Hammonton for downtown shopping, restaurants, and retail centers.",
+          "Transportation: Located on U.S. Route 322 with close connections to Route 54 and the Atlantic City Expressway."
+        ]
+      },
+      {
+        "title": "Galloway Township",
+        "details": [
+          "Population: 37,870 (2020 Census)",
+          "Government: Township",
+          "Services: Municipal services and public works; police, fire, and EMS coverage vary by address.",
+          "Average property tax (2025 site snapshot): ≈ $5,859 annually",
+          "Schools (2025 site snapshot): Galloway Township Public Schools (Pre-K–8); high school students attend Absegami High School, part of the Greater Egg Harbor Regional District.",
+          "Parks & Recreation: Veterans Memorial Park, Patriot Lake, several golf courses, and access to the Edwin B. Forsythe National Wildlife Refuge.",
+          "Shopping & Dining: Historic Smithville Village, Pomona Shopping Center, and a variety of stores, restaurants, and cafes along Jimmie Leeds Road.",
+          "Transportation: Excellent access via Garden State Parkway (Exits 40–44), U.S. Route 9, and NJ Transit rail service from nearby Absecon."
+        ]
+      },
+      {
+        "title": "Hamilton Township (Mays Landing)",
+        "details": [
+          "Population: 27,546 (2020 Census)",
+          "Government: Township",
+          "Services: Municipal services and public works; police, fire, and EMS coverage vary by address.",
+          "Average property tax (2025 site snapshot): ≈ $5,947 annually",
+          "Schools (2025 site snapshot): Hamilton Township Schools (K–8); high school students attend Oakcrest High School, part of the Greater Egg Harbor Regional District.",
+          "Parks & Recreation: Lake Lenape Park, Gaskill Park, and the Great Egg Harbor River offer boating, fishing, and hiking. Community sports fields and trails provide year-round recreation.",
+          "Shopping & Dining: Hamilton Mall, Consumer Square, and a variety of national retailers and restaurants anchor the area as one of the county’s main shopping hubs.",
+          "Transportation: Major roadways including U.S. Routes 40, 322, and 50 intersect here, with direct access to the Atlantic City Expressway and Garden State Parkway."
+        ]
+      },
+      {
+        "title": "Hammonton",
+        "details": [
+          "Population: 14,736 (2020 Census)",
+          "Government: Town",
+          "Services: Municipal services and public works; police, fire, and EMS coverage vary by address.",
+          "Average property tax (2025 site snapshot): ≈ $6,353 annually",
+          "Schools (2025 site snapshot): Hammonton Public Schools (Pre-K–12), including Hammonton High School; also serves surrounding towns through sending agreements.",
+          "Parks & Recreation: Hammonton Lake Park with boating, trails, and playgrounds; Boyer Avenue Recreation Complex; access to Wharton State Forest for hiking and outdoor activities.",
+          "Shopping & Dining: Charming downtown district with boutiques, cafes, and restaurants; additional shopping and national retailers along Route 30.",
+          "Transportation: Centrally located on U.S. Route 30 and Route 54; direct access to AC Expressway and NJ Transit rail service."
+        ]
+      },
+      {
+        "title": "Linwood",
+        "details": [
+          "Population: 6,975 (2020 Census)",
+          "Government: City",
+          "Services: Municipal services and public works; police, fire, and EMS coverage vary by address.",
+          "Average property tax (2025 site snapshot): ≈ $11,872 annually",
+          "Schools (2025 site snapshot): Linwood Public Schools (K–8); high school students attend Mainland Regional High School with neighboring Northfield and Somers Point.",
+          "Parks & Recreation: Mainland Bike Path, All Wars Memorial Park, and local sports fields and playgrounds encourage an active lifestyle.",
+          "Shopping & Dining: Local boutiques, cafes, and grocery stores in town; additional retail and dining in nearby Somers Point and Northfield.",
+          "Transportation: U.S. Route 9 and Tilton Road provide Access to the Garden State Parkway and bridges to Ocean City."
+        ]
+      },
+      {
+        "title": "Longport",
+        "details": [
+          "Population: 893 (2020 Census)",
+          "Government: Borough",
+          "Services: Municipal services and public works; police, fire, and EMS coverage vary by address.",
+          "Average property tax (2025 site snapshot): ≈ $13,595 annually",
+          "Schools (2025 site snapshot): Sends students to Margate City Schools (K–8) and Ocean City High School (9–12).",
+          "Parks & Recreation: Expansive beaches, scenic bike routes, tennis courts, and access to barrier island waterways.",
+          "Shopping & Dining: Quaint local cafés and shops in town, with more extensive dining and retail just over the bridges in Margate and Ventnor.",
+          "Transportation: Connected via Route 152 bridge and Atlantic Avenue; Access to the AC Expressway and Garden State Parkway."
+        ]
+      },
+      {
+        "title": "Margate City",
+        "details": [
+          "Population: 5,321 (2020 Census)",
+          "Government: City",
+          "Services: Municipal services and public works; police, fire, and EMS coverage vary by address.",
+          "Average property tax (2025 site snapshot): ≈ $10,545 annually",
+          "Schools (2025 site snapshot): Margate City Schools (K–8); high school students attend Atlantic City High School.",
+          "Parks & Recreation: Popular beaches, Lucy the Elephant, Jerome Avenue Park, and a range of summer events.",
+          "Shopping & Dining: Boutique shops, bakeries, and upscale dining along Ventnor and Atlantic Avenues.",
+          "Transportation: Accessible via the Ventnor/Margate Bridge and Atlantic Avenue; quick drive to the Parkway and Atlantic City Expressway."
+        ]
+      },
+      {
+        "title": "Mullica Township",
+        "details": [
+          "Population: 5,829 (2020 Census)",
+          "Government: Township",
+          "Services: Municipal services and public works; police, fire, and EMS coverage vary by address.",
+          "Average property tax (2025 site snapshot): ≈ $7,373 annually",
+          "Schools (2025 site snapshot): Mullica Township School District (Pre-K–8); high school students attend Cedar Creek High School.",
+          "Parks & Recreation: Rich natural resources, including access to the Mullica River, Wharton State Forest, and multiple trails for hiking, kayaking, and outdoor activities.",
+          "Shopping & Dining: Local markets and small diners serve the community; larger stores and retail options are nearby in Hammonton or Egg Harbor City.",
+          "Transportation: U.S. Route 30 runs through the township; Access to the AC Expressway and Route 54 for regional commuting."
+        ]
+      },
+      {
+        "title": "Northfield",
+        "details": [
+          "Population: 8,440 (2020 Census)",
+          "Government: City",
+          "Services: Municipal services and public works; police, fire, and EMS coverage vary by address.",
+          "Average property tax (2025 site snapshot): ≈ $8,299 annually",
+          "Schools (2025 site snapshot): Northfield Community Schools (K–8); students attend Mainland Regional High School.",
+          "Parks & Recreation: Birch Grove Park features trails, fishing, camping, and playgrounds; plus sports fields and local recreation programs.",
+          "Shopping & Dining: Tilton Road corridor offers supermarkets, shops, and restaurants, along with Access to national retailers.",
+          "Transportation: Located near the Garden State Parkway (Exit 36) and U.S. Route 9; convenient to Atlantic City, the Expressway, and barrier island bridges."
+        ]
+      },
+      {
+        "title": "Pleasantville",
+        "details": [
+          "Population: 20,791 (2020 Census)",
+          "Government: City",
+          "Services: Municipal services and public works; police, fire, and EMS coverage vary by address.",
+          "Average property tax (2025 site snapshot): ≈ $5,507 annually",
+          "Schools (2025 site snapshot): Pleasantville Public Schools (Pre-K–12), including Pleasantville High School, along with several charter school options nearby.",
+          "Parks & Recreation: Washington Avenue Playground, Veterans Memorial Park, and waterfront access along Lakes Bay for kayaking and scenic views.",
+          "Shopping & Dining: Retail centers along Black Horse Pike with supermarkets, casual dining, and chain restaurants.",
+          "Transportation: Direct access to U.S. Routes 9, 40, and 322; minutes from the Atlantic City Expressway and NJ Transit bus hub."
+        ]
+      },
+      {
+        "title": "Port Republic",
+        "details": [
+          "Population: 1,103 (2020 Census)",
+          "Government: City",
+          "Services: Municipal services and public works; police, fire, and EMS coverage vary by address.",
+          "Average property tax (2025 site snapshot): ≈ $8,970 annually",
+          "Schools (2025 site snapshot): Port Republic School (K–8); high school students attend Cedar Creek High School.",
+          "Parks & Recreation: Port Republic Wildlife Management Area and riverfront parks provide opportunities for kayaking, fishing, and birdwatching.",
+          "Shopping & Dining: Limited in-town options; residents rely on nearby Galloway and Mays Landing for daily needs, retail, and restaurants.",
+          "Transportation: Located on Route 9 with Access to the Garden State Parkway (Exit 48)."
+        ]
+      },
+      {
+        "title": "Somers Point",
+        "details": [
+          "Population: 10,497 (2020 Census)",
+          "Government: City",
+          "Services: Municipal services and public works; police, fire, and EMS coverage vary by address.",
+          "Average property tax (2025 site snapshot): ≈ $7,940 annually",
+          "Schools (2025 site snapshot): Somers Point School District (Pre-K–8); students attend Mainland Regional High School.",
+          "Parks & Recreation: Kennedy Park, municipal beach, bayfront boardwalk, bike paths, and Great Egg Harbor Bay access.",
+          "Shopping & Dining: Grocery stores, waterfront restaurants, and retail centers along Shore Road and Route 9.",
+          "Transportation: Direct access to the Garden State Parkway, Route 9, and the Route 52 Causeway to Ocean City; multiple NJ Transit bus routes."
+        ]
+      },
+      {
+        "title": "Ventnor City",
+        "details": [
+          "Population: 9,226 (2020 Census)",
+          "Government: City",
+          "Services: Municipal services and public works; police, fire, and EMS coverage vary by address.",
+          "Average property tax (2025 site snapshot): ≈ $9,232 annually",
+          "Schools (2025 site snapshot): Ventnor City Schools (Pre-K–8); high school students attend Atlantic City High School.",
+          "Parks & Recreation: Famous boardwalk, Ventnor Pier, beach access, playgrounds, and sports courts throughout the city.",
+          "Shopping & Dining: A mix of shops, cafes, and restaurants along Ventnor and Atlantic Avenues.",
+          "Transportation: Connected by Atlantic and Ventnor Avenues with NJ Transit bus service to Atlantic City and other shore towns."
+        ]
+      },
+      {
+        "title": "Weymouth Township",
+        "details": [
+          "Population: 2,617 (2020 Census)",
+          "Government: Township",
+          "Services: Municipal services and public works; police, fire, and EMS coverage vary by address.",
+          "Average property tax (2025 site snapshot): ≈ $6,084 annually",
+          "Schools (2025 site snapshot): Weymouth Township School (K–8); high school students attend Buena Regional High School.",
+          "Parks & Recreation: Surrounded by forest and farmland, with local recreation fields and nearby access to trails, waterways, and Wharton State Forest.",
+          "Shopping & Dining: Limited in-town options; residents rely on nearby Mays Landing or Vineland for groceries, retail, and dining.",
+          "Transportation: Route 50 runs through the township, with Access to Route 322 and the Atlantic City Expressway via Hamilton Township."
+        ]
+      }
+    ],
+    "/burlington-county": [
+      {
+        "title": "Bass River Township",
+        "details": [
+          "Population: 1,358 (2020 Census)",
+          "Government: Township",
+          "Services: Township municipal offices, volunteer fire company, shared EMS services",
+          "Median sold price (2025 site snapshot): ≈ $250,000",
+          "Average property tax (2025 site snapshot): ≈ $5,069 annually",
+          "Schools (2025 site snapshot): Bass River Township Elementary (K–6), regional options for higher grades",
+          "Parks & Recreation: Bass River State Forest, Wading River, Pine Barrens hiking trails",
+          "Shopping & Dining: Limited local businesses; residents rely on nearby towns for services",
+          "Transportation: Garden State Parkway access, Route 9, proximity to shore routes"
+        ]
+      },
+      {
+        "title": "Beverly City",
+        "details": [
+          "Population: 2,509 (2020 Census)",
+          "Government: City",
+          "Services: Local police, fire department, and municipal services",
+          "Median sold price (2025 site snapshot): ≈ $220,000",
+          "Average property tax (2025 site snapshot): ≈ $6,478 annually",
+          "Schools (2025 site snapshot): Beverly City School District (Pre-K–8), Palmyra High School for grades 9–12",
+          "Parks & Recreation: Historic Riverfront Promenade, Beverly National Cemetery, local parks and playgrounds",
+          "Shopping & Dining: Small local shops and eateries; larger retail available in nearby Delran and Burlington Township",
+          "Transportation: Route 130, River Line light rail station with direct service to Trenton and Camden"
+        ]
+      },
+      {
+        "title": "Bordentown City",
+        "details": [
+          "Population: 4,000 (2020 Census)",
+          "Government: City",
+          "Services: City police, fire department, and municipal services",
+          "Median sold price (2025 site snapshot): ≈ $350,000",
+          "Average property tax (2025 site snapshot): ≈ $8,017 annually",
+          "Schools (2025 site snapshot): Bordentown Regional School District (Pre-K–12)",
+          "Parks & Recreation: Bordentown Beach, Joseph Lawrence Park, and seasonal community events downtown",
+          "Shopping & Dining: Farnsworth Avenue boutiques, local restaurants, and small cafés",
+          "Transportation: Routes 130 & 206, NJ Turnpike Exit 7, River Line station with service to Camden and Trenton"
+        ]
+      },
+      {
+        "title": "Bordentown Township",
+        "details": [
+          "Population: 11,798 (2020 Census)",
+          "Government: Township",
+          "Services: Township police, volunteer fire companies, and EMS coverage",
+          "Median sold price (2025 site snapshot): ≈ $375,000",
+          "Average property tax (2025 site snapshot): ≈ $8,464 annually",
+          "Schools (2025 site snapshot): Bordentown Regional School District (Pre-K–12)",
+          "Parks & Recreation: Northern Community Park, Joseph Lawrence Park, athletic fields, and playgrounds",
+          "Shopping & Dining: Township shopping centers, local eateries, with larger retail options nearby",
+          "Transportation: I-295, NJ Turnpike Exit 7, Routes 130 & 206, River Line station"
+        ]
+      },
+      {
+        "title": "Burlington City",
+        "details": [
+          "Population: 9,786 (2020 Census)",
+          "Government: City",
+          "Services: City police, fire department, EMS, and full municipal services",
+          "Median sold price (2025 site snapshot): ≈ $270,000",
+          "Average property tax (2025 site snapshot): ≈ $6,215 annually",
+          "Schools (2025 site snapshot): Burlington City School District (Pre-K–12)",
+          "Parks & Recreation: Riverfront Promenade, Burlington Island nature area, local playgrounds and ball fields",
+          "Shopping & Dining: Downtown restaurants, antique shops, and small businesses; larger retail nearby in Burlington Township",
+          "Transportation: Route 130, Burlington-Bristol Bridge to Pennsylvania, River Line station with service to Camden and Trenton"
+        ]
+      },
+      {
+        "title": "Burlington Township",
+        "details": [
+          "Population: 24,012 (2020 Census)",
+          "Government: Township",
+          "Services: Township police, fire department, EMS, and full municipal services",
+          "Median sold price (2025 site snapshot): ≈ $330,000",
+          "Average property tax (2025 site snapshot): ≈ $6,926 annually",
+          "Schools (2025 site snapshot): Burlington Township School District (Pre-K–12)",
+          "Parks & Recreation: Green Acres Park, Sylvan Lake, athletic fields, and community recreation programs",
+          "Shopping & Dining: Burlington Center area retail, local restaurants, plus nearby shopping centers along Route 541",
+          "Transportation: I-295, NJ Turnpike Exit 5, Route 130, NJ Transit River Line stations"
+        ]
+      },
+      {
+        "title": "Chesterfield Township",
+        "details": [
+          "Population: 7,881 (2020 Census)",
+          "Government: Township",
+          "Services: Township police, volunteer fire companies, EMS, and municipal offices",
+          "Median sold price (2025 site snapshot): ≈ $525,000",
+          "Average property tax (2025 site snapshot): ≈ $13,450 annually",
+          "Schools (2025 site snapshot): Chesterfield Township Elementary (Pre-K–6), Northern Burlington County Regional School District for grades 7–12",
+          "Parks & Recreation: Old York Village green spaces, local athletic fields, nearby county parks",
+          "Shopping & Dining: Local shops and restaurants; larger retail and dining in Bordentown and Hamilton Township",
+          "Transportation: Routes 206 & 130, NJ Turnpike Exit 7, proximity to Hamilton and Trenton rail stations"
+        ]
+      },
+      {
+        "title": "Cinnaminson Township",
+        "details": [
+          "Population: 17,071 (2020 Census)",
+          "Government: Township",
+          "Services: Township police, fire department, EMS, and municipal services",
+          "Median sold price (2025 site snapshot): ≈ $365,000",
+          "Average property tax (2025 site snapshot): ≈ $8,676 annually",
+          "Schools (2025 site snapshot): Cinnaminson Township School District (Pre-K–12)",
+          "Parks & Recreation: Memorial Park, Wood Park, local ball fields, and riverfront recreation areas",
+          "Shopping & Dining: Local shopping centers, Route 130 retail, and neighborhood dining spots",
+          "Transportation: Route 130, I-295, River Line light rail with direct service to Camden and Trenton"
+        ]
+      },
+      {
+        "title": "Delanco Township",
+        "details": [
+          "Population: 4,827 (2020 Census)",
+          "Government: Township",
+          "Services: Township police, volunteer fire department, and municipal services",
+          "Median sold price (2025 site snapshot): ≈ $290,000",
+          "Average property tax (2025 site snapshot): ≈ $7,022 annually",
+          "Schools (2025 site snapshot): Delanco Township School District (Pre-K–8), Riverside High School for grades 9–12",
+          "Parks & Recreation: Pennington Park, West Avenue Nature Trail, and local playgrounds",
+          "Shopping & Dining: Small local businesses, diners, and Access to larger retail in neighboring towns",
+          "Transportation: Route 130, River Line light rail station with service to Camden and Trenton"
+        ]
+      },
+      {
+        "title": "Delran Township",
+        "details": [
+          "Population: 17,889 (2020 Census)",
+          "Government: Township",
+          "Services: Township police, fire department, EMS, and full municipal services",
+          "Median sold price (2025 site snapshot): ≈ $345,000",
+          "Average property tax (2025 site snapshot): ≈ $8,211 annually",
+          "Schools (2025 site snapshot): Delran Township School District (Pre-K–12)",
+          "Parks & Recreation: Delran Community Park, Myers Park, athletic fields, and youth sports programs",
+          "Shopping & Dining: Route 130 shopping centers, local restaurants, and Access to nearby malls in Moorestown and Cherry Hill",
+          "Transportation: Routes 130 & 73, I-295, NJ Transit bus routes, nearby River Line stations"
+        ]
+      },
+      {
+        "title": "Eastampton Township",
+        "details": [
+          "Population: 6,195 (2020 Census)",
+          "Government: Township",
+          "Services: Township police, volunteer fire department, EMS, and municipal offices",
+          "Median sold price (2025 site snapshot): ≈ $320,000",
+          "Average property tax (2025 site snapshot): ≈ $8,248 annually",
+          "Schools (2025 site snapshot): Eastampton Community School (Pre-K–8); Rancocas Valley Regional High School for grades 9–12",
+          "Parks & Recreation: Smithville Park and Historic District, local playgrounds, athletic fields, and open space preserves",
+          "Shopping & Dining: Local restaurants and small businesses; larger retail along Route 38 and nearby Mount Holly",
+          "Transportation: Route 38, NJ Turnpike Exit 5, proximity to regional transit hubs in Mount Laurel and Hamilton"
+        ]
+      },
+      {
+        "title": "Edgewater Park Township",
+        "details": [
+          "Population: 8,946 (2020 Census)",
+          "Government: Township",
+          "Services: Township police, volunteer fire department, EMS, and municipal offices",
+          "Median sold price (2025 site snapshot): ≈ $280,000",
+          "Average property tax (2025 site snapshot): ≈ $6,260 annually",
+          "Schools (2025 site snapshot): Edgewater Park Township School District (Pre-K–8); Burlington City High School for grades 9–12",
+          "Parks & Recreation: Memorial Field, Lakeview Memorial Park, community playgrounds, and sports fields",
+          "Shopping & Dining: Local convenience stores, eateries, and access to retail centers in Burlington and Delran",
+          "Transportation: Route 130, River Line light rail station, nearby I-295 and Burlington-Bristol Bridge for PA access"
+        ]
+      },
+      {
+        "title": "Evesham Township (Marlton)",
+        "details": [
+          "Population: 46,839 (2020 Census)",
+          "Government: Township",
+          "Services: Full municipal police, fire, EMS, and public works departments",
+          "Median sold price (2025 site snapshot): ≈ $415,000",
+          "Average property tax (2025 site snapshot): ≈ $9,431 annually",
+          "Schools (2025 site snapshot): Evesham Township School District (K–8); Cherokee High School for grades 9–12",
+          "Parks & Recreation: Savich Field, Memorial Sports Complex, playgrounds, and access to county park trails",
+          "Shopping & Dining: Marlton Square, Promenade at Sagemore, Route 73 retail corridor, and a variety of local and chain restaurants",
+          "Transportation: Routes 70 & 73, I-295, NJ Turnpike Exit 4, NJ Transit bus routes with service to Philadelphia"
+        ]
+      },
+      {
+        "title": "Fieldsboro Borough",
+        "details": [
+          "Population: 527 (2020 Census)",
+          "Government: Borough",
+          "Services: Borough municipal offices, police services through shared agreements, and volunteer fire company",
+          "Median sold price (2025 site snapshot): ≈ $280,000",
+          "Average property tax (2025 site snapshot): ≈ $6,308 annually",
+          "Schools (2025 site snapshot): Part of the Bordentown Regional School District (Pre-K–12)",
+          "Parks & Recreation: Local playgrounds and neighborhood parks; larger recreation in nearby Bordentown and Mansfield",
+          "Shopping & Dining: Small local businesses; residents often rely on Bordentown City and surrounding townships for retail and dining",
+          "Transportation: Route 130, Access to I-295 and the NJ Turnpike, nearby River Line station in Bordentown"
+        ]
+      },
+      {
+        "title": "Florence Township",
+        "details": [
+          "Population: 12,830 (2020 Census)",
+          "Government: Township",
+          "Services: Township police, fire department, EMS, and municipal services",
+          "Median sold price (2025 site snapshot): ≈ $310,000",
+          "Average property tax (2025 site snapshot): ≈ $6,247 annually",
+          "Schools (2025 site snapshot): Florence Township School District (Pre-K–12)",
+          "Parks & Recreation: Roebling Park, Veterans Park, local playgrounds, and riverfront recreation areas",
+          "Shopping & Dining: Local restaurants and shops in Florence village, plus Route 130 shopping centers",
+          "Transportation: NJ Turnpike Exit 6A, Route 130, River Line light rail with service to Camden and Trenton"
+        ]
+      },
+      {
+        "title": "Hainesport Township",
+        "details": [
+          "Population: 6,040 (2020 Census)",
+          "Government: Township",
+          "Services: Township police, volunteer fire department, EMS, and municipal services",
+          "Median sold price (2025 site snapshot): ≈ $360,000",
+          "Average property tax (2025 site snapshot): ≈ $8,336 annually",
+          "Schools (2025 site snapshot): Hainesport Township School (Pre-K–8); Rancocas Valley Regional High School for grades 9–12",
+          "Parks & Recreation: Long Bridge Park, Rancocas Creek access, playgrounds, and athletic fields",
+          "Shopping & Dining: Local businesses and restaurants; larger retail along Route 38 and in nearby Mount Laurel and Moorestown",
+          "Transportation: Route 38, I-295, NJ Turnpike access nearby"
+        ]
+      },
+      {
+        "title": "Lumberton Township",
+        "details": [
+          "Population: 12,819 (2020 Census)",
+          "Government: Township",
+          "Services: Township police, fire department, EMS, and full municipal services",
+          "Median sold price (2025 site snapshot): ≈ $360,000",
+          "Average property tax (2025 site snapshot): ≈ $9,147 annually",
+          "Schools (2025 site snapshot): Lumberton Township School District (Pre-K–8); Rancocas Valley Regional High School for grades 9–12",
+          "Parks & Recreation: Village Green Park, Bryan Freeman Park, sports fields, and local community events",
+          "Shopping & Dining: Route 38 shopping centers, local restaurants, and Access to retail in Mount Laurel and Moorestown",
+          "Transportation: Route 38, I-295, NJ Turnpike nearby for regional commuting"
+        ]
+      },
+      {
+        "title": "Mansfield Township",
+        "details": [
+          "Population: 8,899 (2020 Census)",
+          "Government: Township",
+          "Services: Township police, volunteer fire companies, EMS, and municipal offices",
+          "Median sold price (2025 site snapshot): ≈ $390,000",
+          "Average property tax (2025 site snapshot): ≈ $8,256 annually",
+          "Schools (2025 site snapshot): Mansfield Township Elementary (Pre-K–6); Northern Burlington County Regional School District for grades 7–12",
+          "Parks & Recreation: Mansfield Township Community Park, local ball fields, and preserved farmland areas",
+          "Shopping & Dining: Local shops and restaurants, with larger retail centers available in nearby Bordentown and Florence",
+          "Transportation: I-295, NJ Turnpike Exit 7, Routes 68 & 206 for regional connectivity"
+        ]
+      },
+      {
+        "title": "Maple Shade Township",
+        "details": [
+          "Population: 20,009 (2020 Census)",
+          "Government: Township",
+          "Services: Township police, fire department, EMS, and municipal offices",
+          "Median sold price (2025 site snapshot): ≈ $305,000",
+          "Average property tax (2025 site snapshot): ≈ $6,414 annually",
+          "Schools (2025 site snapshot): Maple Shade School District (Pre-K–12)",
+          "Parks & Recreation: Steinhauer Park, Collins Lane Park, local playgrounds, and athletic fields",
+          "Shopping & Dining: Downtown Maple Shade shops and restaurants, plus Access to Moorestown and Cherry Hill Mall retail corridors",
+          "Transportation: Routes 73 & 38, I-295, NJ Turnpike, and NJ Transit bus service to Philadelphia"
+        ]
+      },
+      {
+        "title": "Medford Township",
+        "details": [
+          "Population: 24,507 (2020 Census)",
+          "Government: Township",
+          "Services: Township police, fire department, EMS, and municipal services",
+          "Median sold price (2025 site snapshot): ≈ $490,000",
+          "Average property tax (2025 site snapshot): ≈ $12,430 annually",
+          "Schools (2025 site snapshot): Medford Township Public Schools (Pre-K–8); Shawnee High School for grades 9–12 (Lenape Regional High School District)",
+          "Parks & Recreation: Freedom Park, Medford Park, local lakes, trails, and youth sports programs",
+          "Shopping & Dining: Downtown Medford shops and restaurants, plus Access to Marlton and Mount Laurel retail corridors",
+          "Transportation: Route 70, convenient connections to I-295 and the NJ Turnpike"
+        ]
+      },
+      {
+        "title": "Medford Lakes Borough",
+        "details": [
+          "Population: 4,265 (2020 Census)",
+          "Government: Borough",
+          "Services: Borough police, volunteer fire department, EMS, and municipal services",
+          "Median sold price (2025 site snapshot): ≈ $450,000",
+          "Average property tax (2025 site snapshot): ≈ $11,694 annually",
+          "Schools (2025 site snapshot): Medford Lakes School District (K–8); Shawnee High School for grades 9–12 (Lenape Regional High School District)",
+          "Parks & Recreation: Multiple private lakes for residents, Camp Ockanickon YMCA, and local playgrounds",
+          "Shopping & Dining: Local cafés and shops in Medford Lakes; Access to downtown Medford and Marlton for retail and dining",
+          "Transportation: Route 70 with access to I-295 and NJ Turnpike in nearby townships"
+        ]
+      },
+      {
+        "title": "Moorestown Township",
+        "details": [
+          "Population: 21,363 (2020 Census)",
+          "Government: Township",
+          "Services: Full municipal police, fire, EMS, and public works departments",
+          "Median sold price (2025 site snapshot): ≈ $625,000",
+          "Average property tax (2025 site snapshot): ≈ $13,076 annually",
+          "Schools (2025 site snapshot): Moorestown Township Public Schools (Pre-K–12)",
+          "Parks & Recreation: Strawbridge Lake Park, Jeff Young Memorial Park, community athletic fields, and recreational programs",
+          "Shopping & Dining: Downtown Moorestown boutiques and dining, Moorestown Mall, and nearby regional shopping in Cherry Hill",
+          "Transportation: Route 38, I-295, NJ Turnpike Exit 4, NJ Transit bus service to Philadelphia"
+        ]
+      },
+      {
+        "title": "Mount Holly Township",
+        "details": [
+          "Population: 10,008 (2020 Census)",
+          "Government: Township",
+          "Services: Township police, fire department, EMS, and county-level government services",
+          "Median sold price (2025 site snapshot): ≈ $290,000",
+          "Average property tax (2025 site snapshot): ≈ $5,980 annually",
+          "Schools (2025 site snapshot): Mount Holly Township Public Schools (Pre-K–8); Rancocas Valley Regional High School for grades 9–12",
+          "Parks & Recreation: Iron Works Park, Mill Dam Park, historic sites, and community event spaces",
+          "Shopping & Dining: Downtown boutiques, restaurants, and nearby retail along Route 38",
+          "Transportation: Route 38, proximity to I-295 and NJ Turnpike, NJ Transit bus connections"
+        ]
+      },
+      {
+        "title": "Mount Laurel Township",
+        "details": [
+          "Population: 44,658 (2020 Census)",
+          "Government: Township",
+          "Services: Full municipal police, fire, EMS, and public works departments",
+          "Median sold price (2025 site snapshot): ≈ $385,000",
+          "Average property tax (2025 site snapshot): ≈ $7,506 annually",
+          "Schools (2025 site snapshot): Mount Laurel Township School District (Pre-K–8); Lenape Regional High School District for grades 9–12 (Lenape High School)",
+          "Parks & Recreation: Laurel Acres Park, Memorial Field, Rancocas State Park access, and community recreation facilities",
+          "Shopping & Dining: Route 38 and 73 retail corridors, East Gate Square, Moorestown Mall nearby, and a wide variety of dining options",
+          "Transportation: Routes 38 & 73, I-295, NJ Turnpike Exit 4, NJ Transit bus service to Philadelphia"
+        ]
+      },
+      {
+        "title": "New Hanover Township",
+        "details": [
+          "Population: 2,702 (2020 Census)",
+          "Government: Township",
+          "Services: Township municipal offices, police services, volunteer fire department, EMS, and base support services",
+          "Median sold price (2025 site snapshot): ≈ $325,000",
+          "Average property tax (2025 site snapshot): ≈ $5,897 annually",
+          "Schools (2025 site snapshot): New Hanover Township School (K–8); High school students typically attend Bordentown Regional or Pemberton Township High Schools depending on location",
+          "Parks & Recreation: Farmland, open space preserves, and recreational amenities available through the nearby Joint Base",
+          "Shopping & Dining: Limited local businesses; residents rely on Bordentown, Wrightstown, or Mount Holly for retail and dining",
+          "Transportation: Routes 537 & 68, access to NJ Turnpike and I-295 within short driving distance"
+        ]
+      },
+      {
+        "title": "North Hanover Township",
+        "details": [
+          "Population: 7,971 (2020 Census)",
+          "Government: Township",
+          "Services: Township police, volunteer fire companies, EMS, and municipal services",
+          "Median sold price (2025 site snapshot): ≈ $360,000",
+          "Average property tax (2025 site snapshot): ≈ $8,013 annually",
+          "Schools (2025 site snapshot): North Hanover Township School District (Pre-K–6); Northern Burlington County Regional School District for grades 7–12",
+          "Parks & Recreation: Local playgrounds, athletic fields, and preserved open space; nearby access to state forests",
+          "Shopping & Dining: Limited local businesses; larger retail and dining available in Bordentown, Mansfield, and Wrightstown",
+          "Transportation: Routes 537 & 528, short drive to NJ Turnpike, I-295, and regional train stations"
+        ]
+      },
+      {
+        "title": "Palmyra Borough",
+        "details": [
+          "Population: 7,446 (2020 Census)",
+          "Government: Borough",
+          "Services: Borough police, volunteer fire department, EMS, and municipal offices",
+          "Median sold price (2025 site snapshot): ≈ $280,000",
+          "Average property tax (2025 site snapshot): ≈ $6,832 annually",
+          "Schools (2025 site snapshot): Palmyra School District (Pre-K–12)",
+          "Parks & Recreation: Palmyra Cove Nature Park, Legion Field, local playgrounds, and riverfront recreation",
+          "Shopping & Dining: Small-town shops and restaurants along Broad Street; nearby shopping centers in Cinnaminson and Cherry Hill",
+          "Transportation: Route 73, Tacony-Palmyra Bridge to Philadelphia, River Line station with service to Camden and Trenton"
+        ]
+      },
+      {
+        "title": "Pemberton Borough",
+        "details": [
+          "Population: 1,375 (2020 Census)",
+          "Government: Borough",
+          "Services: Borough police, volunteer fire company, EMS, and municipal offices",
+          "Median sold price (2025 site snapshot): ≈ $250,000",
+          "Average property tax (2025 site snapshot): ≈ $5,427 annually",
+          "Schools (2025 site snapshot): Pemberton Township School District (Pre-K–12)",
+          "Parks & Recreation: Borough Park, local playgrounds, and nearby county recreation areas",
+          "Shopping & Dining: Local shops and restaurants in downtown Pemberton; larger retail in nearby Browns Mills and Mount Holly",
+          "Transportation: Route 38, County Route 530, proximity to Joint Base McGuire-Dix-Lakehurst"
+        ]
+      },
+      {
+        "title": "Pemberton Township",
+        "details": [
+          "Population: 27,005 (2020 Census)",
+          "Government: Township",
+          "Services: Township police, fire companies, EMS, and municipal offices",
+          "Median sold price (2025 site snapshot): ≈ $275,000",
+          "Average property tax (2025 site snapshot): ≈ $5,365 annually",
+          "Schools (2025 site snapshot): Pemberton Township School District (Pre-K–12)",
+          "Parks & Recreation: Mirror Lake, Presidential Lakes, Pine Barrens access, and multiple community parks",
+          "Shopping & Dining: Local shopping centers and restaurants; additional retail available in Browns Mills, Mount Holly, and neighboring townships",
+          "Transportation: Routes 38, 206 & 530, proximity to Joint Base and regional highway connections"
+        ]
+      },
+      {
+        "title": "Riverside Township",
+        "details": [
+          "Population: 8,019 (2020 Census)",
+          "Government: Township",
+          "Services: Township police, fire department, EMS, and municipal services",
+          "Median sold price (2025 site snapshot): ≈ $260,000",
+          "Average property tax (2025 site snapshot): ≈ $6,253 annually",
+          "Schools (2025 site snapshot): Riverside Township School District (Pre-K–12)",
+          "Parks & Recreation: Riverfront parks, Frank J. Gavin Memorial Park, community fields, and playgrounds",
+          "Shopping & Dining: Downtown shops and restaurants, local businesses along Route 130, and nearby larger retail centers",
+          "Transportation: Route 130, River Line light rail station, access to I-295 and bridges to Pennsylvania"
+        ]
+      },
+      {
+        "title": "Riverton Borough",
+        "details": [
+          "Population: 2,765 (2020 Census)",
+          "Government: Borough",
+          "Services: Borough police, volunteer fire department, EMS, and municipal services",
+          "Median sold price (2025 site snapshot): ≈ $420,000",
+          "Average property tax (2025 site snapshot): ≈ $10,219 annually",
+          "Schools (2025 site snapshot): Riverton School District (Pre-K–8); Palmyra High School for grades 9–12",
+          "Parks & Recreation: Riverton Memorial Park, riverfront green spaces, and the Riverton Yacht Club",
+          "Shopping & Dining: Local cafés, shops, and restaurants; additional retail in nearby Cinnaminson and Palmyra",
+          "Transportation: Route 130, River Line light rail station, Tacony-Palmyra and Betsy Ross Bridges for Philadelphia access"
+        ]
+      },
+      {
+        "title": "Shamong Township",
+        "details": [
+          "Population: 6,462 (2020 Census)",
+          "Government: Township",
+          "Services: Township municipal offices, volunteer fire company, EMS, and state police coverage",
+          "Median sold price (2025 site snapshot): ≈ $440,000",
+          "Average property tax (2025 site snapshot): ≈ $10,322 annually",
+          "Schools (2025 site snapshot): Shamong Township School District (K–8); Seneca High School for grades 9–12 (Lenape Regional High School District)",
+          "Parks & Recreation: Wharton State Forest, Atsion Lake, hiking and biking trails, and local playgrounds",
+          "Shopping & Dining: Limited local businesses; residents often rely on Medford, Marlton, or Hammonton for retail and dining",
+          "Transportation: Routes 206 & 534, with access to I-295 and NJ Turnpike via nearby corridors"
+        ]
+      },
+      {
+        "title": "Southampton Township",
+        "details": [
+          "Population: 10,324 (2020 Census)",
+          "Government: Township",
+          "Services: Township police, volunteer fire companies, EMS, and municipal offices",
+          "Median sold price (2025 site snapshot): ≈ $295,000",
+          "Average property tax (2025 site snapshot): ≈ $6,473 annually",
+          "Schools (2025 site snapshot): Southampton Township Schools (Pre-K–8); Seneca High School for grades 9–12 (Lenape Regional High School District)",
+          "Parks & Recreation: Red Lion Preserve, local parks, golf courses, and Leisuretowne community amenities",
+          "Shopping & Dining: Small local shops and restaurants; larger retail available in Medford, Marlton, and Mount Holly",
+          "Transportation: Routes 70 & 206, connections to I-295 and the NJ Turnpike within a short drive"
+        ]
+      },
+      {
+        "title": "Springfield Township",
+        "details": [
+          "Population: 3,246 (2020 Census)",
+          "Government: Township",
+          "Services: Township municipal offices, volunteer fire companies, EMS, and state police coverage",
+          "Median sold price (2025 site snapshot): ≈ $410,000",
+          "Average property tax (2025 site snapshot): ≈ $9,414 annually",
+          "Schools (2025 site snapshot): Springfield Township School (K–6); Northern Burlington County Regional School District for grades 7–12",
+          "Parks & Recreation: Columbus Park, local playgrounds, athletic fields, and preserved farmland areas",
+          "Shopping & Dining: Limited local businesses; residents rely on Columbus Market and nearby Bordentown, Mansfield, and Mount Holly for retail and dining",
+          "Transportation: Routes 206 & 68, Access to I-295 and the NJ Turnpike"
+        ]
+      },
+      {
+        "title": "Tabernacle Township",
+        "details": [
+          "Population: 6,777 (2020 Census)",
+          "Government: Township",
+          "Services: Township municipal offices, volunteer fire company, EMS, and state police coverage",
+          "Median sold price (2025 site snapshot): ≈ $435,000",
+          "Average property tax (2025 site snapshot): ≈ $9,269 annually",
+          "Schools (2025 site snapshot): Tabernacle School District (Pre-K–8); Seneca High School for grades 9–12 (Lenape Regional High School District)",
+          "Parks & Recreation: Wharton State Forest, Apple Pie Hill hiking area, local playgrounds, and athletic fields",
+          "Shopping & Dining: Limited local services; residents rely on Medford, Marlton, and Hammonton for larger retail and dining",
+          "Transportation: Routes 206 & 532, connections to I-295 and NJ Turnpike within driving distance"
+        ]
+      },
+      {
+        "title": "Washington Township (Burlington County)",
+        "details": [
+          "Population: 693 (2020 Census)",
+          "Government: Township",
+          "Services: Township municipal offices, volunteer fire company, EMS, and state police coverage",
+          "Median sold price (2025 site snapshot): ≈ $370,000",
+          "Average property tax (2025 site snapshot): ≈ $4,998 annually",
+          "Schools (2025 site snapshot): Mansfield Township Elementary (K–6); Northern Burlington County Regional School District for grades 7–12",
+          "Parks & Recreation: Farmland, open space preserves, and access to nearby state forests",
+          "Shopping & Dining: Limited local businesses; residents use Mansfield, Springfield, and Bordentown for retail and services",
+          "Transportation: Route 206, Access to I-295, NJ Turnpike, and regional connections"
+        ]
+      },
+      {
+        "title": "Westampton Township",
+        "details": [
+          "Population: 9,132 (2020 Census)",
+          "Government: Township",
+          "Services: Township police, volunteer fire companies, EMS, and municipal services",
+          "Median sold price (2025 site snapshot): ≈ $345,000",
+          "Average property tax (2025 site snapshot): ≈ $7,426 annually",
+          "Schools (2025 site snapshot): Westampton Township School District (Pre-K–8); Rancocas Valley Regional High School for grades 9–12",
+          "Parks & Recreation: Sports fields, local playgrounds, Rancocas State Park, and community recreation programs",
+          "Shopping & Dining: Local restaurants and shops, with larger retail options nearby in Mount Holly and Mount Laurel",
+          "Transportation: I-295, NJ Turnpike Exit 5, Route 541, and NJ Transit bus service"
+        ]
+      },
+      {
+        "title": "Willingboro Township",
+        "details": [
+          "Population: 32,009 (2020 Census)",
+          "Government: Township",
+          "Services: Township police, fire department, EMS, and municipal offices",
+          "Median sold price (2025 site snapshot): ≈ $285,000",
+          "Average property tax (2025 site snapshot): ≈ $7,107 annually",
+          "Schools (2025 site snapshot): Willingboro Township Public Schools (Pre-K–12)",
+          "Parks & Recreation: Mill Creek Park, Crystal Lake Park, community pools, and recreation centers",
+          "Shopping & Dining: Local shopping centers, restaurants, and Access to Route 130 retail corridors",
+          "Transportation: Route 130, I-295, NJ Turnpike Exit 5, NJ Transit bus routes to Philadelphia and Trenton"
+        ]
+      },
+      {
+        "title": "Woodland Township",
+        "details": [
+          "Population: 1,544 (2020 Census)",
+          "Government: Township",
+          "Services: Township municipal offices, volunteer fire company, EMS, and state police coverage",
+          "Median sold price (2025 site snapshot): ≈ $420,000",
+          "Average property tax (2025 site snapshot): ≈ $7,627 annually",
+          "Schools (2025 site snapshot): Woodland Township School (K–8); Seneca High School for grades 9–12 (Lenape Regional High School District)",
+          "Parks & Recreation: Brendan T. Byrne State Forest, Whitesbog Village, and extensive Pine Barrens hiking trails",
+          "Shopping & Dining: Very limited local businesses; residents rely on neighboring towns like Pemberton and Medford for retail and dining",
+          "Transportation: Routes 563 & 532, with access to Route 70 and connections to shore destinations"
+        ]
+      },
+      {
+        "title": "Wrightstown Borough",
+        "details": [
+          "Population: 724 (2020 Census)",
+          "Government: Borough",
+          "Services: Borough municipal offices, police department, volunteer fire company, EMS, and base support services nearby",
+          "Median sold price (2025 site snapshot): ≈ $220,000",
+          "Average property tax (2025 site snapshot): ≈ $5,899 annually",
+          "Schools (2025 site snapshot): New Hanover Township School District (K–8); Northern Burlington County Regional School District for grades 7–12",
+          "Parks & Recreation: Local playgrounds, small parks, and access to recreation facilities on the Joint Base",
+          "Transportation: Route 206, proximity to Routes 68 & 537, with regional connections to I-295 and NJ Turnpike"
+        ]
+      }
+    ],
+    "/camden-county": [
+      {
+        "title": "Audubon & Audubon Park",
+        "details": [
+          "Population: Audubon 8,713; Audubon Park 993 (2020 Census)",
+          "Government: Boroughs",
+          "Services: Local police, volunteer fire department, public works, K-12 public schools",
+          "Median sold price (2025 site snapshot): ≈ $311,500",
+          "Average property tax (2025 site snapshot): Audubon ≈ $8,588; Audubon Park ≈ $2,870 annually",
+          "Schools (2025 site snapshot): Public school assignment can vary by address; confirm the district and high school placement for the specific property.",
+          "Shopping & Dining: The downtown area along Merchant Street is a hidden gem, filled with local shops, cafes, and restaurants.",
+          "Transportation: Commuters appreciate the Access to PATCO and major highways, making travel to Philadelphia a breeze."
+        ]
+      },
+      {
+        "title": "Barrington",
+        "details": [
+          "Population: 7,081 (2020 Census)",
+          "Government: Borough",
+          "Services: Local police, volunteer fire department, EMS, public works, local schools",
+          "Median sold price (2025 site snapshot): ≈ $330,000",
+          "Average property tax (2025 site snapshot): ≈ $9,728 annually",
+          "Schools (2025 site snapshot): Public school assignment can vary by address; confirm the district and high school placement for the specific property.",
+          "Parks & Recreation: Unknown",
+          "Shopping & Dining: Barrington’s downtown area along Clements Bridge Road features local businesses, restaurants, and community staples like the Barrington Coffee House.",
+          "Transportation: Barrington’s downtown area along Clements Bridge Road features local businesses, restaurants, and community staples like the Barrington Coffee House."
+        ]
+      },
+      {
+        "title": "Bellmawr",
+        "details": [
+          "Population: 11,723 (2020 Census)",
+          "Government: Borough",
+          "Services: Police department, fire & EMS, library, public works",
+          "Median sold price (2025 site snapshot): ≈ $270,000",
+          "Average property tax (2025 site snapshot): ≈ $6,504 annually",
+          "Schools (2025 site snapshot): Public school assignment can vary by address; confirm the district and high school placement for the specific property.",
+          "Parks & Recreation: The community is known for its well-kept parks, youth sports programs, and active local government.",
+          "Shopping & Dining: Bellmawr Lake and nearby trails offer outdoor recreation, while shopping and dining options are just minutes away.",
+          "Transportation: Bellmawr is a centrally located Camden County borough that offers solid value and excellent highway access."
+        ]
+      },
+      {
+        "title": "Berlin Borough & Berlin Township",
+        "details": [
+          "Population: Berlin Borough 7,491; Berlin Township 5,884 (2020 Census)",
+          "Government: Borough / Township",
+          "Services: Police, fire, EMS, public works, K-8 school district",
+          "Median sold price (2025 site snapshot): ≈ $340,000",
+          "Average property tax (2025 site snapshot): Berlin Borough ≈ $8,243; Berlin Township ≈ $7,438 annually",
+          "Schools (2025 site snapshot): Public school assignment can vary by address; confirm the district and high school placement for the specific property.",
+          "Parks & Recreation: Berlin Township offers a more spread-out, suburban feel compared to the neighboring borough, with a focus on residential neighborhoods, local parks, and accessibility.",
+          "Shopping & Dining: Centered around the historic Berlin Circle and White Horse Pike, the borough offers a walkable downtown with shops, restaurants, and local businesses that give the area its distinct personality.",
+          "Transportation: With NJ Transit service available and Access to Route 73, commuting is easy whether you’re headed to Philadelphia or the Shore."
+        ]
+      },
+      {
+        "title": "Brooklawn",
+        "details": [
+          "Population: 1,823 (2020 Census)",
+          "Government: Borough",
+          "Services: Police, volunteer fire department, public works",
+          "Median sold price (2025 site snapshot): ≈ $200,000",
+          "Average property tax (2025 site snapshot): ≈ $4,889 annually",
+          "Schools (2025 site snapshot): Public school assignment can vary by address; confirm the district and high school placement for the specific property.",
+          "Parks & Recreation: Brooklawn is a small, close-knit borough tucked along the Delaware River, offering affordable homes and a true sense of community.",
+          "Shopping & Dining: Unknown",
+          "Transportation: Its waterfront location provides scenic views and a peaceful setting, while still being just minutes from major roadways like Route 130 and I-295."
+        ]
+      },
+      {
+        "title": "Camden City",
+        "details": [
+          "Population: 72,572 (2020 Census)",
+          "Government: City",
+          "Services: County police (Metro Division), city fire department, utilities, major hospitals & colleges",
+          "Median sold price (2025 site snapshot): ≈ $115,000",
+          "Average property tax (2025 site snapshot): ≈ $2,167 annually",
+          "Schools (2025 site snapshot): Public school assignment can vary by address; confirm the district and high school placement for the specific property.",
+          "Parks & Recreation: Located directly across the river from Philadelphia, Camden boasts unbeatable access via PATCO, the River Line, and major bridges.",
+          "Shopping & Dining: Neighborhoods like Cooper Grant and Fairview offer a mix of historic homes, rowhouses, and newer developments, often at more affordable prices than nearby urban markets.",
+          "Transportation: Unknown"
+        ]
+      },
+      {
+        "title": "Cherry Hill",
+        "details": [
+          "Population: 74,590 (2020 Census)",
+          "Government: Township",
+          "Services: Police, fire department, EMS, public works, library, parks",
+          "Median sold price (2025 site snapshot): ≈ $410,000",
+          "Average property tax (2025 site snapshot): ≈ $9,874 annually",
+          "Schools (2025 site snapshot): Public school assignment can vary by address; confirm the district and high school placement for the specific property.",
+          "Parks & Recreation: The township boasts major retail hubs like the Cherry Hill Mall, as well as countless restaurants, parks, and cultural attractions.",
+          "Transportation: Located just minutes from Philadelphia, it offers an easy commute via Route 70, I-295, or the nearby PATCO line."
+        ]
+      },
+      {
+        "title": "Chesilhurst",
+        "details": [
+          "Population: 1,541 (2020 Census)",
+          "Government: Borough",
+          "Services: Local police, volunteer fire, public works",
+          "Median sold price (2025 site snapshot): ≈ $261,500",
+          "Average property tax (2025 site snapshot): ≈ $7,951 annually",
+          "Schools (2025 site snapshot): Public school assignment can vary by address; confirm the district and high school placement for the specific property.",
+          "Parks & Recreation: Unknown",
+          "Shopping & Dining: Unknown",
+          "Transportation: Unknown"
+        ]
+      },
+      {
+        "title": "Clementon",
+        "details": [
+          "Population: 5,350 (2020 Census)",
+          "Government: Borough",
+          "Services: Police department, volunteer fire department, public works, water utility",
+          "Median sold price (2025 site snapshot): ≈ $205,000",
+          "Average property tax (2025 site snapshot): ≈ $5,502 annually",
+          "Schools (2025 site snapshot): Public school assignment can vary by address; confirm the district and high school placement for the specific property.",
+          "Shopping & Dining: Residents enjoy Access to White Horse Pike (Route 30) and nearby shopping centers, while still being close to the Gloucester Township and Lindenwold borders.",
+          "Transportation: Residents enjoy Access to White Horse Pike (Route 30) and nearby shopping centers, while still being close to the Gloucester Township and Lindenwold borders."
+        ]
+      },
+      {
+        "title": "Collingswood",
+        "details": [
+          "Population: 14,216 (2020 Census)",
+          "Government: Borough",
+          "Services: Police, combination fire/EMS, library, public works, vibrant downtown",
+          "Median sold price (2025 site snapshot): ≈ $379,000",
+          "Average property tax (2025 site snapshot): ≈ $10,041 annually",
+          "Schools (2025 site snapshot): Public school assignment can vary by address; confirm the district and high school placement for the specific property.",
+          "Parks & Recreation: Unknown",
+          "Shopping & Dining: Its award-winning downtown along Haddon Avenue features restaurants, coffee shops, art galleries, and boutiques, creating a lively atmosphere day and night.",
+          "Transportation: It’s also incredibly commuter-friendly, with its own PATCO station offering direct access to Philadelphia."
+        ]
+      },
+      {
+        "title": "Gibbsboro",
+        "details": [
+          "Population: 2,191 (2020 Census)",
+          "Government: Borough",
+          "Services: Police, volunteer fire company, public works",
+          "Median sold price (2025 site snapshot): ≈ $324,900",
+          "Average property tax (2025 site snapshot): ≈ $10,426 annually",
+          "Schools (2025 site snapshot): Public school assignment can vary by address; confirm the district and high school placement for the specific property.",
+          "Shopping & Dining: Unknown",
+          "Transportation: With nearby access to Route 561, Berlin Road, and neighboring towns like Voorhees and Lindenwold, Gibbsboro feels like a quiet escape without being far from everyday necessities."
+        ]
+      },
+      {
+        "title": "Gloucester City",
+        "details": [
+          "Population: 11,515 (2020 Census)",
+          "Government: City",
+          "Services: Full-time police & fire, EMS, water utility, independent school district",
+          "Median sold price (2025 site snapshot): ≈ $197,500",
+          "Average property tax (2025 site snapshot): ≈ $5,850 annually",
+          "Schools (2025 site snapshot): Public school assignment can vary by address; confirm the district and high school placement for the specific property.",
+          "Shopping & Dining: The downtown district along Broadway features local businesses, restaurants, and pubs, contributing to the city’s tight-knit and proudly blue-collar identity."
+        ]
+      },
+      {
+        "title": "Gloucester Township",
+        "details": [
+          "Population: 66,140 (2020 Census)",
+          "Government: Township",
+          "Services: Police department, multiple fire companies, EMS, public works, MUA",
+          "Median sold price (2025 site snapshot): ≈ $295,000",
+          "Average property tax (2025 site snapshot): ≈ $7,923 annually",
+          "Schools (2025 site snapshot): Public school assignment can vary by address; confirm the district and high school placement for the specific property.",
+          "Parks & Recreation: Unknown",
+          "Shopping & Dining: Shoppers enjoy the Gloucester Premium Outlets and plenty of local retail and dining.",
+          "Transportation: It’s known for its highly rated schools in the Black Horse Pike Regional School District and Access to Route 42, the Atlantic City Expressway, and NJ Transit’s Avandale and Lindenwold stations."
+        ]
+      },
+      {
+        "title": "Haddon Heights",
+        "details": [
+          "Population: 7,499 (2020 Census)",
+          "Government: Borough",
+          "Services: Police, volunteer fire department, public works, local K-12 schools",
+          "Median sold price (2025 site snapshot): ≈ $425,000",
+          "Average property tax (2025 site snapshot): ≈ $10,438 annually",
+          "Schools (2025 site snapshot): Public school assignment can vary by address; confirm the district and high school placement for the specific property.",
+          "Parks & Recreation: Unknown",
+          "Shopping & Dining: With a walkable downtown along Station Avenue, the town offers boutique shopping, cozy cafes, and local events that give it a storybook feel."
+        ]
+      },
+      {
+        "title": "Haddon Township",
+        "details": [
+          "Population: 15,414 (2020 Census)",
+          "Government: Township",
+          "Services: Police, volunteer fire departments, EMS, library, recreation, public works",
+          "Median sold price (2025 site snapshot): ≈ $420,000",
+          "Average property tax (2025 site snapshot): ≈ $9,933 annually",
+          "Schools (2025 site snapshot): Public school assignment can vary by address; confirm the district and high school placement for the specific property.",
+          "Parks & Recreation: Newton Lake Park and Cooper River Park offer beautiful green spaces for walking, biking, and kayaking.",
+          "Shopping & Dining: Anchored by Haddon Avenue, the town’s business district is packed with restaurants, bars, coffee shops, and boutiques—making it a popular choice for those who want convenience and culture close to home.",
+          "Transportation: Unknown"
+        ]
+      },
+      {
+        "title": "Haddonfield",
+        "details": [
+          "Population: 12,555 (2020 Census)",
+          "Government: Borough",
+          "Services: Police, volunteer fire company, EMS, library, utilities, historic downtown",
+          "Median sold price (2025 site snapshot): ≈ $815,000",
+          "Average property tax (2025 site snapshot): ≈ $17,761 annually",
+          "Schools (2025 site snapshot): Public school assignment can vary by address; confirm the district and high school placement for the specific property.",
+          "Parks & Recreation: Unknown",
+          "Shopping & Dining: Haddonfield is the crown jewel of Camden County—known for its historic homes, top-tier schools, and upscale, walkable downtown.",
+          "Transportation: Kings Highway is lined with boutiques, fine dining, and cultural landmarks, making everyday living feel special."
+        ]
+      },
+      {
+        "title": "Hi-Nella",
+        "details": [
+          "Population: 934 (2020 Census)",
+          "Government: Borough",
+          "Services: Small police dept., fire protection via nearby towns, public works",
+          "Median sold price (2025 site snapshot): ≈ $187,450",
+          "Average property tax (2025 site snapshot): ≈ $10,279 annually",
+          "Schools (2025 site snapshot): Public school assignment can vary by address; confirm the district and high school placement for the specific property.",
+          "Parks & Recreation: Unknown",
+          "Shopping & Dining: The borough benefits from proximity to PATCO stations, Route 30, and local shopping centers—without the hustle of a busier town.",
+          "Transportation: It’s a great spot for first-time buyers or investors looking for manageable properties in a commuter-friendly location."
+        ]
+      },
+      {
+        "title": "Laurel Springs",
+        "details": [
+          "Population: 1,978 (2020 Census)",
+          "Government: Borough",
+          "Services: Police, volunteer fire, public works, shared high school district",
+          "Median sold price (2025 site snapshot): ≈ $250,000",
+          "Average property tax (2025 site snapshot): ≈ $9,451 annually",
+          "Schools (2025 site snapshot): Public school assignment can vary by address; confirm the district and high school placement for the specific property.",
+          "Shopping & Dining: Unknown",
+          "Transportation: Located near Route 30 and minutes from the PATCO station in Lindenwold, Laurel Springs offers a peaceful lifestyle without sacrificing accessibility."
+        ]
+      },
+      {
+        "title": "Lawnside",
+        "details": [
+          "Population: 2,971 (2020 Census)",
+          "Government: Borough",
+          "Services: Police, volunteer fire department, EMS, local K–8 schools, regional high school",
+          "Median sold price (2025 site snapshot): ≈ $272,500",
+          "Average property tax (2025 site snapshot): ≈ $6,790 annually",
+          "Schools (2025 site snapshot): Public school assignment can vary by address; confirm the district and high school placement for the specific property.",
+          "Parks & Recreation: Unknown",
+          "Shopping & Dining: Shoppers enjoy proximity to the Lawnside Commons shopping center and other nearby retail hubs.",
+          "Transportation: Lawnside also offers Access to I-295, Route 30, and the Woodcrest PATCO station, making it a great pick for commuters."
+        ]
+      },
+      {
+        "title": "Lindenwold",
+        "details": [
+          "Population: 21,709 (2020 Census)",
+          "Government: Borough",
+          "Services: Police department, fire & EMS, public works, PATCO station",
+          "Median sold price (2025 site snapshot): ≈ $236,500",
+          "Average property tax (2025 site snapshot): ≈ $5,407 annually",
+          "Schools (2025 site snapshot): Public school assignment can vary by address; confirm the district and high school placement for the specific property.",
+          "Parks & Recreation: The borough also has local parks, schools, and shopping centers to meet everyday needs.",
+          "Shopping & Dining: The borough also has local parks, schools, and shopping centers to meet everyday needs.",
+          "Transportation: The Lindenwold PATCO and NJ Transit station connects directly to Philadelphia and Atlantic City, while major roads like Route 30 and the White Horse Pike keep everything close."
+        ]
+      },
+      {
+        "title": "Magnolia",
+        "details": [
+          "Population: 4,362 (2020 Census)",
+          "Government: Borough",
+          "Services: Police, volunteer fire department, public works, regional high school",
+          "Median sold price (2025 site snapshot): ≈ $260,000",
+          "Average property tax (2025 site snapshot): ≈ $7,418 annually",
+          "Schools (2025 site snapshot): Public school assignment can vary by address; confirm the district and high school placement for the specific property.",
+          "Parks & Recreation: The borough is served by the Magnolia School District, and residents enjoy local parks, playgrounds, and community events throughout the year.",
+          "Transportation: Its central location near the White Horse Pike, I-295, and the PATCO line makes commuting a breeze."
+        ]
+      },
+      {
+        "title": "Merchantville",
+        "details": [
+          "Population: 3,833 (2020 Census)",
+          "Government: Borough",
+          "Services: Police, volunteer fire company, public works, local school district",
+          "Median sold price (2025 site snapshot): ≈ $332,000",
+          "Average property tax (2025 site snapshot): ≈ $10,419 annually",
+          "Schools (2025 site snapshot): Public school assignment can vary by address; confirm the district and high school placement for the specific property.",
+          "Parks & Recreation: Merchantville is served by its own school district and is close to major roads and the River Line, making commuting easy while preserving its small-town feel.",
+          "Shopping & Dining: The town is beloved for its Victorian-style homes, local businesses, and community events like farmers markets and seasonal festivals.",
+          "Transportation: Merchantville is served by its own school district and is close to major roads and the River Line, making commuting easy while preserving its small-town feel."
+        ]
+      },
+      {
+        "title": "Mount Ephraim",
+        "details": [
+          "Population: 4,655 (2020 Census)",
+          "Government: Borough",
+          "Services: Police, volunteer fire, public works, recreation",
+          "Median sold price (2025 site snapshot): ≈ $270,000",
+          "Average property tax (2025 site snapshot): ≈ $7,862 annually",
+          "Schools (2025 site snapshot): Public school assignment can vary by address; confirm the district and high school placement for the specific property.",
+          "Parks & Recreation: Residents appreciate the walkability of the town, its local parks, and the close-knit community feel.",
+          "Shopping & Dining: Unknown",
+          "Transportation: Mount Ephraim is a friendly borough that offers a great mix of small-town charm and commuter convenience."
+        ]
+      },
+      {
+        "title": "Oaklyn",
+        "details": [
+          "Population: 3,943 (2020 Census)",
+          "Government: Borough",
+          "Services: Police, volunteer fire department, public works, shared regional school district",
+          "Median sold price (2025 site snapshot): ≈ $317,650",
+          "Average property tax (2025 site snapshot): ≈ $9,408 annually",
+          "Schools (2025 site snapshot): Public school assignment can vary by address; confirm the district and high school placement for the specific property.",
+          "Parks & Recreation: The borough’s small downtown includes coffee shops, pubs, and local favorites, while Newton Lake Park offers beautiful views and outdoor recreation.",
+          "Shopping & Dining: The borough’s small downtown includes coffee shops, pubs, and local favorites, while Newton Lake Park offers beautiful views and outdoor recreation.",
+          "Transportation: Unknown"
+        ]
+      },
+      {
+        "title": "Pennsauken",
+        "details": [
+          "Population: 37,179 (2020 Census)",
+          "Government: Township",
+          "Services: Police, multiple fire companies, EMS, public works, country club, local schools",
+          "Median sold price (2025 site snapshot): ≈ $272,500",
+          "Average property tax (2025 site snapshot): ≈ $6,137 annually",
+          "Schools (2025 site snapshot): Public school assignment can vary by address; confirm the district and high school placement for the specific property.",
+          "Parks & Recreation: Bordered by the Delaware River and major highways like Route 130, Route 73, and I-295, it’s a commuter-friendly location with both suburban and urban appeal.",
+          "Shopping & Dining: Unknown",
+          "Transportation: Bordered by the Delaware River and major highways like Route 130, Route 73, and I-295, it’s a commuter-friendly location with both suburban and urban appeal."
+        ]
+      },
+      {
+        "title": "Pine Hill & Pine Valley",
+        "details": [
+          "Population: Pine Hill 10,761; Pine Valley 21 (2020 Census)",
+          "Government: Boroughs",
+          "Services: Police, fire department, EMS, public works, merged with Pine Valley in 2022",
+          "Median sold price (2025 site snapshot): ≈ $235,000",
+          "Average property tax (2025 site snapshot): Pine Hill ≈ $6,565 annually (2025); former Pine Valley is included with Pine Hill after the 2022 merger.",
+          "Schools (2025 site snapshot): Public school assignment can vary by address; confirm the district and high school placement for the specific property."
+        ]
+      },
+      {
+        "title": "Runnemede",
+        "details": [
+          "Population: 8,334 (2020 Census)",
+          "Government: Borough",
+          "Services: Police, volunteer fire, public works, regional high school",
+          "Median sold price (2025 site snapshot): ≈ $280,000",
+          "Average property tax (2025 site snapshot): ≈ $7,136 annually",
+          "Schools (2025 site snapshot): Public school assignment can vary by address; confirm the district and high school placement for the specific property.",
+          "Parks & Recreation: The borough has its own school district, several parks, and a strong sense of community, with local events and sports leagues that bring residents together.",
+          "Shopping & Dining: Unknown"
+        ]
+      },
+      {
+        "title": "Somerdale",
+        "details": [
+          "Population: 5,578 (2020 Census)",
+          "Government: Borough",
+          "Services: Police, volunteer fire company, public works, regional high school",
+          "Median sold price (2025 site snapshot): ≈ $270,000",
+          "Average property tax (2025 site snapshot): ≈ $6,902 annually",
+          "Schools (2025 site snapshot): Public school assignment can vary by address; confirm the district and high school placement for the specific property.",
+          "Parks & Recreation: The borough is served by the Somerdale Park School, and the community enjoys access to local parks, sports fields, and events throughout the year.",
+          "Transportation: Located along the White Horse Pike and just minutes from major highways like I-295 and Route 42, it’s a commuter’s dream with Access to Philadelphia, Camden, and Cherry Hill."
+        ]
+      },
+      {
+        "title": "Stratford",
+        "details": [
+          "Population: 6,991 (2020 Census)",
+          "Government: Borough",
+          "Services: Police, volunteer fire department, public works, home to Rowan School of Osteopathic Medicine",
+          "Median sold price (2025 site snapshot): ≈ $275,000",
+          "Average property tax (2025 site snapshot): ≈ $7,795 annually",
+          "Schools (2025 site snapshot): Public school assignment can vary by address; confirm the district and high school placement for the specific property.",
+          "Parks & Recreation: Residents enjoy local parks, a public library, and proximity to Jefferson Stratford Hospital and Rowan-Virtua School of Osteopathic Medicine.",
+          "Shopping & Dining: Unknown",
+          "Transportation: Stratford offers a variety of housing options, from classic mid-century homes to modern townhomes, all with Access to major routes like White Horse Pike and PATCO stations in nearby Lindenwold and Ashland."
+        ]
+      },
+      {
+        "title": "Tavistock",
+        "details": [
+          "Population: 9 (2020 Census)",
+          "Government: Borough",
+          "Services: No local police or fire; services contracted from neighboring towns",
+          "Median sold price (2025 site snapshot): N/A",
+          "Average property tax (2025 site snapshot): ≈ $38,387 annually",
+          "Schools (2025 site snapshot): Public school assignment can vary by address; confirm the district and high school placement for the specific property.",
+          "Transportation: Unknown"
+        ]
+      },
+      {
+        "title": "Voorhees",
+        "details": [
+          "Population: 31,089 (2020 Census)",
+          "Government: Township",
+          "Services: Police, fire/EMS, public works, library, local school district, Eastern Regional High School",
+          "Median sold price (2025 site snapshot): ≈ $401,000",
+          "Average property tax (2025 site snapshot): ≈ $11,723 annually",
+          "Schools (2025 site snapshot): Public school assignment can vary by address; confirm the district and high school placement for the specific property.",
+          "Parks & Recreation: Shopping, dining, and recreation are abundant, with destinations like the Voorhees Town Center and Connolly Park offering something for everyone.",
+          "Shopping & Dining: Shopping, dining, and recreation are abundant, with destinations like the Voorhees Town Center and Connolly Park offering something for everyone."
+        ]
+      },
+      {
+        "title": "Waterford Township",
+        "details": [
+          "Population: 10,435 (2020 Census)",
+          "Government: Township",
+          "Services: Police, volunteer fire companies, public works, Atco village, local schools",
+          "Median sold price (2025 site snapshot): ≈ $325,000",
+          "Average property tax (2025 site snapshot): ≈ $7,993 annually",
+          "Schools (2025 site snapshot): Public school assignment can vary by address; confirm the district and high school placement for the specific property.",
+          "Parks & Recreation: Unknown",
+          "Shopping & Dining: Unknown",
+          "Transportation: Unknown"
+        ]
+      },
+      {
+        "title": "Winslow",
+        "details": [
+          "Population: 40,007 (2020 Census)",
+          "Government: Township",
+          "Services: Police, multiple fire companies, EMS, public works, local utilities, K–8 schools",
+          "Median sold price (2025 site snapshot): ≈ $302,000",
+          "Average property tax (2025 site snapshot): ≈ $6,568 annually",
+          "Schools (2025 site snapshot): Public school assignment can vary by address; confirm the district and high school placement for the specific property.",
+          "Parks & Recreation: Unknown",
+          "Shopping & Dining: Unknown",
+          "Transportation: Unknown"
+        ]
+      },
+      {
+        "title": "Woodlynne",
+        "details": [
+          "Population: 2,919 (2020 Census)",
+          "Government: Borough",
+          "Services: Police, volunteer fire, public works, very dense residential borough",
+          "Median sold price (2025 site snapshot): ≈ $167,500",
+          "Average property tax (2025 site snapshot): ≈ $5,707 annually",
+          "Schools (2025 site snapshot): Public school assignment can vary by address; confirm the district and high school placement for the specific property.",
+          "Parks & Recreation: The New Deal program built many similar structures, including rustic log structures in state parks during the Great Depression, and this one is unique for its urban setting.",
+          "Transportation: One of Woodlynne’s biggest perks is public transit access—residents are within walking distance to the Ferry Avenue PATCO station and local NJ Transit bus lines."
+        ]
+      }
+    ],
+    "/cape-may-county": [
+      {
+        "title": "Avalon",
+        "details": [
+          "Population: 1,244 (2020 Census)",
+          "Government: Borough",
+          "Services: Full-time police, fire, EMS, and beach patrol",
+          "Median sold price (2025 site snapshot): ≈ $2.8M",
+          "Average property tax (2025 site snapshot): ≈ $10,663 annually",
+          "Schools (2025 site snapshot): Avalon & Stone Harbor Elementary; Middle Township High School",
+          "Parks & Recreation: Surfside Park, beach dunes, and bayfront docks for boating and watersports",
+          "Shopping & Dining: Upscale boutique shops and restaurants along Dune Drive",
+          "Transportation: Accessible via Ocean Drive, close to Route 9 and Garden State Parkway connections"
+        ]
+      },
+      {
+        "title": "Cape May",
+        "details": [
+          "Population: 2,768 (2020 Census)",
+          "Government: City",
+          "Services: Full municipal services, tourism-driven",
+          "Median sold price (2025 site snapshot): ≈ $900,000",
+          "Average property tax (2025 site snapshot): ≈ $7,494 annually",
+          "Schools (2025 site snapshot): Cape May City Elementary; Lower Cape May Regional for secondary students",
+          "Parks & Recreation: Rotary Park, Cape May Promenade, and nearby Cape May Point State Park",
+          "Shopping & Dining: Washington Street Mall, antique shops, and a variety of restaurants from casual to fine dining",
+          "Transportation: Garden State Parkway access via Route 109; Cape May-Lewes Ferry connects to Delaware"
+        ]
+      },
+      {
+        "title": "Cape May Point",
+        "details": [
+          "Population: 305 (2020 Census)",
+          "Government: Borough",
+          "Services: Police, fire, and emergency services shared regionally",
+          "Median sold price (2025 site snapshot): ≈ $850,000",
+          "Average property tax (2025 site snapshot): ≈ $5,710 annually",
+          "Schools (2025 site snapshot): Served by Lower Township and Cape May school districts",
+          "Parks & Recreation: Cape May Point State Park with trails and birding overlooks; lighthouse; nearby protected beaches",
+          "Shopping & Dining: Limited in town; only 5–10 minutes to Cape May’s shops, restaurants, and Washington Street Mall",
+          "Transportation: Access via Sunset Boulevard and nearby Garden State Parkway connections"
+        ]
+      },
+      {
+        "title": "Dennis Township",
+        "details": [
+          "Population: 6,293 (2020 Census)",
+          "Government: Township",
+          "Services: Local police, volunteer fire, and EMS coverage",
+          "Median sold price (2025 site snapshot): ≈ $310,000",
+          "Average property tax (2025 site snapshot): ≈ $4,091 annually",
+          "Schools (2025 site snapshot): Dennis Township Schools (Pre-K–8); high school students attend Middle Township High School",
+          "Parks & Recreation: Belleplain State Forest offers camping, hiking, and trails across thousands of acres",
+          "Shopping & Dining: Local shopping centers in Dennisville and South Seaville; larger retail options in Cape May Court House and Vineland",
+          "Transportation: Conveniently located along Routes 47 and 347 for quick trips to the Garden State Parkway and shore towns"
+        ]
+      },
+      {
+        "title": "Lower Township",
+        "details": [
+          "Population: 22,123 (2020 Census)",
+          "Government: Township",
+          "Services: Full police, fire, EMS, and beach patrol",
+          "Median sold price (2025 site snapshot): ≈ $420,000",
+          "Average property tax (2025 site snapshot): ≈ $4,820 annually",
+          "Schools (2025 site snapshot): Lower Township Elementary Schools and Lower Cape May Regional High School",
+          "Parks & Recreation: Bayshore beaches, Cox Hall Creek Wildlife Management Area, and the Cape May–Lewes Ferry terminal with surrounding park space",
+          "Shopping & Dining: Bayshore Plaza and local shopping, plus Access to Cape May’s dining and retail options",
+          "Transportation: Garden State Parkway and Route 9 access; Cape May Airport nearby"
+        ]
+      },
+      {
+        "title": "Middle Township",
+        "details": [
+          "Population: 20,460 (2020 Census)",
+          "Government: Township",
+          "Services: Police, volunteer fire, and EMS coverage",
+          "Median sold price (2025 site snapshot): ≈ $380,000",
+          "Average property tax (2025 site snapshot): ≈ $5,374 annually",
+          "Schools (2025 site snapshot): Middle Township School District (elementary through high school)",
+          "Parks & Recreation: Goshen Sports Complex, Stone Harbor Wetlands Institute, and county park system facilities",
+          "Shopping & Dining: Retail hub with Walmart, ShopRite, and Rio Grande Center; plenty of restaurants and services in Cape May Court House",
+          "Transportation: Access to Garden State Parkway, Routes 9 and 47 for travel north and south"
+        ]
+      },
+      {
+        "title": "North Wildwood",
+        "details": [
+          "Population: 3,629 (2020 Census)",
+          "Government: City",
+          "Services: Full police, fire, EMS, and beach patrol",
+          "Median sold price (2025 site snapshot): ≈ $670,000",
+          "Average property tax (2025 site snapshot): ≈ $4,954 annually",
+          "Schools (2025 site snapshot): Margaret Mace School (K–8); Wildwood High School for secondary students",
+          "Parks & Recreation: Allen Park, beachfront walkways, seawall, and direct access to the boardwalk and beaches",
+          "Shopping & Dining: Seaside shops, boardwalk stores, and a variety of restaurants and nightlife options",
+          "Transportation: Accessible via Route 147, Ocean Drive, and Parkway connections"
+        ]
+      },
+      {
+        "title": "Ocean City",
+        "details": [
+          "Population: 11,235 (2020 Census)",
+          "Government: City",
+          "Services: Full resort-level police, fire, EMS, and seasonal staffing",
+          "Median sold price (2025 site snapshot): ≈ $1.1M",
+          "Average property tax (2025 site snapshot): ≈ $7,566 annually",
+          "Schools (2025 site snapshot): Ocean City School District (Pre-K–12)",
+          "Parks & Recreation: Carey Stadium, skate park, public beaches, and boardwalk recreation areas",
+          "Transportation: Route 52 Causeway with Parkway access nearby; convenient to Routes 9 and 49"
+        ]
+      },
+      {
+        "title": "Sea Isle City",
+        "details": [
+          "Population: 2,104 (2020 Census)",
+          "Government: City",
+          "Services: Municipal services and public works; police, fire, and EMS coverage vary by address.",
+          "Median sold price (2025 site snapshot): ≈ $1.26M (down from ~$1.9M year-over-year)",
+          "Average property tax (2025 site snapshot): ≈ $6,431 annually",
+          "Schools (2025 site snapshot): Served by Ocean City and regional school districts for K–12",
+          "Parks & Recreation: Beautiful beaches, fishing piers, recreation fields, and the Sea Isle Promenade for walking and biking",
+          "Shopping & Dining: Coastal shops, cafes, and restaurants along Landis Avenue; more options in nearby Ocean City and Avalon",
+          "Transportation: Accessible via Ocean Drive and the Garden State Parkway"
+        ]
+      },
+      {
+        "title": "Stone Harbor",
+        "details": [
+          "Population: 796 (2020 Census)",
+          "Government: Borough",
+          "Services: Municipal services and public works; police, fire, and EMS coverage vary by address.",
+          "Average property tax (2025 site snapshot): ≈ $12,797 annually",
+          "Schools (2025 site snapshot): Avalon & Stone Harbor Elementary Schools; Middle Township High School for secondary students",
+          "Parks & Recreation: Beaches, bayfront access for boating, The Wetlands Institute for conservation and education",
+          "Shopping & Dining: High-end boutiques, gourmet restaurants, and cafes along 96th Street downtown",
+          "Transportation: Accessible via Ocean Drive and the Garden State Parkway"
+        ]
+      },
+      {
+        "title": "Upper Township",
+        "details": [
+          "Population: 12,550 (2020 Census)",
+          "Government: Township",
+          "Services: Municipal services and public works; police, fire, and EMS coverage vary by address.",
+          "Median sold price (2025 site snapshot): ≈ $450,000",
+          "Average property tax (2025 site snapshot): ≈ $6,686 annually",
+          "Schools (2025 site snapshot): Upper Township School District (K–8); high school students attend Ocean City High School",
+          "Parks & Recreation: Local parks, nearby beaches, wineries, and equestrian facilities",
+          "Shopping & Dining: Small-town shops and markets; larger retail and dining within minutes in Marmora, Somers Point, and Ocean City",
+          "Transportation: Garden State Parkway access and local routes for easy commuting to both the shore and inland areas"
+        ]
+      },
+      {
+        "title": "West Cape May",
+        "details": [
+          "Population: 1,011 (2020 Census)",
+          "Government: Borough",
+          "Services: Municipal services and public works; police, fire, and EMS coverage vary by address.",
+          "Median sold price (2025 site snapshot): ≈ $750,000",
+          "Average property tax (2025 site snapshot): ≈ $7,120 annually",
+          "Schools (2025 site snapshot): Served by Lower Cape May Regional School District",
+          "Parks & Recreation: Local parks and community gardens; minutes to Cape May beaches and Cape May Point State Park",
+          "Shopping & Dining: Small-town shops, farmers markets, and cafes; close to Washington Street Mall in Cape May",
+          "Transportation: Local road connections to Cape May and Garden State Parkway nearby"
+        ]
+      },
+      {
+        "title": "West Wildwood",
+        "details": [
+          "Population: 542 (2020 Census)",
+          "Government: Borough",
+          "Services: Municipal services and public works; police, fire, and EMS coverage vary by address.",
+          "Median sold price (2025 site snapshot): ≈ $650,000",
+          "Average property tax (2025 site snapshot): ≈ $5,449 annually",
+          "Schools (2025 site snapshot): Served by Wildwood School District for K–12 students",
+          "Parks & Recreation: Canals, fishing docks, and boating access throughout the community",
+          "Shopping & Dining: Limited in town; just minutes to the Wildwood Boardwalk and surrounding shops, dining, and nightlife",
+          "Transportation: Connected by bridges to North Wildwood and the mainland; Access to Ocean Drive and the Garden State Parkway"
+        ]
+      },
+      {
+        "title": "Wildwood",
+        "details": [
+          "Population: 5,215 (2020 Census)",
+          "Government: City",
+          "Services: Municipal services and public works; police, fire, and EMS coverage vary by address.",
+          "Median sold price (2025 site snapshot): ≈ $500,000–$700,000",
+          "Average property tax (2025 site snapshot): ≈ $6,407 annually",
+          "Schools (2025 site snapshot): Wildwood Public Schools (Pre-K–12)",
+          "Parks & Recreation: Iconic boardwalk, beaches, amusement piers, and multiple waterfront parks",
+          "Shopping & Dining: Boardwalk shops, local eateries, and casual to upscale dining throughout the city",
+          "Transportation: Easy access via Route 47, Ocean Drive, and the Garden State Parkway"
+        ]
+      },
+      {
+        "title": "Wildwood Crest",
+        "details": [
+          "Population: 3,102 (2020 Census)",
+          "Government: Borough",
+          "Services: Municipal services and public works; police, fire, and EMS coverage vary by address.",
+          "Median sold price (2025 site snapshot): ≈ $1.2M",
+          "Average property tax (2025 site snapshot): ≈ $5,565 annually",
+          "Schools (2025 site snapshot): Served by Wildwood Crest and Wildwood regional schools",
+          "Shopping & Dining: Small-town shops, local dining, and Access to Wildwood’s boardwalk and Cape May’s restaurants",
+          "Transportation: Connected via Ocean Drive, with Access to the Garden State Parkway"
+        ]
+      },
+      {
+        "title": "Woodbine",
+        "details": [
+          "Population: 2,141 (2020 Census)",
+          "Government: Borough",
+          "Services: Municipal services and public works; police, fire, and EMS coverage vary by address.",
+          "Median sold price (2025 site snapshot): ≈ $300,000",
+          "Average property tax (2025 site snapshot): ≈ $2,132 annually",
+          "Schools (2025 site snapshot): Woodbine Elementary (Pre-K–8); high school students attend Middle Township schools",
+          "Parks & Recreation: Proximity to Belleplain State Forest, Carmel Lakes, and outdoor recreation areas",
+          "Shopping & Dining: Limited local shops; residents rely on nearby Dennis Township, Upper Township, and Vineland for larger retail and dining",
+          "Transportation: Accessible via Routes 550 and 557; connections to the Garden State Parkway nearby"
+        ]
+      }
+    ],
+    "/cumberland-county": [
+      {
+        "title": "Bridgeton",
+        "details": [
+          "Population: 23,723 (2020 Census)",
+          "Government: City",
+          "Services: Municipal services and public works; police, fire, and EMS coverage vary by address.",
+          "Median sold price (2025 site snapshot): ≈ $185,000",
+          "Average property tax (2025 site snapshot): ≈ $4,184 annually",
+          "Schools (2025 site snapshot): Bridgeton Public School District (K–12)",
+          "Shopping & Dining: Known for its Victorian homes, tree-lined streets, and revitalizing downtown, the community blends old-world character with modern affordability.",
+          "Transportation: Unknown"
+        ]
+      },
+      {
+        "title": "Commercial Township",
+        "details": [
+          "Population: 4,691 (2020 Census)",
+          "Government: Township",
+          "Services: Municipal services and public works; police, fire, and EMS coverage vary by address.",
+          "Median sold price (2025 site snapshot): ≈ $155,000",
+          "Average property tax (2025 site snapshot): ≈ $3,016 annually",
+          "Schools (2025 site snapshot): Commercial Township School District (K–8), high schoolers attend Millville Public Schools",
+          "Parks & Recreation: Commercial Township sits along the Delaware Bay and offers a quiet, rural lifestyle with a focus on nature and small-community living.",
+          "Shopping & Dining: Commercial Township sits along the Delaware Bay and offers a quiet, rural lifestyle with a focus on nature and small-community living.",
+          "Transportation: Unknown"
+        ]
+      },
+      {
+        "title": "Deerfield Township",
+        "details": [
+          "Population: 3,142 (2020 Census)",
+          "Government: Township",
+          "Services: Municipal services and public works; police, fire, and EMS coverage vary by address.",
+          "Median sold price (2025 site snapshot): ≈ $220,000",
+          "Average property tax (2025 site snapshot): ≈ $5,662 annually",
+          "Schools (2025 site snapshot): Deerfield Township School (K–8); Cumberland Regional High School",
+          "Parks & Recreation: The community centers around Rosenhayn and seasonal farm markets, with local parks, ballfields, and trails adding to the small-town feel.",
+          "Shopping & Dining: Deerfield Township offers a quiet, rural lifestyle with Access to nearby Vineland and Bridgeton for shopping, jobs, and services."
+        ]
+      },
+      {
+        "title": "Downe Township",
+        "details": [
+          "Population: 1,400 (2020 Census)",
+          "Government: Township",
+          "Services: Municipal services and public works; police, fire, and EMS coverage vary by address.",
+          "Median sold price (2025 site snapshot): ≈ $140,000",
+          "Average property tax (2025 site snapshot): ≈ $4,274 annually",
+          "Schools (2025 site snapshot): Downe Township Elementary (K–8); high schoolers attend Cumberland Regional High School",
+          "Parks & Recreation: Downe Township is a quiet bayshore community known for its scenic marshes, wildlife, and water-based lifestyle.",
+          "Shopping & Dining: Unknown",
+          "Transportation: Unknown"
+        ]
+      },
+      {
+        "title": "Fairfield Township",
+        "details": [
+          "Population: 4,532 (2020 Census)",
+          "Government: Township",
+          "Services: Municipal services and public works; police, fire, and EMS coverage vary by address.",
+          "Median sold price (2025 site snapshot): ≈ $190,000",
+          "Average property tax (2025 site snapshot): ≈ $4,938 annually",
+          "Schools (2025 site snapshot): Fairfield Township School (K–8); Cumberland Regional High School",
+          "Parks & Recreation: The area is known for its farmland, historic churches, and outdoor recreation, making it a good fit for those who enjoy space and a small-town feel with strong community ties.",
+          "Shopping & Dining: Spread across open fields and woodlands, the township offers buyers larger lots, affordable homes, and a quieter pace while still being close to Bridgeton and Millville for shopping and services.",
+          "Transportation: Unknown"
+        ]
+      },
+      {
+        "title": "Greenwich Township",
+        "details": [
+          "Population: 774 (2020 Census)",
+          "Government: Township",
+          "Services: Municipal services and public works; police, fire, and EMS coverage vary by address.",
+          "Median sold price (2025 site snapshot): ≈ $250,000",
+          "Average property tax (2025 site snapshot): ≈ $6,621 annually",
+          "Schools (2025 site snapshot): Greenwich Township School (K–8); Cumberland Regional High School",
+          "Parks & Recreation: Known for its quiet farmland, preserved historic homes, and waterfront along the Cohansey River, it offers a peaceful rural lifestyle with strong ties to South Jersey’s past.",
+          "Shopping & Dining: Unknown",
+          "Transportation: Unknown"
+        ]
+      },
+      {
+        "title": "Hopewell Township",
+        "details": [
+          "Population: 4,396 (2020 Census)",
+          "Government: Township",
+          "Services: Municipal services and public works; police, fire, and EMS coverage vary by address.",
+          "Median sold price (2025 site snapshot): ≈ $240,000",
+          "Average property tax (2025 site snapshot): ≈ $5,908 annually",
+          "Schools (2025 site snapshot): Hopewell Crest School (K–8); Cumberland Regional High School",
+          "Shopping & Dining: Unknown",
+          "Transportation: Unknown"
+        ]
+      },
+      {
+        "title": "Lawrence Township",
+        "details": [
+          "Population: 3,092 (2020 Census)",
+          "Government: Township",
+          "Services: Municipal services and public works; police, fire, and EMS coverage vary by address.",
+          "Median sold price (2025 site snapshot): ≈ $230,000",
+          "Average property tax (2025 site snapshot): ≈ $5,110 annually",
+          "Schools (2025 site snapshot): Myron L. Powell School (K–8); Cumberland Regional High School",
+          "Parks & Recreation: Unknown",
+          "Shopping & Dining: Unknown",
+          "Transportation: Unknown"
+        ]
+      },
+      {
+        "title": "Maurice River Township",
+        "details": [
+          "Population: 3,268 (2020 Census)",
+          "Government: Township",
+          "Services: Municipal services and public works; police, fire, and EMS coverage vary by address.",
+          "Median sold price (2025 site snapshot): ≈ $210,000",
+          "Average property tax (2025 site snapshot): ≈ $4,676 annually",
+          "Schools (2025 site snapshot): Maurice River Township School (K–8); high schoolers attend Millville Public Schools",
+          "Parks & Recreation: Maurice River Township stretches along the Delaware Bay and is known for its scenic waterways, wildlife preserves, and peaceful rural lifestyle.",
+          "Shopping & Dining: Unknown",
+          "Transportation: Unknown"
+        ]
+      },
+      {
+        "title": "Millville",
+        "details": [
+          "Population: 27,649 (2020 Census)",
+          "Government: City",
+          "Services: Municipal services and public works; police, fire, and EMS coverage vary by address.",
+          "Median sold price (2025 site snapshot): ≈ $200,000",
+          "Average property tax (2025 site snapshot): ≈ $5,109 annually",
+          "Schools (2025 site snapshot): Millville Public School District (K–12)",
+          "Parks & Recreation: Millville is one of Cumberland County’s largest cities and offers a blend of cultural energy, outdoor recreation, and affordability.",
+          "Shopping & Dining: Historically known for its glassmaking industry, the city has revitalized its downtown with the Glasstown Arts District, featuring galleries, restaurants, and community events.",
+          "Transportation: Unknown"
+        ]
+      },
+      {
+        "title": "Shiloh Borough",
+        "details": [
+          "Population: 446 (2020 Census)",
+          "Government: Borough",
+          "Services: Municipal services and public works; police, fire, and EMS coverage vary by address.",
+          "Median sold price (2025 site snapshot): ≈ $210,000",
+          "Average property tax (2025 site snapshot): ≈ $4,914 annually",
+          "Schools (2025 site snapshot): Shiloh is part of the Hopewell Township School District (K–8); high schoolers attend Cumberland Regional High School",
+          "Parks & Recreation: Unknown",
+          "Shopping & Dining: Despite its size, the borough provides Access to Bridgeton and surrounding communities for schools, shopping, and services.",
+          "Transportation: Unknown"
+        ]
+      },
+      {
+        "title": "Stow Creek Township",
+        "details": [
+          "Population: 1,314 (2020 Census)",
+          "Government: Township",
+          "Services: Municipal services and public works; police, fire, and EMS coverage vary by address.",
+          "Median sold price (2025 site snapshot): ≈ $260,000",
+          "Average property tax (2025 site snapshot): ≈ $5,383 annually",
+          "Schools (2025 site snapshot): Stow Creek School (K–8, shared arrangement with Greenwich Township); Cumberland Regional High School",
+          "Parks & Recreation: Unknown",
+          "Shopping & Dining: Unknown",
+          "Transportation: Unknown"
+        ]
+      },
+      {
+        "title": "Upper Deerfield Township",
+        "details": [
+          "Population: 7,665 (2020 Census)",
+          "Government: Township",
+          "Services: Municipal services and public works; police, fire, and EMS coverage vary by address.",
+          "Median sold price (2025 site snapshot): ≈ $235,000",
+          "Average property tax (2025 site snapshot): ≈ $5,928 annually",
+          "Schools (2025 site snapshot): Upper Deerfield Township Schools (K–8); Cumberland Regional High School",
+          "Shopping & Dining: Unknown",
+          "Transportation: Unknown"
+        ]
+      },
+      {
+        "title": "Vineland",
+        "details": [
+          "Population: 61,002 (2020 Census)",
+          "Government: City",
+          "Services: Municipal services and public works; police, fire, and EMS coverage vary by address.",
+          "Median sold price (2025 site snapshot): ≈ $245,000",
+          "Average property tax (2025 site snapshot): ≈ $5,369 annually",
+          "Schools (2025 site snapshot): Vineland Public Schools (K–12)",
+          "Shopping & Dining: Vineland is the largest city in Cumberland County and serves as a regional hub for shopping, dining, and employment.",
+          "Transportation: Known for its diverse neighborhoods and convenient location along Route 55, Vineland offers a wide range of housing options—from affordable starter homes to newer subdivisions and larger properties on the outskirts."
+        ]
+      }
+    ],
+    "/gloucester-county": [
+      {
+        "title": "Clayton",
+        "details": [
+          "Population: 8,825 (2020 Census)",
+          "Government: Borough",
+          "Services: Clayton offers full police coverage, a volunteer fire department, borough-managed water and sewer, local trash and recycling, and seasonal recreation programs including youth sports.",
+          "Median sold price (2025 site snapshot): ≈ $259,000",
+          "Average property tax (2025 site snapshot): ≈ $7,031 annually",
+          "Schools (2025 site snapshot): Students attend Herma Simmons Elementary (PreK–5), Clayton Middle School (6–8), and Clayton High School (9–12), with the option to apply to Gloucester County Institute of Technology.",
+          "Parks & Recreation: Residents enjoy Clayton Park’s fields and walking paths, access to nearby Wilson Lake at Scotland Run Park, and community events like Clayton Day and outdoor movie nights.",
+          "Shopping & Dining: Local shopping is found along Delsea Drive with small businesses like Whitney’s Deli and Trinity Market, while major retail options are just minutes away in Glassboro and Deptford.",
+          "Transportation: Clayton sits along Route 47 with Access to Route 55, offering a 35-minute drive to Philadelphia or Wilmington, and is served by NJ Transit bus routes."
+        ]
+      },
+      {
+        "title": "Deptford Township",
+        "details": [
+          "Population: 32,025 (2020 Census)",
+          "Government: Township",
+          "Services: Deptford offers full-time police, multiple volunteer and career fire companies, municipal EMS, trash and recycling pickup, and a robust recreation department.",
+          "Median sold price (2025 site snapshot): ≈ $330,000",
+          "Average property tax (2025 site snapshot): ≈ $6,316 annually",
+          "Schools (2025 site snapshot): The Deptford Township School District serves K–12 with neighborhood elementary schools, Monongahela Middle School, and Deptford High School; students may also apply to GCIT or local private schools.",
+          "Parks & Recreation: Highlights include Fasola Park with walking trails and splash pad, sports complexes, a community center, skatepark, and nearby Tall Pines State Preserve.",
+          "Shopping & Dining: Home to Deptford Mall, Target, Walmart, and countless dining options; major retail corridors include Almonesson Road and Delsea Drive.",
+          "Transportation: Located at the junction of Route 42, Route 55, and I-295; NJ Transit buses provide direct service to Philadelphia; 20 minutes to Philly or the airport."
+        ]
+      },
+      {
+        "title": "East Greenwich Township",
+        "details": [
+          "Population: 11,711 (2020 Census)",
+          "Government: Township",
+          "Services: East Greenwich provides police protection, volunteer fire and EMS services, municipal utilities, trash and recycling, and a growing recreation program.",
+          "Median sold price (2025 site snapshot): ≈ $429,000",
+          "Average property tax (2025 site snapshot): ≈ $9,551 annually",
+          "Schools (2025 site snapshot): Students attend Jeffrey Clark (PreK–2) and Samuel Mickle (3–6), then move on to Kingsway Regional Middle and High Schools; GCIT is also available.",
+          "Shopping & Dining: Local shops and dining are found along Kings Highway, with larger shopping centers in nearby Logan, Woolwich, and Deptford.",
+          "Transportation: Near I-295 and the NJ Turnpike for Access to Philly, Delaware, and central NJ; Route 44 and Kings Highway run through town."
+        ]
+      },
+      {
+        "title": "Elk Township",
+        "details": [
+          "Population: 4,431 (2020 Census)",
+          "Government: Township",
+          "Services: Elk Township provides local police coverage, volunteer fire and EMS, public works for trash and snow removal, and maintains community parks.",
+          "Median sold price (2025 site snapshot): ≈ $368,000",
+          "Average property tax (2025 site snapshot): ≈ $7,912 annually",
+          "Schools (2025 site snapshot): Aura Elementary (PreK–6) serves local students; older students attend the Delsea Regional School District or can apply to GCIT.",
+          "Parks & Recreation: Ferrell Park offers ballfields and a playground; residents also enjoy nearby Scotland Run Park and the Elephant Swamp Trail.",
+          "Shopping & Dining: Limited to local markets and delis, with larger shopping available in Glassboro, Vineland, and Franklin Township.",
+          "Transportation: Accessible via Routes 77 and 538, with Access to Route 55 for north-south travel across South Jersey."
+        ]
+      },
+      {
+        "title": "Franklin Township",
+        "details": [
+          "Population: 16,403 (2020 Census)",
+          "Government: Township",
+          "Services: Franklin Township has its own police department, several volunteer fire companies, a municipal water authority, and offers public works and recreation programs.",
+          "Median sold price (2025 site snapshot): ≈ $343,500",
+          "Average property tax (2025 site snapshot): ≈ $7,095 annually",
+          "Schools (2025 site snapshot): Mary F. Janvier (K–2), Main Road (3–5), and Caroline L. Reutter (6); students move on to Delsea Regional (7–12); GCIT is also an option.",
+          "Parks & Recreation: Scotland Run Park offers boating, trails, and playgrounds; the township also maintains baseball fields and runs seasonal youth programs.",
+          "Shopping & Dining: Franklinville and Malaga offer local shops, wineries, and restaurants; residents also shop in nearby Glassboro and Vineland.",
+          "Transportation: Centrally located with access to Route 55 and Routes 40, 47, and 538, making for an easy drive to Philadelphia or the shore."
+        ]
+      },
+      {
+        "title": "Glassboro",
+        "details": [
+          "Population: 23,177 (2020 Census)",
+          "Government: Borough",
+          "Services: Glassboro provides full police coverage, a hybrid career/volunteer fire department, municipal EMS, and public utilities including water and sewer.",
+          "Median sold price (2025 site snapshot): ≈ $300,000",
+          "Average property tax (2025 site snapshot): ≈ $7,006 annually",
+          "Schools (2025 site snapshot): Glassboro Public Schools serve PreK–12 across several buildings, and Rowan University is a major presence in town; GCIT is also nearby.",
+          "Parks & Recreation: Residents enjoy New Street Park, South Delsea Drive Park, and community events like summer concerts and Rowan’s town-gown festivals.",
+          "Shopping & Dining: Downtown Glassboro has walkable shops and restaurants; big box stores and supermarkets are along Delsea Drive and near Rowan Blvd.",
+          "Transportation: Located on Route 47 with direct access to Route 55 and proposed Glassboro–Camden light rail; 30 minutes to Philadelphia."
+        ]
+      },
+      {
+        "title": "Greenwich Township",
+        "details": [
+          "Population: 4,928 (2020 Census)",
+          "Government: Township",
+          "Services: Greenwich Township operates its own police department, volunteer fire company, EMS, and local water and sewer services.",
+          "Median sold price (2025 site snapshot): ≈ $310,000",
+          "Average property tax (2025 site snapshot): ≈ $5,897 annually",
+          "Schools (2025 site snapshot): Students attend Broad Street School (K–6) and move on to Paulsboro High School through a sending-receiving relationship; GCIT is also an option.",
+          "Shopping & Dining: Small-town shopping is centered in Gibbstown with essentials and takeout options; larger stores are nearby in Paulsboro or East Greenwich.",
+          "Transportation: Close to I-295 and Route 130 for access to Philadelphia and Delaware; located along the Delaware River with port infrastructure nearby."
+        ]
+      },
+      {
+        "title": "Harrison Township (Mullica Hill)",
+        "details": [
+          "Population: 13,647 (2020 Census)",
+          "Government: Township",
+          "Services: Harrison Township offers local police, volunteer fire companies, shared EMS, and utility services for developed areas.",
+          "Median sold price (2025 site snapshot): ≈ $510,000",
+          "Average property tax (2025 site snapshot): ≈ $11,545 annually",
+          "Schools (2025 site snapshot): Elementary students attend Harrison Township and Pleasant Valley Schools; older students go to Kingsway Regional; GCIT is also available.",
+          "Parks & Recreation: Home to William Wilt Complex, Ella Harris Park, and Mullica Hill Recreation Center; events include Lights on Main and the Fall Festival.",
+          "Shopping & Dining: Mullica Hill offers antique shops, boutiques, cafés, and restaurants in a walkable historic downtown.",
+          "Transportation: Routes 322 and 45 run through town with access to Route 55 and NJ Turnpike for commutes to Philly or central NJ."
+        ]
+      },
+      {
+        "title": "Logan Township",
+        "details": [
+          "Population: 6,005 (2020 Census)",
+          "Government: Township",
+          "Services: Logan provides full police coverage, a volunteer fire company, local EMS, and public works supported by a strong industrial tax base.",
+          "Median sold price (2025 site snapshot): ≈ $360,000",
+          "Average property tax (2025 site snapshot): ≈ $4,711 annually",
+          "Schools (2025 site snapshot): Logan Township School District serves K–8; students attend Kingsway Regional High School or may apply to GCIT.",
+          "Parks & Recreation: Parks include Logan Elementary fields, Township Line Park, and community playgrounds; Logan Day and youth sports are popular.",
+          "Shopping & Dining: Beckett area offers small plazas and restaurants; nearby shopping centers in Woolwich and East Greenwich provide more options.",
+          "Transportation: Direct access to I-295 and the NJ Turnpike; minutes from Route 322 and Delaware Memorial Bridge."
+        ]
+      },
+      {
+        "title": "Mantua Township",
+        "details": [
+          "Population: 15,245 (2020 Census)",
+          "Government: Township",
+          "Services: Mantua offers full-time police, several volunteer fire companies, trash collection, sewer service, and year-round recreation.",
+          "Median sold price (2025 site snapshot): ≈ $323,700",
+          "Average property tax (2025 site snapshot): ≈ $7,870 annually",
+          "Schools (2025 site snapshot): Mantua Township School District covers PreK–6; students attend Clearview Regional Middle and High Schools for grades 7–12.",
+          "Parks & Recreation: Chestnut Branch Park is the largest; other spots include baseball fields, hiking areas, and access to Tall Pines State Preserve.",
+          "Shopping & Dining: Shopping is centered along Route 45 with small stores and restaurants; nearby retail options are in Woodbury and Deptford.",
+          "Transportation: Route 45 and Breakneck Road provide Access to Route 55 and I-295; ~25 minutes to Philadelphia."
+        ]
+      },
+      {
+        "title": "Monroe Township",
+        "details": [
+          "Population: 37,170 (2020 Census)",
+          "Government: Township",
+          "Services: Monroe has its own police department, volunteer fire districts, EMS, and a municipal utilities authority for water and sewer.",
+          "Median sold price (2025 site snapshot): ≈ $345,000",
+          "Average property tax (2025 site snapshot): ≈ $7,870 annually",
+          "Schools (2025 site snapshot): Served by Monroe Township Public Schools for K–12; students can also apply to GCIT or local private schools.",
+          "Shopping & Dining: Retail centers are along Black Horse Pike, including supermarkets, restaurants, and strip malls.",
+          "Transportation: Major access via Route 42 and Black Horse Pike; close to Atlantic City Expressway and Route 55."
+        ]
+      },
+      {
+        "title": "National Park",
+        "details": [
+          "Population: 3,029 (2020 Census)",
+          "Government: Borough",
+          "Services: National Park provides local police, volunteer fire services, public works, and community programs.",
+          "Median sold price (2025 site snapshot): ≈ $200,000",
+          "Average property tax (2025 site snapshot): ≈ $6,734 annually",
+          "Schools (2025 site snapshot): Students attend National Park Elementary (K–6) and then Gateway Regional High School; GCIT is also an option.",
+          "Parks & Recreation: Red Bank Battlefield Park is the main attraction with trails, playgrounds, and Revolutionary War reenactments.",
+          "Shopping & Dining: Small-town shops and eateries in town, with larger shopping nearby in West Deptford and Woodbury.",
+          "Transportation: Minutes from I-295 and Route 130; Access to Philadelphia via Walt Whitman or Commodore Barry Bridge."
+        ]
+      },
+      {
+        "title": "Newfield",
+        "details": [
+          "Population: 1,777 (2020 Census)",
+          "Government: Borough",
+          "Services: Newfield contracts police services through Franklin Township, operates a volunteer fire department, and manages trash and public works locally.",
+          "Median sold price (2025 site snapshot): ≈ $307,000",
+          "Average property tax (2025 site snapshot): ≈ $7,009 annually",
+          "Schools (2025 site snapshot): Students attend Newfield Elementary for K–6 and go to Delsea Regional for grades 7–12; GCIT is also available.",
+          "Parks & Recreation: Owens Park provides fields and playgrounds; additional recreation is available nearby in Franklin Township.",
+          "Shopping & Dining: A few local markets and delis serve the borough; residents shop in nearby Franklinville or Vineland for major needs.",
+          "Transportation: Accessible via Routes 40, 47, and 55 for regional travel; 45 minutes to Philadelphia or Atlantic City."
+        ]
+      },
+      {
+        "title": "Paulsboro",
+        "details": [
+          "Population: 6,230 (2020 Census)",
+          "Government: Borough",
+          "Services: Paulsboro has its own police and fire departments, EMS, and public works including water and sewer utilities.",
+          "Median sold price (2025 site snapshot): ≈ $225,000",
+          "Average property tax (2025 site snapshot): ≈ $5,152 annually",
+          "Schools (2025 site snapshot): Served by Paulsboro Public Schools (K–12); Paulsboro High School is known for athletics; GCIT is an option for vocational training.",
+          "Parks & Recreation: Paulsboro has neighborhood playgrounds and fields; community events include parades and youth leagues.",
+          "Shopping & Dining: Local diners, stores, and small businesses are concentrated downtown; major shopping is in West Deptford or Woodbury.",
+          "Transportation: Located off I-295 and Route 130, with direct access to the Port of Paulsboro and bridges into Delaware and Philly."
+        ]
+      },
+      {
+        "title": "Pitman",
+        "details": [
+          "Population: 8,783 (2020 Census)",
+          "Government: Borough",
+          "Services: Pitman provides local police, volunteer fire and ambulance services, water utilities, and robust community programs.",
+          "Median sold price (2025 site snapshot): ≈ $345,750",
+          "Average property tax (2025 site snapshot): ≈ $8,619 annually",
+          "Schools (2025 site snapshot): Pitman Public Schools serve K–12 across four schools; GCIT and nearby private schools are also options.",
+          "Parks & Recreation: Alcyon Park, Sunset Auditorium, and Betty Park offer trails, sports fields, and cultural events.",
+          "Shopping & Dining: Uptown Pitman is known for boutiques, cafés, breweries, and a walkable arts district.",
+          "Transportation: Minutes from Route 55 and Delsea Drive with access to Rowan University, Glassboro, and Philly."
+        ]
+      },
+      {
+        "title": "South Harrison Township",
+        "details": [
+          "Population: 3,396 (2020 Census)",
+          "Government: Township",
+          "Services: Police coverage is provided by shared services with Harrison Township; fire and EMS are volunteer-run; public works maintain roads and parks.",
+          "Median sold price (2025 site snapshot): ≈ $643,500",
+          "Average property tax (2025 site snapshot): ≈ $11,024 annually",
+          "Schools (2025 site snapshot): South Harrison Elementary (K–6) feeds into Kingsway Regional for grades 7–12; GCIT is an option.",
+          "Shopping & Dining: Limited commercial options in town; residents shop in Mullica Hill, Woolwich, or Swedesboro.",
+          "Transportation: Route 45 provides access to Route 55 and NJ Turnpike; 35 minutes to Philadelphia."
+        ]
+      },
+      {
+        "title": "Swedesboro",
+        "details": [
+          "Population: 2,716 (2020 Census)",
+          "Government: Borough",
+          "Services: Swedesboro partners with Woolwich for police services, operates a volunteer fire company, and offers local public works.",
+          "Median sold price (2025 site snapshot): ≈ $405,000",
+          "Average property tax (2025 site snapshot): ≈ $7,634 annually",
+          "Schools (2025 site snapshot): Students attend Margaret Clifford School (K–1) and Charles Harker School (2–5) in Woolwich; Kingsway Regional serves grades 6–12.",
+          "Parks & Recreation: Locke Avenue Park and Lake Park offer sports fields, trails, and playgrounds; seasonal events include food truck festivals and parades.",
+          "Shopping & Dining: Downtown Swedesboro features historic buildings with boutiques, cafés, and well-known restaurants like Botto’s Italian Line.",
+          "Transportation: Located near Route 322 and I-295 with Access to the NJ Turnpike and Commodore Barry Bridge."
+        ]
+      },
+      {
+        "title": "Washington Township",
+        "details": [
+          "Population: 48,714 (2020 Census)",
+          "Government: Township",
+          "Services: The township operates a full-time police force, several fire districts, EMS, and its own municipal utilities authority.",
+          "Median sold price (2025 site snapshot): ≈ $350,000",
+          "Average property tax (2025 site snapshot): ≈ $8,542 annually",
+          "Schools (2025 site snapshot): Washington Township Public Schools serve K–12, with optional enrollment at GCIT.",
+          "Parks & Recreation: Washington Lake Park is one of the state’s largest municipal parks, with trails, sports fields, and an amphitheater.",
+          "Shopping & Dining: Retail centers line the Black Horse Pike including Target, Costco, and various chain restaurants.",
+          "Transportation: Route 42, Route 55, and the Atlantic City Expressway offer fast access to Philly and the shore."
+        ]
+      },
+      {
+        "title": "Wenonah",
+        "details": [
+          "Population: 2,284 (2020 Census)",
+          "Government: Borough",
+          "Services: Wenonah provides small-scale police services, volunteer fire, public works, and its own water department.",
+          "Median sold price (2025 site snapshot): ≈ $296,000",
+          "Average property tax (2025 site snapshot): ≈ $11,712 annually",
+          "Schools (2025 site snapshot): Wenonah Elementary (K–6) sends students to Gateway Regional for grades 7–12; GCIT and nearby private schools are also options.",
+          "Parks & Recreation: The Wenonah Conservation Area features 6+ miles of nature trails, Comey’s Lake, and Wenonah Lake for summer recreation.",
+          "Shopping & Dining: Limited in-town options, but close to shopping in Mantua, Woodbury, and Deptford.",
+          "Transportation: Accessible via Mantua Avenue and Route 553 with quick links to Route 55 and I-295."
+        ]
+      },
+      {
+        "title": "West Deptford Township",
+        "details": [
+          "Population: 22,222 (2020 Census)",
+          "Government: Township",
+          "Services: West Deptford has full police and EMS, multiple volunteer fire districts, and runs its own utilities.",
+          "Median sold price (2025 site snapshot): ≈ $294,000",
+          "Average property tax (2025 site snapshot): ≈ $7,044 annually",
+          "Schools (2025 site snapshot): West Deptford Public Schools serve K–12, with strong sports and extracurriculars; GCIT is also nearby.",
+          "Parks & Recreation: RiverWinds Community Center offers pools, gyms, and event space; numerous parks and fields serve local youth programs.",
+          "Shopping & Dining: Mantua Pike and Crown Point Road feature shops and dining; Deptford Mall is minutes away.",
+          "Transportation: Located along I-295 and Route 44 with Access to bridges and Route 55."
+        ]
+      },
+      {
+        "title": "Westville",
+        "details": [
+          "Population: 4,270 (2020 Census)",
+          "Government: Borough",
+          "Services: Westville has a local police force, volunteer fire company, and borough-run utilities.",
+          "Median sold price (2025 site snapshot): ≈ $218,000",
+          "Average property tax (2025 site snapshot): ≈ $6,901 annually",
+          "Schools (2025 site snapshot): Parkview Elementary (K–6); students attend Gateway Regional High School; GCIT is an option.",
+          "Parks & Recreation: Thomas West Park and Crescent Park offer green space, playgrounds, and riverfront views.",
+          "Shopping & Dining: Local businesses line Delsea Drive and Broadway; nearby shopping in Deptford and Brooklawn.",
+          "Transportation: Access to I-295, Route 47, and Route 130; under 20 minutes to Philadelphia."
+        ]
+      },
+      {
+        "title": "Woodbury",
+        "details": [
+          "Population: 9,997 (2020 Census)",
+          "Government: City",
+          "Services: Full police and fire departments, EMS, and city-run water and sewer utilities.",
+          "Median sold price (2025 site snapshot): ≈ $277,000",
+          "Average property tax (2025 site snapshot): ≈ $7,494 annually",
+          "Schools (2025 site snapshot): Woodbury Public Schools serve K–12 with a small district feel; GCIT and private schools are options.",
+          "Parks & Recreation: Woodbury Creek Park and Stewart Lake Park provide walking trails, sports courts, and scenic waterfronts.",
+          "Shopping & Dining: Downtown Woodbury offers local shops, salons, and restaurants in a historic setting.",
+          "Transportation: Convenient to Route 45, I-295, and Route 130 with Access to Philly."
+        ]
+      },
+      {
+        "title": "Woodbury Heights Borough",
+        "details": [
+          "Population: 3,103 (2020 Census)",
+          "Government: Borough",
+          "Services: Borough contracts police services, maintains a volunteer fire company, and runs public works and utilities.",
+          "Median sold price (2025 site snapshot): ≈ $292,000",
+          "Average property tax (2025 site snapshot): ≈ $8,685 annually",
+          "Schools (2025 site snapshot): Woodbury Heights Elementary (K–6); students attend Gateway Regional for grades 7–12.",
+          "Parks & Recreation: Helen Avenue Sports Complex and borough fields host youth programs and community events.",
+          "Shopping & Dining: Limited local retail; larger stores are nearby in Woodbury and Deptford.",
+          "Transportation: Access to I-295, Route 45, and Route 47; under 25 minutes to Center City Philadelphia."
+        ]
+      },
+      {
+        "title": "Woolwich Township",
+        "details": [
+          "Population: 12,582 (2020 Census)",
+          "Government: Township",
+          "Services: Woolwich Township municipal services and public works; Woolwich Township Police Department, Woolwich Fire Company, and regional EMS coverage.",
+          "Average property tax (2025 site snapshot): ≈ $10,928 annually",
+          "Schools (2025 site snapshot): Swedesboro-Woolwich School District for elementary and middle grades; Kingsway Regional School District for middle and high school grades.",
+          "Parks & Recreation: Locke Ave Park, High Hill Park, Tranquility Trails, sports fields, walking paths, and township recreation programs.",
+          "Shopping & Dining: Everyday shopping around Center Square Plaza and Swedesboro-area restaurants, cafes, and local businesses.",
+          "Transportation: Route 322, nearby I-295, and access to the New Jersey Turnpike and Commodore Barry Bridge for regional commuting."
+        ]
+      }
+    ],
+    "/salem-county": [
+      {
+        "title": "Alloway Township",
+        "details": [
+          "Population: 3,289 (2020 Census)",
+          "Government: Township",
+          "Services: State Police coverage, volunteer fire & EMS, municipal public works",
+          "Median sold price (2025 site snapshot): ≈ $277,600",
+          "Average property tax (2025 site snapshot): ≈ $7,274 annually",
+          "Schools (2025 site snapshot): Alloway Township School (PreK–8); Woodstown High School (sending district)",
+          "Parks & Recreation: Alloway Lake, Camp Edge",
+          "Shopping & Dining: Small local businesses and shops along Main Street; nearest large stores in Pennsville or Woodstown",
+          "Transportation: Near Route 540 and Route 77"
+        ]
+      },
+      {
+        "title": "Carneys Point",
+        "details": [
+          "Population: 8,648 (2020 Census)",
+          "Government: Township",
+          "Services: Full-time police, volunteer fire and rescue, public works",
+          "Median sold price (2025 site snapshot): ≈ $179,500",
+          "Average property tax (2025 site snapshot): ≈ $5,838 annually",
+          "Schools (2025 site snapshot): Part of Penns Grove-Carneys Point Regional School District",
+          "Parks & Recreation: Carneys Point Recreation Area, Penns Grove Soccer Fields",
+          "Shopping & Dining: Penns Grove Shopping Center, Walmart, Acme",
+          "Transportation: I-295, US-130, NJ Turnpike"
+        ]
+      },
+      {
+        "title": "Elmer",
+        "details": [
+          "Population: 1,347 (2020 Census)",
+          "Government: Borough",
+          "Services: Local police, volunteer fire department, public works",
+          "Median sold price (2025 site snapshot): ≈ $214,300",
+          "Average property tax (2025 site snapshot): ≈ $6,834 annually",
+          "Schools (2025 site snapshot): Pittsgrove Township School District",
+          "Parks & Recreation: Elmer Lake, local community fields",
+          "Shopping & Dining: Elmer Shopping Center, small businesses, farm markets",
+          "Transportation: Route 40"
+        ]
+      },
+      {
+        "title": "Elsinboro Township",
+        "details": [
+          "Population: 1,002 (2020 Census)",
+          "Government: Township",
+          "Services: Shared police services, volunteer fire/EMS",
+          "Median sold price (2025 site snapshot): ≈ $201,100",
+          "Average property tax (2025 site snapshot): ≈ $5,848 annually",
+          "Schools (2025 site snapshot): Elsinboro Township School (K–8); Salem High School (sending district)",
+          "Parks & Recreation: Salem River shoreline, local ball fields",
+          "Shopping & Dining: Nearby Salem City has grocery and retail",
+          "Transportation: County Road 624, near Route 49"
+        ]
+      },
+      {
+        "title": "Lower Alloways Creek Township",
+        "details": [
+          "Population: 1,720 (2020 Census)",
+          "Government: Township",
+          "Services: Local police, volunteer fire and rescue",
+          "Median sold price (2025 site snapshot): ≈ $164,700",
+          "Average property tax (2025 site snapshot): ≈ $2,714 annually",
+          "Schools (2025 site snapshot): Lower Alloways Creek School (PreK–8); Salem High School (sending district)",
+          "Parks & Recreation: Hancock's Bridge Historic Site, local playgrounds",
+          "Shopping & Dining: Limited; nearest options in Salem City and Pennsville",
+          "Transportation: Route 623, close to NJ-49"
+        ]
+      },
+      {
+        "title": "Mannington Township",
+        "details": [
+          "Population: 1,476 (2020 Census)",
+          "Government: Township",
+          "Services: State Police coverage, volunteer fire departments",
+          "Median sold price (2025 site snapshot): ≈ $178,900",
+          "Average property tax (2025 site snapshot): ≈ $7,073 annually",
+          "Schools (2025 site snapshot): Mannington Township School (PreK–8); Salem High School (sending district)",
+          "Parks & Recreation: Mannington Meadows, Salem River wildlife areas",
+          "Shopping & Dining: Limited local stores; closest shopping in Salem City and Pennsville",
+          "Transportation: Route 45, near Route 49 and I-295"
+        ]
+      },
+      {
+        "title": "Oldmans Township",
+        "details": [
+          "Population: 1,912 (2020 Census)",
+          "Government: Township",
+          "Services: State Police coverage, volunteer fire and EMS",
+          "Median sold price (2025 site snapshot): ≈ $264,400",
+          "Average property tax (2025 site snapshot): ≈ $5,627 annually",
+          "Schools (2025 site snapshot): Oldmans Township School (K–8); high school students attend Penns Grove High School",
+          "Parks & Recreation: Pedricktown Park, Oldmans Creek Preserve nearby",
+          "Shopping & Dining: Pedricktown Farmers Market, local businesses; nearby shopping in Carneys Point",
+          "Transportation: NJ Turnpike, US-130, Route 48"
+        ]
+      },
+      {
+        "title": "Penns Grove Borough",
+        "details": [
+          "Population: 4,869 (2020 Census)",
+          "Government: Borough",
+          "Services: Local police, volunteer fire department, borough public works",
+          "Median sold price (2025 site snapshot): ≈ $127,900",
+          "Average property tax (2025 site snapshot): ≈ $4,916 annually",
+          "Schools (2025 site snapshot): Penns Grove–Carneys Point Regional School District",
+          "Parks & Recreation: Riverwalk Park, ball fields, Veterans Memorial Park",
+          "Shopping & Dining: Downtown shops, Penns Grove Shopping Center, nearby Carneys Point retail",
+          "Transportation: Route 130, I-295, NJ Turnpike"
+        ]
+      },
+      {
+        "title": "Pennsville",
+        "details": [
+          "Population: 12,698 (2020 Census)",
+          "Government: Township",
+          "Services: Full-time police, volunteer fire and EMS, full municipal services",
+          "Median sold price (2025 site snapshot): ≈ $191,200",
+          "Average property tax (2025 site snapshot): ≈ $8,044 annually",
+          "Schools (2025 site snapshot): Pennsville Public Schools (K–12), Pennsville Memorial High School",
+          "Parks & Recreation: Riverview Beach Park, Pennsville Recreation Complex",
+          "Shopping & Dining: Pennsville Acme, Walmart, local retail and restaurants",
+          "Transportation: I-295, Route 49, NJ Turnpike"
+        ]
+      },
+      {
+        "title": "Pilesgrove Township",
+        "details": [
+          "Population: 4,187 (2020 Census)",
+          "Government: Township",
+          "Services: State Police coverage, volunteer fire/EMS, public works",
+          "Median sold price (2025 site snapshot): ≈ $382,200",
+          "Average property tax (2025 site snapshot): ≈ $10,459 annually",
+          "Schools (2025 site snapshot): Woodstown-Pilesgrove Regional School District",
+          "Parks & Recreation: Marlton Recreation Area, Four Seasons Park",
+          "Shopping & Dining: Woodstown shopping district, farm markets",
+          "Transportation: Route 40, near Route 45 and NJ Turnpike"
+        ]
+      },
+      {
+        "title": "Pittsgrove",
+        "details": [
+          "Population: 8,788 (2020 Census)",
+          "Government: Township",
+          "Services: State Police coverage, several volunteer fire companies, public works",
+          "Median sold price (2025 site snapshot): ≈ $288,700",
+          "Average property tax (2025 site snapshot): ≈ $7,891 annually",
+          "Schools (2025 site snapshot): Pittsgrove Township School District (K–12), Schalick High School",
+          "Parks & Recreation: Parvin State Park, Green Branch Park",
+          "Shopping & Dining: Norma General Store, nearby Elmer and Vineland stores",
+          "Transportation: Route 56, Route 540, close to Route 55"
+        ]
+      },
+      {
+        "title": "Quinton Township",
+        "details": [
+          "Population: 2,584 (2020 Census)",
+          "Government: Township",
+          "Services: State Police coverage, volunteer fire company",
+          "Median sold price (2025 site snapshot): ≈ $199,200",
+          "Average property tax (2025 site snapshot): ≈ $6,002 annually",
+          "Schools (2025 site snapshot): Quinton Township School (PreK–8); Salem High School (sending district)",
+          "Parks & Recreation: Quinton Township Park, nearby Alloway Creek areas",
+          "Shopping & Dining: Local stores, nearby shopping in Salem and Alloway",
+          "Transportation: Route 49, County Route 653"
+        ]
+      },
+      {
+        "title": "Salem City",
+        "details": [
+          "Population: 5,351 (2020 Census)",
+          "Government: City",
+          "Services: Local police and fire departments, public works",
+          "Median sold price (2025 site snapshot): ≈ $89,900",
+          "Average property tax (2025 site snapshot): ≈ $4,030 annually",
+          "Schools (2025 site snapshot): Salem City School District (K–12), Salem High School",
+          "Parks & Recreation: Martin Luther King Park, Salem River Walk",
+          "Shopping & Dining: Broad Street shopping district, Dollar General, Save-A-Lot",
+          "Transportation: Route 49, near Route 45, access to I-295"
+        ]
+      },
+      {
+        "title": "Upper Pittsgrove",
+        "details": [
+          "Population: 3,433 (2020 Census)",
+          "Government: Township",
+          "Services: State Police coverage, volunteer fire companies",
+          "Median sold price (2025 site snapshot): ≈ $274,400",
+          "Average property tax (2025 site snapshot): ≈ $7,633 annually",
+          "Schools (2025 site snapshot): Upper Pittsgrove School (K–8); Woodstown High School (sending district)",
+          "Parks & Recreation: Daretown Lake, Monroeville Park",
+          "Shopping & Dining: Farm markets, general stores, nearby Elmer",
+          "Transportation: Route 77, Route 40, Route 604"
+        ]
+      },
+      {
+        "title": "Woodstown",
+        "details": [
+          "Population: 3,683 (2020 Census)",
+          "Government: Borough",
+          "Services: Local police, volunteer fire/EMS, borough public works",
+          "Median sold price (2025 site snapshot): ≈ $256,100",
+          "Average property tax (2025 site snapshot): ≈ $8,924 annually",
+          "Schools (2025 site snapshot): Woodstown-Pilesgrove Regional School District",
+          "Parks & Recreation: Marvin L. Watson Park, Memorial Lake Park",
+          "Shopping & Dining: Historic downtown shops, local restaurants, small grocery",
+          "Transportation: Route 45, Route 40"
+        ]
+      }
+    ]
+  }
+}

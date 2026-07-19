@@ -1,3 +1,4 @@
+import detailData from "./communityDetails.json";
 import profileData from "./communityProfiles.json";
 import type { ContentBlock, PageSection, SitePage } from "./types";
 
@@ -24,7 +25,19 @@ type CommunityProfileData = {
   counties: Record<string, CountyProfile>;
 };
 
+type CommunityDetail = {
+  title: string;
+  details: string[];
+};
+
+type CommunityDetailData = {
+  sourceRevision: string;
+  snapshotYear: number;
+  counties: Record<string, CommunityDetail[]>;
+};
+
 const profiles = profileData as CommunityProfileData;
+const historicalDetails = detailData as CommunityDetailData;
 
 const normalizedTitle = (value: string) => value
   .toLowerCase()
@@ -43,6 +56,15 @@ const communityTitleAliases = new Map([
 const profileKey = (title: string) => (
   communityTitleAliases.get(normalizedTitle(title)) || normalizedTitle(title)
 );
+
+const uniqueLooseTitleMap = <T extends { title: string }>(items: T[]) => {
+  const result = new Map<string, T | undefined>();
+  items.forEach((item) => {
+    const key = looseTitle(item.title);
+    result.set(key, result.has(key) ? undefined : item);
+  });
+  return result;
+};
 
 const sourceBlocks = (sources: CommunitySource[]): ContentBlock[] => sources.map((source) => ({
   tag: "SOURCE",
@@ -70,16 +92,15 @@ const readableDate = (date: string) => {
   return `${monthName} ${Number(day)}, ${year}`;
 };
 
-const restoreCountyPage = (page: SitePage, county: CountyProfile): SitePage => {
+const restoreCountyPage = (page: SitePage, county: CountyProfile, details: CommunityDetail[]): SitePage => {
   const communityByTitle = new Map(
     county.communities.map((profile) => [profileKey(profile.title), profile]),
   );
-  const communityByLooseTitle = new Map<string, CommunityProfile | undefined>();
-  county.communities.forEach((profile) => {
-    const key = looseTitle(profile.title);
-    communityByLooseTitle.set(key, communityByLooseTitle.has(key) ? undefined : profile);
-  });
+  const communityByLooseTitle = uniqueLooseTitleMap(county.communities);
+  const detailsByTitle = new Map(details.map((detail) => [profileKey(detail.title), detail]));
+  const detailsByLooseTitle = uniqueLooseTitleMap(details);
   const matchedProfiles = new Set<string>();
+  const matchedDetails = new Set<string>();
 
   const sections = page.sections.map((section): PageSection => {
     if (section.kind === "intro") {
@@ -90,6 +111,10 @@ const restoreCountyPage = (page: SitePage, county: CountyProfile): SitePage => {
           heading ? { ...heading } : { tag: "H1", text: county.name },
           { tag: "P", text: county.intro.summary },
           { tag: "P", text: `Community profiles updated ${readableDate(profiles.updated)}.` },
+          {
+            tag: "P",
+            text: `Expanded profiles retain the original site's detailed community snapshot. Population is labeled from the 2020 Census; price, tax, and school fields are labeled as ${historicalDetails.snapshotYear} snapshots rather than current figures.`,
+          },
           ...sourceBlocks(county.intro.sources),
         ],
       };
@@ -100,13 +125,17 @@ const restoreCountyPage = (page: SitePage, county: CountyProfile): SitePage => {
     const key = profileKey(currentTitle);
     const profile = communityByTitle.get(key) || communityByLooseTitle.get(looseTitle(currentTitle));
     if (!profile) throw new Error(`Missing sourced community profile for ${currentTitle} on ${page.path}.`);
+    const detail = detailsByTitle.get(key) || detailsByLooseTitle.get(looseTitle(currentTitle));
+    if (!detail) throw new Error(`Missing historical community details for ${currentTitle} on ${page.path}.`);
     matchedProfiles.add(profileKey(profile.title));
+    matchedDetails.add(profileKey(detail.title));
 
     return {
       ...section,
       blocks: [
         { tag: "H3", text: profile.title },
         { tag: "P", text: profile.summary },
+        ...detail.details.map((text) => ({ tag: "P", text })),
         ...sourceBlocks(profile.sources),
       ],
     };
@@ -119,14 +148,23 @@ const restoreCountyPage = (page: SitePage, county: CountyProfile): SitePage => {
     throw new Error(`Unused sourced community profiles on ${page.path}: ${missing.join(", ")}.`);
   }
 
-  return { ...page, sections };
+  if (matchedDetails.size !== detailsByTitle.size) {
+    const missing = details
+      .filter((detail) => !matchedDetails.has(profileKey(detail.title)))
+      .map((detail) => detail.title);
+    throw new Error(`Unused historical community details on ${page.path}: ${missing.join(", ")}.`);
+  }
+
+  return { ...page, title: `${county.name}, New Jersey Real Estate and Local Information`, sections };
 };
 
 export const communityProfileUpdated = profiles.updated;
+export const communityDetailSnapshotYear = historicalDetails.snapshotYear;
 
 export function applyCommunityProfiles(pages: SitePage[]): SitePage[] {
   return pages.map((page) => {
     const county = profiles.counties[page.path];
-    return county ? restoreCountyPage(page, county) : page;
+    const details = historicalDetails.counties[page.path];
+    return county ? restoreCountyPage(page, county, details || []) : page;
   });
 }

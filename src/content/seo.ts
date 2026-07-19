@@ -152,7 +152,7 @@ export const getSeoForPath = (path: string, page?: SitePage, overrides?: SeoOver
   const entry = seoByPath.get(canonicalPath);
   const title = overrides?.title || entry?.title || page?.title || siteName;
   const description = overrides?.description || entry?.description ||
-    "South Jersey county and community guides covering Atlantic, Burlington, Camden, Cape May, Cumberland, Gloucester, and Salem Counties.";
+    "South Jersey real estate and local information covering Atlantic, Burlington, Camden, Cape May, Cumberland, Gloucester, and Salem Counties.";
   const image = overrides?.image || entry?.image || defaultImage;
   const pageName = page?.title || pageNameFromTitle(title) || siteName;
   const imageMetadata = socialImageMetadata.get(localImagePath(image));
@@ -268,7 +268,7 @@ export const buildStructuredData = (
       "@id": `${siteUrl}/#website`,
       url: `${siteUrl}/`,
       name: normalizedBrandName,
-      description: "South Jersey county and community guides covering Atlantic, Burlington, Camden, Cape May, Cumberland, Gloucester, and Salem Counties.",
+      description: "South Jersey real estate and local information covering Atlantic, Burlington, Camden, Cape May, Cumberland, Gloucester, and Salem Counties.",
       inLanguage: "en-US",
     },
     {

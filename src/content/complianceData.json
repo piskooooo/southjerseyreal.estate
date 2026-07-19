@@ -19,7 +19,7 @@
   "verificationDate": "2026-07-18",
   "realtorMembershipVerified": true,
   "realtorMembershipVerificationDate": "2026-07-18",
-  "providerDirectoryVerificationComplete": false,
+  "providerDirectoryVerificationComplete": true,
   "idxListingsEnabled": false,
   "sources": {
     "licenseSearch": "https://www-dobi.nj.gov/DOBI_LicSearch/recSearch.jsp",

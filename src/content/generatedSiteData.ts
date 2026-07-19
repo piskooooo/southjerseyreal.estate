@@ -5,7 +5,7 @@ import type { SitePage } from "./types";
 export const generatedPages: SitePage[] = [
   {
     "path": "/atlantic-county",
-    "title": "Atlantic County, New Jersey Community Guide",
+    "title": "Atlantic County, New Jersey Real Estate and Local Information",
     "sections": [
       {
         "id": "67e73194733c042c6051fdfe",
@@ -663,7 +663,7 @@ export const generatedPages: SitePage[] = [
   },
   {
     "path": "/burlington-county",
-    "title": "Burlington County, New Jersey Community Guide",
+    "title": "Burlington County, New Jersey Real Estate and Local Information",
     "sections": [
       {
         "id": "67e7325143f0be29d311bcc6",
@@ -1763,7 +1763,7 @@ export const generatedPages: SitePage[] = [
   },
   {
     "path": "/camden-county",
-    "title": "Camden County, New Jersey Community Guide",
+    "title": "Camden County, New Jersey Real Estate and Local Information",
     "sections": [
       {
         "id": "67e1ec493382bf36e28274b8",
@@ -2707,7 +2707,7 @@ export const generatedPages: SitePage[] = [
   },
   {
     "path": "/cape-may-county",
-    "title": "Cape May County, New Jersey Community Guide",
+    "title": "Cape May County, New Jersey Real Estate and Local Information",
     "sections": [
       {
         "id": "67e73325765cff3b21e3845d",
@@ -3183,7 +3183,7 @@ export const generatedPages: SitePage[] = [
   },
   {
     "path": "/cumberland-county",
-    "title": "Cumberland County, New Jersey Community Guide",
+    "title": "Cumberland County, New Jersey Real Estate and Local Information",
     "sections": [
       {
         "id": "67e1ec493382bf36e2827509",
@@ -3607,7 +3607,7 @@ export const generatedPages: SitePage[] = [
   },
   {
     "path": "/gloucester-county",
-    "title": "Gloucester County, New Jersey Community Guide",
+    "title": "Gloucester County, New Jersey Real Estate and Local Information",
     "sections": [
       {
         "id": "67e1ec493382bf36e28274fc",
@@ -4291,7 +4291,7 @@ export const generatedPages: SitePage[] = [
   },
   {
     "path": "/salem-county",
-    "title": "Salem County, New Jersey Community Guide",
+    "title": "Salem County, New Jersey Real Estate and Local Information",
     "sections": [
       {
         "id": "67e1ec493382bf36e28274c6",

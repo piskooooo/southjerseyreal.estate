@@ -14,7 +14,7 @@ export const connectNav = [
   { label: "Why New Jersey?", path: "/why-new-jersey" },
   { label: "Why South Jersey?", path: "/why-south-jersey" },
   { label: "Contact", path: "/contact" },
-  { label: "Provider Directory", path: "/partners" },
+  { label: "Real Estate Providers", path: "/partners" },
   { label: "Advertise", path: "/advertise" },
 ];
 
@@ -22,7 +22,7 @@ export const footerNav = [
   { label: "Contact", path: "/contact" },
   { label: "FAQ", path: "/faq" },
   { label: "About", path: "/about" },
-  { label: "Provider Directory", path: "/partners" },
+  { label: "Real Estate Providers", path: "/partners" },
   { label: "Advertise", path: "/advertise" },
   { label: "Privacy Policy", path: "/privacy-policy" },
   { label: "Terms of Service", path: "/terms-of-service" },
@@ -43,8 +43,8 @@ export const footerLinkGroups = [
   {
     label: "Resources",
     links: [
-      { label: "County Guides", path: "/counties" },
-      { label: "Provider Directory", path: "/partners" },
+      { label: "Counties", path: "/counties" },
+      { label: "Real Estate Providers", path: "/partners" },
       { label: "Advertise", path: "/advertise" },
       { label: "Why South Jersey?", path: "/why-south-jersey" },
       { label: "Why New Jersey?", path: "/why-new-jersey" },

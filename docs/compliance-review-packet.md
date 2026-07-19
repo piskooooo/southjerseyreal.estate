@@ -85,26 +85,24 @@ represented as a completed visual-timeline test.
 
 ## Provider Relationship Record
 
-HomeBase CRM is presented only as a technology vendor in the provider
-directory. The owner has confirmed all of the following:
+The provider directory is limited to unpaid real-estate-related listings. The
+owner confirmed on July 19, 2026 that neither the site operator nor the
+affiliated brokerage is to receive compensation for inclusion, ranking, or a
+consumer's selection of a listed provider. Mortgage and title-company facts
+were rechecked against current official provider profiles before restoration.
+The separate advertising program is reserved for businesses outside the real
+estate transaction, and no paid advertisement is currently live.
 
-- HomeBase CRM is owned by Fat Cat Finance, LLC.
-- Fat Cat Finance, LLC is the company credited with creating and maintaining
-  this website.
-- The HomeBase CRM directory entry is unpaid.
-- HomeBase CRM shares no ownership with this website or the affiliated
-  brokerage.
-
-Human confirmation is still needed that no referral, affiliate, family, or
-transaction-based arrangement has been omitted from either current directory
-entry.
+Human confirmation is still needed that no referral, affiliate, family,
+ownership, or other material relationship has been omitted from a current
+directory entry.
 
 ## Current Scope
 
-The site does not currently publish property listings, paid provider cards,
-awards, a multi-agent roster, or automated marketing calls/texts. Future Bright
-MLS/IDX work remains deferred in `bright-idx-backlog.md` and requires its own
-data-display review.
+The site does not currently publish property listings, paid settlement-provider
+cards, live local-business advertisements, awards, a multi-agent roster, or
+automated marketing calls/texts. Future Bright MLS/IDX work remains deferred in
+`bright-idx-backlog.md` and requires its own data-display review.
 
 Client feedback is limited to the About page. A genuine public review does not
 require a separate written-consent record merely because it is displayed here.

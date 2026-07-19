@@ -83,7 +83,7 @@ export function CommunityInformationDisclaimer({ navigate }: { navigate: Navigat
     <aside className="section community-information-disclaimer" aria-label="Community information note">
       <p>
         Community details can change. Confirm anything important to your decision with the appropriate source.{" "}
-        <InternalLink href="/disclaimer" navigate={navigate}>About these guides</InternalLink>
+        <InternalLink href="/disclaimer" navigate={navigate}>Website disclosures</InternalLink>
         .
       </p>
     </aside>
@@ -93,8 +93,9 @@ export function CommunityInformationDisclaimer({ navigate }: { navigate: Navigat
 export function ProviderChoiceDisclosure() {
   return (
     <aside className="provider-choice-disclosure" aria-label="Provider choice disclosure">
-      <strong>You are free to choose any provider.</strong> Material relationships and paid placements are identified
-      with the relevant entry.
+      <strong>Unpaid directory.</strong> The site operator and affiliated brokerage receive no fee or other compensation
+      for a provider's inclusion or selection. You are free to choose any provider. Inclusion is not a guarantee or
+      warranty; compare current credentials, services, fees, and terms directly.
     </aside>
   );
 }

@@ -35,11 +35,14 @@ const emailPattern = /[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/i;
 const contactLeadTypes = new Map([
   ["buy a home", "buy_home"],
   ["buy and sell", "buy_and_sell"],
+  ["advertising inquiry", "advertising"],
   ["partnership or advertising inquiry", "partnership_or_advertising"],
+  ["provider directory inquiry", "provider_directory"],
   ["sell a home", "sell_home"],
 ]);
 const newsletterLeadTypes = new Map([
   ["buying in south jersey", "buying_south_jersey"],
+  ["local community information", "community_guides"],
   ["local community guides", "community_guides"],
   ["market updates", "market_updates"],
   ["selling in south jersey", "selling_south_jersey"],

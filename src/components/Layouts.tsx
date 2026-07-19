@@ -41,7 +41,7 @@ const DEFAULT_NEWSLETTER_CONTENT: NewsletterContent = {
   eyebrow: "South Jersey market updates",
   heading: "Newsletter",
   introduction: "A weekly real estate email for South New Jersey homeowners, buyers, and locals who want to keep an eye on the market without digging through scattered reports.",
-  topics: ["Local housing trends", "County and town notes", "Buyer and seller tips", "New site guides"],
+  topics: ["Local housing trends", "County and town notes", "Buyer and seller tips", "New county and town pages"],
   note: "No spam. No daily blast. Just useful local notes focused on South Jersey once a week.",
   confirmationMessage: "Your email is confirmed. Welcome to the newsletter.",
   submitLabel: "Sign Up",
@@ -776,7 +776,7 @@ export function NewsletterPage({ content = DEFAULT_NEWSLETTER_CONTENT, navigate 
               <option>Market updates</option>
               <option>Buying in South Jersey</option>
               <option>Selling in South Jersey</option>
-              <option>Local community guides</option>
+              <option>Local community information</option>
             </select>
           </label>
 
@@ -934,7 +934,8 @@ export function ContactPage({ page, navigate }: PageProps) {
               <option>Sell a home</option>
               <option>Buy a home</option>
               <option>Buy and sell</option>
-              <option>Partnership or advertising inquiry</option>
+              <option>Provider directory inquiry</option>
+              <option>Advertising inquiry</option>
             </select>
           </label>
 

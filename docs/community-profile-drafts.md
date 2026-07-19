@@ -4,9 +4,9 @@ Last researched: July 19, 2026
 
 Status: **Editorial draft with a local compiled preview. Not published through the production editor. Owner review is required before any county batch is published.**
 
-Local preview prepared July 19, 2026. The preview restores the sourced county introductions and all 166 community cards for visual and editorial review while leaving production approval open.
+Local preview prepared July 19, 2026. The preview restores the sourced county introductions and all 166 community cards for visual and editorial review while leaving production approval open. It also restores the original site's structured community details where available; price, tax, and school details are labeled as 2025 site snapshots and must not be read as current figures.
 
-These drafts use the owner's requested casual-but-professional voice. They recover only objective ideas from the retired town narratives and replace the old targeting language, rankings, commute promises, market figures, and unsupported superlatives with current government sources.
+These drafts use the owner's requested casual-but-professional voice. They recover objective ideas from the retired town narratives, retain clearly dated historical snapshots where useful, and replace the old targeting language, rankings, commute promises, unqualified market claims, and unsupported superlatives with current government sources.
 
 ## Source Rules
 
@@ -32,43 +32,43 @@ Editor source-block shape:
 
 ### Atlantic County
 
-Atlantic County includes shore, mainland, and Pinelands municipalities, so the local details can change considerably from one part of the county to another. This guide is organized by municipality, with official county resources available for local governments, parks, beaches, transportation, libraries, and historic sites.
+Atlantic County stretches from Atlantic City's barrier-island shoreline through mainland suburbs, small inland cities, and Pinelands communities. Its real estate includes oceanfront and bayfront condominiums, older city neighborhoods, suburban single-family homes, and properties with more land farther inland. The Atlantic City Expressway, Garden State Parkway, U.S. Route 30, NJ Transit rail service, and Atlantic City International Airport connect different parts of the county. Beaches, marinas, golf courses, wineries, county parks, Stockton University, and Atlantic City's entertainment district all contribute to the county's unusually varied character.
 
 Source: [Atlantic County Municipal Governments](https://www.atlanticcountynj.gov/government/government-information/municipal-governments), accessed July 18, 2026.
 
 ### Burlington County
 
-Burlington County covers a broad stretch of South Jersey and includes cities, boroughs, and townships with distinct local services and land-use patterns. The county's official community hub connects visitors with its municipalities, parks, libraries, transportation information, events, and public services.
+Burlington County reaches from Delaware River communities and established suburbs into farmland, forests, and the Pinelands. Housing ranges from historic rowhouses and older borough homes to townhouses, postwar neighborhoods, newer subdivisions, and properties on larger wooded or agricultural lots. I-295, the New Jersey Turnpike, Routes 38, 70, 73, and 130, and NJ Transit's River Line shape travel through the more developed western side of the county. Historic town centers, the Rancocas Creek, Smithville Park, county farm and parkland, and access to the Pine Barrens give the county both metropolitan connections and substantial open space.
 
 Source: [Burlington County Community](https://www.burlingtoncountynj.gov/31/Community), accessed July 18, 2026.
 
 ### Camden County
 
-Camden County's municipalities range from the City of Camden to smaller boroughs and larger suburban townships. Use the cards below as starting points, then follow the official municipal links for current meetings, services, notices, and local records.
+Camden County sits directly across the Delaware River from Philadelphia and includes the City of Camden, compact older boroughs, large suburban townships, and more wooded communities toward the east. Its housing stock is equally varied, with rowhouses, early twentieth-century homes, postwar neighborhoods, condominiums, townhouses, and newer subdivisions. PATCO, NJ Transit, I-295, Route 42, Route 30, and the New Jersey Turnpike make transportation a major part of the county's geography. Cooper River Park, the Camden Waterfront, neighborhood downtowns, hospitals, colleges, restaurants, shops, and arts and entertainment venues create distinct local centers throughout the county.
 
 Source: [Municipalities in Camden County](https://www.camdencounty.com/your-government/municipalities-camden-county/), accessed July 18, 2026.
 
 ### Cape May County
 
-Cape May County has 16 municipalities across its barrier islands and mainland. The county's official municipal lookup is a practical starting point for finding the correct local government and current property-tax records without relying on an undated third-party summary.
+Cape May County has 16 municipalities spread across barrier islands, back bays, and the mainland at New Jersey's southern tip. The real estate mix includes Victorian homes, shore cottages, condominiums, duplexes, bayfront and oceanfront properties, and mainland single-family homes on larger lots. Ocean City, the Wildwoods, Sea Isle City, Avalon, Stone Harbor, and Cape May each have distinct resort identities, while Upper, Dennis, Middle, and Lower Townships contain a broader mix of year-round communities and coastal access. The Garden State Parkway, county shore routes, marinas, wildlife refuges, beaches, boardwalks, wineries, and preserved natural areas shape both daily life and the county's strong seasonal rhythm.
 
 Source: [Cape May County Property Tax Lookup](https://www.capemaycountynj.gov/1737/Cape-May-County-Property-Tax-Lookup), accessed July 18, 2026.
 
 ### Cumberland County
 
-Cumberland County has 14 municipalities, including three cities, one borough, and ten townships. The county's official directory provides the municipal-government links and contact points needed to verify local services and records.
+Cumberland County combines the cities of Bridgeton, Millville, and Vineland with smaller borough, township, agricultural, woodland, river, and Delaware Bay communities. Its housing includes historic downtown properties, ranch and split-level neighborhoods, newer single-family construction, rural homes, farms, and seasonal cottages near the bay. Route 55 is the principal north-south highway, while Routes 47 and 49 connect towns, employment centers, and shore destinations. The Maurice River, preserved forests and wetlands, working farms, Millville's Glasstown Arts District, museums, parks, and wildlife areas give the county a character that is both industrial and rural.
 
 Source: [Cumberland County Municipalities](https://www.cumberlandcountynj.gov/municipalities), accessed July 18, 2026.
 
 ### Gloucester County
 
-Gloucester County has 24 municipalities: one city, ten boroughs, and thirteen townships. This guide starts with the practical differences a visitor can verify through each local government, such as public services, parks, meetings, forms, and community calendars.
+Gloucester County runs from Delaware River communities through established suburbs and boroughs into farmland and lower-density townships. The county's real estate includes historic homes in Woodbury and older borough centers, postwar neighborhoods, townhouses, newer subdivisions, and properties with larger lots in its southern and eastern sections. I-295, Route 55, Route 42, and the New Jersey Turnpike connect the county with Philadelphia and the rest of South Jersey. Red Bank Battlefield, Scotland Run Park, local downtowns, farm markets, wineries, shopping districts, colleges, and community events reflect the mix of suburban growth and agricultural history found across its 24 municipalities.
 
 Sources: [Gloucester County Municipalities](https://www.gloucestercountynj.gov/831/Municipalities) and [New Jersey Municipalities](https://www.nj.gov/infobank/revmuni.htm), accessed July 18, 2026.
 
 ### Salem County
 
-Salem County's communities include boroughs, a city, and townships along the county's river, creek, and inland areas. The official county and state directories are the starting points for current municipal contacts and government records; older demographic tables should not be reused as present-day descriptions.
+Salem County occupies New Jersey's southwestern corner along the Delaware River and Bay, with a landscape of farms, wetlands, creeks, woodland, small boroughs, and the historic City of Salem. Housing ranges from older homes in town centers to farmhouses, modest single-family neighborhoods, and rural properties with more land. Routes 40, 45, and 49 provide the main local connections, with access toward the Delaware Memorial Bridge, Wilmington, Philadelphia, and the rest of South Jersey. Historic sites, wildlife refuges, river and creek access, local farms, Parvin State Park, and preserved open land are central to the county's identity.
 
 Sources: [About Salem County](https://www.salemcountynj.gov/about-salem-county/) and [New Jersey Municipalities](https://www.nj.gov/infobank/revmuni.htm), accessed July 18, 2026.
 

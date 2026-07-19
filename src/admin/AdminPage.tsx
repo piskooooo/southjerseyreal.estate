@@ -83,14 +83,14 @@ const navigationGroups: AdminNavGroup[] = [
       { key: "/about", label: "About", icon: BadgeInfo, viewPath: "/about" },
       { key: "/contact", label: "Contact", icon: Contact, viewPath: "/contact" },
       { key: "/newsletter", label: "Newsletter", icon: Newspaper, viewPath: "/newsletter" },
-      { key: "/partners", label: "Partners", icon: Building2, viewPath: "/partners" },
+      { key: "/partners", label: "Real estate providers", icon: Building2, viewPath: "/partners" },
       { key: "/advertise", label: "Advertise", icon: Megaphone, viewPath: "/advertise" },
       { key: "/why-new-jersey", label: "Why New Jersey", icon: Landmark, viewPath: "/why-new-jersey" },
       { key: "/why-south-jersey", label: "Why South Jersey", icon: Map, viewPath: "/why-south-jersey" },
     ],
   },
   {
-    label: "County guides",
+    label: "Counties",
     items: [
       { key: "/atlantic-county", label: "Atlantic", icon: Map, viewPath: "/atlantic-county" },
       { key: "/burlington-county", label: "Burlington", icon: Map, viewPath: "/burlington-county" },

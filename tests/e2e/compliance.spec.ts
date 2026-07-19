@@ -220,21 +220,30 @@ test("analytics remains off before opt-in and unloads after withdrawal", async (
   expect(await page.evaluate(() => window.localStorage.getItem("analytics-consent"))).toBe("granted");
 });
 
-test("provider directory shows choice and relationship disclosures", async ({ page }) => {
+test("unpaid providers and paid local advertising remain separate", async ({ page }) => {
   await openHydratedRoute(page, "/partners");
   const main = page.locator("main");
+  await expect(main).toContainText("Unpaid directory");
+  await expect(main).toContainText("receive no fee or other compensation");
   await expect(main).toContainText("You are free to choose any provider");
   await expect(main).toContainText("not a guarantee or warranty");
-  await expect(main).toContainText("owned by Fat Cat Finance, LLC");
-  await expect(main).toContainText("This directory entry is unpaid");
-  await expect(main).toContainText("does not share ownership");
   await expect(page.locator("footer")).toContainText(compliance.brokerLegalName);
-  await expect(main.locator("#brokerage-affiliation")).toHaveCount(0);
-  await expect(main).not.toContainText("NJDOBI reference numbers");
-  await page.locator("#homebase-crm summary").click();
-  await expect(main.locator('a[href="https://homebasecrm.com"]')).toBeVisible();
-  await expect(main).not.toContainText("Guaranteed Rate");
-  await expect(main).not.toContainText("Foundation Title");
+  await page.locator("#mortgage-professionals summary").click();
+  await expect(main).toContainText("Sam Hamilton");
+  await expect(main).toContainText("NMLS #1094595");
+  await expect(main).toContainText("Terri Santiago-Parker");
+  await expect(main.locator('a[href="https://lo.citizensbank.com/nj/marlton/drew-whipple"]')).toBeVisible();
+  await page.locator("#title-companies summary").click();
+  await expect(main).toContainText("Foundation Title, LLC");
+  await expect(main).not.toContainText("Signature Title Agency");
+
+  await openHydratedRoute(page, "/advertise");
+  const advertising = page.locator("main");
+  await expect(advertising).toContainText("not part of a real estate transaction");
+  await expect(advertising).toContainText("Paid advertisement");
+  await expect(advertising).toContainText("separate from the unpaid Real Estate Provider Directory");
+  await advertising.locator("#advertising-options summary").click();
+  await expect(advertising).toContainText("County or town placement");
 });
 
 test("desktop folders switch without overlap and support keyboard dismissal", async ({ page }) => {
@@ -275,7 +284,7 @@ test("hub labels, history, mobile navigation, analytics, and missing routes beha
   const desktopNav = page.locator(".desktop-nav");
   await desktopNav.getByRole("link", { name: "Counties", exact: true }).click();
   await expect(page).toHaveURL(/\/counties$/);
-  await expect(page.getByRole("heading", { level: 1, name: "South Jersey County Guides" })).toBeVisible();
+  await expect(page.getByRole("heading", { level: 1, name: "South Jersey Counties" })).toBeVisible();
   await expect(desktopNav.getByRole("link", { name: "Counties", exact: true })).toHaveAttribute("aria-current", "page");
 
   const analyticsCommands = await page.evaluate(() => (window.dataLayer || []).map((entry) => Array.from(entry as ArrayLike<unknown>)));

@@ -132,7 +132,7 @@ const newsletterSeed: NewsletterContent = {
     "Local housing trends",
     "County and town notes",
     "Buyer and seller tips",
-    "New site guides",
+    "New county and town pages",
   ],
   note: "No spam. No daily blast. Just useful local notes focused on South Jersey once a week.",
   confirmationMessage: "Your email is confirmed. Welcome to the newsletter.",
@@ -497,7 +497,7 @@ function assertComplianceCopy(pageKey: string, value: ManagedContent) {
   }
 
   const requiredMarkers: Partial<Record<string, string[]>> = {
-    "/advertise": ["Sponsored", "Paid advertisement", "material relationship"],
+    "/advertise": ["Paid advertisement", "material relationship", "real estate transaction"],
     "/faq": ["Broker compensation is not set by law and is fully negotiable", "You are free to choose any provider"],
     "/privacy-policy": ["Cloudflare", "Supabase", "Brevo", "Google Analytics", "not loaded until Analytics is accepted"],
     "/disclaimer": ["No agency relationship", "You are free to choose any provider", compliance.brokerLegalName],

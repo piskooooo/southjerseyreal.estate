@@ -1,13 +1,13 @@
 [
   {
     "path": "/",
-    "title": "South Jersey Real Estate | County and Community Guides",
-    "description": "Explore South Jersey county and community guides covering Atlantic, Burlington, Camden, Cape May, Cumberland, Gloucester, and Salem Counties.",
+    "title": "South Jersey Real Estate | Counties, Towns & Local Information",
+    "description": "Explore South Jersey real estate and local information across Atlantic, Burlington, Camden, Cape May, Cumberland, Gloucester, and Salem Counties.",
     "priority": "1.0"
   },
   {
     "path": "/counties",
-    "title": "South Jersey County Guides",
+    "title": "South Jersey Counties",
     "description": "Browse towns and cities across Atlantic, Burlington, Camden, Cape May, Cumberland, Gloucester, and Salem Counties in New Jersey.",
     "image": "/assets/live/camden-county-map-png.webp",
     "priority": "0.9"
@@ -15,55 +15,55 @@
   {
     "path": "/connect",
     "title": "Connect and Explore | South Jersey Real Estate",
-    "description": "Find South Jersey comparison guides, the newsletter, contact information, and additional real estate resources.",
+    "description": "Find New Jersey comparisons, the newsletter, contact information, and additional South Jersey real estate resources.",
     "image": "/assets/live/pitman-gloucester-jpg.webp",
     "priority": "0.75"
   },
   {
     "path": "/atlantic-county",
-    "title": "Atlantic County NJ Community Guide",
+    "title": "Atlantic County NJ Real Estate & Local Information",
     "description": "Explore shore communities, inland municipalities, and places across the mainland in Atlantic County, New Jersey.",
     "image": "/assets/live/atlantic-county-map-png.webp",
     "priority": "0.9"
   },
   {
     "path": "/burlington-county",
-    "title": "Burlington County NJ Community Guide",
+    "title": "Burlington County NJ Real Estate & Local Information",
     "description": "Explore Delaware River communities, suburban towns, and Pinelands municipalities across Burlington County, New Jersey.",
     "image": "/assets/live/burlington-county-map-png.webp",
     "priority": "0.9"
   },
   {
     "path": "/camden-county",
-    "title": "Camden County NJ Community Guide",
+    "title": "Camden County NJ Real Estate & Local Information",
     "description": "Explore Delaware River communities, established suburbs, and eastern townships across Camden County, New Jersey.",
     "image": "/assets/live/camden-county-map-png.webp",
     "priority": "0.9"
   },
   {
     "path": "/cape-may-county",
-    "title": "Cape May County NJ Community Guide",
+    "title": "Cape May County NJ Real Estate & Local Information",
     "description": "Explore barrier-island shore towns and mainland communities across Cape May County, New Jersey.",
     "image": "/assets/live/cape-may-county-map-png.webp",
     "priority": "0.85"
   },
   {
     "path": "/cumberland-county",
-    "title": "Cumberland County NJ Community Guide",
+    "title": "Cumberland County NJ Real Estate & Local Information",
     "description": "Explore cities and smaller communities across Cumberland County's agricultural, woodland, and Delaware Bay landscapes.",
     "image": "/assets/live/cumberland-county-map-png.webp",
     "priority": "0.9"
   },
   {
     "path": "/gloucester-county",
-    "title": "Gloucester County NJ Community Guide",
+    "title": "Gloucester County NJ Real Estate & Local Information",
     "description": "Explore river communities, suburban centers, and rural landscapes across Gloucester County, New Jersey.",
     "image": "/assets/live/gloucester-county-map-png.webp",
     "priority": "0.9"
   },
   {
     "path": "/salem-county",
-    "title": "Salem County NJ Community Guide",
+    "title": "Salem County NJ Real Estate & Local Information",
     "description": "Explore small municipalities and rural landscapes along the Delaware River and Bay in Salem County, New Jersey.",
     "image": "/assets/live/salem-county-map-png.webp",
     "priority": "0.85"
@@ -77,13 +77,13 @@
   },
   {
     "path": "/why-new-jersey",
-    "title": "Why New Jersey? | Regional Comparison Guide",
+    "title": "Why New Jersey? | New York, Pennsylvania & Delaware Compared",
     "description": "Compare New Jersey with New York, Pennsylvania, and Delaware through geography, culture, transportation, coastlines, and regional identity.",
     "priority": "0.7"
   },
   {
     "path": "/why-south-jersey",
-    "title": "Why South Jersey? | Regional Real Estate Guide",
+    "title": "Why South Jersey? | North and South Jersey Compared",
     "description": "Explore South Jersey's landscape, culture, transportation, housing patterns, and differences from North Jersey.",
     "priority": "0.7"
   },
@@ -101,14 +101,14 @@
   },
   {
     "path": "/partners",
-    "title": "Local Provider Directory | South Jersey Real Estate",
-    "description": "Browse a small directory of local organizations and tools connected with the South Jersey Real Estate website.",
+    "title": "Real Estate Provider Directory | South Jersey Real Estate",
+    "description": "Browse an unpaid directory of verified mortgage professionals, title companies, and other real estate providers serving New Jersey.",
     "priority": "0.45"
   },
   {
     "path": "/advertise",
-    "title": "Local Advertising Information | South Jersey Real Estate",
-    "description": "Learn about clearly labeled advertising opportunities for South Jersey businesses and how to submit an inquiry.",
+    "title": "Advertise a Local Business | South Jersey Real Estate",
+    "description": "Explore clearly labeled paid advertising options for South Jersey businesses outside the real estate transaction.",
     "priority": "0.4"
   },
   {

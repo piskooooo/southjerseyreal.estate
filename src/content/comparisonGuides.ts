@@ -36,13 +36,13 @@ export const comparisonGuides: Record<string, ComparisonGuide> = {
     path: "/why-new-jersey",
     title: "Why New Jersey?",
     intro:
-      "New Jersey fits shore towns, Pine Barrens, farmland, older cities, commuter corridors, and two major metropolitan orbits into a remarkably compact state. Its character comes from those contrasts, not from any single version of the Jersey stereotype.",
-    supportText: `Editorial comparison updated July 19, 2026. ${outOfStateServiceDisclosure}`,
+      "New Jersey works because it is compact, connected, and far more varied than outsiders expect. North Jersey pulls from New York, South Jersey pulls from Philadelphia and the shore, and the state fits older cities, commuter corridors, suburbs, farms, the Pine Barrens, Delaware River communities, and Atlantic barrier islands into a remarkably small area.",
+    supportText: `This is an editorial comparison of geography, culture, transportation, housing, and everyday character, updated July 19, 2026. ${outOfStateServiceDisclosure}`,
     panels: [
       {
         id: "nj-vs-ny",
-        title: "New Jersey and New York",
-        summary: "A compact crossroads beside a much larger state and global city.",
+        title: "NJ vs. NY",
+        summary: "City access and cultural energy without treating every New Jersey decision as an extension of New York City.",
         primaryLabel: "New Jersey",
         secondaryLabel: "New York",
         topics: [
@@ -73,13 +73,22 @@ export const comparisonGuides: Record<string, ComparisonGuide> = {
             takeaway:
               "New York has greater scale; New Jersey has an unusually concentrated mix of places and influences.",
           },
+          {
+            heading: "Housing and daily life",
+            primary:
+              "New Jersey offers dense city neighborhoods, rail-oriented suburbs, older downtown boroughs, shore properties, postwar subdivisions, and lower-density rural areas within reach of several employment centers.",
+            secondary:
+              "New York pairs an intensely urban and expensive global city with Long Island, commuter suburbs, upstate cities, college towns, agricultural regions, lake communities, and mountain areas spread across a much larger state.",
+            takeaway:
+              "New Jersey's advantage is not one housing type or price point; it is the number of different daily settings packed between two major cities and the coast.",
+          },
         ],
         bottomLine:
-          "New Jersey offers proximity to New York without simply functioning as an extension of it.",
+          "New Jersey offers proximity to New York's jobs and culture without simply functioning as an extension of the city or accepting a city-versus-upstate split.",
       },
       {
         id: "nj-vs-pa",
-        title: "New Jersey and Pennsylvania",
+        title: "NJ vs. PA",
         summary: "A coastal, compact state beside a larger inland neighbor.",
         primaryLabel: "New Jersey",
         secondaryLabel: "Pennsylvania",
@@ -111,13 +120,22 @@ export const comparisonGuides: Record<string, ComparisonGuide> = {
             takeaway:
               "The contrast is less city versus suburb than coast versus a much larger inland landscape.",
           },
+          {
+            heading: "Housing and everyday tradeoffs",
+            primary:
+              "New Jersey's compact municipal map puts shore towns, river communities, older boroughs, suburbs, farms, and major commercial corridors relatively close together, though taxes, insurance, and housing costs vary sharply by address.",
+            secondary:
+              "Pennsylvania can provide more land and lower housing costs in some regions, but distances between employment centers, amenities, and recreation can be greater outside its major metropolitan areas.",
+            takeaway:
+              "A useful comparison weighs the whole location: property type, taxes, travel, local services, and access to the places used every week.",
+          },
         ],
         bottomLine:
-          "New Jersey and Pennsylvania overlap culturally around Philadelphia, but their geography produces different daily patterns.",
+          "Pennsylvania offers enormous geographic range. New Jersey's case is the tighter combination of city access, shore culture, local downtowns, and regional connections.",
       },
       {
         id: "nj-vs-de",
-        title: "New Jersey and Delaware",
+        title: "NJ vs. DE",
         summary: "Two coastal states with very different scale and regional reach.",
         primaryLabel: "New Jersey",
         secondaryLabel: "Delaware",
@@ -149,14 +167,23 @@ export const comparisonGuides: Record<string, ComparisonGuide> = {
             takeaway:
               "The states share a bay and a coastal outlook, but they occupy different positions in the Northeast corridor.",
           },
+          {
+            heading: "Culture and practical tradeoffs",
+            primary:
+              "New Jersey has major concert and sports markets nearby, Atlantic City events, boardwalk traditions, diner culture, dense local services, and transportation systems connected with both New York and Philadelphia.",
+            secondary:
+              "Delaware has Wilmington arts and business districts, beach-town events, a quieter statewide scale, and tax-free retail shopping, with regional ties to Philadelphia, Baltimore, and the Delmarva Peninsula.",
+            takeaway:
+              "Delaware emphasizes simplicity and smaller scale; New Jersey emphasizes access, variety, and a larger network of distinct local places.",
+          },
         ],
         bottomLine:
-          "Delaware is compact and coastal; New Jersey adds more metropolitan, municipal, and shoreline variety.",
+          "Delaware is compact and coastal. New Jersey adds more metropolitan, municipal, cultural, transportation, and shoreline variety.",
       },
     ],
     closingTitle: "The New Jersey takeaway",
     closingText:
-      "New Jersey's appeal is not one universal lifestyle. It is the ability to move between city skylines, older boroughs, farms, forests, river towns, and the Atlantic coast without leaving the state. South Jersey adds its own Philadelphia-facing and shore-centered identity to that larger mix.",
+      "New Jersey is not one-note. City skylines, older boroughs, farms, forests, river towns, diners, boardwalks, commuter routes, and the Atlantic coast can all overlap within one state. South Jersey adds its own Philadelphia-facing, agricultural, Pinelands, bay, and shore identity to that larger mix.",
     closingLink: {
       label: "Compare North and South Jersey",
       href: "/why-south-jersey",
@@ -166,9 +193,9 @@ export const comparisonGuides: Record<string, ComparisonGuide> = {
     path: "/why-south-jersey",
     title: "Why South Jersey?",
     intro:
-      "South Jersey has its own rhythm, shaped by Philadelphia, the Delaware River, the Pine Barrens, farmland, Atlantic City, and the shore. It is not a single market or one uniform landscape, and that variety is the point of exploring it county by county.",
+      "South Jersey has its own rhythm. Philadelphia, the Delaware River, the Pine Barrens, farms, Atlantic City, Delaware Bay, boardwalks, and barrier-island shore towns all shape a region that feels different from the dense New York orbit of North Jersey. It is not one market or one uniform landscape, and that variety is the point.",
     supportText:
-      "Editorial comparison updated July 19, 2026. North Jersey and South Jersey are informal regional descriptions, so county and municipality names are more precise.",
+      "This editorial comparison covers geography, pace, food, sports, transportation, economic anchors, culture, and real estate, updated July 19, 2026. North Jersey and South Jersey are informal descriptions, so county and municipality names remain more precise.",
     panels: [
       {
         id: "south-vs-north-geography",
@@ -267,6 +294,35 @@ export const comparisonGuides: Record<string, ComparisonGuide> = {
           "South Jersey's network is organized around Philadelphia, the shore, and major highway corridors.",
       },
       {
+        id: "south-vs-north-economy",
+        title: "Economy, culture, and change",
+        summary: "Tourism, healthcare, education, agriculture, logistics, and local downtowns compared with the northern metropolitan economy.",
+        primaryLabel: "South Jersey",
+        secondaryLabel: "North Jersey",
+        topics: [
+          {
+            heading: "Economic anchors",
+            primary:
+              "South Jersey combines Philadelphia-oriented employment with healthcare systems, colleges, logistics corridors, agriculture, food production, shore tourism, and Atlantic City's casino, convention, and entertainment economy.",
+            secondary:
+              "North Jersey has deeper ties to New York City employment as well as finance, pharmaceuticals, technology, ports, logistics, higher education, healthcare, and corporate headquarters.",
+            takeaway:
+              "The north is more tightly integrated with a global city; the south draws from several smaller economic systems and seasonal industries.",
+          },
+          {
+            heading: "Culture and reinvestment",
+            primary:
+              "Atlantic City projects, shore-town reinvestment, farm markets, wineries, breweries, arts districts, historic downtowns, and local festivals continue to reshape how South Jersey presents itself.",
+            secondary:
+              "Jersey City, Newark, Hoboken, Montclair, and other northern centers have experienced their own cycles of redevelopment, arts investment, new housing, and downtown growth.",
+            takeaway:
+              "Both regions change, but South Jersey's strongest identity comes from developing its own places rather than copying the New York model.",
+          },
+        ],
+        bottomLine:
+          "North Jersey has the larger metropolitan engine; South Jersey combines regional employment with shore, agricultural, logistics, healthcare, education, and local-town economies.",
+      },
+      {
         id: "south-vs-north-real-estate",
         title: "Real estate and built environment",
         summary: "Property types and transaction questions change across both regions.",
@@ -298,7 +354,7 @@ export const comparisonGuides: Record<string, ComparisonGuide> = {
     ],
     closingTitle: "The South Jersey takeaway",
     closingText:
-      "South Jersey is not simply the quieter half of the state. It is a collection of distinct river, suburban, Pinelands, agricultural, bay, and shore communities with a shared Philadelphia-facing culture. The county guides are the place to see how those pieces differ.",
+      "South Jersey is not simply the quieter half of the state or a less expensive substitute for North Jersey. It is a collection of river, suburban, Pinelands, agricultural, bay, and shore communities with a shared Philadelphia-facing culture and sharply different local real estate. The county and town pages show how those pieces differ.",
     closingLink: {
       label: "Explore South Jersey Counties",
       href: "/counties",

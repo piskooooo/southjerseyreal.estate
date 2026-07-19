@@ -77,7 +77,7 @@ export function sanitizeImportedPages(pages) {
 
     return [{
       path: page.path,
-      title: `${countyName}, New Jersey Community Guide`,
+      title: `${countyName}, New Jersey Real Estate and Local Information`,
       sections: [
         {
           id: sourceIntro?.id || `${page.path.slice(1)}-intro`,

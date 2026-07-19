@@ -1,5 +1,9 @@
 import { describe, expect, it } from "vitest";
-import { applyCommunityProfiles, communityProfileUpdated } from "./communityProfiles";
+import {
+  applyCommunityProfiles,
+  communityDetailSnapshotYear,
+  communityProfileUpdated,
+} from "./communityProfiles";
 import { generatedPages } from "./generatedSiteData";
 
 describe("community profile restoration", () => {
@@ -8,6 +12,7 @@ describe("community profile restoration", () => {
 
   it("restores every county and community profile from the sourced editorial draft", () => {
     expect(communityProfileUpdated).toBe("2026-07-19");
+    expect(communityDetailSnapshotYear).toBe(2025);
     expect(pages).toHaveLength(7);
     expect(townSections).toHaveLength(166);
     expect(pages.every((page) => {
@@ -18,6 +23,15 @@ describe("community profile restoration", () => {
     })).toBe(true);
     expect(townSections.every((section) => section.blocks.some((block) => block.tag === "SOURCE"))).toBe(true);
     expect(townSections.every((section) => section.blocks[1]?.text.length > 60)).toBe(true);
+    expect(townSections.every((section) => section.blocks.length >= 10)).toBe(true);
+    expect(townSections.every((section) => (
+      section.blocks.some((block) => block.text.startsWith("Population:"))
+      && section.blocks.some((block) => block.text.startsWith("Government:"))
+      && section.blocks.some((block) => block.text.startsWith("Schools (2025 site snapshot):"))
+    ))).toBe(true);
+    expect(townSections.filter((section) => (
+      section.blocks.some((block) => block.text.startsWith("Parks & Recreation:"))
+    )).length).toBeGreaterThan(145);
   });
 
   it("replaces the stale Pine Valley card title", () => {

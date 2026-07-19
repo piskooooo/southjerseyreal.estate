@@ -38,9 +38,9 @@ const countyHubSections = countyNav.map((county) => ({
     { tag: "H2", text: `${county.label} County` },
     {
       tag: "P",
-      text: `Explore the towns and cities featured in the ${county.label} County guide.`,
+      text: `Explore towns, cities, and local real estate information across ${county.label} County.`,
     },
-    { tag: "A", text: `Open ${county.label} County Guide`, href: county.path },
+    { tag: "A", text: `Explore ${county.label} County`, href: county.path },
   ],
   images: [{ ...countyHubImages[county.path] }],
 }));
@@ -49,7 +49,7 @@ const connectHubSections = [
   {
     id: "connect-about",
     title: "About Arthur",
-    description: "Meet the New Jersey real estate professional behind this South Jersey guide.",
+    description: "Meet the New Jersey real estate professional who owns and maintains this website.",
     label: "About Arthur",
     href: "/about",
     image: {
@@ -81,9 +81,9 @@ const connectHubSections = [
   },
   {
     id: "connect-why-new-jersey",
-    title: "New Jersey Comparison Guide",
+    title: "Why New Jersey?",
     description: "Compare practical differences between New Jersey and nearby states, from property records to regional travel.",
-    label: "Explore the Regional Guide",
+    label: "Explore New Jersey",
     href: "/why-new-jersey",
     image: {
       src: "/assets/live/philly-skyline-from-camden-city-camden-jpg.webp",
@@ -92,9 +92,9 @@ const connectHubSections = [
   },
   {
     id: "connect-why-south-jersey",
-    title: "South Jersey Comparison Guide",
+    title: "Why South Jersey?",
     description: "See how North and South Jersey differ as broad regions, then compare the places that interest you.",
-    label: "Explore the Comparison Guide",
+    label: "Compare North and South Jersey",
     href: "/why-south-jersey",
     image: {
       src: "/assets/live/camden-county-map-png.webp",
@@ -110,16 +110,16 @@ const connectHubSections = [
   },
   {
     id: "connect-providers",
-    title: "Local Provider Directory",
-    description: "Browse local organizations and tools listed on this website.",
-    label: "View the Provider Directory",
+    title: "Real Estate Providers",
+    description: "Browse the unpaid directory of mortgage, title, and other transaction-related providers.",
+    label: "Browse Real Estate Providers",
     href: "/partners",
   },
   {
     id: "connect-advertise",
-    title: "Advertising Information",
-    description: "Learn about advertising opportunities for South Jersey businesses and how to submit an inquiry.",
-    label: "Review Advertising Information",
+    title: "Advertise a Local Business",
+    description: "Explore paid placements for South Jersey businesses outside the real estate transaction.",
+    label: "View Local Advertising",
     href: "/advertise",
   },
 ].map((item) => ({
@@ -144,9 +144,8 @@ export const pageOverrides: SitePage[] = [
           { tag: "H1", text: "South Jersey Real Estate" },
           {
             tag: "P",
-            text: "Explore South Jersey county by county, from river towns and inland communities to the shore.",
+            text: "Welcome to South Jersey Real Estate, a hub for real estate and local information throughout South Jersey. Use the county menu to explore each part of the region.",
           },
-          { tag: "A", text: "Browse County Guides", href: "/counties" },
         ],
         images: [
           {
@@ -158,16 +157,16 @@ export const pageOverrides: SitePage[] = [
       {
         id: "home-about",
         blocks: [
-          { tag: "H2", text: "About this guide" },
+          { tag: "H2", text: "South Jersey" },
           {
             tag: "P",
-            text: "South Jersey Real Estate is a county-by-county guide to communities across Atlantic, Burlington, Camden, Cape May, Cumberland, Gloucester, and Salem Counties.",
+            text: "From Delaware River towns and established suburbs to farmland, the Pine Barrens, Delaware Bay, and the Atlantic shore, South Jersey changes considerably from county to county.",
           },
           {
             tag: "P",
-            text: "Start with a county, then explore the towns and cities featured throughout the region.",
+            text: "Explore local real estate, housing snapshots, schools, parks, transportation, shopping, dining, and the character of communities throughout the region.",
           },
-          { tag: "A", text: "Browse County Guides", href: "/counties" },
+          { tag: "A", text: "Explore Counties", href: "/counties" },
         ],
         images: [
           {
@@ -181,16 +180,16 @@ export const pageOverrides: SitePage[] = [
   },
   {
     path: "/counties",
-    title: "South Jersey County Guides",
+    title: "South Jersey Counties",
     sections: [
       {
         id: "counties-intro",
         kind: "intro",
         blocks: [
-          { tag: "H1", text: "South Jersey County Guides" },
+          { tag: "H1", text: "South Jersey Counties" },
           {
             tag: "P",
-            text: "Start with one of seven county guides, then browse the towns and cities featured across South Jersey.",
+            text: "Choose one of seven counties, then browse its towns, cities, and detailed local information.",
           },
         ],
         images: [],
@@ -232,7 +231,7 @@ export const pageOverrides: SitePage[] = [
           },
           {
             tag: "P",
-            text: "I created South Jersey Real Estate as a practical county-by-county guide to a region that is far too varied to describe as one market.",
+            text: "I created South Jersey Real Estate to organize local real estate and community information county by county in a region that is far too varied to describe as one market.",
           },
           { tag: "A", text: "Contact", href: "/contact" },
           { tag: "H3", text: "Local roots" },
@@ -323,18 +322,18 @@ export const pageOverrides: SitePage[] = [
       {
         id: "contact-resources",
         blocks: [
-          { tag: "H3", text: "Local Provider Directory" },
+          { tag: "H3", text: "Real Estate Providers" },
           {
             tag: "P",
-            text: "Browse the local provider directory and choose the professionals who are right for you.",
+            text: "Browse the unpaid directory of lenders, title companies, and other transaction-related providers.",
           },
-          { tag: "A", text: "View the Provider Directory", href: "/partners" },
-          { tag: "H3", text: "Local Advertising" },
+          { tag: "A", text: "Browse Real Estate Providers", href: "/partners" },
+          { tag: "H3", text: "Advertise a Local Business" },
           {
             tag: "P",
-            text: "Learn about clearly labeled advertising opportunities for South Jersey businesses.",
+            text: "Explore paid placements for local businesses outside the real estate transaction.",
           },
-          { tag: "A", text: "View Advertising Information", href: "/advertise" },
+          { tag: "A", text: "View Local Advertising", href: "/advertise" },
         ],
         images: [],
       },
@@ -342,12 +341,12 @@ export const pageOverrides: SitePage[] = [
   },
   {
     path: "/partners",
-    title: "South Jersey Local Provider Directory",
+    title: "Real Estate Provider Directory",
     sections: [actionSection("partners-action")],
   },
   {
     path: "/advertise",
-    title: "Advertising Information",
+    title: "Advertise a Local Business",
     sections: [actionSection("advertise-action")],
   },
   {
@@ -441,7 +440,7 @@ export const pageOverrides: SitePage[] = [
           { tag: "H2", text: "Providers, advertising, and third-party links" },
           {
             tag: "P",
-            text: "You are free to choose any provider. Directory inclusion, advertising, or a third-party link is not a guarantee or warranty of services. Paid placements are labeled Sponsored and Paid advertisement, and material relationships should be disclosed with the relevant entry.",
+            text: "You are free to choose any provider. Directory inclusion, advertising, or a third-party link is not a guarantee or warranty of services. Paid placements are labeled Paid advertisement, and any additional material relationship is disclosed with the relevant entry.",
           },
           { tag: "H2", text: "Fair housing" },
           {

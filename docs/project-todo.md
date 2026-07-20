@@ -1,6 +1,6 @@
 # South Jersey Real Estate Project Checklist
 
-Last reviewed: July 19, 2026
+Last reviewed: July 20, 2026
 
 Use this file as the source of truth for unfinished work on `southjerseyreal.estate`. Check an item only after completing its **Done when** test. Never place passwords, SMTP credentials, webhook URLs, lead data, or other secrets in this file.
 
@@ -15,6 +15,8 @@ Use this file as the source of truth for unfinished work on `southjerseyreal.est
 - [x] 8. Add destination pages for the Counties and Connect header items
 - [ ] 9. Rebuild richer, sourced community profiles
 - [ ] 10. Add client reviews to the About page
+- [x] 11. Prepare a comprehensive marketing-ready project description and status-labeled feature list
+- [ ] 12. Add the intended HomeBase CRM and The Plum Real Estate Group links to the provider/partner presentation
 
 ## 1. Complete the Cloudflare Pages Cutover
 
@@ -164,7 +166,7 @@ Bright IDX and property-search planning is not part of the current `southjerseyr
 - [x] Add the local Supabase migration for the one-slot UUID administrator table, public published-only content, private drafts, RLS/grants, audited publish/revert/inquiry RPCs, and the admin-write-only `site-images` storage policies.
 - [x] Add the authenticated `site-rebuild` Edge Function with origin validation, JWT/user verification, UUID administrator verification, strict deploy-hook URL validation, and fail-closed error handling.
 - [x] Connect the public layouts to published Supabase content with compiled fallbacks, and add route-specific HTML/metadata plus sitemap prerendering for crawler-visible SEO changes.
-- [x] Add editor content/inbox/image tests and transactional pgTAP coverage. The current verification passes 79 Vitest tests, 49 database checks, the production build, Deno formatting/type checks, and public/fail-closed browser checks.
+- [x] Add editor content/inbox/image tests and transactional pgTAP coverage. The current verification passes 92 Vitest tests, 49 database checks, the production build, Deno formatting/type checks, and public/fail-closed browser checks.
 - [x] Push implementation commit `d98b8f5`, activation/retirement commit `1698230`, and Pages routing fix `5ead7ea` to `origin/main`; confirm the Cloudflare Pages production deployments and GitHub test workflow succeed.
 
 ### Production Activation and Acceptance
@@ -304,6 +306,53 @@ Google review cards, links to every complete review profile, fails cleanly when
 Google is unavailable, stays within the configured free quota, and the rest of
 the site remains focused on South Jersey real estate.
 
+## 11. Prepare the Marketing Description and Feature List
+
+**Goal:** Maintain a reusable, factually accurate description of the complete
+project, with status labels that distinguish production features from previews,
+activation-ready work, paused plans, deferred concepts, and separate companion
+projects.
+
+### Project Audit and Deliverables
+
+- [x] Review the production site, private editor, integrations, tests, project documentation, unpublished previews, and preserved roadmap work.
+- [x] Separate public visitor features, private content-management features, integrations, accessibility/SEO work, privacy/security controls, operational/recovery features, and future work into clear categories.
+- [x] Write one-line, short, portfolio, and extended project descriptions suitable for future marketing use.
+- [x] Produce a comprehensive feature inventory using explicit `Live`, `Live - Private`, `Beta / Editorial Preview`, `Built - Activation Pending`, `Planned / Paused`, `Deferred Concept`, and `Separate Companion Project` labels.
+- [x] Include the richer community profiles, Google review activation, dark-theme options, provider and advertising growth, deferred Bright IDX research, and separate weekly newsletter automation without presenting them as shipped.
+- [x] Add a marketing-claim guide that identifies accurate current language and claims that must wait for a status change.
+- [x] Keep private credentials, infrastructure identifiers, personal data, and secret values out of the marketing copy.
+- [x] Save the finished material in [marketing-project-description.md](./marketing-project-description.md).
+
+Completion date: July 20, 2026
+
+Maintenance note: this is a living marketing record. Update status labels and
+ready-to-use descriptions whenever a preview, activation-ready feature, or
+planned item changes production status.
+
+**Done when:** The saved document covers the whole project, includes reusable
+short and long descriptions plus a categorized feature inventory, contains no
+confidential information or unsupported live claims, and gives the owner clear
+language to use while unfinished work remains visible as unfinished.
+
+## 12. Add the Intended HomeBase CRM and Brokerage Links
+
+**Goal:** Preserve the owner's earlier request to include both organizations on
+the partners/provider page without mischaracterizing their ownership,
+relationship, or role.
+
+- [ ] Decide whether the current unpaid Real Estate Provider Directory should gain a separate `Partners and Vendors` section or whether its page title and structure should be broadened.
+- [ ] Add HomeBase CRM using [homebasecrm.com](https://homebasecrm.com) as the destination.
+- [ ] State only what is supportable: HomeBase CRM is owned by Fat Cat Finance, LLC, and there is no payment or cross-ownership relationship between it and South Jersey Real Estate.
+- [ ] Add The Plum Real Estate Group using its [main website](https://www.theplumrealestategroup.com/) rather than a team-specific page.
+- [ ] Keep the brokerage affiliation clear and avoid presenting either organization as a paid placement unless that relationship changes and is disclosed.
+- [ ] Verify the rendered page, navigation label, responsive layout, outbound-link analytics, and directory/advertising separation before publishing.
+- [ ] Update [marketing-project-description.md](./marketing-project-description.md) from `Planned / Paused` to `Live` only after the production page is confirmed.
+
+**Done when:** Both intended destinations appear in an accurately labeled
+production section, their relationships are described truthfully, and the
+marketing inventory matches the published page.
+
 ## Completed Work
 
 - [x] Rebuild the public site as a React/Vite application.
@@ -319,6 +368,6 @@ the site remains focused on South Jersey real estate.
 - [x] Move contact and newsletter handling to Supabase, Turnstile, and Brevo.
 - [x] Verify contact delivery and newsletter double opt-in end to end, then remove all test records.
 - [x] Save the reusable Turnstile Spin workflow under `.codex/skills/turnstile-spin` for future chats.
-- [x] Add 79 Vitest tests, 37 rendered-route compliance checks, and a 49-check transactional Supabase pgTAP suite, and keep the GitHub test workflow on every push.
+- [x] Add 92 Vitest tests, 37 rendered-route compliance checks, and a 49-check transactional Supabase pgTAP suite, and keep the GitHub test workflow on every push.
 - [x] Build and publish the private website-editor frontend, database migration, image/inbox support, managed public-content adapter, and SEO rebuild implementation while keeping production access fail-closed until provisioning is complete.
 - [x] Document private inquiry access, production test cleanup, Pages recovery, retired NAS resources, and the final human compliance handoff.

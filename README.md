@@ -2,7 +2,7 @@
 
 React/Vite source for `southjerseyreal.estate`.
 
-Project status and unfinished work are tracked in [`docs/project-todo.md`](docs/project-todo.md). The compliance implementation and remaining human approvals are recorded in [`docs/compliance-review-checklist.md`](docs/compliance-review-checklist.md), with a concise handoff in [`docs/compliance-review-packet.md`](docs/compliance-review-packet.md). The current visual system is documented in [`docs/color-palette.md`](docs/color-palette.md), and the paused dark-theme options are in [`docs/dark-theme-palette-review.md`](docs/dark-theme-palette-review.md). Cloud deployment and recovery procedures are in [`docs/cloudflare-pages-supabase-brevo.md`](docs/cloudflare-pages-supabase-brevo.md).
+Project status and unfinished work are tracked in [`docs/project-todo.md`](docs/project-todo.md). Reusable project descriptions, the complete status-labeled feature inventory, and marketing claim guidance are in [`docs/marketing-project-description.md`](docs/marketing-project-description.md). The compliance implementation and remaining human approvals are recorded in [`docs/compliance-review-checklist.md`](docs/compliance-review-checklist.md), with a concise handoff in [`docs/compliance-review-packet.md`](docs/compliance-review-packet.md). The current visual system is documented in [`docs/color-palette.md`](docs/color-palette.md), and the paused dark-theme options are in [`docs/dark-theme-palette-review.md`](docs/dark-theme-palette-review.md). Cloud deployment and recovery procedures are in [`docs/cloudflare-pages-supabase-brevo.md`](docs/cloudflare-pages-supabase-brevo.md).
 
 ## Project Layout
 

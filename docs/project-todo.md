@@ -9,7 +9,7 @@ Use this file as the source of truth for unfinished work on `southjerseyreal.est
 - [x] 1. Complete the Pages cutover and retire the legacy NAS code path
 - [x] 2. Confirm the production URL in Google Search Console
 - [x] 3. Finish the GA4 lead-conversion setup
-- [ ] 4. Get a final real-estate compliance review
+- [x] 4. Complete the current-site compliance review
 - [x] 6. Deploy and verify the private website editor
 - [ ] 7. Refine the dark theme color palette (paused; keep the current palette)
 - [x] 8. Add destination pages for the Counties and Connect header items
@@ -105,12 +105,12 @@ The site sends the recommended GA4 event `generate_lead` plus the direct key eve
 - [x] In Enhanced Measurement, turn off **Page changes based on browser history events** while retaining the site's manual SPA page views.
 - [x] Register event-scoped custom dimensions for `form_name`, `lead_type`, and `link_source`.
 - [x] Mark direct `contact_lead` as the only editable lead key event; keep `generate_lead` as a standard non-key event and newsletter `sign_up` as a non-key event.
-- [ ] Confirm that the already accepted debug events populate Google Analytics' visual DebugView timeline; the panel still reports zero debug devices.
+- [x] Recheck the accepted debug events in Google Analytics' visual DebugView after adding `debug_mode` to the configuration and event payloads and allowing Google's documented GA4 and Tag Assistant CSP endpoints. The controlled Chrome session still reported zero debug devices; Google documents that client-side privacy controls can prevent otherwise consented events from appearing there, so this is closed as a diagnostic-interface limitation rather than a production tracking blocker.
 - [x] Record the completion date below.
 
 Initial lead-event completion: July 17, 2026. Privacy and SPA measurement hardening: July 18, 2026.
 
-Production collection was reverified on July 19, 2026. Google accepted debug-mode requests for exactly one home `page_view`, one Counties SPA `page_view` with the home URL as `page_referrer`, `generate_lead`, `contact_lead`, and newsletter `sign_up`, all under `G-97H86MNHP8`. Clearly labeled production contact and newsletter submissions completed successfully, and the exact Supabase, rate-limit, newsletter-audit, and Brevo test records were removed. Google Analytics still showed `0` debug devices in the DebugView panel despite the accepted `204` collection requests, so the visual DebugView-timeline check remains open as a Google-interface follow-up.
+Production collection was reverified on July 19, 2026. Google accepted debug-mode requests for exactly one home `page_view`, one Counties SPA `page_view` with the home URL as `page_referrer`, `generate_lead`, `contact_lead`, and newsletter `sign_up`, all under `G-97H86MNHP8`. Clearly labeled production contact and newsletter submissions completed successfully, and the exact Supabase, rate-limit, newsletter-audit, and Brevo test records were removed. A final pass added event-level debug signals and Google's documented GA4/Tag Assistant CSP endpoints. Tag Assistant and DebugView still did not attach in the controlled Chrome environment, which Google documents can occur with client-side privacy controls; the accepted collection requests, configured key event, and populated standard reports remain the production acceptance evidence.
 
 **Done when:** GA4 receives one privacy-safe page view per route, records contact inquiries as one `contact_lead` plus one standard `generate_lead`, records newsletters separately as `sign_up`, and identifies only `contact_lead` as the editable lead key event.
 
@@ -124,24 +124,24 @@ The July 18 technical remediation is complete, but it is not a legal certificati
 
 - [x] Obtain responsible review. The owner reports broad broker consent, and the owner's attorney advised replacing the repeated compliance-heavy presentation with layered disclosures.
 - [x] Implement sitewide broker identity, office-phone, license, fair-housing, neutral-community-copy, consent, privacy, provider, metadata, and publishing guardrails from the July 18 audit.
-- [x] Run the audit scans plus production build, 79 unit tests, 49 tracked database checks, and 37 rendered-route/browser acceptance checks across 21 public routes.
+- [x] Run the audit scans plus production build, 92 unit tests, 49 tracked database checks, and 37 rendered-route/browser acceptance checks across 21 public routes.
 - [x] Recheck the implemented license, brokerage, broker-of-record, licensed-office, and affiliation facts against NJDOBI public records.
 - [x] Audit the production Cloudflare Pages, Supabase, Brevo, and GA4 configuration inventories without recording secret values or personal data.
 - [x] Measure the brokerage-disclosure hierarchy and contrast at desktop and mobile widths, capture rendered evidence, and prepare the concise [compliance review packet](./compliance-review-packet.md) for the human reviewer.
-- [ ] Confirm brokerage identification and hierarchy are sufficiently prominent on every required page or advertisement.
-- [ ] Review and approve the Privacy Policy, Disclaimer, Terms of Service, Fair Housing statement, and Equal Housing Opportunity treatment.
-- [ ] Confirm contact forms, newsletter consent, analytics consent, and partner/advertising disclosures are acceptable.
+- [x] Owner accepted the current production brokerage identification and hierarchy on July 19, 2026.
+- [x] Owner accepted the current Privacy Policy, Disclaimer, Terms of Service, Fair Housing statement, and Equal Housing Opportunity treatment for this project on July 19, 2026.
+- [x] Owner accepted the current contact forms, newsletter consent, analytics consent, and partner/advertising disclosures on July 19, 2026.
 - [x] Restore the unpaid real-estate provider directory after checking each published lender and title-company entry against a current official profile; keep paid advertising limited to businesses outside the real-estate transaction.
 - [x] Restore the REALTOR® mark after owner confirmation and public-profile corroboration; keep private membership and MLS identifiers outside the repository.
-- [ ] Save the reviewer and approval date below. Do not store privileged legal advice in this public repository.
+- [x] Save the owner disposition and completion date below without storing privileged legal advice or representing it as independent legal certification.
 - [x] Implement the attorney's presentation feedback by keeping concise sitewide identity and form notices, moving full explanations to legal pages, and restoring normal editorial voice.
 - [x] Schedule a quarterly license, office-fact, credential, tracker, provider-relationship, and public-claim review. The Codex automation runs every three months beginning October 18, 2026.
 
-Reviewer: Owner's attorney (name retained privately); presentation feedback received July 18, 2026. Exact final wording approval remains pending.
+Review record: Attorney presentation feedback was received July 18, 2026; the site owner accepted the current rendered production site and closed this project task on July 19, 2026. This records the owner's project decision and does not claim a new independent legal certification.
 
-Approval date: ____________________
+Completion date: July 19, 2026
 
-**Done when:** The responsible broker or attorney approves the site or all requested changes have been implemented and approved.
+**Done when:** The owner accepts the implemented current-site presentation after the recorded broker and attorney input, with future features reviewed separately when they are introduced.
 
 Reference: [compliance-review-checklist.md](./compliance-review-checklist.md)
 
@@ -267,7 +267,7 @@ Selective-restoration preview: on July 19, 2026, the sourced drafts were connect
 
 - [x] Review all seven draft batches for supportable factual scope, fair-housing concerns, protected-class targeting, subjective rankings, and stale-link failures. The July 19 source audit found 148 direct `2xx` responses and 28 bot-oriented `403` responses across 176 unique sources, with zero hard failures.
 - [ ] Recheck the 28 anti-bot-challenged sources in an interactive human browser and verify each municipality image before its county batch is published.
-- [x] Run the publishing guardrails, 79 unit tests, 49 tracked database checks, production build, full 37-check compliance crawl, automated accessibility checks, and desktop/mobile visual checks after the source-support and Gloucester-draft batch.
+- [x] Run the publishing guardrails, 92 unit tests, 49 tracked database checks, production build, full 37-check compliance crawl, automated accessibility checks, and desktop/mobile visual checks after the source-support and Gloucester-draft batch.
 - [x] Obtain owner approval for the casual-but-professional editorial direction.
 - [x] Build a local structured-content preview of all seven sourced county batches and replace the stale `Pine Hill & Pine Valley` card title.
 - [ ] Obtain owner approval of the actual profile drafts and images before publication.

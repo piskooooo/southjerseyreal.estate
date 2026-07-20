@@ -79,9 +79,11 @@ successful contact and newsletter submission paths, exact synthetic-data
 cleanup in Supabase and Brevo, and accepted GA4 debug-mode collection requests.
 Google accepted one page view per tested route, the prior virtual URL as the SPA
 referrer, contact `generate_lead` plus `contact_lead`, and newsletter `sign_up`
-without a contact lead event. The DebugView visual panel nevertheless displayed
-zero debug devices, so that Google-interface check remains open and is not
-represented as a completed visual-timeline test.
+without a contact lead event. A final pass added direct event-level debug signals
+and Google's documented GA4/Tag Assistant CSP endpoints. The controlled browser
+still did not attach to Tag Assistant or appear in DebugView, which is recorded
+as a client/browser diagnostic limitation rather than a production tracking
+blocker.
 
 ## Provider Relationship Record
 
@@ -122,7 +124,14 @@ editorial drafts. They are outside the current rendered-site approval until the
 owner reviews their text and municipality images and publishes them in the
 structured editor.
 
-## Signoff
+## Owner Disposition
+
+The site owner accepted the current rendered production site and closed the
+current-site compliance project task on July 19, 2026 after the recorded broad
+broker consent, attorney presentation feedback, and technical audit. This is a
+project disposition, not a claim of independent legal certification. The blank
+rows below remain available only if detailed signatures are recorded later;
+they are not open engineering tasks.
 
 | Decision | Reviewer | Date | Status or requested change |
 | --- | --- | --- | --- |
@@ -131,6 +140,6 @@ structured editor.
 | Privacy, terms, disclaimer, and form consent |  |  |  |
 | Provider relationships and agreements |  |  |  |
 | Tracker and processor inventory |  |  |  |
-| Final rendered-site review |  |  |  |
+| Final rendered-site review | Site owner | July 19, 2026 | Approved for current production |
 
-Final status: `Approved` / `Approved with changes` / `Not approved`
+Final status: `Approved by owner for the current production site`

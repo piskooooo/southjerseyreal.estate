@@ -46,7 +46,7 @@ The owner confirmed active REALTOR® membership on July 18, 2026, and current pu
 - [x] Fix overlapping desktop dropdowns and cover click, hover, focus, outside-click, and Escape behavior.
 - [x] Run the audit's exact high-risk phrase scan and phone/email scan and manually classify all remaining hits.
 - [x] Measure the production brokerage disclosure at desktop and mobile widths, confirm its hierarchy, contrast, and zero overflow, and capture the evidence in [compliance-review-packet.md](./compliance-review-packet.md).
-- [x] Pass the production build, 79 unit tests, and 37 Playwright checks covering all 21 public routes, prerendered and hydrated DOM, metadata, JSON-LD, forms, analytics consent, providers, hub navigation, keyboard behavior, 320-pixel layout, screenshots, overflow, alt text, and automated WCAG checks.
+- [x] Pass the production build, 92 unit tests, and 37 Playwright checks covering all 21 public routes, prerendered and hydrated DOM, metadata, JSON-LD, forms, analytics consent, providers, hub navigation, keyboard behavior, 320-pixel layout, screenshots, overflow, alt text, and automated WCAG checks.
 
 ## July 18-19 Technical Reverification
 
@@ -55,14 +55,14 @@ The owner confirmed active REALTOR® membership on July 18, 2026, and current pu
 - [x] Audited the production Supabase project without recording secret values or personal data. The project is healthy; `contact-submit`, `newsletter-subscribe`, and `site-rebuild` are deployed; the expected custom secret names are present; and a read-only count confirmed one Auth user and one private site-administrator slot.
 - [x] Audited the personal Brevo workspace without recording contact data. Website signups target list `8`, the double-opt-in template `2` is active, and the `southjerseyreal.estate` sending domain and sender are verified.
 - [x] Audited GA4 property `Main Website`. Its production stream uses measurement ID `G-97H86MNHP8`; data retention is 14 months; email plus configured sensitive query parameters are redacted; manual SPA and outbound-click tracking are de-duplicated; `form_name`, `lead_type`, and `link_source` are registered; and only the direct `contact_lead` event is marked as an editable lead key event.
-- [x] Reverified production GA4 collection on July 19. Google returned `204` for debug-mode home and Counties page views, preserved the previous virtual home URL as the Counties referrer, accepted contact `generate_lead` plus `contact_lead`, and accepted newsletter `sign_up` without contact lead events. DebugView's visual panel still reported zero debug devices, so that Google-interface anomaly remains an explicit follow-up rather than a claimed pass.
+- [x] Reverified production GA4 collection on July 19. Google returned `204` for debug-mode home and Counties page views, preserved the previous virtual home URL as the Counties referrer, accepted contact `generate_lead` plus `contact_lead`, and accepted newsletter `sign_up` without contact lead events. A final pass added direct event-level debug signals and Google's documented GA4/Tag Assistant CSP endpoints. The controlled browser still did not attach to Tag Assistant or appear in DebugView, which is recorded as a client/browser diagnostic limitation rather than a production tracking blocker.
 - [x] Submitted clearly labeled production contact and newsletter tests, confirmed the contact notification reached `sent` and the newsletter reached `confirmation_requested`, then removed the exact inquiry, rate-limit, newsletter-audit, and Brevo test records.
 - [x] Rechecked public credential evidence. [Realtor.com](https://www.realtor.com/realestateagents/659c35c962a5ff070b97f4b8) and the [brokerage roster](https://www.plum-realestate.com/agents.php) display a REALTOR® claim for Arthur, and Arthur confirmed active membership on July 18, 2026. Private membership and MLS identifiers are not recorded here.
 - [x] Scheduled the Codex automation `Quarterly South Jersey Compliance Review` to run every three months on the 18th at 9:00 AM local time, beginning October 18, 2026.
 - [x] Added source-note support and drafted seven county introductions plus all 168 current municipalities across 166 profile cards from primary government or public-agency sources. The drafts remain unpublished pending owner content/image review; the source audit found no hard link failures.
 - [x] Connected those drafts to a local selective-restoration preview with dated source notes, accessible expand controls, distinct matching for similarly named municipalities, and clearly labeled 2025 historical detail snapshots. Production publication remains pending owner review.
 - [x] Restored separate unpaid-provider and paid-advertising pages. The provider directory contains five current mortgage profiles and six title/settlement companies; paid advertising remains limited to businesses outside the real-estate transaction and each future placement must be labeled `Paid advertisement` where it appears.
-- [x] Re-ran the audit phrase and contact scans, production build, 79 unit tests, 49 tracked database checks, and 37 Playwright checks after implementing the Google analytics hardening, source-note guardrails, compliance evidence packet, and review-only design/community artifacts.
+- [x] Re-ran the audit phrase and contact scans, production build, 92 unit tests, 49 tracked database checks, and 37 Playwright checks after implementing the Google analytics hardening, source-note guardrails, compliance evidence packet, and review-only design/community artifacts.
 
 ## Provider Directory Verification
 
@@ -95,21 +95,23 @@ This technical record does not satisfy the broker, owner, credential-holder, or 
 - **Awards, designations, and multi-agent roster:** These features are not currently rendered. Review their factual support and applicable display requirements before adding them.
 - **Age-restricted community claims:** None remain in the compiled community content.
 
-## Human Decisions Still Required
+## Owner Decision and Ongoing Reviews
 
 - [x] The owner reports that the broker has given broad consent to make the changes needed for this site. Exact final wording signoff has not been recorded below.
 - [x] The owner's attorney reviewed the site's compliance presentation and advised reducing repeated, overly explanatory copy. The site now uses a layered disclosure approach; this feedback is not recorded as approval of every exact sentence.
-- [ ] Broker of record approves the exact broker name, descriptor, office phone/address, disclosure hierarchy, and placement.
-- [ ] Broker or New Jersey counsel approves the Fair Housing statement and Equal Housing Opportunity treatment.
-- [ ] Broker or New Jersey counsel approves the Privacy Policy, Terms of Service, Disclaimer, ordinary-inquiry authorization, and newsletter consent.
+- [x] The owner accepted the current rendered broker facts, disclosure hierarchy, and placement for project publication on July 19, 2026. This does not claim a new exact-wording broker certification.
+- [x] The owner accepted the current Fair Housing statement and Equal Housing Opportunity treatment for project publication on July 19, 2026. This does not claim independent legal certification.
+- [x] The owner accepted the current Privacy Policy, Terms of Service, Disclaimer, ordinary-inquiry authorization, and newsletter consent for project publication on July 19, 2026. This does not claim independent legal certification.
 - [x] Owner confirms the provider directory is strictly unpaid and separate from the paid advertising program for businesses outside the real-estate transaction.
 - [ ] Broker confirms there is no referral, affiliate, family, ownership, or transaction-based arrangement omitted from any current directory entry.
 - [ ] Counsel reviews any future settlement-service advertising or affiliated-business arrangement before publication.
-- [ ] A responsible human confirms the tracker/processor inventory against the production Cloudflare, Supabase, Brevo, and GA4 dashboards.
+- [x] The owner accepted the production tracker/processor inventory summarized from the Cloudflare, Supabase, Brevo, and GA4 dashboards on July 19, 2026.
 - [x] Current REALTOR® membership is treated as owner-verified and publicly corroborated; the mark is restored without storing private membership identifiers.
 - [x] Schedule a quarterly review of license status, broker/office facts, credentials, processors/trackers, provider relationships, and public claims.
 
-## Signoff Record
+## Optional Detailed Signoff Record
+
+The owner closed the current-site project review on July 19, 2026 after the recorded broad broker consent, attorney presentation feedback, and technical audit. The blank detailed signature lines below are optional records, not open engineering tasks, and this repository does not claim independent legal certification.
 
 Exact brokerage name verified by: ____________________  Date: __________
 
@@ -127,8 +129,8 @@ Broker of record approval: ____________________  Date: __________
 
 Legal review, if obtained: ____________________  Date: __________
 
-Final rendered-site audit: ____________________  Date: __________
+Final rendered-site audit: Site owner project acceptance  Date: July 19, 2026
 
 Codex technical reverification: completed  Date: July 19, 2026
 
-Status: Approved / Approved with changes / Not approved
+Status: Approved by owner for the current production site

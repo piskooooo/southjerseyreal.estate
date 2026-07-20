@@ -291,6 +291,7 @@ export const trackPageView = (path: string, title: string) => {
     page_title: containsPotentialPersonalData(title) ? "South Jersey Real Estate" : title,
     page_location: pageLocation,
   };
+  if (getTagAssistantDebugValue()) params.debug_mode = true;
   if (pageReferrer) params.page_referrer = pageReferrer;
 
   window.gtag?.("event", "page_view", params);
@@ -307,6 +308,7 @@ export const trackEvent = (name: string, params: Record<string, GtagValue> = {})
   if (getTagAssistantDebugValue()) {
     const pageLocation = sanitizeHttpUrl(window.location.href, true);
     if (pageLocation) safeParams.page_location = pageLocation;
+    safeParams.debug_mode = true;
   }
 
   window.gtag?.("event", name, safeParams);

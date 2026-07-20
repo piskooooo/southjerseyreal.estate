@@ -111,7 +111,7 @@ describe("consent-gated GA4 tracking", () => {
     );
   });
 
-  it("keeps Tag Assistant debug mode out of Analytics while preserving the browser signal", async () => {
+  it("keeps the Tag Assistant token out of page locations while marking debug events", async () => {
     const { setAnalyticsConsent, trackEvent, trackPageView } = await import("./analytics");
 
     window.history.replaceState(
@@ -129,6 +129,7 @@ describe("consent-gated GA4 tracking", () => {
         page_path: "/contact",
         page_title: "Contact",
         page_location: `${window.location.origin}/contact?utm_source=google`,
+        debug_mode: true,
         page_referrer: `${window.location.origin}/`,
       },
     ]);
@@ -153,6 +154,7 @@ describe("consent-gated GA4 tracking", () => {
       {
         form_name: "contact",
         page_location: `${window.location.origin}/contact?utm_source=google`,
+        debug_mode: true,
       },
     ]);
   });

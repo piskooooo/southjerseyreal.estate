@@ -11,7 +11,10 @@ vi.mock("../analytics", () => ({
 }));
 
 describe("content source notes", () => {
-  afterEach(cleanup);
+  afterEach(() => {
+    cleanup();
+    vi.mocked(trackLinkClick).mockClear();
+  });
 
   it("renders a dated authoritative source as an external link", () => {
     render(<Blocks blocks={[{
@@ -44,5 +47,25 @@ describe("content source notes", () => {
 
     expect(screen.queryByRole("link")).not.toBeInTheDocument();
     expect(screen.getByText("Incomplete draft source")).toBeVisible();
+  });
+
+  it("opens an external content button safely and tracks its destination", () => {
+    render(<Blocks blocks={[{
+      tag: "A",
+      text: "Visit HomeBase CRM",
+      href: "https://homebasecrm.com",
+    }]} />);
+
+    const link = screen.getByRole("link", { name: "Visit HomeBase CRM" });
+    expect(link).toHaveAttribute("href", "https://homebasecrm.com");
+    expect(link).toHaveAttribute("target", "_blank");
+    expect(link).toHaveAttribute("rel", "noreferrer");
+
+    link.click();
+    expect(trackLinkClick).toHaveBeenCalledWith(
+      "https://homebasecrm.com",
+      "Visit HomeBase CRM",
+      "content_button",
+    );
   });
 });

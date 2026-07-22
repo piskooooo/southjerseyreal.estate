@@ -281,11 +281,14 @@ export function Blocks({
 
         if (block.tag === "A" || ctaMap[block.text]) {
           const isLocal = href.startsWith("/");
+          const isExternalPage = href.startsWith("http://") || href.startsWith("https://");
           return (
             <a
               key={key}
               href={href || "#"}
               className="button"
+              target={isExternalPage ? "_blank" : undefined}
+              rel={isExternalPage ? "noreferrer" : undefined}
               onClick={(event) => {
                 trackLinkClick(href || "#", block.text, "content_button");
                 if (isLocal) {

@@ -113,8 +113,27 @@ export const resourcePages: Record<string, ResourcePage> = {
     intro:
       "Mortgage professionals, title companies, and other transaction-related providers serving New Jersey, with an emphasis on South Jersey.",
     supportText:
-      "Provider details were checked against official public profiles on July 19, 2026. Paid advertising for unrelated local businesses is handled separately.",
+      "Provider details were checked against official public profiles on July 19, 2026. The Partners and Vendors section separately identifies the site's disclosed business relationships. Paid advertising for unrelated local businesses is handled separately.",
     panels: [
+      {
+        id: "partners-and-vendors",
+        title: "Partners and Vendors",
+        summary: "A software vendor and the site owner's affiliated brokerage, with each relationship stated clearly.",
+        blocks: [
+          { tag: "H3", text: "HomeBase CRM" },
+          {
+            tag: "P",
+            text: "Software vendor. HomeBase CRM is owned by Fat Cat Finance, LLC. There is no payment or cross-ownership relationship between HomeBase CRM and South Jersey Real Estate.",
+          },
+          { tag: "A", text: "Visit HomeBase CRM", href: "https://homebasecrm.com" },
+          { tag: "H3", text: "The Plum Real Estate Group, LLC" },
+          {
+            tag: "P",
+            text: "Affiliated brokerage. The Plum Real Estate Group, LLC is the New Jersey real estate brokerage with which Arthur Pisko Jr. is affiliated. This is a disclosed brokerage affiliation, not a paid directory placement.",
+          },
+          { tag: "A", text: "Visit The Plum Real Estate Group", href: "https://www.theplumrealestategroup.com/" },
+        ],
+      },
       {
         id: "mortgage-professionals",
         title: "Mortgage Professionals",

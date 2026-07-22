@@ -221,13 +221,44 @@ test("analytics remains off before opt-in and unloads after withdrawal", async (
 });
 
 test("unpaid providers and paid local advertising remain separate", async ({ page }) => {
+  await page.route("https://www.googletagmanager.com/**", (route) => route.abort());
+  await page.setViewportSize({ width: 320, height: 900 });
   await openHydratedRoute(page, "/partners");
+  await page.getByRole("button", { name: "Cookie Settings" }).click();
+  await page.getByRole("button", { name: "Accept Analytics" }).click();
+  await expect(page.locator("#ga4-script")).toHaveCount(1);
   const main = page.locator("main");
   await expect(main).toContainText("Unpaid directory");
   await expect(main).toContainText("receive no fee or other compensation");
   await expect(main).toContainText("You are free to choose any provider");
   await expect(main).toContainText("not a guarantee or warranty");
   await expect(page.locator("footer")).toContainText(compliance.brokerLegalName);
+  const partnerPanel = page.locator("#partners-and-vendors");
+  await partnerPanel.locator("summary").click();
+  await expect(main).toContainText("HomeBase CRM is owned by Fat Cat Finance, LLC");
+  await expect(main).toContainText("no payment or cross-ownership relationship");
+  await expect(main).toContainText("disclosed brokerage affiliation, not a paid directory placement");
+  const homeBaseLink = partnerPanel.getByRole("link", { name: "Visit HomeBase CRM", exact: true });
+  const brokerageLink = partnerPanel.getByRole("link", { name: "Visit The Plum Real Estate Group", exact: true });
+  await expect(homeBaseLink).toHaveAttribute("target", "_blank");
+  await expect(homeBaseLink).toHaveAttribute("rel", "noreferrer");
+  await expect(brokerageLink).toHaveAttribute("target", "_blank");
+  expect(await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth)).toBeLessThanOrEqual(1);
+  await homeBaseLink.dispatchEvent("click");
+  await brokerageLink.dispatchEvent("click");
+  const partnerAnalytics = await page.evaluate(() => (window.dataLayer || []).map((entry) => Array.from(entry as ArrayLike<unknown>)));
+  expect(partnerAnalytics).toEqual(expect.arrayContaining([
+    expect.arrayContaining(["event", "outbound_click", expect.objectContaining({
+      destination_type: "external",
+      link_source: "content_button",
+      link_url: "https://homebasecrm.com/",
+    })]),
+    expect.arrayContaining(["event", "outbound_click", expect.objectContaining({
+      destination_type: "external",
+      link_source: "content_button",
+      link_url: "https://www.theplumrealestategroup.com/",
+    })]),
+  ]));
   await page.locator("#mortgage-professionals summary").click();
   await expect(main).toContainText("Sam Hamilton");
   await expect(main).toContainText("NMLS #1094595");
@@ -351,7 +382,7 @@ test("representative desktop and mobile screenshots render without overflow", as
     await page.screenshot({ path: `${screenshotDir}/desktop-${route === "/" ? "home" : route.slice(1)}.png` });
   }
 
-  for (const route of ["/", "/counties", "/connect", "/contact"]) {
+  for (const route of ["/", "/counties", "/connect", "/contact", "/partners"]) {
     await page.setViewportSize({ width: 320, height: 900 });
     await openHydratedRoute(page, route);
     await page.evaluate(() => window.scrollTo(0, 0));

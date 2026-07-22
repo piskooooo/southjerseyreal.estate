@@ -16,7 +16,7 @@ Use this file as the source of truth for unfinished work on `southjerseyreal.est
 - [ ] 9. Rebuild richer, sourced community profiles
 - [ ] 10. Add client reviews to the About page
 - [x] 11. Prepare a comprehensive marketing-ready project description and status-labeled feature list
-- [ ] 12. Add the intended HomeBase CRM and The Plum Real Estate Group links to the provider/partner presentation
+- [x] 12. Add the intended HomeBase CRM and The Plum Real Estate Group links to the provider/partner presentation
 
 ## 1. Complete the Cloudflare Pages Cutover
 
@@ -346,13 +346,17 @@ language to use while unfinished work remains visible as unfinished.
 the partners/provider page without mischaracterizing their ownership,
 relationship, or role.
 
-- [ ] Decide whether the current unpaid Real Estate Provider Directory should gain a separate `Partners and Vendors` section or whether its page title and structure should be broadened.
-- [ ] Add HomeBase CRM using [homebasecrm.com](https://homebasecrm.com) as the destination.
-- [ ] State only what is supportable: HomeBase CRM is owned by Fat Cat Finance, LLC, and there is no payment or cross-ownership relationship between it and South Jersey Real Estate.
-- [ ] Add The Plum Real Estate Group using its [main website](https://www.theplumrealestategroup.com/) rather than a team-specific page.
-- [ ] Keep the brokerage affiliation clear and avoid presenting either organization as a paid placement unless that relationship changes and is disclosed.
-- [ ] Verify the rendered page, navigation label, responsive layout, outbound-link analytics, and directory/advertising separation before publishing.
-- [ ] Update [marketing-project-description.md](./marketing-project-description.md) from `Planned / Paused` to `Live` only after the production page is confirmed.
+- [x] Keep the existing Real Estate Provider Directory title and navigation label, and add a separate `Partners and Vendors` section within that page.
+- [x] Add HomeBase CRM using [homebasecrm.com](https://homebasecrm.com) as the destination.
+- [x] State only what is supportable: HomeBase CRM is owned by Fat Cat Finance, LLC, and there is no payment or cross-ownership relationship between it and South Jersey Real Estate.
+- [x] Add The Plum Real Estate Group using its [main website](https://www.theplumrealestategroup.com/) rather than a team-specific page.
+- [x] Keep the brokerage affiliation clear and avoid presenting either organization as a paid placement unless that relationship changes and is disclosed.
+- [x] Verify the rendered page, navigation label, responsive layout, outbound-link analytics, and directory/advertising separation before publishing.
+- [x] Update [marketing-project-description.md](./marketing-project-description.md) from `Planned / Paused` to `Live` only after the production page is confirmed.
+
+Completion date: July 22, 2026
+
+Implementation note: `Real Estate Providers` remains the navigation label. A dedicated `Partners and Vendors` panel now identifies HomeBase CRM as a Fat Cat Finance, LLC-owned software vendor with no payment or cross-ownership relationship to South Jersey Real Estate, and identifies The Plum Real Estate Group, LLC as Arthur Pisko Jr.'s affiliated brokerage rather than a paid placement.
 
 **Done when:** Both intended destinations appear in an accurately labeled
 production section, their relationships are described truthfully, and the

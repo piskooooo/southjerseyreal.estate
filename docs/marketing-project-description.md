@@ -252,15 +252,13 @@ concept are documented without being presented as current website capabilities.
   participation.
 - **Planned / Paused:** Additional provider categories and entries can be added
   after their public facts and relationships are reviewed.
-- **Planned / Paused:** HomeBase CRM may be included as a partner or vendor. It
-  is owned by Fat Cat Finance, LLC; there is no payment or cross-ownership
-  relationship between South Jersey Real Estate and HomeBase CRM. This entry
-  should link to [homebasecrm.com](https://homebasecrm.com) and should not be
-  described as live until it is confirmed on the published page.
-- **Planned / Paused:** The Plum Real Estate Group may be linked through its
-  [main website](https://www.theplumrealestategroup.com/) rather than a
-  team-specific page. This should not be described as a current directory entry
-  until it is confirmed in production.
+- **Live:** A dedicated Partners and Vendors section links to
+  [HomeBase CRM](https://homebasecrm.com) and states that it is owned by Fat Cat
+  Finance, LLC, with no payment or cross-ownership relationship between
+  HomeBase CRM and South Jersey Real Estate.
+- **Live:** The same section links to [The Plum Real Estate Group's main
+  website](https://www.theplumrealestategroup.com/) and identifies it as Arthur
+  Pisko Jr.'s affiliated brokerage rather than a paid placement.
 
 ### Local-Business Advertising
 
@@ -539,9 +537,8 @@ concept are documented without being presented as current website capabilities.
 
 - **Planned / Paused:** Expand the unpaid provider directory after current public
   facts and relationship disclosures are reviewed.
-- **Planned / Paused:** Confirm and publish the intended HomeBase CRM and The Plum
-  Real Estate Group links if they remain appropriate to the directory's final
-  scope.
+- **Live:** HomeBase CRM and The Plum Real Estate Group appear in a dedicated
+  Partners and Vendors section with their distinct relationships disclosed.
 - **Planned / Paused:** Add real paid local-business placements only after fit,
   labeling, creative, destination, timing, and terms are agreed.
 
@@ -634,8 +631,6 @@ or the private website editor.
 - “All 168 municipality profiles are live.”
 - “The website automatically writes or sends a weekly newsletter.”
 - “Paid advertisers are featured” until actual labeled placements exist.
-- “HomeBase CRM and The Plum Real Estate Group are current partners” until both
-  intended entries are confirmed on the published provider page.
 - “Real-time market data,” “current taxes,” “current school performance,” or
   similarly time-sensitive claims unless the displayed source and date support
   the exact statement.

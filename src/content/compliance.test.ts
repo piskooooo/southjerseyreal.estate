@@ -58,6 +58,13 @@ describe("compiled compliance guardrails", () => {
     expect(directory).toContain("Cape Atlantic Title Agency, LLC");
     expect(directory).toContain("Foundation Title, LLC");
     expect(directory).toContain("Directory listings are not sold");
+    expect(directory).toContain("HomeBase CRM");
+    expect(directory).toContain("https://homebasecrm.com");
+    expect(directory).toContain("owned by Fat Cat Finance, LLC");
+    expect(directory).toContain("no payment or cross-ownership relationship");
+    expect(directory).toContain("https://www.theplumrealestategroup.com/");
+    expect(directory).toContain("disclosed brokerage affiliation, not a paid directory placement");
+    expect(directory).not.toMatch(/theplumrealestategroup\.com\/(?:our-)?team/i);
     expect(directory).not.toContain("Signature Title Agency");
     expect(directory).not.toMatch(/trusted recommendation|go-to partner|reliable and responsive/i);
   });

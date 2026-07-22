@@ -68,9 +68,9 @@ const removeStructuredData = () => {
 
 const getStoredTheme = (): SiteTheme => {
   try {
-    return window.localStorage.getItem("site-theme") === "light" ? "light" : "dark";
+    return window.localStorage.getItem("site-theme") === "dark" ? "dark" : "light";
   } catch {
-    return "dark";
+    return "light";
   }
 };
 

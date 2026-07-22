@@ -430,6 +430,14 @@ test("homepage preserves the oversized headline overlap on desktop", async ({ pa
   expect(composition!.imageLeft).toBeGreaterThan(0);
 });
 
+test("first-time visitors receive the light editorial theme", async ({ page }) => {
+  await page.addInitScript(() => window.localStorage.removeItem("site-theme"));
+  await openHydratedRoute(page, "/");
+
+  await expect(page.locator("html")).toHaveAttribute("data-theme", "light");
+  await expect(page.getByRole("button", { name: "Switch to dark mode" })).toBeVisible();
+});
+
 test("representative desktop and mobile screenshots render without overflow", async ({ page }) => {
   for (const route of ["/", "/counties", "/connect", "/atlantic-county", "/contact", "/partners"]) {
     await page.setViewportSize({ width: 1440, height: 1000 });

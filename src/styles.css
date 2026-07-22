@@ -56,52 +56,52 @@
 
 [data-theme="light"] {
   color-scheme: light;
-  --bg: #f7f8f6;
-  --text: #171717;
-  --muted: rgba(23, 23, 23, 0.7);
-  --faint: rgba(28, 79, 115, 0.17);
-  --subtle-border: rgba(35, 109, 117, 0.13);
+  --bg: #ffffff;
+  --text: #080808;
+  --muted: rgba(8, 8, 8, 0.72);
+  --faint: rgba(8, 8, 8, 0.2);
+  --subtle-border: rgba(8, 8, 8, 0.14);
   --surface: #ffffff;
-  --surface-strong: #edf4f2;
-  --surface-sunken: #dcebe8;
-  --surface-hover: rgba(35, 109, 117, 0.065);
-  --surface-note: rgba(159, 203, 198, 0.22);
-  --surface-note-border: rgba(35, 109, 117, 0.22);
-  --button: #1c4f73;
-  --button-hover: #123e5e;
+  --surface-strong: #ffffff;
+  --surface-sunken: #f4f4f4;
+  --surface-hover: rgba(11, 37, 89, 0.06);
+  --surface-note: #ffffff;
+  --surface-note-border: rgba(8, 8, 8, 0.2);
+  --button: #0b2559;
+  --button-hover: #06183c;
   --button-text: #fafafa;
   --field-bg: #ffffff;
-  --field-border: rgba(28, 79, 115, 0.28);
-  --field-text: #171717;
+  --field-border: #080808;
+  --field-text: #080808;
   --error: #9b1c1c;
-  --header-bg: rgba(247, 248, 246, 0.92);
-  --interactive-border: #236d75;
+  --header-bg: rgba(255, 255, 255, 0.96);
+  --interactive-border: #0b2559;
   --logo-filter: invert(1);
-  --open-border: #236d75;
-  --brand: #1c4f73;
-  --brand-strong: #153e5b;
-  --brand-soft: #e6f0ee;
-  --brand-surface: #edf5f3;
-  --link: #1c4f73;
-  --link-hover: #236d75;
-  --focus: #d2ae18;
-  --focus-soft: rgba(240, 211, 43, 0.28);
-  --selection-bg: #9fcbc6;
-  --selection-text: #171717;
-  --hero-accent: #236d75;
-  --section-line: rgba(35, 109, 117, 0.3);
-  --card-border: rgba(35, 109, 117, 0.22);
-  --card-hover-border: #236d75;
-  --cta-bg: #f5efdf;
-  --cta-line: #d7bd7a;
-  --cta-accent: #236d75;
-  --form-accent: #236d75;
-  --footer-bg: #163d5a;
-  --footer-text: #fafafa;
-  --footer-muted: rgba(250, 250, 250, 0.74);
-  --footer-accent: #f0d32b;
-  --transit-orange: #c84f16;
-  --patco-accent: #d11241;
+  --open-border: #0b2559;
+  --brand: #0b2559;
+  --brand-strong: #0b2559;
+  --brand-soft: #f1f4f9;
+  --brand-surface: #ffffff;
+  --link: #0b2559;
+  --link-hover: #06183c;
+  --focus: #0b2559;
+  --focus-soft: rgba(11, 37, 89, 0.12);
+  --selection-bg: #0b2559;
+  --selection-text: #ffffff;
+  --hero-accent: #0b2559;
+  --section-line: rgba(8, 8, 8, 0.28);
+  --card-border: rgba(8, 8, 8, 0.24);
+  --card-hover-border: #0b2559;
+  --cta-bg: #ffffff;
+  --cta-line: rgba(8, 8, 8, 0.3);
+  --cta-accent: #0b2559;
+  --form-accent: #0b2559;
+  --footer-bg: #ffffff;
+  --footer-text: #080808;
+  --footer-muted: rgba(8, 8, 8, 0.72);
+  --footer-accent: #0b2559;
+  --transit-orange: #0b2559;
+  --patco-accent: #0b2559;
   --google-attribution: #5e5e5e;
   --review-star: #a66f00;
 }
@@ -2706,6 +2706,799 @@ p a:focus-visible {
 [data-theme="dark"] .privacy-banner,
 [data-theme="dark"] .mobile-menu {
   border-color: var(--faint);
+}
+
+/* Editorial redesign: one typographic system across public page families. */
+.site-header {
+  padding-top: 1rem;
+  padding-bottom: 0.8rem;
+  border-bottom-width: 2px;
+  backdrop-filter: blur(10px);
+}
+
+.site-header::after {
+  display: none;
+}
+
+.brand {
+  font-size: clamp(1.35rem, 2vw, 1.75rem);
+  font-weight: 800;
+  letter-spacing: -0.025em;
+}
+
+.desktop-nav .is-active {
+  text-decoration-color: var(--brand);
+  text-decoration-thickness: 2px;
+}
+
+.nav-folder-control > button,
+.theme-toggle {
+  border-radius: 0;
+}
+
+.nav-menu {
+  border-color: var(--section-line);
+}
+
+h1,
+h2,
+h3,
+.compact-heading {
+  font-weight: 800;
+  letter-spacing: -0.035em;
+}
+
+p {
+  line-height: 1.65;
+}
+
+.button {
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.hub-hero-section {
+  padding-top: clamp(2.5rem, 5vw, 4.5rem);
+  padding-bottom: clamp(2.25rem, 4vw, 3.5rem);
+  border-bottom: 2px solid var(--text);
+}
+
+.hub-hero-section > div {
+  max-width: 76rem;
+}
+
+.hub-hero-section h1 {
+  max-width: 66rem;
+  font-size: clamp(4rem, 9vw, 8rem);
+  font-weight: 850;
+  line-height: 0.88;
+  letter-spacing: -0.055em;
+  text-transform: uppercase;
+}
+
+.hub-hero-section p {
+  max-width: 47rem;
+  color: var(--text);
+}
+
+.hub-directory-section {
+  padding-top: clamp(1.25rem, 3vw, 2.25rem);
+}
+
+.hub-card-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0;
+  counter-reset: hub-directory;
+  border-bottom: 2px solid var(--text);
+}
+
+.hub-card {
+  display: grid;
+  grid-template-columns: 4rem 8rem minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(1rem, 2.5vw, 2rem);
+  min-width: 0;
+  padding: 0.75rem 0;
+  overflow: visible;
+  background: transparent;
+  border: 0;
+  border-top: 1px solid var(--text);
+  border-radius: 0;
+  counter-increment: hub-directory;
+}
+
+.hub-card::before {
+  align-self: center;
+  color: var(--brand);
+  content: counter(hub-directory, decimal-leading-zero);
+  font-size: clamp(1.45rem, 2.6vw, 2.4rem);
+  font-weight: 850;
+  letter-spacing: -0.04em;
+}
+
+.hub-card-media {
+  grid-column: 2;
+  width: 8rem;
+  min-height: 0;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  border: 1px solid var(--section-line);
+}
+
+.hub-card-media img,
+.hub-page-counties .hub-card-media img {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  object-fit: cover;
+}
+
+.hub-page-counties .hub-card-media img {
+  padding: 0.35rem;
+  object-fit: contain;
+}
+
+.hub-card-body {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 0.35rem 1.5rem;
+  grid-column: 3;
+  min-height: 0;
+  padding: 0;
+}
+
+.hub-card:not(.has-image) .hub-card-body {
+  grid-column: 2 / -1;
+}
+
+.hub-card-body h2 {
+  margin: 0;
+  color: var(--text);
+  font-size: clamp(1.65rem, 3vw, 2.75rem);
+  line-height: 0.98;
+  text-transform: uppercase;
+}
+
+.hub-card-body p {
+  grid-column: 1;
+  max-width: 44rem;
+  margin: 0;
+  font-size: 0.93rem;
+}
+
+.hub-card-body .button,
+.county-support-card .button,
+.split-card .button,
+.resource-panel-content .button {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  align-self: center;
+  min-height: 2.75rem;
+  margin: 0;
+  padding: 0.65rem 0;
+  border-bottom: 2px solid currentColor;
+  border-radius: 0;
+  background: transparent;
+  color: var(--brand);
+  font-size: 0.82rem;
+}
+
+.hub-card-body .button:hover,
+.county-support-card .button:hover,
+.split-card .button:hover,
+.resource-panel-content .button:hover {
+  background: transparent;
+  color: var(--text);
+}
+
+.county-intro {
+  grid-template-areas: "copy media";
+  grid-template-columns: minmax(0, 1.05fr) minmax(22rem, 0.95fr);
+  align-items: start;
+  padding-top: clamp(1.5rem, 3vw, 2.5rem);
+  border-bottom: 2px solid var(--text);
+}
+
+.county-intro .county-media {
+  grid-area: media;
+}
+
+.county-intro > :not(.county-media) {
+  grid-area: copy;
+  position: relative;
+  z-index: 1;
+}
+
+.county-intro h1,
+.county-intro h2 {
+  width: min(58vw, 58rem);
+  margin-bottom: clamp(1.4rem, 3vw, 2.25rem);
+  font-size: clamp(4rem, 8.5vw, 8rem);
+  font-weight: 850;
+  line-height: 0.88;
+  letter-spacing: -0.055em;
+  text-transform: uppercase;
+}
+
+.county-intro .county-media img {
+  max-width: 100%;
+  max-height: 44rem;
+}
+
+.content-source-note,
+.provider-choice-disclosure {
+  background: transparent;
+  border-color: var(--section-line);
+  border-radius: 0;
+}
+
+.town-grid-section {
+  padding-top: clamp(1.4rem, 3vw, 2.5rem);
+}
+
+.town-grid-toolbar {
+  margin: 0;
+  padding: 0.75rem 0;
+  border-bottom: 2px solid var(--text);
+}
+
+.town-grid-toolbar p,
+.town-grid-toolbar button {
+  font-size: 0.8rem;
+  font-weight: 850;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.town-grid-toolbar button {
+  min-height: 2.75rem;
+  padding: 0.55rem 0.75rem;
+  border: 0;
+  border-bottom: 2px solid currentColor;
+  border-radius: 0;
+}
+
+.town-card-grid {
+  display: grid;
+  gap: 0;
+  counter-reset: town-directory;
+}
+
+.town-card-row,
+.town-card-row.has-single-expanded {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0;
+}
+
+.town-card {
+  display: grid;
+  grid-template-columns: minmax(10rem, 16rem) minmax(0, 1fr);
+  grid-template-rows: auto;
+  min-height: 0;
+  aspect-ratio: auto;
+  padding: 0.7rem 0;
+  overflow: visible;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid var(--text);
+  border-radius: 0;
+  counter-increment: town-directory;
+}
+
+.town-card.is-summary-only,
+.town-card.is-expanded,
+.town-card-row.has-single-expanded .town-card:not(.is-expanded),
+.town-card-row.has-single-expanded .town-card.is-expanded {
+  grid-column: auto;
+  grid-row: auto;
+  grid-template-columns: minmax(10rem, 16rem) minmax(0, 1fr);
+  grid-template-rows: auto;
+  min-height: 0;
+  aspect-ratio: auto;
+}
+
+.town-card-media,
+.town-card.is-summary-only .town-card-media,
+.town-card.is-expanded .town-card-media {
+  grid-column: 1;
+  grid-row: 1;
+  width: 100%;
+  height: 8rem;
+  aspect-ratio: auto;
+  background: var(--surface-sunken);
+}
+
+.town-card-body,
+.town-card.is-expanded .town-card-body {
+  position: relative;
+  grid-column: 2;
+  grid-row: 1;
+  min-height: 8rem;
+  padding: 0.25rem 4rem 0.25rem clamp(1rem, 2.5vw, 2rem);
+  overflow: visible;
+}
+
+.town-card h3 {
+  display: flex;
+  gap: clamp(0.8rem, 2vw, 1.5rem);
+  align-items: baseline;
+  margin: 0 0 0.5rem;
+  color: var(--text);
+  font-size: clamp(1.65rem, 3.6vw, 3.2rem);
+  line-height: 0.98;
+  text-transform: uppercase;
+}
+
+.town-card h3::before {
+  flex: 0 0 2.5rem;
+  color: var(--brand);
+  content: counter(town-directory, decimal-leading-zero);
+  font-size: 0.55em;
+  letter-spacing: -0.02em;
+}
+
+.town-card p {
+  max-width: 48rem;
+  margin: 0;
+}
+
+.town-card:not(.is-expanded) .town-card-summary p {
+  -webkit-line-clamp: 2;
+}
+
+.town-card-details {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--section-line);
+}
+
+.town-card-indicator {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  margin: 0;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 0;
+  transform: translateY(-50%);
+}
+
+.county-support-grid,
+.split-card-grid,
+.about-details-section,
+.about-proof-section {
+  gap: 0;
+}
+
+.county-support-card,
+.split-card,
+.about-detail-card,
+.about-proof-card {
+  padding: clamp(1.2rem, 2.4vw, 1.8rem) 0;
+  background: transparent;
+  border: 0;
+  border-top: 1px solid var(--text);
+  border-radius: 0;
+}
+
+.county-support-primary {
+  background: transparent;
+  border-color: var(--text);
+}
+
+.section-actions-combined > div,
+.guide-closing-section > div,
+.newsletter-followup-section > div {
+  padding-inline: 0;
+  background: transparent;
+  border-color: var(--text);
+  box-shadow: none;
+}
+
+.guide-hero-section {
+  align-items: end;
+  padding-top: clamp(2.5rem, 5vw, 4.5rem);
+  border-bottom: 2px solid var(--text);
+}
+
+.guide-hero-section h1 {
+  font-size: clamp(4rem, 9vw, 8rem);
+  font-weight: 850;
+  line-height: 0.88;
+  letter-spacing: -0.055em;
+  text-transform: uppercase;
+}
+
+.guide-accordion {
+  gap: 0;
+  border-bottom: 2px solid var(--text);
+}
+
+.guide-panel {
+  overflow: visible;
+  background: transparent;
+  border: 0;
+  border-top: 1px solid var(--text);
+  border-radius: 0;
+}
+
+.guide-panel[open] {
+  border-color: var(--text);
+}
+
+.guide-panel[open] summary,
+.guide-panel summary:hover,
+.guide-panel summary:focus-visible {
+  background: transparent;
+}
+
+.guide-panel summary {
+  min-height: 5.5rem;
+  padding: clamp(1rem, 2.2vw, 1.45rem) 0;
+}
+
+.guide-panel-title {
+  color: var(--text);
+  font-size: clamp(1.5rem, 3vw, 2.65rem);
+  font-weight: 850;
+  letter-spacing: -0.035em;
+  text-transform: uppercase;
+}
+
+.guide-panel-icon {
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 0;
+}
+
+.guide-panel-content {
+  padding: clamp(1.25rem, 2.5vw, 2rem) 0;
+  border-top: 1px solid var(--section-line);
+}
+
+.resource-panel-content > div {
+  padding-top: 0;
+  border-top: 0;
+}
+
+.newsletter-section,
+.contact-section {
+  grid-template-columns: minmax(18rem, 0.75fr) minmax(28rem, 1.25fr);
+  gap: clamp(3rem, 7vw, 7rem);
+}
+
+.contact-copy h1,
+.contact-copy h2,
+.newsletter-copy h1 {
+  margin-bottom: 1.5rem;
+  font-size: clamp(4rem, 8vw, 7.5rem);
+  font-weight: 850;
+  line-height: 0.88;
+  letter-spacing: -0.055em;
+  text-transform: uppercase;
+}
+
+.section-eyebrow {
+  padding-left: 0;
+  border-left: 0;
+  color: var(--brand);
+}
+
+.newsletter-feature-list {
+  grid-template-columns: 1fr;
+  gap: 0;
+}
+
+.newsletter-feature-list span {
+  min-height: 3rem;
+  padding: 0.75rem 0;
+  background: transparent;
+  border: 0;
+  border-top: 1px solid var(--text);
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.newsletter-feature-list span:last-child {
+  border-bottom: 1px solid var(--text);
+}
+
+.contact-form {
+  gap: 1.1rem;
+  padding: 1.25rem 0 0;
+  background: transparent;
+  border: 0;
+  border-top: 2px solid var(--brand);
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.contact-form legend,
+.contact-form label {
+  font-size: 0.8rem;
+  font-weight: 850;
+  letter-spacing: 0.045em;
+  text-transform: uppercase;
+}
+
+.contact-form span,
+.contact-form .newsletter-consent-checkbox span {
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.contact-form input,
+.contact-form select,
+.contact-form textarea {
+  min-height: 3.6rem;
+  border-color: var(--field-border);
+  border-radius: 0;
+  font-size: 1rem;
+}
+
+.contact-form textarea {
+  min-height: 9rem;
+}
+
+.contact-form .button {
+  min-height: 3.4rem;
+  border-radius: 0;
+}
+
+.about-detail-card,
+.about-proof-card {
+  padding-right: clamp(1rem, 3vw, 2.5rem);
+}
+
+.about-detail-card h3,
+.about-proof-card h3 {
+  color: var(--text);
+  text-transform: uppercase;
+}
+
+.google-review-grid,
+.review-source-grid {
+  gap: 0;
+}
+
+.google-review-card,
+.google-review-skeleton,
+.google-reviews-fallback,
+.review-source-link {
+  background: transparent;
+  border: 0;
+  border-top: 1px solid var(--text);
+  border-radius: 0;
+}
+
+.google-review-card {
+  min-height: 16rem;
+}
+
+.review-source-link {
+  border-bottom: 1px solid var(--text);
+}
+
+.site-footer {
+  padding-top: clamp(1.5rem, 3vw, 2.25rem);
+  padding-bottom: 1.25rem;
+  border-top: 2px solid var(--footer-accent);
+}
+
+.site-footer-main {
+  width: 100%;
+  gap: 1rem;
+}
+
+.site-footer-top {
+  grid-template-columns: minmax(15rem, 0.8fr) minmax(0, 2.2fr);
+  gap: clamp(2rem, 5vw, 5rem);
+}
+
+.site-footer h2 {
+  color: var(--footer-text);
+  font-size: clamp(2.2rem, 3.6vw, 3.4rem);
+  font-weight: 850;
+  letter-spacing: -0.045em;
+  text-transform: uppercase;
+}
+
+.site-footer-links {
+  gap: clamp(1.5rem, 3.5vw, 4rem);
+}
+
+.site-footer-links h3 {
+  color: var(--footer-text);
+}
+
+.site-footer-compliance {
+  padding: 0.9rem 0;
+  border-color: var(--section-line);
+}
+
+.footer-credential-logo {
+  border: 1px solid var(--section-line);
+  border-radius: 0;
+}
+
+.site-footer a:hover,
+.site-footer a:focus-visible,
+.footer-privacy-button:hover,
+.footer-privacy-button:focus-visible {
+  color: var(--brand);
+}
+
+.privacy-banner,
+.privacy-banner button {
+  border-radius: 0;
+}
+
+@media (max-width: 900px) {
+  .mobile-menu {
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  .county-intro {
+    grid-template-areas: "copy" "media";
+    grid-template-columns: 1fr;
+  }
+
+  .county-intro h1,
+  .county-intro h2 {
+    width: auto;
+    font-size: clamp(3.75rem, 14vw, 6.75rem);
+  }
+
+  .county-intro .county-media img {
+    max-height: 34rem;
+  }
+
+  .newsletter-section,
+  .contact-section {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 760px) {
+  .site-footer-top,
+  .site-footer-compliance {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .hub-card {
+    grid-template-columns: 2.75rem 5.5rem minmax(0, 1fr);
+    gap: 0.75rem;
+  }
+
+  .hub-card-media {
+    width: 5.5rem;
+  }
+
+  .hub-card-body,
+  .hub-card:not(.has-image) .hub-card-body {
+    display: block;
+    grid-column: 3;
+  }
+
+  .hub-card:not(.has-image) .hub-card-body {
+    grid-column: 2 / -1;
+  }
+
+  .hub-card-body h2 {
+    margin-bottom: 0.4rem;
+    font-size: clamp(1.25rem, 6vw, 1.8rem);
+  }
+
+  .hub-card-body .button {
+    display: inline-flex;
+    margin-top: 0.45rem;
+  }
+
+  .town-card,
+  .town-card.is-summary-only,
+  .town-card.is-expanded,
+  .town-card-row.has-single-expanded .town-card:not(.is-expanded),
+  .town-card-row.has-single-expanded .town-card.is-expanded {
+    grid-template-columns: 7rem minmax(0, 1fr);
+  }
+
+  .town-card-media,
+  .town-card.is-summary-only .town-card-media,
+  .town-card.is-expanded .town-card-media {
+    height: 7rem;
+  }
+
+  .town-card-body,
+  .town-card.is-expanded .town-card-body {
+    min-height: 7rem;
+    padding-right: 3.25rem;
+  }
+
+  .town-card h3 {
+    display: block;
+    font-size: clamp(1.3rem, 6.5vw, 2rem);
+  }
+
+  .town-card h3::before {
+    display: block;
+    margin-bottom: 0.25rem;
+  }
+
+  .town-card-summary p {
+    font-size: 0.82rem;
+  }
+
+  .town-card-indicator {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+
+  .site-footer-links {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.8rem;
+  }
+
+  .site-footer-links h3,
+  .site-footer-links a {
+    font-size: 0.72rem;
+  }
+}
+
+@media (max-width: 560px) {
+  .hub-hero-section h1,
+  .guide-hero-section h1,
+  .contact-copy h1,
+  .newsletter-copy h1 {
+    font-size: clamp(3.25rem, 16vw, 5rem);
+  }
+
+  .county-intro h1,
+  .county-intro h2 {
+    font-size: clamp(3.25rem, 15vw, 5rem);
+  }
+
+  .hub-card {
+    grid-template-columns: 2.25rem 4.75rem minmax(0, 1fr);
+  }
+
+  .hub-card-media {
+    width: 4.75rem;
+  }
+
+  .town-card,
+  .town-card.is-summary-only,
+  .town-card.is-expanded,
+  .town-card-row.has-single-expanded .town-card:not(.is-expanded),
+  .town-card-row.has-single-expanded .town-card.is-expanded {
+    grid-template-columns: 5.75rem minmax(0, 1fr);
+  }
+
+  .town-card-media,
+  .town-card.is-summary-only .town-card-media,
+  .town-card.is-expanded .town-card-media {
+    height: 6.25rem;
+  }
+
+  .town-card-body,
+  .town-card.is-expanded .town-card-body {
+    min-height: 6.25rem;
+    padding-left: 0.8rem;
+  }
+
+  .site-footer-links {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem 1.25rem;
+  }
+
+  .site-footer h2 {
+    max-width: 10rem;
+    font-size: 2rem;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -1,7 +1,39 @@
 # Dark Theme Palette Review
 
-Status: review artifact only. The public dark theme remains unchanged until a
-palette is selected.
+Status: Midnight Editorial candidate implemented July 22, 2026; awaiting final
+owner visual approval.
+
+## Selected Direction: Midnight Editorial
+
+The owner reopened the dark-theme work after approving the site's sharper,
+American Apparel-inspired editorial redesign. The implemented candidate keeps
+the open layouts, oversized grotesk typography, square controls, full-color
+photography, and rule-separated directories intact while giving dark mode a
+clearer hierarchy.
+
+Midnight Editorial adapts the earlier Atlantic Signal option rather than using
+it verbatim. A deeper blue-black canvas supports warm-white type; Atlantic blue
+identifies the brand, links, numbering, and secondary controls; State Buff is
+reserved for primary actions; and Goldfinch Yellow remains a focus-only signal.
+Forms now use dark integrated fields instead of switching to bright white.
+
+| Token | Value | Intended role |
+| --- | --- | --- |
+| Canvas | `#0A0E14` | Page and footer background |
+| Surface | `#111821` | Fields, menus, and quiet hover regions |
+| Strong surface | `#17222E` | Open menus and cookie controls |
+| Sunken surface | `#06090D` | Deep supporting bands |
+| Primary text | `#F7F5EF` | Headings and body text |
+| Muted text | `#B9C3CE` | Supporting copy and metadata |
+| Editorial rule | `#405266` | Section dividers and low-emphasis boundaries |
+| Field boundary | `#60758A` | Form-control definition |
+| Brand and link | `#78ADD0` | Brand, links, numbering, and secondary interaction |
+| Primary action | `#D7BD7A` | Contact and primary submit actions |
+| Action text | `#0A0E14` | Text on State Buff actions |
+| Focus | `#F0D32B` | Keyboard focus only |
+| Success | `#A9D49E` | Confirmed states |
+| Warning | `#E6C46F` | Caution states |
+| Error | `#F4A6B8` | Validation and destructive states |
 
 ## Audit Summary
 
@@ -117,11 +149,9 @@ included as a visual hierarchy measurement, not a WCAG text requirement.
 
 ## Recommendation
 
-Use Pine and Gold as the first implementation candidate. It adds the clearest
-South Jersey character while keeping most of the page visually neutral. Atlantic
-Signal is the safest choice if close parity with the light theme matters most.
-Cranberry and Sea Glass is best reserved for a more editorial redesign.
-
-Before any palette is published, review the desktop and mobile comparisons in
-`docs/dark-theme-palette-preview.html`, select one option, apply it to the real
-semantic tokens, and rerun the full rendered accessibility suite.
+Midnight Editorial is now the recommended production direction. It has the
+cool clarity of Atlantic Signal, the action warmth of Pine and Gold, and enough
+contrast to support the new editorial system without becoming a blue-only or
+green-tinted interface. The earlier three options remain below as historical
+research. Final acceptance depends on the owner's visual review of the
+implemented desktop and mobile site.

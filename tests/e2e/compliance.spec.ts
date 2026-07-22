@@ -438,6 +438,48 @@ test("first-time visitors receive the light editorial theme", async ({ page }) =
   await expect(page.getByRole("button", { name: "Switch to dark mode" })).toBeVisible();
 });
 
+test("dark mode uses the midnight editorial palette and integrated form fields", async ({ page }) => {
+  await page.addInitScript(() => window.localStorage.removeItem("site-theme"));
+  await openHydratedRoute(page, "/");
+  await page.getByRole("button", { name: "Switch to dark mode" }).click();
+
+  await expect(page.locator("html")).toHaveAttribute("data-theme", "dark");
+  await expect(page.getByRole("button", { name: "Switch to light mode" })).toBeVisible();
+
+  const palette = await page.evaluate(() => {
+    const styles = getComputedStyle(document.documentElement);
+    return {
+      background: styles.getPropertyValue("--bg").trim(),
+      text: styles.getPropertyValue("--text").trim(),
+      brand: styles.getPropertyValue("--brand").trim(),
+      button: styles.getPropertyValue("--button").trim(),
+      focus: styles.getPropertyValue("--focus").trim(),
+    };
+  });
+
+  expect(palette).toEqual({
+    background: "#0a0e14",
+    text: "#f7f5ef",
+    brand: "#78add0",
+    button: "#d7bd7a",
+    focus: "#f0d32b",
+  });
+
+  await page.getByRole("link", { name: "Contact", exact: true }).first().click();
+  await expect(page).toHaveURL(/\/contact$/);
+  await expect(page.locator("html")).toHaveAttribute("data-theme", "dark");
+  const fieldColors = await page.locator(".contact-form input").first().evaluate((field) => {
+    const styles = getComputedStyle(field);
+    return { background: styles.backgroundColor, text: styles.color, border: styles.borderColor };
+  });
+
+  expect(fieldColors).toEqual({
+    background: "rgb(17, 24, 33)",
+    text: "rgb(247, 245, 239)",
+    border: "rgb(96, 117, 138)",
+  });
+});
+
 test("representative desktop and mobile screenshots render without overflow", async ({ page }) => {
   for (const route of ["/", "/counties", "/connect", "/atlantic-county", "/contact", "/partners"]) {
     await page.setViewportSize({ width: 1440, height: 1000 });

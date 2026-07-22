@@ -1,6 +1,6 @@
 # Color Palette Foundation
 
-Status: approved design direction; light theme implemented, dark theme held for future refinement.
+Status: approved light design; Midnight Editorial dark candidate implemented July 22, 2026 and awaiting final owner visual approval.
 
 ## Direction
 
@@ -157,9 +157,10 @@ they are not added on top of it.
 ## Implementation Status
 
 The approved light-mode implementation lives in `src/styles.css` and emphasizes
-Jersey Blue, Atlantic Teal, Sea Glass, and State Buff, with NJ TRANSIT orange
-and PATCO crimson reserved for restrained accents. The Pine Barrens and
-Goldfinch dark-mode direction remains documented for future refinement but is
-not applied to the public theme; dark mode retains its original neutral
-charcoal treatment. The implementation changes color treatments only; site
-structure, page copy, typography, imagery, and layout remain unchanged.
+Jersey Blue within the site's black-and-white editorial system. The July 22
+Midnight Editorial dark candidate uses a blue-black canvas, warm-white type,
+Atlantic blue interaction, State Buff actions, and Goldfinch focus states. Dark
+form fields, menus, cookie controls, directories, accordions, and the compact
+footer share the same semantic tokens. The private `/admin` interface remains
+intentionally light-only. Theme work changes color and state treatment only;
+site structure, page copy, typography, imagery, and layout remain unchanged.

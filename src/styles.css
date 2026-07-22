@@ -1,51 +1,53 @@
 :root {
   color-scheme: dark;
-  --bg: #1c1c1c;
-  --text: #fafafa;
-  --muted: rgba(250, 250, 250, 0.78);
-  --faint: rgba(250, 250, 250, 0.18);
-  --subtle-border: rgba(250, 250, 250, 0.1);
-  --surface: #242424;
-  --surface-strong: #252525;
-  --surface-sunken: #141414;
-  --surface-hover: rgba(250, 250, 250, 0.04);
-  --surface-note: rgba(250, 250, 250, 0.06);
-  --surface-note-border: rgba(250, 250, 250, 0.1);
-  --button: #dcdcdc;
-  --button-hover: #eeeeee;
-  --button-text: #050505;
-  --field-bg: #f7f7f7;
-  --field-border: rgba(250, 250, 250, 0.2);
-  --field-text: #111111;
-  --error: #ffb8b8;
-  --header-bg: rgba(28, 28, 28, 0.92);
-  --interactive-border: rgba(250, 250, 250, 0.58);
+  --bg: #0a0e14;
+  --text: #f7f5ef;
+  --muted: #b9c3ce;
+  --faint: rgba(120, 173, 208, 0.34);
+  --subtle-border: rgba(120, 173, 208, 0.22);
+  --surface: #111821;
+  --surface-strong: #17222e;
+  --surface-sunken: #06090d;
+  --surface-hover: rgba(120, 173, 208, 0.09);
+  --surface-note: #111821;
+  --surface-note-border: #405266;
+  --button: #d7bd7a;
+  --button-hover: #e6d29d;
+  --button-text: #0a0e14;
+  --field-bg: #111821;
+  --field-border: #60758a;
+  --field-text: #f7f5ef;
+  --error: #f4a6b8;
+  --success: #a9d49e;
+  --warning: #e6c46f;
+  --header-bg: rgba(10, 14, 20, 0.96);
+  --interactive-border: #78add0;
   --logo-filter: invert(1);
-  --open-border: rgba(250, 250, 250, 0.36);
-  --brand: var(--text);
-  --brand-strong: var(--text);
-  --brand-soft: var(--surface-hover);
+  --open-border: #78add0;
+  --brand: #78add0;
+  --brand-strong: #9bc7e2;
+  --brand-soft: rgba(120, 173, 208, 0.12);
   --brand-surface: var(--surface);
-  --link: var(--text);
-  --link-hover: var(--text);
-  --focus: var(--text);
-  --focus-soft: var(--surface-hover);
+  --link: #78add0;
+  --link-hover: #a9d4ed;
+  --focus: #f0d32b;
+  --focus-soft: rgba(240, 211, 43, 0.2);
   --selection-bg: var(--button);
   --selection-text: var(--button-text);
-  --hero-accent: transparent;
-  --section-line: var(--faint);
-  --card-border: var(--faint);
+  --hero-accent: #78add0;
+  --section-line: #405266;
+  --card-border: #405266;
   --card-hover-border: var(--interactive-border);
-  --cta-bg: transparent;
-  --cta-line: var(--faint);
-  --cta-accent: transparent;
-  --form-accent: transparent;
-  --footer-bg: transparent;
+  --cta-bg: #0a0e14;
+  --cta-line: #405266;
+  --cta-accent: #78add0;
+  --form-accent: #78add0;
+  --footer-bg: #0a0e14;
   --footer-text: var(--text);
   --footer-muted: var(--muted);
-  --footer-accent: var(--text);
-  --transit-orange: var(--text);
-  --patco-accent: var(--text);
+  --footer-accent: #d7bd7a;
+  --transit-orange: #f36b29;
+  --patco-accent: #e27a98;
   --google-attribution: #ffffff;
   --review-star: #fbbc04;
   --max: 1600px;
@@ -74,6 +76,8 @@
   --field-border: #080808;
   --field-text: #080808;
   --error: #9b1c1c;
+  --success: #2f6f3e;
+  --warning: #7a5a00;
   --header-bg: rgba(255, 255, 255, 0.96);
   --interactive-border: #0b2559;
   --logo-filter: invert(1);
@@ -3499,6 +3503,143 @@ p {
     max-width: 10rem;
     font-size: 2rem;
   }
+}
+
+/* Midnight Editorial: the dark companion to the light fashion-directory system. */
+[data-theme="dark"] .site-header {
+  border-bottom-color: var(--section-line);
+}
+
+[data-theme="dark"] .site-header-cta,
+[data-theme="dark"] .button:not(.button-secondary) {
+  border-color: var(--button);
+  background: var(--button);
+  color: var(--button-text);
+}
+
+[data-theme="dark"] .site-header-cta:hover,
+[data-theme="dark"] .site-header-cta:focus-visible,
+[data-theme="dark"] .button:not(.button-secondary):hover,
+[data-theme="dark"] .button:not(.button-secondary):focus-visible {
+  border-color: var(--button-hover);
+  background: var(--button-hover);
+  color: var(--button-text);
+}
+
+[data-theme="dark"] .hub-card-body .button,
+[data-theme="dark"] .county-support-card .button,
+[data-theme="dark"] .split-card .button,
+[data-theme="dark"] .resource-panel-content .button {
+  border: 0;
+  border-bottom: 2px solid currentColor;
+  background: transparent;
+  color: var(--link);
+}
+
+[data-theme="dark"] .hub-card-body .button:hover,
+[data-theme="dark"] .hub-card-body .button:focus-visible,
+[data-theme="dark"] .county-support-card .button:hover,
+[data-theme="dark"] .county-support-card .button:focus-visible,
+[data-theme="dark"] .split-card .button:hover,
+[data-theme="dark"] .split-card .button:focus-visible,
+[data-theme="dark"] .resource-panel-content .button:hover,
+[data-theme="dark"] .resource-panel-content .button:focus-visible {
+  background: transparent;
+  color: var(--text);
+}
+
+[data-theme="dark"] .hub-hero-section,
+[data-theme="dark"] .hub-card-grid,
+[data-theme="dark"] .county-intro,
+[data-theme="dark"] .town-grid-toolbar,
+[data-theme="dark"] .guide-hero-section,
+[data-theme="dark"] .guide-accordion {
+  border-color: var(--section-line);
+}
+
+[data-theme="dark"] .hub-card,
+[data-theme="dark"] .town-card,
+[data-theme="dark"] .county-support-card,
+[data-theme="dark"] .split-card,
+[data-theme="dark"] .about-detail-card,
+[data-theme="dark"] .about-proof-card,
+[data-theme="dark"] .guide-panel,
+[data-theme="dark"] .newsletter-feature-list span,
+[data-theme="dark"] .google-review-card,
+[data-theme="dark"] .google-review-skeleton,
+[data-theme="dark"] .google-reviews-fallback,
+[data-theme="dark"] .review-source-link {
+  border-color: var(--section-line);
+}
+
+[data-theme="dark"] .hub-card,
+[data-theme="dark"] .town-card,
+[data-theme="dark"] .guide-panel summary,
+[data-theme="dark"] .review-source-link {
+  transition: background 160ms ease, border-color 160ms ease, color 160ms ease;
+}
+
+[data-theme="dark"] .hub-card:hover,
+[data-theme="dark"] .hub-card:focus-within,
+[data-theme="dark"] .town-card:hover,
+[data-theme="dark"] .town-card:focus-within,
+[data-theme="dark"] .guide-panel summary:hover,
+[data-theme="dark"] .guide-panel summary:focus-visible,
+[data-theme="dark"] .review-source-link:hover,
+[data-theme="dark"] .review-source-link:focus-visible {
+  background: var(--surface-hover);
+  border-color: var(--interactive-border);
+}
+
+[data-theme="dark"] .hub-page-counties .hub-card-media {
+  background: var(--surface);
+  border-color: var(--interactive-border);
+}
+
+[data-theme="dark"] .town-card-indicator,
+[data-theme="dark"] .guide-panel-icon,
+[data-theme="dark"] .theme-toggle {
+  border-color: var(--interactive-border);
+  color: var(--brand);
+}
+
+[data-theme="dark"] .contact-form input,
+[data-theme="dark"] .contact-form select,
+[data-theme="dark"] .contact-form textarea {
+  caret-color: var(--text);
+  color-scheme: dark;
+}
+
+[data-theme="dark"] .contact-form input:focus,
+[data-theme="dark"] .contact-form select:focus,
+[data-theme="dark"] .contact-form textarea:focus {
+  border-color: var(--interactive-border);
+  outline-color: var(--focus);
+}
+
+[data-theme="dark"] .contact-form input::placeholder,
+[data-theme="dark"] .contact-form textarea::placeholder {
+  color: var(--muted);
+  opacity: 0.82;
+}
+
+[data-theme="dark"] .site-footer {
+  border-top: 2px solid var(--footer-accent);
+}
+
+[data-theme="dark"] .site-footer-links h3,
+[data-theme="dark"] .site-footer a:hover,
+[data-theme="dark"] .site-footer a:focus-visible,
+[data-theme="dark"] .footer-privacy-button:hover,
+[data-theme="dark"] .footer-privacy-button:focus-visible {
+  color: var(--link);
+}
+
+[data-theme="dark"] .privacy-banner,
+[data-theme="dark"] .mobile-menu,
+[data-theme="dark"] .nav-menu {
+  background: var(--surface-strong);
+  border-color: var(--interactive-border);
 }
 
 @media (prefers-reduced-motion: reduce) {

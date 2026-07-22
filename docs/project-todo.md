@@ -11,7 +11,7 @@ Use this file as the source of truth for unfinished work on `southjerseyreal.est
 - [x] 3. Finish the GA4 lead-conversion setup
 - [x] 4. Complete the current-site compliance review
 - [x] 6. Deploy and verify the private website editor
-- [ ] 7. Refine the dark theme color palette (paused; keep the current palette)
+- [ ] 7. Refine the dark theme color palette (Midnight Editorial candidate implemented; awaiting owner visual approval)
 - [x] 8. Add destination pages for the Counties and Connect header items
 - [ ] 9. Rebuild richer, sourced community profiles
 - [ ] 10. Add client reviews to the About page
@@ -199,7 +199,7 @@ Production provisioning and acceptance verified July 17, 2026: both editor migra
 
 **Goal:** Give the dark theme a more intentional, balanced palette while preserving readability, accessibility, and the established South Jersey Real Estate identity.
 
-Paused by owner decision on July 18, 2026. Keep the current dark palette unchanged unless this item is reopened.
+Reopened by the owner on July 22, 2026. The Midnight Editorial candidate is implemented for review; keep this priority open until the owner gives final visual approval.
 
 Research completed July 18, 2026. The review-only [palette report](./dark-theme-palette-review.md), [interactive comparison](./dark-theme-palette-preview.html), and desktop/mobile screenshots preserve the current production palette while the owner considers three tested directions.
 
@@ -207,19 +207,21 @@ Research completed July 18, 2026. The review-only [palette report](./dark-theme-
 
 - [x] Audit the current dark-theme tokens and identify surfaces that feel too flat, harsh, or dominated by one color family.
 - [x] Prepare two or three restrained palette directions using distinct background, surface, border, text, link, action, success, warning, and error colors.
-- [ ] Choose the preferred palette before replacing production colors.
-- [ ] Map the chosen colors to semantic CSS variables instead of scattering one-off values through components.
-- [ ] Apply the palette consistently to the public site, forms, menus, footer, cookie controls, and private editor without changing the light theme unintentionally.
-- [ ] Confirm logos, photography, focus states, disabled states, and form validation remain clear against the new colors.
+- [x] Choose the preferred palette before replacing production colors. Midnight Editorial adapts Atlantic Signal with a deeper blue-black canvas and State Buff actions so it fits the new fashion-editorial layout.
+- [x] Map the chosen colors to semantic CSS variables instead of scattering one-off values through components.
+- [x] Apply the palette consistently to the public site, forms, menus, footer, and cookie controls without changing the light theme unintentionally. The private editor remains intentionally light-only and visually isolated from public theme state.
+- [x] Confirm logos, photography, focus states, disabled states, and form validation remain clear against the new colors.
 
 ### Verification
 
 - [x] Check text, link, control, and focus contrast against WCAG AA targets for all three proposed directions.
-- [ ] Inspect representative home, county, form, legal, and `/admin` screens at desktop, tablet, and mobile widths.
-- [ ] Confirm there is no clipping, overlap, unreadable state, or horizontal overflow in either theme.
-- [ ] Obtain final visual approval before publishing the palette.
+- [x] Inspect all 21 public routes in dark mode at `1440×1000`, `768×1024`, and `390×844`, plus the intentionally light-only `/admin` boundary at all three responsive classes.
+- [x] Confirm there is no clipping, overlap, unreadable state, or horizontal overflow in either theme.
+- [ ] Obtain final visual approval before closing the palette task.
 
-**Done when:** The approved dark palette is consistent across public and private surfaces, meets contrast expectations, and passes desktop/tablet/mobile visual checks without regressing the light theme.
+The July 22 implementation passes the full rendered compliance suite, a 63-state public route crawl across desktop/tablet/mobile, interaction checks for theme switching, menus, accordions, county details, and field focus, and a separate responsive check that the private editor remains light-only. Final owner visual approval remains outstanding.
+
+**Done when:** The approved dark palette is consistent across public surfaces, the intentionally light-only private editor remains isolated, contrast expectations are met, and desktop/tablet/mobile visual checks pass without regressing the light theme.
 
 ## 8. Add Counties and Connect Hub Pages
 

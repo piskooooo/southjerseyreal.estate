@@ -11,10 +11,10 @@ Use this file as the source of truth for unfinished work on `southjerseyreal.est
 - [x] 3. Finish the GA4 lead-conversion setup
 - [x] 4. Complete the current-site compliance review
 - [x] 6. Deploy and verify the private website editor
-- [ ] 7. Refine the dark theme color palette (Midnight Editorial candidate implemented; awaiting owner visual approval)
+- [x] 7. Refine the dark theme color palette (Midnight Editorial approved July 22, 2026)
 - [x] 8. Add destination pages for the Counties and Connect header items
 - [ ] 9. Rebuild richer, sourced community profiles
-- [ ] 10. Add client reviews to the About page
+- [x] 10. Add client reviews to the About page
 - [x] 11. Prepare a comprehensive marketing-ready project description and status-labeled feature list
 - [x] 12. Add the intended HomeBase CRM and The Plum Real Estate Group links to the provider/partner presentation
 - [x] 13. Add an optional, analytics-tracked Support SJRE link
@@ -199,9 +199,9 @@ Production provisioning and acceptance verified July 17, 2026: both editor migra
 
 **Goal:** Give the dark theme a more intentional, balanced palette while preserving readability, accessibility, and the established South Jersey Real Estate identity.
 
-Reopened by the owner on July 22, 2026. The Midnight Editorial candidate is implemented for review; keep this priority open until the owner gives final visual approval.
+Reopened and approved by the owner on July 22, 2026. Midnight Editorial is the final production dark-theme direction.
 
-Research completed July 18, 2026. The review-only [palette report](./dark-theme-palette-review.md), [interactive comparison](./dark-theme-palette-preview.html), and desktop/mobile screenshots preserve the current production palette while the owner considers three tested directions.
+Research completed July 18, 2026. The [palette report](./dark-theme-palette-review.md), [interactive comparison](./dark-theme-palette-preview.html), and desktop/mobile screenshots preserve the three tested directions and the selected implementation record.
 
 ### Design and Implementation
 
@@ -217,9 +217,11 @@ Research completed July 18, 2026. The review-only [palette report](./dark-theme-
 - [x] Check text, link, control, and focus contrast against WCAG AA targets for all three proposed directions.
 - [x] Inspect all 21 public routes in dark mode at `1440×1000`, `768×1024`, and `390×844`, plus the intentionally light-only `/admin` boundary at all three responsive classes.
 - [x] Confirm there is no clipping, overlap, unreadable state, or horizontal overflow in either theme.
-- [ ] Obtain final visual approval before closing the palette task.
+- [x] Obtain final visual approval before closing the palette task. Owner approved Midnight Editorial on July 22, 2026.
 
-The July 22 implementation passes the full rendered compliance suite, a 63-state public route crawl across desktop/tablet/mobile, interaction checks for theme switching, menus, accordions, county details, and field focus, and a separate responsive check that the private editor remains light-only. Final owner visual approval remains outstanding.
+The July 22 implementation passes the full rendered compliance suite, a 63-state public route crawl across desktop/tablet/mobile, interaction checks for theme switching, menus, accordions, county details, and field focus, and a separate responsive check that the private editor remains light-only. The owner gave final visual approval on July 22, 2026.
+
+Completion date: July 22, 2026
 
 **Done when:** The approved dark palette is consistent across public surfaces, the intentionally light-only private editor remains isolated, contrast expectations are met, and desktop/tablet/mobile visual checks pass without regressing the light theme.
 

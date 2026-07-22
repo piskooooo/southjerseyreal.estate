@@ -1,6 +1,6 @@
 # Color Palette Foundation
 
-Status: approved light design; Midnight Editorial dark candidate implemented July 22, 2026 and awaiting final owner visual approval.
+Status: approved light design and owner-approved Midnight Editorial dark theme.
 
 ## Direction
 
@@ -158,7 +158,7 @@ they are not added on top of it.
 
 The approved light-mode implementation lives in `src/styles.css` and emphasizes
 Jersey Blue within the site's black-and-white editorial system. The July 22
-Midnight Editorial dark candidate uses a blue-black canvas, warm-white type,
+Midnight Editorial dark theme uses a blue-black canvas, warm-white type,
 Atlantic blue interaction, State Buff actions, and Goldfinch focus states. Dark
 form fields, menus, cookie controls, directories, accordions, and the compact
 footer share the same semantic tokens. The private `/admin` interface remains

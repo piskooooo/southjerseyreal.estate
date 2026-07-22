@@ -1,12 +1,11 @@
 # Dark Theme Palette Review
 
-Status: Midnight Editorial candidate implemented July 22, 2026; awaiting final
-owner visual approval.
+Status: Midnight Editorial implemented and approved by the owner July 22, 2026.
 
 ## Selected Direction: Midnight Editorial
 
 The owner reopened the dark-theme work after approving the site's sharper,
-American Apparel-inspired editorial redesign. The implemented candidate keeps
+American Apparel-inspired editorial redesign. The approved implementation keeps
 the open layouts, oversized grotesk typography, square controls, full-color
 photography, and rule-separated directories intact while giving dark mode a
 clearer hierarchy.
@@ -149,9 +148,9 @@ included as a visual hierarchy measurement, not a WCAG text requirement.
 
 ## Recommendation
 
-Midnight Editorial is now the recommended production direction. It has the
+Midnight Editorial is the approved production direction. It has the
 cool clarity of Atlantic Signal, the action warmth of Pine and Gold, and enough
 contrast to support the new editorial system without becoming a blue-only or
 green-tinted interface. The earlier three options remain below as historical
-research. Final acceptance depends on the owner's visual review of the
-implemented desktop and mobile site.
+research. The owner gave final visual approval after reviewing the implemented
+desktop and mobile site on July 22, 2026.

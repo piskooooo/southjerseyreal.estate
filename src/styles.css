@@ -2183,6 +2183,26 @@ p a:focus-visible {
   gap: 0.35rem 1.25rem;
 }
 
+.site-footer .site-footer-support {
+  display: flex;
+  flex: 1 0 100%;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.25rem 0.55rem;
+  font-size: 0.82rem;
+}
+
+.site-footer .site-footer-support a {
+  color: var(--footer-text);
+  font-size: inherit;
+  font-weight: 750;
+  text-decoration: underline;
+}
+
+.site-footer .site-footer-support span {
+  color: var(--footer-muted);
+}
+
 .fair-housing-notice {
   display: flex;
   align-items: flex-start;

@@ -1,6 +1,6 @@
 # South Jersey Real Estate Project Checklist
 
-Last reviewed: July 20, 2026
+Last reviewed: July 22, 2026
 
 Use this file as the source of truth for unfinished work on `southjerseyreal.estate`. Check an item only after completing its **Done when** test. Never place passwords, SMTP credentials, webhook URLs, lead data, or other secrets in this file.
 
@@ -17,6 +17,7 @@ Use this file as the source of truth for unfinished work on `southjerseyreal.est
 - [ ] 10. Add client reviews to the About page
 - [x] 11. Prepare a comprehensive marketing-ready project description and status-labeled feature list
 - [x] 12. Add the intended HomeBase CRM and The Plum Real Estate Group links to the provider/partner presentation
+- [x] 13. Add an optional, analytics-tracked Support SJRE link
 
 ## 1. Complete the Cloudflare Pages Cutover
 
@@ -362,6 +363,20 @@ Implementation note: `Real Estate Providers` remains the navigation label. A ded
 production section, their relationships are described truthfully, and the
 marketing inventory matches the published page.
 
+## 13. Add Optional Support SJRE Link
+
+**Goal:** Give visitors a quiet way to support the project without implying that payment is required for the newsletter or other public content.
+
+- [x] Add a discreet `Support SJRE` link to the site footer.
+- [x] Use the website-specific Ko-fi UTM destination.
+- [x] State that support is optional and the newsletter remains free.
+- [x] Record consented clicks as the existing privacy-safe GA4 `outbound_click` event with `link_source: footer_support`.
+- [x] Verify the exact destination, secure external-link behavior, analytics payload, accessibility, and 320-pixel layout.
+
+Completion date: July 22, 2026
+
+**Done when:** The production footer contains the optional support link and free-newsletter note, and a consented test click produces the expected GA4 outbound-click event without exposing URL query parameters in analytics.
+
 ## Completed Work
 
 - [x] Rebuild the public site as a React/Vite application.
@@ -377,6 +392,6 @@ marketing inventory matches the published page.
 - [x] Move contact and newsletter handling to Supabase, Turnstile, and Brevo.
 - [x] Verify contact delivery and newsletter double opt-in end to end, then remove all test records.
 - [x] Save the reusable Turnstile Spin workflow under `.codex/skills/turnstile-spin` for future chats.
-- [x] Add 92 Vitest tests, 37 rendered-route compliance checks, and a 49-check transactional Supabase pgTAP suite, and keep the GitHub test workflow on every push.
+- [x] Add 94 Vitest tests, 38 rendered-route compliance checks, and a 49-check transactional Supabase pgTAP suite, and keep the GitHub test workflow on every push.
 - [x] Build and publish the private website-editor frontend, database migration, image/inbox support, managed public-content adapter, and SEO rebuild implementation while keeping production access fail-closed until provisioning is complete.
 - [x] Document private inquiry access, production test cleanup, Pages recovery, retired NAS resources, and the final human compliance handoff.

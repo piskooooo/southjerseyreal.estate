@@ -42,6 +42,17 @@ export function Footer({ content, navigate, onManagePrivacy }: FooterProps) {
           <FairHousingNotice navigate={navigate} />
         </div>
         <div className="site-footer-meta">
+          <p className="site-footer-support">
+            <a
+              href={content.supportHref}
+              target="_blank"
+              rel="noreferrer"
+              onClick={() => trackLinkClick(content.supportHref, content.supportLabel, "footer_support")}
+            >
+              {content.supportLabel}
+            </a>
+            <span>{content.supportNote}</span>
+          </p>
           <p>{content.copyright}</p>
           <p className="site-footer-disclosure">
             <a

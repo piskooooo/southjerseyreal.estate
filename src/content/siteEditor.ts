@@ -43,6 +43,9 @@ export type SitewideContent = {
     copyright: string;
     creatorCredit: string;
     creatorHref: string;
+    supportLabel: string;
+    supportHref: string;
+    supportNote: string;
     cookieSettingsLabel: string;
     linkGroups: Array<{ label: string; links: SiteLink[] }>;
   };
@@ -110,6 +113,9 @@ export const sitewideSeed: SitewideContent = {
     copyright: "© 2026 South Jersey Real Estate",
     creatorCredit: "Website created and maintained by Fat Cat Finance, LLC.",
     creatorHref: "https://fatcat.finance",
+    supportLabel: "Support SJRE",
+    supportHref: "https://ko-fi.com/southjerseyrealestate?utm_source=southjerseyreal.estate&utm_medium=website&utm_campaign=sjre_support",
+    supportNote: "Optional support. The newsletter remains free.",
     cookieSettingsLabel: "Cookie Settings",
     linkGroups: footerLinkGroups.map((group) => ({
       label: group.label,
@@ -372,7 +378,7 @@ export function normalizeManagedContent(pageKey: string, value: unknown): Manage
   return normalizeAgainstSeed(value, seed) as ManagedContent;
 }
 
-const linkFieldNames = new Set(["creatorHref", "followupPath", "href", "path", "phoneHref"]);
+const linkFieldNames = new Set(["creatorHref", "supportHref", "followupPath", "href", "path", "phoneHref"]);
 const imageFieldNames = new Set(["image", "src", "thumbnail"]);
 
 function isAllowedManagedUrl(value: string, imageOnly: boolean) {

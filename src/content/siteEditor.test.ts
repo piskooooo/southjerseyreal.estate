@@ -102,6 +102,21 @@ describe("website editor content normalization", () => {
     expect(normalized.header.connectPath).toBe("/connect");
   });
 
+  it("adds the optional support link when normalizing older sitewide content", () => {
+    const legacy = structuredClone(managedContentSeeds.get(SITEWIDE_CONTENT_KEY)) as SitewideContent;
+    const legacyFooter = legacy.footer as Partial<SitewideContent["footer"]>;
+    delete legacyFooter.supportLabel;
+    delete legacyFooter.supportHref;
+    delete legacyFooter.supportNote;
+
+    const normalized = normalizeManagedContent(SITEWIDE_CONTENT_KEY, legacy) as SitewideContent;
+    expect(normalized.footer.supportLabel).toBe("Support SJRE");
+    expect(normalized.footer.supportHref).toBe(
+      "https://ko-fi.com/southjerseyrealestate?utm_source=southjerseyreal.estate&utm_medium=website&utm_campaign=sjre_support",
+    );
+    expect(normalized.footer.supportNote).toBe("Optional support. The newsletter remains free.");
+  });
+
   it("rejects unsafe links and missing image descriptions before publish", () => {
     const unsafe = structuredClone(managedContentSeeds.get("/")) as ManagedPageDocument;
     const actionLink = unsafe.page.sections
@@ -116,6 +131,12 @@ describe("website editor content normalization", () => {
     ) as SitewideContent;
     unsafeFooter.footer.creatorHref = "javascript:alert(1)";
     expect(() => validateManagedContentForPublish(SITEWIDE_CONTENT_KEY, unsafeFooter)).toThrow(/allowed/i);
+
+    const unsafeSupport = structuredClone(
+      managedContentSeeds.get(SITEWIDE_CONTENT_KEY),
+    ) as SitewideContent;
+    unsafeSupport.footer.supportHref = "javascript:alert(1)";
+    expect(() => validateManagedContentForPublish(SITEWIDE_CONTENT_KEY, unsafeSupport)).toThrow(/allowed/i);
 
     const missingAlt = structuredClone(managedContentSeeds.get("/")) as ManagedPageDocument;
     missingAlt.page.sections[0].images[0].alt = "";

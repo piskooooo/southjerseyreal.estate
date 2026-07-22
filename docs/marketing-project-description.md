@@ -203,6 +203,8 @@ concept are documented without being presented as current website capabilities.
 - **Live:** A grouped footer with regional resources, contact destinations,
   legal pages, social links, brokerage identification, fair-housing information,
   website credit, and cookie settings.
+- **Live:** A discreet optional Support SJRE footer link with website-specific
+  Ko-fi attribution and a clear statement that the newsletter remains free.
 - **Live:** Browser favicon and Apple touch icon support.
 
 ### Contact and Lead Workflows
@@ -369,6 +371,8 @@ concept are documented without being presented as current website capabilities.
   `generate_lead` event and a direct `contact_lead` key event.
 - **Live:** Successful newsletter subscriptions record a separate `sign_up`
   event rather than being counted as contact leads.
+- **Live:** Consented Support SJRE clicks record a privacy-safe GA4
+  `outbound_click` with a dedicated `footer_support` source label.
 - **Live:** Low-cardinality event dimensions for form name, lead type, and link
   source.
 - **Live:** Production event collection and lead-key-event configuration have

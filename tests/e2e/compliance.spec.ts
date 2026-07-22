@@ -220,6 +220,35 @@ test("analytics remains off before opt-in and unloads after withdrawal", async (
   expect(await page.evaluate(() => window.localStorage.getItem("analytics-consent"))).toBe("granted");
 });
 
+test("optional support link keeps the newsletter free and records a GA4 outbound click", async ({ page }) => {
+  await page.route("https://www.googletagmanager.com/**", (route) => route.abort());
+  await page.setViewportSize({ width: 320, height: 900 });
+  await openHydratedRoute(page, "/newsletter");
+  await page.getByRole("button", { name: "Cookie Settings" }).click();
+  await page.getByRole("button", { name: "Accept Analytics" }).click();
+
+  const support = page.locator(".site-footer-support");
+  const supportLink = support.getByRole("link", { name: "Support SJRE", exact: true });
+  await expect(support).toContainText("Optional support. The newsletter remains free.");
+  await expect(supportLink).toHaveAttribute(
+    "href",
+    "https://ko-fi.com/southjerseyrealestate?utm_source=southjerseyreal.estate&utm_medium=website&utm_campaign=sjre_support",
+  );
+  await expect(supportLink).toHaveAttribute("target", "_blank");
+  await expect(supportLink).toHaveAttribute("rel", "noreferrer");
+  expect(await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth)).toBeLessThanOrEqual(1);
+
+  await supportLink.dispatchEvent("click");
+  const analytics = await page.evaluate(() => (window.dataLayer || []).map((entry) => Array.from(entry as ArrayLike<unknown>)));
+  expect(analytics).toEqual(expect.arrayContaining([
+    expect.arrayContaining(["event", "outbound_click", expect.objectContaining({
+      destination_type: "external",
+      link_source: "footer_support",
+      link_url: "https://ko-fi.com/southjerseyrealestate",
+    })]),
+  ]));
+});
+
 test("unpaid providers and paid local advertising remain separate", async ({ page }) => {
   await page.route("https://www.googletagmanager.com/**", (route) => route.abort());
   await page.setViewportSize({ width: 320, height: 900 });

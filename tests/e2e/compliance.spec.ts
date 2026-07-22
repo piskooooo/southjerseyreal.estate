@@ -401,6 +401,35 @@ for (const route of ["/", "/counties", "/connect", "/atlantic-county", "/contact
   });
 }
 
+test("homepage preserves the oversized headline overlap on desktop", async ({ page }) => {
+  await page.setViewportSize({ width: 1653, height: 900 });
+  await openHydratedRoute(page, "/");
+
+  const composition = await page.evaluate(() => {
+    const heading = document.querySelector<HTMLElement>(".hero-copy h1, .hero-copy h2");
+    const image = document.querySelector<HTMLElement>(".hero-image");
+    if (!heading || !image) return null;
+
+    const headingRect = heading.getBoundingClientRect();
+    const imageRect = image.getBoundingClientRect();
+    const headingStyle = getComputedStyle(heading);
+
+    return {
+      headingWidth: headingRect.width,
+      imageLeft: imageRect.left,
+      overlap: headingRect.right - imageRect.left,
+      viewportWidth: window.innerWidth,
+      whiteSpace: headingStyle.whiteSpace,
+    };
+  });
+
+  expect(composition).not.toBeNull();
+  expect(composition!.whiteSpace).toBe("nowrap");
+  expect(composition!.headingWidth).toBeGreaterThan(composition!.viewportWidth * 0.75);
+  expect(composition!.overlap).toBeGreaterThan(300);
+  expect(composition!.imageLeft).toBeGreaterThan(0);
+});
+
 test("representative desktop and mobile screenshots render without overflow", async ({ page }) => {
   for (const route of ["/", "/counties", "/connect", "/atlantic-county", "/contact", "/partners"]) {
     await page.setViewportSize({ width: 1440, height: 1000 });

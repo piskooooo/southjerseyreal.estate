@@ -52,10 +52,6 @@ const connectHubSections = [
     description: "Meet the New Jersey real estate professional who owns and maintains this website.",
     label: "About Arthur",
     href: "/about",
-    image: {
-      src: "/assets/live/arthur-pisko-jr-picture-jpg.webp",
-      alt: "Portrait of Arthur Pisko Jr. wearing glasses, a black shirt, and a plaid tie against a plain background.",
-    },
   },
   {
     id: "connect-contact",
@@ -63,10 +59,6 @@ const connectHubSections = [
     description: "Use the contact form for a property or real estate question.",
     label: "Get in Touch",
     href: "/contact",
-    image: {
-      src: "/assets/live/pitman-gloucester-jpg.webp",
-      alt: "Brick storefronts, cars, traffic lights, and motorcycles along a South Jersey commercial street.",
-    },
   },
   {
     id: "connect-newsletter",
@@ -74,10 +66,6 @@ const connectHubSections = [
     description: "Get useful South Jersey market notes, town updates, and buyer and seller tips by email.",
     label: "View the Newsletter",
     href: "/newsletter",
-    image: {
-      src: "/assets/home-light-hero-beach-sunrise.jpg",
-      alt: "Sunrise over a South Jersey beach with ocean waves, glowing sky, and shoreline in the foreground.",
-    },
   },
   {
     id: "connect-why-new-jersey",
@@ -85,10 +73,6 @@ const connectHubSections = [
     description: "Compare practical differences between New Jersey and nearby states, from property records to regional travel.",
     label: "Explore New Jersey",
     href: "/why-new-jersey",
-    image: {
-      src: "/assets/live/philly-skyline-from-camden-city-camden-jpg.webp",
-      alt: "Philadelphia skyline viewed from South Jersey beyond trees and nearby homes.",
-    },
   },
   {
     id: "connect-why-south-jersey",
@@ -96,10 +80,6 @@ const connectHubSections = [
     description: "See how North and South Jersey differ as broad regions, then compare the places that interest you.",
     label: "Compare North and South Jersey",
     href: "/why-south-jersey",
-    image: {
-      src: "/assets/live/camden-county-map-png.webp",
-      alt: "Camden County, New Jersey locator map.",
-    },
   },
   {
     id: "connect-faq",
@@ -130,7 +110,7 @@ const connectHubSections = [
     { tag: "P", text: item.description },
     { tag: "A", text: item.label, href: item.href },
   ],
-  images: item.image ? [{ ...item.image }] : [],
+  images: [],
 }));
 
 export const pageOverrides: SitePage[] = [

@@ -335,6 +335,43 @@ test("desktop folders switch without overlap and support keyboard dismissal", as
   await expect(connect).toHaveAttribute("aria-expanded", "false");
 });
 
+test("connect cards are text-only and the newsletter heading stays inside its column", async ({ page }) => {
+  await page.setViewportSize({ width: 1807, height: 797 });
+  await openHydratedRoute(page, "/connect");
+  await expect(page.locator(".hub-page-connect .hub-card")).toHaveCount(8);
+  await expect(page.locator(".hub-page-connect .hub-card-media")).toHaveCount(0);
+
+  await openHydratedRoute(page, "/newsletter");
+
+  for (const viewport of [
+    { width: 1807, height: 797 },
+    { width: 1280, height: 900 },
+    { width: 1024, height: 768 },
+    { width: 390, height: 844 },
+  ]) {
+    await page.setViewportSize(viewport);
+    const layout = await page.locator(".newsletter-section").evaluate((section) => {
+      const heading = section.querySelector<HTMLElement>(".newsletter-copy h1");
+      const form = section.querySelector<HTMLElement>(".newsletter-form");
+      if (!heading || !form) throw new Error("Newsletter heading or form is missing");
+
+      const headingRect = heading.getBoundingClientRect();
+      const formRect = form.getBoundingClientRect();
+      const verticallyAligned = headingRect.top < formRect.bottom && headingRect.bottom > formRect.top;
+
+      return {
+        headingFits: heading.scrollWidth <= heading.clientWidth + 1,
+        overlapsForm: verticallyAligned && headingRect.left + heading.scrollWidth > formRect.left,
+        pageOverflow: document.documentElement.scrollWidth - document.documentElement.clientWidth,
+      };
+    });
+
+    expect(layout.headingFits).toBe(true);
+    expect(layout.overlapsForm).toBe(false);
+    expect(layout.pageOverflow).toBeLessThanOrEqual(1);
+  }
+});
+
 test("hub labels, history, mobile navigation, analytics, and missing routes behave correctly", async ({ page }) => {
   await page.route("https://www.googletagmanager.com/**", (route) => route.abort());
   await page.addInitScript(() => window.localStorage.setItem("analytics-consent", "granted"));

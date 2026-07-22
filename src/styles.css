@@ -1438,6 +1438,8 @@ p a:focus-visible {
 
 .newsletter-copy {
   max-width: 60rem;
+  min-width: 0;
+  container-type: inline-size;
 }
 
 .newsletter-copy h1 {
@@ -3175,13 +3177,23 @@ p {
 }
 
 .contact-copy h1,
-.contact-copy h2,
-.newsletter-copy h1 {
+.contact-copy h2 {
   margin-bottom: 1.5rem;
   font-size: clamp(4rem, 8vw, 7.5rem);
   font-weight: 850;
   line-height: 0.88;
   letter-spacing: -0.055em;
+  text-transform: uppercase;
+}
+
+.newsletter-copy h1 {
+  max-width: 100%;
+  margin-bottom: 1.5rem;
+  font-size: clamp(2.25rem, 13cqi, 5rem);
+  font-weight: 850;
+  line-height: 0.88;
+  letter-spacing: 0;
+  overflow-wrap: anywhere;
   text-transform: uppercase;
 }
 
@@ -3456,8 +3468,7 @@ p {
 @media (max-width: 560px) {
   .hub-hero-section h1,
   .guide-hero-section h1,
-  .contact-copy h1,
-  .newsletter-copy h1 {
+  .contact-copy h1 {
     font-size: clamp(3.25rem, 16vw, 5rem);
   }
 

@@ -12,6 +12,12 @@ import { Blocks } from "./Blocks";
 
 const googleProfileUrl = reviewProfileLinks.find((source) => source.key === "google")!.href;
 const MINIMUM_DISPLAY_RATING = 4;
+const OUT_OF_SCOPE_REVIEW_TERMS = /\b(?:mortgage|lender|loan|financing)\b/i;
+
+function isDisplayableReview(review: GoogleReview): boolean {
+  return review.rating >= MINIMUM_DISPLAY_RATING
+    && !OUT_OF_SCOPE_REVIEW_TERMS.test(review.text);
+}
 
 function ExternalReviewLink({
   className = "",
@@ -188,7 +194,7 @@ function GoogleReviewsPanel() {
 
   const { feed } = state;
   const reviewsUrl = feed.reviewsUrl || googleProfileUrl;
-  const displayedReviews = feed.reviews.filter((review) => review.rating >= MINIMUM_DISPLAY_RATING);
+  const displayedReviews = feed.reviews.filter(isDisplayableReview);
 
   return (
     <div className="google-reviews-content">
@@ -213,7 +219,7 @@ function GoogleReviewsPanel() {
       </div>
 
       <p className="google-review-ordering">
-        Google Maps orders the returned reviews by relevance. This page displays returned reviews rated 4 or 5 stars; read all reviews on Google Maps.
+        Google Maps orders the returned reviews by relevance. This page displays returned reviews rated 4 or 5 stars that fit this site's real estate scope; read all reviews on Google Maps.
       </p>
 
       {displayedReviews.length ? (

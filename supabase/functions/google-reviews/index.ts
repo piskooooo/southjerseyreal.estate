@@ -1,3 +1,4 @@
+import { createClient } from "npm:@supabase/supabase-js@2.110.6";
 import { normalizePlacesResponse } from "./normalize.ts";
 
 const GOOGLE_PLACES_ENDPOINT = "https://places.googleapis.com/v1/places";
@@ -8,6 +9,7 @@ const GOOGLE_FIELD_MASK = [
   "googleMapsLinks",
   "reviews",
 ].join(",");
+const DAILY_GOOGLE_REQUEST_LIMIT = 30;
 
 const DEFAULT_ALLOWED_ORIGINS = [
   "https://southjerseyreal-estate.pages.dev",
@@ -20,6 +22,13 @@ const DEFAULT_ALLOWED_ORIGINS = [
 ];
 
 class ConfigurationError extends Error {}
+class DailyQuotaError extends Error {}
+
+type DailyQuotaClaim = {
+  accepted?: boolean;
+  requestCount?: number;
+  limit?: number;
+};
 
 function env(name: string): string {
   const value = Deno.env.get(name)?.trim();
@@ -30,6 +39,44 @@ function env(name: string): string {
 function commaSeparatedEnv(name: string, fallback: string[]): Set<string> {
   const configured = Deno.env.get(name)?.split(",") ?? fallback;
   return new Set(configured.map((value) => value.trim()).filter(Boolean));
+}
+
+function getSupabaseSecretKey(): string {
+  const legacyKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")?.trim();
+  if (legacyKey) return legacyKey;
+
+  const encodedKeys = Deno.env.get("SUPABASE_SECRET_KEYS");
+  if (encodedKeys) {
+    try {
+      const keys = JSON.parse(encodedKeys) as Record<string, unknown>;
+      const defaultKey = keys.default;
+      if (typeof defaultKey === "string" && defaultKey) return defaultKey;
+      const firstKey = Object.values(keys).find((value) =>
+        typeof value === "string" && value
+      );
+      if (typeof firstKey === "string") return firstKey;
+    } catch {
+      throw new ConfigurationError("SUPABASE_SECRET_KEYS is not valid JSON.");
+    }
+  }
+  throw new ConfigurationError("Missing a Supabase secret key.");
+}
+
+function createAdminClient() {
+  return createClient(env("SUPABASE_URL"), getSupabaseSecretKey(), {
+    auth: { autoRefreshToken: false, persistSession: false },
+  });
+}
+
+async function claimDailyGoogleRequest(): Promise<void> {
+  const { data, error } = await createAdminClient().rpc(
+    "claim_google_review_daily_request",
+    { p_limit: DAILY_GOOGLE_REQUEST_LIMIT },
+  );
+  if (error) throw new Error("The Google review quota could not be claimed.");
+
+  const claim = data as DailyQuotaClaim | null;
+  if (!claim?.accepted) throw new DailyQuotaError("Daily Google review quota exhausted.");
 }
 
 function corsHeaders(origin: string | null): HeadersInit {
@@ -127,15 +174,21 @@ Deno.serve(async (request) => {
   }
 
   try {
+    await claimDailyGoogleRequest();
     const feed = await fetchGoogleReviews();
     return jsonResponse(allowedOrigin, { ok: true, ...feed });
   } catch (error) {
     const configurationError = error instanceof ConfigurationError;
+    const quotaError = error instanceof DailyQuotaError;
     if (configurationError) console.error(error.message);
     return jsonResponse(allowedOrigin, {
       ok: false,
-      code: configurationError ? "configuration_error" : "provider_unavailable",
+      code: configurationError
+        ? "configuration_error"
+        : quotaError
+        ? "daily_quota_exhausted"
+        : "provider_unavailable",
       message: "Google reviews are temporarily unavailable.",
-    }, 503);
+    }, quotaError ? 429 : 503);
   }
 });

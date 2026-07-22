@@ -54,6 +54,21 @@ const reviewPayload = {
       googleMapsUri: "https://www.google.com/maps/reviews/low-rating",
       flagContentUri: "https://www.google.com/local/review/rap/low-rating",
     },
+    {
+      id: "places/example/reviews/out-of-scope",
+      rating: 5,
+      text: "Arthur introduced us to a lender during the process.",
+      relativePublishTimeDescription: "3 months ago",
+      publishTime: "2026-04-01T12:00:00Z",
+      translated: false,
+      author: {
+        displayName: "Out of Scope Reviewer",
+        uri: "https://www.google.com/maps/contrib/out-of-scope",
+        photoUri: "https://lh3.googleusercontent.com/out-of-scope",
+      },
+      googleMapsUri: "https://www.google.com/maps/reviews/out-of-scope",
+      flagContentUri: "https://www.google.com/local/review/rap/out-of-scope",
+    },
   ],
 };
 
@@ -86,8 +101,9 @@ describe("About page reviews", () => {
       "href",
       reviewPayload.reviews[0].googleMapsUri,
     );
-    expect(screen.getByText(/displays returned reviews rated 4 or 5 stars/)).toBeVisible();
+    expect(screen.getByText(/displays returned reviews rated 4 or 5 stars that fit this site's real estate scope/)).toBeVisible();
     expect(screen.queryByText(reviewPayload.reviews[1].text)).not.toBeInTheDocument();
+    expect(screen.queryByText(reviewPayload.reviews[2].text)).not.toBeInTheDocument();
     expect(screen.getByRole("link", { name: /Facebook Recommendations/ })).toBeVisible();
     expect(screen.getByRole("link", { name: /Zillow Profile/ })).toBeVisible();
     expect(screen.getByRole("link", { name: /Realtor.com Profile/ })).toBeVisible();

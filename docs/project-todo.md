@@ -295,16 +295,21 @@ review promotion.
 
 ### Production Setup and Verification
 
-- [ ] Enable Places API (New) in the correct Google Cloud project with billing attached.
-- [ ] Create an API-restricted key, resolve the stable Place ID, and save `GOOGLE_PLACES_API_KEY`, `GOOGLE_PLACE_ID`, and `REVIEWS_ALLOWED_ORIGINS` only as Supabase secrets.
-- [ ] Cap Place Details Enterprise + Atmosphere at 30 requests per day to remain below its current 1,000-request monthly free allowance.
-- [ ] Deploy `google-reviews --no-verify-jwt`, then verify live author images, text, source links, filtering disclosure, CORS, CSP, timeout, quota, and unavailable-provider states.
-- [ ] Push the frontend, confirm GitHub tests and Cloudflare Pages deployment, and inspect `/about` at desktop and mobile widths in both themes.
+- [x] Enable Places API (New) in the correct Google Cloud project with billing attached.
+- [x] Create an API-restricted key, resolve the stable Place ID, and save `GOOGLE_PLACES_API_KEY`, `GOOGLE_PLACE_ID`, and `REVIEWS_ALLOWED_ORIGINS` only as Supabase secrets.
+- [x] Enforce a hard 30-request UTC daily ceiling in the Supabase backend. Places API (New) currently exposes per-method, per-minute Cloud quotas rather than a daily quota, so the private database counter provides the intended daily protection.
+- [x] Deploy `google-reviews --no-verify-jwt`, then verify live author images, text, source links, filtering disclosure, CORS, CSP, timeout, quota, and unavailable-provider states.
+- [x] Push the frontend, confirm GitHub tests and Cloudflare Pages deployment, and inspect `/about` at desktop and mobile widths in both themes.
 
-**Done when:** The production About page shows properly attributed 4- and 5-star
-Google review cards, links to every complete review profile, fails cleanly when
-Google is unavailable, stays within the configured free quota, and the rest of
-the site remains focused on South Jersey real estate.
+Completion date: July 22, 2026
+
+Production note: the live Google feed returns the verified Arthur Pisko Jr. listing. The site displays only returned 4- and 5-star reviews that also fit the site's real-estate scope, preserves full text and attribution for any displayed card, and links visitors to the complete Google profile when no returned review meets those display rules.
+
+**Done when:** The production About page shows eligible, properly attributed
+Google review cards or the complete Google-profile fallback, links to every
+review profile, fails cleanly when Google is unavailable, stays within the
+configured daily ceiling, and the rest of the site remains focused on South
+Jersey real estate.
 
 ## 11. Prepare the Marketing Description and Feature List
 

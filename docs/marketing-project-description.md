@@ -74,9 +74,9 @@ Turnstile. Privacy-aware analytics, layered disclosures, automated testing, and
 deployment recovery were treated as product features rather than afterthoughts.
 
 The project also has a larger editorial roadmap. Sourced profiles covering all
-168 current municipalities have been prepared for review, a Google review
-display has been built for the About page and awaits account activation, and a
-revised dark-theme palette remains intentionally paused. Bright MLS IDX research
+168 current municipalities have been prepared for review, a live Google review
+display is contained on the About page, and a revised dark-theme palette remains
+intentionally paused. Bright MLS IDX research
 is preserved separately as a deferred concept and is not represented as a live
 website feature.
 
@@ -126,8 +126,8 @@ coverage.
 
 The site is already live, but its editorial system was designed to keep growing.
 The next content layer is a sourced, casual-but-professional profile set covering
-every current municipality in the seven-county region. Google review cards for
-the About page are activation-ready, a new dark-theme direction can be selected
+every current municipality in the seven-county region. Google review cards and
+profile fallbacks are live on the About page, a new dark-theme direction can be selected
 later, and the provider and advertising programs can expand as real participants
 are added. A separate newsletter-content automation and a deferred Bright IDX
 concept are documented without being presented as current website capabilities.
@@ -285,20 +285,19 @@ concept are documented without being presented as current website capabilities.
   to public Google, Facebook, Zillow, and Realtor.com review profiles.
 - **Live:** A graceful Google-profile fallback appears when the live review feed
   is unavailable.
-- **Built - Activation Pending:** A Supabase function can request Google Places
-  review content while keeping the Places API key on the server.
-- **Built - Activation Pending:** Review cards support Google's author photo,
+- **Live:** A Supabase function requests Google Places review content while
+  keeping the API key on the server.
+- **Live:** Eligible review cards support Google's author photo,
   author name and profile, rating, date, full returned text, attribution, and
   direct source link.
-- **Built - Activation Pending:** The display preserves Google's returned order,
-  shows only returned 4- and 5-star reviews, states that selection beside the
-  cards, and links to the complete Google profile.
-- **Built - Activation Pending:** Exact origin controls, no-cache behavior,
+- **Live:** The display preserves Google's returned order, shows only returned
+  4- and 5-star reviews that fit the site's real-estate scope, states that
+  selection beside the cards, and links to the complete Google profile.
+- **Live:** Exact origin controls, no-cache behavior,
   request timeout, unavailable-provider fallback, and automated review tests.
-- **Built - Activation Pending:** Production activation still requires the
-  correct Google Cloud project, Places API billing, a restricted API key, a
-  stable Place ID, a low daily quota, Supabase secrets, function deployment, and
-  final desktop, mobile, and theme verification.
+- **Live:** A private Supabase counter enforces a hard 30-request UTC daily
+  ceiling, and the production integration has been verified across supported
+  origins, responsive layouts, and both themes.
 
 ### Privacy, Consent, and Public Disclosures
 
@@ -625,7 +624,7 @@ or the private website editor.
   accessibility testing, and automated deployment.”
 - “Production hosting no longer depends on a home server or NAS container.”
 - “Sourced profiles for all 168 current municipalities are in editorial preview.”
-- “A Google review display has been built and is awaiting production activation.”
+- “The About page can display eligible, fully attributed Google review cards and links to the complete public profile.”
 - “Future IDX research has been documented separately and is not currently
   available.”
 
@@ -633,8 +632,6 @@ or the private website editor.
 
 - “Browse all Bright MLS listings” or “live MLS search.”
 - “All 168 municipality profiles are live.”
-- “Live Google reviews” until the Google Places integration is activated and
-  verified in production.
 - “The website automatically writes or sends a weekly newsletter.”
 - “Paid advertisers are featured” until actual labeled placements exist.
 - “HomeBase CRM and The Plum Real Estate Group are current partners” until both

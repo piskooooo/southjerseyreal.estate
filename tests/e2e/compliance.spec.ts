@@ -179,6 +179,68 @@ test("sitewide footer disclosure remains prominent and readable at 320 pixels", 
   await expect(page.locator("main")).toContainText("source of lawful income used for rental or mortgage payments");
 });
 
+test("Google reviews load and expand within the About page only after activation", async ({ page }) => {
+  let reviewRequestCount = 0;
+  await page.route("**/functions/v1/google-reviews", async (route) => {
+    reviewRequestCount += 1;
+    await route.fulfill({
+      contentType: "application/json",
+      body: JSON.stringify({
+        ok: true,
+        rating: 4.9,
+        userRatingCount: 12,
+        reviewsUrl: "https://www.google.com/maps/place/example/reviews",
+        writeReviewUrl: "",
+        attributions: [],
+        reviews: [
+          {
+            id: "places/example/reviews/five-star",
+            rating: 5,
+            text: "This review expands on the About page.",
+            relativePublishTimeDescription: "a month ago",
+            publishTime: "2026-06-01T12:00:00Z",
+            translated: false,
+            author: {
+              displayName: "Acceptance Test Reviewer",
+              uri: "https://www.google.com/maps/contrib/example",
+              photoUri: "",
+            },
+            googleMapsUri: "https://www.google.com/maps/reviews/example",
+            flagContentUri: "https://www.google.com/local/review/rap/example",
+          },
+          {
+            id: "places/example/reviews/one-star",
+            rating: 1,
+            text: "This low-rated review must remain hidden.",
+            relativePublishTimeDescription: "two months ago",
+            publishTime: "2026-05-01T12:00:00Z",
+            translated: false,
+            author: {
+              displayName: "Low Rating Test Reviewer",
+              uri: "",
+              photoUri: "",
+            },
+            googleMapsUri: "https://www.google.com/maps/reviews/low-rating",
+            flagContentUri: "https://www.google.com/local/review/rap/low-rating",
+          },
+        ],
+      }),
+    });
+  });
+
+  await openHydratedRoute(page, "/about");
+  expect(reviewRequestCount).toBe(0);
+  await expect(page.getByRole("button", { name: "Load Google reviews" })).toBeVisible();
+  await expect(page.getByText("This review expands on the About page.")).toHaveCount(0);
+
+  await page.getByRole("button", { name: "Load Google reviews" }).click();
+
+  await expect(page.getByText("This review expands on the About page.")).toBeVisible();
+  await expect(page.getByText("This low-rated review must remain hidden.")).toHaveCount(0);
+  await expect(page).toHaveURL(/\/about$/);
+  expect(reviewRequestCount).toBe(1);
+});
+
 test("contact and newsletter forms show the required consent and legal links", async ({ page }) => {
   await openHydratedRoute(page, "/contact");
   const contactForm = page.locator("form.contact-form");

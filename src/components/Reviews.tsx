@@ -1,8 +1,9 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ExternalLink, MessageSquareText, Star, UserRound } from "lucide-react";
 import { trackLinkClick } from "../analytics";
 import {
   loadGoogleReviews,
+  ReviewFeedError,
   reviewProfileLinks,
   type GoogleReview,
   type GoogleReviewFeed,
@@ -12,11 +13,9 @@ import { Blocks } from "./Blocks";
 
 const googleProfileUrl = reviewProfileLinks.find((source) => source.key === "google")!.href;
 const MINIMUM_DISPLAY_RATING = 4;
-const OUT_OF_SCOPE_REVIEW_TERMS = /\b(?:mortgage|lender|loan|financing)\b/i;
 
 function isDisplayableReview(review: GoogleReview): boolean {
-  return review.rating >= MINIMUM_DISPLAY_RATING
-    && !OUT_OF_SCOPE_REVIEW_TERMS.test(review.text);
+  return review.rating >= MINIMUM_DISPLAY_RATING && review.rating <= 5;
 }
 
 function ExternalReviewLink({
@@ -151,46 +150,84 @@ function GoogleReviewsLoading() {
   );
 }
 
-function GoogleReviewsFallback() {
+function GoogleReviewsGate({
+  errorCode,
+  onLoad,
+}: {
+  errorCode?: string;
+  onLoad: () => void;
+}) {
+  const quotaExhausted = errorCode === "daily_quota_exhausted";
+
   return (
-    <div className="google-reviews-fallback">
+    <div className="google-reviews-gate">
       <MessageSquareText size={28} strokeWidth={1.6} aria-hidden="true" />
       <div>
-        <h3>Read the reviews on Google</h3>
-        <p>Open the Google Business profile for the latest ratings and review activity.</p>
-        <ExternalReviewLink
-          className="button button-small"
-          href={googleProfileUrl}
-          label="Open Google Reviews"
-          source="review_fallback"
-        />
+        <p className="google-maps-attribution" translate="no">Google Maps</p>
+        <h2>Google reviews</h2>
+        {errorCode ? (
+          <p role="status">
+            {quotaExhausted
+              ? "The in-site review display has reached today's request limit. Try again tomorrow or view all reviews on Google."
+              : "Google reviews could not be loaded here right now. You can try again or view all reviews on Google."}
+          </p>
+        ) : (
+          <p>Load the current 4- and 5-star reviews from Arthur's Google Business profile without leaving this page.</p>
+        )}
+        <div className="google-reviews-gate-actions">
+          {!quotaExhausted && (
+            <button className="button button-small" type="button" onClick={onLoad}>
+              {errorCode ? "Try again" : "Load Google reviews"}
+            </button>
+          )}
+          <ExternalReviewLink
+            className="google-review-profile-link"
+            href={googleProfileUrl}
+            label="View all reviews on Google"
+            source="review_gate"
+          />
+        </div>
       </div>
     </div>
   );
 }
 
 function GoogleReviewsPanel() {
+  const controllerRef = useRef<AbortController | null>(null);
   const [state, setState] = useState<
+    | { status: "idle" }
     | { status: "loading" }
     | { status: "success"; feed: GoogleReviewFeed }
-    | { status: "error" }
-  >({ status: "loading" });
+    | { status: "error"; code: string }
+  >({ status: "idle" });
 
   useEffect(() => {
-    const controller = new AbortController();
-    loadGoogleReviews(controller.signal).then(
-      (feed) => setState({ status: "success", feed }),
-      (error) => {
-        if (controller.signal.aborted) return;
-        setState({ status: "error" });
-        if (import.meta.env.DEV) console.info("Google reviews are using the public-profile fallback.", error);
-      },
-    );
-    return () => controller.abort();
+    return () => controllerRef.current?.abort();
   }, []);
 
+  const handleLoad = () => {
+    if (state.status === "loading") return;
+
+    controllerRef.current?.abort();
+    const controller = new AbortController();
+    controllerRef.current = controller;
+    setState({ status: "loading" });
+    loadGoogleReviews(controller.signal).then(
+      (feed) => {
+        if (!controller.signal.aborted) setState({ status: "success", feed });
+      },
+      (error) => {
+        if (controller.signal.aborted) return;
+        const code = error instanceof ReviewFeedError ? error.code : "unknown";
+        setState({ status: "error", code });
+        if (import.meta.env.DEV) console.info("Google reviews could not be loaded in place.", error);
+      },
+    );
+  };
+
+  if (state.status === "idle") return <GoogleReviewsGate onLoad={handleLoad} />;
   if (state.status === "loading") return <GoogleReviewsLoading />;
-  if (state.status === "error") return <GoogleReviewsFallback />;
+  if (state.status === "error") return <GoogleReviewsGate errorCode={state.code} onLoad={handleLoad} />;
 
   const { feed } = state;
   const reviewsUrl = feed.reviewsUrl || googleProfileUrl;
@@ -219,7 +256,7 @@ function GoogleReviewsPanel() {
       </div>
 
       <p className="google-review-ordering">
-        Google Maps orders the returned reviews by relevance. This page displays returned reviews rated 4 or 5 stars that fit this site's real estate scope; read all reviews on Google Maps.
+        Google Maps orders the returned reviews by relevance. This page displays returned reviews rated 4 or 5 stars; read all reviews on Google Maps.
       </p>
 
       {displayedReviews.length ? (

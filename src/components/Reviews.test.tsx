@@ -2,6 +2,7 @@
 
 import "@testing-library/jest-dom/vitest";
 import { cleanup, render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import type { PageSection } from "../content/types";
 import { AboutReviewsSection } from "./Reviews";
@@ -87,23 +88,26 @@ describe("About page reviews", () => {
     vi.unstubAllGlobals();
   });
 
-  it("renders attributed Google content and every public review source", async () => {
+  it("loads attributed Google content in place only after the visitor requests it", async () => {
     vi.mocked(fetch).mockResolvedValue(jsonResponse(reviewPayload));
     render(<AboutReviewsSection section={section} navigate={vi.fn()} />);
 
+    expect(fetch).not.toHaveBeenCalled();
+    await userEvent.click(screen.getByRole("button", { name: "Load Google reviews" }));
     expect(await screen.findByText(reviewPayload.reviews[0].text)).toBeVisible();
+    expect(fetch).toHaveBeenCalledTimes(1);
     expect(screen.getByText("Google Maps")).toBeVisible();
     expect(screen.getByRole("link", { name: /Test Reviewer/ })).toHaveAttribute(
       "href",
       reviewPayload.reviews[0].author.uri,
     );
-    expect(screen.getByRole("link", { name: "View on Google Maps" })).toHaveAttribute(
+    expect(screen.getAllByRole("link", { name: "View on Google Maps" })[0]).toHaveAttribute(
       "href",
       reviewPayload.reviews[0].googleMapsUri,
     );
-    expect(screen.getByText(/displays returned reviews rated 4 or 5 stars that fit this site's real estate scope/)).toBeVisible();
+    expect(screen.getByText(/displays returned reviews rated 4 or 5 stars/)).toBeVisible();
     expect(screen.queryByText(reviewPayload.reviews[1].text)).not.toBeInTheDocument();
-    expect(screen.queryByText(reviewPayload.reviews[2].text)).not.toBeInTheDocument();
+    expect(screen.getByText(reviewPayload.reviews[2].text)).toBeVisible();
     expect(screen.getByRole("link", { name: /Facebook Recommendations/ })).toBeVisible();
     expect(screen.getByRole("link", { name: /Zillow Profile/ })).toBeVisible();
     expect(screen.getByRole("link", { name: /Realtor.com Profile/ })).toBeVisible();
@@ -116,10 +120,25 @@ describe("About page reviews", () => {
     }, 503));
     render(<AboutReviewsSection section={section} navigate={vi.fn()} />);
 
-    expect(await screen.findByText("Read the reviews on Google")).toBeVisible();
-    expect(screen.getByRole("link", { name: /Open Google Reviews/ })).toHaveAttribute(
+    await userEvent.click(screen.getByRole("button", { name: "Load Google reviews" }));
+    expect(await screen.findByText(/could not be loaded here right now/)).toBeVisible();
+    expect(screen.getByRole("button", { name: "Try again" })).toBeVisible();
+    expect(screen.getByRole("link", { name: /View all reviews on Google/ })).toHaveAttribute(
       "href",
       "https://g.co/kgs/xMPHGmV",
     );
+  });
+
+  it("does not offer another request after the daily quota is exhausted", async () => {
+    vi.mocked(fetch).mockResolvedValue(jsonResponse({
+      ok: false,
+      code: "daily_quota_exhausted",
+    }, 429));
+    render(<AboutReviewsSection section={section} navigate={vi.fn()} />);
+
+    await userEvent.click(screen.getByRole("button", { name: "Load Google reviews" }));
+    expect(await screen.findByText(/reached today's request limit/)).toBeVisible();
+    expect(screen.queryByRole("button", { name: "Try again" })).not.toBeInTheDocument();
+    expect(fetch).toHaveBeenCalledTimes(1);
   });
 });

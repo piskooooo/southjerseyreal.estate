@@ -1972,6 +1972,43 @@ p a:focus-visible {
   color: var(--text);
 }
 
+.google-reviews-gate {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: start;
+  gap: 1rem;
+  padding: clamp(1.2rem, 2.4vw, 1.6rem);
+  background: var(--surface-note);
+  border: 1px solid var(--surface-note-border);
+  border-radius: 6px;
+}
+
+.google-reviews-gate h2 {
+  margin: 0.3rem 0 0.7rem;
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+}
+
+.google-reviews-gate p:not(.google-maps-attribution) {
+  max-width: 52rem;
+  margin-bottom: 1rem;
+}
+
+.google-reviews-gate-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.9rem 1.2rem;
+}
+
+.google-review-profile-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--link);
+  font-weight: 700;
+  text-underline-offset: 0.25em;
+}
+
 .google-review-skeleton {
   min-height: 18rem;
   background: var(--surface);
@@ -2578,6 +2615,10 @@ p a:focus-visible {
   .google-reviews-summary {
     align-items: flex-start;
     flex-direction: column;
+  }
+
+  .google-reviews-gate {
+    grid-template-columns: 1fr;
   }
 
   .google-review-grid,

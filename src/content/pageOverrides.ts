@@ -360,7 +360,7 @@ export const pageOverrides: SitePage[] = [
           },
           {
             tag: "P",
-            text: "Google Maps Platform supplies public Google review content on the About page. When that section loads, review data and reviewer profile images may be requested from Google. Google's handling of information is described in the Google Privacy Policy.",
+            text: "Google Maps Platform supplies public Google review content on the About page. When a visitor chooses to load those reviews, review data and reviewer profile images may be requested from Google. Google's handling of information is described in the Google Privacy Policy.",
           },
           { tag: "H2", text: "Cookies and analytics choices" },
           {

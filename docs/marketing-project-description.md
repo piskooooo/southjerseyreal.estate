@@ -126,9 +126,9 @@ coverage.
 
 The site is already live, but its editorial system was designed to keep growing.
 The next content layer is a sourced, casual-but-professional profile set covering
-every current municipality in the seven-county region. Google review cards and
-profile fallbacks are live on the About page, a new dark-theme direction can be selected
-later, and the provider and advertising programs can expand as real participants
+every current municipality in the seven-county region. On-demand Google review
+cards and profile fallbacks are live on the About page, the Midnight Editorial
+dark theme is approved and live, and the provider and advertising programs can expand as real participants
 are added. A separate newsletter-content automation and a deferred Bright IDX
 concept are documented without being presented as current website capabilities.
 
@@ -283,16 +283,18 @@ concept are documented without being presented as current website capabilities.
   with no standalone review route, header item, or homepage review promotion.
 - **Live:** The About page includes a Client Feedback section and direct links
   to public Google, Facebook, Zillow, and Realtor.com review profiles.
-- **Live:** A graceful Google-profile fallback appears when the live review feed
-  is unavailable.
+- **Live:** Reviews are requested only after a visitor selects **Load Google
+  reviews**, then eligible cards expand in place without leaving the About page.
+- **Live:** A graceful Google-profile fallback remains available when the live
+  review feed is unavailable.
 - **Live:** A Supabase function requests Google Places review content while
   keeping the API key on the server.
 - **Live:** Eligible review cards support Google's author photo,
   author name and profile, rating, date, full returned text, attribution, and
   direct source link.
 - **Live:** The display preserves Google's returned order, shows only returned
-  4- and 5-star reviews that fit the site's real-estate scope, states that
-  selection beside the cards, and links to the complete Google profile.
+  4- and 5-star reviews, states that selection beside the cards, and links to
+  the complete Google profile.
 - **Live:** Exact origin controls, no-cache behavior,
   request timeout, unavailable-provider fallback, and automated review tests.
 - **Live:** A private Supabase counter enforces a hard 30-request UTC daily

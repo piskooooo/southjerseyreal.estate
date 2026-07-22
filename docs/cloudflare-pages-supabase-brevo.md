@@ -115,15 +115,19 @@ Deploy database migrations before functions when a function depends on a new RPC
 
 ### Configure About-page Google reviews
 
-The About page is the only public page that requests review content. The homepage,
-county guides, resource pages, and navigation do not call the Places API.
+The About page is the only public page that can request review content, and it
+does so only after a visitor selects **Load Google reviews**. The homepage, county
+guides, resource pages, and navigation do not call the Places API.
 
 1. Create or select a Google Cloud project with billing attached, then enable **Places API (New)**.
 2. Create an API key restricted to **Places API (New)**. Store it only as the Supabase secret `GOOGLE_PLACES_API_KEY`; do not add it to a Vite variable or repository file.
 3. Resolve the verified Google Business listing to its stable Place ID and store only that identifier as `GOOGLE_PLACE_ID`.
 4. Set `REVIEWS_ALLOWED_ORIGINS` to the exact production, `www`, Pages, and approved local origins.
 5. Set the Google Cloud quota for **Places API Place Details Enterprise + Atmosphere** below the 1,000-request monthly free cap. A limit of 30 requests per day keeps a full month below 1,000 while allowing normal About-page traffic.
-6. Deploy `google-reviews` with `--no-verify-jwt`, then open `/about` and confirm the review cards, author attribution, reviewer images, dates, rating-selection notice, and source links render without CSP or CORS errors.
+6. Deploy `google-reviews` with `--no-verify-jwt`, then open `/about`. Confirm no
+   request occurs before activation, select **Load Google reviews**, and verify
+   that the review cards expand in place with author attribution, reviewer images,
+   dates, the rating-selection notice, and source links without CSP or CORS errors.
 
 Google currently categorizes the `reviews` field under Place Details Enterprise +
 Atmosphere, with 1,000 free billable events per month. The function and browser use

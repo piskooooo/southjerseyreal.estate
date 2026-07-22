@@ -293,6 +293,7 @@ review promotion.
 
 - [x] Add an editable `Client feedback` section to the existing About-page content model.
 - [x] Add a no-cache Supabase `google-reviews` function that keeps the Places API key server-side and accepts only exact allowed browser origins.
+- [x] Load reviews only after a visitor selects **Load Google reviews**, then expand the review cards within `/about` without navigating away or spending quota on ordinary page views.
 - [x] Render Google-provided author photos, names, profile links, ratings, dates, full review text, Google Maps attribution, and a direct source link for every displayed review.
 - [x] Display only returned 4- and 5-star reviews, state that selection beside the cards, preserve Google's relevance order, and link clearly to the complete Google review profile.
 - [x] Add direct Google, Facebook, Zillow, and Realtor.com review-profile links and a graceful fallback when live Google data is unavailable.
@@ -308,10 +309,10 @@ review promotion.
 
 Completion date: July 22, 2026
 
-Production note: the live Google feed returns the verified Arthur Pisko Jr. listing. The site displays only returned 4- and 5-star reviews that also fit the site's real-estate scope, preserves full text and attribution for any displayed card, and links visitors to the complete Google profile when no returned review meets those display rules.
+Production note: the live Google feed returns the verified Arthur Pisko Jr. listing. The site displays only returned 4- and 5-star reviews after the visitor requests them, preserves full text and attribution for any displayed card, and links visitors to the complete Google profile when Google is unavailable or no returned review meets the rating rule.
 
-**Done when:** The production About page shows eligible, properly attributed
-Google review cards or the complete Google-profile fallback, links to every
+**Done when:** The production About page waits for visitor activation, expands
+eligible and properly attributed Google review cards in place, links to every
 review profile, fails cleanly when Google is unavailable, stays within the
 configured daily ceiling, and the rest of the site remains focused on South
 Jersey real estate.

@@ -61,7 +61,6 @@ const isActionSection = (section: PageSection) => {
 };
 
 const TOWN_GRID_COLUMNS = 3;
-const townColumnNames = ["left", "center", "right"] as const;
 const isTownSection = (section: PageSection, index: number) => (
   section.kind === "town" || (index > 0 && section.images.length > 0 && !isActionSection(section))
 );
@@ -181,12 +180,11 @@ function TownGrid({
   const allExpanded = expandableSections.length > 0 && expandableSections.every(({ section, index }) => (
     expandedCards.has(townSectionKey(section, index))
   ));
-  const rows = sections.reduce<Array<Array<{ key: string; section: PageSection; index: number; column: number }>>>((groups, item, itemIndex) => {
+  const rows = sections.reduce<Array<Array<{ key: string; section: PageSection; index: number }>>>((groups, item, itemIndex) => {
     const rowIndex = Math.floor(itemIndex / TOWN_GRID_COLUMNS);
-    const column = itemIndex % TOWN_GRID_COLUMNS;
 
     if (!groups[rowIndex]) groups[rowIndex] = [];
-    groups[rowIndex].push({ ...item, key: townSectionKey(item.section, item.index), column });
+    groups[rowIndex].push({ ...item, key: townSectionKey(item.section, item.index) });
 
     return groups;
   }, []);
@@ -225,26 +223,19 @@ function TownGrid({
         {rows.map((row, rowIndex) => {
           const expandedInRow = row.filter(({ key }) => expandedCards.has(key));
           const singleExpanded = expandedInRow.length === 1 ? expandedInRow[0] : undefined;
-          const orderedRow = singleExpanded
-            ? [singleExpanded, ...row.filter(({ key }) => key !== singleExpanded.key)]
-            : expandedInRow.length > 1
-              ? [...expandedInRow, ...row.filter(({ key }) => !expandedCards.has(key))]
-              : row;
           const rowClassName = [
             "town-card-row",
             singleExpanded ? "has-single-expanded" : "",
             expandedInRow.length > 1 ? "has-multiple-expanded" : "",
-            singleExpanded ? `is-expanded-${townColumnNames[singleExpanded.column]}` : "",
           ].filter(Boolean).join(" ");
 
           return (
             <div key={`town-row-${rowIndex}`} className={rowClassName}>
-              {orderedRow.map(({ column, key, section, index }) => {
+              {row.map(({ key, section, index }) => {
                 const expanded = expandedCards.has(key);
                 return (
                   <TownCard
                     key={key}
-                    className={`town-card-column-${column}`}
                     expanded={expanded}
                     section={section}
                     index={index}

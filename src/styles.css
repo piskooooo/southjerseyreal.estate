@@ -2929,13 +2929,27 @@ p {
 
 .hub-card-body .button,
 .county-support-card .button,
-.split-card .button,
-.resource-panel-content .button {
+.split-card .button {
   grid-column: 2;
   grid-row: 1 / span 2;
   align-self: center;
   min-height: 2.75rem;
   margin: 0;
+  padding: 0.65rem 0;
+  border-bottom: 2px solid currentColor;
+  border-radius: 0;
+  background: transparent;
+  color: var(--brand);
+  font-size: 0.82rem;
+}
+
+.resource-panel-content .button {
+  grid-column: auto;
+  grid-row: auto;
+  justify-self: start;
+  align-self: start;
+  min-height: 2.75rem;
+  margin: 0.25rem 0 1rem;
   padding: 0.65rem 0;
   border-bottom: 2px solid currentColor;
   border-radius: 0;

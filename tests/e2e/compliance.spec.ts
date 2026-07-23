@@ -602,6 +602,57 @@ test("dark mode uses the midnight editorial palette and integrated form fields",
   });
 });
 
+test("town expansion keeps directory order and desktop layout stable", async ({ page }) => {
+  await page.setViewportSize({ width: 1640, height: 900 });
+  await openHydratedRoute(page, "/cape-may-county");
+
+  const headings = page.locator(".town-card h3");
+  const originalOrder = await headings.allTextContents();
+
+  for (const town of ["Wildwood", "Wildwood Crest"]) {
+    await page.getByRole("button", { name: `Expand ${town} details`, exact: true }).click();
+    await expect(headings).toHaveText(originalOrder);
+
+    const card = page.locator(".town-card", { has: page.getByRole("heading", { name: town, exact: true }) });
+    const layout = await card.evaluate((element) => {
+      const media = element.querySelector<HTMLElement>(".town-card-media")?.getBoundingClientRect();
+      const body = element.querySelector<HTMLElement>(".town-card-body")?.getBoundingClientRect();
+      return media && body ? {
+        mediaLeft: media.left,
+        mediaRight: media.right,
+        bodyLeft: body.left,
+        bodyWidth: body.width,
+      } : null;
+    });
+
+    expect(layout).not.toBeNull();
+    expect(layout!.mediaLeft).toBeLessThan(layout!.bodyLeft);
+    expect(layout!.mediaRight).toBeLessThanOrEqual(layout!.bodyLeft + 1);
+    expect(layout!.bodyWidth).toBeGreaterThan(500);
+
+    await page.getByRole("button", { name: `Collapse ${town} details`, exact: true }).click();
+  }
+});
+
+test("partner resource links stack without overlap", async ({ page }) => {
+  await page.setViewportSize({ width: 1640, height: 900 });
+  await openHydratedRoute(page, "/partners");
+
+  const panel = page.locator("#partners-and-vendors");
+  await panel.locator("summary").click();
+  const buttons = panel.locator(".resource-panel-content .button");
+  await expect(buttons).toHaveCount(2);
+
+  const rectangles = await buttons.evaluateAll((elements) => elements.map((element) => {
+    const rectangle = element.getBoundingClientRect();
+    return { top: rectangle.top, bottom: rectangle.bottom, width: rectangle.width };
+  }));
+
+  expect(rectangles[0].width).toBeGreaterThan(100);
+  expect(rectangles[1].top).toBeGreaterThanOrEqual(rectangles[0].bottom);
+  expect(await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth)).toBeLessThanOrEqual(1);
+});
+
 const countyTownCounts = {
   "/atlantic-county": 23,
   "/burlington-county": 40,

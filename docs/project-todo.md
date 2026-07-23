@@ -13,7 +13,7 @@ Use this file as the source of truth for unfinished work on `southjerseyreal.est
 - [x] 6. Deploy and verify the private website editor
 - [x] 7. Refine the dark theme color palette (Midnight Editorial approved July 22, 2026)
 - [x] 8. Add destination pages for the Counties and Connect header items
-- [ ] 9. Rebuild richer, sourced community profiles
+- [x] 9. Rebuild richer, sourced community profiles
 - [x] 10. Add client reviews to the About page
 - [x] 11. Prepare a comprehensive marketing-ready project description and status-labeled feature list
 - [x] 12. Add the intended HomeBase CRM and The Plum Real Estate Group links to the provider/partner presentation
@@ -256,11 +256,11 @@ Implemented both editable, indexable hubs; split each desktop label from its dro
 
 **Goal:** Restore useful town-level context without presenting historical figures as current, reintroducing demographic targeting, adding school or safety characterizations, or repeating disclaimer copy.
 
-Editorial direction selected by the owner on July 18, 2026: casual but professional. Final county copy still requires owner review before publication.
+Editorial direction selected by the owner on July 18, 2026: casual but professional. The owner authorized publication of the prepared copy on July 22, 2026 and asked that the existing municipality images remain unchanged.
 
-Drafting progress: source blocks are supported by the structured editor, preserved by normalization, rendered accessibly, and required beside volatile community facts. Seven county introductions and all 168 current municipalities are researched in the unpublished [community profile draft](./community-profile-drafts.md), represented across 166 cards: Gloucester 24, Atlantic 23, Burlington 40, Camden 34, Cape May 16, Cumberland 14, and Salem 15. The Camden card count is lower than its municipality count because two pairs share cards.
+Publication status: source blocks are supported by the structured editor, preserved by normalization, rendered accessibly, and required beside volatile community facts. Seven county introductions and all 168 current municipalities are live across 166 cards: Gloucester 24, Atlantic 23, Burlington 40, Camden 34, Cape May 16, Cumberland 14, and Salem 15. The Camden card count is lower than its municipality count because two pairs share cards.
 
-Selective-restoration preview: on July 19, 2026, the sourced drafts were connected to the local compiled fallbacks for owner review, with a visible profile date and source notes. The original site's structured population, government, services, price, tax, school, parks, shopping/dining, and transportation fields were also restored where available. Population is labeled as 2020 Census data; volatile price, tax, and school fields are explicitly labeled as 2025 site snapshots rather than current figures. This does not mark the profiles or images as owner-approved, and the restored county content has not been published through the production editor.
+The July 19, 2026 selective restoration connected the sourced drafts to the compiled fallbacks with a visible profile date and source notes. The original site's structured population, government, services, price, tax, school, parks, shopping/dining, and transportation fields were also restored where available. Population is labeled as 2020 Census data; volatile price, tax, and school fields are explicitly labeled as 2025 site snapshots rather than current figures. On July 22, all seven county batches were published through the production editor without changing their existing images.
 
 ### Content Work
 
@@ -274,12 +274,12 @@ Selective-restoration preview: on July 19, 2026, the sourced drafts were connect
 
 - [x] Review all seven draft batches for supportable factual scope, fair-housing concerns, protected-class targeting, subjective rankings, and stale-link failures. The July 19 source audit found 148 direct `2xx` responses and 28 bot-oriented `403` responses across 176 unique sources, with zero hard failures.
 - [x] Recheck the 28 anti-bot-challenged sources in an interactive human browser. On July 22, 2026, every intended municipal or public-agency page rendered in Chrome without an active challenge, access-denied page, or unrelated redirect; Delran only canonicalized from `www` to its non-`www` hostname.
-- [ ] Verify each municipality image before its county batch is published.
-- [x] Run the publishing guardrails, 92 unit tests, 49 tracked database checks, production build, full 37-check compliance crawl, automated accessibility checks, and desktop/mobile visual checks after the source-support and Gloucester-draft batch.
+- [x] Leave the existing municipality images unchanged. The owner explicitly skipped an image-by-image review on July 22, 2026, so image verification was removed as a publication blocker rather than recorded as completed.
+- [x] Run the publishing guardrails, 96 unit tests, 49 tracked database checks, production build, full 44-check compliance crawl, automated accessibility checks, and desktop/mobile visual checks.
 - [x] Obtain owner approval for the casual-but-professional editorial direction.
 - [x] Build a local structured-content preview of all seven sourced county batches and replace the stale `Pine Hill & Pine Valley` card title.
-- [ ] Obtain owner approval of the actual profile drafts and images before publication.
-- [ ] Publish approved profiles in manageable county batches through the structured editor, and rerun rendered source, accessibility, compliance, and responsive checks after each batch.
+- [x] Obtain owner approval of the actual profile drafts. The owner authorized publication on July 22, 2026; municipality images were intentionally excluded from this approval step and left unchanged.
+- [x] Publish all seven approved county batches through the structured editor, verify every live card and rendered source-note count, and rerun source, accessibility, compliance, and responsive checks.
 
 **Done when:** Every community card contains useful, human-written, supportable information without repetitive legal prose or unsupported claims.
 

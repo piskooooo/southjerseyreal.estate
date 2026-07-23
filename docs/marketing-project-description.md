@@ -73,10 +73,9 @@ and double opt-in subscriptions, and protects public forms with Cloudflare
 Turnstile. Privacy-aware analytics, layered disclosures, automated testing, and
 deployment recovery were treated as product features rather than afterthoughts.
 
-The project also has a larger editorial roadmap. Sourced profiles covering all
-168 current municipalities have been prepared for review, a live Google review
-display is contained on the About page, and a revised dark-theme palette remains
-intentionally paused. Bright MLS IDX research
+The live editorial experience includes sourced profiles covering all 168 current
+municipalities, a Google review display contained on the About page, and the
+owner-approved Midnight Editorial dark theme. Bright MLS IDX research
 is preserved separately as a deferred concept and is not represented as a live
 website feature.
 
@@ -489,36 +488,34 @@ concept are documented without being presented as current website capabilities.
   branch, push target, deployment expectations, and secret-handling boundaries
   for future Codex work.
 
-## Beta and Editorial Preview
+## Live Community Profiles
 
 ### Rich Community Profiles
 
-- **Beta / Editorial Preview:** Seven casual-but-professional county
-  introductions have been drafted from government and public-agency sources.
-- **Beta / Editorial Preview:** All 168 current municipalities across the seven
-  counties are represented in 166 profile cards; two Camden County pairs share
-  combined cards.
-- **Beta / Editorial Preview:** The local structured preview can restore sourced
+- **Live:** Seven casual-but-professional county introductions are published with
+  government and public-agency sources.
+- **Live:** All 168 current municipalities across the seven counties are
+  represented in 166 profile cards; two Camden County pairs share combined cards.
+- **Live:** The structured profiles include sourced
   population, government, service, housing-price, tax, school, park,
   shopping/dining, and transportation fields where support exists.
-- **Beta / Editorial Preview:** Population is labeled as 2020 Census data, while
+- **Live:** Population is labeled as 2020 Census data, while
   retained price, tax, and school values are labeled as 2025 website snapshots
   rather than current live figures.
-- **Beta / Editorial Preview:** Source notes are part of the structured content
+- **Live:** Source notes are part of the structured content
   model and render beside claims that need ongoing maintenance.
-- **Beta / Editorial Preview:** Expandable profile controls are keyboard and
+- **Live:** Expandable profile controls are keyboard and
   screen-reader accessible.
-- **Beta / Editorial Preview:** Publishing guardrails exclude resident profiling,
+- **Live:** Publishing guardrails exclude resident profiling,
   protected-class targeting, unsupported rankings, school or safety
   characterizations, and unsupported current-market claims.
-- **Beta / Editorial Preview:** The latest automated source pass found 148 direct
-  successful responses, 28 anti-bot challenge responses, and no hard source
-  failures across 176 unique sources.
-- **Before publication:** The 28 challenged sources need interactive review,
-  every municipality image needs owner verification, actual copy and images need
-  owner approval, county batches need to be published through the editor, and
-  the rendered source, accessibility, compliance, and responsive checks need to
-  be rerun after each batch.
+- **Live:** The final source pass found 148 direct successful responses and no
+  hard source failures across 176 unique sources; all 28 anti-bot responses were
+  subsequently verified in an interactive browser.
+- **Live:** All seven county batches were published through the private editor on
+  July 22, 2026, then verified with rendered-source, accessibility, compliance,
+  and responsive checks. Existing municipality images were left unchanged at the
+  owner's direction and were not included in the final image-by-image audit.
 
 ## Planned and Paused Enhancements
 
@@ -626,7 +623,7 @@ or the private website editor.
 - “Built with structured content, route-specific SEO, privacy-aware analytics,
   accessibility testing, and automated deployment.”
 - “Production hosting no longer depends on a home server or NAS container.”
-- “Sourced profiles for all 168 current municipalities are in editorial preview.”
+- “Sourced profiles cover all 168 current municipalities.”
 - “The About page can display eligible, fully attributed Google review cards and links to the complete public profile.”
 - “Future IDX research has been documented separately and is not currently
   available.”
@@ -634,7 +631,6 @@ or the private website editor.
 ### Claims to Avoid Until Status Changes
 
 - “Browse all Bright MLS listings” or “live MLS search.”
-- “All 168 municipality profiles are live.”
 - “The website automatically writes or sends a weekly newsletter.”
 - “Paid advertisers are featured” until actual labeled placements exist.
 - “Real-time market data,” “current taxes,” “current school performance,” or

@@ -1086,10 +1086,11 @@ Source: [Borough of Woodstown](https://www.historicwoodstown.org/), accessed Jul
 
 ## Editorial Review Checklist
 
-Automated link check on July 19, 2026: 148 of 176 unique HTTPS sources returned a final `2xx` response. The other 28 returned bot-oriented `403` responses, with no missing pages, certificate errors, connection failures, or timeouts remaining. An automated Chromium follow-up reached an anti-bot challenge on all 28, so they need an interactive human-browser recheck before the affected county batch is published.
+Automated link check on July 19, 2026: 148 of 176 unique HTTPS sources returned a final `2xx` response. The other 28 returned bot-oriented `403` responses, with no missing pages, certificate errors, connection failures, or timeouts remaining. An interactive Chrome recheck on July 22, 2026 confirmed that all 28 intended municipal or public-agency pages render without an active challenge, access-denied page, or unrelated redirect; Delran only canonicalized from `www` to its non-`www` hostname.
 
 - [x] Owner selected the casual-but-professional writing direction for county introductions and community cards.
 - [x] All seven county introductions and all 168 current municipalities are researched and represented across 166 profile cards.
+- [x] All 28 sources that rejected automated requests were opened and confirmed in an interactive Chrome session.
 - [ ] Owner reviews and approves the actual county introductions and community-card drafts before publication.
 - [ ] Every retained local detail is checked again on the cited page immediately before publication.
 - [ ] Every source URL is tested from the rendered card.

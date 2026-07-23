@@ -273,7 +273,8 @@ Selective-restoration preview: on July 19, 2026, the sourced drafts were connect
 ### Verification
 
 - [x] Review all seven draft batches for supportable factual scope, fair-housing concerns, protected-class targeting, subjective rankings, and stale-link failures. The July 19 source audit found 148 direct `2xx` responses and 28 bot-oriented `403` responses across 176 unique sources, with zero hard failures.
-- [ ] Recheck the 28 anti-bot-challenged sources in an interactive human browser and verify each municipality image before its county batch is published.
+- [x] Recheck the 28 anti-bot-challenged sources in an interactive human browser. On July 22, 2026, every intended municipal or public-agency page rendered in Chrome without an active challenge, access-denied page, or unrelated redirect; Delran only canonicalized from `www` to its non-`www` hostname.
+- [ ] Verify each municipality image before its county batch is published.
 - [x] Run the publishing guardrails, 92 unit tests, 49 tracked database checks, production build, full 37-check compliance crawl, automated accessibility checks, and desktop/mobile visual checks after the source-support and Gloucester-draft batch.
 - [x] Obtain owner approval for the casual-but-professional editorial direction.
 - [x] Build a local structured-content preview of all seven sourced county batches and replace the stale `Pine Hill & Pine Valley` card title.

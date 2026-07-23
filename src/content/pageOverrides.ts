@@ -257,7 +257,7 @@ export const pageOverrides: SitePage[] = [
         images: [
           {
             src: "/assets/live/arthur-pisko-jr-picture-jpg.webp",
-            alt: "Portrait of Arthur Pisko Jr. wearing glasses, a black shirt, and a plaid tie against a plain background.",
+            alt: "Portrait of Arthur Pisko Jr. wearing glasses and a black suit jacket.",
           },
         ],
       },

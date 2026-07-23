@@ -375,7 +375,18 @@ function normalizeAgainstSeed(value: unknown, seed: unknown): unknown {
 export function normalizeManagedContent(pageKey: string, value: unknown): ManagedContent {
   const seed = managedContentSeeds.get(pageKey);
   if (!seed) throw new Error("The website database returned an unknown page.");
-  return normalizeAgainstSeed(value, seed) as ManagedContent;
+  const normalized = normalizeAgainstSeed(value, seed) as ManagedContent;
+  if (pageKey === "/about") {
+    const document = normalized as ManagedPageDocument;
+    for (const section of document.page.sections) {
+      for (const image of section.images) {
+        if (image.alt === "Portrait of Arthur Pisko Jr. wearing glasses, a black shirt, and a plaid tie against a plain background.") {
+          image.alt = "Portrait of Arthur Pisko Jr. wearing glasses and a black suit jacket.";
+        }
+      }
+    }
+  }
+  return normalized;
 }
 
 const linkFieldNames = new Set(["creatorHref", "supportHref", "followupPath", "href", "path", "phoneHref"]);

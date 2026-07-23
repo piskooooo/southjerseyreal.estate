@@ -38,9 +38,9 @@ const socialImageMetadata = new Map<string, SocialImageMetadata>([
   }],
   ["/assets/live/arthur-pisko-jr-picture-jpg.webp", {
     alt: "Portrait of Arthur Pisko Jr.",
-    height: 720,
+    height: 1248,
     type: "image/webp",
-    width: 460,
+    width: 832,
   }],
   ["/assets/live/pitman-gloucester-jpg.webp", {
     alt: "Broadway in Pitman, Gloucester County, New Jersey.",

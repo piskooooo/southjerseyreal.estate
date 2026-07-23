@@ -117,6 +117,17 @@ describe("website editor content normalization", () => {
     expect(normalized.footer.supportNote).toBe("Optional support. The newsletter remains free.");
   });
 
+  it("updates the retired About portrait description in stored content", () => {
+    const legacy = structuredClone(managedContentSeeds.get("/about")) as ManagedPageDocument;
+    legacy.page.sections[0].images[0].alt = "Portrait of Arthur Pisko Jr. wearing glasses, a black shirt, and a plaid tie against a plain background.";
+
+    const normalized = normalizeManagedContent("/about", legacy) as ManagedPageDocument;
+
+    expect(normalized.page.sections[0].images[0].alt).toBe(
+      "Portrait of Arthur Pisko Jr. wearing glasses and a black suit jacket.",
+    );
+  });
+
   it("rejects unsafe links and missing image descriptions before publish", () => {
     const unsafe = structuredClone(managedContentSeeds.get("/")) as ManagedPageDocument;
     const actionLink = unsafe.page.sections

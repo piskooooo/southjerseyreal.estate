@@ -454,7 +454,11 @@ const splitAboutGroups = (blocks: ContentBlock[]) => {
   };
 };
 
-export function AboutPage({ page, navigate }: PageProps) {
+export function AboutPage({
+  page,
+  navigate,
+  contentResolved = true,
+}: PageProps & { contentResolved?: boolean }) {
   const profileSection = page.sections.find((section) => section.kind === "profile") || page.sections[0];
   const reviewsSection = page.sections.find((section) => section.kind === "promo");
   const actionSection = page.sections.find(isActionSection);
@@ -465,8 +469,11 @@ export function AboutPage({ page, navigate }: PageProps) {
     <div className="about-page">
       <section className="section about-hero-section">
         {profileImage && (
-          <div className="about-portrait">
-            <img src={profileImage.src} alt={profileImage.alt} />
+          <div
+            className={`about-portrait ${contentResolved ? "is-ready" : "is-loading"}`}
+            aria-busy={!contentResolved}
+          >
+            <img key={profileImage.src} src={profileImage.src} alt={profileImage.alt} />
           </div>
         )}
         <div className="about-hero-copy">

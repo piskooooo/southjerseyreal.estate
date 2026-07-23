@@ -179,6 +179,29 @@ test("sitewide footer disclosure remains prominent and readable at 320 pixels", 
   await expect(page.locator("main")).toContainText("source of lawful income used for rental or mortgage payments");
 });
 
+test("the About portrait does not show stale fallback pixels while published content loads", async ({ page }) => {
+  let releaseContentResponse: (() => void) | undefined;
+  const contentResponseReleased = new Promise<void>((resolve) => {
+    releaseContentResponse = resolve;
+  });
+  await page.route("**/rest/v1/site_pages?*", async (route) => {
+    await contentResponseReleased;
+    await route.fulfill({ contentType: "application/json", body: "[]" });
+  });
+
+  await denyAnalyticsBeforeLoad(page);
+  await page.goto("/about", { waitUntil: "domcontentloaded" });
+  await expect(page.locator('[data-seo-prerendered="true"]')).toHaveCount(0);
+
+  const portrait = page.locator(".about-portrait");
+  await expect(portrait).toHaveClass(/is-loading/);
+  await expect(portrait.locator("img")).toHaveCSS("opacity", "0");
+
+  releaseContentResponse?.();
+  await expect(portrait).toHaveClass(/is-ready/);
+  await expect(portrait.locator("img")).toHaveCSS("opacity", "1");
+});
+
 test("Google reviews load and expand within the About page only after activation", async ({ page }) => {
   let reviewRequestCount = 0;
   await page.route("**/functions/v1/google-reviews", async (route) => {

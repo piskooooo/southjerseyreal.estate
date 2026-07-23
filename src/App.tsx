@@ -79,6 +79,7 @@ export default function App() {
   const [theme, setTheme] = useState<SiteTheme>(getStoredTheme);
   const [analyticsConsentChoice, setAnalyticsConsentChoice] = useState<AnalyticsConsent | null>(getAnalyticsConsent);
   const [siteContent, setSiteContent] = useState<PublicSiteContent>(seedPublicSiteContent);
+  const [resolvedContentPath, setResolvedContentPath] = useState("");
 
   const pageDocument = useMemo(
     () => siteContent.pages.get(path) || siteContent.pages.get("/")!,
@@ -89,9 +90,11 @@ export default function App() {
 
   useEffect(() => {
     let active = true;
+    setResolvedContentPath("");
     loadPublishedSiteContent(path).then((published) => {
       if (!active) return;
       setSiteContent(published);
+      setResolvedContentPath(path);
     });
     return () => { active = false; };
   }, [path]);
@@ -202,7 +205,15 @@ export default function App() {
     if (!isKnownPath) return <NotFoundPage navigate={navigate} />;
     if (path === "/") return <HomePage page={currentPage} navigate={navigate} theme={theme} />;
     if (path === "/counties" || path === "/connect") return <HubPage page={currentPage} navigate={navigate} />;
-    if (path === "/about") return <AboutPage page={currentPage} navigate={navigate} />;
+    if (path === "/about") {
+      return (
+        <AboutPage
+          page={currentPage}
+          navigate={navigate}
+          contentResolved={resolvedContentPath === path}
+        />
+      );
+    }
     if (path === "/contact") return <ContactPage page={currentPage} navigate={navigate} />;
     if (path === "/newsletter") return <NewsletterPage content={current.newsletter} navigate={navigate} />;
     if (current.comparisonGuide) return <ComparisonGuidePage page={currentPage} guide={current.comparisonGuide} navigate={navigate} />;

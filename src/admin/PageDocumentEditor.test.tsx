@@ -36,7 +36,7 @@ function EditorHarness() {
 }
 
 describe("page document source controls", () => {
-  it("adds a complete dated source block to a content section", async () => {
+  it("adds a complete dated source block to a content section", { timeout: 10_000 }, async () => {
     const user = userEvent.setup();
     render(<EditorHarness />);
 

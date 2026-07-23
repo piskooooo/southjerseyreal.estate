@@ -376,6 +376,24 @@ export function normalizeManagedContent(pageKey: string, value: unknown): Manage
   const seed = managedContentSeeds.get(pageKey);
   if (!seed) throw new Error("The website database returned an unknown page.");
   const normalized = normalizeAgainstSeed(value, seed) as ManagedContent;
+  if (pageKey.endsWith("-county")) {
+    const document = normalized as ManagedPageDocument;
+    const seedDocument = seed as ManagedPageDocument;
+    const seedSections = new Map(seedDocument.page.sections.map((section) => [section.id, section]));
+    for (const section of document.page.sections) {
+      const seedImage = seedSections.get(section.id)?.images[0];
+      const image = section.images[0];
+      if (!seedImage?.src.startsWith("/assets/community/") || !image || image.storagePath) continue;
+      if (!image.src.startsWith("/assets/live/") && image.src !== seedImage.src) continue;
+      section.images[0] = {
+        ...image,
+        ...seedImage,
+        storagePath: "",
+        thumbnail: seedImage.src,
+        thumbnailPath: "",
+      };
+    }
+  }
   if (pageKey === "/about") {
     const document = normalized as ManagedPageDocument;
     for (const section of document.page.sections) {
@@ -389,7 +407,16 @@ export function normalizeManagedContent(pageKey: string, value: unknown): Manage
   return normalized;
 }
 
-const linkFieldNames = new Set(["creatorHref", "supportHref", "followupPath", "href", "path", "phoneHref"]);
+const linkFieldNames = new Set([
+  "creatorHref",
+  "supportHref",
+  "followupPath",
+  "href",
+  "licenseUrl",
+  "path",
+  "phoneHref",
+  "sourceUrl",
+]);
 const imageFieldNames = new Set(["image", "src", "thumbnail"]);
 
 function isAllowedManagedUrl(value: string, imageOnly: boolean) {

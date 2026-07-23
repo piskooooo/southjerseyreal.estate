@@ -22,6 +22,15 @@ describe("community profile restoration", () => {
       return new Set(titles).size === titles.length;
     })).toBe(true);
     expect(townSections.every((section) => section.blocks.some((block) => block.tag === "SOURCE"))).toBe(true);
+    expect(townSections.every((section) => {
+      const image = section.images[0];
+      return image?.src.startsWith("/assets/community/")
+        && image.alt.length > 10
+        && Boolean(image.credit)
+        && image.sourceUrl?.startsWith("https://commons.wikimedia.org/")
+        && Boolean(image.license)
+        && image.licenseUrl?.startsWith("https://");
+    })).toBe(true);
     expect(townSections.every((section) => section.blocks[1]?.text.length > 60)).toBe(true);
     expect(townSections.every((section) => section.blocks.length >= 10)).toBe(true);
     expect(townSections.every((section) => (

@@ -122,13 +122,28 @@ function TownCard({
     >
       {image && (
         <div className="town-card-media">
-          <img src={image.src} alt={image.alt} />
+          <img src={image.src} alt={image.alt} loading="lazy" decoding="async" />
         </div>
       )}
       <div className="town-card-body">
         <div className="town-card-summary">
           <Blocks blocks={visibleBlocks} navigate={navigate} headingLevel="compact" />
         </div>
+        {image?.credit ? (
+          <p className="town-card-image-credit">
+            Photo: {image.sourceUrl ? (
+              <a href={image.sourceUrl} target="_blank" rel="noreferrer">{image.credit}</a>
+            ) : image.credit}
+            {image.license ? (
+              <>
+                <span aria-hidden="true"> · </span>
+                {image.licenseUrl ? (
+                  <a href={image.licenseUrl} target="_blank" rel="noreferrer">{image.license}</a>
+                ) : image.license}
+              </>
+            ) : null}
+          </p>
+        ) : null}
         {hasDetails && (
           <>
             <div id={detailsId} className="town-card-details" hidden={!expanded}>

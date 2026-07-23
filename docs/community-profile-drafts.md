@@ -4,7 +4,7 @@ Last researched: July 19, 2026
 
 Status: **Published through the production editor on July 22, 2026.**
 
-Local preview prepared July 19, 2026 and approved for publication July 22, 2026. All seven county introductions and 166 community cards are now live. The profiles restore the original site's structured community details where available; price, tax, and school details are labeled as 2025 site snapshots and must not be read as current figures. Existing municipality images were left unchanged at the owner's direction; an image-by-image audit was intentionally outside this publication pass.
+Local preview prepared July 19, 2026 and approved for publication July 22, 2026. All seven county introductions and 166 community cards are now live. The profiles restore the original site's structured community details where available; price, tax, and school details are labeled as 2025 site snapshots and must not be read as current figures. On July 22, every card received a visually reviewed, locally optimized Wikimedia Commons image with recorded creator, source, and license information. No generated images are used in the community profiles.
 
 These drafts use the owner's requested casual-but-professional voice. They recover objective ideas from the retired town narratives, retain clearly dated historical snapshots where useful, and replace the old targeting language, rankings, commute promises, unqualified market claims, and unsupported superlatives with current government sources.
 
@@ -1094,6 +1094,6 @@ Automated link check on July 19, 2026: 148 of 176 unique HTTPS sources returned 
 - [x] Owner approved the actual county introductions and community-card drafts for publication on July 22, 2026.
 - [x] Retained local details and their cited sources received a final prepublication audit.
 - [x] All 176 unique source URLs were tested; 148 responded directly and the 28 anti-bot results were verified interactively in Chrome. Every live county page renders its expected source-note links.
-- [x] Existing municipality images were left unchanged at the owner's direction. Image-by-image verification was intentionally skipped and was not represented as completed.
-- [x] Publishing guardrails, 96 unit tests, the 44-check compliance crawl, automated accessibility checks, and responsive screenshots passed after publication.
+- [x] All 166 municipality-card images were replaced and visually reviewed. Each local WebP has a corresponding Commons source, creator, reusable license or public-domain status, descriptive alternative text, and visible source/license credit.
+- [x] Publishing guardrails, 97 unit tests, the 51-check compliance crawl, automated accessibility checks, and responsive screenshots passed after the image pass.
 - [x] The stale `Pine Hill & Pine Valley` website card was replaced with `Pine Hill (including the former Pine Valley Borough)` before publishing the Camden County batch.

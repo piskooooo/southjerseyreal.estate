@@ -33,11 +33,12 @@ This is a React/Vite rebuild of `southjerseyreal.estate`, originally cloned from
 
 ## Project Structure
 
-- `src/content/generatedSiteData.ts` contains the compliance-reduced county/community fallback structure and image paths. Do not restore the retired imported marketing narratives.
+- `src/content/generatedSiteData.ts` contains the compliance-reduced county/community fallback structure. Do not restore the retired imported marketing narratives.
+- `src/content/communityImageSources.json` is the attribution ledger for all 166 community-card images. `public/assets/community` contains their optimized local WebP copies, and `scripts/source-community-images.mjs` can rebuild a Wikimedia Commons candidate audit.
 - `src/content/complianceData.json` is the single source for verified brokerage, licensed-office, and salesperson facts. Do not duplicate or invent those values.
 - `src/components/Compliance.tsx` renders the required brokerage, fair-housing, community-information, provider-choice, and form-consent disclosures.
 - `src/content/siteEditor.ts` maps compiled fallbacks into the structured draft/published content model.
-- `docs/community-profile-drafts.md` holds unpublished, government-sourced writing drafts; do not publish a county batch without the recorded owner review.
+- `docs/community-profile-drafts.md` records the published, government-sourced county writing and its editorial review history.
 - `src/admin` contains the private single-administrator editor and contact inbox served at `/admin`.
 - `src/content/navigation.ts` controls header dropdowns, footer links, and social links.
 - `src/components/Layouts.tsx` contains reusable page renderers for home, county pages, contact, and standard content pages.
@@ -56,6 +57,7 @@ npm install
 npm run dev
 npm run build
 npm run import:live
+node scripts/source-community-images.mjs
 npm test
 npm run test:compliance
 npm run test:db
@@ -79,6 +81,7 @@ npx supabase functions deploy site-rebuild --no-verify-jwt
 - Use `rg`/`rg --files` for search and `apply_patch` for manual edits.
 - Keep changes scoped and consistent with the current React/Vite structure.
 - Prefer real content and actual site assets over placeholder marketing copy.
+- Do not use generated imagery for the community profiles. Any replacement community image must have a verified reusable source and complete creator, source, license, and license-URL fields in `communityImageSources.json`.
 - When changing public pages, metadata, forms, or shared layout, run `npm run test:compliance`; for a narrow non-public change, at minimum run `npm run build` and the relevant unit tests.
 - Keep unverified REALTOR membership marks and unverified settlement-service provider entries out of public content. Record current human approval and verification status in `docs/compliance-review-checklist.md`.
 - When changing public forms or Edge Functions, validate Turnstile, test a clearly labeled submission against the preview environment, confirm delivery without printing personal data, and remove the test record afterward.

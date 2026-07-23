@@ -169,7 +169,7 @@ concept are documented without being presented as current website capabilities.
   to Atlantic, Burlington, Camden, Cape May, Cumberland, Gloucester, and Salem
   County guides.
 - **Live:** Seven individual county pages with local structure, town cards,
-  supporting imagery, and compiled fallback content.
+  source-verified community imagery, and compiled fallback content.
 - **Live:** A Connect hub that organizes About, Contact, Newsletter, FAQ,
   regional resources, provider, and advertising destinations.
 - **Live:** A Why New Jersey resource covering regional context and neighboring
@@ -331,6 +331,8 @@ concept are documented without being presented as current website capabilities.
   controls.
 - **Live:** Accessible success, error, loading, and status announcements.
 - **Live:** Required alternative text for published editorial images.
+- **Live:** Visible creator, source, and reuse-license credits for all 166
+  community-card images, backed by a structured attribution ledger.
 - **Live:** Responsive disclosure and content readability down to narrow mobile
   widths, with automated overflow checks.
 - **Live:** Automated axe checks against representative routes using WCAG 2.0,
@@ -514,27 +516,31 @@ concept are documented without being presented as current website capabilities.
   subsequently verified in an interactive browser.
 - **Live:** All seven county batches were published through the private editor on
   July 22, 2026, then verified with rendered-source, accessibility, compliance,
-  and responsive checks. Existing municipality images were left unchanged at the
-  owner's direction and were not included in the final image-by-image audit.
+  and responsive checks. All 166 community-card images were subsequently
+  replaced with visually reviewed, locally optimized Wikimedia Commons images;
+  each card identifies the creator and license and links to the original source.
+  No generated imagery is used for the community profiles.
+
+### Resident-Contributed Community Photography
+
+- **Deferred Concept:** A future workflow could let residents offer original
+  community photography for consideration.
+- **Not active launch work:** Any implementation would first need submission,
+  rights confirmation, moderation, attribution, privacy review, and a clear
+  correction or removal process.
 
 ## Planned and Paused Enhancements
 
-### Dark Theme Palette Refresh
+### Dark Theme Palette
 
-- **Live today:** The site already has functional light and dark themes with a
-  remembered visitor preference.
-- **Planned / Paused:** A visual audit identified better surface hierarchy and
-  clearer semantic color roles as the next dark-theme improvement.
-- **Planned / Paused:** Three contrast-tested directions exist: Pine and Gold,
-  Atlantic Signal, and Cranberry and Sea Glass.
-- **Planned / Paused:** An interactive comparison and desktop/mobile reference
-  screenshots are already prepared for the final visual decision.
-- **Planned / Paused:** Pine and Gold is the documented starting recommendation,
-  but the owner has intentionally left the current palette unchanged.
-- **Before publication:** Select a direction, map colors to semantic tokens,
-  apply and review every relevant surface and state, verify photography and
-  focus/validation states, run desktop/tablet/mobile and accessibility checks,
-  and obtain visual approval.
+- **Live:** The owner-approved Midnight Editorial palette provides a restrained
+  near-black foundation, warm off-white type, clear blue links, gold primary
+  actions, and a high-visibility focus color.
+- **Live:** The visitor's light or dark preference is remembered across routes.
+- **Live:** Form fields, validation, photography, navigation, and responsive
+  layouts were checked in the approved theme.
+- **Preserved research:** Pine and Gold, Atlantic Signal, and Cranberry and Sea
+  Glass remain documented alternatives rather than active launch tasks.
 
 ### Provider and Advertising Growth
 

@@ -602,6 +602,68 @@ test("dark mode uses the midnight editorial palette and integrated form fields",
   });
 });
 
+const countyTownCounts = {
+  "/atlantic-county": 23,
+  "/burlington-county": 40,
+  "/camden-county": 34,
+  "/cape-may-county": 16,
+  "/cumberland-county": 14,
+  "/gloucester-county": 24,
+  "/salem-county": 15,
+} as const;
+
+for (const [route, expectedCount] of Object.entries(countyTownCounts)) {
+  test(`${route} loads credited community images`, async ({ page }) => {
+    await page.setViewportSize({ width: 390, height: 844 });
+    await openHydratedRoute(page, route);
+
+    const cards = page.locator(".town-card");
+    const images = cards.locator(".town-card-media img");
+    const credits = cards.locator(".town-card-image-credit");
+    await expect(cards).toHaveCount(expectedCount);
+    await expect(images).toHaveCount(expectedCount);
+    await expect(credits).toHaveCount(expectedCount);
+
+    await images.evaluateAll(async (elements) => {
+      for (const image of elements) {
+        image.scrollIntoView({ block: "center" });
+        await new Promise((resolve) => window.setTimeout(resolve, 15));
+      }
+      await Promise.all(elements.map((element) => {
+        const image = element as HTMLImageElement;
+        if (image.complete) return Promise.resolve();
+        return new Promise<void>((resolve) => {
+          image.addEventListener("load", () => resolve(), { once: true });
+          image.addEventListener("error", () => resolve(), { once: true });
+        });
+      }));
+      window.scrollTo(0, 0);
+    });
+
+    const imageState = await images.evaluateAll((elements) => elements.map((element) => {
+      const image = element as HTMLImageElement;
+      return {
+        alt: image.alt,
+        loaded: image.complete && image.naturalWidth > 0,
+        src: image.getAttribute("src"),
+      };
+    }));
+    expect(imageState.every(({ alt, loaded, src }) =>
+      Boolean(alt.trim()) && loaded && src?.startsWith("/assets/community/"),
+    )).toBe(true);
+
+    const attributionState = await credits.evaluateAll((elements) => elements.map((element) => {
+      const links = Array.from(element.querySelectorAll<HTMLAnchorElement>("a"));
+      return {
+        commonsSource: links[0]?.href.startsWith("https://commons.wikimedia.org/wiki/File:"),
+        licenseSource: links[1]?.href.startsWith("https://"),
+      };
+    }));
+    expect(attributionState.every(({ commonsSource, licenseSource }) => commonsSource && licenseSource)).toBe(true);
+    expect(await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth)).toBeLessThanOrEqual(1);
+  });
+}
+
 test("representative desktop and mobile screenshots render without overflow", async ({ page }) => {
   for (const route of ["/", "/counties", "/connect", "/atlantic-county", "/contact", "/partners"]) {
     await page.setViewportSize({ width: 1440, height: 1000 });

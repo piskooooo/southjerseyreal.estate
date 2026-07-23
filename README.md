@@ -6,10 +6,11 @@ Project status and unfinished work are tracked in [`docs/project-todo.md`](docs/
 
 ## Project Layout
 
-- `src/content/generatedSiteData.ts` contains compliance-reduced county/community fallback structure and image paths.
+- `src/content/generatedSiteData.ts` contains the compliance-reduced county/community fallback structure.
+- `src/content/communityImageSources.json` records the source, creator, license, and local path for all 166 community-card images in `public/assets/community`.
 - `src/content/complianceData.json` is the single source for verified brokerage, office, and salesperson facts.
 - `src/content/siteEditor.ts` maps those fallbacks into the draft/published website-content model.
-- `docs/community-profile-drafts.md` contains unpublished, sourced county/community copy awaiting owner review.
+- `docs/community-profile-drafts.md` records the published, sourced county/community copy and editorial review history.
 - `src/admin` contains the private, single-administrator website editor and contact inbox served at `/admin`.
 - `src/content/navigation.ts` controls header dropdowns, footer links, and social links.
 - `src/components/Layouts.tsx` contains reusable page renderers and the public forms.

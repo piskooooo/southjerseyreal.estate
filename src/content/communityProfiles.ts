@@ -1,6 +1,7 @@
 import detailData from "./communityDetails.json";
+import imageData from "./communityImageSources.json";
 import profileData from "./communityProfiles.json";
-import type { ContentBlock, PageSection, SitePage } from "./types";
+import type { ContentBlock, ImageAsset, PageSection, SitePage } from "./types";
 
 type CommunitySource = {
   title: string;
@@ -36,8 +37,20 @@ type CommunityDetailData = {
   counties: Record<string, CommunityDetail[]>;
 };
 
+type CommunityImageSource = Pick<
+  ImageAsset,
+  "src" | "alt" | "credit" | "sourceUrl" | "license" | "licenseUrl"
+> & {
+  name: string;
+  county: string;
+  originalFile: string;
+  originalUrl: string;
+  reviewedAt: string;
+};
+
 const profiles = profileData as CommunityProfileData;
 const historicalDetails = detailData as CommunityDetailData;
+const communityImages = imageData as Record<string, CommunityImageSource>;
 
 const normalizedTitle = (value: string) => value
   .toLowerCase()
@@ -129,6 +142,8 @@ const restoreCountyPage = (page: SitePage, county: CountyProfile, details: Commu
     if (!detail) throw new Error(`Missing historical community details for ${currentTitle} on ${page.path}.`);
     matchedProfiles.add(profileKey(profile.title));
     matchedDetails.add(profileKey(detail.title));
+    const curatedImage = communityImages[section.id];
+    if (!curatedImage) throw new Error(`Missing curated community image for ${currentTitle} on ${page.path}.`);
 
     return {
       ...section,
@@ -138,6 +153,14 @@ const restoreCountyPage = (page: SitePage, county: CountyProfile, details: Commu
         ...detail.details.map((text) => ({ tag: "P", text })),
         ...sourceBlocks(profile.sources),
       ],
+      images: [{
+        src: curatedImage.src,
+        alt: curatedImage.alt,
+        credit: curatedImage.credit,
+        sourceUrl: curatedImage.sourceUrl,
+        license: curatedImage.license,
+        licenseUrl: curatedImage.licenseUrl,
+      }],
     };
   });
 

@@ -128,6 +128,38 @@ describe("website editor content normalization", () => {
     );
   });
 
+  it("migrates legacy county photos to curated credited images without replacing editor uploads", () => {
+    const legacy = structuredClone(managedContentSeeds.get("/atlantic-county")) as ManagedPageDocument;
+    const legacyImage = legacy.page.sections[1].images[0];
+    legacyImage.src = "/assets/live/absecon-webp.webp";
+    legacyImage.alt = "Legacy image.";
+    legacyImage.thumbnail = legacyImage.src;
+    legacyImage.storagePath = "";
+    delete legacyImage.credit;
+    delete legacyImage.sourceUrl;
+    delete legacyImage.license;
+    delete legacyImage.licenseUrl;
+
+    const migrated = normalizeManagedContent("/atlantic-county", legacy) as ManagedPageDocument;
+    expect(migrated.page.sections[1].images[0]).toMatchObject({
+      src: "/assets/community/atlantic-absecon.webp",
+      credit: "LaetusStudiis",
+      license: "CC BY-SA 4.0",
+    });
+
+    const uploaded = structuredClone(legacy);
+    uploaded.page.sections[1].images[0] = {
+      src: "https://example.supabase.co/storage/v1/object/public/site-images/absecon.webp",
+      alt: "Owner-uploaded Absecon photograph.",
+      storagePath: "community/absecon.webp",
+      thumbnail: "https://example.supabase.co/storage/v1/object/public/site-images/absecon-thumb.webp",
+      thumbnailPath: "community/absecon-thumb.webp",
+    };
+    const preserved = normalizeManagedContent("/atlantic-county", uploaded) as ManagedPageDocument;
+    expect(preserved.page.sections[1].images[0].storagePath).toBe("community/absecon.webp");
+    expect(preserved.page.sections[1].images[0].src).toContain("example.supabase.co");
+  });
+
   it("rejects unsafe links and missing image descriptions before publish", () => {
     const unsafe = structuredClone(managedContentSeeds.get("/")) as ManagedPageDocument;
     const actionLink = unsafe.page.sections

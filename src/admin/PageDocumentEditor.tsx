@@ -117,6 +117,10 @@ function templateAtPath(value: unknown, path: Array<string | number>) {
 const emptyImageTemplate = {
   src: "",
   alt: "",
+  credit: "",
+  sourceUrl: "",
+  license: "",
+  licenseUrl: "",
   storagePath: "",
   thumbnail: "",
   thumbnailPath: "",
@@ -487,7 +491,14 @@ export function PageDocumentEditor({
     setNotice("Preparing page image upload...");
     try {
       uploaded = await uploadSiteContentImage(record.pageKey, file, objectPath.join("-"));
-      const nextObject = { ...objectValue, ...uploaded };
+      const nextObject = {
+        ...objectValue,
+        ...uploaded,
+        credit: "",
+        sourceUrl: "",
+        license: "",
+        licenseUrl: "",
+      };
       const nextDraft = updateAtPath(record.draft, objectPath, nextObject) as ManagedContent;
       const nextRecord = await saveSiteDraft(
         record.pageKey,

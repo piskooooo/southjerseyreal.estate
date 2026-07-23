@@ -10,6 +10,10 @@ export type ContentBlock = {
 export type ImageAsset = {
   src: string;
   alt: string;
+  credit?: string;
+  sourceUrl?: string;
+  license?: string;
+  licenseUrl?: string;
   storagePath?: string;
   thumbnail?: string;
   thumbnailPath?: string;

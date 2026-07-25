@@ -283,10 +283,6 @@ The July 19, 2026 selective restoration connected the sourced drafts to the comp
 
 **Done when:** Every community card contains useful, human-written, supportable information without repetitive legal prose or unsupported claims.
 
-### Deferred Concept
-
-- Resident-submitted community photography may be considered after launch growth. It is not an active task and would need a future submission, rights-confirmation, moderation, credit, and removal workflow before publication.
-
 ## 10. Add Client Reviews to the About Page
 
 **Goal:** Show useful public client feedback without changing the site's primary
@@ -333,8 +329,8 @@ activation-ready work, paused plans, and deferred concepts.
 - [x] Review the production site, private editor, integrations, tests, project documentation, unpublished previews, and preserved roadmap work.
 - [x] Separate public visitor features, private content-management features, integrations, accessibility/SEO work, privacy/security controls, operational/recovery features, and future work into clear categories.
 - [x] Write one-line, short, portfolio, and extended project descriptions suitable for future marketing use.
-- [x] Produce a comprehensive feature inventory using explicit `Live`, `Live - Private`, `Beta / Editorial Preview`, `Built - Activation Pending`, `Planned / Paused`, and `Deferred Concept` labels.
-- [x] Include the richer community profiles, Google review activation, dark theme, provider and advertising growth, deferred Bright IDX research, and the live website-supported weekly newsletter editorial workflow.
+- [x] Produce a comprehensive feature inventory using explicit `Live`, `Live - Private`, `Beta / Editorial Preview`, `Built - Activation Pending`, `Planned / Paused`, `Deferred Concept`, and `Marketing Campaign` labels.
+- [x] Include the richer community profiles, Google review activation, dark theme, community-photography and local-business outreach campaigns, deferred Bright IDX research, and the live website-supported weekly newsletter editorial workflow.
 - [x] Add a marketing-claim guide that identifies accurate current language and claims that must wait for a status change.
 - [x] Keep private credentials, infrastructure identifiers, personal data, and secret values out of the marketing copy.
 - [x] Save the finished material in [marketing-project-description.md](./marketing-project-description.md).
@@ -344,6 +340,10 @@ Completion date: July 20, 2026
 Maintenance note: this is a living marketing record. Update status labels and
 ready-to-use descriptions whenever a preview, activation-ready feature, or
 planned item changes production status.
+
+The community-photography and provider/local-advertising ideas are marketing
+campaigns that use the completed website. They are not unfinished engineering
+tasks and should not be included when reporting the active website to-do list.
 
 **Done when:** The saved document covers the whole project, includes reusable
 short and long descriptions plus a categorized feature inventory, contains no

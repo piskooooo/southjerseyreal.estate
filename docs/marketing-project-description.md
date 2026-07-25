@@ -4,9 +4,10 @@ Prepared: July 20, 2026
 
 This is the reusable marketing record for `southjerseyreal.estate`. It includes
 the complete project, including public features, private owner tools, beta and
-preview work, activation-ready features, deferred ideas, and the supporting
-newsletter editorial workflow. Status labels are part of the claim: only items
-marked **Live** should be presented as currently available or operational.
+preview work, activation-ready features, deferred ideas, marketing campaigns,
+and the supporting newsletter editorial workflow. Status labels are part of the
+claim: only items marked **Live** should be presented as currently available or
+operational.
 
 ## Status Key
 
@@ -20,6 +21,8 @@ marked **Live** should be presented as currently available or operational.
   selected or completed.
 - **Deferred Concept** - Preserved research for a possible future project, not
   part of the active website roadmap.
+- **Marketing Campaign** - Audience or business outreach that uses the finished
+  website; it is promotion work rather than unfinished product development.
 
 ## Project Facts
 
@@ -247,8 +250,9 @@ concept are documented without being presented as current website capabilities.
 - **Live:** Clear provider-choice language and direct outbound profile links.
 - **Live:** A contact path for professionals interested in directory
   participation.
-- **Planned / Paused:** Additional provider categories and entries can be added
-  after their public facts and relationships are reviewed.
+- **Marketing Campaign:** Additional provider categories and entries can be
+  recruited through outreach, then added after their public facts and
+  relationships are reviewed.
 - **Live:** A dedicated Partners and Vendors section links to
   [HomeBase CRM](https://homebasecrm.com) and states that it is owned by Fat Cat
   Finance, LLC, with no payment or cross-ownership relationship between
@@ -268,9 +272,9 @@ concept are documented without being presented as current website capabilities.
   pricing discussions.
 - **Live:** A requirement to label paid placements as advertisements without
   promising traffic, leads, sales, or ranking outcomes.
-- **Planned / Paused:** Actual advertiser inventory and placements can be added
-  as businesses participate; the program page should not be used to imply that
-  paid placements already exist.
+- **Marketing Campaign:** Recruit suitable local advertisers through outreach;
+  add actual inventory and placements only as businesses participate, without
+  implying that paid placements already exist.
 
 ### About-Page Reviews
 
@@ -517,15 +521,38 @@ concept are documented without being presented as current website capabilities.
   each card identifies the creator and license and links to the original source.
   No generated imagery is used for the community profiles.
 
-### Resident-Contributed Community Photography
+## Marketing Campaign Opportunities
 
-- **Deferred Concept:** A future workflow could let residents offer original
-  community photography for consideration.
-- **Not active launch work:** Any implementation would first need submission,
-  rights confirmation, moderation, attribution, privacy review, and a clear
-  correction or removal process.
+### Community Photography Campaign
 
-## Planned and Paused Enhancements
+- **Marketing Campaign:** Invite South Jersey residents, photographers, local
+  organizations, and businesses to submit original photographs that represent
+  their communities.
+- **Campaign value:** Create local participation, earn organic sharing when a
+  contributor's image is featured, and continue improving the county pages with
+  authentic community perspectives.
+- **Campaign channels:** Promote selected calls for photography through the
+  newsletter, social accounts, community groups, and direct local outreach.
+- **Publication requirements:** Confirm the submitter owns the image and grants
+  permission for website and promotional use; review every submission; record
+  attribution; avoid unnecessary personal information; and provide a correction
+  or removal contact before publishing it.
+
+### Provider and Local Advertising Outreach
+
+- **Marketing Campaign:** Use the finished provider and advertising pages to
+  recruit useful local connections and appropriate South Jersey businesses.
+- **Unpaid provider track:** Invite relevant transaction-related professionals
+  for possible inclusion only after current public facts and any relationships
+  are reviewed and accurately disclosed.
+- **Paid local-business track:** Approach businesses outside the real-estate
+  transaction about clearly labeled placements after fit, creative, destination,
+  timing, and terms are agreed.
+- **Live foundation:** HomeBase CRM and The Plum Real Estate Group already appear
+  in the Partners and Vendors presentation, and the site already provides
+  separate provider-inquiry and advertising-inquiry paths.
+
+## Preserved Design Research
 
 ### Dark Theme Palette
 
@@ -537,15 +564,6 @@ concept are documented without being presented as current website capabilities.
   layouts were checked in the approved theme.
 - **Preserved research:** Pine and Gold, Atlantic Signal, and Cranberry and Sea
   Glass remain documented alternatives rather than active launch tasks.
-
-### Provider and Advertising Growth
-
-- **Planned / Paused:** Expand the unpaid provider directory after current public
-  facts and relationship disclosures are reviewed.
-- **Live:** HomeBase CRM and The Plum Real Estate Group appear in a dedicated
-  Partners and Vendors section with their distinct relationships disclosed.
-- **Planned / Paused:** Add real paid local-business placements only after fit,
-  labeling, creative, destination, timing, and terms are agreed.
 
 ## Deferred Concept: Bright MLS IDX
 

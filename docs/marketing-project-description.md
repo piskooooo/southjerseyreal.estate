@@ -4,9 +4,9 @@ Prepared: July 20, 2026
 
 This is the reusable marketing record for `southjerseyreal.estate`. It includes
 the complete project, including public features, private owner tools, beta and
-preview work, activation-ready features, deferred ideas, and a related external
-newsletter automation. Status labels are part of the claim: only items marked
-**Live** should be presented as currently available to website visitors.
+preview work, activation-ready features, deferred ideas, and the supporting
+newsletter editorial workflow. Status labels are part of the claim: only items
+marked **Live** should be presented as currently available or operational.
 
 ## Status Key
 
@@ -20,8 +20,6 @@ newsletter automation. Status labels are part of the claim: only items marked
   selected or completed.
 - **Deferred Concept** - Preserved research for a possible future project, not
   part of the active website roadmap.
-- **Separate Companion Project** - Related to the website, but intentionally
-  outside this repository and its current production workflow.
 
 ## Project Facts
 
@@ -150,8 +148,6 @@ concept are documented without being presented as current website capabilities.
 - It is not a brokerage website for The Plum Real Estate Group.
 - It is not the HomeBase CRM product or website.
 - It does not currently provide MLS or IDX property search.
-- It does not currently create, publish, or send the weekly newsletter content
-  automatically.
 - It should not be marketed as legally certified, as a guarantee of results, or
   as a source of live market, school, tax, commute, flood, or safety data unless a
   specific published statement is dated and supported.
@@ -576,28 +572,19 @@ or promised website feature.
   vendor, legal, attribution, and display-rule review.
 - **Non-negotiable:** Listing data must not be scraped or manually republished.
 
-## Separate Companion Project: Weekly Newsletter Automation
+## Newsletter Publishing Workflow
 
-This planned workflow is related to the website audience but is intentionally a
-separate project or automation. It is not currently a feature of the public site
-or the private website editor.
-
-- **Separate Companion Project:** Search the owner's inbox for a designated tag
-  on a weekly schedule.
-- **Separate Companion Project:** Use ChatGPT and the selected source messages to
-  draft a weekly South Jersey newsletter.
-- **Separate Companion Project:** Generate supporting images for the edition.
-- **Separate Companion Project:** Save the finished copy and images into the
-  designated Google Drive folder.
-- **Separate Companion Project:** Preserve source tracking and support future
-  audience segmentation, template preparation, test sends, and campaign launch.
-- **Connection to the website:** The live website already collects explicit,
-  double-opt-in newsletter subscriptions and preference fields in Brevo, so the
-  separate content workflow can eventually prepare campaigns for that consented
-  audience.
-- **Not currently included:** Automatic transfer from Google Drive into the site,
-  automatic publishing, automatic Brevo campaign creation, or automatic sending
-  should not be claimed until that separate automation is built and tested.
+- **Live:** The website collects explicit, double-opt-in newsletter subscriptions
+  and optional county and topic preferences in Brevo.
+- **Live:** The supporting weekly editorial workflow searches the owner's inbox
+  for the designated source tag, uses ChatGPT to prepare a South Jersey newsletter
+  draft and supporting images, and saves the finished package in the designated
+  Google Drive folder.
+- **Live:** Source tracking is preserved so the owner can review the material and
+  prepare it for the consented website audience.
+- **Operational boundary:** The workflow supports the website newsletter, but the
+  public website does not itself transfer Drive files into Brevo, create a Brevo
+  campaign, or send an edition without the owner's publishing process.
 
 ## Technology and Integration Summary
 
@@ -625,6 +612,8 @@ or the private website editor.
 - “21 public resource, county, connection, and legal routes.”
 - “Responsive light and dark experiences for desktop, tablet, and mobile.”
 - “Secure contact and double-opt-in newsletter workflows.”
+- “A weekly AI-assisted newsletter editorial workflow prepares sourced copy and
+  supporting images for the website's consented audience.”
 - “A custom private content-management and inquiry workspace.”
 - “Built with structured content, route-specific SEO, privacy-aware analytics,
   accessibility testing, and automated deployment.”
@@ -637,7 +626,8 @@ or the private website editor.
 ### Claims to Avoid Until Status Changes
 
 - “Browse all Bright MLS listings” or “live MLS search.”
-- “The website automatically writes or sends a weekly newsletter.”
+- “The newsletter is fully autonomous from source collection through campaign
+  sending.”
 - “Paid advertisers are featured” until actual labeled placements exist.
 - “Real-time market data,” “current taxes,” “current school performance,” or
   similarly time-sensitive claims unless the displayed source and date support

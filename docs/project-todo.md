@@ -326,16 +326,15 @@ Jersey real estate.
 
 **Goal:** Maintain a reusable, factually accurate description of the complete
 project, with status labels that distinguish production features from previews,
-activation-ready work, paused plans, deferred concepts, and separate companion
-projects.
+activation-ready work, paused plans, and deferred concepts.
 
 ### Project Audit and Deliverables
 
 - [x] Review the production site, private editor, integrations, tests, project documentation, unpublished previews, and preserved roadmap work.
 - [x] Separate public visitor features, private content-management features, integrations, accessibility/SEO work, privacy/security controls, operational/recovery features, and future work into clear categories.
 - [x] Write one-line, short, portfolio, and extended project descriptions suitable for future marketing use.
-- [x] Produce a comprehensive feature inventory using explicit `Live`, `Live - Private`, `Beta / Editorial Preview`, `Built - Activation Pending`, `Planned / Paused`, `Deferred Concept`, and `Separate Companion Project` labels.
-- [x] Include the richer community profiles, Google review activation, dark-theme options, provider and advertising growth, deferred Bright IDX research, and separate weekly newsletter automation without presenting them as shipped.
+- [x] Produce a comprehensive feature inventory using explicit `Live`, `Live - Private`, `Beta / Editorial Preview`, `Built - Activation Pending`, `Planned / Paused`, and `Deferred Concept` labels.
+- [x] Include the richer community profiles, Google review activation, dark theme, provider and advertising growth, deferred Bright IDX research, and the live website-supported weekly newsletter editorial workflow.
 - [x] Add a marketing-claim guide that identifies accurate current language and claims that must wait for a status change.
 - [x] Keep private credentials, infrastructure identifiers, personal data, and secret values out of the marketing copy.
 - [x] Save the finished material in [marketing-project-description.md](./marketing-project-description.md).

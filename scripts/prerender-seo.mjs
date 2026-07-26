@@ -1,4 +1,4 @@
-import { readFile, writeFile } from "node:fs/promises";
+import { mkdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { createServer, loadEnv } from "vite";
@@ -177,6 +177,17 @@ const prerenderParagraphs = (document, description) => {
     addUniqueText(values, document.newsletter.introduction);
     addUniqueText(values, document.newsletter.note);
   }
+  if (document.insightIndex) {
+    addUniqueText(values, document.insightIndex.introduction);
+    for (const article of document.insightIndex.articles || []) addUniqueText(values, article.summary);
+  }
+  if (document.insightArticle) {
+    addUniqueText(values, document.insightArticle.summary);
+    addUniqueText(values, document.insightArticle.notice);
+    for (const section of document.insightArticle.sections || []) {
+      for (const paragraph of section.paragraphs || []) addUniqueText(values, paragraph);
+    }
+  }
   return values.filter((value) => value !== description).slice(0, 3);
 };
 
@@ -188,7 +199,7 @@ const addInternalLink = (links, knownPaths, label, href, currentPath) => {
   links.push({ href: pathValue, label: labelValue });
 };
 
-const prerenderLinks = (currentPath) => {
+const prerenderLinks = (currentPath, document) => {
   const links = [];
   const knownPaths = new Set(routeEntries.map((entry) => entry.path));
   const header = publicContent.sitewide.header;
@@ -202,6 +213,12 @@ const prerenderLinks = (currentPath) => {
     : header.connectLinks;
   for (const link of contextualLinks) {
     addInternalLink(links, knownPaths, link.label, link.path, currentPath);
+  }
+  for (const article of document.insightIndex?.articles || []) {
+    addInternalLink(links, knownPaths, article.title, article.href, currentPath);
+  }
+  for (const link of document.insightArticle?.relatedLinks || []) {
+    addInternalLink(links, knownPaths, link.label, link.href, currentPath);
   }
   return links.slice(0, 12);
 };
@@ -217,7 +234,7 @@ const renderBrokerageDisclosure = () => `
       </section>`;
 
 const renderPublicShell = (document, seo) => {
-  const links = prerenderLinks(seo.canonicalPath);
+  const links = prerenderLinks(seo.canonicalPath, document);
   const paragraphs = prerenderParagraphs(document, seo.description);
   return `<header class="site-header">
         <a class="brand" href="/">${htmlEscape(siteName)}</a>
@@ -251,7 +268,7 @@ const applyPublicHead = (html, document, seo) => {
   output = replaceMeta(output, "name", "robots", "index, follow, max-image-preview:large");
   output = replaceMeta(output, "property", "og:title", seo.title);
   output = replaceMeta(output, "property", "og:description", seo.description);
-  output = replaceMeta(output, "property", "og:type", "website");
+  output = replaceMeta(output, "property", "og:type", document.insightArticle ? "article" : "website");
   output = replaceMeta(output, "property", "og:locale", "en_US");
   output = replaceMeta(output, "property", "og:url", seo.canonicalUrl);
   output = replaceMeta(output, "property", "og:image", seo.imageUrl);
@@ -266,12 +283,15 @@ const applyPublicHead = (html, document, seo) => {
   output = replaceMeta(output, "name", "twitter:description", seo.description);
   output = replaceMeta(output, "name", "twitter:image", seo.imageUrl);
   output = replaceMeta(output, "name", "twitter:image:alt", seo.imageAlt);
+  output = replaceMeta(output, "property", "article:published_time", document.insightArticle?.publishedDate);
+  output = replaceMeta(output, "property", "article:modified_time", document.insightArticle?.reviewedDate);
   output = replaceCanonical(output, seo.canonicalUrl);
   output = replaceStructuredData(output, buildStructuredData(
     seo.canonicalPath,
     document.page,
     { title: seo.title, description: seo.description, image: seo.imageUrl },
     siteName,
+    document.insightArticle,
   ));
   output = replaceRoot(output, renderPublicShell(document, seo));
   return addMarker(output, "seo-prerendered");
@@ -286,6 +306,7 @@ for (const entry of routeEntries) {
   const outputPath = entry.path === "/"
     ? path.join(distRoot, "index.html")
     : path.join(distRoot, `${entry.path.slice(1)}.html`);
+  await mkdir(path.dirname(outputPath), { recursive: true });
   await writeFile(outputPath, html);
 
   sitemapRows.push({
@@ -316,6 +337,8 @@ notFoundHtml = replaceMeta(notFoundHtml, "property", "og:description", "The requ
 notFoundHtml = replaceMeta(notFoundHtml, "property", "og:url", undefined);
 notFoundHtml = replaceMeta(notFoundHtml, "name", "twitter:title", "Page Not Found | South Jersey Real Estate");
 notFoundHtml = replaceMeta(notFoundHtml, "name", "twitter:description", "The requested South Jersey Real Estate page is not available.");
+notFoundHtml = replaceMeta(notFoundHtml, "property", "article:published_time", undefined);
+notFoundHtml = replaceMeta(notFoundHtml, "property", "article:modified_time", undefined);
 notFoundHtml = replaceCanonical(notFoundHtml, "");
 notFoundHtml = replaceStructuredData(notFoundHtml, null);
 notFoundHtml = replaceRoot(notFoundHtml, renderNonPublicShell(
@@ -348,6 +371,8 @@ adminHtml = replaceMeta(adminHtml, "name", "twitter:title", undefined);
 adminHtml = replaceMeta(adminHtml, "name", "twitter:description", undefined);
 adminHtml = replaceMeta(adminHtml, "name", "twitter:image", undefined);
 adminHtml = replaceMeta(adminHtml, "name", "twitter:image:alt", undefined);
+adminHtml = replaceMeta(adminHtml, "property", "article:published_time", undefined);
+adminHtml = replaceMeta(adminHtml, "property", "article:modified_time", undefined);
 adminHtml = replaceCanonical(adminHtml, "");
 adminHtml = replaceStructuredData(adminHtml, null);
 adminHtml = replaceRoot(adminHtml, '<main aria-busy="true" style="min-height:100vh;display:grid;place-items:center">Opening website editor…</main>');

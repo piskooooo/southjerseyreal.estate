@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { buildStructuredData, getSeoForPath, siteUrl } from "./seo";
+import { insightArticles } from "./insights";
 import type { SitePage } from "./types";
 
 const page = (path: string, title: string): SitePage => ({ path, title, sections: [] });
@@ -60,5 +61,31 @@ describe("SEO metadata", () => {
     expect(countyGraph.some((item) => item["@id"] === `${siteUrl}/#brokerage`)).toBe(false);
     expect(aboutGraph.some((item) => item["@id"] === `${siteUrl}/#agent`)).toBe(true);
     expect(aboutGraph.some((item) => item["@id"] === `${siteUrl}/#brokerage`)).toBe(true);
+  });
+
+  it("adds article schema and Insights breadcrumbs to evergreen guides", () => {
+    const path = "/insights/new-jersey-homebuying-process";
+    const article = insightArticles[path];
+    const graph = buildStructuredData(
+      path,
+      page(path, article.title),
+      undefined,
+      "South Jersey Real Estate",
+      article,
+    )["@graph"];
+    const articleSchema = graph.find((item) => item["@type"] === "Article");
+    const breadcrumbs = graph.find((item) => item["@type"] === "BreadcrumbList");
+
+    expect(articleSchema).toMatchObject({
+      headline: article.title,
+      datePublished: "2026-07-25",
+      dateModified: "2026-07-25",
+    });
+    expect(breadcrumbs?.itemListElement).toEqual([
+      expect.objectContaining({ position: 1, name: "Home", item: `${siteUrl}/` }),
+      expect.objectContaining({ position: 2, name: "Connect", item: `${siteUrl}/connect` }),
+      expect.objectContaining({ position: 3, name: "Insights", item: `${siteUrl}/insights` }),
+      expect.objectContaining({ position: 4, item: `${siteUrl}${path}` }),
+    ]);
   });
 });

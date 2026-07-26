@@ -1,6 +1,6 @@
 # South Jersey Real Estate Project Checklist
 
-Last reviewed: July 22, 2026
+Last reviewed: July 25, 2026
 
 Use this file as the source of truth for unfinished work on `southjerseyreal.estate`. Check an item only after completing its **Done when** test. Never place passwords, SMTP credentials, webhook URLs, lead data, or other secrets in this file.
 
@@ -18,6 +18,14 @@ Use this file as the source of truth for unfinished work on `southjerseyreal.est
 - [x] 11. Prepare a comprehensive marketing-ready project description and status-labeled feature list
 - [x] 12. Add the intended HomeBase CRM and The Plum Real Estate Group links to the provider/partner presentation
 - [x] 13. Add an optional, analytics-tracked Support SJRE link
+- [x] 14. Add an evergreen Insights section
+- [ ] 15. Finish the Google Business Profile ownership handoff and detail review
+- [x] 16. Obtain broker confirmation for current provider relationships
+
+Items 14–16 are the selected roadmap as of July 25, 2026; only unchecked items
+remain active. Earlier loose ideas about a statewide referral strategy,
+additional backup/export work, and other chat-only possibilities are
+intentionally not being carried forward.
 
 ## 1. Complete the Cloudflare Pages Cutover
 
@@ -385,6 +393,56 @@ marketing inventory matches the published page.
 Completion date: July 22, 2026
 
 **Done when:** The production footer contains the optional support link and free-newsletter note, and a consented test click produces the expected GA4 outbound-click event without exposing URL query parameters in analytics.
+
+## 14. Add an Evergreen Insights Section
+
+**Goal:** Publish durable, genuinely useful South Jersey real-estate guidance
+without creating a high-frequency news or blogging obligation.
+
+- [x] Add an `Insights` index and structured article routes using the site's existing content/layout separation.
+- [x] Make article titles, summaries, sections, sources, review dates, metadata, and social-sharing fields editable through the private website editor.
+- [x] Create an initial small set of evergreen buyer, seller, and South Jersey market-process guides using supportable sources and carefully qualified language.
+- [x] Add article schema, canonical metadata, sitemap entries, internal links, and clear reviewed/updated dates without presenting old material as current advice.
+- [x] Verify responsive layout, keyboard behavior, accessibility, metadata, editor publishing, and production rendering before launch.
+
+Completion date: July 25, 2026
+
+**Done when:** A visitor can browse and read the initial sourced Insights library,
+the owner can maintain it through `/admin`, and automated compliance checks cover
+the new public routes and metadata.
+
+## 15. Finish the Google Business Profile Handoff
+
+**Goal:** Put long-term control of the verified Google Business Profile under the
+owner's intended Google account and confirm the public details are accurate.
+
+- [x] Confirm `arthurpisko@gmail.com` has Owner access. Verified July 25, 2026.
+- [ ] Transfer Primary owner status from the separate `Real Estate` account to `arthurpisko@gmail.com`. The owner authorized the transfer and it was attempted July 25, 2026, but Google blocked it because the intended account had managed the profile for less than seven days. Retry after Google's waiting period ends; no permission changed during the blocked attempt.
+- [x] Confirm the accepted website is `https://southjerseyreal.estate/` and the obsolete X profile is no longer displayed. Verified July 25, 2026.
+- [ ] Owner reviews the displayed street address, hours, business name, phone, description, and REALTOR® wording before any public edits are made. The profile currently displays `1055 Kohler Ave, Woodbury, NJ 08096`, which should be reconciled with the site's licensed-office disclosure before changing it.
+- [ ] Recheck the live profile after the ownership transfer and any approved detail changes, then record the completion date.
+
+**Done when:** The intended account is the Primary owner, the owner has approved
+the displayed public details, and a final live check finds no obsolete links or
+unresolved identity/location mismatch.
+
+## 16. Confirm Current Provider Relationships
+
+**Goal:** Close the one current human follow-up in the provider-directory review
+without expanding the directory or inventing a new referral program.
+
+- [x] Ask the responsible broker to confirm that no referral, affiliate, family, ownership, or transaction-based arrangement is omitted from any current directory entry. The owner reports verbal confirmation on July 25, 2026.
+- [x] Record only the confirmation and date in [compliance-review-checklist.md](./compliance-review-checklist.md); do not store privileged advice or private relationship details in the repository.
+- [x] Determine whether the answer requires a public disclosure change. The reported confirmation identified no omitted arrangement, so no copy change was required.
+
+The separate counsel-review item remains conditional on a future settlement-service
+advertisement or affiliated-business arrangement and is not part of the active
+roadmap unless such a feature is proposed.
+
+**Done when:** The broker confirmation is recorded, any required public disclosure
+change is published and verified, and the matching checklist item is checked.
+
+Completion date: July 25, 2026
 
 ## Completed Work
 

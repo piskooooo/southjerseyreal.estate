@@ -84,11 +84,34 @@ describe("website editor content normalization", () => {
     expect(connectLinks).toEqual(expect.arrayContaining([
       "/about",
       "/contact",
+      "/insights",
       "/newsletter",
       "/faq",
       "/partners",
       "/advertise",
     ]));
+  });
+
+  it("keeps the Insights hub and sourced articles editable", () => {
+    const hub = managedContentSeeds.get("/insights") as ManagedPageDocument;
+    const article = managedContentSeeds.get(
+      "/insights/new-jersey-homebuying-process",
+    ) as ManagedPageDocument;
+
+    expect(hub.insightIndex?.articles).toHaveLength(3);
+    expect(article.insightArticle?.sections.length).toBeGreaterThanOrEqual(5);
+    expect(article.insightArticle?.sources.every((source) => source.tag === "SOURCE")).toBe(true);
+    expect(() => validateManagedContentForPublish(
+      "/insights/new-jersey-homebuying-process",
+      structuredClone(article),
+    )).not.toThrow();
+
+    const stale = structuredClone(article);
+    stale.insightArticle!.reviewedDate = "July 25, 2026";
+    expect(() => validateManagedContentForPublish(
+      "/insights/new-jersey-homebuying-process",
+      stale,
+    )).toThrow(/YYYY-MM-DD/i);
   });
 
   it("adds the fixed hub paths when normalizing older sitewide content", () => {

@@ -131,6 +131,27 @@ test("prerendered breadcrumbs use the site hierarchy and omit a one-item home tr
   ]);
 });
 
+test("Insights publishes an editable guide library with article metadata and sources", async ({ page }) => {
+  await openHydratedRoute(page, "/insights");
+  await expect(page.getByRole("heading", { level: 1, name: "South Jersey Real Estate Insights" })).toBeVisible();
+  await expect(page.locator(".insight-card")).toHaveCount(3);
+
+  await page.getByRole("link", { name: "A First Look at the New Jersey Homebuying Process" }).click();
+  await expect(page).toHaveURL(/\/insights\/new-jersey-homebuying-process$/);
+  await expect(page.locator(".insight-article-body > section")).toHaveCount(6);
+  await expect(page.locator(".content-source-note")).toHaveCount(3);
+  await expect(page.locator('meta[property="og:type"]')).toHaveAttribute("content", "article");
+  await expect(page.locator('meta[property="article:published_time"]')).toHaveAttribute("content", "2026-07-25");
+  await expect(page.locator('meta[property="article:modified_time"]')).toHaveAttribute("content", "2026-07-25");
+
+  const structuredData = JSON.parse(await page.locator("#structured-data").textContent() || "{}") as Record<string, unknown>;
+  const graph = structuredData["@graph"] as Array<Record<string, unknown>>;
+  expect(graph.find((item) => item["@type"] === "Article")).toMatchObject({
+    headline: "A First Look at the New Jersey Homebuying Process",
+    dateModified: "2026-07-25",
+  });
+});
+
 test("production artifacts include truthful sitemap metadata, canonical redirects, and non-indexable special entries", () => {
   const sitemap = readDistFile("sitemap.xml");
   expect(sitemap.match(/<url>/g)).toHaveLength(routes.length);
@@ -423,7 +444,7 @@ test("desktop folders switch without overlap and support keyboard dismissal", as
 test("connect cards are text-only and the newsletter heading stays inside its column", async ({ page }) => {
   await page.setViewportSize({ width: 1807, height: 797 });
   await openHydratedRoute(page, "/connect");
-  await expect(page.locator(".hub-page-connect .hub-card")).toHaveCount(8);
+  await expect(page.locator(".hub-page-connect .hub-card")).toHaveCount(9);
   await expect(page.locator(".hub-page-connect .hub-card-media")).toHaveCount(0);
 
   await openHydratedRoute(page, "/newsletter");
@@ -515,7 +536,7 @@ test("hub labels, history, mobile navigation, analytics, and missing routes beha
   await expect(page).toHaveURL(/\/$/);
 });
 
-for (const route of ["/", "/counties", "/connect", "/atlantic-county", "/contact", "/partners", "/privacy-policy"]) {
+for (const route of ["/", "/counties", "/connect", "/atlantic-county", "/contact", "/partners", "/insights", "/insights/new-jersey-homebuying-process", "/privacy-policy"]) {
   test(`automated WCAG checks pass on ${route}`, async ({ page }) => {
     await openHydratedRoute(page, route);
     const results = await new AxeBuilder({ page }).withTags(["wcag2a", "wcag2aa", "wcag21a", "wcag21aa", "wcag22aa"]).analyze();

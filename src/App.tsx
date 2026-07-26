@@ -1,7 +1,7 @@
 import { useEffect, useLayoutEffect, useMemo, useState } from "react";
 import { Header } from "./components/Header";
 import { Footer } from "./components/Footer";
-import { HomePage, CountyPage, ContactPage, ComparisonGuidePage, ResourceAccordionPage, AboutPage, HubPage, NewsletterPage, NotFoundPage, StandardPage } from "./components/Layouts";
+import { HomePage, CountyPage, ContactPage, ComparisonGuidePage, ResourceAccordionPage, AboutPage, HubPage, NewsletterPage, NotFoundPage, StandardPage, InsightArticlePage, InsightsIndexPage } from "./components/Layouts";
 import { buildStructuredData, getSeoForPath, normalizeRoutePath } from "./content/seo";
 import {
   loadPublishedSiteContent,
@@ -120,7 +120,7 @@ export default function App() {
     upsertMeta("name", "robots", isKnownPath ? "index, follow, max-image-preview:large" : "noindex, follow");
     upsertMeta("property", "og:title", seo.title);
     upsertMeta("property", "og:description", seo.description);
-    upsertMeta("property", "og:type", "website");
+    upsertMeta("property", "og:type", pageDocument.insightArticle ? "article" : "website");
     upsertMeta("property", "og:locale", "en_US");
     upsertMeta("property", "og:url", isKnownPath ? seo.canonicalUrl : undefined);
     upsertMeta("property", "og:image", seo.imageUrl);
@@ -135,18 +135,26 @@ export default function App() {
     upsertMeta("name", "twitter:description", seo.description);
     upsertMeta("name", "twitter:image", seo.imageUrl);
     upsertMeta("name", "twitter:image:alt", seo.imageAlt);
+    upsertMeta("property", "article:published_time", pageDocument.insightArticle?.publishedDate);
+    upsertMeta("property", "article:modified_time", pageDocument.insightArticle?.reviewedDate);
     upsertLink("canonical", isKnownPath ? seo.canonicalUrl : undefined);
     if (isKnownPath) {
-      upsertStructuredData(buildStructuredData(path, page, {
-        title: seo.title,
-        description: seo.description,
-        image: seo.imageUrl,
-      }, siteContent.sitewide.brandName));
+      upsertStructuredData(buildStructuredData(
+        path,
+        page,
+        {
+          title: seo.title,
+          description: seo.description,
+          image: seo.imageUrl,
+        },
+        siteContent.sitewide.brandName,
+        pageDocument.insightArticle,
+      ));
     } else {
       removeStructuredData();
     }
     window.scrollTo({ top: 0, behavior: "instant" });
-  }, [isKnownPath, pageDocument.seo, page, path, siteContent.sitewide.brandName]);
+  }, [isKnownPath, pageDocument.insightArticle, pageDocument.seo, page, path, siteContent.sitewide.brandName]);
 
   useEffect(() => {
     const seo = isKnownPath
@@ -216,6 +224,8 @@ export default function App() {
     }
     if (path === "/contact") return <ContactPage page={currentPage} navigate={navigate} />;
     if (path === "/newsletter") return <NewsletterPage content={current.newsletter} navigate={navigate} />;
+    if (current.insightIndex) return <InsightsIndexPage content={current.insightIndex} navigate={navigate} />;
+    if (current.insightArticle) return <InsightArticlePage article={current.insightArticle} navigate={navigate} />;
     if (current.comparisonGuide) return <ComparisonGuidePage page={currentPage} guide={current.comparisonGuide} navigate={navigate} />;
     if (current.resourcePage) return <ResourceAccordionPage page={currentPage} resource={current.resourcePage} navigate={navigate} />;
     if (countyPaths.has(path)) return <CountyPage page={currentPage} navigate={navigate} />;

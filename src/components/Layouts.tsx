@@ -12,6 +12,7 @@ import {
 } from "../cloudForms";
 import type { ComparisonGuide } from "../content/comparisonGuides";
 import { compliance } from "../content/compliance";
+import type { InsightArticleContent, InsightIndexContent } from "../content/insights";
 import type { ResourcePage } from "../content/resourcePages";
 import type { NewsletterContent } from "../content/siteEditor";
 import type { ContentBlock, ImageAsset, PageSection, SitePage } from "../content/types";
@@ -277,6 +278,201 @@ const splitBlocksIntoCards = (blocks: ContentBlock[]) => {
     return groups;
   }, []);
 };
+
+const formatInsightDate = (value: string) => {
+  const date = new Date(`${value}T00:00:00Z`);
+  if (Number.isNaN(date.valueOf())) return value;
+  return new Intl.DateTimeFormat("en-US", {
+    day: "numeric",
+    month: "long",
+    timeZone: "UTC",
+    year: "numeric",
+  }).format(date);
+};
+
+const insightSectionId = (heading: string, index: number) => {
+  const slug = heading
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-|-$/g, "");
+  return slug || `section-${index + 1}`;
+};
+
+function InsightLink({
+  className,
+  href,
+  label,
+  navigate,
+  source,
+}: {
+  className?: string;
+  href: string;
+  label: string;
+  navigate: (path: string) => void;
+  source: string;
+}) {
+  return (
+    <a
+      className={className}
+      href={href}
+      onClick={(event) => {
+        trackLinkClick(href, label, source);
+        if (href.startsWith("/")) {
+          event.preventDefault();
+          navigate(href);
+        }
+      }}
+    >
+      {label}
+    </a>
+  );
+}
+
+export function InsightsIndexPage({
+  content,
+  navigate,
+}: {
+  content?: InsightIndexContent;
+  navigate: (path: string) => void;
+}) {
+  if (!content) return <NotFoundPage navigate={navigate} />;
+
+  return (
+    <div className="insights-index-page">
+      <section className="section insights-index-hero">
+        <p className="section-eyebrow">{content.eyebrow}</p>
+        <h1>{content.title}</h1>
+        <p>{content.introduction}</p>
+      </section>
+
+      <section className="section insights-directory" aria-label="Insight articles">
+        <div className="insight-card-grid">
+          {content.articles.map((article, index) => (
+            <article className="insight-card" key={article.href}>
+              <div className="insight-card-number" aria-hidden="true">{String(index + 1).padStart(2, "0")}</div>
+              <div className="insight-card-body">
+                <p className="insight-category">{article.category}</p>
+                <h2>
+                  <InsightLink
+                    href={article.href}
+                    label={article.title}
+                    navigate={navigate}
+                    source="insights_index"
+                  />
+                </h2>
+                <p>{article.summary}</p>
+                <p className="insight-reviewed">
+                  Reviewed <time dateTime={article.reviewedDate}>{formatInsightDate(article.reviewedDate)}</time>
+                </p>
+                <InsightLink
+                  className="insight-read-link"
+                  href={article.href}
+                  label="Read guide"
+                  navigate={navigate}
+                  source="insights_index"
+                />
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+    </div>
+  );
+}
+
+export function InsightArticlePage({
+  article,
+  navigate,
+}: {
+  article?: InsightArticleContent;
+  navigate: (path: string) => void;
+}) {
+  if (!article) return <NotFoundPage navigate={navigate} />;
+
+  return (
+    <article className="insight-article-page">
+      <header className="section insight-article-hero">
+        <InsightLink
+          className="insight-back-link"
+          href="/insights"
+          label="Insights"
+          navigate={navigate}
+          source="insight_article"
+        />
+        <p className="section-eyebrow">{article.eyebrow}</p>
+        <h1>{article.title}</h1>
+        <p className="insight-article-summary">{article.summary}</p>
+        <div className="insight-article-meta" aria-label="Article details">
+          <span>{article.category}</span>
+          <span>{article.readingTime}</span>
+          <span>Reviewed <time dateTime={article.reviewedDate}>{formatInsightDate(article.reviewedDate)}</time></span>
+        </div>
+      </header>
+
+      <div className="section insight-article-layout">
+        <nav className="insight-table-of-contents" aria-label="On this page">
+          <p>On this page</p>
+          <ol>
+            {article.sections.map((section, index) => (
+              <li key={section.heading}>
+                <a href={`#${insightSectionId(section.heading, index)}`}>{section.heading}</a>
+              </li>
+            ))}
+          </ol>
+        </nav>
+
+        <div className="insight-article-body">
+          <p className="insight-article-notice">{article.notice}</p>
+          {article.sections.map((section, index) => (
+            <section id={insightSectionId(section.heading, index)} key={section.heading}>
+              <p className="insight-section-number" aria-hidden="true">{String(index + 1).padStart(2, "0")}</p>
+              <h2>{section.heading}</h2>
+              {section.paragraphs.map((paragraph, paragraphIndex) => (
+                <p key={`${section.heading}-paragraph-${paragraphIndex}`}>{paragraph}</p>
+              ))}
+              {section.checklist.length > 0 ? (
+                <div className="insight-checklist">
+                  <h3>Working checklist</h3>
+                  <ul>
+                    {section.checklist.map((item) => <li key={item}>{item}</li>)}
+                  </ul>
+                </div>
+              ) : null}
+            </section>
+          ))}
+
+          <section className="insight-sources" aria-labelledby="insight-sources-heading">
+            <h2 id="insight-sources-heading">Sources and review record</h2>
+            <p>
+              Published <time dateTime={article.publishedDate}>{formatInsightDate(article.publishedDate)}</time>.
+              {" "}Last reviewed <time dateTime={article.reviewedDate}>{formatInsightDate(article.reviewedDate)}</time>.
+            </p>
+            <Blocks blocks={article.sources} navigate={navigate} />
+          </section>
+        </div>
+      </div>
+
+      <section className="section insight-related-section" aria-labelledby="insight-related-heading">
+        <div>
+          <p className="section-eyebrow">Keep exploring</p>
+          <h2 id="insight-related-heading">Related next steps</h2>
+          <div className="insight-related-links">
+            {article.relatedLinks.map((link) => (
+              <InsightLink
+                className="button"
+                href={link.href}
+                key={link.href}
+                label={link.label}
+                navigate={navigate}
+                source="insight_related"
+              />
+            ))}
+          </div>
+        </div>
+      </section>
+    </article>
+  );
+}
 
 function SplitCardSection({ className = "", section, navigate }: { className?: string; section: PageSection; navigate: (path: string) => void }) {
   return (

@@ -1,6 +1,6 @@
 # Human Compliance Review Handoff
 
-Last prepared: July 19, 2026
+Last prepared: July 25, 2026
 
 This is an implementation and review record, not legal advice or a compliance certification. The broker of record and, where appropriate, New Jersey counsel must approve the public wording. Keep privileged advice outside this public repository; record only the reviewer, date, status, and final approved wording.
 
@@ -104,7 +104,7 @@ This technical record does not satisfy the broker, owner, credential-holder, or 
 - [x] The owner accepted the current Fair Housing statement and Equal Housing Opportunity treatment for project publication on July 19, 2026. This does not claim independent legal certification.
 - [x] The owner accepted the current Privacy Policy, Terms of Service, Disclaimer, ordinary-inquiry authorization, and newsletter consent for project publication on July 19, 2026. This does not claim independent legal certification.
 - [x] Owner confirms the provider directory is strictly unpaid and separate from the paid advertising program for businesses outside the real-estate transaction.
-- [ ] Broker confirms there is no referral, affiliate, family, ownership, or transaction-based arrangement omitted from any current directory entry.
+- [x] The owner reports that the broker verbally confirmed on July 25, 2026 that there is no referral, affiliate, family, ownership, or transaction-based arrangement omitted from any current directory entry. This records the owner's report and does not claim direct written confirmation received by this repository.
 - [ ] Counsel reviews any future settlement-service advertising or affiliated-business arrangement before publication.
 - [x] The owner accepted the production tracker/processor inventory summarized from the Cloudflare, Supabase, Brevo, and GA4 dashboards on July 19, 2026.
 - [x] Current REALTOR® membership is treated as owner-verified and publicly corroborated; the mark is restored without storing private membership identifiers.

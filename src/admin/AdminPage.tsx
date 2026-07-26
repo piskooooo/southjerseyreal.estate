@@ -83,10 +83,19 @@ const navigationGroups: AdminNavGroup[] = [
       { key: "/about", label: "About", icon: BadgeInfo, viewPath: "/about" },
       { key: "/contact", label: "Contact", icon: Contact, viewPath: "/contact" },
       { key: "/newsletter", label: "Newsletter", icon: Newspaper, viewPath: "/newsletter" },
+      { key: "/insights", label: "Insights hub", icon: BookOpenText, viewPath: "/insights" },
       { key: "/partners", label: "Real estate providers", icon: Building2, viewPath: "/partners" },
       { key: "/advertise", label: "Advertise", icon: Megaphone, viewPath: "/advertise" },
       { key: "/why-new-jersey", label: "Why New Jersey", icon: Landmark, viewPath: "/why-new-jersey" },
       { key: "/why-south-jersey", label: "Why South Jersey", icon: Map, viewPath: "/why-south-jersey" },
+    ],
+  },
+  {
+    label: "Insights",
+    items: [
+      { key: "/insights/new-jersey-homebuying-process", label: "Homebuying process", icon: BookOpenText, viewPath: "/insights/new-jersey-homebuying-process" },
+      { key: "/insights/preparing-to-sell-a-new-jersey-home", label: "Preparing to sell", icon: BookOpenText, viewPath: "/insights/preparing-to-sell-a-new-jersey-home" },
+      { key: "/insights/researching-a-south-jersey-property", label: "Property research", icon: BookOpenText, viewPath: "/insights/researching-a-south-jersey-property" },
     ],
   },
   {

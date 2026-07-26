@@ -43,6 +43,7 @@ const multilineKeys = new Set([
   "intro",
   "message",
   "note",
+  "notice",
   "paragraph",
   "primary",
   "quote",
@@ -229,10 +230,10 @@ function PrimitiveField({
     );
   }
 
-  if (fieldKey === "accessed" && typeof value === "string") {
+  if (["accessed", "publishedDate", "reviewedDate"].includes(fieldKey) && typeof value === "string") {
     return (
       <label className="wide" htmlFor={id}>
-        Accessed
+        {label}
         <input id={id} type="date" value={value} onChange={(event) => onUpdate(path, event.target.value)} disabled={disabled} />
       </label>
     );

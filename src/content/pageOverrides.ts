@@ -68,6 +68,13 @@ const connectHubSections = [
     href: "/newsletter",
   },
   {
+    id: "connect-insights",
+    title: "Insights",
+    description: "Read sourced, evergreen guides to buying, selling, and researching property in New Jersey and South Jersey.",
+    label: "Browse Insights",
+    href: "/insights",
+  },
+  {
     id: "connect-why-new-jersey",
     title: "Why New Jersey?",
     description: "Compare practical differences between New Jersey and nearby states, from property records to regional travel.",

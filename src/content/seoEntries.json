@@ -118,6 +118,32 @@
     "priority": "0.4"
   },
   {
+    "path": "/insights",
+    "title": "Insights | South Jersey Real Estate Guides",
+    "description": "Read sourced, evergreen guides to buying, selling, and researching property in New Jersey and across South Jersey.",
+    "image": "/assets/live/pitman-gloucester-jpg.webp",
+    "priority": "0.75"
+  },
+  {
+    "path": "/insights/new-jersey-homebuying-process",
+    "title": "New Jersey Homebuying Process | South Jersey Real Estate",
+    "description": "Follow the New Jersey homebuying process from budgeting and representation through offers, due diligence, mortgage disclosures, and closing.",
+    "priority": "0.65"
+  },
+  {
+    "path": "/insights/preparing-to-sell-a-new-jersey-home",
+    "title": "Preparing to Sell a New Jersey Home | Practical Guide",
+    "description": "Use a practical New Jersey pre-listing checklist for property records, disclosures, repairs, pricing discussions, launch, and offer review.",
+    "image": "/assets/live/pitman-gloucester-jpg.webp",
+    "priority": "0.65"
+  },
+  {
+    "path": "/insights/researching-a-south-jersey-property",
+    "title": "Research a South Jersey Property Beyond the Listing",
+    "description": "Research a South Jersey property using parcel records, municipal information, flood resources, environmental maps, and recurring-cost questions.",
+    "priority": "0.65"
+  },
+  {
     "path": "/privacy-policy",
     "title": "Privacy Policy | South Jersey Real Estate",
     "description": "Privacy policy for South Jersey Real Estate, including forms, Supabase, Brevo, Turnstile, and optional Google Analytics.",

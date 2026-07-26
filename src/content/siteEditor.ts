@@ -11,6 +11,12 @@ import {
 import { pageOverrides } from "./pageOverrides";
 import { resourcePages, type ResourcePage } from "./resourcePages";
 import { defaultImage, seoEntries } from "./seo";
+import {
+  insightArticles,
+  insightIndex,
+  type InsightArticleContent,
+  type InsightIndexContent,
+} from "./insights";
 import type { ContentBlock, ImageAsset, PageSection, SitePage } from "./types";
 
 export const SITEWIDE_CONTENT_KEY = "__sitewide__";
@@ -80,6 +86,8 @@ export type ManagedPageDocument = {
     image: string;
   };
   comparisonGuide?: ComparisonGuide;
+  insightArticle?: InsightArticleContent;
+  insightIndex?: InsightIndexContent;
   resourcePage?: ResourcePage;
   newsletter?: NewsletterContent;
 };
@@ -245,12 +253,20 @@ const keepRenderedSections = (page: SitePage, hasStructuredBody: boolean): SiteP
 };
 
 export const managedPageSeeds: ManagedPageDocument[] = seoEntries.map((entry) => {
+  const insightArticle = insightArticles[entry.path];
+  const isInsightIndex = entry.path === "/insights";
   const source = canonicalSourcePages.get(entry.path)
-    || placeholderPage(entry.path, entry.title);
+    || placeholderPage(
+      entry.path,
+      insightArticle?.title || (isInsightIndex ? insightIndex.title : entry.title),
+    );
   const comparisonGuide = comparisonGuides[entry.path];
   const resourcePage = resourcePages[entry.path];
+  const hasStructuredBody = Boolean(
+    comparisonGuide || resourcePage || insightArticle || isInsightIndex,
+  );
   return {
-    page: keepRenderedSections(withImageMetadata(source), Boolean(comparisonGuide || resourcePage)),
+    page: keepRenderedSections(withImageMetadata(source), hasStructuredBody),
     seo: {
       title: entry.title,
       description: entry.description,
@@ -261,6 +277,12 @@ export const managedPageSeeds: ManagedPageDocument[] = seoEntries.map((entry) =>
       : {}),
     ...(resourcePage
       ? { resourcePage: structuredClone(resourcePage) }
+      : {}),
+    ...(insightArticle
+      ? { insightArticle: structuredClone(insightArticle) }
+      : {}),
+    ...(isInsightIndex
+      ? { insightIndex: structuredClone(insightIndex) }
       : {}),
     ...(entry.path === "/newsletter"
       ? { newsletter: structuredClone(newsletterSeed) }
@@ -540,6 +562,19 @@ function assertComplianceCopy(pageKey: string, value: ManagedContent) {
     }
   }
 
+  if (pageKey.startsWith("/insights/")) {
+    const article = (value as ManagedPageDocument).insightArticle;
+    if (!article || !article.title.trim() || !article.summary.trim() || !article.sections.length) {
+      throw new Error("Insight articles need a title, summary, and at least one content section.");
+    }
+    if (!isValidDateStamp(article.publishedDate) || !isValidDateStamp(article.reviewedDate)) {
+      throw new Error("Insight article publication and review dates must use YYYY-MM-DD.");
+    }
+    if (article.sources.length < 2 || !article.sources.every(isValidSourceBlock)) {
+      throw new Error("Insight articles need at least two complete, dated HTTPS source notes.");
+    }
+  }
+
   const requiredMarkers: Partial<Record<string, string[]>> = {
     "/advertise": ["Paid advertisement", "material relationship", "real estate transaction"],
     "/faq": ["Broker compensation is not set by law and is fully negotiable", "You are free to choose any provider"],
@@ -571,6 +606,13 @@ export function validateManagedContentForPublish(pageKey: string, value: Managed
     }
 
     for (const [key, child] of Object.entries(current)) {
+      if (
+        typeof child === "string"
+        && ["publishedDate", "reviewedDate"].includes(key)
+        && !isValidDateStamp(child)
+      ) {
+        throw new Error(`${fieldLabelForValidation(key)} at ${[...path, key].join(" → ")} must use YYYY-MM-DD.`);
+      }
       if (typeof child === "string" && (linkFieldNames.has(key) || imageFieldNames.has(key))) {
         const imageOnly = imageFieldNames.has(key);
         if (!isAllowedManagedUrl(child, imageOnly)) {

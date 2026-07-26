@@ -161,7 +161,7 @@ concept are documented without being presented as current website capabilities.
 
 - **Live:** A custom React and TypeScript public website at the primary domain
   and `www` hostname.
-- **Live:** 21 public routes with a real not-found experience for unknown URLs.
+- **Live:** 25 public routes with a real not-found experience for unknown URLs.
 - **Live:** A South Jersey-focused home page with regional photography and a
   direct route into county exploration.
 - **Live:** A Counties hub explaining the seven-county coverage area and linking
@@ -171,6 +171,8 @@ concept are documented without being presented as current website capabilities.
   source-verified community imagery, and compiled fallback content.
 - **Live:** A Connect hub that organizes About, Contact, Newsletter, FAQ,
   regional resources, provider, and advertising destinations.
+- **Live:** An evergreen Insights library with sourced buyer, seller, and
+  property-research guides, visible review dates, and structured article pages.
 - **Live:** A Why New Jersey resource covering regional context and neighboring
   state comparisons.
 - **Live:** A Why South Jersey resource covering South versus North Jersey,
@@ -343,7 +345,7 @@ concept are documented without being presented as current website capabilities.
 
 ### Search, Sharing, and Discoverability
 
-- **Live:** Route-specific page titles and descriptions for all 21 public routes.
+- **Live:** Route-specific page titles and descriptions for all 25 public routes.
 - **Live:** Canonical URLs and canonical host redirects.
 - **Live:** Open Graph and Twitter sharing metadata with image dimensions and
   alternative text.
@@ -390,7 +392,7 @@ concept are documented without being presented as current website capabilities.
 - **Live - Private:** Public signup disabled and access bound to one approved
   account UUID.
 - **Live - Private:** Structured editing for sitewide navigation, footer, privacy
-  content, and all 21 public routes.
+  content, and all 25 public routes.
 - **Live - Private:** Recursive field editing for page content, links, cards,
   comparison sections, resource sections, and source notes within the supported
   page structure.
@@ -473,12 +475,12 @@ concept are documented without being presented as current website capabilities.
   content separated from reusable layouts.
 - **Live:** Compiled fallback content keeps the public site usable if remote
   published content is temporarily unavailable.
-- **Live:** 92 unit and component checks cover frontend behavior, forms, content,
+- **Live:** 99 unit and component checks cover frontend behavior, forms, content,
   editor workflows, analytics, review handling, and Edge Function helpers.
 - **Live:** 49 transactional database checks cover private access, rate limits,
   retention, notification lifecycle, publishing, concurrency, and inbox
   pagination.
-- **Live:** 37 rendered browser checks cover all 21 public routes plus metadata,
+- **Live:** 60 rendered browser checks cover all 25 public routes plus metadata,
   navigation behavior, responsive layouts, screenshots, accessibility, and
   non-indexable special routes.
 - **Live:** Deno formatting and type checks cover Supabase Edge Functions.
@@ -627,7 +629,7 @@ or promised website feature.
 
 - “A live South Jersey real-estate and community information platform.”
 - “Coverage across all seven South Jersey counties.”
-- “21 public resource, county, connection, and legal routes.”
+- “25 public resource, county, Insights, connection, and legal routes.”
 - “Responsive light and dark experiences for desktop, tablet, and mobile.”
 - “Secure contact and double-opt-in newsletter workflows.”
 - “A weekly AI-assisted newsletter editorial workflow prepares sourced copy and

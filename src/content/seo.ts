@@ -1,5 +1,6 @@
 import { compliance } from "./compliance";
 import rawSeoEntries from "./seoEntries.json";
+import type { InsightArticleContent } from "./insights";
 import type { SitePage } from "./types";
 
 export const siteUrl = "https://southjerseyreal.estate";
@@ -113,12 +114,17 @@ const breadcrumbParentByPath = new Map<string, string>([
   ["/privacy-policy", "/connect"],
   ["/disclaimer", "/connect"],
   ["/terms-of-service", "/connect"],
+  ["/insights", "/connect"],
+  ["/insights/new-jersey-homebuying-process", "/insights"],
+  ["/insights/preparing-to-sell-a-new-jersey-home", "/insights"],
+  ["/insights/researching-a-south-jersey-property", "/insights"],
 ]);
 
 const breadcrumbLabelByPath = new Map<string, string>([
   ["/", "Home"],
   ["/counties", "Counties"],
   ["/connect", "Connect"],
+  ["/insights", "Insights"],
 ]);
 
 export const normalizeRoutePath = (path: string) => {
@@ -204,12 +210,14 @@ export const buildStructuredData = (
   page?: SitePage,
   overrides?: SeoOverrides,
   brandName = siteName,
+  insightArticle?: InsightArticleContent,
 ) => {
   const seo = getSeoForPath(path, page, overrides);
   const normalizedBrandName = brandName.trim() || siteName;
   const breadcrumbItems = buildBreadcrumbItems(path, page, overrides);
   const webpageId = `${seo.canonicalUrl}#webpage`;
   const breadcrumbId = `${seo.canonicalUrl}#breadcrumb`;
+  const articleId = `${seo.canonicalUrl}#article`;
   const hasProfessionalIdentity = ["/about", "/contact"].includes(seo.canonicalPath);
   const primaryImage = {
     "@type": "ImageObject",
@@ -285,7 +293,8 @@ export const buildStructuredData = (
               { "@id": `${siteUrl}/#agent` },
             ],
           }
-        : {}),
+          : {}),
+      ...(insightArticle ? { mainEntity: { "@id": articleId } } : {}),
       primaryImageOfPage: primaryImage,
       ...(breadcrumbItems.length ? { breadcrumb: { "@id": breadcrumbId } } : {}),
       inLanguage: "en-US",
@@ -297,6 +306,26 @@ export const buildStructuredData = (
       "@type": "BreadcrumbList",
       "@id": breadcrumbId,
       itemListElement: breadcrumbItems,
+    });
+  }
+
+  if (insightArticle) {
+    graph.push({
+      "@type": "Article",
+      "@id": articleId,
+      headline: insightArticle.title,
+      description: insightArticle.summary,
+      datePublished: insightArticle.publishedDate,
+      dateModified: insightArticle.reviewedDate,
+      image: primaryImage,
+      inLanguage: "en-US",
+      mainEntityOfPage: { "@id": webpageId },
+      author: {
+        "@type": "Person",
+        name: compliance.agentLicensedName,
+        url: `${siteUrl}/about`,
+      },
+      publisher: { "@id": `${siteUrl}/#website` },
     });
   }
 

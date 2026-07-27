@@ -1,6 +1,6 @@
 # South Jersey Real Estate Project Checklist
 
-Last reviewed: July 25, 2026
+Last reviewed: July 27, 2026
 
 Use this file as the source of truth for unfinished work on `southjerseyreal.estate`. Check an item only after completing its **Done when** test. Never place passwords, SMTP credentials, webhook URLs, lead data, or other secrets in this file.
 
@@ -419,7 +419,7 @@ owner's intended Google account and confirm the public details are accurate.
 - [x] Confirm `arthurpisko@gmail.com` has Owner access. Verified July 25, 2026.
 - [ ] Transfer Primary owner status from the separate `Real Estate` account to `arthurpisko@gmail.com`. The owner authorized the transfer and it was attempted July 25, 2026, but Google blocked it because the intended account had managed the profile for less than seven days. Retry after Google's waiting period ends; no permission changed during the blocked attempt.
 - [x] Confirm the accepted website is `https://southjerseyreal.estate/` and the obsolete X profile is no longer displayed. Verified July 25, 2026.
-- [ ] Owner reviews the displayed street address, hours, business name, phone, description, and REALTOR® wording before any public edits are made. The profile currently displays `1055 Kohler Ave, Woodbury, NJ 08096`, which should be reconciled with the site's licensed-office disclosure before changing it.
+- [ ] Owner reviews the displayed hours, business name, phone, description, and REALTOR® wording before any public edits are made. The owner confirmed that the former displayed address was a home address and authorized hiding it on July 27, 2026. Google Business Profile now records the business as having no customer-facing location while retaining its South Jersey service areas; the site's licensed-office disclosure remains unchanged.
 - [ ] Recheck the live profile after the ownership transfer and any approved detail changes, then record the completion date.
 
 **Done when:** The intended account is the Primary owner, the owner has approved

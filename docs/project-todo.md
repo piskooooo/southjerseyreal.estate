@@ -1,6 +1,6 @@
 # South Jersey Real Estate Project Checklist
 
-Last reviewed: July 27, 2026
+Last reviewed: August 7, 2026
 
 Use this file as the source of truth for unfinished work on `southjerseyreal.estate`. Check an item only after completing its **Done when** test. Never place passwords, SMTP credentials, webhook URLs, lead data, or other secrets in this file.
 
@@ -19,7 +19,7 @@ Use this file as the source of truth for unfinished work on `southjerseyreal.est
 - [x] 12. Add the intended HomeBase CRM and The Plum Real Estate Group links to the provider/partner presentation
 - [x] 13. Add an optional, analytics-tracked Support SJRE link
 - [x] 14. Add an evergreen Insights section
-- [ ] 15. Finish the Google Business Profile ownership handoff and detail review
+- [x] 15. Finish the Google Business Profile ownership handoff and detail review
 - [x] 16. Obtain broker confirmation for current provider relationships
 
 Items 14–16 are the selected roadmap as of July 25, 2026; only unchecked items
@@ -417,11 +417,13 @@ the new public routes and metadata.
 owner's intended Google account and confirm the public details are accurate.
 
 - [x] Confirm `arthurpisko@gmail.com` has Owner access. Verified July 25, 2026.
-- [ ] Transfer Primary owner status from the separate `Real Estate` account to `arthurpisko@gmail.com`. The owner authorized the transfer and it was attempted July 25, 2026, but Google blocked it because the intended account had managed the profile for less than seven days. Retry after Google's waiting period ends; no permission changed during the blocked attempt.
+- [x] Transfer Primary owner status from the separate `Real Estate` account to `arthurpisko@gmail.com`. Completed August 7, 2026, after Google's waiting period ended; the separate account remains an Owner.
 - [x] Confirm the accepted website is `https://southjerseyreal.estate/` and the obsolete X profile is no longer displayed. Verified July 25, 2026.
 - [x] Owner reviewed and confirmed the displayed hours, business name, phone, description, and REALTOR® wording on July 27, 2026.
-- [ ] Confirm Google finishes reviewing and publicly propagating the July 27 location and service-area edits. Google Business Profile now records the business as having no customer-facing location, and the submitted service area contains the seven South Jersey counties after removing Ocean County. The site's licensed-office disclosure remains unchanged.
-- [ ] Recheck the live profile after the ownership transfer and any approved detail changes, then record the completion date.
+- [x] Confirm Google finishes reviewing and publicly propagating the July 27 location and service-area edits. Verified August 7, 2026: the public profile does not display a street address, the profile is configured for service-area operation, and the service area contains only Atlantic, Burlington, Camden, Cape May, Cumberland, Gloucester, and Salem Counties. Ocean County is not included. The site's licensed-office disclosure remains unchanged.
+- [x] Recheck the live profile after the ownership transfer and any approved detail changes. Verified August 7, 2026: the business name, website, phone, hours, description, REALTOR® wording, Instagram profile, and Facebook profile remain correct, with no obsolete X profile or unresolved identity/location mismatch.
+
+Completion date: August 7, 2026
 
 **Done when:** The intended account is the Primary owner, the owner has approved
 the displayed public details, and a final live check finds no obsolete links or

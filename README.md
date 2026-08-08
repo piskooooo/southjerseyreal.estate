@@ -2,7 +2,15 @@
 
 React/Vite source for `southjerseyreal.estate`.
 
-Project status and unfinished work are tracked in [`docs/project-todo.md`](docs/project-todo.md). Reusable project descriptions, the complete status-labeled feature inventory, and marketing claim guidance are in [`docs/marketing-project-description.md`](docs/marketing-project-description.md). The compliance implementation and remaining human approvals are recorded in [`docs/compliance-review-checklist.md`](docs/compliance-review-checklist.md), with a concise handoff in [`docs/compliance-review-packet.md`](docs/compliance-review-packet.md). The current visual system is documented in [`docs/color-palette.md`](docs/color-palette.md), the dark-theme decision record is in [`docs/dark-theme-palette-review.md`](docs/dark-theme-palette-review.md), and exact restore points are recorded in [`docs/theme-archive-notes.md`](docs/theme-archive-notes.md). Cloud deployment and recovery procedures are in [`docs/cloudflare-pages-supabase-brevo.md`](docs/cloudflare-pages-supabase-brevo.md).
+## Project Status
+
+**Complete as of August 7, 2026.** The selected website roadmap, production
+deployment, compliance implementation, owner reviews, and Google Business
+Profile ownership handoff are finished. There are no active project to-do items
+or known blockers. Routine operations, quarterly reviews, content maintenance,
+and explicitly deferred concepts are not unfinished website work.
+
+The authoritative completion record is [`docs/project-todo.md`](docs/project-todo.md). Reusable project descriptions, the complete status-labeled feature inventory, and marketing claim guidance are in [`docs/marketing-project-description.md`](docs/marketing-project-description.md). The compliance implementation and ongoing review boundaries are recorded in [`docs/compliance-review-checklist.md`](docs/compliance-review-checklist.md), with a concise handoff in [`docs/compliance-review-packet.md`](docs/compliance-review-packet.md). The current visual system is documented in [`docs/color-palette.md`](docs/color-palette.md), the dark-theme decision record is in [`docs/dark-theme-palette-review.md`](docs/dark-theme-palette-review.md), and exact restore points are recorded in [`docs/theme-archive-notes.md`](docs/theme-archive-notes.md). Cloud deployment and recovery procedures are in [`docs/cloudflare-pages-supabase-brevo.md`](docs/cloudflare-pages-supabase-brevo.md).
 
 ## Project Layout
 

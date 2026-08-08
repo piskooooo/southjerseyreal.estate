@@ -1,8 +1,16 @@
 # Human Compliance Review Handoff
 
-Last prepared: July 25, 2026
+Last prepared: August 7, 2026
 
 This is an implementation and review record, not legal advice or a compliance certification. The broker of record and, where appropriate, New Jersey counsel must approve the public wording. Keep privileged advice outside this public repository; record only the reviewer, date, status, and final approved wording.
+
+**Project closure status:** The selected current-site roadmap and recorded owner
+reviews are complete as of August 7, 2026. The Google Business Profile ownership
+handoff and final public-detail review are also complete: the profile is managed
+under the intended owner account, does not display a street address, and lists
+only the seven South Jersey counties as service areas. There is no active
+current-site compliance remediation. Quarterly reviews and review of any future
+feature remain ongoing safeguards, not open launch blockers.
 
 ## Verified Public Facts
 
@@ -46,7 +54,7 @@ The owner confirmed active REALTOR® membership on July 18, 2026, and current pu
 - [x] Fix overlapping desktop dropdowns and cover click, hover, focus, outside-click, and Escape behavior.
 - [x] Run the audit's exact high-risk phrase scan and phone/email scan and manually classify all remaining hits.
 - [x] Measure the production brokerage disclosure at desktop and mobile widths, confirm its hierarchy, contrast, and zero overflow, and capture the evidence in [compliance-review-packet.md](./compliance-review-packet.md).
-- [x] Pass the production build, 92 unit tests, and 37 Playwright checks covering all 21 public routes, prerendered and hydrated DOM, metadata, JSON-LD, forms, analytics consent, providers, hub navigation, keyboard behavior, 320-pixel layout, screenshots, overflow, alt text, and automated WCAG checks.
+- [x] Pass the production build, 92 unit tests, and 37 Playwright checks covering all 21 then-current public routes, prerendered and hydrated DOM, metadata, JSON-LD, forms, analytics consent, providers, hub navigation, keyboard behavior, 320-pixel layout, screenshots, overflow, alt text, and automated WCAG checks. These are the preserved July audit totals; the completed site now has 25 public routes and broader automated coverage.
 
 ## July 18-19 Technical Reverification
 
@@ -105,7 +113,7 @@ This technical record does not satisfy the broker, owner, credential-holder, or 
 - [x] The owner accepted the current Privacy Policy, Terms of Service, Disclaimer, ordinary-inquiry authorization, and newsletter consent for project publication on July 19, 2026. This does not claim independent legal certification.
 - [x] Owner confirms the provider directory is strictly unpaid and separate from the paid advertising program for businesses outside the real-estate transaction.
 - [x] The owner reports that the broker verbally confirmed on July 25, 2026 that there is no referral, affiliate, family, ownership, or transaction-based arrangement omitted from any current directory entry. This records the owner's report and does not claim direct written confirmation received by this repository.
-- [ ] Counsel reviews any future settlement-service advertising or affiliated-business arrangement before publication.
+- [ ] Counsel reviews any future settlement-service advertising or affiliated-business arrangement before publication. This is a conditional future-feature gate, not an active project task.
 - [x] The owner accepted the production tracker/processor inventory summarized from the Cloudflare, Supabase, Brevo, and GA4 dashboards on July 19, 2026.
 - [x] Current REALTOR® membership is treated as owner-verified and publicly corroborated; the mark is restored without storing private membership identifiers.
 - [x] Schedule a quarterly review of license status, broker/office facts, credentials, processors/trackers, provider relationships, and public claims.

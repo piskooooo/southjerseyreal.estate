@@ -1,6 +1,6 @@
 # South Jersey Real Estate Marketing Description and Feature Inventory
 
-Prepared: July 20, 2026
+Last updated: August 7, 2026
 
 This is the reusable marketing record for `southjerseyreal.estate`. It includes
 the complete project, including public features, private owner tools, beta and
@@ -8,6 +8,11 @@ preview work, activation-ready features, deferred ideas, marketing campaigns,
 and the supporting newsletter editorial workflow. Status labels are part of the
 claim: only items marked **Live** should be presented as currently available or
 operational.
+
+**Project completion status:** The selected website roadmap, production launch,
+owner reviews, and Google Business Profile ownership handoff were completed by
+August 7, 2026. No activation-pending or planned item in this inventory is an
+active commitment unless the owner explicitly selects it as new work.
 
 ## Status Key
 
@@ -35,6 +40,8 @@ operational.
 - **Personal content:** Intentionally concentrated on the About page
 - **Ownership:** Personally owned by Arthur Pisko Jr.
 - **Website credit:** Created and maintained by Fat Cat Finance, LLC
+- **Project status:** Complete; no active roadmap items or known blockers as of
+  August 7, 2026
 - **Production hosting:** Cloudflare Pages
 - **Application stack:** React, TypeScript, Vite, Supabase, Cloudflare, Brevo,
   Google Analytics, and GitHub Actions
@@ -84,7 +91,7 @@ website feature.
 
 Fat Cat Finance, LLC transformed South Jersey Real Estate from a hosted
 Squarespace site into a custom, owner-managed regional publishing platform. The
-work included a responsive React rebuild, 21 search-ready public routes, secure
+work included a responsive React rebuild, 25 search-ready public routes, secure
 contact and double-opt-in newsletter workflows, privacy-aware analytics, a
 private structured content editor and inquiry inbox, image optimization,
 automated testing, and a complete migration from NAS hosting to Cloudflare Pages
@@ -101,7 +108,7 @@ questions people have when considering a move or real-estate decision in the
 area. Personal professional information is intentionally kept in depth on the
 About page, with concise brokerage identification where visitors need it.
 
-The public website gives visitors 21 indexable routes organized around county
+The public website gives visitors 25 indexable routes organized around county
 exploration, regional learning, frequently asked questions, contact and
 newsletter workflows, real-estate provider connections, local-business
 advertising, and legal information. The navigation works across desktop, tablet,

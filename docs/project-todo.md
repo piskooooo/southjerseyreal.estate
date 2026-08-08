@@ -2,9 +2,18 @@
 
 Last reviewed: August 7, 2026
 
-Use this file as the source of truth for unfinished work on `southjerseyreal.estate`. Check an item only after completing its **Done when** test. Never place passwords, SMTP credentials, webhook URLs, lead data, or other secrets in this file.
+**Project status: Complete.** The selected roadmap closed on August 7, 2026.
+There are no active project tasks or known blockers. Routine maintenance,
+quarterly reviews, marketing campaigns, and explicitly deferred concepts are
+not unfinished website work and must not be reported as active unless the owner
+explicitly reopens them.
 
-## Current Priorities
+Use this file as the source of truth for project status and any future selected
+work on `southjerseyreal.estate`. Check an item only after completing its
+**Done when** test. Never place passwords, SMTP credentials, webhook URLs, lead
+data, or other secrets in this file.
+
+## Completed Roadmap
 
 - [x] 1. Complete the Pages cutover and retire the legacy NAS code path
 - [x] 2. Confirm the production URL in Google Search Console
@@ -22,10 +31,9 @@ Use this file as the source of truth for unfinished work on `southjerseyreal.est
 - [x] 15. Finish the Google Business Profile ownership handoff and detail review
 - [x] 16. Obtain broker confirmation for current provider relationships
 
-Items 14–16 are the selected roadmap as of July 25, 2026; only unchecked items
-remain active. Earlier loose ideas about a statewide referral strategy,
-additional backup/export work, and other chat-only possibilities are
-intentionally not being carried forward.
+All selected roadmap items are complete. Earlier loose ideas about a statewide
+referral strategy, additional backup/export work, and other chat-only
+possibilities are intentionally not being carried forward.
 
 ## 1. Complete the Cloudflare Pages Cutover
 
@@ -135,7 +143,7 @@ The July 18 technical remediation is complete, but it is not a legal certificati
 
 - [x] Obtain responsible review. The owner reports broad broker consent, and the owner's attorney advised replacing the repeated compliance-heavy presentation with layered disclosures.
 - [x] Implement sitewide broker identity, office-phone, license, fair-housing, neutral-community-copy, consent, privacy, provider, metadata, and publishing guardrails from the July 18 audit.
-- [x] Run the audit scans plus production build, 92 unit tests, 49 tracked database checks, and 37 rendered-route/browser acceptance checks across 21 public routes.
+- [x] Run the audit scans plus production build, 92 unit tests, 49 tracked database checks, and 37 rendered-route/browser acceptance checks across the 21 public routes that existed at the time. These are preserved historical audit totals; the completed site now has 25 public routes and broader automated coverage.
 - [x] Recheck the implemented license, brokerage, broker-of-record, licensed-office, and affiliation facts against NJDOBI public records.
 - [x] Audit the production Cloudflare Pages, Supabase, Brevo, and GA4 configuration inventories without recording secret values or personal data.
 - [x] Measure the brokerage-disclosure hierarchy and contrast at desktop and mobile widths, capture rendered evidence, and prepare the concise [compliance review packet](./compliance-review-packet.md) for the human reviewer.
@@ -168,14 +176,14 @@ Bright IDX and property-search planning is not part of the current `southjerseyr
 
 - [x] Add a lazy-loaded `/admin` application that is separate from the public header/footer, uses the South Jersey visual theme, works at desktop and mobile widths, and is protected by page-level and HTTP `noindex` directives.
 - [x] Build password, magic-link, password-recovery, session-refresh, unauthorized, configuration-error, and sign-out states without exposing public signup or committing the administrator email.
-- [x] Cover sitewide navigation, footer, and privacy content plus all 21 public routes, including both hub pages, the seven county guides, resource/comparison pages, FAQ, and legal pages, as structured editable documents with compiled fallbacks.
+- [x] Cover sitewide navigation, footer, and privacy content plus all 25 public routes, including both hub pages, the seven county guides, Insights, resource/comparison pages, FAQ, and legal pages, as structured editable documents with compiled fallbacks.
 - [x] Add recursive field editing, unsaved/saved/published status, draft save, atomic publish, discard-to-published, optimistic-concurrency checks, safe-link validation, and required image alt-text validation.
 - [x] Add JPG, PNG, WebP, and AVIF uploads with file and decoded-dimension limits, optimized page/admin variants, replacement/removal handling, and storage cleanup warnings.
 - [x] Add the private, paginated contact-inquiry inbox without exposing the `private` schema or a service-role key to the browser.
 - [x] Add the local Supabase migration for the one-slot UUID administrator table, public published-only content, private drafts, RLS/grants, audited publish/revert/inquiry RPCs, and the admin-write-only `site-images` storage policies.
 - [x] Add the authenticated `site-rebuild` Edge Function with origin validation, JWT/user verification, UUID administrator verification, strict deploy-hook URL validation, and fail-closed error handling.
 - [x] Connect the public layouts to published Supabase content with compiled fallbacks, and add route-specific HTML/metadata plus sitemap prerendering for crawler-visible SEO changes.
-- [x] Add editor content/inbox/image tests and transactional pgTAP coverage. The current verification passes 92 Vitest tests, 49 database checks, the production build, Deno formatting/type checks, and public/fail-closed browser checks.
+- [x] Add editor content/inbox/image tests and transactional pgTAP coverage. Verification at task completion passed 92 Vitest tests, 49 database checks, the production build, Deno formatting/type checks, and public/fail-closed browser checks; later roadmap work expanded the suite.
 - [x] Push implementation commit `d98b8f5`, activation/retirement commit `1698230`, and Pages routing fix `5ead7ea` to `origin/main`; confirm the Cloudflare Pages production deployments and GitHub test workflow succeed.
 
 ### Production Activation and Acceptance
@@ -223,7 +231,7 @@ Research completed July 18, 2026. The [palette report](./dark-theme-palette-revi
 ### Verification
 
 - [x] Check text, link, control, and focus contrast against WCAG AA targets for all three proposed directions.
-- [x] Inspect all 21 public routes in dark mode at `1440×1000`, `768×1024`, and `390×844`, plus the intentionally light-only `/admin` boundary at all three responsive classes.
+- [x] Inspect all 21 public routes that existed during the dark-theme review at `1440×1000`, `768×1024`, and `390×844`, plus the intentionally light-only `/admin` boundary at all three responsive classes. Later routes were covered by their own responsive and accessibility checks.
 - [x] Confirm there is no clipping, overlap, unreadable state, or horizontal overflow in either theme.
 - [x] Obtain final visual approval before closing the palette task. Owner approved Midnight Editorial on July 22, 2026.
 
@@ -355,8 +363,8 @@ tasks and should not be included when reporting the active website to-do list.
 
 **Done when:** The saved document covers the whole project, includes reusable
 short and long descriptions plus a categorized feature inventory, contains no
-confidential information or unsupported live claims, and gives the owner clear
-language to use while unfinished work remains visible as unfinished.
+confidential information or unsupported live claims, and preserves accurate
+status labels for live, completed, campaign, and deferred work.
 
 ## 12. Add the Intended HomeBase CRM and Brokerage Links
 

@@ -24,10 +24,16 @@ Guidance for future Codex work on the South Jersey Real Estate site.
 
 This is a React/Vite rebuild of `southjerseyreal.estate`, originally cloned from the Squarespace site and intended to be more editable, self-hostable, and visually polished. Keep content editable as structured sections, not as page-sized blobs.
 
+## Current Project Status
+
+- The selected project roadmap was completed and closed on August 7, 2026. The production website, owner reviews, and Google Business Profile ownership handoff have no active blockers.
+- `docs/project-todo.md` is the authoritative completion record. Do not report its completed roadmap items as unfinished.
+- Routine maintenance, quarterly compliance reviews, marketing campaigns, and the deferred Bright IDX backlog are not active website tasks. Reactivate or add work only when the owner explicitly selects it.
+
 ## Start Here
 
-- Read `README.md`, then `docs/project-todo.md`, `docs/compliance-review-checklist.md`, and `docs/cloudflare-pages-supabase-brevo.md`, then the specific files you plan to touch. For county writing, also read `docs/community-profile-drafts.md`; for dark-theme work, read `docs/dark-theme-palette-review.md` and preserve the owner's pause unless it is explicitly reopened.
-- Treat `docs/project-todo.md` as the source of truth for unfinished work. Update its checkboxes and completion details when a listed task is actually finished.
+- Read `README.md`, then `docs/project-todo.md`, `docs/compliance-review-checklist.md`, and `docs/cloudflare-pages-supabase-brevo.md`, then the specific files you plan to touch. For county writing, also read `docs/community-profile-drafts.md`; for dark-theme work, read `docs/dark-theme-palette-review.md` and preserve the owner-approved Midnight Editorial implementation unless it is explicitly reopened.
+- Treat `docs/project-todo.md` as the source of truth for project status and any future owner-selected work. Update it only when the owner explicitly reopens or adds work, or when a selected task is actually finished.
 - Keep the public site safe for production: do not commit real SMTP secrets, webhook URLs, private emails beyond approved public-facing addresses, lead data, or local `.env` files.
 - Preserve the separation between content and layout.
 

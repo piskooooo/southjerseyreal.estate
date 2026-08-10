@@ -16,6 +16,7 @@ const TURNSTILE_SITEVERIFY_ENDPOINT =
 const SUCCESS_MESSAGE =
   "Thanks. Your message has been received, and I will get back to you as soon as I can.";
 const DEFAULT_ALLOWED_ORIGINS = [
+  "https://arthurpisko.realtor",
   "https://southjerseyreal-estate.pages.dev",
   "https://southjerseyreal.estate",
   "https://www.southjerseyreal.estate",
@@ -23,6 +24,7 @@ const DEFAULT_ALLOWED_ORIGINS = [
   "http://127.0.0.1:5173",
 ];
 const DEFAULT_EXPECTED_HOSTNAMES = [
+  "arthurpisko.realtor",
   "southjerseyreal-estate.pages.dev",
   "southjerseyreal.estate",
   "www.southjerseyreal.estate",

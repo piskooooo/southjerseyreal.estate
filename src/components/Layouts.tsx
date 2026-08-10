@@ -1,4 +1,4 @@
-import { useState, type MouseEvent, type ReactNode } from "react";
+import { useEffect, useState, type MouseEvent, type ReactNode } from "react";
 import { trackFormSuccess, trackLinkClick } from "../analytics";
 import {
   areCloudFormsConfigured,
@@ -67,6 +67,22 @@ const isTownSection = (section: PageSection, index: number) => (
 );
 const isInteractiveTarget = (target: EventTarget | null) => target instanceof Element && Boolean(target.closest("a, button, input, select, textarea, label"));
 const townSectionKey = (section: PageSection, index: number) => section.id || String(index);
+const townSectionAnchor = (section: PageSection, index: number) => {
+  const heading = section.blocks.find((block) => ["H2", "H3"].includes(block.tag))?.text || "";
+  const slug = heading
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-|-$/g, "");
+  return slug || `community-${index + 1}`;
+};
+const readTownHash = () => {
+  if (typeof window === "undefined") return "";
+  try {
+    return decodeURIComponent(window.location.hash.slice(1)).toLowerCase();
+  } catch {
+    return "";
+  }
+};
 const scrollTownCardIntoView = (key: string) => {
   window.requestAnimationFrame(() => {
     const card = Array.from(document.querySelectorAll<HTMLElement>("[data-town-card-key]")).find((element) => element.dataset.townCardKey === key);
@@ -106,6 +122,7 @@ function TownCard({
   const [headingBlock, summaryBlock, ...detailBlocks] = section.blocks;
   const detailsId = `town-card-details-${section.id || index}`;
   const cardKey = townSectionKey(section, index);
+  const cardAnchor = townSectionAnchor(section, index);
   const hasDetails = detailBlocks.length > 0;
   const visibleBlocks = [headingBlock, summaryBlock].filter(Boolean);
   const image = section.images[0];
@@ -116,6 +133,7 @@ function TownCard({
   };
   return (
     <article
+      id={cardAnchor}
       className={`town-card ${hasDetails ? "has-details" : "is-summary-only"} ${expanded ? "is-expanded" : ""} ${className}`.trim()}
       data-town-card-key={cardKey}
       onClick={toggleCard}
@@ -176,22 +194,54 @@ function TownGrid({
   sections: Array<{ section: PageSection; index: number }>;
   navigate: (path: string) => void;
 }) {
-  const [expandedCards, setExpandedCards] = useState<Set<string>>(() => new Set());
   const expandableSections = sections.filter(({ section }) => section.blocks.length > 2);
-  const allExpanded = expandableSections.length > 0 && expandableSections.every(({ section, index }) => (
-    expandedCards.has(townSectionKey(section, index))
-  ));
-  const rows = sections.reduce<Array<Array<{ key: string; section: PageSection; index: number }>>>((groups, item, itemIndex) => {
+  const rows = sections.reduce<Array<Array<{ anchor: string; key: string; section: PageSection; index: number }>>>((groups, item, itemIndex) => {
     const rowIndex = Math.floor(itemIndex / TOWN_GRID_COLUMNS);
 
     if (!groups[rowIndex]) groups[rowIndex] = [];
-    groups[rowIndex].push({ ...item, key: townSectionKey(item.section, item.index) });
+    groups[rowIndex].push({
+      ...item,
+      key: townSectionKey(item.section, item.index),
+      anchor: townSectionAnchor(item.section, item.index),
+    });
 
     return groups;
   }, []);
+  const initialHash = readTownHash();
+  const linkedTown = rows.flat().find(({ anchor, key }) => initialHash === anchor || initialHash === key.toLowerCase());
+  const [expandedCards, setExpandedCards] = useState<Set<string>>(() => (
+    linkedTown && linkedTown.section.blocks.length > 2 ? new Set([linkedTown.key]) : new Set()
+  ));
+  const allExpanded = expandableSections.length > 0 && expandableSections.every(({ section, index }) => (
+    expandedCards.has(townSectionKey(section, index))
+  ));
+  useEffect(() => {
+    const syncTownFromHash = () => {
+      const hash = readTownHash();
+      const target = rows.flat().find(({ anchor, key, section }) => (
+        section.blocks.length > 2 && (hash === anchor || hash === key.toLowerCase())
+      ));
+
+      setExpandedCards(target ? new Set([target.key]) : new Set());
+      if (target) scrollTownCardIntoView(target.key);
+    };
+
+    syncTownFromHash();
+    window.addEventListener("hashchange", syncTownFromHash);
+    window.addEventListener("popstate", syncTownFromHash);
+    return () => {
+      window.removeEventListener("hashchange", syncTownFromHash);
+      window.removeEventListener("popstate", syncTownFromHash);
+    };
+  }, [sections]);
   const expandAll = () => setExpandedCards(new Set(expandableSections.map(({ section, index }) => townSectionKey(section, index))));
-  const collapseAll = () => setExpandedCards(new Set());
-  const toggleCard = (key: string) => {
+  const collapseAll = () => {
+    setExpandedCards(new Set());
+    if (window.location.hash) {
+      window.history.pushState({}, "", `${window.location.pathname}${window.location.search}`);
+    }
+  };
+  const toggleCard = (key: string, anchor: string) => {
     const rowKeys = rows.find((row) => row.some((item) => item.key === key))?.map((item) => item.key) || [];
     const isOpening = !expandedCards.has(key);
 
@@ -206,7 +256,12 @@ function TownGrid({
       return next;
     });
 
-    if (isOpening) scrollTownCardIntoView(key);
+    if (isOpening) {
+      window.history.pushState({}, "", `${window.location.pathname}${window.location.search}#${anchor}`);
+      scrollTownCardIntoView(key);
+    } else if (readTownHash() === anchor) {
+      window.history.pushState({}, "", `${window.location.pathname}${window.location.search}`);
+    }
   };
 
   return (
@@ -232,7 +287,7 @@ function TownGrid({
 
           return (
             <div key={`town-row-${rowIndex}`} className={rowClassName}>
-              {row.map(({ key, section, index }) => {
+              {row.map(({ anchor, key, section, index }) => {
                 const expanded = expandedCards.has(key);
                 return (
                   <TownCard
@@ -241,7 +296,7 @@ function TownGrid({
                     section={section}
                     index={index}
                     navigate={navigate}
-                    onToggle={() => toggleCard(key)}
+                    onToggle={() => toggleCard(key, anchor)}
                   />
                 );
               })}

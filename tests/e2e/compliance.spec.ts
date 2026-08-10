@@ -655,6 +655,35 @@ test("town expansion keeps directory order and desktop layout stable", async ({ 
   }
 });
 
+test("town hashes open shareable expanded community links", async ({ page }) => {
+  await page.setViewportSize({ width: 1280, height: 900 });
+  await page.goto("/cape-may-county#wildwood", { waitUntil: "domcontentloaded" });
+
+  const wildwood = page.locator("#wildwood");
+  const collapseButton = page.getByRole("button", { name: "Collapse Wildwood details", exact: true });
+  await expect(collapseButton).toHaveAttribute("aria-expanded", "true");
+  await expect(page).toHaveURL(/\/cape-may-county#wildwood$/);
+  await expect.poll(async () => wildwood.evaluate((element) => {
+    const rectangle = element.getBoundingClientRect();
+    return rectangle.top >= 0 && rectangle.top < window.innerHeight;
+  })).toBe(true);
+
+  await collapseButton.click();
+  await expect(page).toHaveURL(/\/cape-may-county$/);
+  await expect(page.getByRole("button", { name: "Expand Wildwood details", exact: true })).toHaveAttribute("aria-expanded", "false");
+
+  await page.goBack();
+  await expect(page).toHaveURL(/\/cape-may-county#wildwood$/);
+  await expect(page.getByRole("button", { name: "Collapse Wildwood details", exact: true })).toHaveAttribute("aria-expanded", "true");
+
+  await page.goForward();
+  await expect(page).toHaveURL(/\/cape-may-county$/);
+  await expect(page.getByRole("button", { name: "Expand Wildwood details", exact: true })).toHaveAttribute("aria-expanded", "false");
+
+  await page.getByRole("button", { name: "Expand Wildwood Crest details", exact: true }).click();
+  await expect(page).toHaveURL(/\/cape-may-county#wildwood-crest$/);
+});
+
 test("partner resource links stack without overlap", async ({ page }) => {
   await page.setViewportSize({ width: 1640, height: 900 });
   await openHydratedRoute(page, "/partners");

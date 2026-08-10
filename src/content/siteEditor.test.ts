@@ -98,8 +98,9 @@ describe("website editor content normalization", () => {
       "/insights/new-jersey-homebuying-process",
     ) as ManagedPageDocument;
 
-    expect(hub.insightIndex?.articles).toHaveLength(3);
+    expect(hub.insightIndex?.articles).toHaveLength(8);
     expect(article.insightArticle?.sections.length).toBeGreaterThanOrEqual(5);
+    expect(article.insightArticle?.author).toBe("Arthur Pisko Jr.");
     expect(article.insightArticle?.sources.every((source) => source.tag === "SOURCE")).toBe(true);
     expect(() => validateManagedContentForPublish(
       "/insights/new-jersey-homebuying-process",
@@ -112,6 +113,17 @@ describe("website editor content normalization", () => {
       "/insights/new-jersey-homebuying-process",
       stale,
     )).toThrow(/YYYY-MM-DD/i);
+  });
+
+  it("keeps the approved guide library visible when an older published index is loaded", () => {
+    const olderIndex = structuredClone(managedContentSeeds.get("/insights")) as ManagedPageDocument;
+    olderIndex.insightIndex!.articles = olderIndex.insightIndex!.articles.slice(0, 2);
+
+    const normalized = normalizeManagedContent("/insights", olderIndex) as ManagedPageDocument;
+    expect(normalized.insightIndex?.articles).toHaveLength(8);
+    expect(normalized.insightIndex?.articles.map((article) => article.href)).toContain(
+      "/insights/coastal-property-due-diligence",
+    );
   });
 
   it("adds the fixed hub paths when normalizing older sitewide content", () => {

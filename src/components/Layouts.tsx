@@ -458,6 +458,7 @@ export function InsightArticlePage({
         <h1>{article.title}</h1>
         <p className="insight-article-summary">{article.summary}</p>
         <div className="insight-article-meta" aria-label="Article details">
+          <span>By {article.author}</span>
           <span>{article.category}</span>
           <span>{article.readingTime}</span>
           <span>Reviewed <time dateTime={article.reviewedDate}>{formatInsightDate(article.reviewedDate)}</time></span>

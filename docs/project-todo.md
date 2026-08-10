@@ -35,6 +35,16 @@ All selected roadmap items are complete. Earlier loose ideas about a statewide
 referral strategy, additional backup/export work, and other chat-only
 possibilities are intentionally not being carried forward.
 
+## Completed Selected Maintenance
+
+- [x] August 10, 2026 — Expanded the editable Insights library from three to
+  eight evergreen New Jersey and South Jersey real-estate guides. The library
+  retains original publication dates for the earlier guides, records their
+  substantive review date, adds visible authorship, primary-source notes,
+  internal guide/county links, sitemap and article metadata coverage, and a
+  compatibility safeguard for older published index content. This is completed
+  content maintenance, not a reopened high-frequency blog or roadmap item.
+
 ## 1. Complete the Cloudflare Pages Cutover
 
 **Goal:** Serve the site and forms without depending on the NAS, with recovery through a known-good Git revision and Cloudflare Pages deployment.

@@ -118,6 +118,11 @@ const breadcrumbParentByPath = new Map<string, string>([
   ["/insights/new-jersey-homebuying-process", "/insights"],
   ["/insights/preparing-to-sell-a-new-jersey-home", "/insights"],
   ["/insights/researching-a-south-jersey-property", "/insights"],
+  ["/insights/home-inspections-and-repair-questions", "/insights"],
+  ["/insights/municipal-records-permits-and-zoning", "/insights"],
+  ["/insights/questions-before-choosing-a-community", "/insights"],
+  ["/insights/coastal-property-due-diligence", "/insights"],
+  ["/insights/wells-septic-acreage-and-environmental-constraints", "/insights"],
 ]);
 
 const breadcrumbLabelByPath = new Map<string, string>([
@@ -322,7 +327,7 @@ export const buildStructuredData = (
       mainEntityOfPage: { "@id": webpageId },
       author: {
         "@type": "Person",
-        name: compliance.agentLicensedName,
+        name: insightArticle.author,
         url: `${siteUrl}/about`,
       },
       publisher: { "@id": `${siteUrl}/#website` },

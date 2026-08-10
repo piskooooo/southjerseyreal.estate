@@ -426,6 +426,17 @@ export function normalizeManagedContent(pageKey: string, value: unknown): Manage
       }
     }
   }
+  if (pageKey === "/insights") {
+    const document = normalized as ManagedPageDocument;
+    const seedDocument = seed as ManagedPageDocument;
+    const publishedCards = document.insightIndex?.articles || [];
+    const seededCards = seedDocument.insightIndex?.articles || [];
+    const publishedByHref = new Map(publishedCards.map((card) => [card.href, card]));
+    document.insightIndex = {
+      ...document.insightIndex!,
+      articles: seededCards.map((card) => publishedByHref.get(card.href) || card),
+    };
+  }
   return normalized;
 }
 

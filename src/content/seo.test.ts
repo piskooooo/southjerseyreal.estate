@@ -79,7 +79,8 @@ describe("SEO metadata", () => {
     expect(articleSchema).toMatchObject({
       headline: article.title,
       datePublished: "2026-07-25",
-      dateModified: "2026-07-25",
+      dateModified: "2026-08-10",
+      author: expect.objectContaining({ name: "Arthur Pisko Jr." }),
     });
     expect(breadcrumbs?.itemListElement).toEqual([
       expect.objectContaining({ position: 1, name: "Home", item: `${siteUrl}/` }),

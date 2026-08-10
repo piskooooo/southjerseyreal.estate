@@ -144,6 +144,36 @@
     "priority": "0.65"
   },
   {
+    "path": "/insights/home-inspections-and-repair-questions",
+    "title": "Home Inspections and Repair Questions | New Jersey Guide",
+    "description": "Use inspections, specialist questions, repair records, and contract deadlines to evaluate a New Jersey property with care.",
+    "priority": "0.65"
+  },
+  {
+    "path": "/insights/municipal-records-permits-and-zoning",
+    "title": "Municipal Records, Permits, and Zoning | Home Search Guide",
+    "description": "Use municipal records, permits, certificates, and zoning information to research a New Jersey property before relying on an intended use.",
+    "priority": "0.65"
+  },
+  {
+    "path": "/insights/questions-before-choosing-a-community",
+    "title": "Questions Before Choosing a South Jersey Community",
+    "description": "A neutral, practical framework for researching South Jersey communities and evaluating a property's fit for your own needs.",
+    "priority": "0.6"
+  },
+  {
+    "path": "/insights/coastal-property-due-diligence",
+    "title": "Coastal Property Due Diligence | South Jersey Guide",
+    "description": "Research flood, insurance, permits, condition, and intended-use questions for a coastal or shore-area property in South Jersey.",
+    "priority": "0.65"
+  },
+  {
+    "path": "/insights/wells-septic-acreage-and-environmental-constraints",
+    "title": "Wells, Septic, Acreage, and Environmental Questions | NJ Guide",
+    "description": "Research private wells, septic systems, acreage, land-use questions, and environmental constraints before buying a New Jersey property.",
+    "priority": "0.65"
+  },
+  {
     "path": "/privacy-policy",
     "title": "Privacy Policy | South Jersey Real Estate",
     "description": "Privacy policy for South Jersey Real Estate, including forms, Supabase, Brevo, Turnstile, and optional Google Analytics.",

@@ -1,6 +1,6 @@
 # South Jersey Real Estate Marketing Description and Feature Inventory
 
-Last updated: August 7, 2026
+Last updated: August 10, 2026
 
 This is the reusable marketing record for `southjerseyreal.estate`. It includes
 the complete project, including public features, private owner tools, beta and
@@ -91,7 +91,7 @@ website feature.
 
 Fat Cat Finance, LLC transformed South Jersey Real Estate from a hosted
 Squarespace site into a custom, owner-managed regional publishing platform. The
-work included a responsive React rebuild, 25 search-ready public routes, secure
+work included a responsive React rebuild, 30 search-ready public routes, secure
 contact and double-opt-in newsletter workflows, privacy-aware analytics, a
 private structured content editor and inquiry inbox, image optimization,
 automated testing, and a complete migration from NAS hosting to Cloudflare Pages
@@ -131,13 +131,15 @@ rate-limit and retention rules. The repository includes unit, database,
 accessibility, metadata, responsive, navigation, and rendered-route regression
 coverage.
 
-The site is already live, but its editorial system was designed to keep growing.
-The next content layer is a sourced, casual-but-professional profile set covering
-every current municipality in the seven-county region. On-demand Google review
-cards and profile fallbacks are live on the About page, the Midnight Editorial
-dark theme is approved and live, and the provider and advertising programs can expand as real participants
-are added. A separate newsletter-content automation and a deferred Bright IDX
-concept are documented without being presented as current website capabilities.
+The site is already live, and its editorial system is designed to keep growing.
+The published content layer includes sourced, casual-but-professional county and
+community profiles covering every current municipality in the seven-county
+region. On-demand Google review cards and profile fallbacks are live on the About
+page, the Midnight Editorial dark theme is approved and live, and the provider
+and advertising programs can expand as real participants are added. The weekly
+newsletter editorial workflow is live as an owner-operated process that prepares
+sourced drafts and images; it does not automatically create or send Brevo
+campaigns. Bright IDX remains a deferred concept documented separately.
 
 ## Product Positioning
 
@@ -168,7 +170,7 @@ concept are documented without being presented as current website capabilities.
 
 - **Live:** A custom React and TypeScript public website at the primary domain
   and `www` hostname.
-- **Live:** 25 public routes with a real not-found experience for unknown URLs.
+- **Live:** 30 public routes with a real not-found experience for unknown URLs.
 - **Live:** A South Jersey-focused home page with regional photography and a
   direct route into county exploration.
 - **Live:** A Counties hub explaining the seven-county coverage area and linking
@@ -352,7 +354,7 @@ concept are documented without being presented as current website capabilities.
 
 ### Search, Sharing, and Discoverability
 
-- **Live:** Route-specific page titles and descriptions for all 25 public routes.
+- **Live:** Route-specific page titles and descriptions for all 30 public routes.
 - **Live:** Canonical URLs and canonical host redirects.
 - **Live:** Open Graph and Twitter sharing metadata with image dimensions and
   alternative text.
@@ -399,7 +401,7 @@ concept are documented without being presented as current website capabilities.
 - **Live - Private:** Public signup disabled and access bound to one approved
   account UUID.
 - **Live - Private:** Structured editing for sitewide navigation, footer, privacy
-  content, and all 25 public routes.
+  content, and all 30 public routes.
 - **Live - Private:** Recursive field editing for page content, links, cards,
   comparison sections, resource sections, and source notes within the supported
   page structure.
@@ -482,12 +484,12 @@ concept are documented without being presented as current website capabilities.
   content separated from reusable layouts.
 - **Live:** Compiled fallback content keeps the public site usable if remote
   published content is temporarily unavailable.
-- **Live:** 99 unit and component checks cover frontend behavior, forms, content,
+- **Live:** 100 unit and component checks cover frontend behavior, forms, content,
   editor workflows, analytics, review handling, and Edge Function helpers.
 - **Live:** 49 transactional database checks cover private access, rate limits,
   retention, notification lifecycle, publishing, concurrency, and inbox
   pagination.
-- **Live:** 60 rendered browser checks cover all 25 public routes plus metadata,
+- **Live:** 66 rendered browser checks cover all 30 public routes plus metadata,
   navigation behavior, responsive layouts, screenshots, accessibility, and
   non-indexable special routes.
 - **Live:** Deno formatting and type checks cover Supabase Edge Functions.
@@ -636,7 +638,7 @@ or promised website feature.
 
 - “A live South Jersey real-estate and community information platform.”
 - “Coverage across all seven South Jersey counties.”
-- “25 public resource, county, Insights, connection, and legal routes.”
+- “30 public resource, county, Insights, connection, and legal routes.”
 - “Responsive light and dark experiences for desktop, tablet, and mobile.”
 - “Secure contact and double-opt-in newsletter workflows.”
 - “A weekly AI-assisted newsletter editorial workflow prepares sourced copy and

@@ -1,6 +1,6 @@
 # Cloudflare Pages, Supabase, and Brevo
 
-Last reviewed: July 17, 2026
+Last reviewed: August 10, 2026
 
 This is the production deployment guide for `southjerseyreal.estate`. It intentionally records resource names and public identifiers, but never secret values, contact submissions, or subscriber data.
 
@@ -185,14 +185,15 @@ Use clearly labeled test information that can be removed afterward.
 
 Do not use a Turnstile test key in production. The repository's validation script may use a dummy token only to prove the configured secret reaches Siteverify; a rejected dummy response is expected.
 
-Run the automated checks before every forms deployment:
+Run the automated checks before every Edge Function or forms deployment:
 
 ```bash
 npm test
 npm run build
-npx deno check --node-modules-dir=auto supabase/functions/contact-submit/index.ts
-npx deno check --node-modules-dir=auto supabase/functions/newsletter-subscribe/index.ts
-npx deno check --node-modules-dir=auto supabase/functions/google-reviews/index.ts
+npx deno check --node-modules-dir=none supabase/functions/contact-submit/index.ts
+npx deno check --node-modules-dir=none supabase/functions/newsletter-subscribe/index.ts
+npx deno check --node-modules-dir=none supabase/functions/google-reviews/index.ts
+npx deno check --node-modules-dir=none supabase/functions/site-rebuild/index.ts
 ```
 
 Run the transactional database checks when Docker and the local Supabase stack are available:
@@ -203,6 +204,11 @@ npm run test:db
 ```
 
 The database test runs inside a transaction and covers private-schema privileges, contact idempotency and rate limits, notification state transitions, newsletter cooldowns, retention, and cron configuration.
+
+If `npm run test:db` cannot start because Docker Desktop cannot mount this
+repository, grant Docker Desktop filesystem access to the repository's parent
+folder and retry. The failure occurs before the SQL checks run; do not treat it
+as a database-test failure.
 
 ## View Private Contact Inquiries
 

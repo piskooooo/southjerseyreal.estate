@@ -1,6 +1,6 @@
 # Human Compliance Review Handoff
 
-Last prepared: August 7, 2026
+Last reviewed: August 10, 2026
 
 This is an implementation and review record, not legal advice or a compliance certification. The broker of record and, where appropriate, New Jersey counsel must approve the public wording. Keep privileged advice outside this public repository; record only the reviewer, date, status, and final approved wording.
 
@@ -39,7 +39,7 @@ The owner confirmed active REALTOR® membership on July 18, 2026, and current pu
 - [x] Put the broker name, descriptor, licensed-office phone, broker link, salesperson license type, and salesperson license number in one visible sitewide footer disclosure.
 - [x] Make the broker identity more prominent than the salesperson identity within the footer disclosure and keep it readable at 320 pixels.
 - [x] Centralize broker, office, and salesperson facts in one configuration used by visible copy, links, metadata, and JSON-LD.
-- [x] Keep unsupported imported county claims retired, retain one unobtrusive page-level verification note, and prepare dated, sourced community profiles for owner review. Clearly label retained 2025 price, tax, and school details as historical site snapshots rather than current claims.
+- [x] Keep unsupported imported county claims retired, retain one unobtrusive page-level verification note, and publish dated, sourced community profiles. Clearly label retained 2025 price, tax, and school details as historical site snapshots rather than current claims.
 - [x] Add the Equal Housing Opportunity treatment sitewide and place the complete broker-specific fair-housing statement on the Disclaimer page.
 - [x] Restore the REALTOR® membership mark after owner confirmation, while keeping private membership and MLS identifiers out of the repository.
 - [x] Consolidate detailed legal explanations on the Disclaimer, Privacy Policy, and Terms pages instead of repeating them throughout ordinary editorial copy.
@@ -54,7 +54,7 @@ The owner confirmed active REALTOR® membership on July 18, 2026, and current pu
 - [x] Fix overlapping desktop dropdowns and cover click, hover, focus, outside-click, and Escape behavior.
 - [x] Run the audit's exact high-risk phrase scan and phone/email scan and manually classify all remaining hits.
 - [x] Measure the production brokerage disclosure at desktop and mobile widths, confirm its hierarchy, contrast, and zero overflow, and capture the evidence in [compliance-review-packet.md](./compliance-review-packet.md).
-- [x] Pass the production build, 92 unit tests, and 37 Playwright checks covering all 21 then-current public routes, prerendered and hydrated DOM, metadata, JSON-LD, forms, analytics consent, providers, hub navigation, keyboard behavior, 320-pixel layout, screenshots, overflow, alt text, and automated WCAG checks. These are the preserved July audit totals; the completed site now has 25 public routes and broader automated coverage.
+- [x] Pass the production build, 92 unit tests, and 37 Playwright checks covering all 21 then-current public routes, prerendered and hydrated DOM, metadata, JSON-LD, forms, analytics consent, providers, hub navigation, keyboard behavior, 320-pixel layout, screenshots, overflow, alt text, and automated WCAG checks. These are the preserved July audit totals; the completed site now has 30 public routes and broader automated coverage.
 
 ## July 18-19 Technical Reverification
 
@@ -72,6 +72,12 @@ The owner confirmed active REALTOR® membership on July 18, 2026, and current pu
 - [x] Replaced and visually reviewed all 166 community-card images using locally optimized Wikimedia Commons assets. Every image has descriptive alternative text plus recorded and visibly linked creator, source, and reusable license or public-domain information; no generated community imagery is used.
 - [x] Restored separate unpaid-provider and paid-advertising pages. The provider directory contains five current mortgage profiles and six title/settlement companies; paid advertising remains limited to businesses outside the real-estate transaction and each future placement must be labeled `Paid advertisement` where it appears.
 - [x] Re-ran the audit phrase and contact scans, production build, 92 unit tests, 49 tracked database checks, and 37 Playwright checks after implementing the Google analytics hardening, source-note guardrails, compliance evidence packet, and review-only design/community artifacts.
+
+## August 10 Repository Recheck
+
+- [x] Re-ran the current repository checks after the final maintenance pass: 100 Vitest tests, 66 rendered browser checks, 43 transactional database checks, Edge Function formatting and type checks, the production build, and an npm audit with zero vulnerabilities.
+- [x] Confirmed that the Playwright compliance harness uses its own strict preview server on port 4174 and does not reuse an unrelated local server.
+- [x] Confirmed that the production frontend remains Cloudflare Pages-based and that Docker/Unraid is local-test infrastructure only, not a production dependency.
 
 ## Provider Directory Verification
 

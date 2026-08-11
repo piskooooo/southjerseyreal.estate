@@ -3,15 +3,20 @@ import { normalizePlacesResponse } from "./normalize";
 
 describe("Google Places response normalization", () => {
   it("preserves Google's review order, full text, and source attribution", () => {
-    const firstText = "First review with all of its original wording.\nSecond line.";
+    const firstText =
+      "First review with all of its original wording.\nSecond line.";
     const feed = normalizePlacesResponse({
       rating: 4.8,
       userRatingCount: 24,
       googleMapsLinks: {
         reviewsUri: "https://www.google.com/maps/place/example/reviews",
-        writeAReviewUri: "https://www.google.com/maps/place/example/write-review",
+        writeAReviewUri:
+          "https://www.google.com/maps/place/example/write-review",
       },
-      attributions: [{ provider: "Example Provider", providerUri: "https://example.com/data" }],
+      attributions: [{
+        provider: "Example Provider",
+        providerUri: "https://example.com/data",
+      }],
       reviews: [
         {
           name: "places/example/reviews/first",
@@ -62,12 +67,19 @@ describe("Google Places response normalization", () => {
       googleMapsLinks: { reviewsUri: "javascript:alert(1)" },
       attributions: [{ provider: "Unsafe", providerUri: "http://example.com" }],
       reviews: [
-        { name: "missing-source", rating: 5, text: { text: "Not displayable" } },
+        {
+          name: "missing-source",
+          rating: 5,
+          text: { text: "Not displayable" },
+        },
       ],
     });
 
     expect(feed.reviewsUrl).toBe("");
-    expect(feed.attributions).toEqual([{ provider: "Unsafe", providerUri: "" }]);
+    expect(feed.attributions).toEqual([{
+      provider: "Unsafe",
+      providerUri: "",
+    }]);
     expect(feed.reviews).toEqual([]);
   });
 });

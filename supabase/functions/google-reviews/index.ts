@@ -76,7 +76,9 @@ async function claimDailyGoogleRequest(): Promise<void> {
   if (error) throw new Error("The Google review quota could not be claimed.");
 
   const claim = data as DailyQuotaClaim | null;
-  if (!claim?.accepted) throw new DailyQuotaError("Daily Google review quota exhausted.");
+  if (!claim?.accepted) {
+    throw new DailyQuotaError("Daily Google review quota exhausted.");
+  }
 }
 
 function corsHeaders(origin: string | null): HeadersInit {

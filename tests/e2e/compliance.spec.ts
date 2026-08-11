@@ -483,6 +483,7 @@ test("hub labels, history, mobile navigation, analytics, and missing routes beha
   await page.addInitScript(() => window.localStorage.setItem("analytics-consent", "granted"));
   await page.setViewportSize({ width: 1280, height: 900 });
   await page.goto("/", { waitUntil: "domcontentloaded" });
+  const testOrigin = new URL(page.url()).origin;
 
   const desktopNav = page.locator(".desktop-nav");
   await desktopNav.getByRole("link", { name: "Counties", exact: true }).click();
@@ -506,9 +507,9 @@ test("hub labels, history, mobile navigation, analytics, and missing routes beha
     "event",
     "page_view",
     expect.objectContaining({
-      page_location: "http://127.0.0.1:4173/counties",
+      page_location: `${testOrigin}/counties`,
       page_path: "/counties",
-      page_referrer: "http://127.0.0.1:4173/",
+      page_referrer: `${testOrigin}/`,
     }),
   ]));
 

@@ -1,5 +1,8 @@
 import { defineConfig } from "@playwright/test";
 
+const testPort = 4174;
+const testBaseUrl = `http://127.0.0.1:${testPort}`;
+
 export default defineConfig({
   testDir: "./tests/e2e",
   timeout: 45_000,
@@ -10,16 +13,16 @@ export default defineConfig({
   retries: 0,
   reporter: [["list"]],
   use: {
-    baseURL: "http://127.0.0.1:4173",
+    baseURL: testBaseUrl,
     channel: process.env.CI ? undefined : "chrome",
     colorScheme: "dark",
     screenshot: "only-on-failure",
     trace: "retain-on-failure",
   },
   webServer: {
-    command: "npm run preview -- --port 4173",
-    url: "http://127.0.0.1:4173",
-    reuseExistingServer: true,
+    command: `npm run preview -- --port ${testPort} --strictPort`,
+    url: testBaseUrl,
+    reuseExistingServer: false,
     timeout: 30_000,
   },
 });

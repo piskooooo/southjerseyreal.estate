@@ -1,6 +1,6 @@
 # South Jersey Real Estate Project Checklist
 
-Last reviewed: August 7, 2026
+Last reviewed: August 10, 2026
 
 **Project status: Complete.** The selected roadmap closed on August 7, 2026.
 There are no active project tasks or known blockers. Routine maintenance,
@@ -153,7 +153,7 @@ The July 18 technical remediation is complete, but it is not a legal certificati
 
 - [x] Obtain responsible review. The owner reports broad broker consent, and the owner's attorney advised replacing the repeated compliance-heavy presentation with layered disclosures.
 - [x] Implement sitewide broker identity, office-phone, license, fair-housing, neutral-community-copy, consent, privacy, provider, metadata, and publishing guardrails from the July 18 audit.
-- [x] Run the audit scans plus production build, 92 unit tests, 49 tracked database checks, and 37 rendered-route/browser acceptance checks across the 21 public routes that existed at the time. These are preserved historical audit totals; the completed site now has 25 public routes and broader automated coverage.
+- [x] Run the audit scans plus production build, 92 unit tests, 49 tracked database checks, and 37 rendered-route/browser acceptance checks across the 21 public routes that existed at the time. These are preserved historical audit totals; the completed site now has 30 public routes and broader automated coverage.
 - [x] Recheck the implemented license, brokerage, broker-of-record, licensed-office, and affiliation facts against NJDOBI public records.
 - [x] Audit the production Cloudflare Pages, Supabase, Brevo, and GA4 configuration inventories without recording secret values or personal data.
 - [x] Measure the brokerage-disclosure hierarchy and contrast at desktop and mobile widths, capture rendered evidence, and prepare the concise [compliance review packet](./compliance-review-packet.md) for the human reviewer.
@@ -186,7 +186,7 @@ Bright IDX and property-search planning is not part of the current `southjerseyr
 
 - [x] Add a lazy-loaded `/admin` application that is separate from the public header/footer, uses the South Jersey visual theme, works at desktop and mobile widths, and is protected by page-level and HTTP `noindex` directives.
 - [x] Build password, magic-link, password-recovery, session-refresh, unauthorized, configuration-error, and sign-out states without exposing public signup or committing the administrator email.
-- [x] Cover sitewide navigation, footer, and privacy content plus all 25 public routes, including both hub pages, the seven county guides, Insights, resource/comparison pages, FAQ, and legal pages, as structured editable documents with compiled fallbacks.
+- [x] Cover sitewide navigation, footer, and privacy content plus all 30 public routes, including both hub pages, the seven county guides, Insights, resource/comparison pages, FAQ, and legal pages, as structured editable documents with compiled fallbacks.
 - [x] Add recursive field editing, unsaved/saved/published status, draft save, atomic publish, discard-to-published, optimistic-concurrency checks, safe-link validation, and required image alt-text validation.
 - [x] Add JPG, PNG, WebP, and AVIF uploads with file and decoded-dimension limits, optimized page/admin variants, replacement/removal handling, and storage cleanup warnings.
 - [x] Add the private, paginated contact-inquiry inbox without exposing the `private` schema or a service-role key to the browser.
@@ -425,7 +425,7 @@ without creating a high-frequency news or blogging obligation.
 
 Completion date: July 25, 2026
 
-**Done when:** A visitor can browse and read the initial sourced Insights library,
+**Done when:** A visitor can browse and read the published sourced Insights library,
 the owner can maintain it through `/admin`, and automated compliance checks cover
 the new public routes and metadata.
 
@@ -480,6 +480,6 @@ Completion date: July 25, 2026
 - [x] Move contact and newsletter handling to Supabase, Turnstile, and Brevo.
 - [x] Verify contact delivery and newsletter double opt-in end to end, then remove all test records.
 - [x] Save the reusable Turnstile Spin workflow under `.codex/skills/turnstile-spin` for future chats.
-- [x] Add 97 Vitest tests, 51 rendered-route compliance checks, and a 49-check transactional Supabase pgTAP suite, and keep the GitHub test workflow on every push.
+- [x] Add 100 Vitest tests, 66 rendered browser compliance checks, and a 43-check transactional Supabase pgTAP suite, and keep the GitHub test workflow on every push.
 - [x] Build and publish the private website-editor frontend, database migration, image/inbox support, managed public-content adapter, and SEO rebuild implementation while keeping production access fail-closed until provisioning is complete.
 - [x] Document private inquiry access, production test cleanup, Pages recovery, retired NAS resources, and the final human compliance handoff.

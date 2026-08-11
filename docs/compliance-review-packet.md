@@ -4,6 +4,8 @@ Prepared: July 19, 2026
 
 Closure confirmed: August 7, 2026
 
+Documentation and repository QA recheck: August 10, 2026
+
 Review target: <https://southjerseyreal.estate/>
 
 This packet summarizes the implemented website presentation for a responsible
@@ -17,9 +19,11 @@ public-detail handoff were completed on August 7, 2026. This packet is retained
 as review evidence, not as an open approval request. Conditional review for a
 future feature does not reopen the completed project.
 
-## What the Reviewer Is Approving
+## What Was Reviewed
 
-Please review the rendered production site, then approve or return edits for:
+The owner closed the current-site review on July 19, 2026. The following items
+were reviewed as part of that completed handoff; this packet is retained as
+evidence and is not an open approval request:
 
 - The exact brokerage name, descriptor, licensed-office facts, disclosure
   hierarchy, and sitewide footer placement.
@@ -54,7 +58,7 @@ Primary fact sources:
 ## Disclosure Evidence
 
 The licensed-brokerage disclosure is the first element inside the footer on all
-25 current public routes. On desktop and mobile it includes the broker name, broker
+30 current public routes. On desktop and mobile it includes the broker name, broker
 descriptor, licensed-office phone, salesperson name, license type, and license
 number.
 
@@ -93,6 +97,11 @@ still did not attach to Tag Assistant or appear in DebugView, which is recorded
 as a client/browser diagnostic limitation rather than a production tracking
 blocker.
 
+The August 10 repository QA recheck passed 100 Vitest tests, 66 rendered browser
+checks, 43 transactional database checks, Edge Function formatting and type
+checks, the production build, and a zero-vulnerability npm audit. This local
+recheck did not create new production form submissions.
+
 ## Provider Relationship Record
 
 The provider directory is limited to unpaid real-estate-related listings. The
@@ -103,9 +112,11 @@ were rechecked against current official provider profiles before restoration.
 The separate advertising program is reserved for businesses outside the real
 estate transaction, and no paid advertisement is currently live.
 
-Human confirmation is still needed that no referral, affiliate, family,
-ownership, or other material relationship has been omitted from a current
-directory entry.
+The owner reported on July 25, 2026 that the responsible broker verbally
+confirmed that no referral, affiliate, family, ownership, or other material
+relationship was omitted from a current directory entry. This records the
+owner's report; it does not claim direct written confirmation received by this
+repository.
 
 ## Current Scope
 
@@ -127,10 +138,11 @@ condition incentives on positive sentiment, alter source reviews, or suppress
 reviews on the source platforms. Private messages, customer photos or video,
 and other separately protected content are not treated as public reviews.
 
-All seven richer county/community batches have been researched as unpublished
-editorial drafts. They are outside the current rendered-site approval until the
-owner reviews their text and municipality images and publishes them in the
-structured editor.
+All seven county introductions and 166 community cards representing 168 current
+municipalities were approved for publication on July 22, 2026 and are live
+through the structured editor. Current source notes, image credits, and
+publishing guardrails are recorded in
+[`community-profile-drafts.md`](./community-profile-drafts.md).
 
 ## Owner Disposition
 

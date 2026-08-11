@@ -10,6 +10,10 @@ Profile ownership handoff are finished. There are no active project to-do items
 or known blockers. Routine operations, quarterly reviews, content maintenance,
 and explicitly deferred concepts are not unfinished website work.
 
+The repository's latest QA recheck on August 10, 2026 passed 100 unit tests, 66
+rendered browser checks, 43 transactional database checks, Edge Function type
+checks, the production build, and a zero-vulnerability npm audit.
+
 The authoritative completion record is [`docs/project-todo.md`](docs/project-todo.md). Reusable project descriptions, the complete status-labeled feature inventory, and marketing claim guidance are in [`docs/marketing-project-description.md`](docs/marketing-project-description.md). The compliance implementation and ongoing review boundaries are recorded in [`docs/compliance-review-checklist.md`](docs/compliance-review-checklist.md), with a concise handoff in [`docs/compliance-review-packet.md`](docs/compliance-review-packet.md). The current visual system is documented in [`docs/color-palette.md`](docs/color-palette.md), the dark-theme decision record is in [`docs/dark-theme-palette-review.md`](docs/dark-theme-palette-review.md), and exact restore points are recorded in [`docs/theme-archive-notes.md`](docs/theme-archive-notes.md). Cloud deployment and recovery procedures are in [`docs/cloudflare-pages-supabase-brevo.md`](docs/cloudflare-pages-supabase-brevo.md).
 
 ## Project Layout
@@ -41,7 +45,8 @@ npm run test:db
 
 `npm test` runs the frontend and Edge Function unit/component suite. `npm run test:compliance`
 builds the production site and runs the full hydrated-route, metadata, keyboard, screenshot,
-and automated accessibility suite in Chrome. `npm run test:db`
+and automated accessibility suite in Chrome using its own strict preview server on port 4174.
+`npm run test:db`
 runs the transactional Supabase regression suite against the local Supabase stack and
 therefore requires Docker and `supabase start`.
 

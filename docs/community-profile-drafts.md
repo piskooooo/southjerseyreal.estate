@@ -2,6 +2,8 @@
 
 Last researched: July 19, 2026
 
+Last reviewed: August 10, 2026
+
 Status: **Published through the production editor on July 22, 2026.**
 
 Local preview prepared July 19, 2026 and approved for publication July 22, 2026. All seven county introductions and 166 community cards are now live. The profiles restore the original site's structured community details where available; price, tax, and school details are labeled as 2025 site snapshots and must not be read as current figures. On July 22, every card received a visually reviewed, locally optimized Wikimedia Commons image with recorded creator, source, and license information. No generated images are used in the community profiles.
@@ -1095,5 +1097,5 @@ Automated link check on July 19, 2026: 148 of 176 unique HTTPS sources returned 
 - [x] Retained local details and their cited sources received a final prepublication audit.
 - [x] All 176 unique source URLs were tested; 148 responded directly and the 28 anti-bot results were verified interactively in Chrome. Every live county page renders its expected source-note links.
 - [x] All 166 municipality-card images were replaced and visually reviewed. Each local WebP has a corresponding Commons source, creator, reusable license or public-domain status, descriptive alternative text, and visible source/license credit.
-- [x] Publishing guardrails, 97 unit tests, the 51-check compliance crawl, automated accessibility checks, and responsive screenshots passed after the image pass.
+- [x] Publishing guardrails, the historical 97-unit-test and 51-check post-image crawl, automated accessibility checks, and responsive screenshots passed after the image pass. The latest repository recheck passed 100 unit tests, 66 rendered browser checks, and 43 transactional database checks.
 - [x] The stale `Pine Hill & Pine Valley` website card was replaced with `Pine Hill (including the former Pine Valley Borough)` before publishing the Camden County batch.

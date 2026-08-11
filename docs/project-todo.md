@@ -44,6 +44,11 @@ possibilities are intentionally not being carried forward.
   internal guide/county links, sitemap and article metadata coverage, and a
   compatibility safeguard for older published index content. This is completed
   content maintenance, not a reopened high-frequency blog or roadmap item.
+- [x] August 10, 2026 — Rewrote all 166 community-card summaries into
+  visitor-facing descriptions using the published local recreation, shopping,
+  dining, transportation, and service facts. Removed editorial/source-note
+  language from the public summaries while retaining the detailed snapshots and
+  dated source links.
 
 ## 1. Complete the Cloudflare Pages Cutover
 

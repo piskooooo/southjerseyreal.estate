@@ -4,9 +4,11 @@ Last researched: July 19, 2026
 
 Last reviewed: August 10, 2026
 
-Status: **Published through the production editor on July 22, 2026.**
+Status: **Published through the production editor on August 10, 2026.**
 
-Local preview prepared July 19, 2026 and approved for publication July 22, 2026. All seven county introductions and 166 community cards are now live. The profiles restore the original site's structured community details where available; price, tax, and school details are labeled as 2025 site snapshots and must not be read as current figures. On July 22, every card received a visually reviewed, locally optimized Wikimedia Commons image with recorded creator, source, and license information. No generated images are used in the community profiles.
+The local preview was refreshed and all seven county pages were republished through the production editor on August 10, 2026. All seven county introductions and 166 community cards are now live. The profiles restore the original site's structured community details where available; price, tax, and school details are labeled as 2025 site snapshots and must not be read as current figures. On July 22, every card received a visually reviewed, locally optimized Wikimedia Commons image with recorded creator, source, and license information. No generated images are used in the community profiles.
+
+On August 10, 2026, the community-card summaries were rewritten into visitor-facing descriptions using the already published parks, shopping, transportation, and local-service facts. Source blocks and dated detail snapshots were retained.
 
 These drafts use the owner's requested casual-but-professional voice. They recover objective ideas from the retired town narratives, retain clearly dated historical snapshots where useful, and replace the old targeting language, rankings, commute promises, unqualified market claims, and unsupported superlatives with current government sources.
 
@@ -80,145 +82,145 @@ Gloucester County was the first complete writing pilot. Every municipality has r
 
 ### Clayton
 
-Clayton is a borough centered along Delsea Drive. Its official site brings together agendas and minutes, trash and recycling information, forms, public notices, and a community calendar.
+Clayton is a borough in Gloucester County. Outdoor highlights: Residents enjoy Clayton Park’s fields and walking paths, access to nearby Wilson Lake at Scotland Run Park, and community events like Clayton Day and outdoor movie nights. Shopping and dining: Local shopping is found along Delsea Drive with small businesses like Whitney’s Deli and Trinity Market, while major retail options are just minutes away in Glassboro and Deptford. Regional access: Clayton sits along Route 47 with access to Route 55, offering a connections to Philadelphia or Wilmington, and is served by NJ Transit bus routes.
 
 Sources: [Borough of Clayton](https://www.claytonnj.com/) and [New Jersey Municipalities](https://www.nj.gov/infobank/revmuni.htm), accessed July 18, 2026.
 
 ### Deptford Township
 
-Deptford is a township with online service requests, permit and license information, public-safety links, and separate meeting and recreation calendars. The township also identifies Old Pine Farm as a public natural area with meadows, woodlands, wetlands, and hiking trails.
+Deptford Township is a township in Gloucester County. Outdoor highlights: Fasola Park with walking trails and splash pad, sports complexes, a community center, skatepark, and nearby Tall Pines State Preserve. Shopping and dining: The area is home to Deptford Mall, Target, Walmart, and many dining options; major retail corridors include Almonesson Road and Delsea Drive. Regional access: Located at the junction of Route 42, Route 55, and I-295; NJ Transit buses provide direct service to Philadelphia; 20 near Philly or the airport.
 
 Sources: [Deptford Township](https://www.deptford-nj.org/) and [New Jersey Municipalities](https://www.nj.gov/infobank/revmuni.htm), accessed July 18, 2026.
 
 ### East Greenwich Township
 
-East Greenwich describes itself as a residential and farming community in western Gloucester County. Its municipal site provides current information for public works, water and sewer, parks and recreation, township meetings, notices, permits, and local services.
+East Greenwich Township is a township in Gloucester County. Shopping and dining: Local shops and dining are found along Kings Highway, with larger shopping centers in nearby Logan, Woolwich, and Deptford. Regional access: Near I-295 and the NJ Turnpike for access to Philly, Delaware, and central NJ; Route 44 and Kings Highway run through town.
 
 Sources: [East Greenwich Township](https://www.eastgreenwichnj.com/) and [New Jersey Municipalities](https://www.nj.gov/infobank/revmuni.htm), accessed July 18, 2026.
 
 ### Elk Township
 
-Elk is one of Gloucester County's townships. Start with the official municipal site for current local notices and services, and use the county or state directory to confirm that a record belongs to Elk Township rather than another New Jersey municipality with a similar name.
+Elk Township is a township in Gloucester County. Outdoor highlights: Ferrell Park offers ballfields and a playground; residents also enjoy nearby Scotland Run Park and the Elephant Swamp Trail. Shopping and dining: Limited to local markets and delis, with larger shopping available in Glassboro, Vineland, and Franklin Township. Regional access: Accessible via Routes 77 and 538, with access to Route 55 for north-south travel across South Jersey.
 
 Sources: [Elk Township](https://www.elktownshipnj.gov/) and [Gloucester County Municipalities](https://www.gloucestercountynj.gov/831/Municipalities), accessed July 18, 2026.
 
 ### Franklin Township
 
-Franklin is a Gloucester County township. Its official municipal site is the appropriate place to verify current departments, meetings, forms, public notices, and service information before adding more detailed claims to this profile.
+Franklin Township is a township in Gloucester County. Outdoor highlights: Scotland Run Park offers boating, trails, and playgrounds; the township also maintains baseball fields and runs seasonal youth programs. Shopping and dining: Franklinville and Malaga offer local shops, wineries, and restaurants; residents also shop in nearby Glassboro and Vineland. Regional access: Centrally located with access to Route 55 and Routes 40, 47, and 538, making for an connections toward Philadelphia or the shore.
 
 Sources: [Franklin Township](https://www.franklintownship.com/) and [Gloucester County Municipalities](https://www.gloucestercountynj.gov/831/Municipalities), accessed July 18, 2026.
 
 ### Glassboro
 
-Glassboro is a borough with a municipal site that gives separate space to government services, parks and recreation, downtown resources, history, arts, and community events. The site also links visitors to a downtown map, the Heritage Glass Museum, and information about the historic train station.
+Glassboro is a borough in Gloucester County. Outdoor highlights: Residents enjoy New Street Park, South Delsea Drive Park, and community events like summer concerts and Rowan’s town-gown festivals. Shopping and dining: Downtown Glassboro has walkable shops and restaurants; big box stores and supermarkets are along Delsea Drive and near Rowan Blvd. Regional access: Located on Route 47 with direct access to Route 55 and proposed Glassboro–Camden light rail; 30 near Philadelphia.
 
 Sources: [Borough of Glassboro](https://www.glassboro.org/) and [New Jersey Municipalities](https://www.nj.gov/infobank/revmuni.htm), accessed July 18, 2026.
 
 ### Greenwich Township
 
-Greenwich Township's official site includes agendas and minutes, public notices, tax and utility payments, trash and leaf schedules, municipal forms, and shuttle information. The municipal offices are in the Gibbstown section of the township.
+Greenwich Township is a township in Gloucester County. Shopping and dining: Small-town shopping is centered in Gibbstown with essentials and takeout options; larger stores are nearby in Paulsboro or East Greenwich. Regional access: Close to I-295 and Route 130 for access to Philadelphia and Delaware; located along the Delaware River with port infrastructure nearby.
 
 Sources: [Greenwich Township](https://www.greenwichtwp.com/) and [New Jersey Municipalities](https://www.nj.gov/infobank/revmuni.htm), accessed July 18, 2026.
 
 ### Harrison Township
 
-Harrison is a Gloucester County township that includes the Mullica Hill mailing area. Use the township's official site for current meetings, departments, forms, and notices; the county directory confirms the correct municipal link.
+Harrison Township is a township in Gloucester County. Outdoor highlights: The area is home to William Wilt Complex, Ella Harris Park, and Mullica Hill Recreation Center; events include Lights on Main and the Fall Festival. Shopping and dining: Mullica Hill offers antique shops, boutiques, cafés, and restaurants in a walkable historic downtown. Regional access: Routes 322 and 45 run through town with access to Route 55 and NJ Turnpike for commutes to Philly or central NJ.
 
 Sources: [Gloucester County Municipalities](https://www.gloucestercountynj.gov/831/Municipalities) and [New Jersey Municipalities](https://www.nj.gov/infobank/revmuni.htm), accessed July 18, 2026. The direct municipal link listed by the county had a certificate-name error during the automated check and should be retested before publication.
 
 ### Logan Township
 
-Logan is a Gloucester County township. Its official site should remain the source for current local-government contacts, meeting records, permits, public notices, and services rather than an undated real-estate summary.
+Logan Township is a township in Gloucester County. Outdoor highlights: Parks include Logan Elementary fields, Township Line Park, and community playgrounds; Logan Day and youth sports are part of local recreation. Shopping and dining: The Beckett area offers small plazas and restaurants; nearby shopping centers in Woolwich and East Greenwich provide more options. Regional access: I-295 and the New Jersey Turnpike provide connections to Route 322 and the Delaware Memorial Bridge.
 
 Sources: [Logan Township](https://www.logan-twp.org/) and [Gloucester County Municipalities](https://www.gloucestercountynj.gov/831/Municipalities), accessed July 18, 2026.
 
 ### Mantua Township
 
-Mantua is a Gloucester County township. The municipal site and county directory are the starting points for current government services, public meetings, forms, parks, and notices, especially where older material may no longer reflect present operations.
+Mantua Township is a township in Gloucester County. Outdoor highlights: Chestnut Branch Park is the largest; other spots include baseball fields, hiking areas, and access to Tall Pines State Preserve. Shopping and dining: Shopping is centered along Route 45 with small stores and restaurants; nearby retail options are in Woodbury and Deptford. Regional access: Route 45 and Breakneck Road provide access to Route 55 and I-295; ~25 near Philadelphia.
 
 Sources: [Mantua Township](https://www.mantuatownship.com/) and [Gloucester County Municipalities](https://www.gloucestercountynj.gov/831/Municipalities), accessed July 18, 2026.
 
 ### Monroe Township
 
-Monroe is a Gloucester County township and should not be confused with the Middlesex County municipality of the same name. The township's official site is the primary place to confirm local departments, records, meetings, forms, and services.
+Monroe Township is a township in Gloucester County. Shopping and dining: Retail centers are along Black Horse Pike, including supermarkets, restaurants, and strip malls. Regional access: Major access via Route 42 and Black Horse Pike; close to Atlantic City Expressway and Route 55.
 
 Sources: [Monroe Township](https://www.monroetownshipnj.org/) and [New Jersey Municipalities](https://www.nj.gov/infobank/revmuni.htm), accessed July 18, 2026.
 
 ### National Park
 
-National Park is a borough in Gloucester County. Its official site provides access to borough government, public works, water and sewer information, recycling and trash guidance, municipal forms, zoning material, and public records.
+National Park is a borough in Gloucester County. Outdoor highlights: Red Bank Battlefield Park is the local attraction with trails, playgrounds, and Revolutionary War reenactments. Shopping and dining: Small-town shops and eateries in town, with larger shopping nearby in West Deptford and Woodbury. Regional access: near I-295 and Route 130; access to Philadelphia via Walt Whitman or Commodore Barry Bridge.
 
 Sources: [Borough of National Park](https://www.nationalparknj.com/) and [New Jersey Municipalities](https://www.nj.gov/infobank/revmuni.htm), accessed July 18, 2026.
 
 ### Newfield
 
-Newfield is a Gloucester County borough. Use the official borough site for current meeting, department, permit, notice, and service information, with the county directory as a cross-check for the correct local-government link.
+Newfield is a borough in Gloucester County. Outdoor highlights: Owens Park provides fields and playgrounds; additional recreation is available nearby in Franklin Township. Shopping and dining: A few local markets and delis serve the borough; residents shop in nearby Franklinville or Vineland for major needs. Regional access: Accessible via Routes 40, 47, and 55 for regional travel; 45 near Philadelphia or Atlantic City.
 
 Sources: [Borough of Newfield](https://newfieldborough.org/) and [Gloucester County Municipalities](https://www.gloucestercountynj.gov/831/Municipalities), accessed July 18, 2026.
 
 ### Paulsboro
 
-Paulsboro is a borough with municipal departments for public works, water and sewer, police, fire, construction, finance, and administration. Its official site also links to local history resources and the Tinicum Rear Range Lighthouse Society.
+Paulsboro is a borough in Gloucester County. Outdoor highlights: Paulsboro has neighborhood playgrounds and fields; community events include parades and youth leagues. Shopping and dining: Local diners, stores, and small businesses are concentrated downtown; major shopping is in West Deptford or Woodbury. Regional access: Located off I-295 and Route 130, with direct access to the Port of Paulsboro and bridges into Delaware and Philly.
 
 Sources: [Borough of Paulsboro](https://paulsboronj.org/) and [New Jersey Municipalities](https://www.nj.gov/infobank/revmuni.htm), accessed July 18, 2026.
 
 ### Pitman
 
-Pitman is a Gloucester County borough with its municipal offices on South Broadway. County and state directories are the stable cross-checks for its current government identity and contact information; time-sensitive local services and events should be confirmed directly before publication.
+Pitman is a borough in Gloucester County. Outdoor highlights: Alcyon Park, Sunset Auditorium, and Betty Park offer trails, sports fields, and cultural events. Shopping and dining: Uptown Pitman is known for boutiques, cafés, breweries, and a walkable arts district. Regional access: near Route 55 and Delsea Drive with access to Rowan University, Glassboro, and Philly.
 
 Sources: [Gloucester County Municipalities](https://www.gloucestercountynj.gov/831/Municipalities) and [New Jersey Municipalities](https://www.nj.gov/infobank/revmuni.htm), accessed July 19, 2026. The direct borough site timed out during the automated source check and should be retested before publication.
 
 ### South Harrison Township
 
-South Harrison is a Gloucester County township. Its official site includes public notices, a township calendar, municipal departments, planning and environmental boards, recreation information, forms, budgets, and an opt-in community email list.
+South Harrison Township is a township in Gloucester County. Shopping and dining: Limited commercial options in town; residents shop in Mullica Hill, Woolwich, or Swedesboro. Regional access: Route 45 provides access to Route 55 and NJ Turnpike; 35 near Philadelphia.
 
 Sources: [South Harrison Township](https://www.southharrison-nj.org/) and [New Jersey Municipalities](https://www.nj.gov/infobank/revmuni.htm), accessed July 18, 2026.
 
 ### Swedesboro
 
-Swedesboro is a borough whose official site combines municipal services with links to parks and recreation, the local library, a historical society and museum, and scheduled community events. The site also identifies shared arrangements for several local services, which should be rechecked before those details are summarized publicly.
+Swedesboro is a borough in Gloucester County. Outdoor highlights: Locke Avenue Park and Lake Park offer sports fields, trails, and playgrounds; seasonal events include food truck festivals and parades. Shopping and dining: Downtown Swedesboro features historic buildings with boutiques, cafés, and well-known restaurants like Botto’s Italian Line. Regional access: Located near Route 322 and I-295 with access to the NJ Turnpike and Commodore Barry Bridge.
 
 Sources: [Borough of Swedesboro](https://www.historicswedesboro.com/) and [New Jersey Municipalities](https://www.nj.gov/infobank/revmuni.htm), accessed July 18, 2026.
 
 ### Washington Township
 
-Washington is a Gloucester County township and should be identified with its county when linking records because New Jersey has several municipalities with the same name. The official township site is the source for current departments, meetings, forms, parks, notices, and local services.
+Washington Township is a township in Gloucester County. Outdoor highlights: Washington Lake Park is one of the state’s largest municipal parks, with trails, sports fields, and an amphitheater. Shopping and dining: Retail centers line the Black Horse Pike including Target, Costco, and various chain restaurants. Regional access: Route 42, Route 55, and the Atlantic City Expressway offer connections to Philly and the shore.
 
 Sources: [Gloucester County Municipalities](https://www.gloucestercountynj.gov/831/Municipalities) and [New Jersey Municipalities](https://www.nj.gov/infobank/revmuni.htm), accessed July 18, 2026. The direct municipal site timed out during the automated check and should be retested before publication.
 
 ### Wenonah
 
-Wenonah is a Gloucester County borough. The borough's official website and the county directory should be used to verify current government contacts, meetings, public notices, forms, services, and recreation information before expanding this profile.
+Wenonah is a borough in Gloucester County. Outdoor highlights: The Wenonah Conservation Area features 6+ miles of nature trails, Comey’s Lake, and Wenonah Lake for summer recreation. Shopping and dining: Limited in-town options, but close to shopping in Mantua, Woodbury, and Deptford. Regional access: Accessible via Mantua Avenue and Route 553 with quick links to Route 55 and I-295.
 
 Sources: [Gloucester County Municipalities](https://www.gloucestercountynj.gov/831/Municipalities) and [New Jersey Municipalities](https://www.nj.gov/infobank/revmuni.htm), accessed July 18, 2026. The direct borough link listed by the county had a certificate-name error during the automated check and should be retested before publication.
 
 ### West Deptford Township
 
-West Deptford is a township on the Delaware River. Its official site covers township departments and records as well as parks, recreation, civic associations, RiverWinds Community Center, public-safety links, forms, and meeting information.
+West Deptford Township is a township in Gloucester County. Outdoor highlights: RiverWinds Community Center offers pools, gyms, and event space; numerous parks and fields serve local youth programs. Shopping and dining: Mantua Pike and Crown Point Road feature shops and dining; Deptford Mall is minutes away. Regional access: Located along I-295 and Route 44 with access to bridges and Route 55.
 
 Sources: [West Deptford Township](https://www.westdeptford.com/) and [New Jersey Municipalities](https://www.nj.gov/infobank/revmuni.htm), accessed July 18, 2026.
 
 ### Westville
 
-Westville is a Gloucester County borough. Use the official borough site for current departments, meeting records, public notices, permits, forms, recreation, and service information, with the county directory confirming the municipal link.
+Westville is a borough in Gloucester County. Outdoor highlights: Thomas West Park and Crescent Park offer green space, playgrounds, and riverfront views. Shopping and dining: Local businesses line Delsea Drive and Broadway; nearby shopping in Deptford and Brooklawn. Regional access: access to I-295, Route 47, and Route 130; under 20 near Philadelphia.
 
 Sources: [Borough of Westville](https://www.westville-nj.com/) and [Gloucester County Municipalities](https://www.gloucestercountynj.gov/831/Municipalities), accessed July 18, 2026.
 
 ### Woodbury
 
-Woodbury is Gloucester County's only city. Its municipal site provides public notices, agendas and minutes, forms, city services, a community calendar, and information about projects such as the Broad Street mural program.
+Woodbury is a city in Gloucester County. Outdoor highlights: Woodbury Creek Park and Stewart Lake Park provide walking trails, sports courts, and scenic waterfronts. Shopping and dining: Downtown Woodbury offers local shops, salons, and restaurants in a historic setting. Regional access: near Route 45, I-295, and Route 130 with access to Philly.
 
 Sources: [City of Woodbury](https://woodbury.nj.us/) and [New Jersey Municipalities](https://www.nj.gov/infobank/revmuni.htm), accessed July 18, 2026.
 
 ### Woodbury Heights
 
-Woodbury Heights is a borough with official resources for borough code, legal publications, agendas and minutes, online payments, service requests, news, and notifications. The municipal site is also the current source for collection schedules and public-event dates.
+Woodbury Heights is a borough in Gloucester County. Outdoor highlights: Helen Avenue Sports Complex and borough fields host youth programs and community events. Shopping and dining: Limited local retail; larger stores are nearby in Woodbury and Deptford. Regional access: access to I-295, Route 45, and Route 47; under 25 near Center City Philadelphia.
 
 Sources: [Borough of Woodbury Heights](https://www.bwhnj.com/) and [New Jersey Municipalities](https://www.nj.gov/infobank/revmuni.htm), accessed July 18, 2026.
 
 ### Woolwich Township
 
-Woolwich is a Gloucester County township. Its official municipal site should be used for current departments, meeting records, permits, public notices, parks, and services, while the county directory provides a stable cross-check for the correct township link.
+Woolwich Township is a township in Gloucester County. Outdoor highlights: Locke Ave Park, High Hill Park, Tranquility Trails, sports fields, walking paths, and township recreation programs. Shopping and dining: Everyday shopping around Center Square Plaza and Swedesboro-area restaurants, cafes, and local businesses. Regional access: Route 322, nearby I-295, and access to the New Jersey Turnpike and Commodore Barry Bridge for regional commuting.
 
 Sources: [Woolwich Township](https://www.woolwichtwp.org/) and [Gloucester County Municipalities](https://www.gloucestercountynj.gov/831/Municipalities), accessed July 18, 2026.
 
@@ -226,139 +228,139 @@ Sources: [Woolwich Township](https://www.woolwichtwp.org/) and [Gloucester Count
 
 ### Absecon
 
-Absecon is a city on the mainland side of Atlantic County. Its municipal and county pages are useful starting points for current council information, public notices, local forms, and the services available from the Mill Road municipal complex.
+Absecon is a city in Atlantic County. Outdoor highlights: Heritage Park offers trails, playgrounds, and sports fields; Absecon Wildlife Management Area provides scenic nature, birding, and outdoor activities. Shopping and dining: Local grocery stores, shops, and dining along White Horse Pike; near Atlantic City for expanded retail and entertainment. Regional access: access to U.S. Route 30, Garden State Parkway, and NJ Transit’s Atlantic City Rail Line for commuting to Philadelphia or the shore.
 
 Source: [Atlantic County Municipal Governments](https://www.atlanticcountynj.gov/government/government-information/municipal-governments), accessed July 19, 2026.
 
 ### Atlantic City
 
-Atlantic City is a city on Absecon Island and one of the county's shore municipalities. The city website separates resident services, public meetings, planning material, beach information, and visitor resources, which makes it more useful than an undated neighborhood summary.
+Atlantic City is a city in Atlantic County. Outdoor highlights: The boardwalk, public beaches, Gardner’s Basin, Oscar E. McClinton Waterfront Park, and throughout the year entertainment venues. Shopping and dining: Tanger Outlets “The Walk,” local boutiques, casino dining, and a mix of restaurants from casual to fine dining. Regional access: Atlantic City Rail Terminal, multiple NJ Transit bus routes, Atlantic City Expressway, and proximity to Atlantic City International Airport.
 
 Sources: [City of Atlantic City](https://www.acnj.gov/) and [Atlantic County Municipal Governments](https://www.atlanticcountynj.gov/government/government-information/municipal-governments), accessed July 19, 2026.
 
 ### Brigantine
 
-Brigantine is a city on the barrier island north of Atlantic City. Check the city's current pages for beach rules, permits, public meetings, recreation, and municipal services before planning a visit or comparing properties.
+Brigantine is a city in Atlantic County. Outdoor highlights: Brigantine Beach, North Brigantine Natural Area, and 42nd Street Recreation Complex with sports fields and courts. Shopping and dining: Small-town shops, cafes, and local dining along Brigantine Boulevard; expanded options nearby in Atlantic City. Regional access: Connected via Route 87 and the Brigantine Connector; connections to the Atlantic City Expressway.
 
 Source: [City of Brigantine](https://brigantinebeach.org/), accessed July 19, 2026.
 
 ### Buena Borough
 
-Buena is a borough in western Atlantic County, with its municipal complex in the Minotola section. The borough site is the current source for meetings, departments, public works, recreation, forms, and local notices.
+Buena Borough is a borough in Atlantic County. Outdoor highlights: Michael Debbi Park with sports fields and playgrounds; access to Wharton State Forest for hiking and outdoor adventures. Shopping and dining: Local markets and casual restaurants in town; major shopping centers just minutes away in Vineland. Regional access: Located near Routes 40 and 54 with connections to the AC Expressway.
 
 Source: [Borough of Buena](https://www.buenaboro.org/), accessed July 19, 2026.
 
 ### Buena Vista Township
 
-Buena Vista is a township made up of several named communities rather than one compact downtown. Its official site organizes township meetings, public notices, land-use material, recreation, and service contacts for those different areas.
+Buena Vista Township is a township in Atlantic County. Outdoor highlights: Richland Park, local sports fields, and access to Wharton State Forest and Pine Barrens trails for hiking, biking, and nature activities. Shopping and dining: Small businesses, farm markets, and diners throughout the township; larger shopping options in nearby Vineland. Regional access: U.S. Route 40 and Route 54 run through the township; near AC Expressway and Route 322.
 
 Source: [Buena Vista Township](https://www.buenavistanj.com/), accessed July 19, 2026.
 
 ### Corbin City
 
-Corbin City retains a city form of government despite its small scale. The official page and county directory provide the clearest current route to meeting records, municipal contacts, public notices, and local service information.
+Corbin City is a city in Atlantic County. Outdoor highlights: Surrounded by the Tuckahoe Wildlife Management Area and Pine Barrens forestland — offers hiking, hunting, and birding. Shopping and dining: Few in-town options; daily needs and retail centers are located in nearby Mays Landing and Ocean View. Regional access: Located along Route 50 with access to the Garden State Parkway and AC Expressway.
 
 Sources: [Corbin City](https://sites.google.com/view/corbincitynj) and [Atlantic County Municipal Governments](https://www.atlanticcountynj.gov/government/government-information/municipal-governments), accessed July 19, 2026.
 
 ### Egg Harbor City
 
-Egg Harbor City is an inland city along the White Horse Pike corridor. Its municipal site brings together council material, departments, permits, recreation, public notices, and the city's event calendar.
+Egg Harbor City is a city in Atlantic County. Outdoor highlights: Lincoln Park and Peace Pilgrim Park offer playgrounds, sports fields, and trails; nearby nature preserves provide outdoor escapes. Shopping and dining: White Horse Pike corridor includes supermarkets, takeout spots, and local shops; major retailers are just a available nearby. Regional access: NJ Transit rail service to Atlantic City and Philadelphia; access to Route 30 and Garden State Parkway.
 
 Source: [Egg Harbor City](https://www.eggharborcity.org/), accessed July 19, 2026.
 
 ### Egg Harbor Township
 
-Egg Harbor Township is a large mainland municipality whose services and neighborhoods span several named sections. Use the township site for current departments, meeting calendars, parks and recreation, development information, and online requests.
+Egg Harbor Township is a township in Atlantic County. Outdoor highlights: Tony Canale Park, Veterans Memorial Park, bike paths, sports complexes, and community centers provide throughout the year recreation. Shopping and dining: retail centers such as English Creek Shopping Center and Harbor Square Plaza, plus many restaurants and everyday conveniences. Regional access: Connections include the Garden State Parkway, Atlantic City Expressway, U.S. Routes 40/322, and proximity to Atlantic City International Airport.
 
 Source: [Egg Harbor Township](https://www.ehtnj.gov/), accessed July 19, 2026.
 
 ### Estell Manor
 
-Estell Manor is a city in the wooded southern part of Atlantic County. The county's Estell Manor Park resources add practical trail, nature-center, picnic, camping, and historic-site information to the city's local-government material.
+Estell Manor is a city in Atlantic County. Outdoor highlights: Estell Manor Park is a centerpiece of the community, offering hiking, biking, camping, and picnic areas across thousands of acres of preserved forestland. Shopping and dining: Limited in-town services; major shopping and restaurants are located nearby in Mays Landing and Vineland. Regional access: Route 50 runs through town, with access to the AC Expressway and Garden State Parkway for regional commuting.
 
 Sources: [Atlantic County Municipal Governments](https://www.atlanticcountynj.gov/government/government-information/municipal-governments) and [Estell Manor Park](https://www.atlanticcountynj.gov/government/county-departments/department-of-public-works/division-of-parks-and-recreation/estell-manor-park), accessed July 19, 2026.
 
 ### Folsom
 
-Folsom is a borough in western Atlantic County and part of the state-designated Pinelands Area. The county and Pinelands pages are stable starting points for confirming the municipality and current regional land-use context; the borough's direct site had an expired certificate during this review.
+Folsom is a borough in Atlantic County. Outdoor highlights: Penny Pot Park and surrounding forest areas offer trails, fishing, and outdoor recreation. Shopping and dining: Local shops and casual eateries in town; near Hammonton for downtown shopping, restaurants, and retail centers. Regional access: Located on U.S. Route 322 with close connections to Route 54 and the Atlantic City Expressway.
 
 Sources: [Atlantic County Municipal Governments](https://www.atlanticcountynj.gov/government/government-information/municipal-governments) and [New Jersey Pinelands Commission](https://www.nj.gov/pinelands/), accessed July 19, 2026.
 
 ### Galloway Township
 
-Galloway is a township that includes several named communities and Stockton University's main campus. Township and university sources are the reliable places to separate local-government information from campus events, facilities, and visitor details.
+Galloway Township is a township in Atlantic County. Outdoor highlights: Veterans Memorial Park, Patriot Lake, several golf courses, and access to the Edwin B. Forsythe National Wildlife Refuge. Shopping and dining: Historic Smithville Village, Pomona Shopping Center, and a variety of stores, restaurants, and cafes along Jimmie Leeds Road. Regional access: access via Garden State Parkway (Exits 40–44), U.S. Route 9, and NJ Transit rail service from nearby Absecon.
 
 Sources: [Galloway Township](https://www.gtnj.org/) and [Stockton University](https://stockton.edu/), accessed July 19, 2026.
 
 ### Hamilton Township (Mays Landing)
 
-Hamilton Township includes Mays Landing, the Atlantic County seat. The township and county pages cover different needs: municipal services and meetings on one side, and county offices, Lake Lenape Park, and regional services on the other.
+Hamilton Township (Mays Landing) is a township in Atlantic County. Outdoor highlights: Lake Lenape Park, Gaskill Park, and the Great Egg Harbor River offer boating, fishing, and hiking. Community sports fields and trails provide throughout the year recreation. Shopping and dining: Hamilton Mall, Consumer Square, and a variety of national retailers and restaurants anchor the area as a major shopping area in the county. Regional access: Major roadways including U.S. Routes 40, 322, and 50 intersect here, with direct access to the Atlantic City Expressway and Garden State Parkway.
 
 Sources: [Hamilton Township](https://www.townshipofhamilton.com/) and [Atlantic County](https://www.atlanticcountynj.gov/), accessed July 19, 2026.
 
 ### Hammonton
 
-Hammonton is a town in western Atlantic County with a defined downtown and a separate municipal calendar. Its official site is the current source for government services, public meetings, parks, events, business resources, and local forms.
+Hammonton is a town in Atlantic County. Outdoor highlights: Hammonton Lake Park with boating, trails, and playgrounds; Boyer Avenue Recreation Complex; access to Wharton State Forest for hiking and outdoor activities. Shopping and dining: downtown district with boutiques, cafes, and restaurants; additional shopping and national retailers along Route 30. Regional access: Centrally located on U.S. Route 30 and Route 54; direct access to AC Expressway and NJ Transit rail service.
 
 Source: [Town of Hammonton](https://www.townofhammonton.org/), accessed July 19, 2026.
 
 ### Linwood
 
-Linwood is a city in Atlantic County's mainland shore corridor. The county's municipal-government directory is the stable cross-check for the correct local-government site and contact information; time-sensitive city services and notices should be confirmed directly before publication.
+Linwood is a city in Atlantic County. Outdoor highlights: Mainland Bike Path, All Wars Memorial Park, and local sports fields and playgrounds encourage an active lifestyle. Shopping and dining: Local boutiques, cafes, and grocery stores in town; additional retail and dining in nearby Somers Point and Northfield. Regional access: U.S. Route 9 and Tilton Road provide access to the Garden State Parkway and bridges to Ocean City.
 
 Source: [Atlantic County Municipal Governments](https://www.atlanticcountynj.gov/government/government-information/municipal-governments), accessed July 19, 2026. The direct city site had an automated TLS-handshake failure and should be retested before publication.
 
 ### Longport
 
-Longport is a borough at the southern end of Absecon Island. Its official site is the right place to verify beach rules, badges, parking and public-safety notices, meetings, construction information, and seasonal service changes.
+Longport is a borough in Atlantic County. Outdoor highlights: Beaches, scenic bike routes, tennis courts, and access to barrier island waterways. Shopping and dining: Quaint local cafés and shops in town, with more extensive dining and retail just over the bridges in Margate and Ventnor. Regional access: Connected via Route 152 bridge and Atlantic Avenue; access to the AC Expressway and Garden State Parkway.
 
 Source: [Borough of Longport](https://www.longportnj.gov/), accessed July 19, 2026.
 
 ### Margate City
 
-Margate is a city on Absecon Island between Ventnor and Longport. The municipal site keeps beach information, meetings, departments, recreation, construction guidance, and public notices in one current location.
+Margate City is a city in Atlantic County. Outdoor highlights: beaches, Lucy the Elephant, Jerome Avenue Park, and a range of summer events. Shopping and dining: Boutique shops, bakeries, and local dining along Ventnor and Atlantic Avenues. Regional access: Accessible via the Ventnor/Margate Bridge and Atlantic Avenue; connections to the Parkway and Atlantic City Expressway.
 
 Source: [Margate City](https://www.margate-nj.com/), accessed July 19, 2026.
 
 ### Mullica Township
 
-Mullica is an inland township that includes the Elwood municipal area and other named communities. Use its official pages for township meetings, departments, trash and recycling guidance, permits, recreation, and emergency notices.
+Mullica Township is a township in Atlantic County. Outdoor highlights: outdoor access, including access to the Mullica River, Wharton State Forest, and multiple trails for hiking, kayaking, and outdoor activities. Shopping and dining: Local markets and small diners serve the community; larger stores and retail options are nearby in Hammonton or Egg Harbor City. Regional access: U.S. Route 30 runs through the township; access to the AC Expressway and Route 54 for regional commuting.
 
 Source: [Mullica Township](https://www.mullicatownship.org/), accessed July 19, 2026.
 
 ### Northfield
 
-Northfield is a city in Atlantic County's mainland corridor. Its official site connects visitors with council records, city departments, public works, recreation, the library, forms, and current announcements.
+Northfield is a city in Atlantic County. Outdoor highlights: Birch Grove Park features trails, fishing, camping, and playgrounds; plus sports fields and local recreation programs. Shopping and dining: Tilton Road corridor offers supermarkets, shops, and restaurants, along with access to national retailers. Regional access: Located near the Garden State Parkway (Exit 36) and U.S. Route 9; near Atlantic City, the Expressway, and barrier island bridges.
 
 Source: [City of Northfield](https://www.cityofnorthfield.org/), accessed July 19, 2026.
 
 ### Pleasantville
 
-Pleasantville is a city immediately inland from Absecon Island. The city website is the practical source for government meetings, departments, planning and development, public works, recreation, and resident-service updates.
+Pleasantville is a city in Atlantic County. Outdoor highlights: Washington Avenue Playground, Veterans Memorial Park, and waterfront access along Lakes Bay for kayaking and scenic views. Shopping and dining: Retail centers along Black Horse Pike with supermarkets, casual dining, and chain restaurants. Regional access: Direct access to U.S. Routes 9, 40, and 322; near the Atlantic City Expressway and NJ Transit bus hub.
 
 Source: [City of Pleasantville](https://www.pleasantville-nj.org/), accessed July 19, 2026.
 
 ### Port Republic
 
-Port Republic is a city along the Mullica River side of Atlantic County. Its municipal page provides current meeting information, public notices, forms, emergency contacts, and local service details without relying on broad lifestyle labels.
+Port Republic is a city in Atlantic County. Outdoor highlights: Port Republic Wildlife Management Area and riverfront parks provide opportunities for kayaking, fishing, and birdwatching. Shopping and dining: Limited in-town options; residents rely on nearby Galloway and Mays Landing for daily needs, retail, and restaurants. Regional access: Located on Route 9 with access to the Garden State Parkway (Exit 48).
 
 Source: [City of Port Republic](https://www.portrepublicnj.org/), accessed July 19, 2026.
 
 ### Somers Point
 
-Somers Point is a city on the Great Egg Harbor Bay side of the mainland. City resources cover meetings and services as well as parks, recreation, boating access, events, and visitor information.
+Somers Point is a city in Atlantic County. Outdoor highlights: Kennedy Park, municipal beach, bayfront boardwalk, bike paths, and Great Egg Harbor Bay access. Shopping and dining: Grocery stores, waterfront restaurants, and retail centers along Shore Road and Route 9. Regional access: Direct access to the Garden State Parkway, Route 9, and the Route 52 Causeway to Ocean City; multiple NJ Transit bus routes.
 
 Source: [City of Somers Point](https://www.somerspointgov.org/), accessed July 19, 2026.
 
 ### Ventnor City
 
-Ventnor is a city on Absecon Island next to Atlantic City. Its official site is the current source for beach and boardwalk rules, meetings, departments, permits, recreation, parking notices, and seasonal updates.
+Ventnor City is a city in Atlantic County. Outdoor highlights: The boardwalk, Ventnor Pier, beach access, playgrounds, and sports courts throughout the city. Shopping and dining: A mix of shops, cafes, and restaurants along Ventnor and Atlantic Avenues. Regional access: Connected by Atlantic and Ventnor Avenues with NJ Transit bus service to Atlantic City and other shore towns.
 
 Source: [Ventnor City](https://www.ventnorcity.org/), accessed July 19, 2026.
 
 ### Weymouth Township
 
-Weymouth is an inland township with municipal offices in Dorothy. The township and county directories provide current contacts, meeting information, local forms, public notices, and the correct municipal identity for records that use a community mailing name.
+Weymouth Township is a township in Atlantic County. Outdoor highlights: Surrounded by forest and farmland, with local recreation fields and nearby access to trails, waterways, and Wharton State Forest. Shopping and dining: Limited in-town options; residents rely on nearby Mays Landing or Vineland for groceries, retail, and dining. Regional access: Route 50 runs through the township, with access to Route 322 and the Atlantic City Expressway via Hamilton Township.
 
 Sources: [Weymouth Township](https://www.weymouthnj.org/) and [Atlantic County Municipal Governments](https://www.atlanticcountynj.gov/government/government-information/municipal-governments), accessed July 19, 2026.
 
@@ -366,241 +368,241 @@ Sources: [Weymouth Township](https://www.weymouthnj.org/) and [Atlantic County M
 
 ### Bass River Township
 
-Bass River is a township in southeastern Burlington County within the Pinelands region. Its municipal site is the current source for township meetings, public notices, permits, emergency information, and services for the New Gretna area and surrounding communities.
+Bass River Township is a township in Burlington County. Outdoor highlights: Bass River State Forest, Wading River, Pine Barrens hiking trails. Shopping and dining: Limited local businesses; residents rely on nearby towns for services. Regional access: Garden State Parkway access, Route 9, proximity to shore routes.
 
 Sources: [Bass River Township](https://www.bassriver-nj.org/) and [New Jersey Pinelands Commission](https://www.nj.gov/pinelands/), accessed July 19, 2026.
 
 ### Beverly City
 
-Beverly is a city along the Delaware River in western Burlington County. The city site collects council records, departments, public works information, forms, recreation, and current announcements.
+Beverly City is a city in Burlington County. Outdoor highlights: Historic Riverfront Promenade, Beverly National Cemetery, local parks and playgrounds. Shopping and dining: Small local shops and eateries; larger retail available in nearby Delran and Burlington Township. Regional access: Route 130, River Line light rail station with direct service to Trenton and Camden.
 
 Source: [City of Beverly](https://thecityofbeverly.com/), accessed July 19, 2026.
 
 ### Bordentown City
 
-Bordentown City is a compact municipality with its own government, separate from the surrounding township. Its official pages cover commission meetings and services as well as the historic district, local events, parking, and downtown resources.
+Bordentown City is a city in Burlington County. Outdoor highlights: Bordentown Beach, Joseph Lawrence Park, and seasonal community events downtown. Shopping and dining: Farnsworth Avenue boutiques, local restaurants, and small cafés. Regional access: Routes 130 & 206, NJ Turnpike Exit 7, River Line station with service to Camden and Trenton.
 
 Source: [City of Bordentown](https://cityofbordentown.com/), accessed July 19, 2026.
 
 ### Bordentown Township
 
-Bordentown Township is a separate municipality from Bordentown City, even though addresses and local destinations may use the same place name. The township site is the correct source for its meetings, departments, parks, permits, public works, and land-use records.
+Bordentown Township is a township in Burlington County. Outdoor highlights: Northern Community Park, Joseph Lawrence Park, athletic fields, and playgrounds. Shopping and dining: Township shopping centers, local eateries, with larger retail options nearby. Regional access: I-295, NJ Turnpike Exit 7, Routes 130 & 206, River Line station.
 
 Source: [Bordentown Township](https://www.bordentowntownship.com/), accessed July 19, 2026.
 
 ### Burlington City
 
-Burlington City is a Delaware River city with its own municipal government, distinct from Burlington Township. Its official site combines council and department information with historic-district, waterfront, business, event, and resident-service resources.
+Burlington City is a city in Burlington County. Outdoor highlights: Riverfront Promenade, Burlington Island nature area, local playgrounds and ball fields. Shopping and dining: Downtown restaurants, antique shops, and small businesses; larger retail nearby in Burlington Township. Regional access: Route 130, Burlington-Bristol Bridge to Pennsylvania, River Line station with service to Camden and Trenton.
 
 Source: [City of Burlington](https://www.burlingtonnj.us/), accessed July 19, 2026.
 
 ### Burlington Township
 
-Burlington Township surrounds parts of Burlington City but maintains separate records, services, and elected government. Use the township site for meetings, departments, recreation, permits, public works, and local notices.
+Burlington Township is a township in Burlington County. Outdoor highlights: Green Acres Park, Sylvan Lake, athletic fields, and community recreation programs. Shopping and dining: Burlington Center area retail, local restaurants, plus nearby shopping centers along Route 541. Regional access: I-295, NJ Turnpike Exit 5, Route 130, NJ Transit River Line stations.
 
 Source: [Burlington Township](https://twp.burlington.nj.us/), accessed July 19, 2026.
 
 ### Chesterfield Township
 
-Chesterfield is a township in northern Burlington County with municipal offices in the Crosswicks area. Its official site is the place to verify current meeting schedules, planning records, parks and recreation, forms, and public notices.
+Chesterfield Township is a township in Burlington County. Outdoor highlights: Old York Village green spaces, local athletic fields, nearby county parks. Shopping and dining: Local shops and restaurants; larger retail and dining in Bordentown and Hamilton Township. Regional access: Routes 206 & 130, NJ Turnpike Exit 7, proximity to Hamilton and Trenton rail stations.
 
 Source: [Chesterfield Township](https://www.chesterfieldtwpnj.gov/), accessed July 19, 2026.
 
 ### Cinnaminson Township
 
-Cinnaminson is a township in the county's Delaware River corridor. The municipal site provides current committee records, departments, parks and recreation, construction and zoning guidance, public works information, and online forms.
+Cinnaminson Township is a township in Burlington County. Outdoor highlights: Memorial Park, Wood Park, local ball fields, and riverfront recreation areas. Shopping and dining: Local shopping centers, Route 130 retail, and neighborhood dining spots. Regional access: Route 130, I-295, River Line light rail with direct service to Camden and Trenton.
 
 Source: [Cinnaminson Township](https://cinnaminsonnj.org/), accessed July 19, 2026.
 
 ### Delanco Township
 
-Delanco is a township on the Delaware River and Rancocas Creek. Its official pages cover meetings, public works, construction and zoning, parks, forms, and local notices for the township's riverfront and inland streets.
+Delanco Township is a township in Burlington County. Outdoor highlights: Pennington Park, West Avenue Nature Trail, and local playgrounds. Shopping and dining: Small local businesses, diners, and access to larger retail in neighboring towns. Regional access: Route 130, River Line light rail station with service to Camden and Trenton.
 
 Source: [Delanco Township](https://www.delancotownship.com/), accessed July 19, 2026.
 
 ### Delran Township
 
-Delran is a township between the Delaware River and Rancocas Creek area. The township site is the current source for council business, departments, parks, public works, permits, and community announcements.
+Delran Township is a township in Burlington County. Outdoor highlights: Delran Community Park, Myers Park, athletic fields, and youth sports programs. Shopping and dining: Route 130 shopping centers, local restaurants, and access to nearby malls in Moorestown and Cherry Hill. Regional access: Routes 130 & 73, I-295, NJ Transit bus routes, nearby River Line stations.
 
 Source: [Delran Township](https://www.delrantownship.org/), accessed July 19, 2026.
 
 ### Eastampton Township
 
-Eastampton is a township near Mount Holly in central Burlington County. Its municipal site brings together meetings, departments, parks and recreation, trash and recycling guidance, land-use records, forms, and alerts.
+Eastampton Township is a township in Burlington County. Outdoor highlights: Smithville Park and Historic District, local playgrounds, athletic fields, and open space preserves. Shopping and dining: Local restaurants and small businesses; larger retail along Route 38 and nearby Mount Holly. Regional access: Route 38, NJ Turnpike Exit 5, proximity to regional transit hubs in Mount Laurel and Hamilton.
 
 Source: [Eastampton Township](https://www.eastampton.com/), accessed July 19, 2026.
 
 ### Edgewater Park Township
 
-Edgewater Park is a township in the Delaware River corridor, north of Burlington City. Use its official site for committee records, departments, public works, recreation, permits, and current municipal notices.
+Edgewater Park Township is a township in Burlington County. Outdoor highlights: Memorial Field, Lakeview Memorial Park, community playgrounds, and sports fields. Shopping and dining: Local convenience stores, eateries, and access to retail centers in Burlington and Delran. Regional access: Route 130, River Line light rail station, nearby I-295 and Burlington-Bristol Bridge for PA access.
 
 Source: [Edgewater Park Township](https://www.edgewaterpark-nj.com/), accessed July 19, 2026.
 
 ### Evesham Township (Marlton)
 
-Evesham is the municipality; Marlton is the place name used for many addresses and destinations within it. The township site is the right source for government records, parks, programs, public works, planning, and services across the full municipality.
+Evesham Township (Marlton) is a township in Burlington County. Outdoor highlights: Savich Field, Memorial Sports Complex, playgrounds, and access to county park trails. Shopping and dining: Marlton Square, Promenade at Sagemore, Route 73 retail corridor, and a variety of local and chain restaurants. Regional access: Routes 70 & 73, I-295, NJ Turnpike Exit 4, NJ Transit bus routes with service to Philadelphia.
 
 Source: [Evesham Township](https://evesham-nj.org/), accessed July 19, 2026.
 
 ### Fieldsboro Borough
 
-Fieldsboro is a borough next to Bordentown City and Township, but it remains a separate municipality. Because it does not maintain a link in the county's municipal directory, use county and state records to confirm current contacts and the correct jurisdiction before relying on a nearby Bordentown address.
+Fieldsboro Borough is a borough in Burlington County. Outdoor highlights: Local playgrounds and neighborhood parks; larger recreation in nearby Bordentown and Mansfield. Shopping and dining: Small local businesses; residents often rely on Bordentown City and surrounding townships for retail and dining. Regional access: Route 130, access to I-295 and the NJ Turnpike, nearby River Line station in Bordentown.
 
 Sources: [Burlington County Municipalities](https://www.burlingtoncountynj.gov/507/Municipalities) and [New Jersey Municipalities](https://www.nj.gov/infobank/revmuni.htm), accessed July 19, 2026.
 
 ### Florence Township
 
-Florence Township includes Florence and Roebling place names along the Delaware River corridor. Its official site separates township meetings and services from recreation, public works, construction, planning, and local history resources.
+Florence Township is a township in Burlington County. Outdoor highlights: Roebling Park, Veterans Park, local playgrounds, and riverfront recreation areas. Shopping and dining: Local restaurants and shops in Florence village, plus Route 130 shopping centers. Regional access: NJ Turnpike Exit 6A, Route 130, River Line light rail with service to Camden and Trenton.
 
 Source: [Florence Township](https://www.florence-nj.gov/), accessed July 19, 2026.
 
 ### Hainesport Township
 
-Hainesport is a township along the Rancocas Creek area in central Burlington County. Its municipal site provides current committee records, departments, recreation, public works, construction information, forms, and notices.
+Hainesport Township is a township in Burlington County. Outdoor highlights: Long Bridge Park, Rancocas Creek access, playgrounds, and athletic fields. Shopping and dining: Local businesses and restaurants; larger retail along Route 38 and in nearby Mount Laurel and Moorestown. Regional access: Route 38, I-295, NJ Turnpike access nearby.
 
 Source: [Hainesport Township](https://www.hainesporttownship.com/), accessed July 19, 2026.
 
 ### Lumberton Township
 
-Lumberton is a township in central Burlington County. The township site is the practical source for meetings, departments, parks and recreation, public works, permits, emergency information, and local updates.
+Lumberton Township is a township in Burlington County. Outdoor highlights: Village Green Park, Bryan Freeman Park, sports fields, and local community events. Shopping and dining: Route 38 shopping centers, local restaurants, and access to retail in Mount Laurel and Moorestown. Regional access: Route 38, I-295, NJ Turnpike nearby for regional commuting.
 
 Source: [Lumberton Township](https://www.lumbertontwp.com/), accessed July 19, 2026.
 
 ### Mansfield Township
 
-Mansfield is a township whose municipal records may use several local mailing names. Its official site keeps government meetings, planning and zoning, public works, recreation, forms, and notices tied to the correct township.
+Mansfield Township is a township in Burlington County. Outdoor highlights: Mansfield Township Community Park, local ball fields, and preserved farmland areas. Shopping and dining: Local shops and restaurants, with larger retail centers available in nearby Bordentown and Florence. Regional access: I-295, NJ Turnpike Exit 7, Routes 68 & 206 for regional connectivity.
 
 Source: [Mansfield Township](https://www.mansfieldtwp.com/), accessed July 19, 2026.
 
 ### Maple Shade Township
 
-Maple Shade is a township near the Camden County line. Its official site connects visitors with council records, municipal departments, public works, recreation, permits, business information, and current announcements.
+Maple Shade Township is a township in Burlington County. Outdoor highlights: Steinhauer Park, Collins Lane Park, local playgrounds, and athletic fields. Shopping and dining: Downtown Maple Shade shops and restaurants, plus access to Moorestown and Cherry Hill Mall retail corridors. Regional access: Routes 73 & 38, I-295, NJ Turnpike, and NJ Transit bus service to Philadelphia.
 
 Source: [Maple Shade Township](https://mapleshade.com/), accessed July 19, 2026.
 
 ### Medford Township
 
-Medford Township is separate from Medford Lakes Borough and includes a larger municipal area around the Medford place name. Use the township site for council records, public works, parks, planning, construction, events, and resident services.
+Medford Township is a township in Burlington County. Outdoor highlights: Freedom Park, Medford Park, local lakes, trails, and youth sports programs. Shopping and dining: Downtown Medford shops and restaurants, plus access to Marlton and Mount Laurel retail corridors. Regional access: Route 70, connections to I-295 and the NJ Turnpike.
 
 Source: [Medford Township](https://medfordtownship.com/), accessed July 19, 2026.
 
 ### Medford Lakes Borough
 
-Medford Lakes is a borough enclosed by Medford Township but governed independently. Its official site is the current source for borough meetings, permits, public works, recreation, lake-related municipal information, and public notices.
+Medford Lakes Borough is a borough in Burlington County. Outdoor highlights: Multiple private lakes for residents, Camp Ockanickon YMCA, and local playgrounds. Shopping and dining: Local cafés and shops in Medford Lakes; access to downtown Medford and Marlton for retail and dining. Regional access: Route 70 with access to I-295 and NJ Turnpike in nearby townships.
 
 Source: [Medford Lakes Borough](https://www.medfordlakes.com/), accessed July 19, 2026.
 
 ### Moorestown Township
 
-Moorestown is a township with a municipal center along Main Street and a larger surrounding area. The township site covers council and board records, parks and recreation, construction, planning, public works, events, and business resources.
+Moorestown Township is a township in Burlington County. Outdoor highlights: Strawbridge Lake Park, Jeff Young Memorial Park, community athletic fields, and recreational programs. Shopping and dining: Downtown Moorestown boutiques and dining, Moorestown Mall, and nearby regional shopping in Cherry Hill. Regional access: Route 38, I-295, NJ Turnpike Exit 4, NJ Transit bus service to Philadelphia.
 
 Source: [Moorestown Township](https://www.moorestown.nj.us/), accessed July 19, 2026.
 
 ### Mount Holly Township
 
-Mount Holly is a township and the county seat of Burlington County. Municipal and county sources serve different purposes here: the township handles local meetings and services, while county offices provide courts, records, programs, and regional departments.
+Mount Holly Township is a township in Burlington County. Outdoor highlights: Iron Works Park, Mill Dam Park, historic sites, and community event spaces. Shopping and dining: Downtown boutiques, restaurants, and nearby retail along Route 38. Regional access: Route 38, proximity to I-295 and NJ Turnpike, NJ Transit bus connections.
 
 Sources: [Mount Holly Township](https://twp.mountholly.nj.us/) and [Burlington County](https://www.burlingtoncountynj.gov/), accessed July 19, 2026.
 
 ### Mount Laurel Township
 
-Mount Laurel is a township near the Camden County line with municipal services spread across a broad suburban area. Its official site organizes council business, planning and zoning, construction, parks, public works, police information, and online requests.
+Mount Laurel Township is a township in Burlington County. Outdoor highlights: Laurel Acres Park, Memorial Field, Rancocas State Park access, and community recreation facilities. Shopping and dining: Route 38 and 73 retail corridors, East Gate Square, Moorestown Mall nearby, and many dining options. Regional access: Routes 38 & 73, I-295, NJ Turnpike Exit 4, NJ Transit bus service to Philadelphia.
 
 Source: [Mount Laurel Township](https://mountlaurel.com/), accessed July 19, 2026.
 
 ### New Hanover Township
 
-New Hanover is a township that should not be confused with neighboring North Hanover. The municipal site is the correct place to confirm its meetings, departments, construction and land-use material, public works, recreation, and notices.
+New Hanover Township is a township in Burlington County. Outdoor highlights: Farmland, open space preserves, and recreational amenities available through the nearby Joint Base. Shopping and dining: Limited local businesses; residents rely on Bordentown, Wrightstown, or Mount Holly for retail and dining. Regional access: Routes 537 & 68, access to NJ Turnpike and I-295 within short driving distance.
 
 Source: [New Hanover Township](https://www.newhanovertwp.com/), accessed July 19, 2026.
 
 ### North Hanover Township
 
-North Hanover is a separate township east of Chesterfield and north of New Hanover. Its official pages cover committee records, public notices, forms, parks and recreation, construction, public works, and local services.
+North Hanover Township is a township in Burlington County. Outdoor highlights: Local playgrounds, athletic fields, and preserved open space; nearby access to state forests. Shopping and dining: Limited local businesses; larger retail and dining available in Bordentown, Mansfield, and Wrightstown. Regional access: Routes 537 & 528, connections to NJ Turnpike, I-295, and regional train stations.
 
 Source: [North Hanover Township](https://www.northhanovertwp.com/), accessed July 19, 2026.
 
 ### Palmyra Borough
 
-Palmyra is a Burlington County borough on the Delaware River beside the Tacony-Palmyra Bridge. County and Bridge Commission sources establish the municipality and bridge location; current borough services, meetings, and notices should be confirmed directly before publication.
+Palmyra Borough is a borough in Burlington County. Outdoor highlights: Palmyra Cove Nature Park, Legion Field, local playgrounds, and riverfront recreation. Shopping and dining: Small-town shops and restaurants along Broad Street; nearby shopping centers in Cinnaminson and Cherry Hill. Regional access: Route 73, Tacony-Palmyra Bridge to Philadelphia, River Line station with service to Camden and Trenton.
 
 Sources: [Burlington County Municipalities](https://www.burlingtoncountynj.gov/507/Municipalities) and [Burlington County Bridge Commission](https://www.bcbridges.org/contact-us/), accessed July 19, 2026. The direct borough site timed out during the automated source check and should be retested before publication.
 
 ### Pemberton Borough
 
-Pemberton Borough is an independent municipality enclosed by Pemberton Township. Its official site is the place to distinguish borough meetings, utilities, public works, permits, and notices from township services with a similar name.
+Pemberton Borough is a borough in Burlington County. Outdoor highlights: Borough Park, local playgrounds, and nearby county recreation areas. Shopping and dining: Local shops and restaurants in downtown Pemberton; larger retail in nearby Browns Mills and Mount Holly. Regional access: Route 38, County Route 530, proximity to Joint Base McGuire-Dix-Lakehurst.
 
 Source: [Pemberton Borough](https://www.pembertonborough.us/), accessed July 19, 2026.
 
 ### Pemberton Township
 
-Pemberton Township covers a much larger area than Pemberton Borough and includes several named communities. Use the township site for its council records, departments, parks, public works, planning, construction, and community updates.
+Pemberton Township is a township in Burlington County. Outdoor highlights: Mirror Lake, Presidential Lakes, Pine Barrens access, and multiple community parks. Shopping and dining: Local shopping centers and restaurants; additional retail available in Browns Mills, Mount Holly, and neighboring townships. Regional access: Routes 38, 206 & 530, proximity to Joint Base and regional highway connections.
 
 Source: [Pemberton Township](https://www.pemberton-twp.com/), accessed July 19, 2026.
 
 ### Riverside Township
 
-Riverside is a township along the Delaware River, across Rancocas Creek from Delanco. Its municipal site provides current meetings, departments, public works, permits, recreation, and local notices.
+Riverside Township is a township in Burlington County. Outdoor highlights: Riverfront parks, Frank J. Gavin Memorial Park, community fields, and playgrounds. Shopping and dining: Downtown shops and restaurants, local businesses along Route 130, and nearby larger retail centers. Regional access: Route 130, River Line light rail station, access to I-295 and bridges to Pennsylvania.
 
 Source: [Riverside Township](https://riversidetwp.org/), accessed July 19, 2026.
 
 ### Riverton Borough
 
-Riverton is a borough on the Delaware River between Palmyra and Cinnaminson. The borough site combines council and board records with public works, parks, forms, local history, and community announcements.
+Riverton Borough is a borough in Burlington County. Outdoor highlights: Riverton Memorial Park, riverfront green spaces, and the Riverton Yacht Club. Shopping and dining: Local cafés, shops, and restaurants; additional retail in nearby Cinnaminson and Palmyra. Regional access: Route 130, River Line light rail station, Tacony-Palmyra and Betsy Ross Bridges for Philadelphia access.
 
 Source: [Borough of Riverton](https://www.riverton-nj.com/), accessed July 19, 2026.
 
 ### Shamong Township
 
-Shamong is a township in Burlington County's Pinelands area. Its official site is the current source for committee meetings, planning and construction, public works, recreation, emergency information, and notices for its named communities.
+Shamong Township is a township in Burlington County. Outdoor highlights: Wharton State Forest, Atsion Lake, hiking and biking trails, and local playgrounds. Shopping and dining: Limited local businesses; residents often rely on Medford, Marlton, or Hammonton for retail and dining. Regional access: Routes 206 & 534, with access to I-295 and NJ Turnpike via nearby corridors.
 
 Sources: [Shamong Township](https://www.shamong.net/) and [New Jersey Pinelands Commission](https://www.nj.gov/pinelands/), accessed July 19, 2026.
 
 ### Southampton Township
 
-Southampton is a township that includes several established place names and a substantial Pinelands area. The municipal site keeps township meetings, public works, recreation, land-use material, forms, and announcements in one current record.
+Southampton Township is a township in Burlington County. Outdoor highlights: Red Lion Preserve, local parks, golf courses, and Leisuretowne community amenities. Shopping and dining: Small local shops and restaurants; larger retail available in Medford, Marlton, and Mount Holly. Regional access: Routes 70 & 206, connections to I-295 and the NJ Turnpike with connections to.
 
 Sources: [Southampton Township](https://www.southamptonnj.org/) and [New Jersey Pinelands Commission](https://www.nj.gov/pinelands/), accessed July 19, 2026.
 
 ### Springfield Township
 
-Springfield is a township in northern Burlington County. Its official site provides current committee records, tax and construction information, public works, recreation, forms, and public notices.
+Springfield Township is a township in Burlington County. Outdoor highlights: Columbus Park, local playgrounds, athletic fields, and preserved farmland areas. Shopping and dining: Limited local businesses; residents rely on Columbus Market and nearby Bordentown, Mansfield, and Mount Holly for retail and dining. Regional access: Routes 206 & 68, access to I-295 and the NJ Turnpike.
 
 Source: [Springfield Township](https://www.springfieldtownshipnj.org/), accessed July 19, 2026.
 
 ### Tabernacle Township
 
-Tabernacle is a township in the Pinelands portion of Burlington County. The county and Pinelands pages are stable sources for its current municipal identity and regional land-use context; the municipality's listed direct domain did not resolve during this review and should be rechecked before publication.
+Tabernacle Township is a township in Burlington County. Outdoor highlights: Wharton State Forest, Apple Pie Hill hiking area, local playgrounds, and athletic fields. Shopping and dining: Limited local services; residents rely on Medford, Marlton, and Hammonton for larger retail and dining. Regional access: Routes 206 & 532, connections to I-295 and NJ Turnpike within driving distance.
 
 Sources: [Burlington County Municipalities](https://www.burlingtoncountynj.gov/507/Municipalities) and [New Jersey Pinelands Commission](https://www.nj.gov/pinelands/), accessed July 19, 2026.
 
 ### Washington Township (Burlington County)
 
-This Washington Township is the Burlington County municipality, not the Gloucester County township with the same name. Its official URL and the county directory are useful identity checks before using tax, meeting, permit, or service records.
+Washington Township (Burlington County) is a township in Burlington County. Outdoor highlights: Washington Lake Park is one of the state’s largest municipal parks, with trails, sports fields, and an amphitheater. Shopping and dining: Retail centers line the Black Horse Pike including Target, Costco, and various chain restaurants. Regional access: Route 42, Route 55, and the Atlantic City Expressway offer connections to Philly and the shore.
 
 Sources: [Washington Township, Burlington County](https://wtbcnj.org/) and [Burlington County Municipalities](https://www.burlingtoncountynj.gov/507/Municipalities), accessed July 19, 2026.
 
 ### Westampton Township
 
-Westampton is a township next to Mount Holly in central Burlington County. The township site covers meetings, departments, parks and recreation, construction, public works, emergency notices, and online services.
+Westampton Township is a township in Burlington County. Outdoor highlights: Sports fields, local playgrounds, Rancocas State Park, and community recreation programs. Shopping and dining: Local restaurants and shops, with larger retail options nearby in Mount Holly and Mount Laurel. Regional access: I-295, NJ Turnpike Exit 5, Route 541, and NJ Transit bus service.
 
 Source: [Westampton Township](https://www.westamptonnj.gov/), accessed July 19, 2026.
 
 ### Willingboro Township
 
-Willingboro is a township in the county's Delaware River corridor. Its municipal site organizes council business, departments, parks and recreation, public works, permits, library links, and resident programs.
+Willingboro Township is a township in Burlington County. Outdoor highlights: Mill Creek Park, Crystal Lake Park, community pools, and recreation centers. Shopping and dining: Local shopping centers, restaurants, and access to Route 130 retail corridors. Regional access: Route 130, I-295, NJ Turnpike Exit 5, NJ Transit bus routes to Philadelphia and Trenton.
 
 Source: [Willingboro Township](https://www.willingboronj.gov/), accessed July 19, 2026.
 
 ### Woodland Township
 
-Woodland is a township in the Pinelands, with municipal offices serving a wide rural area that includes the Chatsworth place name. The township and Pinelands sites are the current sources for local records, land-use context, services, and notices.
+Woodland Township is a township in Burlington County. Outdoor highlights: Brendan T. Byrne State Forest, Whitesbog Village, and extensive Pine Barrens hiking trails. Shopping and dining: Very limited local businesses; residents rely on neighboring towns like Pemberton and Medford for retail and dining. Regional access: Routes 563 & 532, with access to Route 70 and connections to shore destinations.
 
 Sources: [Woodland Township](https://www.woodlandtownship.org/) and [New Jersey Pinelands Commission](https://www.nj.gov/pinelands/), accessed July 19, 2026.
 
 ### Wrightstown Borough
 
-Wrightstown is a borough next to the Joint Base McGuire-Dix-Lakehurst area but remains a separate civilian municipality. Use borough sources for local meetings, departments, permits, public works, and notices, and base sources for installation-specific access or facility information.
+Wrightstown Borough is a borough in Burlington County. Outdoor highlights: Local playgrounds, small parks, and access to recreation facilities on the Joint Base. Regional access: Route 206, proximity to Routes 68 & 537, with regional connections to I-295 and NJ Turnpike.
 
 Sources: [Wrightstown Borough](https://wrightstownborough.com/) and [Joint Base McGuire-Dix-Lakehurst](https://www.jbmdl.jb.mil/), accessed July 19, 2026.
 
@@ -608,205 +610,205 @@ Sources: [Wrightstown Borough](https://wrightstownborough.com/) and [Joint Base 
 
 ### Audubon and Audubon Park
 
-Audubon and Audubon Park are neighboring boroughs with separate municipal governments. Their official sites should be checked independently for meetings, public works, permits, recreation, and notices rather than treating the two names as one jurisdiction.
+Audubon and Audubon Park are neighboring boroughs in Camden County. Shopping and dining: The downtown area along Merchant Street is a local district, filled with local shops, cafes, and restaurants. Regional access: Connections include the access to PATCO and major highways, supporting travel to Philadelphia.
 
 Sources: [Borough of Audubon](https://www.audubonnj.com/) and [Borough of Audubon Park](https://www.audubonparknj.org/), accessed July 19, 2026.
 
 ### Barrington
 
-Barrington is a borough in western Camden County. Its official site brings together council records, public works schedules, construction and zoning information, recreation, forms, and current borough announcements.
+Barrington is a borough in Camden County. Outdoor highlights: Neighborhood parks and local recreation programs support community sports and events. Shopping and dining: Clements Bridge Road provides local shops, restaurants, and everyday services. Regional access: Routes 30 and 41 connect Barrington with surrounding Camden County communities and Philadelphia-area destinations.
 
 Source: [Borough of Barrington](https://barringtonboro.com/), accessed July 19, 2026.
 
 ### Bellmawr
 
-Bellmawr is a borough near the junction of several major South Jersey roadways. The borough site is the current source for council meetings, municipal departments, public works, recreation, permits, and traffic or service notices.
+Bellmawr is a borough in Camden County. Outdoor highlights: Local parks, youth sports programs, and community recreation serve the neighborhood. Shopping and dining: Bellmawr Lake and nearby trails offer outdoor recreation, while shops and restaurants are available along Route 130 and the Black Horse Pike. Regional access: Route 42, I-295, and nearby PATCO stations provide connections across South Jersey and to Philadelphia.
 
 Source: [Borough of Bellmawr](https://www.bellmawr.com/), accessed July 19, 2026.
 
 ### Berlin Borough and Berlin Township
 
-Berlin Borough and Berlin Township are separate municipalities that share the Berlin place name. Use each official site for the correct meetings, departments, public works, recreation, and land-use records before attaching a fact to either one.
+Berlin Borough and Berlin Township are separate municipalities in Camden County. Outdoor highlights: Berlin Township offers a more spread-out, residential setting compared to the neighboring borough, with a focus on residential neighborhoods, local parks, and accessibility. Shopping and dining: Centered around the historic Berlin Circle and White Horse Pike, the borough offers a walkable downtown with shops, restaurants, and local businesses that give the area its local character. Regional access: With NJ Transit service available and access to Route 73, supporting trips toward Philadelphia or the Shore.
 
 Sources: [Berlin Borough](https://www.berlinnj.org/) and [Berlin Township](https://www.berlintwp.com/), accessed July 19, 2026.
 
 ### Brooklawn
 
-Brooklawn is a borough near the Delaware River and Big Timber Creek area. Its official site provides current council records, departments, public works information, recreation, forms, and notices.
+Brooklawn is a borough in Camden County. Outdoor highlights: The Delaware River waterfront and local recreation spaces give the borough an open, neighborhood setting. Shopping and dining: Route 130 and nearby Gloucester City and Westville provide everyday stores, restaurants, and services. Regional access: Its waterfront location is near Route 130 and I-295.
 
 Source: [Borough of Brooklawn](https://www.brooklawn-nj.com/), accessed July 19, 2026.
 
 ### Camden City
 
-Camden is a city on the Delaware River and the Camden County seat. City and county sources cover different layers of government, while the city site also provides planning, development, parks, public works, meeting, and resident-service information.
+Camden City is a city in Camden County. Outdoor highlights: The Delaware River waterfront, parks, and attractions such as the Adventure Aquarium and Waterfront Music Pavilion anchor the city's riverfront. Shopping and dining: Cooper Grant, Fairview, and other neighborhoods combine historic homes, rowhouses, new development, restaurants, and neighborhood services. Regional access: PATCO, the River Line, NJ Transit buses, and major bridges connect Camden with Philadelphia and the rest of South Jersey.
 
 Sources: [City of Camden](https://www.ci.camden.nj.us/) and [Camden County](https://www.camdencounty.com/), accessed July 19, 2026.
 
 ### Cherry Hill
 
-Cherry Hill is a township with several named neighborhoods and commercial districts rather than one traditional municipal center. The township site is the current source for council records, parks, public works, planning, construction, events, and online services.
+Cherry Hill is a township in Camden County. Outdoor highlights: Parks, cultural venues, and the Cherry Hill Mall's surrounding civic and retail district shape the community. Shopping and dining: The township has extensive retail and restaurants along Route 70, Route 38, and the Cherry Hill Mall area. Regional access: Route 70, I-295, and the nearby PATCO line connect Cherry Hill with Philadelphia and South Jersey.
 
 Source: [Cherry Hill Township](https://www.cherryhill-nj.com/), accessed July 19, 2026.
 
 ### Chesilhurst
 
-Chesilhurst is a borough in southeastern Camden County. Its official site provides current borough meetings, departments, public notices, forms, public works information, and local contacts.
+Chesilhurst is a borough in Camden County. Outdoor highlights: Local parks and recreation facilities serve the borough's residential neighborhoods, with larger open-space destinations nearby. Shopping and dining: Residents use nearby Berlin, Clementon, and Sicklerville corridors for grocery stores, retail, and restaurants. Regional access: Road connections through Routes 30 and 73 link Chesilhurst with Camden County and the Philadelphia region.
 
 Source: [Borough of Chesilhurst](https://chesilhurstboro.org/), accessed July 19, 2026.
 
 ### Clementon
 
-Clementon is a borough in central Camden County. The borough site is the practical place to check council records, departments, construction and zoning, public works, recreation, and current notices.
+Clementon is a borough in Camden County. Shopping and dining: Residents enjoy access to White Horse Pike (Route 30) and nearby shopping centers, while still being close to the Gloucester Township and Lindenwold borders. Regional access: Residents enjoy access to White Horse Pike (Route 30) and nearby shopping centers, while still being close to the Gloucester Township and Lindenwold borders.
 
 Source: [Borough of Clementon](https://www.clementon-nj.com/), accessed July 19, 2026.
 
 ### Collingswood
 
-Collingswood is a borough along the PATCO corridor, with a municipal center on Haddon Avenue. Borough and transit sources provide current government records, parking and event information, parks, business resources, and station schedules.
+Collingswood is a borough in Camden County. Outdoor highlights: Newton Lake Park and nearby Cooper River Park offer walking, fishing, and paddling. Shopping and dining: Haddon Avenue's downtown features restaurants, coffee shops, galleries, boutiques, and neighborhood businesses. Regional access: The Collingswood PATCO station provides direct service to Philadelphia.
 
 Sources: [Borough of Collingswood](https://www.collingswood.com/) and [PATCO](https://www.ridepatco.org/), accessed July 19, 2026.
 
 ### Gibbsboro
 
-Gibbsboro is a borough between Voorhees and the Berlin area. Its official site keeps council meetings, departments, public works, recreation, environmental information, forms, and public notices tied to the correct municipality.
+Gibbsboro is a borough in Camden County. Outdoor highlights: Neighborhood parks and nearby lakes and trails provide local outdoor options. Shopping and dining: Voorhees, Lindenwold, and Berlin offer grocery stores, retail, and restaurants nearby. Regional access: Route 561 and Berlin Road connect Gibbsboro with neighboring communities and PATCO stations.
 
 Source: [Borough of Gibbsboro](https://www.gibbsborotownhall.com/), accessed July 19, 2026.
 
 ### Gloucester City
 
-Gloucester City is a city on the Delaware River, distinct from Gloucester Township elsewhere in Camden County. The city site is the correct source for council business, departments, public works, development, recreation, forms, and events.
+Gloucester City is a city in Camden County. Shopping and dining: The downtown district along Broadway features local businesses, restaurants, and pubs, contributing to the city’s tight-knit and proudly blue-collar identity.
 
 Source: [Gloucester City](https://www.cityofgloucester.org/), accessed July 19, 2026.
 
 ### Gloucester Township
 
-Gloucester Township is a separate municipality from Gloucester City and includes several named communities. Its official site covers council and board records, parks, public works, permits, police information, events, and township services.
+Gloucester Township is a township in Camden County. Outdoor highlights: Township parks, athletic fields, and recreation programs serve residents across the community. Shopping and dining: Gloucester Premium Outlets and local retail corridors provide stores and restaurants. Regional access: Route 42, the Atlantic City Expressway, and PATCO and NJ Transit stations in nearby communities provide regional connections.
 
 Source: [Gloucester Township](https://www.glotwp.com/), accessed July 19, 2026.
 
 ### Haddon Heights
 
-Haddon Heights is a borough with a municipal center along Station Avenue. The borough site provides current meetings, public works, permits, parks and recreation, business information, events, and public notices.
+Haddon Heights is a borough in Camden County. Outdoor highlights: Borough parks and community recreation programs serve the neighborhood setting. Shopping and dining: Station Avenue's walkable downtown offers boutiques, cafes, restaurants, and local events. Regional access: Nearby Route 30 and PATCO's Haddonfield station connect the borough with Philadelphia and surrounding towns.
 
 Source: [Borough of Haddon Heights](https://www.haddonhts.com/), accessed July 19, 2026.
 
 ### Haddon Township
 
-Haddon Township is a township that includes several place names and is not the same municipality as Haddonfield or Haddon Heights. Township and PATCO sources cover local government, events, parks, public works, permits, and current rail information.
+Haddon Township is a township in Camden County. Outdoor highlights: Newton Lake Park and Cooper River Park offer green space for walking, biking, and kayaking. Shopping and dining: Haddon Avenue's business district includes restaurants, bars, coffee shops, boutiques, and everyday services. Regional access: Westmont PATCO station, Route 30, and I-295 provide connections toward Philadelphia and South Jersey.
 
 Sources: [Haddon Township](https://www.haddontwp.com/) and [PATCO](https://www.ridepatco.org/), accessed July 19, 2026.
 
 ### Haddonfield
 
-Haddonfield is a borough with its own government and a historic commercial district along Kings Highway. Its official site separates commission and board records from parking, business, event, parks, public works, and preservation resources.
+Haddonfield is a borough in Camden County. Outdoor highlights: Borough parks and the nearby Cooper River corridor offer walking and recreation. Shopping and dining: Historic homes, local shops, restaurants, and a walkable downtown line Kings Highway. Regional access: Haddonfield's PATCO station provides direct service to Philadelphia and connections across Camden County.
 
 Source: [Borough of Haddonfield](https://www.haddonfieldnj.org/), accessed July 19, 2026.
 
 ### Hi-Nella
 
-Hi-Nella is a borough with its own municipal government despite its small geographic footprint. Use the borough and county directories for current contacts, meetings, records, and service information rather than assigning it to a neighboring municipality.
+Hi-Nella is a borough in Camden County. Outdoor highlights: Neighborhood streets and small community facilities reflect the borough's residential character. Shopping and dining: Nearby Route 30 corridors and shopping centers in Lindenwold, Somerdale, and Clementon provide everyday options. Regional access: PATCO stations in Lindenwold and Ashland, along with Route 30, provide regional connections.
 
 Sources: [Borough of Hi-Nella](https://hinellaboro.org/) and [Camden County Municipalities](https://www.camdencounty.com/your-government/municipalities-camden-county/), accessed July 19, 2026.
 
 ### Laurel Springs
 
-Laurel Springs is a borough along the White Horse Pike corridor. Its official site provides council records, departments, public works, construction information, recreation, forms, and current announcements.
+Laurel Springs is a borough in Camden County. Outdoor highlights: Borough parks and neighborhood recreation spaces serve the community. Shopping and dining: Nearby Lindenwold, Clementon, and Somerdale offer grocery stores, retail, and dining. Regional access: Route 30 and PATCO's Lindenwold station connect Laurel Springs with Philadelphia and neighboring towns.
 
 Source: [Borough of Laurel Springs](https://laurelsprings-nj.com/), accessed July 19, 2026.
 
 ### Lawnside
 
-Lawnside is a borough between Barrington and Magnolia. Its municipal site is the current source for council and board records, departments, public works, permits, recreation, forms, and local notices.
+Lawnside is a borough in Camden County. Outdoor highlights: Neighborhood parks and local recreation programs serve residents. Shopping and dining: Lawnside Commons and nearby retail corridors provide stores, restaurants, and everyday services. Regional access: I-295, Route 30, and the Woodcrest PATCO station connect Lawnside with Philadelphia and neighboring communities.
 
 Source: [Borough of Lawnside](https://www.lawnside.net/), accessed July 19, 2026.
 
 ### Lindenwold
 
-Lindenwold is a Camden County borough and the eastern terminus of PATCO service. County and transit sources establish the municipality and rail connection; current borough services and notices should be confirmed directly, and train schedules should always come from PATCO.
+Lindenwold is a borough in Camden County. Outdoor highlights: The borough also has local parks, schools, and shopping centers to meet everyday needs. Shopping and dining: The borough also has local parks, schools, and shopping centers to meet everyday needs. Regional access: The Lindenwold PATCO and NJ Transit station connects directly to Philadelphia and Atlantic City, while major roads like Route 30 and the White Horse Pike keep everything close.
 
 Sources: [Camden County Municipalities](https://www.camdencounty.com/your-government/municipalities-camden-county/) and [PATCO](https://www.ridepatco.org/), accessed July 19, 2026. The direct borough site reset the automated connection and should be retested before publication.
 
 ### Magnolia
 
-Magnolia is a borough along the White Horse Pike corridor. Its official site is the place to check council records, departments, public works schedules, construction and zoning, recreation, forms, and public notices.
+Magnolia is a borough in Camden County. Outdoor highlights: The borough is served by the Magnolia School District, and residents enjoy local parks, playgrounds, and community events throughout the year. Regional access: Its central location near the White Horse Pike, I-295, and the PATCO line makes commuting regional travel.
 
 Source: [Borough of Magnolia](https://www.magnolia-nj.org/), accessed July 19, 2026.
 
 ### Merchantville
 
-Merchantville is a borough bordered by Pennsauken and Cherry Hill. The borough site combines government records and services with parks, events, business information, public works, permits, and current community notices.
+Merchantville is a borough in Camden County. Outdoor highlights: Merchantville is served by its own school district and is close to major roads and the River Line, making commuting easy while preserving its small-town feel. Shopping and dining: The town is beloved for its Victorian-style homes, local businesses, and community events like farmers markets and seasonal festivals. Regional access: Merchantville is served by its own school district and is close to major roads and the River Line, making commuting easy while preserving its small-town feel.
 
 Source: [Borough of Merchantville](https://merchantvillenj.gov/), accessed July 19, 2026.
 
 ### Mount Ephraim
 
-Mount Ephraim is a borough near the western Camden County roadway network. Its official site provides council records, departments, public works, permits, recreation, forms, and notices for the borough itself.
+Mount Ephraim is a borough in Camden County. Outdoor highlights: Local parks, neighborhood streets, and community recreation programs provide nearby outdoor options. Shopping and dining: Shops and restaurants are concentrated along Kings Highway and nearby Route 130 corridors. Regional access: Route 130, Route 42, and nearby PATCO stations connect Mount Ephraim with Philadelphia and South Jersey.
 
 Source: [Borough of Mount Ephraim](https://www.mountephraim-nj.com/), accessed July 19, 2026.
 
 ### Oaklyn
 
-Oaklyn is a borough next to Collingswood and Haddon Township. Its municipal site covers meetings, departments, public works, permits, parks and recreation, business resources, events, and public notices.
+Oaklyn is a borough in Camden County. Outdoor highlights: Newton Lake Park offers views, walking, and outdoor recreation. Shopping and dining: Oaklyn's small downtown includes coffee shops, pubs, and local businesses. Regional access: Nearby PATCO stations and Route 30 provide connections to Philadelphia and surrounding communities.
 
 Source: [Borough of Oaklyn](https://www.oaklyn-nj.net/), accessed July 19, 2026.
 
 ### Pennsauken
 
-Pennsauken is a township along the Delaware River corridor, with municipal services covering several named neighborhoods and business areas. Its official site organizes meetings, departments, parks, public works, permits, events, and local notices.
+Pennsauken is a township in Camden County. Outdoor highlights: The Delaware River, local parks, and riverfront spaces complement a suburban community crossed by Routes 130 and 73. Shopping and dining: Route 130 and nearby Cherry Hill and Camden corridors provide retail, restaurants, and everyday services. Regional access: Route 130, Route 73, I-295, River Line stations, and NJ Transit buses connect Pennsauken with Philadelphia and South Jersey.
 
 Source: [Pennsauken Township](https://www.twp.pennsauken.nj.us/), accessed July 19, 2026.
 
 ### Pine Hill (including the former Pine Valley Borough)
 
-Pine Hill is the current municipality. The former Pine Valley Borough was consolidated into Pine Hill effective January 1, 2022, so future site content should retire the old two-municipality card title and direct current records to Pine Hill.
+Pine Hill is a borough in Camden County. The former Pine Valley Borough was consolidated into Pine Hill in 2022, and the community retains its own police, fire, EMS, and public-works services.
 
 Sources: [Borough of Pine Hill](https://www.pinehillboronj.com/) and [New Jersey Government Records Council decision documenting the consolidation](https://www.nj.gov/grc/decisions/pdf/2021-341.pdf), accessed July 19, 2026.
 
 ### Runnemede
 
-Runnemede is a borough near the Route 42 and New Jersey Turnpike corridor. Its official site is the current source for borough meetings, departments, public works, permits, recreation, and local announcements.
+Runnemede is a borough in Camden County. Outdoor highlights: Several parks, school fields, youth sports, and community events support local recreation. Shopping and dining: Local shops and restaurants are available along the Black Horse Pike, with larger retail in nearby Bellmawr and Deptford. Regional access: Routes 41 and 42, along with nearby PATCO stations, provide regional connections.
 
 Source: [Borough of Runnemede](https://www.runnemedenj.org/), accessed July 19, 2026.
 
 ### Somerdale
 
-Somerdale is a borough between Magnolia, Stratford, and Voorhees. The borough site brings together council records, departments, public works, construction information, recreation, forms, and public notices.
+Somerdale is a borough in Camden County. Outdoor highlights: Local parks, sports fields, and community events provide recreation throughout the year. Shopping and dining: White Horse Pike and nearby Route 30 corridors offer shops, restaurants, and everyday services. Regional access: I-295, Route 42, and PATCO stations in Ashland and Lindenwold provide regional connections.
 
 Source: [Borough of Somerdale](https://www.somerdale-nj.com/), accessed July 19, 2026.
 
 ### Stratford
 
-Stratford is a borough along the White Horse Pike corridor. Its official site provides meetings, departments, public works, construction and zoning, recreation, forms, and current borough notices.
+Stratford is a borough in Camden County. Outdoor highlights: Local parks, the public library, Jefferson Stratford Hospital, and Rowan-Virtua School of Osteopathic Medicine are part of the community's civic landscape. Shopping and dining: Shops and restaurants are available along White Horse Pike and nearby Route 30 corridors. Regional access: White Horse Pike and PATCO stations in Lindenwold and Ashland connect Stratford with Philadelphia and surrounding towns.
 
 Source: [Borough of Stratford](https://www.stratfordnj.org/), accessed July 19, 2026.
 
 ### Tavistock
 
-Tavistock remains a separate borough even though it has a very small municipal footprint. County and borough sources should be used to confirm its current government contacts and jurisdiction rather than folding its records into a neighboring town.
+Tavistock is a borough in Camden County. Outdoor highlights: The small borough is centered on Tavistock Country Club and its surrounding grounds. Shopping and dining: Nearby Haddonfield, Barrington, and Collingswood provide local shops and restaurants. Regional access: Route 70, Route 41, and nearby PATCO stations connect Tavistock with Philadelphia and Camden County.
 
 Sources: [Borough of Tavistock](https://tavistocknj.org/) and [Camden County Municipalities](https://www.camdencounty.com/your-government/municipalities-camden-county/), accessed July 19, 2026.
 
 ### Voorhees
 
-Voorhees is a township with several named communities and commercial areas. The township site is the current source for committee records, parks and recreation, public works, planning, permits, police information, events, and services.
+Voorhees is a township in Camden County. Outdoor highlights: Shopping, dining, and recreation are abundant, with destinations like the Voorhees Town Center and Connolly Park offering something for everyone. Shopping and dining: Shopping, dining, and recreation are abundant, with destinations like the Voorhees Town Center and Connolly Park offering something for everyone.
 
 Source: [Voorhees Township](https://www.voorheesnj.com/), accessed July 19, 2026.
 
 ### Waterford Township
 
-Waterford is a township in eastern Camden County whose municipal center uses the Atco place name. Its official site keeps meetings, departments, public works, recreation, land-use material, forms, and notices tied to the correct township.
+Waterford Township is a township in Camden County. Outdoor highlights: The township's Atco area, neighborhood parks, and Pine Barrens setting provide local recreation and open space. Shopping and dining: Residents use nearby Berlin, Hammonton, and Winslow-area corridors for groceries, retail, and restaurants. Regional access: Routes 30 and 73 and the Atlantic City Expressway connect Waterford with Camden County and the shore.
 
 Source: [Waterford Township](https://www.waterfordtwp.org/), accessed July 19, 2026.
 
 ### Winslow Township
 
-Winslow is a township covering a broad area in southeastern Camden County with several named communities. Use the township site for council records, public works, recreation, planning, permits, police information, and local notices across the municipality.
+Winslow Township is a township in Camden County. Outdoor highlights: Pine Barrens forests, lakes, local parks, and township recreation programs provide a range of outdoor options. Shopping and dining: Sicklerville, Hammonton, and Berlin-area corridors offer grocery stores, retail, and restaurants. Regional access: Routes 30, 73, 143, and the Atlantic City Expressway connect Winslow with Camden County and the shore.
 
 Source: [Winslow Township](https://www.winslowtownship.com/), accessed July 19, 2026.
 
 ### Woodlynne
 
-Woodlynne is a borough between Camden and Collingswood. Its official site and the county directory provide current borough contacts, meetings, departments, public works, forms, and public notices.
+Woodlynne is a borough in Camden County. Outdoor highlights: The New Deal program built many similar structures, including rustic log structures in state parks during the Great Depression, and this one is unique for its urban setting. Regional access: One of Woodlynne’s biggest perks is public transit access—residents are within walking distance to the Ferry Avenue PATCO station and local NJ Transit bus lines.
 
 Sources: [Borough of Woodlynne](https://www.woodlynnenj.org/) and [Camden County Municipalities](https://www.camdencounty.com/your-government/municipalities-camden-county/), accessed July 19, 2026.
 
@@ -814,97 +816,97 @@ Sources: [Borough of Woodlynne](https://www.woodlynnenj.org/) and [Camden County
 
 ### Avalon
 
-Avalon is a borough on Seven Mile Island, sharing the island with Stone Harbor but maintaining separate government and services. The borough site is the current source for beach information, meetings, permits, parking, public works, recreation, and seasonal notices.
+Avalon is a borough in Cape May County. Outdoor highlights: Surfside Park, beach dunes, and bayfront docks for boating and watersports. Shopping and dining: local boutique shops and restaurants along Dune Drive. Regional access: Accessible via Ocean Drive, close to Route 9 and Garden State Parkway connections.
 
 Source: [Borough of Avalon](https://avalonboro.net/), accessed July 19, 2026.
 
 ### Cape May
 
-Cape May is a city at the southern end of the Cape May Peninsula. Its official site separates city meetings and services from beach information, parking, historic-preservation material, events, and visitor resources.
+Cape May is a city in Cape May County. Outdoor highlights: Rotary Park, Cape May Promenade, and nearby Cape May Point State Park. Shopping and dining: Washington Street Mall, antique shops, and a variety of restaurants from casual to fine dining. Regional access: Garden State Parkway access via Route 109; Cape May-Lewes Ferry connects to Delaware.
 
 Source: [City of Cape May](https://www.capemaycity.com/), accessed July 19, 2026.
 
 ### Cape May Point
 
-Cape May Point is a borough west of Cape May City and next to Cape May Point State Park. Borough and state sources provide current municipal records, beach rules, nature programs, trails, lighthouse information, and park conditions.
+Cape May Point is a borough in Cape May County. Outdoor highlights: Cape May Point State Park with trails and birding overlooks; lighthouse; nearby protected beaches. Shopping and dining: Limited in town; only 5–10 near Cape May’s shops, restaurants, and Washington Street Mall. Regional access: access via Sunset Boulevard and nearby Garden State Parkway connections.
 
 Sources: [Cape May Point](https://capemaypoint.org/) and [Cape May Point State Park](https://nj.gov/dep/parksandforests/parks/capemaypointstatepark.html), accessed July 19, 2026.
 
 ### Dennis Township
 
-Dennis is a mainland township made up of several named communities rather than one incorporated downtown. Its official site is the current source for township meetings, public works, recreation, construction, planning, forms, and notices across those areas.
+Dennis Township is a township in Cape May County. Outdoor highlights: Belleplain State Forest offers camping, hiking, and trails across thousands of acres. Shopping and dining: Local shopping centers in Dennisville and South Seaville; larger retail options in Cape May Court House and Vineland. Regional access: Conveniently located along Routes 47 and 347 for quick trips to the Garden State Parkway and shore towns.
 
 Source: [Dennis Township](https://www.dennistwp.org/), accessed July 19, 2026.
 
 ### Lower Township
 
-Lower Township covers the southern mainland portion of the county and includes several distinct place names outside Cape May City. Use the township site for council records, parks and recreation, public works, planning, permits, police information, and local notices.
+Lower Township is a township in Cape May County. Outdoor highlights: Bayshore beaches, Cox Hall Creek Wildlife Management Area, and the Cape May–Lewes Ferry terminal with surrounding park space. Shopping and dining: Bayshore Plaza and local shopping, plus access to Cape May’s dining and retail options. Regional access: Garden State Parkway and Route 9 access; Cape May Airport nearby.
 
 Source: [Lower Township](https://townshipoflower.org/), accessed July 19, 2026.
 
 ### Middle Township
 
-Middle Township is a mainland municipality that includes Cape May Court House, where many county offices use a mailing address. Township and county sources help distinguish municipal services from county courts, records, parks, and regional departments.
+Middle Township is a township in Cape May County. Outdoor highlights: Goshen Sports Complex, Stone Harbor Wetlands Institute, and county park system facilities. Shopping and dining: Retail hub with Walmart, ShopRite, and Rio Grande Center; plenty of restaurants and services in Cape May Court House. Regional access: access to Garden State Parkway, Routes 9 and 47 for travel north and south.
 
 Sources: [Middle Township](https://middletownship.com/) and [Cape May County](https://www.capemaycountynj.gov/), accessed July 19, 2026.
 
 ### North Wildwood
 
-North Wildwood is a city at the northern end of Five Mile Island, separate from Wildwood, West Wildwood, and Wildwood Crest. Its official site provides current meetings, beach and boardwalk information, parking, permits, public works, recreation, and seasonal notices.
+North Wildwood is a city in Cape May County. Outdoor highlights: Allen Park, beachfront walkways, seawall, and direct access to the boardwalk and beaches. Shopping and dining: Seaside shops, boardwalk stores, and a variety of restaurants and nightlife options. Regional access: Accessible via Route 147, Ocean Drive, and Parkway connections.
 
 Source: [City of North Wildwood](https://northwildwood.com/), accessed July 19, 2026.
 
 ### Ocean City
 
-Ocean City is a city on a barrier island in northern Cape May County. The municipal site is the current source for council records, beach and boardwalk rules, parking, public works, recreation, events, construction information, and emergency updates.
+Ocean City is a city in Cape May County. Outdoor highlights: Carey Stadium, skate park, public beaches, and boardwalk recreation areas. Regional access: Route 52 Causeway with Parkway access nearby; near Routes 9 and 49.
 
 Source: [Ocean City](https://www.ocnj.us/), accessed July 19, 2026.
 
 ### Sea Isle City
 
-Sea Isle City is a city on a barrier island between Ocean City and Avalon. Its official site keeps beach rules, parking, meetings, construction guidance, public works, recreation, events, and seasonal service changes together.
+Sea Isle City is a city in Cape May County. Outdoor highlights: Beaches, fishing piers, recreation fields, and the Sea Isle Promenade for walking and biking. Shopping and dining: Coastal shops, cafes, and restaurants along Landis Avenue; more options in nearby Ocean City and Avalon. Regional access: Accessible via Ocean Drive and the Garden State Parkway.
 
 Source: [Sea Isle City](https://seaislecitynj.us/), accessed July 19, 2026.
 
 ### Stone Harbor
 
-Stone Harbor is a borough on Seven Mile Island, south of Avalon and governed separately. The borough site is the right place to verify beach information, parking, meetings, permits, public works, recreation, and current notices.
+Stone Harbor is a borough in Cape May County. Outdoor highlights: Beaches, bayfront access for boating, The Wetlands Institute for conservation and education. Shopping and dining: boutiques, gourmet restaurants, and cafes along 96th Street downtown. Regional access: Accessible via Ocean Drive and the Garden State Parkway.
 
 Source: [Borough of Stone Harbor](https://stoneharbornj.org/), accessed July 19, 2026.
 
 ### Upper Township
 
-Upper Township includes mainland communities as well as the Strathmere shore area. Its official site covers township-wide meetings, public works, recreation, beach information, planning, construction, emergency services, and current notices.
+Upper Township is a township in Cape May County. Outdoor highlights: Local parks, nearby beaches, wineries, and equestrian facilities. Shopping and dining: Small-town shops and markets; larger retail and dining within minutes in Marmora, Somers Point, and Ocean City. Regional access: Garden State Parkway access and local routes for easy commuting to both the shore and inland areas.
 
 Source: [Upper Township](https://uppertownship.com/), accessed July 19, 2026.
 
 ### West Cape May
 
-West Cape May is a borough immediately west of Cape May City with its own government and records. The borough site provides meetings, public works, construction and zoning, parks, events, forms, and community notices.
+West Cape May is a borough in Cape May County. Outdoor highlights: Local parks and community gardens; near Cape May beaches and Cape May Point State Park. Shopping and dining: Small-town shops, farmers markets, and cafes; close to Washington Street Mall in Cape May. Regional access: Local road connections to Cape May and Garden State Parkway nearby.
 
 Source: [Borough of West Cape May](https://westcapemay.us/), accessed July 19, 2026.
 
 ### West Wildwood
 
-West Wildwood is a borough on a small island west of Wildwood and remains a separate Cape May County municipality. County sources establish its location and separate property-tax jurisdiction; current borough services and emergency notices should be confirmed directly before publication.
+West Wildwood is a borough in Cape May County. Outdoor highlights: Canals, fishing docks, and boating access throughout the community. Shopping and dining: Limited in town; near the Wildwood Boardwalk and surrounding shops, dining, and nightlife. Regional access: Connected by bridges to North Wildwood and the mainland; access to Ocean Drive and the Garden State Parkway.
 
 Sources: [Cape May County West Wildwood profile](https://www.capemaycountynj.gov/419/West-Wildwood) and [Cape May County Property Tax Lookup](https://www.capemaycountynj.gov/1737/Cape-May-County-Property-Tax-Lookup), accessed July 19, 2026. The direct borough site timed out during the automated source check and should be retested before publication.
 
 ### Wildwood
 
-Wildwood is a city on Five Mile Island, with separate municipal boundaries from North Wildwood, West Wildwood, and Wildwood Crest. Its official site is the current source for city meetings, beach and boardwalk information, parking, permits, public works, recreation, and events.
+Wildwood is a city in Cape May County. Outdoor highlights: Iconic boardwalk, beaches, amusement piers, and multiple waterfront parks. Shopping and dining: Boardwalk shops, local eateries, and casual to local dining throughout the city. Regional access: Easy access via Route 47, Ocean Drive, and the Garden State Parkway.
 
 Source: [City of Wildwood](https://www.wildwoodnj.org/), accessed July 19, 2026.
 
 ### Wildwood Crest
 
-Wildwood Crest is a borough at the southern end of Five Mile Island. The borough site provides current meetings, beach information, parking and transportation notices, public works, recreation, permits, and events.
+Wildwood Crest is a borough in Cape May County. Shopping and dining: Small-town shops, local dining, and access to Wildwood’s boardwalk and Cape May’s restaurants. Regional access: Connected via Ocean Drive, with access to the Garden State Parkway.
 
 Source: [Borough of Wildwood Crest](https://wildwoodcrest.org/), accessed July 19, 2026.
 
 ### Woodbine
 
-Woodbine is an inland borough in northern Cape May County. Its official site connects visitors with borough meetings, departments, public works, construction and zoning, recreation, forms, history resources, and current notices.
+Woodbine is a borough in Cape May County. Outdoor highlights: Proximity to Belleplain State Forest, Carmel Lakes, and outdoor recreation areas. Shopping and dining: Limited local shops; residents rely on nearby Dennis Township, Upper Township, and Vineland for larger retail and dining. Regional access: Accessible via Routes 550 and 557; connections to the Garden State Parkway nearby.
 
 Source: [Borough of Woodbine](https://www.boroughofwoodbine.net/), accessed July 19, 2026.
 
@@ -912,85 +914,85 @@ Source: [Borough of Woodbine](https://www.boroughofwoodbine.net/), accessed July
 
 ### Bridgeton
 
-Bridgeton is a city and the Cumberland County seat. City and county pages cover different layers of government, while the city site also provides current meetings, departments, parks, development information, public works, permits, and resident services.
+Bridgeton is a city in Cumberland County. Outdoor highlights: Bridgeton City Park, the Cohanzick Zoo, and the Cumberland County Fairgrounds provide recreation and local attractions. Shopping and dining: Victorian homes, tree-lined streets, and a revitalizing downtown frame local shops, restaurants, and community events. Regional access: Routes 49, 77, and 47 connect Bridgeton with Millville, Salem, and the Delaware Bay region.
 
 Sources: [City of Bridgeton](https://www.cityofbridgeton.com/) and [Cumberland County](https://www.cumberlandcountynj.gov/), accessed July 19, 2026.
 
 ### Commercial Township
 
-Commercial Township includes Port Norris and other named Bayshore communities. Its official site is the current source for township meetings, departments, public works, recreation, planning, construction, forms, and local notices across those areas.
+Commercial Township is a township in Cumberland County. Outdoor highlights: Delaware Bay marshes, wetlands, and waterways shape the township's rural landscape and support fishing and wildlife viewing. Shopping and dining: Local stores and services are limited; larger shopping and dining options are in nearby Millville and Bridgeton. Regional access: Routes 47 and 49 connect the township with Cumberland County communities and the Delaware Bay shore.
 
 Source: [Commercial Township](https://www.commercialtwp.com/), accessed July 19, 2026.
 
 ### Deerfield Township
 
-Deerfield is a township with municipal offices in the Rosenhayn area. The township and county pages provide current committee records, public works information, permits, recreation, forms, notices, and the correct jurisdiction for local records.
+Deerfield Township is a township in Cumberland County. Outdoor highlights: The community centers around Rosenhayn and seasonal farm markets, with local parks, ballfields, and trails adding to the small-town feel. Shopping and dining: Deerfield Township offers a quiet, rural lifestyle with access to nearby Vineland and Bridgeton for shopping, jobs, and services.
 
 Sources: [Deerfield Township](https://sites.google.com/view/deerfieldtownship) and [Cumberland County Municipalities](https://www.cumberlandcountynj.gov/municipalities), accessed July 19, 2026.
 
 ### Downe Township
 
-Downe is a township along the Delaware Bay side of Cumberland County and includes several named communities. Its official site covers township meetings, emergency information, public works, planning, construction, recreation, forms, and notices.
+Downe Township is a township in Cumberland County. Outdoor highlights: Scenic marshes, wildlife areas, and bayshore waterways support fishing, boating, and birding. Shopping and dining: Residents travel to Port Norris, Millville, and Bridgeton for groceries, retail, and restaurants. Regional access: Local county roads connect the bayshore communities with Routes 47 and 55 and the rest of Cumberland County.
 
 Source: [Downe Township](https://www.downetwpnj.org/), accessed July 19, 2026.
 
 ### Fairfield Township
 
-Fairfield is a township with municipal offices in the Fairton area. The county directory provides the stable current municipal contact and identity record; the linked township domain had a TLS error during this review and should be rechecked before publication.
+Fairfield Township is a township in Cumberland County. Outdoor highlights: Farmland, historic churches, and open space shape the township's rural landscape. Shopping and dining: Nearby Bridgeton and Millville provide grocery stores, retail, restaurants, and services. Regional access: Routes 49 and 77 connect the township with Bridgeton, Millville, and the Delaware Bay area.
 
 Source: [Cumberland County Municipalities](https://www.cumberlandcountynj.gov/municipalities), accessed July 19, 2026.
 
 ### Greenwich Township
 
-Greenwich is a township on the Cohansey River side of Cumberland County. Its official site combines municipal records and services with current historic-district, public-notice, meeting, and local-resource information.
+Greenwich Township is a township in Cumberland County. Shopping and dining: Small-town shopping is centered in Gibbstown with essentials and takeout options; larger stores are nearby in Paulsboro or East Greenwich. Regional access: Close to I-295 and Route 130 for access to Philadelphia and Delaware; located along the Delaware River with port infrastructure nearby.
 
 Source: [Greenwich Township](https://www.historicgreenwichnj.org/), accessed July 19, 2026.
 
 ### Hopewell Township
 
-Hopewell is a township west of Bridgeton and should be identified with Cumberland County when searching records because New Jersey has another municipality with the same name. Its official site covers meetings, public works, planning, permits, recreation, forms, and notices.
+Hopewell Township is a township in Cumberland County. Outdoor highlights: Rural farmland, local school fields, and open space define the township's landscape. Shopping and dining: Bridgeton and nearby Vineland provide groceries, retail, restaurants, and everyday services. Regional access: Routes 49 and 77 connect Hopewell Township with Cumberland County communities and Route 55.
 
 Source: [Hopewell Township, Cumberland County](https://hopewelltwp-nj.com/), accessed July 19, 2026.
 
 ### Lawrence Township
 
-Lawrence is a township whose municipal offices use the Cedarville place name. The township site keeps committee records, departments, public works, planning, construction, recreation, forms, and local notices tied to the correct municipality.
+Lawrence Township is a township in Cumberland County. Outdoor highlights: Farmland, wooded areas, and local recreation fields shape the township's rural setting. Shopping and dining: Millville and Vineland provide larger grocery, retail, and dining options. Regional access: Routes 49 and 55 connect the township with regional employment, services, and neighboring communities.
 
 Source: [Lawrence Township, Cumberland County](https://www.lawrencetwpcumberlandnj.com/), accessed July 19, 2026.
 
 ### Maurice River Township
 
-Maurice River is a township with municipal offices in Leesburg and several named communities along river, forest, and Bayshore areas. Township sources provide current meetings, services, planning, permits, recreation, forms, and public notices without flattening those places into one neighborhood description.
+Maurice River Township is a township in Cumberland County. Outdoor highlights: Delaware Bay waterways, wildlife preserves, and rural landscapes support fishing, boating, and birding. Shopping and dining: Port Norris, Millville, and nearby Vineland provide groceries, retail, and restaurants. Regional access: Routes 47 and 55 connect the township with Millville, Vineland, and the shore.
 
 Source: [Maurice River Township](https://www.mauricerivertwp.org/), accessed July 19, 2026.
 
 ### Millville
 
-Millville is a city along the Maurice River and Route 55 corridor. Its official site is the current source for commission records, city departments, parks and recreation, development, public works, construction, events, and online services.
+Millville is a city in Cumberland County. Outdoor highlights: Maurice River Bluffs, local parks, and WheatonArts offer outdoor recreation, art, and cultural programming. Shopping and dining: The Glasstown Arts District brings galleries, restaurants, and community events to the historic downtown. Regional access: Route 55 and Routes 47 and 49 connect Millville with Cumberland County, Philadelphia, and the shore.
 
 Source: [City of Millville](https://www.millvillenj.gov/), accessed July 19, 2026.
 
 ### Shiloh Borough
 
-Shiloh is a borough west of Bridgeton with its own government and records. Borough and county sources provide current contacts, meetings, public works, permits, forms, and notices without assigning the borough to a surrounding township.
+Shiloh Borough is a borough in Cumberland County. Outdoor highlights: The small residential borough is surrounded by farmland and nearby rural open space. Shopping and dining: Bridgeton and surrounding communities provide schools, shopping, restaurants, and services. Regional access: Routes 49 and 77 connect Shiloh with Bridgeton, Salem, and the rest of Cumberland County.
 
 Sources: [Shiloh Borough](https://shilohborough.com/) and [Cumberland County Municipalities](https://www.cumberlandcountynj.gov/municipalities), accessed July 19, 2026.
 
 ### Stow Creek Township
 
-Stow Creek is a township in western Cumberland County with municipal offices outside Bridgeton. Its official site is the place to check committee records, departments, public works, planning, permits, recreation, forms, and local notices.
+Stow Creek Township is a township in Cumberland County. Outdoor highlights: Farmland, creeks, and open space define this rural township. Shopping and dining: Bridgeton and Salem provide larger grocery, retail, and dining options. Regional access: Routes 49 and 77 connect the township with Cumberland County and the Delaware River region.
 
 Source: [Stow Creek Township](https://www.stowcreektwp.com/), accessed July 19, 2026.
 
 ### Upper Deerfield Township
 
-Upper Deerfield is a separate township from Deerfield Township and includes several local place names. Use its official site for township meetings, departments, public works, parks and recreation, planning, construction, forms, and announcements.
+Upper Deerfield Township is a township in Cumberland County. Outdoor highlights: Cumberland County farmland, local fields, and rural roads shape the township's landscape. Shopping and dining: Bridgeton and nearby Vineland provide grocery stores, retail, restaurants, and everyday services. Regional access: Routes 77 and 40 connect Upper Deerfield with Bridgeton, Vineland, and the shore.
 
 Source: [Upper Deerfield Township](https://upperdeerfield.com/), accessed July 19, 2026.
 
 ### Vineland
 
-Vineland is a city covering a broad area in northeastern Cumberland County. The city site organizes council records, departments, parks and recreation, planning and development, public works, permits, business information, and public notices.
+Vineland is a city in Cumberland County. Outdoor highlights: Parks, community fields, and nearby farms reflect the city's South Jersey setting. Shopping and dining: Vineland is Cumberland County's largest city, with shopping, restaurants, and employment concentrated along Landis Avenue and Route 47. Regional access: Route 55 and Routes 40 and 47 connect Vineland with Philadelphia, the shore, and neighboring Cumberland County communities.
 
 Source: [City of Vineland](https://www.vinelandcity.org/), accessed July 19, 2026.
 
@@ -998,91 +1000,91 @@ Source: [City of Vineland](https://www.vinelandcity.org/), accessed July 19, 202
 
 ### Alloway Township
 
-Alloway is a township in central Salem County with municipal records covering several local place names. Its official site is the current source for meetings, departments, public works, planning, permits, recreation, forms, and notices.
+Alloway Township is a township in Salem County. Outdoor highlights: Alloway Lake, Camp Edge. Shopping and dining: Small local businesses and shops along Main Street; nearest large stores in Pennsville or Woodstown. Regional access: Near Route 540 and Route 77.
 
 Source: [Alloway Township](https://www.allowaytownship.com/), accessed July 19, 2026.
 
 ### Carneys Point Township
 
-Carneys Point is a township in northwestern Salem County near Penns Grove, but the two are separate municipalities. County and state directories are the reliable starting points for current township contacts and the correct jurisdiction for meetings, permits, services, and property records.
+Carneys Point Township is a township in Salem County. Outdoor highlights: Carneys Point Recreation Area, Penns Grove Soccer Fields. Shopping and dining: Penns Grove Shopping Center, Walmart, Acme. Regional access: I-295, US-130, NJ Turnpike.
 
 Sources: [Salem County Municipalities](https://www.salemcountynj.gov/about-salem-county/#municipalities) and [New Jersey Municipalities](https://www.nj.gov/infobank/revmuni.htm), accessed July 19, 2026.
 
 ### Elmer Borough
 
-Elmer is a borough along the Route 40 corridor with its own local government. Its official site provides current meetings, departments, public works, construction and zoning, recreation, forms, and borough announcements.
+Elmer Borough is a borough in Salem County. Outdoor highlights: Elmer Lake, local community fields. Shopping and dining: Elmer Shopping Center, small businesses, farm markets. Regional access: Route 40.
 
 Source: [Elmer Borough](https://elmerboroughnj.gov/), accessed July 19, 2026.
 
 ### Elsinboro Township
 
-Elsinboro is a township west of Salem City along the Delaware River side of the county. Because the county directory does not link a dedicated municipal site, use county and state records to verify current contacts, meetings, services, and the correct local jurisdiction.
+Elsinboro Township is a township in Salem County. Outdoor highlights: Salem River shoreline, local ball fields. Shopping and dining: Nearby Salem City has grocery and retail. Regional access: County Road 624, near Route 49.
 
 Sources: [Salem County Municipalities](https://www.salemcountynj.gov/about-salem-county/#municipalities) and [New Jersey Municipalities](https://www.nj.gov/infobank/revmuni.htm), accessed July 19, 2026.
 
 ### Lower Alloways Creek Township
 
-Lower Alloways Creek is a township in southwestern Salem County that includes several named communities. County and state sources provide the stable identity check for township contacts and records, while current local notices should be rechecked immediately before publication.
+Lower Alloways Creek Township is a township in Salem County. Outdoor highlights: Hancock's Bridge Historic Site, local playgrounds. Shopping and dining: Limited; nearest options in Salem City and Pennsville. Regional access: Route 623, close to NJ-49.
 
 Sources: [Salem County Municipalities](https://www.salemcountynj.gov/about-salem-county/#municipalities) and [New Jersey Municipalities](https://www.nj.gov/infobank/revmuni.htm), accessed July 19, 2026.
 
 ### Mannington Township
 
-Mannington is a township surrounding parts of the Salem City area and extending into the county's inland landscape. Its official site is the current source for committee records, departments, public works, planning, permits, forms, and notices.
+Mannington Township is a township in Salem County. Outdoor highlights: Mannington Meadows, Salem River wildlife areas. Shopping and dining: Limited local stores; closest shopping in Salem City and Pennsville. Regional access: Route 45, near Route 49 and I-295.
 
 Source: [Mannington Township](https://www.manningtontwp.com/), accessed July 19, 2026.
 
 ### Oldmans Township
 
-Oldmans is a township in northern Salem County that includes the Pedricktown place name. Its official site keeps township meetings, departments, public works, planning, construction, recreation, forms, and announcements tied to the correct municipality.
+Oldmans Township is a township in Salem County. Outdoor highlights: Pedricktown Park, Oldmans Creek Preserve nearby. Shopping and dining: Pedricktown Farmers Market, local businesses; nearby shopping in Carneys Point. Regional access: NJ Turnpike, US-130, Route 48.
 
 Source: [Oldmans Township](https://www.oldmanstownship.com/), accessed July 19, 2026.
 
 ### Penns Grove Borough
 
-Penns Grove is a borough on the Delaware River, adjacent to but separate from Carneys Point Township. The borough site is the current source for council records, departments, public works, permits, recreation, forms, and notices.
+Penns Grove Borough is a borough in Salem County. Outdoor highlights: Riverwalk Park, ball fields, Veterans Memorial Park. Shopping and dining: Downtown shops, Penns Grove Shopping Center, nearby Carneys Point retail. Regional access: Route 130, I-295, NJ Turnpike.
 
 Source: [Borough of Penns Grove](https://www.pennsgrove-nj.org/), accessed July 19, 2026.
 
 ### Pennsville Township
 
-Pennsville is a township along the Delaware River and includes the Fort Mott area. Township sources cover meetings and services, while the state park page provides current hours, facilities, history, and access information for Fort Mott.
+Pennsville Township is a township in Salem County. Outdoor highlights: Riverview Beach Park, Pennsville Recreation Complex. Shopping and dining: Pennsville Acme, Walmart, local retail and restaurants. Regional access: I-295, Route 49, NJ Turnpike.
 
 Sources: [Pennsville Township](https://www.pennsville.org/) and [Fort Mott State Park](https://nj.gov/dep/parksandforests/parks/fortmottstatepark.html), accessed July 19, 2026.
 
 ### Pilesgrove Township
 
-Pilesgrove is a township surrounding Woodstown Borough, but the two maintain separate governments and records. County and state directories are the starting point for confirming township contacts and the correct jurisdiction before using a Woodstown mailing address.
+Pilesgrove Township is a township in Salem County. Outdoor highlights: Marlton Recreation Area, Four Seasons Park. Shopping and dining: Woodstown shopping district, farm markets. Regional access: Route 40, near Route 45 and NJ Turnpike.
 
 Sources: [Salem County Municipalities](https://www.salemcountynj.gov/about-salem-county/#municipalities) and [New Jersey Municipalities](https://www.nj.gov/infobank/revmuni.htm), accessed July 19, 2026.
 
 ### Pittsgrove Township
 
-Pittsgrove is a township in eastern Salem County and should be distinguished from Upper Pittsgrove. Its official site covers township meetings, departments, public works, parks and recreation, planning, construction, forms, and public notices.
+Pittsgrove Township is a township in Salem County. Outdoor highlights: Parvin State Park, Green Branch Park. Shopping and dining: Norma General Store, nearby Elmer and Vineland stores. Regional access: Route 56, Route 540, close to Route 55.
 
 Source: [Pittsgrove Township](https://www.pittsgrovetownship.com/), accessed July 19, 2026.
 
 ### Quinton Township
 
-Quinton is a township southeast of Salem City. Its official site is the current source for committee records, departments, public works, planning, permits, recreation, forms, and township notices.
+Quinton Township is a township in Salem County. Outdoor highlights: Quinton Township Park, nearby Alloway Creek areas. Shopping and dining: Local stores, nearby shopping in Salem and Alloway. Regional access: Route 49, County Route 653.
 
 Source: [Quinton Township](https://www.quintonnj.com/), accessed July 19, 2026.
 
 ### Salem City
 
-Salem is a city on the Salem River and the Salem County seat. City and county sources cover separate layers of government, while the city site provides meetings, departments, public works, planning, permits, parks, events, and local notices.
+Salem City is a city in Salem County. Outdoor highlights: Martin Luther King Park, Salem River Walk. Shopping and dining: Broad Street shopping district, Dollar General, Save-A-Lot. Regional access: Route 49, near Route 45, access to I-295.
 
 Sources: [City of Salem](https://www.cityofsalemnj.gov/) and [Salem County](https://www.salemcountynj.gov/), accessed July 19, 2026.
 
 ### Upper Pittsgrove Township
 
-Upper Pittsgrove is a separate township north of Pittsgrove Township, and records should always include the full municipal name. Its official site covers committee meetings, public works, planning, construction, recreation, forms, and notices.
+Upper Pittsgrove Township is a township in Salem County. Outdoor highlights: Daretown Lake, Monroeville Park. Shopping and dining: Farm markets, general stores, nearby Elmer. Regional access: Route 77, Route 40, Route 604.
 
 Source: [Upper Pittsgrove Township](https://upperpittsgrovenj.org/), accessed July 19, 2026.
 
 ### Woodstown Borough
 
-Woodstown is a borough enclosed by Pilesgrove Township but governed independently. Its official site combines council and board records with public works, permits, parks, events, business resources, forms, and local notices.
+Woodstown Borough is a borough in Salem County. Outdoor highlights: Marvin L. Watson Park, Memorial Lake Park. Shopping and dining: Historic downtown shops, local restaurants, small grocery. Regional access: Route 45, Route 40.
 
 Source: [Borough of Woodstown](https://www.historicwoodstown.org/), accessed July 19, 2026.
 

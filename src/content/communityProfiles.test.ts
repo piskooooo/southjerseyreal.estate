@@ -11,7 +11,7 @@ describe("community profile restoration", () => {
   const townSections = pages.flatMap((page) => page.sections.filter((section) => section.kind === "town"));
 
   it("restores every county and community profile from the sourced editorial draft", () => {
-    expect(communityProfileUpdated).toBe("2026-07-19");
+    expect(communityProfileUpdated).toBe("2026-08-10");
     expect(communityDetailSnapshotYear).toBe(2025);
     expect(pages).toHaveLength(7);
     expect(townSections).toHaveLength(166);
@@ -32,6 +32,12 @@ describe("community profile restoration", () => {
         && image.licenseUrl?.startsWith("https://");
     })).toBe(true);
     expect(townSections.every((section) => section.blocks[1]?.text.length > 60)).toBe(true);
+    expect(townSections.every((section) => !/\b(?:official site|current source|cross-check|before publication|undated|future site content|website separates|should be used|use the official|unknown|award-winning|unbeatable|excellent access|highly rated|crown jewel|top-tier|storybook|great spot|great pick|strong sense of community|incredibly commuter-friendly|fast access|quick connections|easy drive|easy commute|quick drive|short drive|commuter.?s dream|\d+[- ]minute|minutes? (?:to|from))\b/i.test(section.blocks[1]?.text || ""))).toBe(true);
+    expect(townSections.every((section) => {
+      const summary = section.blocks[1]?.text || "";
+      return /\b(?:Outdoor highlights|Shopping and dining|Regional access|Local services):/.test(summary)
+        || summary.startsWith("Pine Hill is a borough in Camden County.");
+    })).toBe(true);
     expect(townSections.every((section) => section.blocks.length >= 10)).toBe(true);
     expect(townSections.every((section) => (
       section.blocks.some((block) => block.text.startsWith("Population:"))

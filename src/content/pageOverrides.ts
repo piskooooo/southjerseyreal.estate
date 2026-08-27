@@ -14,6 +14,16 @@ const actionBlocks: ContentBlock[] = [
   { tag: "A", text: "Contact", href: "/contact" },
 ];
 
+const homeActionBlocks: ContentBlock[] = [
+  { tag: "H2", text: "Buying or selling in South Jersey?" },
+  {
+    tag: "P",
+    text: "Arthur Pisko Jr., a South Jersey REALTOR® with local roots, helps residential buyers and sellers understand the process, organize property-specific questions, and plan their next steps.",
+  },
+  { tag: "A", text: "Read Buyer and Seller Guides", href: "/insights" },
+  { tag: "A", text: "Contact Arthur", href: "/contact" },
+];
+
 const actionSection = (id: string) => ({
   id,
   kind: "action" as const,
@@ -131,7 +141,7 @@ export const pageOverrides: SitePage[] = [
           { tag: "H1", text: "South Jersey Real Estate" },
           {
             tag: "P",
-            text: "Welcome to South Jersey Real Estate, a hub for real estate and local information throughout South Jersey. Use the county menu to explore each part of the region.",
+            text: "Welcome to South Jersey Real Estate, a local guide to communities, real estate information, and practical buyer and seller resources across the region.",
           },
         ],
         images: [
@@ -162,7 +172,12 @@ export const pageOverrides: SitePage[] = [
           },
         ],
       },
-      actionSection("home-action"),
+      {
+        id: "home-action",
+        kind: "action",
+        blocks: homeActionBlocks.map((block) => ({ ...block })),
+        images: [],
+      },
     ],
   },
   {

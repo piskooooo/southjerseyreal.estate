@@ -91,8 +91,9 @@ const scrollTownCardIntoView = (key: string) => {
 };
 
 function ActionSection({ section, navigate }: { section: PageSection; navigate: (path: string) => void }) {
+  const isHomeGuidance = section.id === "home-action";
   return (
-    <section className="section section-actions section-actions-combined">
+    <section className={`section section-actions section-actions-combined ${isHomeGuidance ? "section-actions-home-guidance" : ""}`.trim()}>
       <div>
         <Blocks
           blocks={section.blocks}
@@ -309,11 +310,12 @@ function TownGrid({
 }
 
 function CountySupportSections({ sections, navigate }: { sections: PageSection[]; navigate: (path: string) => void }) {
+  const isGuidanceSection = sections.length === 1 && sections[0].id === "county-buyer-seller-guidance";
   return (
-    <section className="section county-support-section">
+    <section className={`section county-support-section ${isGuidanceSection ? "county-support-section-guidance" : ""}`.trim()}>
       <div className="county-support-grid">
         {sections.map((section, index) => (
-          <div key={section.id || index} className={`county-support-card ${index === 0 ? "county-support-primary" : ""}`}>
+          <div key={section.id || index} className={`county-support-card ${index === 0 ? "county-support-primary" : ""} ${section.id === "county-buyer-seller-guidance" ? "county-support-guidance" : ""}`.trim()}>
             <Blocks blocks={section.blocks} navigate={navigate} headingLevel="compact" />
           </div>
         ))}
@@ -770,27 +772,28 @@ export function HomePage({ page, navigate, theme = "dark" }: PageProps & { theme
   const hero = page.sections.find((section) => section.kind === "hero") || page.sections[0];
   const about = page.sections.find((section) => section.kind === "profile") || page.sections[1];
   const actions = page.sections.find(isActionSection);
+  const regionalBlocks = about?.blocks.filter((block) => block.tag !== "H2") || [];
+  const welcomeBlocks = [...(hero?.blocks || []), ...regionalBlocks];
+  const guidanceBlocks = actions?.blocks || about?.blocks || [];
   const heroImage = theme === "light"
     ? hero?.images[1] || LIGHT_MODE_HOME_HERO_IMAGE
     : hero?.images[0];
 
   return (
     <>
-      <section className="section hero-section">
+      <section className="section hero-section home-welcome-hero">
         <div className="hero-copy">
-          <Blocks blocks={hero?.blocks || []} navigate={navigate} promoteFirstHeading />
+          <Blocks blocks={welcomeBlocks} navigate={navigate} promoteFirstHeading />
         </div>
         {heroImage && <img className="hero-image" src={heroImage.src} alt={heroImage.alt} />}
       </section>
 
       {about && (
-        <section className="section image-copy-section about-teaser">
+        <section className="section image-copy-section about-teaser home-guidance-teaser">
           {about.images[0] && <img src={about.images[0].src} alt={about.images[0].alt} />}
-          <Blocks blocks={about.blocks} navigate={navigate} />
+          <Blocks blocks={guidanceBlocks} navigate={navigate} headingLevel="compact" />
         </section>
       )}
-
-      {actions && <ActionSection section={actions} navigate={navigate} />}
     </>
   );
 }

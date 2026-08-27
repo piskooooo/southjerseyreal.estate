@@ -223,7 +223,7 @@ export const buildStructuredData = (
   const webpageId = `${seo.canonicalUrl}#webpage`;
   const breadcrumbId = `${seo.canonicalUrl}#breadcrumb`;
   const articleId = `${seo.canonicalUrl}#article`;
-  const hasProfessionalIdentity = ["/about", "/contact"].includes(seo.canonicalPath);
+  const hasProfessionalIdentity = ["/", "/about", "/contact"].includes(seo.canonicalPath);
   const primaryImage = {
     "@type": "ImageObject",
     url: seo.imageUrl,

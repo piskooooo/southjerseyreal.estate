@@ -162,7 +162,12 @@ const addUniqueText = (values, candidate) => {
 
 const prerenderParagraphs = (document, description) => {
   const values = [];
-  for (const section of document.page?.sections || []) {
+  const sections = document.page?.sections || [];
+  const prioritizedSections = [
+    ...sections.filter((section) => section.id === "county-buyer-seller-guidance"),
+    ...sections.filter((section) => section.id !== "county-buyer-seller-guidance"),
+  ];
+  for (const section of prioritizedSections) {
     for (const block of section.blocks || []) {
       if (String(block.tag).toUpperCase() === "P") addUniqueText(values, block.text);
     }
@@ -207,6 +212,14 @@ const prerenderLinks = (currentPath, document) => {
   addInternalLink(links, knownPaths, header.countiesLabel, header.countiesPath, currentPath);
   addInternalLink(links, knownPaths, header.connectLabel, header.connectPath, currentPath);
   addInternalLink(links, knownPaths, header.contactLabel, "/contact", currentPath);
+
+  for (const section of document.page?.sections || []) {
+    for (const block of section.blocks || []) {
+      if (String(block.tag).toUpperCase() === "A") {
+        addInternalLink(links, knownPaths, block.text, block.href, currentPath);
+      }
+    }
+  }
 
   const contextualLinks = currentPath === "/counties" || currentPath.endsWith("-county")
     ? header.countyLinks

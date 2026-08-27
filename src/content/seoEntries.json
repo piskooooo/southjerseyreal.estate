@@ -1,8 +1,8 @@
 [
   {
     "path": "/",
-    "title": "South Jersey Real Estate | Counties, Towns & Local Information",
-    "description": "Explore South Jersey real estate and local information across Atlantic, Burlington, Camden, Cape May, Cumberland, Gloucester, and Salem Counties.",
+    "title": "South Jersey Real Estate & REALTOR® Guidance | Arthur Pisko Jr.",
+    "description": "Explore South Jersey counties and get practical buyer and seller guidance from Arthur Pisko Jr., a South Jersey REALTOR® with local roots.",
     "priority": "1.0"
   },
   {
@@ -22,35 +22,35 @@
   {
     "path": "/atlantic-county",
     "title": "Atlantic County NJ Real Estate & Local Information",
-    "description": "Explore shore communities, inland municipalities, and places across the mainland in Atlantic County, New Jersey.",
+    "description": "Explore Atlantic County NJ communities, housing types, transportation, and local resources, with buyer and seller guidance from REALTOR® Arthur Pisko Jr.",
     "image": "/assets/live/atlantic-county-map-png.webp",
     "priority": "0.9"
   },
   {
     "path": "/burlington-county",
     "title": "Burlington County NJ Real Estate & Local Information",
-    "description": "Explore Delaware River communities, suburban towns, and Pinelands municipalities across Burlington County, New Jersey.",
+    "description": "Explore Burlington County NJ communities, housing types, transportation, and local resources, with buyer and seller guidance from REALTOR® Arthur Pisko Jr.",
     "image": "/assets/live/burlington-county-map-png.webp",
     "priority": "0.9"
   },
   {
     "path": "/camden-county",
     "title": "Camden County NJ Real Estate & Local Information",
-    "description": "Explore Delaware River communities, established suburbs, and eastern townships across Camden County, New Jersey.",
+    "description": "Explore Camden County NJ communities, housing types, transportation, and local resources, with buyer and seller guidance from REALTOR® Arthur Pisko Jr.",
     "image": "/assets/live/camden-county-map-png.webp",
     "priority": "0.9"
   },
   {
     "path": "/cape-may-county",
     "title": "Cape May County NJ Real Estate & Local Information",
-    "description": "Explore barrier-island shore towns and mainland communities across Cape May County, New Jersey.",
+    "description": "Explore Cape May County NJ communities, housing types, transportation, and local resources, with buyer and seller guidance from REALTOR® Arthur Pisko Jr.",
     "image": "/assets/live/cape-may-county-map-png.webp",
     "priority": "0.85"
   },
   {
     "path": "/cumberland-county",
     "title": "Cumberland County NJ Real Estate & Local Information",
-    "description": "Explore cities and smaller communities across Cumberland County's agricultural, woodland, and Delaware Bay landscapes.",
+    "description": "Explore Cumberland County NJ communities, housing types, transportation, and local resources, with buyer and seller guidance from REALTOR® Arthur Pisko Jr.",
     "image": "/assets/live/cumberland-county-map-png.webp",
     "priority": "0.9"
   },

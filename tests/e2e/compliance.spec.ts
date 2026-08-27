@@ -94,7 +94,7 @@ test.describe("compliance route crawl", () => {
       const brokerage = graph.find((item) => item["@id"] === `${siteUrl}/#brokerage`);
       const agent = graph.find((item) => item["@id"] === `${siteUrl}/#agent`);
       expect(website?.name).toBe("South Jersey Real Estate");
-      if (["/about", "/contact"].includes(entry.path)) {
+      if (["/", "/about", "/contact"].includes(entry.path)) {
         expect(brokerage?.name).toBe(compliance.brokerLegalName);
         expect(brokerage?.description).toBe(compliance.brokerDescriptor);
         expect(brokerage?.telephone).toBe(compliance.licensedOfficePhoneHref.replace("tel:", ""));
@@ -115,6 +115,96 @@ test.describe("compliance route crawl", () => {
       const overflow = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
       expect(overflow).toBeLessThanOrEqual(1);
     });
+  }
+});
+
+test("approved SEO guidance is visible and crawlable on the homepage and selected county pages", async ({ page }) => {
+  await openHydratedRoute(page, "/");
+  await expect(page.getByText("Arthur Pisko Jr., a South Jersey REALTOR® with local roots", { exact: false }).first()).toBeVisible();
+  await expect(page.getByRole("link", { name: "Read Buyer and Seller Guides" })).toHaveAttribute("href", "/insights");
+  await expect(page.getByRole("link", { name: "Contact Arthur" })).toHaveAttribute("href", "/contact");
+
+  for (const path of [
+    "/atlantic-county",
+    "/burlington-county",
+    "/camden-county",
+    "/cape-may-county",
+    "/cumberland-county",
+  ]) {
+    await openHydratedRoute(page, path);
+    await expect(page.getByText("Use these community profiles as a starting point", { exact: false })).toBeVisible();
+    await expect(page.getByRole("link", { name: "Read Buyer and Seller Guides" })).toHaveAttribute("href", "/insights");
+
+    const prerenderedHtml = prerenderedHtmlForPath(path);
+    expect(prerenderedHtml).toContain("Use these community profiles as a starting point");
+    expect(prerenderedHtml).toContain('<a href="/insights">Read Buyer and Seller Guides</a>');
+    expect(prerenderedHtml).toMatch(/<a href="\/contact"[^>]*>[^<]*Contact[^<]*<\/a>/);
+  }
+});
+
+test("homepage merges its regional introduction and buyer-seller actions into two editorial rows", async ({ page }) => {
+  await openHydratedRoute(page, "/");
+
+  const welcomeHero = page.locator(".home-welcome-hero");
+  await expect(welcomeHero).toBeVisible();
+  await expect(welcomeHero.getByText("Welcome to South Jersey Real Estate", { exact: false })).toBeVisible();
+  await expect(welcomeHero.getByText("From Delaware River towns and established suburbs", { exact: false })).toBeVisible();
+  await expect(welcomeHero.getByRole("link", { name: "Explore Counties" })).toHaveAttribute("href", "/counties");
+
+  const guidanceRow = page.locator(".home-guidance-teaser");
+  await expect(guidanceRow).toBeVisible();
+  await expect(guidanceRow.locator("img")).toHaveAttribute("alt", /Brick storefronts/);
+  await expect(guidanceRow.getByRole("heading", { name: "Buying or selling in South Jersey?" })).toBeVisible();
+  await expect(guidanceRow.getByRole("link", { name: "Read Buyer and Seller Guides" })).toHaveAttribute("href", "/insights");
+  await expect(guidanceRow.getByRole("link", { name: "Contact Arthur" })).toHaveAttribute("href", "/contact");
+
+  await expect(page.locator(".section-actions-home-guidance")).toHaveCount(0);
+});
+
+test("guidance CTAs use a compact desktop composition", async ({ page }) => {
+  await page.setViewportSize({ width: 1920, height: 900 });
+
+  await openHydratedRoute(page, "/");
+  const homeGuidance = page.locator(".home-guidance-teaser");
+  await expect(homeGuidance).toBeVisible();
+  expect((await homeGuidance.evaluate((element) => element.getBoundingClientRect().height))).toBeLessThanOrEqual(520);
+
+  await openHydratedRoute(page, "/cape-may-county");
+  const countyGuidance = page.locator(".county-support-section-guidance");
+  await expect(countyGuidance).toBeVisible();
+  expect((await countyGuidance.evaluate((element) => element.getBoundingClientRect().height))).toBeLessThanOrEqual(320);
+
+  const countyGuidanceButtons = countyGuidance.locator(".button");
+  await expect(countyGuidanceButtons).toHaveCount(2);
+  for (const button of await countyGuidanceButtons.all()) {
+    const styles = await button.evaluate((element) => {
+      const computed = window.getComputedStyle(element);
+      return {
+        backgroundColor: computed.backgroundColor,
+        borderBottomWidth: computed.borderBottomWidth,
+        minHeight: Number.parseFloat(computed.minHeight),
+      };
+    });
+    expect(styles.backgroundColor).not.toBe("rgba(0, 0, 0, 0)");
+    expect(styles.borderBottomWidth).toBe("0px");
+    expect(styles.minHeight).toBeGreaterThanOrEqual(60);
+  }
+
+  await page.getByRole("button", { name: "Switch to dark mode" }).click();
+  await expect(page.locator("html")).toHaveAttribute("data-theme", "dark");
+
+  for (const button of await countyGuidanceButtons.all()) {
+    const styles = await button.evaluate((element) => {
+      const computed = window.getComputedStyle(element);
+      return {
+        backgroundColor: computed.backgroundColor,
+        borderBottomWidth: computed.borderBottomWidth,
+        minHeight: Number.parseFloat(computed.minHeight),
+      };
+    });
+    expect(styles.backgroundColor).not.toBe("rgba(0, 0, 0, 0)");
+    expect(styles.borderBottomWidth).toBe("0px");
+    expect(styles.minHeight).toBeGreaterThanOrEqual(60);
   }
 });
 
@@ -198,6 +288,30 @@ test("sitewide footer disclosure remains prominent and readable at 320 pixels", 
   await expect(page).toHaveURL(/\/disclaimer$/);
   await expect(page.getByRole("heading", { level: 2, name: "Fair housing" })).toBeVisible();
   await expect(page.locator("main")).toContainText("source of lawful income used for rental or mortgage payments");
+});
+
+test("footer brokerage disclosure has no unexplained leading indent", async ({ page }) => {
+  for (const viewport of [
+    { width: 1440, height: 1000 },
+    { width: 320, height: 900 },
+  ]) {
+    await page.setViewportSize(viewport);
+    await openHydratedRoute(page, "/");
+
+    const alignment = await page.locator(".brokerage-disclosure-footer").evaluate((disclosure) => {
+      const legalName = disclosure.querySelector(".brokerage-legal-name");
+      const agentLine = disclosure.querySelector(".agent-license-disclosure");
+      if (!legalName || !agentLine) throw new Error("Footer brokerage disclosure is incomplete.");
+      const disclosureLeft = disclosure.getBoundingClientRect().left;
+      return {
+        legalNameOffset: legalName.getBoundingClientRect().left - disclosureLeft,
+        agentLineOffset: agentLine.getBoundingClientRect().left - disclosureLeft,
+      };
+    });
+
+    expect(alignment.legalNameOffset).toBeLessThanOrEqual(1);
+    expect(alignment.agentLineOffset).toBeLessThanOrEqual(1);
+  }
 });
 
 test("the About portrait does not show stale fallback pixels while published content loads", async ({ page }) => {

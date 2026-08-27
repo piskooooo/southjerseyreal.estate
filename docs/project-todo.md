@@ -37,6 +37,19 @@ possibilities are intentionally not being carried forward.
 
 ## Completed Selected Maintenance
 
+- [x] August 27, 2026 — Implemented and locally verified a focused SEO
+  relevance and click-through pass for the homepage plus the Atlantic,
+  Burlington, Camden, Cape May, and Cumberland County pages. The candidate
+  introduces Arthur as a South Jersey REALTOR®, adds concise buyer/seller
+  guidance and honest contact paths, improves the homepage title and the six
+  priority descriptions, adds homepage professional-identity schema, merges
+  the homepage's regional introduction into its lead composition, pairs the
+  existing city image with the buyer/seller actions, exposes contextual links
+  in prerendered HTML, and upgrades only exact legacy published values while
+  preserving owner-customized metadata. Verification passed 103 unit tests,
+  the production build, and 70 rendered compliance checks across all 30 public
+  routes. This completion record covers source-level work and verification; no
+  Search Console action was taken.
 - [x] August 10, 2026 — Expanded the editable Insights library from three to
   eight evergreen New Jersey and South Jersey real-estate guides. The library
   retains original publication dates for the earlier guides, records their

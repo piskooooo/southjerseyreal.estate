@@ -9,6 +9,14 @@ import {
 } from "./siteEditor";
 
 describe("website editor content normalization", () => {
+  const selectedCountyPaths = [
+    "/atlantic-county",
+    "/burlington-county",
+    "/camden-county",
+    "/cape-may-county",
+    "/cumberland-county",
+  ];
+
   it("is idempotent for every compiled content document", () => {
     for (const [pageKey, seed] of managedContentSeeds) {
       expect(normalizeManagedContent(pageKey, structuredClone(seed))).toEqual(seed);
@@ -57,6 +65,96 @@ describe("website editor content normalization", () => {
       const document = managedContentSeeds.get(pageKey) as ManagedPageDocument;
       expect(document.page.sections.every((section) => section.kind === "action")).toBe(true);
     }
+  });
+
+  it("positions the homepage around Arthur's South Jersey buyer and seller guidance", () => {
+    const home = managedContentSeeds.get("/") as ManagedPageDocument;
+    const heroText = home.page.sections[0].blocks.map((block) => block.text);
+    const actionBlocks = home.page.sections.find((section) => section.kind === "action")?.blocks || [];
+
+    expect(home.seo).toMatchObject({
+      title: "South Jersey Real Estate & REALTOR® Guidance | Arthur Pisko Jr.",
+      description: "Explore South Jersey counties and get practical buyer and seller guidance from Arthur Pisko Jr., a South Jersey REALTOR® with local roots.",
+    });
+    expect(heroText).toContain(
+      "Welcome to South Jersey Real Estate, a local guide to communities, real estate information, and practical buyer and seller resources across the region.",
+    );
+    expect(actionBlocks.map((block) => block.text)).toEqual([
+      "Buying or selling in South Jersey?",
+      "Arthur Pisko Jr., a South Jersey REALTOR® with local roots, helps residential buyers and sellers understand the process, organize property-specific questions, and plan their next steps.",
+      "Read Buyer and Seller Guides",
+      "Contact Arthur",
+    ]);
+    expect(actionBlocks.filter((block) => block.tag === "A").map((block) => block.href)).toEqual([
+      "/insights",
+      "/contact",
+    ]);
+  });
+
+  it("adds one concise guidance section only to the five owner-selected county pages", () => {
+    for (const pageKey of selectedCountyPaths) {
+      const document = managedContentSeeds.get(pageKey) as ManagedPageDocument;
+      const countyName = document.page.title.split(",")[0];
+      const guidance = document.page.sections.find((section) => section.id === "county-buyer-seller-guidance");
+
+      expect(guidance?.kind).toBe("support");
+      expect(guidance?.blocks.map((block) => block.text)).toEqual([
+        `Buying or selling in ${countyName}?`,
+        "Use these community profiles as a starting point, then narrow the research to the property, municipality, and transaction questions that matter to you. Arthur Pisko Jr., a South Jersey REALTOR®, helps New Jersey buyers and sellers plan their next steps.",
+        "Read Buyer and Seller Guides",
+        "Contact Arthur",
+      ]);
+      expect(guidance?.blocks.filter((block) => block.tag === "A").map((block) => block.href)).toEqual([
+        "/insights",
+        "/contact",
+      ]);
+      expect(document.page.sections.indexOf(guidance!)).toBe(1);
+    }
+
+    for (const pageKey of ["/gloucester-county", "/salem-county"]) {
+      const document = managedContentSeeds.get(pageKey) as ManagedPageDocument;
+      expect(document.page.sections.some((section) => section.id === "county-buyer-seller-guidance")).toBe(false);
+    }
+  });
+
+  it("upgrades exact legacy SEO copy and missing guidance without overwriting owner customizations", () => {
+    const legacyHome = structuredClone(managedContentSeeds.get("/")) as ManagedPageDocument;
+    legacyHome.seo.title = "South Jersey Real Estate | Counties, Towns & Local Information";
+    legacyHome.seo.description = "Explore South Jersey real estate and local information across Atlantic, Burlington, Camden, Cape May, Cumberland, Gloucester, and Salem Counties.";
+    legacyHome.page.sections[0].blocks[1].text = "Welcome to South Jersey Real Estate, a hub for real estate and local information throughout South Jersey. Use the county menu to explore each part of the region.";
+    legacyHome.page.sections.find((section) => section.kind === "action")!.blocks = [
+      { tag: "H2", text: "Have a real estate question?" },
+      { tag: "P", text: "Get in touch about a property, a move, or the market." },
+      { tag: "A", text: "Contact", href: "/contact" },
+    ];
+
+    const normalizedHome = normalizeManagedContent("/", legacyHome) as ManagedPageDocument;
+    expect(normalizedHome.seo.title).toBe("South Jersey Real Estate & REALTOR® Guidance | Arthur Pisko Jr.");
+    expect(normalizedHome.page.sections[0].blocks[1].text).toContain("Welcome to South Jersey Real Estate");
+    expect(normalizedHome.page.sections.find((section) => section.kind === "action")?.blocks).toHaveLength(4);
+
+    const customHome = structuredClone(legacyHome);
+    customHome.seo.title = "Owner-customized homepage title";
+    customHome.seo.description = "Owner-customized homepage description.";
+    customHome.page.sections[0].blocks[1].text = "Owner-customized homepage introduction.";
+    const normalizedCustomHome = normalizeManagedContent("/", customHome) as ManagedPageDocument;
+    expect(normalizedCustomHome.seo.title).toBe("Owner-customized homepage title");
+    expect(normalizedCustomHome.seo.description).toBe("Owner-customized homepage description.");
+    expect(normalizedCustomHome.page.sections[0].blocks[1].text).toBe("Owner-customized homepage introduction.");
+
+    const legacyCounty = structuredClone(managedContentSeeds.get("/atlantic-county")) as ManagedPageDocument;
+    legacyCounty.seo.description = "Explore shore communities, inland municipalities, and places across the mainland in Atlantic County, New Jersey.";
+    legacyCounty.page.sections = legacyCounty.page.sections.filter(
+      (section) => section.id !== "county-buyer-seller-guidance",
+    );
+    const normalizedCounty = normalizeManagedContent("/atlantic-county", legacyCounty) as ManagedPageDocument;
+    expect(normalizedCounty.seo.description).toContain("guidance from REALTOR® Arthur Pisko Jr.");
+    expect(normalizedCounty.page.sections[1].id).toBe("county-buyer-seller-guidance");
+
+    const customCounty = structuredClone(legacyCounty);
+    customCounty.seo.description = "Owner-customized Atlantic County description.";
+    const normalizedCustom = normalizeManagedContent("/atlantic-county", customCounty) as ManagedPageDocument;
+    expect(normalizedCustom.seo.description).toBe("Owner-customized Atlantic County description.");
   });
 
   it("keeps both navigation hubs editable with their complete destination sets", () => {
@@ -165,7 +263,11 @@ describe("website editor content normalization", () => {
 
   it("migrates legacy county photos to curated credited images without replacing editor uploads", () => {
     const legacy = structuredClone(managedContentSeeds.get("/atlantic-county")) as ManagedPageDocument;
-    const legacyImage = legacy.page.sections[1].images[0];
+    const abseconSection = legacy.page.sections.find((section) => (
+      section.images[0]?.src === "/assets/community/atlantic-absecon.webp"
+    ));
+    expect(abseconSection).toBeDefined();
+    const legacyImage = abseconSection!.images[0];
     legacyImage.src = "/assets/live/absecon-webp.webp";
     legacyImage.alt = "Legacy image.";
     legacyImage.thumbnail = legacyImage.src;
@@ -176,14 +278,16 @@ describe("website editor content normalization", () => {
     delete legacyImage.licenseUrl;
 
     const migrated = normalizeManagedContent("/atlantic-county", legacy) as ManagedPageDocument;
-    expect(migrated.page.sections[1].images[0]).toMatchObject({
+    const migratedAbsecon = migrated.page.sections.find((section) => section.id === abseconSection!.id);
+    expect(migratedAbsecon?.images[0]).toMatchObject({
       src: "/assets/community/atlantic-absecon.webp",
       credit: "LaetusStudiis",
       license: "CC BY-SA 4.0",
     });
 
     const uploaded = structuredClone(legacy);
-    uploaded.page.sections[1].images[0] = {
+    const uploadedAbsecon = uploaded.page.sections.find((section) => section.id === abseconSection!.id);
+    uploadedAbsecon!.images[0] = {
       src: "https://example.supabase.co/storage/v1/object/public/site-images/absecon.webp",
       alt: "Owner-uploaded Absecon photograph.",
       storagePath: "community/absecon.webp",
@@ -191,8 +295,9 @@ describe("website editor content normalization", () => {
       thumbnailPath: "community/absecon-thumb.webp",
     };
     const preserved = normalizeManagedContent("/atlantic-county", uploaded) as ManagedPageDocument;
-    expect(preserved.page.sections[1].images[0].storagePath).toBe("community/absecon.webp");
-    expect(preserved.page.sections[1].images[0].src).toContain("example.supabase.co");
+    const preservedAbsecon = preserved.page.sections.find((section) => section.id === abseconSection!.id);
+    expect(preservedAbsecon?.images[0].storagePath).toBe("community/absecon.webp");
+    expect(preservedAbsecon?.images[0].src).toContain("example.supabase.co");
   });
 
   it("rejects unsafe links and missing image descriptions before publish", () => {

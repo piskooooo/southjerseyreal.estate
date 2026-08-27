@@ -167,6 +167,46 @@ const defaultActionBlocks: ContentBlock[] = [
   { tag: "A", text: "Contact", href: "/contact" },
 ];
 
+const selectedSeoCountyPaths = new Set([
+  "/atlantic-county",
+  "/burlington-county",
+  "/camden-county",
+  "/cape-may-county",
+  "/cumberland-county",
+]);
+
+const legacySeoDescriptions = new Map<string, string>([
+  ["/atlantic-county", "Explore shore communities, inland municipalities, and places across the mainland in Atlantic County, New Jersey."],
+  ["/burlington-county", "Explore Delaware River communities, suburban towns, and Pinelands municipalities across Burlington County, New Jersey."],
+  ["/camden-county", "Explore Delaware River communities, established suburbs, and eastern townships across Camden County, New Jersey."],
+  ["/cape-may-county", "Explore barrier-island shore towns and mainland communities across Cape May County, New Jersey."],
+  ["/cumberland-county", "Explore cities and smaller communities across Cumberland County's agricultural, woodland, and Delaware Bay landscapes."],
+]);
+
+const countyGuidanceSection = (page: SitePage): PageSection => ({
+  id: "county-buyer-seller-guidance",
+  kind: "support",
+  blocks: [
+    { tag: "H2", text: `Buying or selling in ${page.title.split(",")[0]}?` },
+    {
+      tag: "P",
+      text: "Use these community profiles as a starting point, then narrow the research to the property, municipality, and transaction questions that matter to you. Arthur Pisko Jr., a South Jersey REALTOR®, helps New Jersey buyers and sellers plan their next steps.",
+    },
+    { tag: "A", text: "Read Buyer and Seller Guides", href: "/insights" },
+    { tag: "A", text: "Contact Arthur", href: "/contact" },
+  ],
+  images: [],
+});
+
+const withSelectedCountyGuidance = (page: SitePage): SitePage => {
+  if (!selectedSeoCountyPaths.has(page.path)) return page;
+  if (page.sections.some((section) => section.id === "county-buyer-seller-guidance")) return page;
+  return {
+    ...page,
+    sections: [page.sections[0], countyGuidanceSection(page), ...page.sections.slice(1)],
+  };
+};
+
 const aboutProfileCta: ContentBlock = {
   tag: "A",
   text: "Contact",
@@ -201,7 +241,7 @@ const withImageMetadata = (page: SitePage): SitePage => ({
       else if (page.path.endsWith("-county") && section.images.length === 0) kind = "support";
     }
 
-    const sourceBlocks = kind === "action"
+    const sourceBlocks = kind === "action" && section.id !== "home-action"
       ? defaultActionBlocks
       : section.blocks;
     const blocks = sourceBlocks.map((block) => ({ ...block }));
@@ -229,7 +269,9 @@ const withImageMetadata = (page: SitePage): SitePage => ({
 });
 
 const canonicalSourcePages = new Map(
-  [...applyCommunityProfiles(generatedPages), ...pageOverrides].map((page) => [page.path, page]),
+  [...applyCommunityProfiles(generatedPages), ...pageOverrides]
+    .map(withSelectedCountyGuidance)
+    .map((page) => [page.path, page]),
 );
 
 const placeholderPage = (path: string, title: string): SitePage => ({
@@ -401,6 +443,12 @@ export function normalizeManagedContent(pageKey: string, value: unknown): Manage
   if (pageKey.endsWith("-county")) {
     const document = normalized as ManagedPageDocument;
     const seedDocument = seed as ManagedPageDocument;
+    const guidance = seedDocument.page.sections.find(
+      (section) => section.id === "county-buyer-seller-guidance",
+    );
+    if (guidance && !document.page.sections.some((section) => section.id === guidance.id)) {
+      document.page.sections.splice(1, 0, structuredClone(guidance));
+    }
     const seedSections = new Map(seedDocument.page.sections.map((section) => [section.id, section]));
     for (const section of document.page.sections) {
       const seedImage = seedSections.get(section.id)?.images[0];
@@ -424,6 +472,42 @@ export function normalizeManagedContent(pageKey: string, value: unknown): Manage
           image.alt = "Portrait of Arthur Pisko Jr. wearing glasses and a black suit jacket.";
         }
       }
+    }
+  }
+  if (pageKey === "/") {
+    const document = normalized as ManagedPageDocument;
+    const seedDocument = seed as ManagedPageDocument;
+    if (document.seo.title === "South Jersey Real Estate | Counties, Towns & Local Information") {
+      document.seo.title = seedDocument.seo.title;
+    }
+    if (document.seo.description === "Explore South Jersey real estate and local information across Atlantic, Burlington, Camden, Cape May, Cumberland, Gloucester, and Salem Counties.") {
+      document.seo.description = seedDocument.seo.description;
+    }
+
+    const hero = document.page.sections.find((section) => section.id === "home-hero");
+    const seedHero = seedDocument.page.sections.find((section) => section.id === "home-hero");
+    const legacyHeroTexts = new Set([
+      "Welcome to South Jersey Real Estate, a hub for real estate and local information throughout South Jersey. Use the county menu to explore each part of the region.",
+      "Explore county-by-county local information and practical buyer and seller guidance from Arthur Pisko Jr., a South Jersey REALTOR® with local roots.",
+    ]);
+    const legacyHeroParagraph = hero?.blocks.find((block) => block.tag === "P" && legacyHeroTexts.has(block.text));
+    const seedHeroParagraph = seedHero?.blocks.find((block) => block.tag === "P");
+    if (legacyHeroParagraph && seedHeroParagraph) {
+      legacyHeroParagraph.text = seedHeroParagraph.text;
+    }
+
+    const action = document.page.sections.find((section) => section.id === "home-action");
+    const seedAction = seedDocument.page.sections.find((section) => section.id === "home-action");
+    if (action && seedAction && JSON.stringify(action.blocks) === JSON.stringify(defaultActionBlocks)) {
+      action.blocks = structuredClone(seedAction.blocks);
+    }
+  }
+  const legacySeoDescription = legacySeoDescriptions.get(pageKey);
+  if (legacySeoDescription) {
+    const document = normalized as ManagedPageDocument;
+    const seedDocument = seed as ManagedPageDocument;
+    if (document.seo.description === legacySeoDescription) {
+      document.seo.description = seedDocument.seo.description;
     }
   }
   if (pageKey === "/insights") {

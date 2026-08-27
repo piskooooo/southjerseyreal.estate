@@ -47,7 +47,11 @@ describe("SEO metadata", () => {
     });
   });
 
-  it("limits professional identity markup to the About and Contact pages", () => {
+  it("uses professional identity markup on the homepage, About, and Contact only", () => {
+    const homeGraph = buildStructuredData(
+      "/",
+      page("/", "South Jersey Real Estate"),
+    )["@graph"];
     const countyGraph = buildStructuredData(
       "/atlantic-county",
       page("/atlantic-county", "Atlantic County, New Jersey Community Guide"),
@@ -59,6 +63,8 @@ describe("SEO metadata", () => {
 
     expect(countyGraph.some((item) => item["@id"] === `${siteUrl}/#agent`)).toBe(false);
     expect(countyGraph.some((item) => item["@id"] === `${siteUrl}/#brokerage`)).toBe(false);
+    expect(homeGraph.some((item) => item["@id"] === `${siteUrl}/#agent`)).toBe(true);
+    expect(homeGraph.some((item) => item["@id"] === `${siteUrl}/#brokerage`)).toBe(true);
     expect(aboutGraph.some((item) => item["@id"] === `${siteUrl}/#agent`)).toBe(true);
     expect(aboutGraph.some((item) => item["@id"] === `${siteUrl}/#brokerage`)).toBe(true);
   });

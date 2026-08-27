@@ -2116,6 +2116,8 @@ p a:focus-visible {
   display: flex;
   flex-wrap: wrap;
   align-items: baseline;
+  justify-content: flex-start;
+  justify-items: start;
   gap: 0.08rem 0.55rem;
   color: var(--footer-muted);
   font-size: 0.75rem;
@@ -3189,6 +3191,163 @@ p {
   box-shadow: none;
 }
 
+.county-support-section-guidance {
+  padding-top: clamp(1.25rem, 2.5vw, 2rem);
+  padding-bottom: clamp(1.25rem, 2.5vw, 2rem);
+}
+
+.home-welcome-hero {
+  grid-template-columns: minmax(0, 0.95fr) minmax(28rem, 1.05fr);
+  align-items: stretch;
+  gap: clamp(2rem, 4vw, 4.5rem);
+  padding-top: clamp(1.5rem, 3vw, 2.5rem);
+  padding-bottom: clamp(2.5rem, 5vw, 4.5rem);
+}
+
+.home-welcome-hero .hero-copy {
+  display: flex;
+  align-items: center;
+  padding-top: 0;
+  padding-bottom: clamp(1rem, 2vw, 2rem);
+}
+
+.home-welcome-hero .hero-copy > div {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.home-welcome-hero .hero-copy h1 {
+  width: min(83vw, 100rem);
+  margin-bottom: clamp(2rem, 4vw, 3.5rem);
+}
+
+.home-welcome-hero .hero-copy p {
+  max-width: 44rem;
+  margin-bottom: 1rem;
+  text-align: left;
+}
+
+.home-welcome-hero .hero-copy p:first-of-type {
+  margin-bottom: 1.4rem;
+  color: var(--text);
+  font-size: clamp(1.15rem, 1.55vw, 1.4rem);
+  font-weight: 650;
+  line-height: 1.5;
+}
+
+.home-welcome-hero .button {
+  margin-top: 0.65rem;
+}
+
+.home-welcome-hero .hero-image {
+  height: 100%;
+  min-height: 42rem;
+  max-height: 52rem;
+  object-position: center;
+}
+
+.home-guidance-teaser {
+  grid-template-columns: minmax(22rem, 0.85fr) minmax(28rem, 1.15fr);
+  align-items: stretch;
+  gap: clamp(2.5rem, 5vw, 5rem);
+  padding-top: clamp(2.5rem, 5vw, 4rem);
+  padding-bottom: clamp(2.5rem, 5vw, 4rem);
+}
+
+.home-guidance-teaser::before {
+  right: var(--gutter);
+  width: auto;
+}
+
+.home-guidance-teaser img {
+  height: clamp(20rem, 24vw, 24rem);
+  max-height: none;
+  aspect-ratio: auto;
+}
+
+.home-guidance-teaser > div {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-content: center;
+  gap: 0.9rem 0.75rem;
+  max-width: none;
+}
+
+.home-guidance-teaser h2 {
+  grid-column: 1 / -1;
+  margin-bottom: 0.5rem;
+  font-size: clamp(2.75rem, 5vw, 5rem);
+  line-height: 0.94;
+}
+
+.home-guidance-teaser p {
+  grid-column: 1 / -1;
+  max-width: 48rem;
+  margin-bottom: 1rem;
+}
+
+.home-guidance-teaser .button {
+  width: 100%;
+  min-width: 0;
+  margin: 0;
+}
+
+.county-support-section-guidance .county-support-grid {
+  grid-template-columns: 1fr;
+}
+
+.county-support-guidance > div {
+  display: grid;
+  grid-template-columns: minmax(18rem, 0.85fr) minmax(24rem, 1.15fr) minmax(16rem, auto);
+  grid-template-rows: auto auto;
+  gap: 0.75rem clamp(1.5rem, 3vw, 3rem);
+  align-items: center;
+  width: 100%;
+}
+
+.county-support-guidance h2 {
+  grid-column: 1;
+  grid-row: 1 / span 2;
+  margin: 0;
+  font-size: clamp(2rem, 3.2vw, 3.5rem);
+  line-height: 0.98;
+}
+
+.county-support-guidance p {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  max-width: none;
+  margin: 0;
+}
+
+.county-support-guidance .button {
+  grid-column: 3;
+  align-self: center;
+  min-height: 4rem;
+  min-width: 16rem;
+  margin: 0;
+  padding: 1.1rem 2rem;
+  border: 0;
+  background: var(--button);
+  color: var(--button-text);
+  font-size: 1.02rem;
+  justify-content: center;
+}
+
+.county-support-guidance .button:hover {
+  background: var(--button-hover);
+  color: var(--button-text);
+}
+
+.county-support-guidance .button:nth-of-type(1) {
+  grid-row: 1;
+}
+
+.county-support-guidance .button:nth-of-type(2) {
+  grid-row: 2;
+}
+
 .guide-hero-section {
   align-items: end;
   padding-top: clamp(2.5rem, 5vw, 4.5rem);
@@ -3456,6 +3615,72 @@ p {
 
   .county-intro .county-media img {
     max-height: 34rem;
+  }
+
+  .county-support-guidance > div {
+    grid-template-columns: 1fr;
+  }
+
+  .county-support-guidance h2,
+  .county-support-guidance p,
+  .county-support-guidance .button {
+    grid-column: 1;
+  }
+
+  .county-support-guidance h2 {
+    grid-row: 1;
+  }
+
+  .county-support-guidance p {
+    grid-row: 2;
+  }
+
+  .county-support-guidance .button:nth-of-type(1) {
+    grid-row: 3;
+  }
+
+  .county-support-guidance .button:nth-of-type(2) {
+    grid-row: 4;
+  }
+
+  .county-support-guidance .button {
+    justify-self: start;
+    width: 100%;
+    min-width: 0;
+    max-width: 24rem;
+  }
+
+  .home-welcome-hero {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    padding-top: 1.5rem;
+  }
+
+  .home-welcome-hero .hero-copy h1 {
+    width: auto;
+    margin-bottom: 2rem;
+    white-space: normal;
+  }
+
+  .home-welcome-hero .hero-image {
+    height: auto;
+    min-height: 0;
+    max-height: none;
+    aspect-ratio: 1.08 / 1;
+  }
+
+  .home-guidance-teaser {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .home-guidance-teaser > div {
+    grid-template-columns: 1fr;
+  }
+
+  .home-guidance-teaser h2,
+  .home-guidance-teaser p {
+    grid-column: 1;
   }
 
   .newsletter-section,
@@ -4008,7 +4233,7 @@ p {
 }
 
 [data-theme="dark"] .hub-card-body .button,
-[data-theme="dark"] .county-support-card .button,
+[data-theme="dark"] .county-support-card:not(.county-support-guidance) .button,
 [data-theme="dark"] .split-card .button,
 [data-theme="dark"] .resource-panel-content .button {
   border: 0;
@@ -4019,8 +4244,8 @@ p {
 
 [data-theme="dark"] .hub-card-body .button:hover,
 [data-theme="dark"] .hub-card-body .button:focus-visible,
-[data-theme="dark"] .county-support-card .button:hover,
-[data-theme="dark"] .county-support-card .button:focus-visible,
+[data-theme="dark"] .county-support-card:not(.county-support-guidance) .button:hover,
+[data-theme="dark"] .county-support-card:not(.county-support-guidance) .button:focus-visible,
 [data-theme="dark"] .split-card .button:hover,
 [data-theme="dark"] .split-card .button:focus-visible,
 [data-theme="dark"] .resource-panel-content .button:hover,

@@ -1,14 +1,16 @@
 # Cloudflare Pages, Supabase, and Brevo
 
-Last reviewed: September 4, 2026
+Last reviewed: September 5, 2026
 
 This is the production deployment guide for `southjerseyreal.estate`. It intentionally records resource names and public identifiers, but never secret values, contact submissions, or subscriber data.
 
-The September 4 audit corrections are implemented in source and awaiting
-release. The new build and notification safeguards described below require the
-candidate frontend and `contact-submit` deployment; they are not claims of
-current production verification. The labeled preview delivery check and
-test-record cleanup passed, as recorded in `docs/project-todo.md`.
+The September 4 audit corrections were released September 5 in `3773f6a` and
+`4150a58`. GitHub tests, Cloudflare Pages deployments, and independent checks of
+the canonical production site passed. The active `contact-submit` function's
+downloaded source matches `4150a58`, including the notification retry safeguard
+and the existing production fallback origin/hostname policy. Configured
+allowlists and secrets were preserved. The labeled preview delivery check and
+test-record cleanup also passed; `docs/project-todo.md` records the evidence.
 
 ## Architecture
 
@@ -43,6 +45,15 @@ flowchart LR
 ## Current Production State
 
 The Pages cutover completed on July 17, 2026.
+
+September 5 release verification observed `contact-submit` v7,
+`newsletter-subscribe` v8, `site-rebuild` v4, and `google-reviews` v2, all active
+with gateway JWT verification disabled as intended. Downloaded sources match
+the committed code, allowing formatting differences in the unchanged handlers.
+Only `contact-submit` was targeted by the release command. Other function
+version counters differed from the earlier inventory while retaining their
+original July update timestamps; the cause of that metadata difference was not
+established, so version numbers alone were not used as proof of deployment.
 
 - `southjerseyreal.estate` and `www.southjerseyreal.estate` are active custom domains on the Pages project.
 - Both proxied CNAME records point to `southjerseyreal-estate.pages.dev` and retain their original record IDs.

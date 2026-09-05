@@ -1,11 +1,11 @@
 # South Jersey Real Estate Project Checklist
 
-Last reviewed: September 4, 2026
+Last reviewed: September 5, 2026
 
 **Roadmap status: Complete.** The selected roadmap closed on August 7, 2026.
 The owner separately selected the September 4 audit corrections below. Their
-source implementation and preview delivery verification are complete;
-production release remains pending. Routine maintenance, quarterly reviews, marketing campaigns,
+implementation, preview delivery verification, and production release are
+complete. Routine maintenance, quarterly reviews, marketing campaigns,
 and explicitly deferred concepts are not unfinished roadmap work and must not
 be reported as active unless the owner explicitly selects them.
 
@@ -58,7 +58,7 @@ possibilities are intentionally not being carried forward.
   Deno entrypoint checks to CI, including pull requests targeting `main`.
 - [x] Complete a clearly labeled preview contact/notification delivery check
   with real Turnstile verification, inbox confirmation, and test-record cleanup.
-- [ ] Release the candidate after owner authorization. Confirm the deployed
+- [x] Release the candidate after owner authorization. Confirm the deployed
   frontend and Edge Function revisions together.
 
 The implementation follows failing regression tests before fixes. Final local
@@ -74,14 +74,32 @@ already allowed `localhost:5173` origin and an exact temporary hosted copy of
 The owner completed Turnstile in normal Chrome; the handler returned 201,
 notification status was `sent` on attempt one, and the matching email was
 confirmed in the inbox. Cleanup verified zero inquiry/rate-event rows and
-removed the temporary function. Production functions remained unchanged.
+removed the temporary function. Production functions remained unchanged during
+that preview check.
 Pages branch preview origins are not currently allowed by the public form
 handler; no origin rules or Turnstile secrets were changed for this test.
 An early notification-test mock allowed
 requests with dummy credentials that Brevo rejected; the corrected regression
 tests block all external requests; those dummy-key requests produced no
-accepted email sends. The completed preview check does not constitute a
-production release. The original August 7 roadmap remains closed.
+accepted email sends.
+
+The authorized production release completed September 5. Audit commit
+`3773f6a` and the production-policy alignment `4150a58` are on `origin/main`.
+The latter preserves the deployed contact handler's default origin and
+Turnstile hostname lists without changing configured allowlists. Its
+[GitHub test run](https://github.com/piskooooo/southjerseyreal.estate/actions/runs/33943452950)
+passed 157 unit tests, 80 rendered compliance checks, and all four Edge Function
+entrypoint checks. Cloudflare Pages successfully deployed both revisions.
+Independent checks on the canonical production site passed eight browser cases
+and six public-route HTTP checks, including desktop/mobile homepage imagery,
+both desktop themes, shared town links, form-page metadata, and real 404s.
+The production bundle retains the approved GA4 measurement ID.
+
+The named `contact-submit` deployment is active; its four downloaded source
+files exactly match `4150a58`, and harmless origin preflights retain their
+pre-release behavior. The previous deployed source was saved for rollback.
+No database migrations, secret changes, or NAS actions were required. The
+original August 7 roadmap remains closed.
 
 ## Completed Selected Maintenance
 

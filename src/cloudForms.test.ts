@@ -163,7 +163,8 @@ describe("public form error messages", () => {
     ["invalid_interest", "Choose what you would like help with."],
     ["invalid_message", "Enter a message under 5,000 characters and try again."],
     ["rate_limited", "Too many messages were submitted. Please wait a few minutes and try again."],
-    ["timeout", "The request took too long. Your information is still in the form, so please try again."],
+    ["timeout", "We couldn't confirm whether your message arrived. Retry the same details safely, or edit them to send a new inquiry."],
+    ["network_error", "We couldn't confirm whether your message arrived. Retry the same details safely, or edit them to send a new inquiry."],
     ["turnstile_invalid", "Spam protection expired or could not be verified. Please complete it again."],
   ])("maps contact code %s", (code, message) => {
     expect(contactErrorMessage(new CloudFormError(code))).toBe(message);

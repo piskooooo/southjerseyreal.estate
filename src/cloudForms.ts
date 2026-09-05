@@ -132,8 +132,8 @@ export function contactErrorMessage(error: unknown): string {
   if (code === "rate_limited") {
     return "Too many messages were submitted. Please wait a few minutes and try again.";
   }
-  if (code === "timeout") {
-    return "The request took too long. Your information is still in the form, so please try again.";
+  if (code === "timeout" || code === "network_error") {
+    return "We couldn't confirm whether your message arrived. Retry the same details safely, or edit them to send a new inquiry.";
   }
   if (["turnstile_failed", "turnstile_invalid"].includes(code)) {
     return "Spam protection expired or could not be verified. Please complete it again.";

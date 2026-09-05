@@ -53,11 +53,11 @@ function FooterCredentialMarks() {
   return (
     <div className="footer-credential-logos" aria-label="Professional and equal housing marks">
       <span className="footer-credential-logo">
-        <img src="/assets/equal-housing-opportunity-logo.webp" alt="Equal Housing Opportunity" width="1963" height="2331" />
+        <img src="/assets/responsive/equal-housing-opportunity-logo.webp" alt="Equal Housing Opportunity" width="120" height="143" loading="lazy" decoding="async" />
       </span>
       {compliance.realtorMembershipVerified && (
         <span className="footer-credential-logo">
-          <img src="/assets/realtor-logo.png" alt="REALTOR® member logo" width="1963" height="2331" />
+          <img src="/assets/responsive/realtor-logo.webp" alt="REALTOR® member logo" width="120" height="143" loading="lazy" decoding="async" />
         </span>
       )}
     </div>

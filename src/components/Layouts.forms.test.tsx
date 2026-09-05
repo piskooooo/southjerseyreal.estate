@@ -169,4 +169,42 @@ describe("public cloud forms", () => {
       "Your email is confirmed. Welcome to the newsletter.",
     )).toHaveAttribute("role", "status");
   });
+
+  it("deduplicates an unchanged retry but saves an edited retry as a new inquiry", async () => {
+    const user = userEvent.setup();
+    const received = new Map<string, Record<string, string>>();
+    const requests: Record<string, string>[] = [];
+    vi.mocked(fetch).mockImplementation(async (_url, init) => {
+      const body = JSON.parse(String(init?.body)) as Record<string, string>;
+      requests.push(body);
+      if (!received.has(body.requestId)) received.set(body.requestId, body);
+      if (requests.length < 3) throw new TypeError("Response lost after persistence");
+      return jsonResponse({ ok: true, message: "Inquiry received." });
+    });
+    render(<ContactPage page={contactPage} navigate={vi.fn()} />);
+    await user.type(screen.getByRole("textbox", { name: /First Name/ }), "Test");
+    await user.type(screen.getByRole("textbox", { name: /Last Name/ }), "Visitor");
+    await user.type(screen.getByRole("textbox", { name: /Email/ }), "visitor@example.com");
+    await user.type(screen.getByRole("textbox", { name: /Phone/ }), "856-555-0100");
+    await user.selectOptions(screen.getByRole("combobox", { name: /What can I help with/ }), "Buy a home");
+    const message = screen.getByRole("textbox", { name: /Message/ });
+    await user.type(message, "Original inquiry.");
+    const submit = screen.getByRole("button", { name: "Send Message" });
+    for (let attempt = 0; attempt < 2; attempt += 1) {
+      await completeTurnstile(`token-${attempt}`);
+      await user.click(submit);
+      await waitFor(() => expect(message).toBeEnabled());
+    }
+    expect(requests[1].requestId).toBe(requests[0].requestId);
+    expect(received.size).toBe(1);
+    await user.clear(message);
+    await user.type(message, "Revised inquiry with another question.");
+    await completeTurnstile("token-2");
+    await user.click(submit);
+    expect(await screen.findByText("Inquiry received.")).toBeVisible();
+    expect(requests[2].requestId).not.toBe(requests[0].requestId);
+    expect([...received.values()].map((body) => body.message)).toEqual([
+      "Original inquiry.", "Revised inquiry with another question.",
+    ]);
+  });
 });

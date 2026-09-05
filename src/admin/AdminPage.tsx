@@ -37,6 +37,7 @@ import {
 } from "lucide-react";
 import {
   SITEWIDE_CONTENT_KEY,
+  managedPageSeeds,
   type ManagedContentRecord,
 } from "../content/siteEditor";
 import {
@@ -92,11 +93,12 @@ const navigationGroups: AdminNavGroup[] = [
   },
   {
     label: "Insights",
-    items: [
-      { key: "/insights/new-jersey-homebuying-process", label: "Homebuying process", icon: BookOpenText, viewPath: "/insights/new-jersey-homebuying-process" },
-      { key: "/insights/preparing-to-sell-a-new-jersey-home", label: "Preparing to sell", icon: BookOpenText, viewPath: "/insights/preparing-to-sell-a-new-jersey-home" },
-      { key: "/insights/researching-a-south-jersey-property", label: "Property research", icon: BookOpenText, viewPath: "/insights/researching-a-south-jersey-property" },
-    ],
+    items: managedPageSeeds.flatMap((document) => document.insightArticle ? [{
+      key: document.page.path,
+      label: document.insightArticle.title,
+      icon: BookOpenText,
+      viewPath: document.page.path,
+    }] : []),
   },
   {
     label: "Counties",

@@ -1,8 +1,14 @@
 # Cloudflare Pages, Supabase, and Brevo
 
-Last reviewed: August 10, 2026
+Last reviewed: September 4, 2026
 
 This is the production deployment guide for `southjerseyreal.estate`. It intentionally records resource names and public identifiers, but never secret values, contact submissions, or subscriber data.
+
+The September 4 audit corrections are implemented in source and awaiting
+release. The new build and notification safeguards described below require the
+candidate frontend and `contact-submit` deployment; they are not claims of
+current production verification. The labeled preview delivery check and
+test-record cleanup passed, as recorded in `docs/project-todo.md`.
 
 ## Architecture
 
@@ -62,6 +68,34 @@ NODE_VERSION=22
 ```
 
 For CI browser tests only, the workflow builds with `VITE_GA_MEASUREMENT_ID=G-TEST123`. The client permits that inert test ID on `localhost` and `127.0.0.1`; do not use the production measurement ID for local or preview testing.
+
+### Published content during builds
+
+Cloudflare Pages production builds are identified by `CF_PAGES=1` together with
+`CF_PAGES_BRANCH=main`. They require the Supabase URL and publishable key, and
+stop on a published-content request timeout, HTTP error, malformed response, or
+rejected content document. A content-service failure must not produce a
+successful production build containing older compiled metadata.
+A valid empty published-row result remains supported for the compiled-content
+bootstrap state and emits an explicit production warning.
+
+For an intentional local, test, or preview build using only compiled content:
+
+```bash
+SJRE_PRERENDER_OFFLINE=1 npm run build
+```
+
+`SJRE_PRERENDER_OFFLINE=1` skips the published-content request. It is forbidden
+for Pages production: the build rejects that setting when `CF_PAGES=1` and
+`CF_PAGES_BRANCH=main`. Keep it unset in the Pages production environment.
+Local and preview builds may otherwise fall back to compiled content if their
+published-content configuration or service is unavailable; configured request
+failures produce a warning. `npm run test:compliance` selects offline mode
+explicitly so its fixture Supabase URL does not need a live content service.
+
+The browser has a separate ten-second public-content deadline and can recover
+to compiled page content after a failed request. That runtime fallback does not
+relax the production build requirement.
 
 ## Backend Secrets
 
@@ -189,12 +223,17 @@ Run the automated checks before every Edge Function or forms deployment:
 
 ```bash
 npm test
+npm run test:edge
 npm run build
-npx deno check --node-modules-dir=none supabase/functions/contact-submit/index.ts
-npx deno check --node-modules-dir=none supabase/functions/newsletter-subscribe/index.ts
-npx deno check --node-modules-dir=none supabase/functions/google-reviews/index.ts
-npx deno check --node-modules-dir=none supabase/functions/site-rebuild/index.ts
+npm run test:compliance
 ```
+
+`npm run test:edge` requires Deno on `PATH` and type-checks all four deployed
+entrypoints with `--node-modules-dir=none --frozen`, using the committed
+`deno.lock` dependency graph. The GitHub workflow installs Deno
+2.9.4 and runs these checks alongside the unit and rendered compliance suites
+for `main` pushes, pull requests targeting `main`, and manual dispatches. The
+transactional database suite remains a separate local-stack check.
 
 Run the transactional database checks when Docker and the local Supabase stack are available:
 
@@ -259,6 +298,46 @@ where request_id = '<replace-with-exact-request-id>'::uuid;
 ```
 
 Both counts must return zero. Never paste real inquiry data into logs, tickets, commits, or chat transcripts.
+
+### Notifications requiring manual review
+
+The contact handler checks retry eligibility before calling Brevo. A later
+attempt at least ten minutes after the first attempt, or one with an invalid
+first-attempt timestamp, is deferred to `manual_review` with
+`retry_window_expired`. A claimed attempt beyond the six-attempt limit is
+deferred with `attempts_exhausted`. Provider errors can also require manual
+review. These checks cover reclaimed sending leases as well as scheduled
+retries, because an interrupted request may already have been accepted by Brevo.
+
+`manual_review` stops automatic retries; it does not delete the inquiry or
+establish that delivery failed. The inquiry remains available in the private
+administrator inbox until its normal retention deadline. An authorized owner
+can inspect delivery metadata in the Supabase Dashboard without exporting the
+message:
+
+```sql
+select
+  request_id,
+  notification_status,
+  notification_attempt_count,
+  first_notification_attempt_at,
+  last_notification_attempt_at,
+  provider_code,
+  provider_message_id,
+  sent_at
+from private.contact_inquiries
+where notification_status = 'manual_review'
+order by created_at;
+```
+
+Check the matching Brevo transaction and intended mailbox privately before
+deciding whether a manual follow-up is needed. If delivery was accepted, avoid
+resending the same notification. If delivery is absent or uncertain, handle
+the inquiry through an owner-reviewed follow-up and retain the decision in a
+private operational record. Do not reset attempt timestamps or notification
+keys, or blindly requeue an aged notification to bypass the duplicate-delivery
+safeguard. No automatic manual-review alert or inbox resend control is added
+by this maintenance change.
 
 ## Production Domain Verification
 

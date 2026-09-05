@@ -215,14 +215,81 @@ describe("website editor content normalization", () => {
 
   it("keeps the approved guide library visible when an older published index is loaded", () => {
     const olderIndex = structuredClone(managedContentSeeds.get("/insights")) as ManagedPageDocument;
+    delete olderIndex.insightIndexVersion;
     olderIndex.insightIndex!.articles = olderIndex.insightIndex!.articles.slice(0, 2);
+    olderIndex.insightIndex!.articles.reverse();
+    olderIndex.insightIndex!.articles[0].title = "Owner's guide title";
 
     const normalized = normalizeManagedContent("/insights", olderIndex) as ManagedPageDocument;
     expect(normalized.insightIndex?.articles).toHaveLength(8);
     expect(normalized.insightIndex?.articles.map((article) => article.href)).toContain(
       "/insights/coastal-property-due-diligence",
     );
+    expect(normalized.insightIndex?.articles[0].title).toBe("Owner's guide title");
   });
+
+  it("preserves intentional guide order, removals, and additions after legacy migration", () => {
+    const legacy = structuredClone(managedContentSeeds.get("/insights")) as ManagedPageDocument;
+    delete legacy.insightIndexVersion;
+    legacy.insightIndex!.articles = legacy.insightIndex!.articles.slice(0, 3);
+    const editable = normalizeManagedContent("/insights", legacy) as ManagedPageDocument;
+    editable.insightIndex!.articles.reverse();
+    editable.insightIndex!.articles.pop();
+    editable.insightIndex!.articles.push({
+      title: "Additional property research",
+      href: "/contact",
+      category: "Next steps",
+      summary: "Contact Arthur about a property question.",
+      reviewedDate: "2026-09-04",
+    });
+
+    const saved = normalizeManagedContent("/insights", editable) as ManagedPageDocument;
+    const reloaded = normalizeManagedContent("/insights", JSON.parse(JSON.stringify(saved))) as ManagedPageDocument;
+    expect(reloaded.insightIndex?.articles).toEqual(editable.insightIndex?.articles);
+
+    editable.insightIndex!.articles = [];
+    expect((normalizeManagedContent("/insights", editable) as ManagedPageDocument).insightIndex?.articles).toEqual([]);
+  });
+
+  it("does not let stored document content change the page identity", () => {
+    const draft = structuredClone(managedContentSeeds.get("/about")) as ManagedPageDocument;
+    draft.page.path = "/contact";
+    expect((normalizeManagedContent("/about", draft) as ManagedPageDocument).page.path).toBe("/about");
+  });
+
+  it.each(["", "   ", "javascript:alert(1)", "//example.com", "/\\example.com"])(
+    "rejects the invalid navigation destination %j before publishing",
+    (path) => {
+      const draft = structuredClone(managedContentSeeds.get(SITEWIDE_CONTENT_KEY)) as SitewideContent;
+      draft.header.countyLinks.push({ label: "New destination", path });
+      expect(() => validateManagedContentForPublish(SITEWIDE_CONTENT_KEY, draft)).toThrow(/destination|allowed/i);
+    },
+  );
+
+  it("preserves valid edited header and footer destinations", () => {
+    const draft = structuredClone(managedContentSeeds.get(SITEWIDE_CONTENT_KEY)) as SitewideContent;
+    draft.header.countyLinks.push({ label: "Guides", path: "/insights" });
+    draft.footer.linkGroups[0].links.push({ label: "Official resources", path: "https://www.nj.gov/" });
+    expect(() => validateManagedContentForPublish(SITEWIDE_CONTENT_KEY, draft)).not.toThrow();
+    expect(normalizeManagedContent(SITEWIDE_CONTENT_KEY, draft)).toEqual(draft);
+  });
+
+  it.each(["countiesPath", "connectPath", "followupPath"])(
+    "requires the directly routed %s destination to remain on this site",
+    (key) => {
+      const pageKey = key === "followupPath" ? "/newsletter" : SITEWIDE_CONTENT_KEY;
+      const draft = structuredClone(managedContentSeeds.get(pageKey))!;
+      const fields = key === "followupPath"
+        ? (draft as ManagedPageDocument).newsletter!
+        : (draft as SitewideContent).header;
+      for (const destination of ["", "https://example.com/", "//example.com", "/\\example.com", "/about\n"]) {
+        Object.assign(fields, { [key]: destination });
+        expect(() => validateManagedContentForPublish(pageKey, draft)).toThrow(/internal path|destination/i);
+      }
+      Object.assign(fields, { [key]: "/contact?topic=property#page" });
+      expect(() => validateManagedContentForPublish(pageKey, draft)).not.toThrow();
+    },
+  );
 
   it("adds the fixed hub paths when normalizing older sitewide content", () => {
     const legacy = structuredClone(managedContentSeeds.get(SITEWIDE_CONTENT_KEY)) as SitewideContent;

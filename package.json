@@ -15,7 +15,8 @@
     "import:live": "node scripts/import-live-content.mjs",
     "test": "vitest run",
     "test:watch": "vitest",
-    "test:compliance": "VITE_GA_MEASUREMENT_ID=G-TEST123 VITE_SUPABASE_URL=https://test-project.supabase.co VITE_SUPABASE_PUBLISHABLE_KEY=test-public-key npm run build && playwright test",
+    "test:compliance": "SJRE_PRERENDER_OFFLINE=1 VITE_GA_MEASUREMENT_ID=G-TEST123 VITE_SUPABASE_URL=https://test-project.supabase.co VITE_SUPABASE_PUBLISHABLE_KEY=test-public-key npm run build && playwright test",
+    "test:edge": "deno check --frozen --node-modules-dir=none supabase/functions/contact-submit/index.ts supabase/functions/newsletter-subscribe/index.ts supabase/functions/google-reviews/index.ts supabase/functions/site-rebuild/index.ts",
     "test:compliance:ui": "playwright test --ui",
     "test:db": "npx --yes supabase@2.109.1 test db supabase/tests/database/*_test.sql --local"
   },

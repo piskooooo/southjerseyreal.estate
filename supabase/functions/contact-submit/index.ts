@@ -33,6 +33,7 @@ const DEFAULT_EXPECTED_HOSTNAMES = [
 ];
 const MAX_SCHEDULED_NOTIFICATIONS = 10;
 const MAX_AMBIGUOUS_RETRY_AGE_MS = 10 * 60 * 1000;
+const MAX_NOTIFICATION_ATTEMPTS = 6;
 
 type TurnstileResult = {
   success?: boolean;
@@ -242,6 +243,26 @@ async function processNotification(
   if (!data) return "idle";
 
   const work = data as ContactNotificationWork;
+  const firstAttempt = new Date(work.firstAttemptAt).getTime();
+  // A reclaimed lease can follow provider acceptance with a lost response.
+  // The claim does not prove a previous attempt failed before delivery, so
+  // stop all aged retries before the provider's idempotency can expire.
+  const retryWindowExpired = work.attemptCount > 1 && (
+    !Number.isFinite(firstAttempt) ||
+    Date.now() - firstAttempt >= MAX_AMBIGUOUS_RETRY_AGE_MS
+  );
+  if (retryWindowExpired || work.attemptCount > MAX_NOTIFICATION_ATTEMPTS) {
+    await rpcTransition(admin, "defer_contact_notification", {
+      p_inquiry_id: work.inquiryId,
+      p_claim_token: claimToken,
+      p_status: "manual_review",
+      p_provider_code: retryWindowExpired
+        ? "retry_window_expired"
+        : "attempts_exhausted",
+    });
+    return "manual_review";
+  }
+
   const rendered = renderContactNotification(work);
   try {
     const provider = await brevo.sendContactNotification({
@@ -279,12 +300,11 @@ async function processNotification(
           : "notification_error",
         !(error instanceof ConfigurationError),
       );
-    const firstAttempt = new Date(work.firstAttemptAt).getTime();
     const ambiguousWindowExpired = providerError.ambiguous && (
       !Number.isFinite(firstAttempt) ||
       Date.now() - firstAttempt >= MAX_AMBIGUOUS_RETRY_AGE_MS
     );
-    const attemptsExhausted = work.attemptCount >= 6;
+    const attemptsExhausted = work.attemptCount >= MAX_NOTIFICATION_ATTEMPTS;
     const status = providerError.retryable &&
         !ambiguousWindowExpired &&
         !attemptsExhausted

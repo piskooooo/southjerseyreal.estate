@@ -1,4 +1,4 @@
-import { useEffect, useState, type MouseEvent, type ReactNode } from "react";
+import { useEffect, useRef, useState, type MouseEvent, type ReactNode } from "react";
 import { trackFormSuccess, trackLinkClick } from "../analytics";
 import {
   areCloudFormsConfigured,
@@ -25,6 +25,7 @@ import {
 } from "./Compliance";
 import { TurnstileWidget } from "./TurnstileWidget";
 import { AboutReviewsSection } from "./Reviews";
+import { getResponsiveImageProps } from "../content/responsiveImages";
 
 type SiteTheme = "dark" | "light";
 
@@ -216,18 +217,26 @@ function TownGrid({
   const allExpanded = expandableSections.length > 0 && expandableSections.every(({ section, index }) => (
     expandedCards.has(townSectionKey(section, index))
   ));
+  const appliedHash = useRef<{ hash: string; targetKey?: string } | null>(null);
   useEffect(() => {
-    const syncTownFromHash = () => {
+    const findHashTarget = () => {
       const hash = readTownHash();
       const target = rows.flat().find(({ anchor, key, section }) => (
         section.blocks.length > 2 && (hash === anchor || hash === key.toLowerCase())
       ));
-
+      return { hash, target };
+    };
+    const syncTownFromHash = () => {
+      const { hash, target } = findHashTarget();
+      appliedHash.current = { hash, targetKey: target?.key };
       setExpandedCards(target ? new Set([target.key]) : new Set());
       if (target) scrollTownCardIntoView(target.key);
     };
 
-    syncTownFromHash();
+    const { hash, target } = findHashTarget();
+    if (appliedHash.current?.hash !== hash || appliedHash.current?.targetKey !== target?.key) {
+      syncTownFromHash();
+    }
     window.addEventListener("hashchange", syncTownFromHash);
     window.addEventListener("popstate", syncTownFromHash);
     return () => {
@@ -238,6 +247,7 @@ function TownGrid({
   const expandAll = () => setExpandedCards(new Set(expandableSections.map(({ section, index }) => townSectionKey(section, index))));
   const collapseAll = () => {
     setExpandedCards(new Set());
+    appliedHash.current = { hash: "" };
     if (window.location.hash) {
       window.history.pushState({}, "", `${window.location.pathname}${window.location.search}`);
     }
@@ -259,9 +269,11 @@ function TownGrid({
 
     if (isOpening) {
       window.history.pushState({}, "", `${window.location.pathname}${window.location.search}#${anchor}`);
+      appliedHash.current = { hash: anchor, targetKey: key };
       scrollTownCardIntoView(key);
     } else if (readTownHash() === anchor) {
       window.history.pushState({}, "", `${window.location.pathname}${window.location.search}`);
+      appliedHash.current = { hash: "" };
     }
   };
 
@@ -785,12 +797,12 @@ export function HomePage({ page, navigate, theme = "dark" }: PageProps & { theme
         <div className="hero-copy">
           <Blocks blocks={welcomeBlocks} navigate={navigate} promoteFirstHeading />
         </div>
-        {heroImage && <img className="hero-image" src={heroImage.src} alt={heroImage.alt} />}
+        {heroImage && <img className="hero-image" {...getResponsiveImageProps(heroImage.src, "hero")} alt={heroImage.alt} decoding="async" />}
       </section>
 
       {about && (
         <section className="section image-copy-section about-teaser home-guidance-teaser">
-          {about.images[0] && <img src={about.images[0].src} alt={about.images[0].alt} />}
+          {about.images[0] && <img {...getResponsiveImageProps(about.images[0].src, "guidance")} alt={about.images[0].alt} loading="lazy" decoding="async" />}
           <Blocks blocks={guidanceBlocks} navigate={navigate} headingLevel="compact" />
         </section>
       )}
@@ -1109,7 +1121,7 @@ export function ContactPage({ page, navigate }: PageProps) {
   const [intro, promos] = page.sections;
   const [submitState, setSubmitState] = useState<"idle" | "submitting" | "success" | "error">("idle");
   const [submitMessage, setSubmitMessage] = useState("");
-  const [requestId, setRequestId] = useState(() => window.crypto.randomUUID());
+  const contactAttempt = useRef<{ requestId: string; payload: string; sourcePath: string } | null>(null);
   const [turnstileToken, setTurnstileToken] = useState("");
   const [turnstileResetSignal, setTurnstileResetSignal] = useState(0);
   const contactIntroBlocks = intro.blocks
@@ -1136,27 +1148,39 @@ export function ContactPage({ page, navigate }: PageProps) {
             const form = event.currentTarget;
             const formData = new FormData(form);
             const interest = String(formData.get("interest") || "unknown");
+            const inquiry = {
+              firstName: formData.get("firstName"),
+              lastName: formData.get("lastName"),
+              email: formData.get("email"),
+              phone: formData.get("phone"),
+              interest: formData.get("interest"),
+              message: formData.get("message"),
+              company: formData.get("company"),
+            };
+            const payload = JSON.stringify(inquiry);
+            if (!contactAttempt.current || contactAttempt.current.payload !== payload) {
+              contactAttempt.current = {
+                requestId: window.crypto.randomUUID(),
+                payload,
+                sourcePath: `${window.location.pathname}${window.location.search}`,
+              };
+            }
+            const attempt = contactAttempt.current;
 
             setSubmitState("submitting");
             setSubmitMessage("");
 
             try {
               const result = await submitContactInquiry({
-                requestId,
-                firstName: formData.get("firstName"),
-                lastName: formData.get("lastName"),
-                email: formData.get("email"),
-                phone: formData.get("phone"),
-                interest: formData.get("interest"),
-                message: formData.get("message"),
-                company: formData.get("company"),
+                ...inquiry,
+                requestId: attempt.requestId,
                 turnstileToken,
-                sourcePath: `${window.location.pathname}${window.location.search}`,
+                sourcePath: attempt.sourcePath,
               });
 
               trackFormSuccess("contact", interest);
               form.reset();
-              setRequestId(window.crypto.randomUUID());
+              contactAttempt.current = null;
               setSubmitState("success");
               setSubmitMessage(result.message);
             } catch (error) {

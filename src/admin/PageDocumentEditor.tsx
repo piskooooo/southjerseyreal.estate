@@ -77,9 +77,8 @@ function isObject(value: unknown): value is Record<string, unknown> {
 }
 
 function isInternalField(key: string, path: Array<string | number>) {
-  return ["id", "kind", "storagePath", "thumbnail", "thumbnailPath"].includes(key)
-    || key === "path"
-    || (key === "title" && path.join(".") === "page");
+  return ["id", "kind", "storagePath", "thumbnail", "thumbnailPath", "insightIndexVersion"].includes(key)
+    || (["path", "title"].includes(key) && path.join(".") === "page");
 }
 
 function shouldUseTextarea(key: string, value: string) {
@@ -199,7 +198,7 @@ function PrimitiveField({
   onUpdate: (path: Array<string | number>, value: unknown) => void;
 }) {
   const id = `site-content-${path.join("-")}`;
-  const label = fieldLabel(fieldKey);
+  const label = fieldKey === "path" ? "Destination" : fieldLabel(fieldKey);
 
   if (fieldKey === "tag" && typeof value === "string") {
     return (

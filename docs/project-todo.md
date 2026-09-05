@@ -1,12 +1,13 @@
 # South Jersey Real Estate Project Checklist
 
-Last reviewed: August 10, 2026
+Last reviewed: September 4, 2026
 
-**Project status: Complete.** The selected roadmap closed on August 7, 2026.
-There are no active project tasks or known blockers. Routine maintenance,
-quarterly reviews, marketing campaigns, and explicitly deferred concepts are
-not unfinished website work and must not be reported as active unless the owner
-explicitly reopens them.
+**Roadmap status: Complete.** The selected roadmap closed on August 7, 2026.
+The owner separately selected the September 4 audit corrections below. Their
+source implementation and preview delivery verification are complete;
+production release remains pending. Routine maintenance, quarterly reviews, marketing campaigns,
+and explicitly deferred concepts are not unfinished roadmap work and must not
+be reported as active unless the owner explicitly selects them.
 
 Use this file as the source of truth for project status and any future selected
 work on `southjerseyreal.estate`. Check an item only after completing its
@@ -34,6 +35,53 @@ data, or other secrets in this file.
 All selected roadmap items are complete. Earlier loose ideas about a statewide
 referral strategy, additional backup/export work, and other chat-only
 possibilities are intentionally not being carried forward.
+
+## Owner-selected September 4 Maintenance
+
+- [x] Implement the seven confirmed audit corrections in source:
+  1. Preserve shareable town anchors when Analytics is enabled.
+  2. Make all eight Insights articles accessible in the private editor.
+  3. Expose and validate navigation destinations while protecting page identity.
+  4. Preserve edited Insights order, removals, and additions; upgrade older
+     unversioned libraries once without repeatedly restoring removed cards.
+  5. Give changed contact retries a new request ID while keeping unchanged
+     retries idempotent.
+  6. Stop aged or exhausted notification retries before calling Brevo and move
+     them to `manual_review`.
+  7. Deliver responsive derivatives of the approved homepage photographs,
+     preload the selected desktop theme's hero, and use small lazy footer marks.
+- [x] Address related source issues: preserve reading position during content
+  refresh, retain town expansion through theme changes, support internal query
+  strings and fragments, keep homepage paragraphs inside their desktop column,
+  bound public-content loading to ten seconds, fail
+  production prerendering when published content cannot be trusted, and add
+  Deno entrypoint checks to CI, including pull requests targeting `main`.
+- [x] Complete a clearly labeled preview contact/notification delivery check
+  with real Turnstile verification, inbox confirmation, and test-record cleanup.
+- [ ] Release the candidate after owner authorization. Confirm the deployed
+  frontend and Edge Function revisions together.
+
+The implementation follows failing regression tests before fixes. Final local
+verification passed: `npm test` (150 tests), `npm run test:compliance` (build
+and 80 browser checks), all four `npm run test:edge` entrypoints, and
+`git diff --check`. The actual prerender command also correctly rejected
+offline mode under simulated Pages production flags. Desktop and mobile
+screenshots were reviewed, including both themes for the homepage copy fix.
+Database integration tests were not run because the Docker-backed local stack
+was unavailable. The real delivery check used the candidate frontend on the
+already allowed `localhost:5173` origin and an exact temporary hosted copy of
+`contact-submit`. A test-only browser adapter changed only the contact endpoint.
+The owner completed Turnstile in normal Chrome; the handler returned 201,
+notification status was `sent` on attempt one, and the matching email was
+confirmed in the inbox. Cleanup verified zero inquiry/rate-event rows and
+removed the temporary function. Production functions remained unchanged.
+Pages branch preview origins are not currently allowed by the public form
+handler; no origin rules or Turnstile secrets were changed for this test.
+An early notification-test mock allowed
+requests with dummy credentials that Brevo rejected; the corrected regression
+tests block all external requests; those dummy-key requests produced no
+accepted email sends. The completed preview check does not constitute a
+production release. The original August 7 roadmap remains closed.
 
 ## Completed Selected Maintenance
 

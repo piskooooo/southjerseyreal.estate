@@ -20,6 +20,7 @@ import {
 import type { ContentBlock, ImageAsset, PageSection, SitePage } from "./types";
 
 export const SITEWIDE_CONTENT_KEY = "__sitewide__";
+const INSIGHT_INDEX_VERSION = 1;
 
 export type SiteLink = {
   label: string;
@@ -88,6 +89,7 @@ export type ManagedPageDocument = {
   comparisonGuide?: ComparisonGuide;
   insightArticle?: InsightArticleContent;
   insightIndex?: InsightIndexContent;
+  insightIndexVersion?: number;
   resourcePage?: ResourcePage;
   newsletter?: NewsletterContent;
 };
@@ -324,7 +326,7 @@ export const managedPageSeeds: ManagedPageDocument[] = seoEntries.map((entry) =>
       ? { insightArticle: structuredClone(insightArticle) }
       : {}),
     ...(isInsightIndex
-      ? { insightIndex: structuredClone(insightIndex) }
+      ? { insightIndex: structuredClone(insightIndex), insightIndexVersion: INSIGHT_INDEX_VERSION }
       : {}),
     ...(entry.path === "/newsletter"
       ? { newsletter: structuredClone(newsletterSeed) }
@@ -440,6 +442,9 @@ export function normalizeManagedContent(pageKey: string, value: unknown): Manage
   const seed = managedContentSeeds.get(pageKey);
   if (!seed) throw new Error("The website database returned an unknown page.");
   const normalized = normalizeAgainstSeed(value, seed) as ManagedContent;
+  if (pageKey !== SITEWIDE_CONTENT_KEY) {
+    (normalized as ManagedPageDocument).page.path = pageKey;
+  }
   if (pageKey.endsWith("-county")) {
     const document = normalized as ManagedPageDocument;
     const seedDocument = seed as ManagedPageDocument;
@@ -513,18 +518,26 @@ export function normalizeManagedContent(pageKey: string, value: unknown): Manage
   if (pageKey === "/insights") {
     const document = normalized as ManagedPageDocument;
     const seedDocument = seed as ManagedPageDocument;
-    const publishedCards = document.insightIndex?.articles || [];
-    const seededCards = seedDocument.insightIndex?.articles || [];
-    const publishedByHref = new Map(publishedCards.map((card) => [card.href, card]));
-    document.insightIndex = {
-      ...document.insightIndex!,
-      articles: seededCards.map((card) => publishedByHref.get(card.href) || card),
-    };
+    const storedVersion = isObject(value) ? value.insightIndexVersion : undefined;
+    // Expand legacy libraries once. The saved marker distinguishes later
+    // intentional removals and reordering from an older three-guide index.
+    if (typeof storedVersion !== "number" || storedVersion < INSIGHT_INDEX_VERSION) {
+      const publishedCards = document.insightIndex?.articles || [];
+      const seededCards = seedDocument.insightIndex?.articles || [];
+      const publishedHrefs = new Set(publishedCards.map((card) => card.href));
+      document.insightIndex = {
+        ...document.insightIndex!,
+        articles: [...publishedCards, ...seededCards.filter((card) => !publishedHrefs.has(card.href))],
+      };
+    }
+    document.insightIndexVersion = INSIGHT_INDEX_VERSION;
   }
   return normalized;
 }
 
 const linkFieldNames = new Set([
+  "countiesPath",
+  "connectPath",
   "creatorHref",
   "supportHref",
   "followupPath",
@@ -535,11 +548,17 @@ const linkFieldNames = new Set([
   "sourceUrl",
 ]);
 const imageFieldNames = new Set(["image", "src", "thumbnail"]);
+const internalLinkFieldNames = new Set(["countiesPath", "connectPath", "followupPath"]);
+
+function isAllowedInternalPath(value: string) {
+  return value.startsWith("/") && !value.startsWith("//") && !/[\\\u0000-\u001f\u007f]/.test(value);
+}
 
 function isAllowedManagedUrl(value: string, imageOnly: boolean) {
   const candidate = value.trim();
   if (!candidate) return true;
-  if (candidate.startsWith("/") && !candidate.startsWith("//")) return true;
+  if (/[\\\u0000-\u001f\u007f]/.test(value)) return false;
+  if (isAllowedInternalPath(candidate)) return true;
   try {
     const url = new URL(candidate);
     if (url.username || url.password) return false;
@@ -701,6 +720,12 @@ export function validateManagedContentForPublish(pageKey: string, value: Managed
     }
 
     for (const [key, child] of Object.entries(current)) {
+      if (typeof child === "string" && key === "path" && !child.trim()) {
+        throw new Error(`Add a destination for the navigation link at ${path.join(" → ")}.`);
+      }
+      if (typeof child === "string" && internalLinkFieldNames.has(key) && !isAllowedInternalPath(child)) {
+        throw new Error(`${fieldLabelForValidation(key)} must use a destination with an internal path on this site.`);
+      }
       if (
         typeof child === "string"
         && ["publishedDate", "reviewedDate"].includes(key)
@@ -777,6 +802,8 @@ export async function loadPublishedSiteContent(pageKey?: string): Promise<Public
   const fallback = seedPublicSiteContent();
   if (!supabaseUrl || !publishableKey) return fallback;
 
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), 10_000);
   try {
     const requestedKeys = pageKey && managedContentSeeds.has(pageKey)
       ? [SITEWIDE_CONTENT_KEY, pageKey]
@@ -788,6 +815,7 @@ export async function loadPublishedSiteContent(pageKey?: string): Promise<Public
     });
     const response = await fetch(`${supabaseUrl}/rest/v1/site_pages?${query}`, {
       headers: { apikey: publishableKey },
+      signal: controller.signal,
     });
     if (!response.ok) return fallback;
     const rows = await response.json() as Array<Record<string, unknown>>;
@@ -809,5 +837,7 @@ export async function loadPublishedSiteContent(pageKey?: string): Promise<Public
     return fallback;
   } catch {
     return fallback;
+  } finally {
+    clearTimeout(timeout);
   }
 }

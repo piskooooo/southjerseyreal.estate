@@ -14,7 +14,9 @@ const [compliance, routeEntries, builtTemplate] = await Promise.all([
   readFile(path.join(projectRoot, "src/content/seoEntries.json"), "utf8").then(JSON.parse),
   readFile(path.join(distRoot, "index.html"), "utf8"),
 ]);
-const template = builtTemplate.replace(/\s*<!-- seo-(?:prerendered|404|admin-entry) -->/g, "");
+const template = builtTemplate
+  .replace(/\s*<!-- seo-(?:prerendered|404|admin-entry) -->/g, "")
+  .replace(/<script id="home-hero-preload">[\s\S]*?<\/script>\s*/g, "");
 
 const vite = await createServer({
   appType: "custom",
@@ -26,10 +28,14 @@ const vite = await createServer({
 
 let seoModule;
 let siteEditorModule;
+let responsiveImagesModule;
+let prerenderContentModule;
 try {
-  [seoModule, siteEditorModule] = await Promise.all([
+  [seoModule, siteEditorModule, responsiveImagesModule, prerenderContentModule] = await Promise.all([
     vite.ssrLoadModule("/src/content/seo.ts"),
     vite.ssrLoadModule("/src/content/siteEditor.ts"),
+    vite.ssrLoadModule("/src/content/responsiveImages.ts"),
+    vite.ssrLoadModule("/src/content/prerenderContent.ts"),
   ]);
 } finally {
   await vite.close();
@@ -45,6 +51,8 @@ const {
   SITEWIDE_CONTENT_KEY,
   validateManagedContentForPublish,
 } = siteEditorModule;
+const { buildHomeHeroPreloadScript, LIGHT_HOME_HERO_SRC } = responsiveImagesModule;
+const { loadPublishedBuildRows, requiresPublishedBuildContent } = prerenderContentModule;
 
 const htmlEscape = (value) => String(value)
   .replaceAll("&", "&amp;")
@@ -109,32 +117,9 @@ const validPublishedTimestamp = (value) => {
   return Number.isNaN(parsed.valueOf()) ? "" : parsed.toISOString();
 };
 
-async function loadPublishedRows() {
-  const supabaseUrl = String(process.env.VITE_SUPABASE_URL || buildEnv.VITE_SUPABASE_URL || "").trim().replace(/\/+$/, "");
-  const publishableKey = String(process.env.VITE_SUPABASE_PUBLISHABLE_KEY || buildEnv.VITE_SUPABASE_PUBLISHABLE_KEY || "").trim();
-  if (!supabaseUrl || !publishableKey) return [];
-
-  try {
-    const query = new URLSearchParams({
-      select: "page_key,published_content,published_at",
-      published_at: "not.is.null",
-    });
-    const response = await fetch(`${supabaseUrl}/rest/v1/site_pages?${query}`, {
-      headers: { apikey: publishableKey },
-      signal: AbortSignal.timeout(10_000),
-    });
-    if (!response.ok) throw new Error(`HTTP ${response.status}`);
-    const rows = await response.json();
-    return Array.isArray(rows) ? rows : [];
-  } catch (error) {
-    console.warn(`SEO prerender is using compiled fallback content: ${error instanceof Error ? error.message : error}`);
-    return [];
-  }
-}
-
 const publicContent = seedPublicSiteContent();
 const acceptedPublishedRows = new Map();
-for (const row of await loadPublishedRows()) {
+for (const row of await loadPublishedBuildRows({ environment: process.env, localEnvironment: buildEnv })) {
   const pageKey = String(row?.page_key || "");
   try {
     const content = normalizeManagedContent(pageKey, row?.published_content);
@@ -146,6 +131,9 @@ for (const row of await loadPublishedRows()) {
       acceptedPublishedRows.set(pageKey, row);
     }
   } catch (error) {
+    if (requiresPublishedBuildContent(process.env)) {
+      throw new Error(`SEO prerender rejected published content for ${pageKey || "an unknown page"}: ${error instanceof Error ? error.message : error}`);
+    }
     console.warn(`SEO prerender ignored invalid published content for ${pageKey || "an unknown page"}: ${error instanceof Error ? error.message : error}`);
   }
 }
@@ -275,6 +263,14 @@ const renderPublicShell = (document, seo) => {
 
 const applyPublicHead = (html, document, seo) => {
   let output = replaceTitle(html, seo.title);
+  if (seo.canonicalPath === "/") {
+    const hero = document.page.sections.find((section) => section.kind === "hero") || document.page.sections[0];
+    const preload = buildHomeHeroPreloadScript({
+      lightSrc: hero?.images[1]?.src || LIGHT_HOME_HERO_SRC,
+      darkSrc: hero?.images[0]?.src,
+    });
+    output = output.replace("</head>", () => `<script id="home-hero-preload">${preload}</script>\n  </head>`);
+  }
   output = replaceMeta(output, "name", "application-name", siteName);
   output = replaceMeta(output, "name", "apple-mobile-web-app-title", siteName);
   output = replaceMeta(output, "name", "description", seo.description);

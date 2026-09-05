@@ -159,6 +159,27 @@ describe("consent-gated GA4 tracking", () => {
     ]);
   });
 
+  it("preserves a public section anchor without including it in analytics", async () => {
+    const { setAnalyticsConsent, trackEvent, trackPageView } = await import("./analytics");
+    const target = document.createElement("section");
+    target.id = "wildwood";
+    document.body.appendChild(target);
+    try {
+      window.history.replaceState({}, "", "/cape-may-county?email=person%40example.com#wildwood");
+      setAnalyticsConsent("granted");
+      trackPageView("/cape-may-county", "Cape May County");
+      expect(window.location.hash).toBe("#wildwood");
+      expect(window.location.search).toBe("");
+      expect(JSON.stringify(queuedCommands())).not.toContain("#wildwood");
+      trackEvent("test_event");
+      expect(queuedCommands().at(-1)).toEqual(["event", "test_event", {
+        page_location: `${window.location.origin}/cape-may-county`,
+      }]);
+    } finally {
+      target.remove();
+    }
+  });
+
   it("sends one page view per virtual location with the prior location as referrer", async () => {
     const { setAnalyticsConsent, trackPageView } = await import("./analytics");
 

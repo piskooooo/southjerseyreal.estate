@@ -110,7 +110,7 @@ export default function App() {
         });
 
     if (rawPath !== seo.canonicalPath) {
-      window.history.replaceState({}, "", seo.canonicalPath);
+      window.history.replaceState({}, "", `${seo.canonicalPath}${window.location.search}${window.location.hash}`);
     }
 
     document.title = seo.title;
@@ -153,8 +153,22 @@ export default function App() {
     } else {
       removeStructuredData();
     }
-    window.scrollTo({ top: 0, behavior: "instant" });
   }, [isKnownPath, pageDocument.insightArticle, pageDocument.seo, page, path, siteContent.sitewide.brandName]);
+
+  useEffect(() => {
+    if (!window.location.hash) {
+      window.scrollTo({ top: 0, behavior: "instant" });
+      return;
+    }
+    const frame = window.requestAnimationFrame(() => {
+      try {
+        document.getElementById(decodeURIComponent(window.location.hash.slice(1)))?.scrollIntoView({ block: "nearest" });
+      } catch {
+        // Invalid fragments do not prevent the page from rendering.
+      }
+    });
+    return () => window.cancelAnimationFrame(frame);
+  }, [path]);
 
   useEffect(() => {
     const seo = isKnownPath
@@ -186,10 +200,31 @@ export default function App() {
   }, [theme]);
 
   const navigate = (nextPath: string) => {
-    const normalized = normalizeRoutePath(nextPath);
-    if (normalized === path) return;
-    window.history.pushState({}, "", normalized);
+    let destination: URL;
+    try {
+      destination = new URL(nextPath, window.location.href);
+    } catch {
+      return;
+    }
+    if (destination.origin !== window.location.origin) return;
+    const normalized = normalizeRoutePath(destination.pathname);
+    const nextLocation = `${normalized}${destination.search}${destination.hash}`;
+    if (nextLocation !== `${window.location.pathname}${window.location.search}${window.location.hash}`) {
+      window.history.pushState({}, "", nextLocation);
+    } else if (!destination.hash) {
+      return;
+    }
     setPath(normalized);
+    if (normalized === path) {
+      window.dispatchEvent(new PopStateEvent("popstate"));
+      if (destination.hash) {
+        try {
+          document.getElementById(decodeURIComponent(destination.hash.slice(1)))?.scrollIntoView({ block: "nearest" });
+        } catch {
+          // Invalid fragments do not prevent navigation.
+        }
+      }
+    }
   };
 
   const chooseAnalyticsConsent = (consent: AnalyticsConsent) => {

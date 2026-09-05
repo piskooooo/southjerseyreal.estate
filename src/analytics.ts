@@ -129,7 +129,13 @@ const replaceUnsafeBrowserLocation = (safeLocation: string) => {
     if (tagAssistantDebugValue) {
       safeUrl.searchParams.set(tagAssistantDebugParameter, tagAssistantDebugValue);
     }
-    const safeRelativeUrl = `${safeUrl.pathname}${safeUrl.search}`;
+    const fragmentId = safeDecode(window.location.hash.slice(1));
+    const publicFragment = /^[a-z0-9][a-z0-9_-]{0,159}$/i.test(fragmentId)
+      && !containsPotentialPersonalData(fragmentId)
+      && document.getElementById(fragmentId)
+      ? window.location.hash
+      : "";
+    const safeRelativeUrl = `${safeUrl.pathname}${safeUrl.search}${publicFragment}`;
     const currentRelativeUrl = `${window.location.pathname}${window.location.search}${window.location.hash}`;
     if (safeRelativeUrl !== currentRelativeUrl) {
       window.history.replaceState(window.history.state, "", safeRelativeUrl);
@@ -305,10 +311,10 @@ export const trackEvent = (name: string, params: Record<string, GtagValue> = {})
 
   // Tag Assistant's browser signal must remain in the address bar, but it
   // should not become the automatic page_location on custom events.
-  if (getTagAssistantDebugValue()) {
+  if (getTagAssistantDebugValue() || window.location.hash) {
     const pageLocation = sanitizeHttpUrl(window.location.href, true);
     if (pageLocation) safeParams.page_location = pageLocation;
-    safeParams.debug_mode = true;
+    if (getTagAssistantDebugValue()) safeParams.debug_mode = true;
   }
 
   window.gtag?.("event", name, safeParams);

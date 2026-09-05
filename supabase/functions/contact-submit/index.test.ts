@@ -44,27 +44,92 @@ function notification(overrides: Partial<ContactNotificationWork> = {}) {
   } satisfies ContactNotificationWork;
 }
 
-describe("contact notification retry safety", () => {
+describe("contact request and notification safety", () => {
   let handleRequest: (request: Request) => Promise<Response>;
+  let environment: Record<string, string>;
+  let expectedSiteverifyCalls: number;
 
   beforeEach(async () => {
     vi.resetModules();
     vi.useFakeTimers();
     vi.setSystemTime(now);
+    environment = { ...configuration };
+    expectedSiteverifyCalls = 0;
     rpc.mockReset();
     send.mockReset().mockResolvedValue({ messageId: "<local-test@example.com>", duplicate: false });
     vi.stubGlobal("fetch", vi.fn(() => { throw new Error("Unexpected external request in local test."); }));
     vi.stubGlobal("Deno", {
-      env: { get: (name: string) => configuration[name] },
+      env: { get: (name: string) => environment[name] },
       serve: (handler: typeof handleRequest) => { handleRequest = handler; },
     });
     await import("./index.ts");
   });
 
   afterEach(() => {
-    expect(fetch).not.toHaveBeenCalled();
+    expect(fetch).toHaveBeenCalledTimes(expectedSiteverifyCalls);
     vi.useRealTimers();
     vi.unstubAllGlobals();
+  });
+
+  it.each([
+    ["https://southjerseyreal.estate", 204],
+    ["https://arthurpisko.realtor", 403],
+    ["https://unrelated.example", 403],
+  ])("uses the deployed default origin policy for %s", async (origin, status) => {
+    const response = await handleRequest(new Request("https://example.invalid/contact-submit", {
+      method: "OPTIONS",
+      headers: { origin },
+    }));
+    expect(response.status).toBe(status);
+    expect(response.headers.get("access-control-allow-origin")).toBe(status === 204 ? origin : null);
+    expect(rpc).not.toHaveBeenCalled();
+    expect(send).not.toHaveBeenCalled();
+  });
+
+  it("preserves an explicitly configured origin instead of widening the defaults", async () => {
+    environment.CONTACT_ALLOWED_ORIGINS = "https://arthurpisko.realtor";
+    const response = await handleRequest(new Request("https://example.invalid/contact-submit", {
+      method: "OPTIONS",
+      headers: { origin: "https://arthurpisko.realtor" },
+    }));
+    expect(response.status).toBe(204);
+    expect(response.headers.get("access-control-allow-origin")).toBe("https://arthurpisko.realtor");
+  });
+
+  it.each([
+    ["southjerseyreal.estate", 201],
+    ["arthurpisko.realtor", 403],
+    ["unrelated.example", 403],
+  ])("uses the deployed default Turnstile hostname policy for %s", async (hostname, status) => {
+    environment.TURNSTILE_SECRET = "local-test-turnstile-secret";
+    environment.CONTACT_AUDIT_HMAC_KEY = "local-test-hmac-key-at-least-32-characters";
+    expectedSiteverifyCalls = 1;
+    vi.mocked(fetch).mockImplementation(async (url) => {
+      expect(url).toBe("https://challenges.cloudflare.com/turnstile/v0/siteverify");
+      return Response.json({ success: true, action: "turnstile-spin-v2", hostname });
+    });
+    rpc.mockResolvedValue({
+      data: { accepted: true, created: true, inquiryId, notificationStatus: "sent" },
+      error: null,
+    });
+    const response = await handleRequest(new Request("https://example.invalid/contact-submit", {
+      method: "POST",
+      headers: { origin: "https://southjerseyreal.estate", "content-type": "application/json" },
+      body: JSON.stringify({
+        requestId: inquiryId,
+        source: "contact_page",
+        name: "Local test visitor",
+        email: "visitor@example.com",
+        phone: "555-0100",
+        interest: "Buying",
+        message: "Local default hostname regression test",
+        sourcePath: "/contact",
+        turnstileToken: "local-test-token",
+      }),
+    }));
+    expect(response.status).toBe(status);
+    expect(rpc).toHaveBeenCalledTimes(status === 201 ? 1 : 0);
+    expect(send).not.toHaveBeenCalled();
   });
 
   async function process(work: ContactNotificationWork) {

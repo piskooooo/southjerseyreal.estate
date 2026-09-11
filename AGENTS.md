@@ -5,8 +5,6 @@ Guidance for future Codex work on the South Jersey Real Estate site.
 ## Canonical Project Root
 
 - Work from `/Users/pisko/Documents/southjerseyreal.estate`.
-- At the start of new project threads, confirm `pwd` is this folder and run `git status --short --branch`.
-- This repo is already in a top-level project folder; do not use older generated Codex wrapper folders for active work.
 
 ## Repository Identity and Push Target
 

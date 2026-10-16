@@ -1,7 +1,11 @@
+import { compliance } from "./content/compliance";
+import { isAllowedCommunityAnalyticsId } from "./content/communityAnalytics";
+
 type GtagValue = string | number | boolean | Date | Record<string, unknown>;
 type Gtag = (command: string, target: string | Date, params?: Record<string, unknown>) => void;
 export type AnalyticsConsent = "granted" | "denied";
 export type AnalyticsFormName = "contact" | "newsletter";
+export type CommunityOpenMethod = "manual" | "anchor";
 
 declare global {
   interface Window {
@@ -51,6 +55,35 @@ const newsletterLeadTypes = new Map([
 let initialized = false;
 let lastPageLocation = "";
 let previousPageLocation = "";
+const communityInactivityTimeout = 30 * 60 * 1000;
+let communityRoutePath = "";
+let lastCommunityActivityAt: number | null = null;
+const openedCommunities = new Set<string>();
+let communityContext: { county_id: string; community_id: string } | undefined;
+
+const clearCommunityTracking = () => {
+  communityRoutePath = "";
+  lastCommunityActivityAt = null;
+  openedCommunities.clear();
+  communityContext = undefined;
+};
+
+const currentRoutePath = () => window.location.pathname.replace(/\/+$/, "") || "/";
+
+// Memory only: no town history is written to cookies, storage, or form records.
+const touchCommunityActivity = () => {
+  const now = Date.now();
+  if (lastCommunityActivityAt !== null
+    && (now - lastCommunityActivityAt >= communityInactivityTimeout || now < lastCommunityActivityAt)) {
+    clearCommunityTracking();
+  }
+  lastCommunityActivityAt = now;
+  const path = currentRoutePath();
+  if (path !== communityRoutePath) {
+    communityRoutePath = path;
+    openedCommunities.clear();
+  }
+};
 
 const isBrowser = () => typeof window !== "undefined" && typeof document !== "undefined";
 
@@ -196,6 +229,7 @@ const disableAnalytics = () => {
   initialized = false;
   lastPageLocation = "";
   previousPageLocation = "";
+  clearCommunityTracking();
 };
 
 export const getAnalyticsConsent = (): AnalyticsConsent | null => {
@@ -286,6 +320,7 @@ const ensureAnalytics = () => {
 
 export const trackPageView = (path: string, title: string) => {
   if (!isBrowser() || getAnalyticsConsent() !== "granted" || !isAllowedAnalyticsHost()) return;
+  touchCommunityActivity();
   const pageLocation = sanitizeHttpUrl(window.location.href, true);
   if (!pageLocation || pageLocation === lastPageLocation) return;
   replaceUnsafeBrowserLocation(pageLocation);
@@ -307,6 +342,7 @@ export const trackPageView = (path: string, title: string) => {
 
 export const trackEvent = (name: string, params: Record<string, GtagValue> = {}) => {
   if (!ensureAnalytics()) return;
+  touchCommunityActivity();
   const safeParams = sanitizeEventParams(params);
 
   // Tag Assistant's browser signal must remain in the address bar, but it
@@ -320,6 +356,32 @@ export const trackEvent = (name: string, params: Record<string, GtagValue> = {})
   window.gtag?.("event", name, safeParams);
 };
 
+export const trackCommunityProfileOpen = (
+  countyPath: string,
+  communityId: string,
+  openMethod: CommunityOpenMethod,
+) => {
+  if (!isBrowser() || (openMethod !== "manual" && openMethod !== "anchor")) return;
+  if (currentRoutePath() !== countyPath || !isAllowedCommunityAnalyticsId(countyPath, communityId)) return;
+  if (!ensureAnalytics()) return;
+  touchCommunityActivity();
+  communityContext = {
+    county_id: countyPath.slice(1).replace(/-county$/, ""),
+    community_id: communityId,
+  };
+  // An intentional reopen still updates the last-town context, but does not
+  // inflate the count for this route visit (including React effect replays).
+  if (openedCommunities.has(communityId)) return;
+  openedCommunities.add(communityId);
+  trackEvent("community_profile_open", { ...communityContext, open_method: openMethod });
+};
+
+const contactCommunityContext = () => {
+  if (!isBrowser() || getAnalyticsConsent() !== "granted" || !isAllowedAnalyticsHost()) return {};
+  touchCommunityActivity();
+  return communityContext || {};
+};
+
 export const trackFormSuccess = (formName: AnalyticsFormName, interest: string) => {
   const normalizedInterest = interest.trim().toLowerCase();
   const leadType = formName === "contact"
@@ -331,6 +393,7 @@ export const trackFormSuccess = (formName: AnalyticsFormName, interest: string) 
       form_name: "contact",
       lead_source: "website_contact_form",
       lead_type: leadType,
+      ...contactCommunityContext(),
     } as const;
     trackEvent("generate_lead", params);
     trackEvent("contact_lead", params);
@@ -371,6 +434,21 @@ export const trackLinkClick = (href: string, _label: string, source: string) => 
       params.link_url = isInternal ? new URL(safeUrl).pathname : safeUrl;
     }
   }
+
+  const phoneNumber = isPhone ? normalizedHref.slice(4).replace(/\D/g, "").replace(/^1(?=\d{10}$)/, "") : "";
+  const isSitePhone = isPhone && [compliance.agentPhoneHref, compliance.licensedOfficePhoneHref].some(
+    (href) => href.slice(4).replace(/\D/g, "").replace(/^1(?=\d{10}$)/, "") === phoneNumber,
+  );
+  const isSiteEmail = isEmail && normalizedHref.slice(7).split("?")[0].toLowerCase() === compliance.agentEmail.toLowerCase();
+  let isContactPage = false;
+  try {
+    const destination = new URL(normalizedHref, window.location.origin);
+    isContactPage = destination.origin === window.location.origin
+      && destination.pathname.replace(/\/+$/, "") === "/contact";
+  } catch {
+    // Malformed links receive no community context.
+  }
+  if (isContactPage || isSitePhone || isSiteEmail) Object.assign(params, contactCommunityContext());
 
   trackEvent(eventName, params);
 };

@@ -6,8 +6,9 @@ React/Vite source for `southjerseyreal.estate`.
 
 **Complete as of August 7, 2026.** The selected website roadmap, production
 deployment, compliance implementation, owner reviews, and Google Business
-Profile ownership handoff are finished. There are no active project to-do items
-or known blockers. Routine operations, quarterly reviews, content maintenance,
+Profile ownership handoff are finished. Follow-on owner-selected maintenance is
+tracked separately in `docs/project-todo.md`. Routine operations, quarterly
+reviews, content maintenance,
 and explicitly deferred concepts are not unfinished website work.
 
 The repository's latest QA recheck on August 10, 2026 passed 100 unit tests, 66
@@ -70,3 +71,10 @@ Pushing `main` triggers a Cloudflare Pages deployment. Supabase migrations and E
 ## Analytics
 
 The site uses consent-gated GA4 measurement ID `G-97H86MNHP8`. It sends SPA `page_view` events, contact/navigation/link events, `generate_lead` plus `contact_lead` after a successful contact inquiry, and `sign_up` after a successful newsletter subscription. Only the direct `contact_lead` event is configured as the editable lead key event.
+
+Community-interest tracking sends `community_profile_open` for an individual
+town opening, using reviewed public county/town identifiers. Contact events can
+carry the last town opened during that consented browser runtime. The context
+stays in memory, expires after 30 minutes without tracked activity, and is
+cleared when consent is withdrawn. GA4 reporting-field setup and interpretation
+are documented in [the deployment guide](docs/cloudflare-pages-supabase-brevo.md#community-interest-analytics).

@@ -79,6 +79,16 @@ The owner confirmed active REALTOR® membership on July 18, 2026, and current pu
 - [x] Confirmed that the Playwright compliance harness uses its own strict preview server on port 4174 and does not reuse an unrelated local server.
 - [x] Confirmed that the production frontend remains Cloudflare Pages-based and that Docker/Unraid is local-test infrastructure only, not a production dependency.
 
+## October 16 Selected Analytics Addition
+
+The owner selected consent-gated community-interest measurement on October 16,
+2026. The locally verified implementation uses only reviewed public county and
+town identifiers, with temporary last-town context in memory and no additions
+to form submissions or private storage. It reuses the existing GA4 processor
+and consent rules. This is a technical change record, not a new legal approval
+or a claim of production activation; release/setup status is recorded in
+`docs/project-todo.md`.
+
 ## Provider Directory Verification
 
 Checked July 19, 2026 against the provider's current official website or profile:

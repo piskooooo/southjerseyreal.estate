@@ -80,6 +80,56 @@ NODE_VERSION=22
 
 For CI browser tests only, the workflow builds with `VITE_GA_MEASUREMENT_ID=G-TEST123`. The client permits that inert test ID on `localhost` and `127.0.0.1`; do not use the production measurement ID for local or preview testing.
 
+### Community-interest analytics
+
+The owner selected this measurement addition on October 16, 2026. It uses the
+existing consent-gated GA4 stream; no extra processor, browser storage, form
+field, database change, or server-side tracking is introduced.
+
+- `community_profile_open` records the first opening of an individual town
+  during a county-page visit. `open_method` is `manual` or `anchor`; an anchor
+  does not establish that a link was externally shared.
+- `county_id` and `community_id` are public slugs resolved from the existing
+  reviewed community-image ledger by stable section ID. Editable headings,
+  arbitrary fragments, and unknown/new community IDs are not transmitted.
+  For a newly added town, update the reviewed ledger before expecting tracking.
+- Expand/collapse-all controls, individual collapse, repeated opens, React
+  effect replays, content refreshes, and theme changes do not inflate opens.
+  Returning to a county after another route begins a new page visit.
+- The most recently opened town is attached as context to contact-page clicks,
+  clicks on the approved agent/office phone or agent email, and successful
+  contact `generate_lead`/`contact_lead` events. Reopening a previously counted
+  town updates this context without adding an open event. Unrelated provider
+  contacts, outbound links, and newsletter signups receive no town context.
+- Context and deduplication live only in memory, expire after 30 minutes
+  without a tracked action, and clear on consent withdrawal or page reload.
+  Opens before consent are not replayed after opt-in. Private form submissions
+  and their stored `source_path` are unchanged.
+
+In GA4 **Main Website** (property `498019272`), open **Admin → Data display →
+Custom definitions → Create custom dimensions**. Check for existing definitions
+first, and register these **Event**-scoped parameters:
+
+| Dimension name | Event parameter |
+| --- | --- |
+| County | `county_id` |
+| Town | `community_id` |
+| Profile open method | `open_method` |
+
+The installed Windsor connector can read GA4 but exposes no write actions, so it
+cannot register these dimensions. An owner with Editor/Administrator access
+must complete this step in GA4. Allow 24–48 hours after registration and new
+events before expecting populated standard reports. See Google's
+[custom-dimension instructions](https://support.google.com/analytics/answer/14239696).
+
+Compare `community_profile_open` with contact-page clicks, approved phone/email
+clicks, and `contact_lead`, broken down by County/Town. Count only `contact_lead`
+for successful inquiries; adding `generate_lead` would double-count. Keep opens
+as engagement events, not lead key events. This measures observed activity by
+consenting visitors; it does not establish that a town caused an inquiry,
+identify a seller or property, reconstruct earlier visits, or measure all
+website traffic. Reloads and new tabs intentionally lose the in-memory context.
+
 ### Published content during builds
 
 Cloudflare Pages production builds are identified by `CF_PAGES=1` together with

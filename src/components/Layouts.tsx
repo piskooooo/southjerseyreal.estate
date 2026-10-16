@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState, type MouseEvent, type ReactNode } from "react";
-import { trackFormSuccess, trackLinkClick } from "../analytics";
+import { trackCommunityProfileOpen, trackFormSuccess, trackLinkClick } from "../analytics";
+import { getCommunityAnalyticsId } from "../content/communityAnalytics";
 import {
   areCloudFormsConfigured,
   CONTACT_TURNSTILE_ACTION,
@@ -192,9 +193,11 @@ function TownCard({
 function TownGrid({
   sections,
   navigate,
+  countyPath,
 }: {
   sections: Array<{ section: PageSection; index: number }>;
   navigate: (path: string) => void;
+  countyPath: string;
 }) {
   const expandableSections = sections.filter(({ section }) => section.blocks.length > 2);
   const rows = sections.reduce<Array<Array<{ anchor: string; key: string; section: PageSection; index: number }>>>((groups, item, itemIndex) => {
@@ -228,6 +231,10 @@ function TownGrid({
     };
     const syncTownFromHash = () => {
       const { hash, target } = findHashTarget();
+      if (target && (appliedHash.current?.hash !== hash || appliedHash.current.targetKey !== target.key)) {
+        const communityId = getCommunityAnalyticsId(countyPath, target.section.id);
+        if (communityId) trackCommunityProfileOpen(countyPath, communityId, "anchor");
+      }
       appliedHash.current = { hash, targetKey: target?.key };
       setExpandedCards(target ? new Set([target.key]) : new Set());
       if (target) scrollTownCardIntoView(target.key);
@@ -243,7 +250,7 @@ function TownGrid({
       window.removeEventListener("hashchange", syncTownFromHash);
       window.removeEventListener("popstate", syncTownFromHash);
     };
-  }, [sections]);
+  }, [countyPath, sections]);
   const expandAll = () => setExpandedCards(new Set(expandableSections.map(({ section, index }) => townSectionKey(section, index))));
   const collapseAll = () => {
     setExpandedCards(new Set());
@@ -268,6 +275,9 @@ function TownGrid({
     });
 
     if (isOpening) {
+      const section = sections.find((item) => townSectionKey(item.section, item.index) === key)?.section;
+      const communityId = section && getCommunityAnalyticsId(countyPath, section.id);
+      if (communityId) trackCommunityProfileOpen(countyPath, communityId, "manual");
       window.history.pushState({}, "", `${window.location.pathname}${window.location.search}#${anchor}`);
       appliedHash.current = { hash: anchor, targetKey: key };
       scrollTownCardIntoView(key);
@@ -818,7 +828,7 @@ export function CountyPage({ page, navigate }: PageProps) {
   const flushTownSections = () => {
     if (!townSections.length) return;
     renderedSections.push(
-      <TownGrid key={`town-grid-${townSections[0].section.id || townSections[0].index}`} sections={townSections} navigate={navigate} />,
+      <TownGrid key={`${page.path}-town-grid-${townSections[0].section.id || townSections[0].index}`} countyPath={page.path} sections={townSections} navigate={navigate} />,
     );
     townSections = [];
   };

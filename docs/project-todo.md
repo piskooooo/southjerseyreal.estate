@@ -1,6 +1,6 @@
 # South Jersey Real Estate Project Checklist
 
-Last reviewed: September 5, 2026
+Last reviewed: October 16, 2026
 
 **Roadmap status: Complete.** The selected roadmap closed on August 7, 2026.
 The owner separately selected the September 4 audit corrections below. Their
@@ -8,6 +8,10 @@ implementation, preview delivery verification, and production release are
 complete. Routine maintenance, quarterly reviews, marketing campaigns,
 and explicitly deferred concepts are not unfinished roadmap work and must not
 be reported as active unless the owner explicitly selects them.
+
+The owner selected community-interest measurement on October 16. Its
+source implementation and local checks are complete; the remaining GA4
+reporting-field setup is recorded below. The original roadmap remains closed.
 
 Use this file as the source of truth for project status and any future selected
 work on `southjerseyreal.estate`. Check an item only after completing its
@@ -35,6 +39,35 @@ data, or other secrets in this file.
 All selected roadmap items are complete. Earlier loose ideas about a statewide
 referral strategy, additional backup/export work, and other chat-only
 possibilities are intentionally not being carried forward.
+
+## Owner-selected October 16 Community-interest Measurement
+
+- [x] Add consent-gated `community_profile_open` events using reviewed public
+  county/town identifiers resolved from stable section IDs. Distinguish manual
+  openings from anchor navigation, deduplicate within a county-page visit,
+  and exclude bulk controls and replay of activity before opt-in.
+- [x] Attach the last-opened town to contact-page clicks, approved agent/office
+  phone and agent-email clicks, and successful contact events. Keep this
+  context in memory only, expire it after 30 minutes without tracked activity,
+  clear it on consent withdrawal, and leave form requests/storage unchanged.
+- [x] Verify the source implementation: 176 unit tests, the production build,
+  and 82 rendered browser/compliance checks, including all seven county
+  guides, mobile contact navigation, shared anchors, content refresh, theme
+  changes, and consent behavior. The browser run used `CI=1` with the installed
+  bundled Chromium because the configured desktop Chrome executable was
+  absent. `git diff --check` passed. No real inquiry was submitted for this
+  browser-event-only change; existing form and Turnstile behavior is unchanged.
+- [ ] Register the three event-scoped GA4 custom dimensions: County
+  (`county_id`), Town (`community_id`), and Profile open method (`open_method`).
+  The installed Windsor connector exposes no GA4 write actions, so an owner
+  must complete the documented setup in the GA4 interface.
+
+The owner authorized production publication and GA4 setup on October 16.
+Release verification and GA4 registration are in progress; production event
+receipt has not yet been verified. No production GA4 settings were changed
+before this release.
+The measurement contract, reporting setup, and interpretation limits are in
+[the deployment guide](cloudflare-pages-supabase-brevo.md#community-interest-analytics).
 
 ## Owner-selected September 4 Maintenance
 

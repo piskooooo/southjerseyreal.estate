@@ -59,13 +59,23 @@ possibilities are intentionally not being carried forward.
   browser-event-only change; existing form and Turnstile behavior is unchanged.
 - [ ] Register the three event-scoped GA4 custom dimensions: County
   (`county_id`), Town (`community_id`), and Profile open method (`open_method`).
-  The installed Windsor connector exposes no GA4 write actions, so an owner
-  must complete the documented setup in the GA4 interface.
+  The owner authorized this setup, but the installed Windsor connector exposes
+  no GA4 write actions and no authenticated Admin browser/API was accessible
+  in this session. The documented registration remains incomplete.
+- [x] Publish the source and verify production. Commit `e003c1f` is on
+  `origin/main`; the [GitHub test workflow](https://github.com/piskooooo/southjerseyreal.estate/actions/runs/38981605083)
+  and [Cloudflare Pages deployment](https://a9b8f080.southjerseyreal-estate.pages.dev)
+  succeeded for the exact revision. Production serves the new tracking bundle
+  on the canonical hostname. A controlled browser check used explicit
+  `codex_test / qa` campaign attribution and confirmed Google `204` responses
+  for a Camden City profile opening and a subsequent Contact click with the
+  expected county/town parameters under `G-97H86MNHP8`. No contact inquiry or
+  newsletter subscription was submitted.
 
 The owner authorized production publication and GA4 setup on October 16.
-Release verification and GA4 registration are in progress; production event
-receipt has not yet been verified. No production GA4 settings were changed
-before this release.
+Production tracking is active and event receipt is verified. GA4 custom
+dimension registration is the remaining setup item; no GA4 settings were
+changed during this release. Normal reporting is not claimed as populated.
 The measurement contract, reporting setup, and interpretation limits are in
 [the deployment guide](cloudflare-pages-supabase-brevo.md#community-interest-analytics).
 

@@ -89,6 +89,20 @@ and consent rules. This is a technical change record, not a new legal approval
 or a claim of production activation; release/setup status is recorded in
 `docs/project-todo.md`.
 
+## October 17 Selected Town Introduction Rewrite
+
+The owner selected a rewrite of all 166 town introductions on October 17,
+2026, replacing repetitive detail checklists with specific descriptions of
+the places. The source-backed rewrite and local verification are complete:
+188 unit tests and 117 browser checks passed, plus targeted desktop/mobile
+visual and accessibility review. Each revised introduction has supporting
+primary sources and dated source notes;
+the retained expanded population, price, tax, and school fields remain
+clearly labeled historical snapshots. No new current market, school ranking,
+safety, demographic targeting, or commute-time claims are part of this work.
+The owner reviewed the preview and approved publication on October 17.
+This record does not create a new legal approval or reopen the completed roadmap.
+
 ## Provider Directory Verification
 
 Checked July 19, 2026 against the provider's current official website or profile:

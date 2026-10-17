@@ -88,7 +88,8 @@ The measurement contract, reporting setup, and interpretation limits are in
   [October 16 review](analytics-town-attribution-review-2026-10-16.md) records
   the measured baseline, QA contamination, attribution limits, and prioritized
   improvements with acceptance measures. The owner subsequently selected
-  recommendations 1–3 below; recommendation 4 remains a plan.
+  recommendations 1–4 below. On October 17, the owner expanded the wording
+  correction into a rewrite of all 166 town introductions.
 
 ## Owner-selected October 16 County Initial Content
 
@@ -131,8 +132,8 @@ requests while consent is denied. No inquiry or subscription was submitted.
 A separate external Cloudflare analytics beacon failed DNS resolution from
 the test Mac; no first-party page/runtime failure was found. This does not
 claim that external beacon delivery was verified. The original roadmap
-remains closed. The owner subsequently selected the town directory and guide
-links below; copy corrections remain unselected.
+remains closed. The owner subsequently selected the town directory, guide
+links, and town introduction rewrite recorded below.
 
 ## Owner-selected October 16 Town Directory
 
@@ -188,9 +189,9 @@ Live Camden desktop/light and Atlantic mobile/dark checks confirmed real
 published-content responses, sticky navigation, clear town headings,
 Back/Forward, bulk controls, no copy action, no page errors or horizontal
 overflow, and no Google Analytics requests with consent denied. No inquiry
-or subscription was submitted. The original roadmap remains complete;
-recommendation 4 is not an active task. The owner subsequently selected the
-county guide links below.
+or subscription was submitted. The original roadmap remains complete.
+The owner subsequently selected the county guide links and town introduction
+rewrite below.
 
 ## Owner-selected October 16 County Guide Links
 
@@ -234,7 +235,49 @@ confirmed real published-content responses, the new quiet link styling,
 unchanged guidance buttons, and working article navigation, with no page
 errors, horizontal overflow, failed requests, or Google Analytics requests
 while consent is denied. No inquiry or subscription was submitted.
-Recommendation 4 remains unselected, and the original roadmap remains closed.
+The owner subsequently selected the town introduction rewrite below. The
+original roadmap remains closed.
+
+## Owner-selected October 17 Town Introductions
+
+The owner selected recommendation 4 and explicitly expanded it to all 166
+town introductions across the seven counties. The current summaries repeat
+the expanded parks, shopping, and transportation fields rather than introduce
+the places themselves.
+
+- [x] Replace all 166 checklist summaries with concise, distinct introductions
+  grounded in the towns' geography, settlement patterns, history, and physical
+  landmarks. Research each factual claim in a supporting primary source and
+  retain dated source notes. Avoid generic marketing, demographic targeting,
+  school or safety rankings, commute promises, and current market claims.
+- [x] Preserve the design, card order, anchors, imagery, source attribution,
+  and clearly dated expanded detail snapshots. Keep the reviewed prose in
+  the editable structured content and its source document.
+- [x] Upgrade unchanged older published summaries and their source notes
+  without overwriting owner-written text, restoring removed cards, or
+  reversing later edits. Verify the same prose in initial HTML and the
+  interactive page.
+- [x] Complete editorial, source, unit, production-build, browser/compliance,
+  and desktop/mobile verification. All 188 unit tests and 117 browser checks
+  passed, including the local production build with offline fixtures. The
+  new browser checks exercise older published documents for all seven
+  counties. A separate read-only capture of the real published county rows
+  confirmed all 166 old summaries match the guarded baseline; SSR and
+  browser checks then verified that all 166 upgrade to the reviewed prose
+  without changing any expanded historical paragraphs. Initial HTML,
+  source dates, anchors, directory/history behavior, and consent checks pass.
+  Additional 1440-pixel light/dark, 390-pixel dark, and 320-pixel light
+  previews passed visual and targeted accessibility review, with no page
+  errors or horizontal overflow. Browser validation used bundled Chromium
+  because the Browser plugin is unavailable. `git diff --check` passed.
+  The local preview is available for owner review; no form was submitted.
+- [ ] Publish the owner-authorized release and verify the GitHub checks,
+  Cloudflare deployment, and live town introductions.
+
+The owner approved the preview and authorized committing and pushing on
+October 17. Implementation and local verification are complete; production
+publication verification is pending.
+The original roadmap remains complete.
 
 ## Owner-selected September 4 Maintenance
 

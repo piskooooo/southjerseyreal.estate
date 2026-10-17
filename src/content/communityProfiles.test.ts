@@ -5,13 +5,14 @@ import {
   communityProfileUpdated,
 } from "./communityProfiles";
 import { generatedPages } from "./generatedSiteData";
+import legacySummaries from "./legacyCommunitySummaries.json";
 
 describe("community profile restoration", () => {
   const pages = applyCommunityProfiles(generatedPages);
   const townSections = pages.flatMap((page) => page.sections.filter((section) => section.kind === "town"));
 
   it("restores every county and community profile from the sourced editorial draft", () => {
-    expect(communityProfileUpdated).toBe("2026-08-10");
+    expect(communityProfileUpdated).toBe("2026-10-17");
     expect(communityDetailSnapshotYear).toBe(2025);
     expect(pages).toHaveLength(7);
     expect(townSections).toHaveLength(166);
@@ -33,11 +34,20 @@ describe("community profile restoration", () => {
     })).toBe(true);
     expect(townSections.every((section) => section.blocks[1]?.text.length > 60)).toBe(true);
     expect(townSections.every((section) => !/\b(?:official site|current source|cross-check|before publication|undated|future site content|website separates|should be used|use the official|unknown|award-winning|unbeatable|excellent access|highly rated|crown jewel|top-tier|storybook|great spot|great pick|strong sense of community|incredibly commuter-friendly|fast access|quick connections|easy drive|easy commute|quick drive|short drive|commuter.?s dream|\d+[- ]minute|minutes? (?:to|from))\b/i.test(section.blocks[1]?.text || ""))).toBe(true);
+    const legacyById = new Map(Object.values(legacySummaries.counties).flat().map((entry) => [entry.id, entry.summary]));
     expect(townSections.every((section) => {
       const summary = section.blocks[1]?.text || "";
-      return /\b(?:Outdoor highlights|Shopping and dining|Regional access|Local services):/.test(summary)
-        || summary.startsWith("Pine Hill is a borough in Camden County.");
+      const words = summary.trim().split(/\s+/).length;
+      const sentences = summary.split(/(?<=[.!?])\s+/).filter((sentence) => sentence.length > 25);
+      return !/\b(?:Outdoor highlights|Shopping and dining|Regional access|Local services):/.test(summary)
+        && words >= 25 && words <= 85
+        && new Set(sentences).size === sentences.length
+        && summary !== legacyById.get(section.id);
     })).toBe(true);
+    expect(new Set(townSections.map((section) => section.blocks[1]?.text)).size).toBe(166);
+    expect(townSections.every((section) => section.blocks.some((block) => (
+      block.tag === "SOURCE" && block.href?.startsWith("https:") && block.accessed === "2026-10-17"
+    )))).toBe(true);
     expect(townSections.every((section) => section.blocks.length >= 10)).toBe(true);
     expect(townSections.every((section) => (
       section.blocks.some((block) => block.text.startsWith("Population:"))

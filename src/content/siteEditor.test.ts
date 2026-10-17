@@ -1,4 +1,5 @@
 import { describe, expect, it } from "vitest";
+import legacySummaries from "./legacyCommunitySummaries.json";
 import {
   managedContentSeeds,
   normalizeManagedContent,
@@ -7,6 +8,91 @@ import {
   type ManagedPageDocument,
   type SitewideContent,
 } from "./siteEditor";
+
+describe("reviewed town introduction upgrades", () => {
+  const legacyCounties = legacySummaries.counties as Record<string, Array<{
+    id: string;
+    summary: string;
+    sources: Array<{ tag: string; text: string; href: string; accessed: string }>;
+  }>>;
+
+  it("upgrades all 166 unchanged published summaries and sources without changing historical details", () => {
+    let upgraded = 0;
+    for (const [path, entries] of Object.entries(legacyCounties)) {
+      const seed = managedContentSeeds.get(path) as ManagedPageDocument;
+      const legacy = structuredClone(seed);
+      delete legacy.communitySummariesVersion;
+      for (const entry of entries) {
+        const town = legacy.page.sections.find((section) => section.id === entry.id)!;
+        town.blocks[1].text = entry.summary;
+        town.blocks = town.blocks.filter((block) => block.tag !== "SOURCE");
+        town.blocks.push(...structuredClone(entry.sources));
+      }
+      const original = structuredClone(legacy);
+      const normalized = normalizeManagedContent(path, legacy) as ManagedPageDocument;
+      expect(legacy).toEqual(original);
+      expect(normalized.communitySummariesVersion).toBe(1);
+      for (const entry of entries) {
+        const town = normalized.page.sections.find((section) => section.id === entry.id)!;
+        const seedTown = seed.page.sections.find((section) => section.id === entry.id)!;
+        const originalTown = original.page.sections.find((section) => section.id === entry.id)!;
+        expect(town.blocks[1]).toEqual(seedTown.blocks[1]);
+        expect(town.blocks[1].text).not.toBe(entry.summary);
+        expect(town.blocks.slice(2).filter((block) => block.tag !== "SOURCE"))
+          .toEqual(originalTown.blocks.slice(2).filter((block) => block.tag !== "SOURCE"));
+        expect(town.blocks.filter((block) => block.tag === "SOURCE"))
+          .toEqual(seedTown.blocks.filter((block) => block.tag === "SOURCE"));
+        expect(town.images).toEqual(originalTown.images);
+        upgraded++;
+      }
+      expect(normalizeManagedContent(path, structuredClone(normalized))).toEqual(normalized);
+      expect(() => validateManagedContentForPublish(path, normalized)).not.toThrow();
+    }
+    expect(upgraded).toBe(166);
+  });
+
+  it("preserves custom summaries, source edits, card removals, and ordering during an older-version upgrade", () => {
+    const path = "/camden-county";
+    const draft = structuredClone(managedContentSeeds.get(path)) as ManagedPageDocument;
+    draft.communitySummariesVersion = 0;
+    const [first, second, removed] = legacyCounties[path];
+    const firstTown = draft.page.sections.find((section) => section.id === first.id)!;
+    firstTown.blocks[1].text = "The owner's introduction has its own local observations and wording.";
+    const customFirst = structuredClone(firstTown);
+    const secondTown = draft.page.sections.find((section) => section.id === second.id)!;
+    secondTown.blocks[1].text = second.summary;
+    const source = { ...second.sources[0], text: "Owner's source label", accessed: "2026-09-01" };
+    secondTown.blocks = secondTown.blocks.filter((block) => block.tag !== "SOURCE");
+    secondTown.blocks.push(source);
+    const customDetail = { tag: "P", text: "Owner's additional expanded detail." };
+    secondTown.blocks.push(customDetail);
+    draft.page.sections = draft.page.sections.filter((section) => section.id !== removed.id).reverse();
+    const normalized = normalizeManagedContent(path, draft) as ManagedPageDocument;
+    expect(normalized.page.sections.map((section) => section.id)).toEqual(draft.page.sections.map((section) => section.id));
+    expect(normalized.page.sections.find((section) => section.id === first.id)).toEqual(customFirst);
+    const upgraded = normalized.page.sections.find((section) => section.id === second.id)!;
+    expect(upgraded.blocks).toContainEqual(source);
+    expect(upgraded.blocks).toContainEqual(customDetail);
+    expect(upgraded.blocks[1].text).not.toBe(second.summary);
+    const hrefs = upgraded.blocks.filter((block) => block.tag === "SOURCE").map((block) => block.href);
+    expect(new Set(hrefs).size).toBe(hrefs.length);
+    expect(normalized.page.sections.some((section) => section.id === removed.id)).toBe(false);
+  });
+
+  it("preserves intentional later reverts and edits in a versioned document", () => {
+    const path = "/burlington-county";
+    const draft = structuredClone(managedContentSeeds.get(path)) as ManagedPageDocument;
+    draft.communitySummariesVersion = 1;
+    const first = legacyCounties[path][0];
+    const town = draft.page.sections.find((section) => section.id === first.id)!;
+    town.blocks[1].text = first.summary;
+    town.blocks = town.blocks.filter((block) => block.tag !== "SOURCE");
+    const intro = draft.page.sections.find((section) => section.kind === "intro")!;
+    const date = intro.blocks.find((block) => block.text.startsWith("Community profiles updated "))!;
+    date.text = "Owner's preferred revision note.";
+    expect(normalizeManagedContent(path, draft)).toEqual(draft);
+  });
+});
 
 const selectedCountyGuides = {
   "/camden-county": [

@@ -150,6 +150,18 @@ document; it must not restore towns or overwrite edits from a separate seed
 list. The text fallback omits historical detail paragraphs, images, and inert
 expand/collapse controls. The interactive app replaces the fallback at startup.
 
+The owner-selected October 17 introduction rewrite uses a guarded, versioned
+upgrade in the shared normalizer. For older county documents, a paragraph is
+replaced only when its stable town ID and exact text match the frozen August
+10 baseline in `legacyCommunitySummaries.json`. Only unchanged baseline source
+notes are replaced; custom text, edited source notes, historical details,
+town order, and removed cards are preserved. The internal
+`communitySummariesVersion` marker prevents later owner edits or intentional
+reverts from being replaced again after saving. The editor hides that marker.
+The Markdown source and generated JSON remain the source of the reviewed
+introductions; never regenerate the comparison baseline from new prose.
+See `docs/project-todo.md` for the rewrite's review and publication status.
+
 Cloudflare Pages production builds are identified by `CF_PAGES=1` together with
 `CF_PAGES_BRANCH=main`. They require the Supabase URL and publishable key, and
 stop on a published-content request timeout, HTTP error, malformed response, or

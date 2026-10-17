@@ -55,12 +55,16 @@ const parseEntry = (title, body) => {
     .trim()
     .replace(/\s*\n\s*/g, " ");
   const sourceText = body.slice(sourceStart).trim();
-  const accessed = parseAccessedDate(sourceText, title);
-  const sources = [...sourceText.matchAll(/\[([^\]]+)\]\((https:\/\/[^)]+)\)/g)].map((match) => ({
-    title: match[1].trim(),
-    href: match[2].trim(),
-    accessed,
-  }));
+  const sources = sourceText.split(/\r?\n/).flatMap((line) => {
+    const links = [...line.matchAll(/\[([^\]]+)\]\((https:\/\/[^)]+)\)/g)];
+    if (!links.length) return [];
+    const accessed = parseAccessedDate(line, title);
+    return links.map((match) => ({
+      title: match[1].trim(),
+      href: match[2].trim(),
+      accessed,
+    }));
+  });
 
   if (!summary) throw new Error(`Missing summary for ${title}.`);
   if (!sources.length) throw new Error(`Missing HTTPS source link for ${title}.`);

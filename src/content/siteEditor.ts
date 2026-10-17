@@ -1,6 +1,7 @@
 import { comparisonGuides, type ComparisonGuide } from "./comparisonGuides";
 import { compliance } from "./compliance";
 import { applyCommunityProfiles } from "./communityProfiles";
+import { COMMUNITY_SUMMARIES_VERSION, upgradeCommunitySummaries } from "./communitySummaryRevisions";
 import { generatedPages } from "./generatedSiteData";
 import {
   connectNav,
@@ -92,6 +93,7 @@ export type ManagedPageDocument = {
   insightIndex?: InsightIndexContent;
   insightIndexVersion?: number;
   countyGuideLinksVersion?: number;
+  communitySummariesVersion?: number;
   resourcePage?: ResourcePage;
   newsletter?: NewsletterContent;
 };
@@ -345,6 +347,7 @@ export const managedPageSeeds: ManagedPageDocument[] = seoEntries.map((entry) =>
       ? { insightIndex: structuredClone(insightIndex), insightIndexVersion: INSIGHT_INDEX_VERSION }
       : {}),
     ...(guideLinks ? { countyGuideLinksVersion: COUNTY_GUIDE_LINKS_VERSION } : {}),
+    ...(entry.path.endsWith("-county") ? { communitySummariesVersion: COMMUNITY_SUMMARIES_VERSION } : {}),
     ...(entry.path === "/newsletter"
       ? { newsletter: structuredClone(newsletterSeed) }
       : {}),
@@ -465,6 +468,11 @@ export function normalizeManagedContent(pageKey: string, value: unknown): Manage
   if (pageKey.endsWith("-county")) {
     const document = normalized as ManagedPageDocument;
     const seedDocument = seed as ManagedPageDocument;
+    const summariesVersion = isObject(value) ? value.communitySummariesVersion : undefined;
+    if (typeof summariesVersion !== "number" || summariesVersion < COMMUNITY_SUMMARIES_VERSION) {
+      upgradeCommunitySummaries(document.page, seedDocument.page);
+    }
+    document.communitySummariesVersion = COMMUNITY_SUMMARIES_VERSION;
     const guidance = seedDocument.page.sections.find(
       (section) => section.id === "county-buyer-seller-guidance",
     );

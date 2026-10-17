@@ -108,7 +108,8 @@ of the existing aesthetic, and chose to omit the preview's copy-link control.
 Its implementation and verified production release are recorded
 in the same checklist. The owner also selected recommendation 3; its
 implementation, verification, and owner-authorized production release are
-complete as of October 17. Recommendation 4 remains proposed. Preserve
+complete as of October 17. The owner selected recommendation 4 and expanded it
+to all 166 town introductions on October 17. Preserve
 structured editable content, existing disclosures, source notes, approved imagery, and working
 deep links. The observations below describe the audit before that release.
 
@@ -171,13 +172,26 @@ deep links. The observations below describe the audit before that release.
    was submitted. See `docs/project-todo.md` for release evidence.
    Measure county-to-article clicks and subsequent contact actions as exploratory evidence,
    retaining the consent and small-sample limits.
-4. **Correct the identified summary defects before adding more copy.**
+4. **Rewrite repetitive town introductions. Selected October 17; implemented
+   and verified locally, unpublished.**
+   The owner expanded the initial correction to all 166 introductions across
+   seven counties because the summaries repeat the expanded detail fields.
+   Replace the checklist format with specific, primary-source-backed prose
+   about each place, preserving the design, editable content, source notes,
+   historical detail labels, and later owner edits. The original findings:
    Clementon, Lindenwold, Merchantville, and Voorhees repeat identical sentences
    in different summary categories. Egg Harbor City contains a grammar defect.
-   Repair only the affected wording, checking primary sources for changed
-   factual claims and retaining historical labels. Acceptance: no repeated
-   category sentences in those cards, readable wording, and dated source
-   records. This is a content-quality correction, not a promised traffic gain.
+   The selected rewrite replaces that category format throughout all seven
+   counties. Acceptance: distinct, readable introductions with dated supporting
+   sources, no repetition of the expanded checklist, preserved historical
+   detail labels, and unchanged navigation and styling. This is a content
+   quality correction, without a promised traffic gain.
+   All 166 introductions are rewritten with dated supporting sources.
+   Validation passed 188 unit tests and 117 browser checks, plus checks using
+   the actual published county documents and desktop/mobile visual and
+   accessibility review. The owner approved the preview and authorized
+   publication on October 17; release verification is pending. See
+   `docs/project-todo.md` for the current status.
 
 The inspected public pages were
 [Camden County](https://southjerseyreal.estate/camden-county) and
@@ -220,7 +234,8 @@ activity are still needed to evaluate the new dimensions. Recommendation 1
 is implemented and published; recommendation 2 is also implemented and
 published, with the copy-link action omitted at the owner's request.
 Recommendation 3 is implemented and published for the Camden/Atlantic guide links;
-recommendation 4 still requires owner selection.
+recommendation 4 is implemented and verified locally, with owner-authorized
+publication of the broader town-introduction rewrite awaiting release checks.
 The completed original roadmap remains closed.
 
 ## Local audit evidence

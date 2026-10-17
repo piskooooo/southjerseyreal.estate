@@ -295,9 +295,8 @@ The original roadmap remains complete.
 ## Owner-selected October 17 Town Finder
 
 The owner selected the first proposed improvement: a discreet town-name finder
-on the Counties page. The owner subsequently selected county-description
-rewrites below. Additional guide contact links remain a proposal, not selected
-work.
+on the Counties page. The owner subsequently selected the county-description
+rewrites and guide contact links recorded below.
 
 - [x] Add a small search field above the existing county directory, using the
   current typography, square controls, and approved light/dark colors.
@@ -398,6 +397,49 @@ This selection covers the seven hub descriptions. Implementation and local
 verification are complete. The owner approved the preview and authorized
 committing and pushing the work on October 17. The original roadmap remains
 complete.
+
+## Owner-selected October 17 Guide Contact Links
+
+The owner selected a discreet contact link in the existing Related next steps
+area of the six research guides, preserving their current look.
+
+- [x] Append `Discuss your home search` linking to `/contact` in the property
+  research, home inspection, municipal records, community research, coastal
+  due diligence, and wells/septic/acreage guides. Retain their two reading
+  links and the existing buyer/seller guide contact links.
+- [x] Upgrade older saved guide content once, preserving custom links and their
+  order, and honor later owner changes or removal of the new contact link.
+  Keep the version marker internal to the editor.
+- [x] Run the existing unit, build, and browser/compliance checks. Check all six
+  guide endings and their contact navigation on desktop/mobile in both themes,
+  then provide the local preview for owner review.
+
+This selection changes navigation links only. Article bodies, source notes,
+substantive review dates, layout, styling, forms, and analytics behavior remain
+unchanged. All 216 unit tests and 122 browser/compliance checks passed, including
+the production build and prerendering. The compatibility test covers the six
+selected guides, existing custom contact destinations, custom reading labels
+and ordering, input immutability, repeat normalization, and later removals.
+
+Additional checks exercised each of the six guide endings at 1440 pixels in
+both themes, 390 pixels in light mode, and 320 pixels in dark mode. Each retained
+its two reading links plus one contact link. Keyboard activation on desktop
+and ordinary activation on mobile opened Contact correctly. No app/console
+errors, clipped buttons, or horizontal overflow appeared. Targeted mobile
+accessibility checks found no violations, and desktop checks made no Google
+Analytics requests with consent declined. Screenshots retained the current
+design; the public stylesheet hash is unchanged. The existing buyer and seller
+guides still have their original two related links. The Browser plugin is
+unavailable, so validation used the repository's installed Playwright Chromium.
+
+The production-style preview at `http://localhost:4175` was rebuilt with the
+existing public browser configuration. All six guides show exactly one new
+contact link, and its Contact destination opens successfully. Real published
+content requests returned 200; these guide routes currently use their compiled
+fallbacks. No inquiry/subscription was submitted and no production content was
+written. Implementation and local verification are complete. The owner
+approved the preview and authorized committing and pushing the work on
+October 17. The original roadmap remains complete.
 
 ## Owner-selected September 4 Maintenance
 

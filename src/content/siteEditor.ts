@@ -22,7 +22,16 @@ import type { ContentBlock, ImageAsset, PageSection, SitePage } from "./types";
 
 export const SITEWIDE_CONTENT_KEY = "__sitewide__";
 const INSIGHT_INDEX_VERSION = 1;
+const INSIGHT_CONTACT_LINKS_VERSION = 1;
 const COUNTY_GUIDE_LINKS_VERSION = 1;
+const insightContactLinkPaths = new Set([
+  "/insights/researching-a-south-jersey-property",
+  "/insights/home-inspections-and-repair-questions",
+  "/insights/municipal-records-permits-and-zoning",
+  "/insights/questions-before-choosing-a-community",
+  "/insights/coastal-property-due-diligence",
+  "/insights/wells-septic-acreage-and-environmental-constraints",
+]);
 
 export type SiteLink = {
   label: string;
@@ -92,6 +101,7 @@ export type ManagedPageDocument = {
   insightArticle?: InsightArticleContent;
   insightIndex?: InsightIndexContent;
   insightIndexVersion?: number;
+  insightContactLinksVersion?: number;
   countyGuideLinksVersion?: number;
   communitySummariesVersion?: number;
   resourcePage?: ResourcePage;
@@ -346,6 +356,9 @@ export const managedPageSeeds: ManagedPageDocument[] = seoEntries.map((entry) =>
     ...(isInsightIndex
       ? { insightIndex: structuredClone(insightIndex), insightIndexVersion: INSIGHT_INDEX_VERSION }
       : {}),
+    ...(insightContactLinkPaths.has(entry.path)
+      ? { insightContactLinksVersion: INSIGHT_CONTACT_LINKS_VERSION }
+      : {}),
     ...(guideLinks ? { countyGuideLinksVersion: COUNTY_GUIDE_LINKS_VERSION } : {}),
     ...(entry.path.endsWith("-county") ? { communitySummariesVersion: COMMUNITY_SUMMARIES_VERSION } : {}),
     ...(entry.path === "/newsletter"
@@ -590,6 +603,19 @@ export function normalizeManagedContent(pageKey: string, value: unknown): Manage
       };
     }
     document.insightIndexVersion = INSIGHT_INDEX_VERSION;
+  }
+  if (insightContactLinkPaths.has(pageKey)) {
+    const document = normalized as ManagedPageDocument;
+    const seedDocument = seed as ManagedPageDocument;
+    const storedVersion = isObject(value) ? value.insightContactLinksVersion : undefined;
+    if (typeof storedVersion !== "number" || storedVersion < INSIGHT_CONTACT_LINKS_VERSION) {
+      const links = document.insightArticle?.relatedLinks;
+      const contactLink = seedDocument.insightArticle?.relatedLinks.find((link) => link.href === "/contact");
+      if (links && contactLink && !links.some((link) => /^\/contact\/?(?:[?#]|$)/.test(link.href))) {
+        links.push(structuredClone(contactLink));
+      }
+    }
+    document.insightContactLinksVersion = INSIGHT_CONTACT_LINKS_VERSION;
   }
   return normalized;
 }

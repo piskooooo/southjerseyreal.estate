@@ -355,6 +355,7 @@ export const insightArticles: Record<string, InsightArticleContent> = {
     relatedLinks: [
       { label: "Explore South Jersey counties", href: "/counties" },
       { label: "Read the buyer process guide", href: "/insights/new-jersey-homebuying-process" },
+      { label: "Discuss your home search", href: "/contact" },
     ],
   },
   "/insights/home-inspections-and-repair-questions": {
@@ -425,6 +426,7 @@ export const insightArticles: Record<string, InsightArticleContent> = {
     relatedLinks: [
       { label: "Research a South Jersey property", href: "/insights/researching-a-south-jersey-property" },
       { label: "Read the New Jersey buyer guide", href: "/insights/new-jersey-homebuying-process" },
+      { label: "Discuss your home search", href: "/contact" },
     ],
   },
   "/insights/municipal-records-permits-and-zoning": {
@@ -495,6 +497,7 @@ export const insightArticles: Record<string, InsightArticleContent> = {
     relatedLinks: [
       { label: "Research a South Jersey property", href: "/insights/researching-a-south-jersey-property" },
       { label: "Explore South Jersey counties", href: "/counties" },
+      { label: "Discuss your home search", href: "/contact" },
     ],
   },
   "/insights/questions-before-choosing-a-community": {
@@ -565,6 +568,7 @@ export const insightArticles: Record<string, InsightArticleContent> = {
     relatedLinks: [
       { label: "Explore South Jersey counties", href: "/counties" },
       { label: "Use the property research guide", href: "/insights/researching-a-south-jersey-property" },
+      { label: "Discuss your home search", href: "/contact" },
     ],
   },
   "/insights/coastal-property-due-diligence": {
@@ -635,6 +639,7 @@ export const insightArticles: Record<string, InsightArticleContent> = {
     relatedLinks: [
       { label: "Research a South Jersey property", href: "/insights/researching-a-south-jersey-property" },
       { label: "Explore Atlantic and Cape May counties", href: "/counties" },
+      { label: "Discuss your home search", href: "/contact" },
     ],
   },
   "/insights/wells-septic-acreage-and-environmental-constraints": {
@@ -706,6 +711,7 @@ export const insightArticles: Record<string, InsightArticleContent> = {
     relatedLinks: [
       { label: "Research a South Jersey property", href: "/insights/researching-a-south-jersey-property" },
       { label: "Read the municipal records guide", href: "/insights/municipal-records-permits-and-zoning" },
+      { label: "Discuss your home search", href: "/contact" },
     ],
   },
 };

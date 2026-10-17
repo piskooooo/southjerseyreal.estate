@@ -440,6 +440,55 @@ describe("website editor content normalization", () => {
     expect(normalized.insightIndex?.articles[0].title).toBe("Owner's guide title");
   });
 
+  it("adds contact links once to the six research guides while preserving owner reading links and later removals", () => {
+    const paths = [
+      "/insights/researching-a-south-jersey-property",
+      "/insights/home-inspections-and-repair-questions",
+      "/insights/municipal-records-permits-and-zoning",
+      "/insights/questions-before-choosing-a-community",
+      "/insights/coastal-property-due-diligence",
+      "/insights/wells-septic-acreage-and-environmental-constraints",
+    ];
+    expect([...managedContentSeeds]
+      .filter(([, value]) => (value as ManagedPageDocument).insightContactLinksVersion !== undefined)
+      .map(([path]) => path).sort()).toEqual([...paths].sort());
+
+    for (const path of paths) {
+      const seed = managedContentSeeds.get(path) as ManagedPageDocument;
+      const contactLink = seed.insightArticle!.relatedLinks.find((link) => link.href === "/contact")!;
+      const legacy = structuredClone(seed);
+      delete legacy.insightContactLinksVersion;
+      legacy.insightArticle!.relatedLinks = legacy.insightArticle!.relatedLinks
+        .filter((link) => link.href !== "/contact").reverse();
+      legacy.insightArticle!.relatedLinks[0].label = "Owner's reading recommendation";
+      const original = structuredClone(legacy);
+      const expected = structuredClone(legacy);
+      expected.insightContactLinksVersion = 1;
+      expected.insightArticle!.relatedLinks.push(structuredClone(contactLink));
+
+      const normalized = normalizeManagedContent(path, legacy) as ManagedPageDocument;
+      expect(normalized).toEqual(expected);
+      expect(legacy).toEqual(original);
+      expect(normalizeManagedContent(path, normalized)).toEqual(normalized);
+
+      for (const href of ["/contact", "/contact#property-question", "/contact/?topic=home-search"]) {
+        const custom = structuredClone(legacy);
+        custom.insightContactLinksVersion = 0;
+        custom.insightArticle!.relatedLinks.splice(1, 0, { label: "Owner's contact invitation", href });
+        const preserved = normalizeManagedContent(path, custom) as ManagedPageDocument;
+        expect(preserved.insightArticle!.relatedLinks).toEqual(custom.insightArticle!.relatedLinks);
+        expect(preserved.insightContactLinksVersion).toBe(1);
+      }
+
+      normalized.insightArticle!.relatedLinks.reverse();
+      normalized.insightArticle!.relatedLinks = normalized.insightArticle!.relatedLinks
+        .filter((link) => link.href !== "/contact");
+      expect(normalizeManagedContent(path, normalized)).toEqual(normalized);
+      normalized.insightArticle!.relatedLinks = [];
+      expect(normalizeManagedContent(path, normalized)).toEqual(normalized);
+    }
+  });
+
   it("preserves intentional guide order, removals, and additions after legacy migration", () => {
     const legacy = structuredClone(managedContentSeeds.get("/insights")) as ManagedPageDocument;
     delete legacy.insightIndexVersion;

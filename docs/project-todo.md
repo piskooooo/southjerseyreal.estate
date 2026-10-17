@@ -88,7 +88,7 @@ The measurement contract, reporting setup, and interpretation limits are in
   [October 16 review](analytics-town-attribution-review-2026-10-16.md) records
   the measured baseline, QA contamination, attribution limits, and prioritized
   improvements with acceptance measures. The owner subsequently selected
-  recommendation 1 below; recommendations 2–4 remain a plan.
+  recommendations 1 and 2 below; recommendations 3–4 remain a plan.
 
 ## Owner-selected October 16 County Initial Content
 
@@ -131,8 +131,55 @@ requests while consent is denied. No inquiry or subscription was submitted.
 A separate external Cloudflare analytics beacon failed DNS resolution from
 the test Mac; no first-party page/runtime failure was found. This does not
 claim that external beacon delivery was verified. The original roadmap
-remains closed; the town directory, guide links, and copy corrections are not
-selected by this request.
+remains closed. The owner subsequently selected the town directory below;
+guide links and copy corrections remain unselected.
+
+## Owner-selected October 16 Town Directory
+
+The owner selected the town directory from recommendation 2 in the traffic/SEO
+review, with an explicit requirement to preserve the site's existing aesthetic.
+After reviewing the preview, the owner chose to omit the copy-link action.
+The owner also requested that the county controls remain visible while
+scrolling through the town list.
+
+- [x] Add a compact, closed-by-default `Jump to a town` directory to each
+  county toolbar, using the existing town order and anchors. Provide the same
+  native links in the initial HTML. Keep the approved typography, square
+  controls, imagery, and light/Midnight Editorial color palettes.
+- [x] Pin the county controls directly below the site header once they reach
+  it, using measured header/toolbar heights that adjust to mobile wrapping.
+  Keep town destinations clear of both bars, bound the dropdown to the
+  remaining viewport, and let the controls leave with the town section.
+- [x] Remove the preview's `Copy town link` action, clipboard component, and
+  associated styles and tests at the owner's request. Retain working town
+  fragments in the browser address when a visitor selects a directory entry.
+- [x] Finish local unit, build, browser/compliance, accessibility, and
+  desktop/mobile visual verification, including directory order, keyboard
+  focus, repeated jumps, Back/Forward, absence of copy controls, and consent.
+  The final directory-only revision passed all 181 unit tests and 106
+  rendered browser/compliance checks,
+  including the build with offline content fixtures. The browser run used
+  `CI=1` and the installed bundled Chromium; the Browser plugin is unavailable.
+  Directory previews at 1440, 768, 390, and 320 pixels covered both themes,
+  open menus, and expanded profiles with no page errors or horizontal
+  overflow. Targeted WCAG checks found no violations in the open directory.
+  Desktop and mobile screenshots were refreshed after removing the copy
+  control, and browser assertions verify its absence after expansion.
+  A pre-existing tablet cascade issue was corrected by keeping the editorial
+  town list in one column; regression checks cover 768, 820, and 980 pixels.
+  Sticky-control checks cover normal flow, header alignment, both themes,
+  dropdown bounds, bulk controls, section-boundary release, and mobile resize
+  with Back/Forward navigation. Explicit anchor alignment keeps restored town
+  headings below both bars. Additional 1440 × 1000, 390 × 844, 320 × 568, and
+  844 × 390 previews verified fresh links, keyboard focus, open-menu WCAG
+  checks, and no page errors or horizontal overflow.
+  `git diff --check` passed. No inquiry or subscription was submitted.
+- [ ] Publish the owner-authorized release, then verify GitHub tests,
+  Cloudflare Pages deployment, and live directory behavior.
+
+The owner authorized committing and pushing this selected follow-up on
+October 16. Production release verification is pending. The original roadmap
+remains complete; recommendations 3–4 are not active tasks.
 
 ## Owner-selected September 4 Maintenance
 

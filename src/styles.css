@@ -701,7 +701,7 @@ p a:focus-visible {
   font-weight: 700;
 }
 
-.town-grid-toolbar div {
+.town-grid-bulk-controls {
   display: flex;
   gap: 0.55rem;
 }
@@ -2658,7 +2658,7 @@ p a:focus-visible {
     flex-direction: column;
   }
 
-  .town-grid-toolbar div {
+  .town-grid-bulk-controls {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -2799,6 +2799,123 @@ p a:focus-visible {
 .nav-folder-control > button,
 .theme-toggle {
   border-radius: 0;
+}
+
+.town-directory {
+  position: relative;
+  flex: 0 0 auto;
+  color: var(--text);
+}
+
+.town-grid-toolbar .town-directory {
+  margin-inline-start: auto;
+}
+
+.town-directory summary {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  min-height: 2.75rem;
+  padding: 0.55rem 0;
+  cursor: pointer;
+  list-style: none;
+  font-size: 0.8rem;
+  font-weight: 850;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.town-directory summary::-webkit-details-marker {
+  display: none;
+}
+
+.town-directory summary::after {
+  width: 0.45rem;
+  height: 0.45rem;
+  margin-top: -0.2rem;
+  border-right: 1px solid currentColor;
+  border-bottom: 1px solid currentColor;
+  content: "";
+  transform: rotate(45deg);
+}
+
+.town-directory[open] summary::after {
+  margin-top: 0.2rem;
+  transform: rotate(225deg);
+}
+
+.town-directory summary:hover {
+  color: var(--brand);
+}
+
+.town-directory summary:focus-visible,
+.town-directory a:focus-visible,
+.town-card:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 3px;
+}
+
+.town-directory nav {
+  position: absolute;
+  z-index: 25;
+  inset-inline-start: 0;
+  top: 100%;
+  width: min(25rem, calc(100vw - var(--gutter) * 2));
+  max-height: min(22rem, 50vh);
+  overflow-y: auto;
+  padding: 0.4rem 0;
+  border: 1px solid var(--field-border);
+  background: var(--surface-strong);
+}
+
+.town-grid-toolbar .town-directory nav {
+  inset-inline-start: auto;
+  inset-inline-end: 0;
+  max-height: min(22rem, max(0px, calc(100dvh - var(--site-header-height, 0px) - var(--town-toolbar-height, 0px) - 1rem)));
+}
+
+.town-directory ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.town-directory a {
+  display: block;
+  padding: 0.65rem 1rem;
+  color: var(--text);
+  font-size: 0.85rem;
+  font-weight: 600;
+  line-height: 1.4;
+  text-decoration: none;
+  overflow-wrap: anywhere;
+}
+
+.town-directory a:hover,
+.town-directory a:focus-visible {
+  background: var(--surface-hover);
+  color: var(--brand);
+}
+
+.town-directory a:focus-visible {
+  outline-offset: -3px;
+}
+
+@media (max-width: 680px) {
+  .town-grid-toolbar {
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0.25rem 1rem;
+  }
+
+  .town-grid-toolbar .town-directory {
+    margin-inline-start: auto;
+  }
+
+  .town-grid-bulk-controls {
+    flex-basis: 100%;
+  }
 }
 
 .nav-menu {
@@ -3018,9 +3135,17 @@ p {
 }
 
 .town-grid-toolbar {
+  position: sticky;
+  top: var(--site-header-height, 0px);
+  z-index: 30;
   margin: 0;
   padding: 0.75rem 0;
   border-bottom: 2px solid var(--text);
+  background: var(--bg);
+}
+
+.town-grid-section .town-card {
+  scroll-margin-top: calc(var(--site-header-height, 0px) + var(--town-toolbar-height, 0px) + 1rem);
 }
 
 .town-grid-toolbar p,
@@ -3041,6 +3166,7 @@ p {
 
 .town-card-grid {
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
   gap: 0;
   counter-reset: town-directory;
 }

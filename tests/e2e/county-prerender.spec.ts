@@ -164,7 +164,7 @@ for (const [county, anchor, title] of [
     await expect(page.locator('[data-seo-prerendered="true"]')).toHaveCount(0);
     await expect(page.locator("article.prerendered-community-profile")).toHaveCount(0);
     const profile = page.locator(`.town-card[id="${anchor}"]`);
-    const toggle = profile.getByRole("button");
+    const toggle = profile.locator(".town-card-indicator");
     await expect(toggle).toHaveAccessibleName(`Collapse ${title} details`);
     await expect(toggle).toHaveAttribute("aria-expanded", "true");
     await expect(profile.locator(".town-card-details")).toBeVisible();

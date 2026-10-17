@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, type MouseEvent, type ReactNode } from "react";
+import { useEffect, useLayoutEffect, useRef, useState, type MouseEvent, type ReactNode } from "react";
 import { trackCommunityProfileOpen, trackFormSuccess, trackLinkClick } from "../analytics";
 import { getCommunityAnalyticsId } from "../content/communityAnalytics";
 import { isActionSection, isTownSection, townSectionAnchor, townSectionKey } from "../content/countySections";
@@ -68,10 +68,11 @@ const readTownHash = () => {
     return "";
   }
 };
-const scrollTownCardIntoView = (key: string) => {
+const scrollTownCardIntoView = (key: string, { focus = false, block = "nearest" }: { focus?: boolean; block?: ScrollLogicalPosition } = {}) => {
   window.requestAnimationFrame(() => {
     const card = Array.from(document.querySelectorAll<HTMLElement>("[data-town-card-key]")).find((element) => element.dataset.townCardKey === key);
-    card?.scrollIntoView({ block: "nearest" });
+    if (focus) card?.focus({ preventScroll: true });
+    card?.scrollIntoView({ block });
   });
 };
 
@@ -122,6 +123,8 @@ function TownCard({
       id={cardAnchor}
       className={`town-card ${hasDetails ? "has-details" : "is-summary-only"} ${expanded ? "is-expanded" : ""} ${className}`.trim()}
       data-town-card-key={cardKey}
+      tabIndex={-1}
+      aria-label={title}
       onClick={toggleCard}
     >
       {image && (
@@ -182,6 +185,39 @@ function TownGrid({
   navigate: (path: string) => void;
   countyPath: string;
 }) {
+  const townGrid = useRef<HTMLElement>(null);
+  const toolbar = useRef<HTMLDivElement>(null);
+  const directory = useRef<HTMLDetailsElement>(null);
+  useLayoutEffect(() => {
+    const section = townGrid.current;
+    const controls = toolbar.current;
+    if (!section || !controls) return;
+    const header = document.querySelector<HTMLElement>(".site-header");
+    const updateOffsets = () => {
+      const headerHeight = header?.getBoundingClientRect().height || 0;
+      const toolbarHeight = controls.getBoundingClientRect().height;
+      section.style.setProperty("--site-header-height", `${headerHeight}px`);
+      section.style.setProperty("--town-toolbar-height", `${toolbarHeight}px`);
+    };
+    updateOffsets();
+    if (typeof ResizeObserver === "undefined") {
+      window.addEventListener("resize", updateOffsets);
+      return () => window.removeEventListener("resize", updateOffsets);
+    }
+    const observer = new ResizeObserver(updateOffsets);
+    if (header) observer.observe(header);
+    observer.observe(controls);
+    return () => observer.disconnect();
+  }, []);
+  useEffect(() => {
+    const closeOutsideDirectory = (event: PointerEvent) => {
+      if (directory.current?.open && event.target instanceof Node && !directory.current.contains(event.target)) {
+        directory.current.open = false;
+      }
+    };
+    document.addEventListener("pointerdown", closeOutsideDirectory);
+    return () => document.removeEventListener("pointerdown", closeOutsideDirectory);
+  }, []);
   const expandableSections = sections.filter(({ section }) => section.blocks.length > 2);
   const rows = sections.reduce<Array<Array<{ anchor: string; key: string; section: PageSection; index: number }>>>((groups, item, itemIndex) => {
     const rowIndex = Math.floor(itemIndex / TOWN_GRID_COLUMNS);
@@ -207,20 +243,20 @@ function TownGrid({
   useEffect(() => {
     const findHashTarget = () => {
       const hash = readTownHash();
-      const target = rows.flat().find(({ anchor, key, section }) => (
-        section.blocks.length > 2 && (hash === anchor || hash === key.toLowerCase())
+      const target = rows.flat().find(({ anchor, key }) => (
+        hash === anchor || hash === key.toLowerCase()
       ));
       return { hash, target };
     };
     const syncTownFromHash = () => {
       const { hash, target } = findHashTarget();
-      if (target && (appliedHash.current?.hash !== hash || appliedHash.current.targetKey !== target.key)) {
+      if (target && target.section.blocks.length > 2 && (appliedHash.current?.hash !== hash || appliedHash.current.targetKey !== target.key)) {
         const communityId = getCommunityAnalyticsId(countyPath, target.section.id);
         if (communityId) trackCommunityProfileOpen(countyPath, communityId, "anchor");
       }
       appliedHash.current = { hash, targetKey: target?.key };
-      setExpandedCards(target ? new Set([target.key]) : new Set());
-      if (target) scrollTownCardIntoView(target.key);
+      setExpandedCards(target && target.section.blocks.length > 2 ? new Set([target.key]) : new Set());
+      if (target) scrollTownCardIntoView(target.key, { block: "start" });
     };
 
     const { hash, target } = findHashTarget();
@@ -235,6 +271,21 @@ function TownGrid({
     };
   }, [countyPath, sections]);
   const expandAll = () => setExpandedCards(new Set(expandableSections.map(({ section, index }) => townSectionKey(section, index))));
+  const jumpToTown = (event: MouseEvent<HTMLAnchorElement>, key: string, anchor: string, section: PageSection) => {
+    if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+    event.preventDefault();
+    if (directory.current) directory.current.open = false;
+    if (section.blocks.length > 2) {
+      const communityId = getCommunityAnalyticsId(countyPath, section.id);
+      if (communityId) trackCommunityProfileOpen(countyPath, communityId, "anchor");
+    }
+    setExpandedCards(section.blocks.length > 2 ? new Set([key]) : new Set());
+    if (readTownHash() !== anchor) {
+      window.history.pushState({}, "", `${window.location.pathname}${window.location.search}#${anchor}`);
+    }
+    appliedHash.current = { hash: anchor, targetKey: key };
+    scrollTownCardIntoView(key, { focus: true, block: "start" });
+  };
   const collapseAll = () => {
     setExpandedCards(new Set());
     appliedHash.current = { hash: "" };
@@ -271,11 +322,35 @@ function TownGrid({
   };
 
   return (
-    <section className="section town-grid-section">
-      <div className="town-grid-toolbar">
+    <section className="section town-grid-section" ref={townGrid}>
+      <div className="town-grid-toolbar" ref={toolbar}>
         <p>{sections.length} communities</p>
+        <details
+          className="town-directory"
+          ref={directory}
+          onKeyDown={(event) => {
+            if (event.key === "Escape" && directory.current?.open) {
+              event.preventDefault();
+              directory.current.open = false;
+              directory.current.querySelector("summary")?.focus();
+            }
+          }}
+        >
+          <summary>Jump to a town</summary>
+          <nav aria-label="Town directory">
+            <ul>
+              {rows.flat().map(({ key, anchor, section }) => (
+                <li key={key}>
+                  <a href={`#${anchor}`} onClick={(event) => jumpToTown(event, key, anchor, section)}>
+                    {section.blocks[0]?.text || "Community"}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        </details>
         {expandableSections.length > 0 && (
-          <div>
+          <div className="town-grid-bulk-controls">
             <button type="button" onClick={expandAll} disabled={allExpanded}>Expand all</button>
             <button type="button" onClick={collapseAll} disabled={!expandedCards.size}>Collapse all</button>
           </div>

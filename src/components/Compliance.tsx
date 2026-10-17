@@ -1,5 +1,5 @@
 import { trackLinkClick } from "../analytics";
-import { compliance } from "../content/compliance";
+import { communityInformationNote, compliance } from "../content/compliance";
 
 type Navigate = (path: string) => void;
 
@@ -82,7 +82,7 @@ export function CommunityInformationDisclaimer({ navigate }: { navigate: Navigat
   return (
     <aside className="section community-information-disclaimer" aria-label="Community information note">
       <p>
-        Community details can change. Confirm anything important to your decision with the appropriate source.{" "}
+        {communityInformationNote}{" "}
         <InternalLink href="/disclaimer" navigate={navigate}>Website disclosures</InternalLink>
         .
       </p>

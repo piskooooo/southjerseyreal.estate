@@ -10,8 +10,9 @@ and explicitly deferred concepts are not unfinished roadmap work and must not
 be reported as active unless the owner explicitly selects them.
 
 The owner selected community-interest measurement on October 16. Its
-source implementation and local checks are complete; the remaining GA4
-reporting-field setup is recorded below. The original roadmap remains closed.
+implementation, production verification, and GA4 reporting-field setup are
+complete. The accompanying traffic/SEO review is recorded below. The original
+roadmap remains closed.
 
 Use this file as the source of truth for project status and any future selected
 work on `southjerseyreal.estate`. Check an item only after completing its
@@ -57,11 +58,13 @@ possibilities are intentionally not being carried forward.
   bundled Chromium because the configured desktop Chrome executable was
   absent. `git diff --check` passed. No real inquiry was submitted for this
   browser-event-only change; existing form and Turnstile behavior is unchanged.
-- [ ] Register the three event-scoped GA4 custom dimensions: County
+- [x] Register the three event-scoped GA4 custom dimensions: County
   (`county_id`), Town (`community_id`), and Profile open method (`open_method`).
-  The owner authorized this setup, but the installed Windsor connector exposes
-  no GA4 write actions and no authenticated Admin browser/API was accessible
-  in this session. The documented registration remains incomplete.
+  On October 16, the authenticated Admin API independently listed all three
+  exact definitions on property `498019272`; its plan skipped all three as
+  already present. No duplicate dimensions were created. The dedicated CLI
+  service account has Viewer access only on this property; connector writes
+  remain disabled. Normal report population is not yet verified.
 - [x] Publish the source and verify production. Commit `e003c1f` is on
   `origin/main`; the [GitHub test workflow](https://github.com/piskooooo/southjerseyreal.estate/actions/runs/38981605083)
   and [Cloudflare Pages deployment](https://a9b8f080.southjerseyreal-estate.pages.dev)
@@ -73,11 +76,52 @@ possibilities are intentionally not being carried forward.
   newsletter subscription was submitted.
 
 The owner authorized production publication and GA4 setup on October 16.
-Production tracking is active and event receipt is verified. GA4 custom
-dimension registration is the remaining setup item; no GA4 settings were
-changed during this release. Normal reporting is not claimed as populated.
+Production tracking is active, event receipt is verified, and the three GA4
+custom dimensions are independently verified. The GA4 setup was completed
+after the website release; no further frontend deployment was needed.
+Normal reporting is not claimed as populated.
 The measurement contract, reporting setup, and interpretation limits are in
 [the deployment guide](cloudflare-pages-supabase-brevo.md#community-interest-analytics).
+
+- [x] Complete the selected Camden/Atlantic traffic and SEO review using
+  connected GA4/Search Console and the current public pages. The
+  [October 16 review](analytics-town-attribution-review-2026-10-16.md) records
+  the measured baseline, QA contamination, attribution limits, and prioritized
+  improvements with acceptance measures. The owner subsequently selected
+  recommendation 1 below; recommendations 2–4 remain a plan.
+
+## Owner-selected October 16 County Initial Content
+
+The owner selected only recommendation 1 from the traffic/SEO review:
+include existing town content in the initial county-page HTML.
+
+- [x] Render every current town heading, full summary, and dated source note
+  from the accepted structured page content before JavaScript. Share town
+  classification, keys, readable anchors, source URL normalization, and the
+  community-information note with the interactive page. Preserve published
+  edits, order, and removals; omit historical detail paragraphs and imagery
+  from this text fallback.
+- [x] Complete local unit, build, rendered/compliance, no-JavaScript, and
+  desktop/mobile checks. Verify all 166 compiled profiles across seven
+  counties, including 34 Camden and 23 Atlantic profiles, and preserve the
+  existing interactive expansion, consent, and town-attribution behavior.
+  All 181 unit tests and 93 rendered browser/compliance checks passed. The
+  latter includes the production build using offline test fixtures. Additional
+  1440 × 1000 desktop and 390 × 844 mobile preview checks found no console
+  errors, framework overlay, or horizontal overflow. A no-JavaScript anchor
+  check also verifies town headings clear the sticky header. `git diff --check`
+  passed. Browser validation used the installed bundled Chromium with `CI=1`;
+  the Browser plugin is not available in this session.
+- [ ] Publish the owner-authorized release and verify the exact revision's
+  GitHub tests, Cloudflare Pages deployment, and live county HTML/profile
+  behavior.
+
+The owner authorized commit and production push on October 16. Release
+verification is in progress. A separate local Pages-production-mode check
+correctly rejected the missing Supabase build configuration; the production
+deployment will verify the configured published-content build. The original
+roadmap remains closed; the town directory, guide links, and copy corrections
+are not selected by this request.
 
 ## Owner-selected September 4 Maintenance
 

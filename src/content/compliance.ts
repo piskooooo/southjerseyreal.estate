@@ -2,6 +2,9 @@ import complianceData from "./complianceData.json";
 
 export const compliance = complianceData;
 
+export const communityInformationNote =
+  "Community details can change. Confirm anything important to your decision with the appropriate source.";
+
 export const brokerageDisclosureText =
   `${compliance.brokerLegalName}, ${compliance.brokerDescriptor}. ` +
   `Licensed brokerage office: ${compliance.licensedOfficePhone}.`;

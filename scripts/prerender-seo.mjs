@@ -30,12 +30,16 @@ let seoModule;
 let siteEditorModule;
 let responsiveImagesModule;
 let prerenderContentModule;
+let prerenderCommunitiesModule;
+let countySectionsModule;
 try {
-  [seoModule, siteEditorModule, responsiveImagesModule, prerenderContentModule] = await Promise.all([
+  [seoModule, siteEditorModule, responsiveImagesModule, prerenderContentModule, prerenderCommunitiesModule, countySectionsModule] = await Promise.all([
     vite.ssrLoadModule("/src/content/seo.ts"),
     vite.ssrLoadModule("/src/content/siteEditor.ts"),
     vite.ssrLoadModule("/src/content/responsiveImages.ts"),
     vite.ssrLoadModule("/src/content/prerenderContent.ts"),
+    vite.ssrLoadModule("/src/content/prerenderCommunities.ts"),
+    vite.ssrLoadModule("/src/content/countySections.ts"),
   ]);
 } finally {
   await vite.close();
@@ -53,6 +57,8 @@ const {
 } = siteEditorModule;
 const { buildHomeHeroPreloadScript, LIGHT_HOME_HERO_SRC } = responsiveImagesModule;
 const { loadPublishedBuildRows, requiresPublishedBuildContent } = prerenderContentModule;
+const { renderCountyCommunities } = prerenderCommunitiesModule;
+const { isTownSection } = countySectionsModule;
 
 const htmlEscape = (value) => String(value)
   .replaceAll("&", "&amp;")
@@ -150,7 +156,9 @@ const addUniqueText = (values, candidate) => {
 
 const prerenderParagraphs = (document, description) => {
   const values = [];
-  const sections = document.page?.sections || [];
+  const sections = (document.page?.sections || []).filter((section, index) => (
+    !document.page.path.endsWith("-county") || !isTownSection(section, index)
+  ));
   const prioritizedSections = [
     ...sections.filter((section) => section.id === "county-buyer-seller-guidance"),
     ...sections.filter((section) => section.id !== "county-buyer-seller-guidance"),
@@ -254,6 +262,7 @@ const renderPublicShell = (document, seo) => {
               ${links.length ? `<nav aria-label="Related pages"><h2>Explore this website</h2><ul>${links.map((link) => `<li><a href="${htmlEscape(link.href)}">${htmlEscape(link.label)}</a></li>`).join("")}</ul></nav>` : ""}
             </div>
           </section>
+          ${renderCountyCommunities(document.page)}
         </div>
       </main>
       <footer class="site-footer">

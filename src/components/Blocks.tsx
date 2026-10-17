@@ -1,6 +1,7 @@
 import type { ContentBlock } from "../content/types";
 import { trackLinkClick } from "../analytics";
 import { compliance } from "../content/compliance";
+import { cleanSourceHref } from "../content/sourceNotes";
 
 type BlocksProps = {
   blocks: ContentBlock[];
@@ -20,16 +21,6 @@ const ctaMap: Record<string, string> = {
 };
 
 const cleanHref = (href?: string) => href || "";
-
-const cleanSourceHref = (href?: string) => {
-  if (!href) return "";
-  try {
-    const url = new URL(href);
-    return url.protocol === "https:" && !url.username && !url.password ? url.href : "";
-  } catch {
-    return "";
-  }
-};
 
 const fieldLabels = new Set([
   "Population",

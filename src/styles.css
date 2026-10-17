@@ -743,13 +743,17 @@ p a:focus-visible {
   gap: var(--town-grid-gap);
 }
 
+.town-card,
+.prerendered-community-profile {
+  scroll-margin-top: clamp(6.25rem, 9vw, 7.5rem);
+}
+
 .town-card {
   position: relative;
   display: grid;
   grid-template-rows: 44% minmax(0, 1fr);
   min-width: 0;
   aspect-ratio: 1 / 1;
-  scroll-margin-top: clamp(6.25rem, 9vw, 7.5rem);
   overflow: hidden;
   background: var(--surface);
   border: 1px solid var(--card-border);

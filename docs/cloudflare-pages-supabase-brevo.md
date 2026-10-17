@@ -1,6 +1,6 @@
 # Cloudflare Pages, Supabase, and Brevo
 
-Last reviewed: September 5, 2026
+Last reviewed: October 16, 2026 (analytics setup and county prerendering)
 
 This is the production deployment guide for `southjerseyreal.estate`. It intentionally records resource names and public identifiers, but never secret values, contact submissions, or subscriber data.
 
@@ -116,10 +116,17 @@ first, and register these **Event**-scoped parameters:
 | Town | `community_id` |
 | Profile open method | `open_method` |
 
-The installed Windsor connector can read GA4 but exposes no write actions, so it
-cannot register these dimensions. An owner with Editor/Administrator access
-must complete this step in GA4. Allow 24–48 hours after registration and new
-events before expecting populated standard reports. See Google's
+On October 16, the authenticated GA4 Admin API independently listed all three
+exact Event-scoped definitions on property `498019272`. Its read-only plan
+skipped all three as already present; do not recreate them. The dedicated
+Mac Mini CLI service account has Viewer access only on this property, and
+connector writes remain disabled. Its local integration handoff is outside
+this repository; no credentials belong in website source or build variables.
+Windsor remains the connected source for traffic and Search Console analysis.
+
+Allow 24–48 hours after registration and new events before expecting populated
+reports; definition verification alone does not establish report population.
+See Google's
 [custom-dimension instructions](https://support.google.com/analytics/answer/14239696).
 
 Compare `community_profile_open` with contact-page clicks, approved phone/email
@@ -130,7 +137,18 @@ consenting visitors; it does not establish that a town caused an inquiry,
 identify a seller or property, reconstruct earlier visits, or measure all
 website traffic. Reloads and new tabs intentionally lose the in-memory context.
 
+The [October 16 traffic and SEO review](analytics-town-attribution-review-2026-10-16.md)
+records the historical baseline and next measurement plan. Historical page
+traffic cannot be retrospectively assigned to individual expandable towns.
+
 ### Published content during builds
+
+County prerendering includes each accepted town heading, summary, and dated
+source note in readable initial HTML, with the same readable town anchor and
+section key as the interactive page. It uses the normalized published page
+document; it must not restore towns or overwrite edits from a separate seed
+list. The text fallback omits historical detail paragraphs, images, and inert
+expand/collapse controls. The interactive app replaces the fallback at startup.
 
 Cloudflare Pages production builds are identified by `CF_PAGES=1` together with
 `CF_PAGES_BRANCH=main`. They require the Supabase URL and publishable key, and

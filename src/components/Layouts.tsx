@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState, type MouseEvent, type ReactNode } from "react";
 import { trackCommunityProfileOpen, trackFormSuccess, trackLinkClick } from "../analytics";
 import { getCommunityAnalyticsId } from "../content/communityAnalytics";
+import { isActionSection, isTownSection, townSectionAnchor, townSectionKey } from "../content/countySections";
 import {
   areCloudFormsConfigured,
   CONTACT_TURNSTILE_ACTION,
@@ -57,26 +58,8 @@ const DEFAULT_NEWSLETTER_CONTENT: NewsletterContent = {
 
 const CONTACT_FORM_PLACEHOLDER_TEXT = new Set(["I am looking to...", "Choose a topic"]);
 
-const isActionSection = (section: PageSection) => {
-  if (section.kind === "action") return true;
-  const headings = section.blocks.filter((block) => block.tag === "H2").map((block) => block.text);
-  return headings.includes("Thinking of Selling?") && headings.includes("Looking to Buy?");
-};
-
 const TOWN_GRID_COLUMNS = 3;
-const isTownSection = (section: PageSection, index: number) => (
-  section.kind === "town" || (index > 0 && section.images.length > 0 && !isActionSection(section))
-);
 const isInteractiveTarget = (target: EventTarget | null) => target instanceof Element && Boolean(target.closest("a, button, input, select, textarea, label"));
-const townSectionKey = (section: PageSection, index: number) => section.id || String(index);
-const townSectionAnchor = (section: PageSection, index: number) => {
-  const heading = section.blocks.find((block) => ["H2", "H3"].includes(block.tag))?.text || "";
-  const slug = heading
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/^-|-$/g, "");
-  return slug || `community-${index + 1}`;
-};
 const readTownHash = () => {
   if (typeof window === "undefined") return "";
   try {

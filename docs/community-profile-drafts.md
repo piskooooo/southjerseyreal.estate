@@ -4,7 +4,7 @@ Last researched: October 17, 2026
 
 Last reviewed: October 17, 2026
 
-Status: **October 17 town-introduction rewrite approved for publication; release verification pending.**
+Status: **October 17 town-introduction rewrite published and verified.**
 
 The local preview was refreshed and all seven county pages were republished through the production editor on August 10, 2026. That earlier release included seven county introductions and 166 community cards. Those profiles restored the original site's structured community details where available; price, tax, and school details remain labeled as 2025 site snapshots and must not be read as current figures. On July 22, every card received a visually reviewed, locally optimized Wikimedia Commons image with recorded creator, source, and license information. No generated images are used in the community profiles.
 
@@ -12,7 +12,7 @@ On August 10, 2026, the community-card summaries were rewritten into visitor-fac
 
 These drafts follow the owner's requested casual-but-professional voice. The earlier restoration recovered objective ideas from the retired town narratives and retained clearly dated historical snapshots. The October 17 introductions use newly checked primary sources, without restoring the old targeting language, rankings, commute promises, unqualified market claims, or unsupported superlatives.
 
-On October 17, the owner selected a rewrite of all 166 town introductions because the checklist summaries repeated the expanded detail fields. The revised introductions describe each place through specific geography, settlement patterns, history, and physical landmarks, checked against primary sources on the dates shown below. Earlier source notes are retained with their original access dates. The expanded historical detail snapshots, community images, card order, and town anchors are unchanged. The owner approved the preview and authorized publication on October 17; release verification is pending.
+On October 17, the owner selected a rewrite of all 166 town introductions because the checklist summaries repeated the expanded detail fields. The revised introductions describe each place through specific geography, settlement patterns, history, and physical landmarks, checked against primary sources on the dates shown below. Earlier source notes are retained with their original access dates. The expanded historical detail snapshots, community images, card order, and town anchors are unchanged. The owner approved the preview and authorized publication on October 17; the production release was verified the same day.
 
 ## Source Rules
 
@@ -1393,7 +1393,14 @@ Source: [Borough of Woodstown](https://www.historicwoodstown.org/), accessed Jul
   both themes found no page errors, horizontal overflow, or targeted
   accessibility violations.
 - [x] The owner reviewed the preview and approved the rewritten wording for publication on October 17.
-- [ ] The authorized production release is verified.
+- [x] The authorized production release is verified. Commit `18b76b5` passed the
+  GitHub test workflow and its exact Cloudflare production deployment succeeded.
+  All seven live county routes serve all 166 reviewed introductions in initial
+  HTML and the interactive page. Real published-content responses returned 200;
+  all 1,439 historical non-source detail blocks remain unchanged. Directory and
+  expand/collapse controls, desktop/mobile styling in both themes, targeted
+  accessibility checks, and denied-consent analytics checks passed. See
+  `docs/project-todo.md` for the release links. No form was submitted.
 
 The immutable `legacyCommunitySummaries.json` records the August 10 checklist paragraphs and source blocks solely for a guarded content upgrade. It is comparison data, not a rendering fallback; do not regenerate it from the revised prose. Saved content versions preserve subsequent owner edits and removals.
 

@@ -101,6 +101,13 @@ the retained expanded population, price, tax, and school fields remain
 clearly labeled historical snapshots. No new current market, school ranking,
 safety, demographic targeting, or commute-time claims are part of this work.
 The owner reviewed the preview and approved publication on October 17.
+The authorized release was published and verified the same day: commit
+`18b76b5` passed GitHub tests and its exact Cloudflare production deployment
+succeeded. Live checks confirmed all 166 introductions and dated source notes
+across seven county routes, with all 1,439 historical non-source detail blocks
+unchanged. Navigation, responsive styling, targeted accessibility, and
+denied-consent analytics checks passed; no inquiry or subscription was sent.
+Release evidence is recorded in `docs/project-todo.md`.
 This record does not create a new legal approval or reopen the completed roadmap.
 
 ## Provider Directory Verification

@@ -241,8 +241,8 @@ original roadmap remains closed.
 ## Owner-selected October 17 Town Introductions
 
 The owner selected recommendation 4 and explicitly expanded it to all 166
-town introductions across the seven counties. The current summaries repeat
-the expanded parks, shopping, and transportation fields rather than introduce
+town introductions across the seven counties. The earlier summaries repeated
+the expanded parks, shopping, and transportation fields rather than introducing
 the places themselves.
 
 - [x] Replace all 166 checklist summaries with concise, distinct introductions
@@ -270,13 +270,26 @@ the places themselves.
   previews passed visual and targeted accessibility review, with no page
   errors or horizontal overflow. Browser validation used bundled Chromium
   because the Browser plugin is unavailable. `git diff --check` passed.
-  The local preview is available for owner review; no form was submitted.
-- [ ] Publish the owner-authorized release and verify the GitHub checks,
-  Cloudflare deployment, and live town introductions.
+  The owner reviewed the local preview; no form was submitted.
+- [x] Publish the owner-authorized release and verify the GitHub checks,
+  Cloudflare deployment, and live town introductions. Implementation commit
+  `18b76b55ddb4358c67c0ff0323038c7f55bb1612` passed the
+  [GitHub test workflow](https://github.com/piskooooo/southjerseyreal.estate/actions/runs/39041215196)
+  with 188 unit tests, the Edge Function checks, and 117 browser checks.
+  [Cloudflare deployment `3c11f41a`](https://3c11f41a.southjerseyreal-estate.pages.dev)
+  succeeded for the exact commit and became the canonical production release.
 
 The owner approved the preview and authorized committing and pushing on
-October 17. Implementation and local verification are complete; production
-publication verification is pending.
+October 17. Production verification completed the same day: all seven county
+routes returned 200 and contained all 166 reviewed introductions in their
+initial HTML and hydrated pages, with dated supporting source notes. The real
+published-content responses returned 200. All 1,439 historical non-source detail
+blocks matched the pre-release public documents and rendered unchanged.
+Expand/collapse controls and directory jumps passed on every county route.
+Desktop/mobile checks in both themes found no page or console errors,
+horizontal overflow, or analytics events or requests with consent denied.
+Targeted accessibility checks found no violations and visual review confirmed
+the existing styling. No inquiry or subscription was submitted.
 The original roadmap remains complete.
 
 ## Owner-selected September 4 Maintenance

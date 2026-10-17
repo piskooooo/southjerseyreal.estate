@@ -172,8 +172,8 @@ deep links. The observations below describe the audit before that release.
    was submitted. See `docs/project-todo.md` for release evidence.
    Measure county-to-article clicks and subsequent contact actions as exploratory evidence,
    retaining the consent and small-sample limits.
-4. **Rewrite repetitive town introductions. Selected October 17; implemented
-   and verified locally, unpublished.**
+4. **Rewrite repetitive town introductions. Selected, completed and published
+   October 17.**
    The owner expanded the initial correction to all 166 introductions across
    seven counties because the summaries repeat the expanded detail fields.
    Replace the checklist format with specific, primary-source-backed prose
@@ -190,8 +190,12 @@ deep links. The observations below describe the audit before that release.
    Validation passed 188 unit tests and 117 browser checks, plus checks using
    the actual published county documents and desktop/mobile visual and
    accessibility review. The owner approved the preview and authorized
-   publication on October 17; release verification is pending. See
-   `docs/project-todo.md` for the current status.
+   publication on October 17. Commit `18b76b5` passed GitHub tests and its exact
+   Cloudflare production deployment succeeded. Live checks verified all 166
+   introductions in the initial HTML and interactive pages across seven county
+   routes, unchanged historical details, working directory/expand controls,
+   preserved styling, and no analytics when consent is denied. See
+   `docs/project-todo.md` for the release evidence.
 
 The inspected public pages were
 [Camden County](https://southjerseyreal.estate/camden-county) and
@@ -234,8 +238,8 @@ activity are still needed to evaluate the new dimensions. Recommendation 1
 is implemented and published; recommendation 2 is also implemented and
 published, with the copy-link action omitted at the owner's request.
 Recommendation 3 is implemented and published for the Camden/Atlantic guide links;
-recommendation 4 is implemented and verified locally, with owner-authorized
-publication of the broader town-introduction rewrite awaiting release checks.
+recommendation 4's broader town-introduction rewrite is implemented, published,
+and verified on all seven live county routes.
 The completed original roadmap remains closed.
 
 ## Local audit evidence

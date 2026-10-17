@@ -19,6 +19,7 @@ import type { ResourcePage } from "../content/resourcePages";
 import type { NewsletterContent } from "../content/siteEditor";
 import type { ContentBlock, ImageAsset, PageSection, SitePage } from "../content/types";
 import { Blocks } from "./Blocks";
+import { InsightContents } from "./InsightContents";
 import {
   CommunityInformationDisclaimer,
   ContactConsent,
@@ -550,21 +551,15 @@ export function InsightArticlePage({
       </header>
 
       <div className="section insight-article-layout">
-        <nav className="insight-table-of-contents" aria-label="On this page">
-          <p>On this page</p>
-          <ol>
-            {article.sections.map((section, index) => (
-              <li key={section.heading}>
-                <a href={`#${insightSectionId(section.heading, index)}`}>{section.heading}</a>
-              </li>
-            ))}
-          </ol>
-        </nav>
+        <InsightContents entries={article.sections.map((section, index) => ({
+          id: insightSectionId(section.heading, index),
+          heading: section.heading,
+        }))} />
 
         <div className="insight-article-body">
           <p className="insight-article-notice">{article.notice}</p>
           {article.sections.map((section, index) => (
-            <section id={insightSectionId(section.heading, index)} key={section.heading}>
+            <section id={insightSectionId(section.heading, index)} key={section.heading} tabIndex={-1}>
               <p className="insight-section-number" aria-hidden="true">{String(index + 1).padStart(2, "0")}</p>
               <h2>{section.heading}</h2>
               {section.paragraphs.map((paragraph, paragraphIndex) => (

@@ -270,7 +270,7 @@ export default function App() {
     if (path === "/contact") return <ContactPage page={currentPage} navigate={navigate} />;
     if (path === "/newsletter") return <NewsletterPage content={current.newsletter} navigate={navigate} />;
     if (current.insightIndex) return <InsightsIndexPage content={current.insightIndex} navigate={navigate} />;
-    if (current.insightArticle) return <InsightArticlePage article={current.insightArticle} navigate={navigate} />;
+    if (current.insightArticle) return <InsightArticlePage key={current.page.path} article={current.insightArticle} navigate={navigate} />;
     if (current.comparisonGuide) return <ComparisonGuidePage page={currentPage} guide={current.comparisonGuide} navigate={navigate} />;
     if (current.resourcePage) return <ResourceAccordionPage page={currentPage} resource={current.resourcePage} navigate={navigate} />;
     if (countyPaths.has(path)) return <CountyPage page={currentPage} navigate={navigate} />;

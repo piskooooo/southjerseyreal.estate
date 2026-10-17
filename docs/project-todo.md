@@ -441,6 +441,44 @@ written. Implementation and local verification are complete. The owner
 approved the preview and authorized committing and pushing the work on
 October 17. The original roadmap remains complete.
 
+## Owner-selected October 17 Mobile Guide Contents
+
+The owner selected a compact sticky On this page dropdown for the eight
+Insights articles on mobile, preserving the existing look.
+
+- [x] Replace the mobile contents list with a closed native disclosure that
+  sticks below the measured site header when reached. Retain the full desktop
+  sidebar and the existing section names, order, and native fragment links.
+- [x] Close on selection, Escape, outside pointer, focus leaving the menu, and
+  breakpoint/guide changes. Keep keyboard focus and fragment history usable;
+  align section destinations below both bars, bound the popup to actual
+  remaining viewport space, and let the bar leave with the reading area.
+- [x] Complete unit, build, browser/compliance, accessibility, responsive, and
+  visual verification, then provide the local preview for owner review.
+
+All 216 unit tests and 126 browser/compliance checks passed, including the final
+production build and prerendering. Four new browser cases cover the eight
+desktop lists, mobile normal-flow and sticky popup bounds, section clearance,
+fragment/query preservation, repeated navigation and Back/Forward, keyboard
+focus, Escape/outside/focus-leave dismissal, breakpoint resets, header wrapping,
+and release at the reading-area boundary. The final source measures available
+space before opening to avoid a temporarily collapsed popup after scrolling.
+
+Additional screenshot and accessibility checks at 1440 pixels in both themes,
+390 pixels in light mode, and 320 pixels in dark mode retained the editorial
+design and found no app/console errors, horizontal overflow, or targeted
+accessibility violations. A 640-by-360 landscape check confirmed the menu stays
+scrollable within the remaining space before pinning. The Browser plugin is
+unavailable, so validation used the repository's installed Playwright Chromium.
+
+Implementation and local verification are complete. The owner approved the
+production-style preview at
+`http://localhost:4175/insights/coastal-property-due-diligence` and authorized
+committing and pushing on October 17. Article wording, source notes, review
+dates, contact links, forms, and analytics are unchanged. No inquiry/subscription
+was submitted and no production content was written. The original roadmap
+remains complete.
+
 ## Owner-selected September 4 Maintenance
 
 - [x] Implement the seven confirmed audit corrections in source:

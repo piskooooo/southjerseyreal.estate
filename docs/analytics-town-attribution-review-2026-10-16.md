@@ -105,7 +105,7 @@ The owner selected recommendation 1 in the October 16 follow-up; its verified
 production release is recorded in `docs/project-todo.md` (commit `547bc43`).
 The owner then selected the directory in recommendation 2, requiring preservation
 of the existing aesthetic, and chose to omit the preview's copy-link control.
-Its local implementation and release status are recorded
+Its implementation and verified production release are recorded
 in the same checklist. Recommendations 3–4 remain proposed changes. Preserve
 structured editable content, existing disclosures, source notes, approved imagery, and working
 deep links. The observations below describe the audit before that release.
@@ -122,8 +122,8 @@ deep links. The observations below describe the audit before that release.
    JavaScript, so the earlier finding does not prove the
    towns are unindexed or promise higher rankings. See Google's
    [JavaScript SEO guidance](https://developers.google.com/search/docs/crawling-indexing/javascript/javascript-seo-basics).
-2. **Expose the existing town anchors in a compact directory. Selected
-   October 16; implemented locally, not yet published.** The owner chose to
+2. **Expose the existing town anchors in a compact directory. Completed and
+   published October 16.** The owner chose to
    skip the copy-link control after reviewing the preview.
    At 390 × 844, the county pages measured about 9,147 pixels
    (Camden) and 7,371 pixels (Atlantic) high. There is no visible per-town
@@ -141,8 +141,11 @@ deep links. The observations below describe the audit before that release.
    directory selection or Back/Forward navigation.
    Both themes and desktop/tablet/mobile previews retain the editorial styling;
    an existing tablet grid cascade was corrected. The copy-link component,
-   styles, and clipboard tests are removed. The owner authorized the commit
-   and production push on October 16; release verification is pending.
+   styles, and clipboard tests are removed. The owner-authorized production
+   release is verified in `dda34f2`: GitHub tests and Cloudflare deployment
+   succeeded, all 166 initial links match the town profiles, and live desktop
+   and mobile controls passed without collecting denied-consent analytics.
+   No inquiry or subscription was submitted.
    Compare observed town opens and town-context contact actions; do not call
    an anchor opening proof of an external share.
 3. **Link county readers directly to relevant existing guides.** Neither
@@ -200,8 +203,8 @@ opt-in or form submissions.
 
 There is no remaining GA4 setup blocker. Report processing and real consented
 activity are still needed to evaluate the new dimensions. Recommendation 1
-is implemented and published; recommendation 2 is selected for the compact
-directory, with the copy-link action omitted at the owner's request.
+is implemented and published; recommendation 2 is also implemented and
+published, with the copy-link action omitted at the owner's request.
 Recommendations 3–4 require owner selection.
 The completed original roadmap remains closed.
 

@@ -174,12 +174,22 @@ scrolling through the town list.
   844 × 390 previews verified fresh links, keyboard focus, open-menu WCAG
   checks, and no page errors or horizontal overflow.
   `git diff --check` passed. No inquiry or subscription was submitted.
-- [ ] Publish the owner-authorized release, then verify GitHub tests,
-  Cloudflare Pages deployment, and live directory behavior.
+- [x] Publish the owner-authorized release, then verify GitHub tests,
+  Cloudflare Pages deployment, and live directory behavior. Implementation
+  commit `dda34f2` is on `origin/main`; the
+  [GitHub test workflow](https://github.com/piskooooo/southjerseyreal.estate/actions/runs/38999352132)
+  and [Cloudflare production deployment](https://7f814028.southjerseyreal-estate.pages.dev)
+  succeeded for that exact revision.
 
 The owner authorized committing and pushing this selected follow-up on
-October 16. Production release verification is pending. The original roadmap
-remains complete; recommendations 3–4 are not active tasks.
+October 16, and production verification completed the same day. All seven
+county pages serve 166 matching, ordered native town links before JavaScript.
+Live Camden desktop/light and Atlantic mobile/dark checks confirmed real
+published-content responses, sticky navigation, clear town headings,
+Back/Forward, bulk controls, no copy action, no page errors or horizontal
+overflow, and no Google Analytics requests with consent denied. No inquiry
+or subscription was submitted. The original roadmap remains complete;
+recommendations 3–4 are not active tasks.
 
 ## Owner-selected September 4 Maintenance
 

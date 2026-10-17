@@ -101,21 +101,22 @@ records were used in this review.
 
 ## Current page findings and next improvements
 
-The owner selected recommendation 1 in the October 16 follow-up; its local
-implementation and release status are recorded in `docs/project-todo.md`.
+The owner selected recommendation 1 in the October 16 follow-up; its verified
+production release is recorded in `docs/project-todo.md` (commit `547bc43`).
 Recommendations 2–4 remain proposed changes. Preserve structured editable
 content, existing disclosures, source notes, approved imagery, and working
-deep links. The production observations below describe the audit before that
-local implementation.
+deep links. The observations below describe the audit before that release.
 
-1. **Include reviewed town content in the initial county HTML.** Live Camden
-   and Atlantic pages render 34 and 23 town profiles respectively after
-   JavaScript; their initial HTTP responses contain no town cards or fragment
-   links. `scripts/prerender-seo.mjs` currently emits an abbreviated shell.
-   Include existing reviewed headings, summaries, sources, and stable anchors
-   in generated HTML. Acceptance: 34/34 and 23/23 profile coverage in the
-   respective HTTP responses, with matching hydrated content and working
-   anchors. Google can render JavaScript, so this finding does not prove the
+1. **Include reviewed town content in the initial county HTML. Completed and
+   published October 16.** At audit time, Camden and Atlantic rendered 34 and
+   23 town profiles respectively after JavaScript; their initial HTTP
+   responses contained no town cards or fragment links. The prerender script
+   emitted an abbreviated shell. It now includes the existing reviewed town
+   headings, summaries, sources, and matching anchors in generated HTML.
+   Production verification found 34/34 and 23/23 profiles in the respective
+   HTTP responses, matching interactive content with working anchors. All
+   seven county pages contain their 166 current profiles. Google can render
+   JavaScript, so the earlier finding does not prove the
    towns are unindexed or promise higher rankings. See Google's
    [JavaScript SEO guidance](https://developers.google.com/search/docs/crawling-indexing/javascript/javascript-seo-basics).
 2. **Expose the existing town anchors in a compact directory and share
@@ -182,8 +183,8 @@ opt-in or form submissions.
 
 There is no remaining GA4 setup blocker. Report processing and real consented
 activity are still needed to evaluate the new dimensions. Recommendation 1
-has been selected for implementation; the remaining website recommendations
-require owner selection. The completed original roadmap remains closed.
+is implemented and published; the remaining website recommendations require
+owner selection. The completed original roadmap remains closed.
 
 ## Local audit evidence
 

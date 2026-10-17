@@ -112,16 +112,27 @@ include existing town content in the initial county-page HTML.
   check also verifies town headings clear the sticky header. `git diff --check`
   passed. Browser validation used the installed bundled Chromium with `CI=1`;
   the Browser plugin is not available in this session.
-- [ ] Publish the owner-authorized release and verify the exact revision's
+- [x] Publish the owner-authorized release and verify the exact revision's
   GitHub tests, Cloudflare Pages deployment, and live county HTML/profile
-  behavior.
+  behavior. Implementation commit `547bc43` is on `origin/main`; the
+  [GitHub test workflow](https://github.com/piskooooo/southjerseyreal.estate/actions/runs/38995350025)
+  and [Cloudflare production deployment](https://2540faa6.southjerseyreal-estate.pages.dev)
+  succeeded for that exact revision. The configured production build
+  completed successfully, including published-content prerendering.
 
-The owner authorized commit and production push on October 16. Release
-verification is in progress. A separate local Pages-production-mode check
-correctly rejected the missing Supabase build configuration; the production
-deployment will verify the configured published-content build. The original
-roadmap remains closed; the town directory, guide links, and copy corrections
-are not selected by this request.
+The owner-authorized production release completed October 16. Independent
+canonical HTTP checks found all 166 profiles across seven counties with full
+summaries, dated HTTPS source links, unique anchors, and correct metadata.
+Production browser checks confirmed Camden's 34 and Atlantic's 23 initial
+profiles match the actual published content fetched by the interactive app;
+shared town links, no-JavaScript access, and manual expansion/collapse work
+without duplicate fallback content, horizontal overflow, or Google Analytics
+requests while consent is denied. No inquiry or subscription was submitted.
+A separate external Cloudflare analytics beacon failed DNS resolution from
+the test Mac; no first-party page/runtime failure was found. This does not
+claim that external beacon delivery was verified. The original roadmap
+remains closed; the town directory, guide links, and copy corrections are not
+selected by this request.
 
 ## Owner-selected September 4 Maintenance
 

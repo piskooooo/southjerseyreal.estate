@@ -21,6 +21,7 @@ import type { ContentBlock, ImageAsset, PageSection, SitePage } from "./types";
 
 export const SITEWIDE_CONTENT_KEY = "__sitewide__";
 const INSIGHT_INDEX_VERSION = 1;
+const COUNTY_GUIDE_LINKS_VERSION = 1;
 
 export type SiteLink = {
   label: string;
@@ -90,6 +91,7 @@ export type ManagedPageDocument = {
   insightArticle?: InsightArticleContent;
   insightIndex?: InsightIndexContent;
   insightIndexVersion?: number;
+  countyGuideLinksVersion?: number;
   resourcePage?: ResourcePage;
   newsletter?: NewsletterContent;
 };
@@ -183,6 +185,16 @@ const legacySeoDescriptions = new Map<string, string>([
   ["/camden-county", "Explore Delaware River communities, established suburbs, and eastern townships across Camden County, New Jersey."],
   ["/cape-may-county", "Explore barrier-island shore towns and mainland communities across Cape May County, New Jersey."],
   ["/cumberland-county", "Explore cities and smaller communities across Cumberland County's agricultural, woodland, and Delaware Bay landscapes."],
+]);
+
+const countyGuideLinks = new Map<string, ContentBlock[]>([
+  ["/camden-county", [
+    { tag: "A", text: "Preparing to sell a New Jersey home", href: "/insights/preparing-to-sell-a-new-jersey-home" },
+    { tag: "A", text: "Researching municipal records, permits, and zoning", href: "/insights/municipal-records-permits-and-zoning" },
+  ]],
+  ["/atlantic-county", [
+    { tag: "A", text: "Coastal property due diligence for a shore home", href: "/insights/coastal-property-due-diligence" },
+  ]],
 ]);
 
 const countyGuidanceSection = (page: SitePage): PageSection => ({
@@ -309,8 +321,12 @@ export const managedPageSeeds: ManagedPageDocument[] = seoEntries.map((entry) =>
   const hasStructuredBody = Boolean(
     comparisonGuide || resourcePage || insightArticle || isInsightIndex,
   );
+  const page = keepRenderedSections(withImageMetadata(source), hasStructuredBody);
+  const guideLinks = countyGuideLinks.get(entry.path);
+  const intro = page.sections.find((section) => section.kind === "intro");
+  if (guideLinks && intro) intro.blocks.push(...structuredClone(guideLinks));
   return {
-    page: keepRenderedSections(withImageMetadata(source), hasStructuredBody),
+    page,
     seo: {
       title: entry.title,
       description: entry.description,
@@ -328,6 +344,7 @@ export const managedPageSeeds: ManagedPageDocument[] = seoEntries.map((entry) =>
     ...(isInsightIndex
       ? { insightIndex: structuredClone(insightIndex), insightIndexVersion: INSIGHT_INDEX_VERSION }
       : {}),
+    ...(guideLinks ? { countyGuideLinksVersion: COUNTY_GUIDE_LINKS_VERSION } : {}),
     ...(entry.path === "/newsletter"
       ? { newsletter: structuredClone(newsletterSeed) }
       : {}),
@@ -453,6 +470,21 @@ export function normalizeManagedContent(pageKey: string, value: unknown): Manage
     );
     if (guidance && !document.page.sections.some((section) => section.id === guidance.id)) {
       document.page.sections.splice(1, 0, structuredClone(guidance));
+    }
+    const guideLinks = countyGuideLinks.get(pageKey);
+    if (guideLinks) {
+      const storedVersion = isObject(value) ? value.countyGuideLinksVersion : undefined;
+      // Add the selected reading links to older content once. Saved versions
+      // preserve later owner edits, reordering, and intentional removals.
+      if (typeof storedVersion !== "number" || storedVersion < COUNTY_GUIDE_LINKS_VERSION) {
+        const seedIntro = seedDocument.page.sections.find((section) => section.kind === "intro");
+        const intro = document.page.sections.find((section) => section.id === seedIntro?.id);
+        if (intro) {
+          const existingHrefs = new Set(intro.blocks.filter((block) => block.tag === "A").map((block) => block.href));
+          intro.blocks.push(...structuredClone(guideLinks.filter((block) => !existingHrefs.has(block.href))));
+        }
+      }
+      document.countyGuideLinksVersion = COUNTY_GUIDE_LINKS_VERSION;
     }
     const seedSections = new Map(seedDocument.page.sections.map((section) => [section.id, section]));
     for (const section of document.page.sections) {

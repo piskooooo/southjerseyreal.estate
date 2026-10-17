@@ -8,6 +8,97 @@ import {
   type SitewideContent,
 } from "./siteEditor";
 
+const selectedCountyGuides = {
+  "/camden-county": [
+    { tag: "A", text: "Preparing to sell a New Jersey home", href: "/insights/preparing-to-sell-a-new-jersey-home" },
+    { tag: "A", text: "Researching municipal records, permits, and zoning", href: "/insights/municipal-records-permits-and-zoning" },
+  ],
+  "/atlantic-county": [
+    { tag: "A", text: "Coastal property due diligence for a shore home", href: "/insights/coastal-property-due-diligence" },
+  ],
+} as const;
+
+describe("selected county contextual guide links", () => {
+  const guideHrefs = new Set<string>(Object.values(selectedCountyGuides).flat().map((link) => link.href));
+
+  it("seeds the selected links only in Camden and Atlantic introductions", () => {
+    for (const [pageKey, seed] of managedContentSeeds) {
+      if (!pageKey.endsWith("-county")) continue;
+      const document = seed as ManagedPageDocument;
+      const expected = selectedCountyGuides[pageKey as keyof typeof selectedCountyGuides] || [];
+      const intro = document.page.sections[0];
+      expect(intro.blocks.filter((block) => guideHrefs.has(block.href || ""))).toEqual(expected);
+      expect(document.page.sections.slice(1).flatMap((section) => section.blocks)
+        .filter((block) => guideHrefs.has(block.href || ""))).toEqual([]);
+      expect(document.countyGuideLinksVersion).toBe(expected.length ? 1 : undefined);
+      expect(normalizeManagedContent(pageKey, structuredClone(document))).toEqual(document);
+      expect(() => validateManagedContentForPublish(pageKey, document)).not.toThrow();
+    }
+  });
+
+  it("upgrades raw missing and older versions once, appending only missing destinations", () => {
+    for (const [pageKey, guides] of Object.entries(selectedCountyGuides)) {
+      for (const previousVersion of [undefined, 0]) {
+        const legacy = structuredClone(managedContentSeeds.get(pageKey)) as ManagedPageDocument;
+        if (previousVersion === undefined) delete legacy.countyGuideLinksVersion;
+        else legacy.countyGuideLinksVersion = previousVersion;
+        const intro = legacy.page.sections[0];
+        intro.blocks = intro.blocks.filter((block) => !guideHrefs.has(block.href || ""));
+        intro.blocks.splice(1, 0, { tag: "P", text: "Owner-managed introduction retained as written." });
+        if (previousVersion === 0) {
+          intro.blocks.push({ ...guides[0], text: "Owner's existing guide label" });
+        }
+        const existingBlocks = structuredClone(intro.blocks);
+        const existingHrefs = new Set(existingBlocks.filter((block) => block.tag === "A").map((block) => block.href));
+        const normalized = normalizeManagedContent(pageKey, legacy) as ManagedPageDocument;
+        expect(normalized.page.sections.find((section) => section.id === intro.id)?.blocks).toEqual([
+          ...existingBlocks,
+          ...guides.filter((guide) => !existingHrefs.has(guide.href)),
+        ]);
+        expect(normalized.page.sections.filter((section) => section.id !== intro.id))
+          .toEqual(legacy.page.sections.filter((section) => section.id !== intro.id));
+        expect(normalized.countyGuideLinksVersion).toBe(1);
+        expect(normalizeManagedContent(pageKey, structuredClone(normalized))).toEqual(normalized);
+        expect(() => validateManagedContentForPublish(pageKey, normalized)).not.toThrow();
+      }
+    }
+  });
+
+  it("preserves versioned owner copy, changed links, removals, and section order", () => {
+    for (const pageKey of Object.keys(selectedCountyGuides)) {
+      const draft = structuredClone(managedContentSeeds.get(pageKey)) as ManagedPageDocument;
+      const intro = draft.page.sections[0];
+      intro.blocks = [
+        { tag: "P", text: "Owner's introduction remains in this position." },
+        { tag: "A", text: "Owner's chosen research guide", href: "/insights/researching-a-south-jersey-property" },
+        { tag: "H2", text: "Owner's county introduction" },
+      ];
+      draft.page.sections = [draft.page.sections[1], intro, ...draft.page.sections.slice(2).reverse()];
+      draft.seo.title = "Owner's reviewed county title";
+      draft.countyGuideLinksVersion = 1;
+      const normalized = normalizeManagedContent(pageKey, draft) as ManagedPageDocument;
+      expect(normalized).toEqual(draft);
+      expect(normalized.page.sections.flatMap((section) => section.blocks)
+        .filter((block) => guideHrefs.has(block.href || ""))).toEqual([]);
+      expect(normalizeManagedContent(pageKey, structuredClone(normalized))).toEqual(normalized);
+    }
+  });
+
+  it("does not recreate a removed introduction while upgrading an old document", () => {
+    for (const pageKey of Object.keys(selectedCountyGuides)) {
+      const legacy = structuredClone(managedContentSeeds.get(pageKey)) as ManagedPageDocument;
+      const introId = legacy.page.sections[0].id;
+      legacy.page.sections = legacy.page.sections.filter((section) => section.id !== introId);
+      delete legacy.countyGuideLinksVersion;
+      const normalized = normalizeManagedContent(pageKey, legacy) as ManagedPageDocument;
+      expect(normalized.page.sections).toEqual(legacy.page.sections);
+      expect(normalized.page.sections.some((section) => section.id === introId)).toBe(false);
+      expect(normalized.page.sections.flatMap((section) => section.blocks)
+        .filter((block) => guideHrefs.has(block.href || ""))).toEqual([]);
+    }
+  });
+});
+
 describe("website editor content normalization", () => {
   const selectedCountyPaths = [
     "/atlantic-county",

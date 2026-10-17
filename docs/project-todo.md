@@ -1,6 +1,6 @@
 # South Jersey Real Estate Project Checklist
 
-Last reviewed: October 16, 2026
+Last reviewed: October 17, 2026
 
 **Roadmap status: Complete.** The selected roadmap closed on August 7, 2026.
 The owner separately selected the September 4 audit corrections below. Their
@@ -88,7 +88,7 @@ The measurement contract, reporting setup, and interpretation limits are in
   [October 16 review](analytics-town-attribution-review-2026-10-16.md) records
   the measured baseline, QA contamination, attribution limits, and prioritized
   improvements with acceptance measures. The owner subsequently selected
-  recommendations 1 and 2 below; recommendations 3–4 remain a plan.
+  recommendations 1–3 below; recommendation 4 remains a plan.
 
 ## Owner-selected October 16 County Initial Content
 
@@ -131,8 +131,8 @@ requests while consent is denied. No inquiry or subscription was submitted.
 A separate external Cloudflare analytics beacon failed DNS resolution from
 the test Mac; no first-party page/runtime failure was found. This does not
 claim that external beacon delivery was verified. The original roadmap
-remains closed. The owner subsequently selected the town directory below;
-guide links and copy corrections remain unselected.
+remains closed. The owner subsequently selected the town directory and guide
+links below; copy corrections remain unselected.
 
 ## Owner-selected October 16 Town Directory
 
@@ -189,7 +189,41 @@ published-content responses, sticky navigation, clear town headings,
 Back/Forward, bulk controls, no copy action, no page errors or horizontal
 overflow, and no Google Analytics requests with consent denied. No inquiry
 or subscription was submitted. The original roadmap remains complete;
-recommendations 3–4 are not active tasks.
+recommendation 4 is not an active task. The owner subsequently selected the
+county guide links below.
+
+## Owner-selected October 16 County Guide Links
+
+The owner selected recommendation 3 from the traffic/SEO review: discreet
+links from Camden and Atlantic County introductions to relevant existing
+Insights articles, preserving the current aesthetic.
+
+- [x] Add seller-preparation and municipal-records links to Camden and a
+  coastal-property due-diligence link to Atlantic as small underlined text.
+  Keep the existing guidance buttons, county writing, source notes, imagery,
+  and all other county content intact.
+- [x] Keep the links in editable structured blocks and include their real
+  destinations in initial HTML. Upgrade older published content once without
+  duplicating links or restoring later owner removals; hide the internal
+  version marker from the editor.
+- [x] Complete unit, build, browser/compliance, initial-HTML, analytics,
+  accessibility, and desktop/mobile verification. All 185 unit tests and
+  110 browser/compliance checks passed, including the production build with
+  offline fixtures. The new checks cover real initial-HTML destinations,
+  no-JavaScript and interactive article navigation, unchanged guidance
+  buttons, consented link events without town context or conversions, and
+  no analytics when consent is denied. Additional preview checks at
+  1440 pixels in both themes and 390/320 pixels in dark mode found no page
+  errors, horizontal overflow, or accessibility violations in the modified
+  introductions and adjacent guidance sections. Guide links have visible
+  keyboard focus. Visual review and `git diff --check` passed. Browser
+  validation used bundled Chromium because the Browser plugin is unavailable.
+- [ ] Publish the owner-authorized release, then verify GitHub tests,
+  Cloudflare Pages deployment, and live guide navigation.
+
+The owner approved the preview and authorized committing and pushing on
+October 17. Publication verification is pending. Recommendation 4 and the
+completed original roadmap are outside this task.
 
 ## Owner-selected September 4 Maintenance
 

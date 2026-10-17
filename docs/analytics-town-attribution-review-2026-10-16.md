@@ -106,7 +106,9 @@ production release is recorded in `docs/project-todo.md` (commit `547bc43`).
 The owner then selected the directory in recommendation 2, requiring preservation
 of the existing aesthetic, and chose to omit the preview's copy-link control.
 Its implementation and verified production release are recorded
-in the same checklist. Recommendations 3–4 remain proposed changes. Preserve
+in the same checklist. The owner also selected recommendation 3; its local
+implementation and verification are complete. The owner approved publication
+on October 17; release verification is pending. Recommendation 4 remains proposed. Preserve
 structured editable content, existing disclosures, source notes, approved imagery, and working
 deep links. The observations below describe the audit before that release.
 
@@ -148,14 +150,22 @@ deep links. The observations below describe the audit before that release.
    No inquiry or subscription was submitted.
    Compare observed town opens and town-context contact actions; do not call
    an anchor opening proof of an external share.
-3. **Link county readers directly to relevant existing guides.** Neither
-   county page currently links to an individual Insights article. Use the
+3. **Link county readers directly to relevant existing guides. Selected
+   October 16; implemented and verified locally, unpublished.** At audit time,
+   neither county page linked to an individual Insights article. Use the
    [seller guide](https://southjerseyreal.estate/insights/preparing-to-sell-a-new-jersey-home),
    [coastal due-diligence guide](https://southjerseyreal.estate/insights/coastal-property-due-diligence),
    and [municipal-records guide](https://southjerseyreal.estate/insights/municipal-records-permits-and-zoning)
    where relevant. Acceptance: useful contextual links on Camden/Atlantic
-   and no generic replacement of other counties' content. Measure county-to-
-   article clicks and subsequent contact actions as exploratory evidence,
+   and no generic replacement of other counties' content. Camden now has
+   seller-preparation and municipal-records links, and Atlantic has the
+   coastal-property link, as discreet underlined text in their introductions.
+   The links remain editable, survive the published-content loader, and are
+   available in initial HTML. All 185 unit tests and 110 browser/compliance
+   checks passed, with additional desktop/mobile visual, keyboard, and
+   accessibility review. Existing guidance CTAs and consent behavior remain
+   intact. See `docs/project-todo.md` for validation and publication status.
+   Measure county-to-article clicks and subsequent contact actions as exploratory evidence,
    retaining the consent and small-sample limits.
 4. **Correct the identified summary defects before adding more copy.**
    Clementon, Lindenwold, Merchantville, and Voorhees repeat identical sentences
@@ -205,7 +215,8 @@ There is no remaining GA4 setup blocker. Report processing and real consented
 activity are still needed to evaluate the new dimensions. Recommendation 1
 is implemented and published; recommendation 2 is also implemented and
 published, with the copy-link action omitted at the owner's request.
-Recommendations 3–4 require owner selection.
+Recommendation 3 is selected for the Camden/Atlantic guide links;
+recommendation 4 still requires owner selection.
 The completed original roadmap remains closed.
 
 ## Local audit evidence

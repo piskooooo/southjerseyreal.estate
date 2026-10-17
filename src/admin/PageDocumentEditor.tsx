@@ -77,7 +77,7 @@ function isObject(value: unknown): value is Record<string, unknown> {
 }
 
 function isInternalField(key: string, path: Array<string | number>) {
-  return ["id", "kind", "storagePath", "thumbnail", "thumbnailPath", "insightIndexVersion"].includes(key)
+  return ["id", "kind", "storagePath", "thumbnail", "thumbnailPath", "insightIndexVersion", "countyGuideLinksVersion"].includes(key)
     || (["path", "title"].includes(key) && path.join(".") === "page");
 }
 

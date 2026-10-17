@@ -155,7 +155,7 @@ const getTagAssistantDebugValue = () => {
   return tagAssistantDebugValuePattern.test(value) ? value : "";
 };
 
-const replaceUnsafeBrowserLocation = (safeLocation: string) => {
+const replaceUnsafeBrowserLocation = (safeLocation: string, preservePendingFragment = false) => {
   try {
     const safeUrl = new URL(safeLocation);
     const tagAssistantDebugValue = getTagAssistantDebugValue();
@@ -165,7 +165,7 @@ const replaceUnsafeBrowserLocation = (safeLocation: string) => {
     const fragmentId = safeDecode(window.location.hash.slice(1));
     const publicFragment = /^[a-z0-9][a-z0-9_-]{0,159}$/i.test(fragmentId)
       && !containsPotentialPersonalData(fragmentId)
-      && document.getElementById(fragmentId)
+      && (preservePendingFragment || document.getElementById(fragmentId))
       ? window.location.hash
       : "";
     const safeRelativeUrl = `${safeUrl.pathname}${safeUrl.search}${publicFragment}`;
@@ -276,6 +276,12 @@ const ensureAnalytics = () => {
   if (getAnalyticsConsent() !== "granted") return false;
   if (!isAllowedAnalyticsHost()) return false;
   if (!measurementId) return false;
+
+  const pageLocation = sanitizeHttpUrl(window.location.href, true);
+  if (!pageLocation) return false;
+  // Events can run before published content resolves. Clean query parameters
+  // now; the resolved page view validates the pending town fragment against DOM.
+  replaceUnsafeBrowserLocation(pageLocation, true);
 
   setGaDisabled(false);
   if (window.gtag) return true;

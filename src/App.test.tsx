@@ -203,6 +203,61 @@ describe("consented community profile measurement", () => {
     ]);
   });
 
+  it.each(["stored consent", "opt-in while loading"] as const)("preserves a published-only town anchor with %s", async (consentTiming) => {
+    const content = structuredClone(seedPublicSiteContent());
+    const town = content.pages.get("/atlantic-county")!.page.sections
+      .find((section) => section.blocks[0]?.text === "Atlantic City")!;
+    town.blocks[0].text = "Edited Atlantic City profile";
+    window.history.replaceState({}, "", "/atlantic-county#edited-atlantic-city-profile");
+    let resolveContent!: (value: ReturnType<typeof seedPublicSiteContent>) => void;
+    vi.mocked(loadPublishedSiteContent).mockReturnValue(new Promise((resolve) => { resolveContent = resolve; }));
+    if (consentTiming === "stored consent") setAnalyticsConsent("granted");
+    const user = userEvent.setup();
+    render(<App />);
+    if (consentTiming === "opt-in while loading") {
+      await user.click(screen.getByRole("button", { name: content.sitewide.footer.cookieSettingsLabel }));
+      await user.click(screen.getByRole("button", { name: content.sitewide.privacyBanner.acceptLabel }));
+    }
+
+    expect(window.location.hash).toBe("#edited-atlantic-city-profile");
+    expect(window.dataLayer).toBeUndefined();
+    await act(async () => { resolveContent(content); });
+
+    expect(window.location.hash).toBe("#edited-atlantic-city-profile");
+    expect(screen.getByRole("button", { name: "Collapse Edited Atlantic City profile details" })).toBeVisible();
+    expect((window.dataLayer || []).map((entry) => Array.from(entry as ArrayLike<unknown>))
+      .filter((entry) => entry[0] === "event" && entry[1] === "page_view")).toHaveLength(1);
+  });
+
+  it("counts an ordinary page immediately while published content is still loading", async () => {
+    setAnalyticsConsent("granted");
+    let resolveContent!: (value: ReturnType<typeof seedPublicSiteContent>) => void;
+    vi.mocked(loadPublishedSiteContent).mockReturnValue(new Promise((resolve) => { resolveContent = resolve; }));
+    render(<App />);
+    const pageViews = () => (window.dataLayer || []).map((entry) => Array.from(entry as ArrayLike<unknown>))
+      .filter((entry) => entry[0] === "event" && entry[1] === "page_view");
+
+    expect(pageViews()).toHaveLength(1);
+    await act(async () => { resolveContent(structuredClone(seedPublicSiteContent())); });
+    expect(pageViews()).toHaveLength(1);
+  });
+
+  it("cleans private query values before an early town event while content loads", async () => {
+    window.history.replaceState({}, "", "/camden-county?email=private@example.com&utm_source=fixture#pending-town-profile");
+    setAnalyticsConsent("granted");
+    let resolveContent!: (value: ReturnType<typeof seedPublicSiteContent>) => void;
+    vi.mocked(loadPublishedSiteContent).mockReturnValue(new Promise((resolve) => { resolveContent = resolve; }));
+    const user = userEvent.setup();
+    render(<App />);
+
+    await user.click(screen.getByRole("button", { name: "Expand Camden City details" }));
+
+    expect(window.location.search).toBe("?utm_source=fixture");
+    expect(JSON.stringify(window.dataLayer)).not.toContain("private@example.com");
+    expect(communityOpenEvents()).toHaveLength(1);
+    await act(async () => { resolveContent(structuredClone(seedPublicSiteContent())); });
+  });
+
   it("uses the verified town identity when published headings are edited", async () => {
     window.history.replaceState({}, "", "/camden-county");
     const content = structuredClone(seedPublicSiteContent());

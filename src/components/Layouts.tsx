@@ -28,6 +28,8 @@ import {
 import { TurnstileWidget } from "./TurnstileWidget";
 import { AboutReviewsSection } from "./Reviews";
 import { getResponsiveImageProps } from "../content/responsiveImages";
+import type { TownFinderEntry } from "../content/townFinder";
+import { TownFinder } from "./TownFinder";
 
 type SiteTheme = "dark" | "light";
 
@@ -256,7 +258,7 @@ function TownGrid({
       }
       appliedHash.current = { hash, targetKey: target?.key };
       setExpandedCards(target && target.section.blocks.length > 2 ? new Set([target.key]) : new Set());
-      if (target) scrollTownCardIntoView(target.key, { block: "start" });
+      if (target) scrollTownCardIntoView(target.key, { focus: true, block: "start" });
     };
 
     const { hash, target } = findHashTarget();
@@ -964,7 +966,10 @@ export function StandardPage({ page, navigate }: PageProps) {
   );
 }
 
-export function HubPage({ page, navigate }: PageProps) {
+export function HubPage({ page, navigate, townEntries = [], contentResolved = false }: PageProps & {
+  townEntries?: readonly TownFinderEntry[];
+  contentResolved?: boolean;
+}) {
   const intro = page.sections.find((section) => section.kind === "intro") || page.sections[0];
   const cards = page.sections.filter((section) => section !== intro && !isActionSection(section));
   const actions = page.sections.filter(isActionSection);
@@ -976,6 +981,8 @@ export function HubPage({ page, navigate }: PageProps) {
           <Blocks blocks={intro.blocks} navigate={navigate} promoteFirstHeading />
         </section>
       )}
+
+      {page.path === "/counties" && <TownFinder entries={townEntries} ready={contentResolved} navigate={navigate} />}
 
       <section className="section hub-directory-section" aria-label={`${page.title} destinations`}>
         <div className="hub-card-grid">

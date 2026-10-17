@@ -10,6 +10,7 @@ import {
   type PublicSiteContent,
 } from "./content/siteEditor";
 import { getAnalyticsConsent, setAnalyticsConsent, trackPageView, type AnalyticsConsent } from "./analytics";
+import { buildTownFinderEntries } from "./content/townFinder";
 
 type SiteTheme = "dark" | "light";
 
@@ -87,6 +88,12 @@ export default function App() {
   );
   const page = pageDocument.page;
   const isKnownPath = siteContent.pages.has(path);
+  const townEntries = useMemo(
+    () => path === "/counties"
+      ? buildTownFinderEntries(Array.from(siteContent.pages.values(), (document) => document.page))
+      : [],
+    [path, siteContent.pages],
+  );
 
   useEffect(() => {
     let active = true;
@@ -171,6 +178,7 @@ export default function App() {
   }, [path]);
 
   useEffect(() => {
+    if (window.location.hash && resolvedContentPath !== path) return;
     const seo = isKnownPath
       ? getSeoForPath(path, page, pageDocument.seo)
       : getSeoForPath(path, undefined, {
@@ -179,7 +187,7 @@ export default function App() {
           image: pageDocument.seo.image,
         });
     trackPageView(seo.canonicalPath, seo.title);
-  }, [isKnownPath, pageDocument.seo, page, path]);
+  }, [isKnownPath, pageDocument.seo, page, path, resolvedContentPath]);
 
   useEffect(() => {
     const onPopState = () => setPath(normalizeRoutePath(window.location.pathname));
@@ -231,7 +239,7 @@ export default function App() {
     setAnalyticsConsent(consent);
     setAnalyticsConsentChoice(consent);
 
-    if (consent === "granted") {
+    if (consent === "granted" && (!window.location.hash || resolvedContentPath === path)) {
       const seo = isKnownPath
         ? getSeoForPath(path, page, pageDocument.seo)
         : getSeoForPath(path, undefined, {
@@ -247,7 +255,9 @@ export default function App() {
     const currentPage = current.page;
     if (!isKnownPath) return <NotFoundPage navigate={navigate} />;
     if (path === "/") return <HomePage page={currentPage} navigate={navigate} theme={theme} />;
-    if (path === "/counties" || path === "/connect") return <HubPage page={currentPage} navigate={navigate} />;
+    if (path === "/counties" || path === "/connect") {
+      return <HubPage page={currentPage} navigate={navigate} townEntries={townEntries} contentResolved={resolvedContentPath === path} />;
+    }
     if (path === "/about") {
       return (
         <AboutPage

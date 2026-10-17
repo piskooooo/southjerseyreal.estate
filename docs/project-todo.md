@@ -292,6 +292,51 @@ Targeted accessibility checks found no violations and visual review confirmed
 the existing styling. No inquiry or subscription was submitted.
 The original roadmap remains complete.
 
+## Owner-selected October 17 Town Finder
+
+The owner selected the first proposed improvement: a discreet town-name finder
+on the Counties page. County-description rewrites and additional guide contact
+links remain proposals, not selected work.
+
+- [x] Add a small search field above the existing county directory, using the
+  current typography, square controls, and approved light/dark colors.
+- [x] Match town names across all seven counties and show county labels for
+  similarly named places. Link directly to existing county-page town anchors.
+- [x] Build the finder from accepted current county content, respecting changed
+  headings and removed cards. Load the county documents in one request without
+  sending search text to the server or adding search-query analytics.
+- [x] Verify keyboard navigation, ordinary and modified links, empty results,
+  cleared searches, edited content, mobile layout, and existing navigation.
+  Run the unit tests, production build, and full browser/compliance checks,
+  then make the preview available for owner review.
+
+All 214 unit tests and 122 browser/compliance checks passed, including the
+production build with offline fixtures. New browser cases verify cross-county
+destinations, county disambiguation, keyboard focus, mobile layout, local-only
+queries, delayed content, owner renames/removals, and native new-tab links with
+accepted analytics. The search status remains available to assistive technology
+when cleared. Ordinary page views remain immediate; unresolved town fragments
+wait for content validation, and early events clean unsafe URL query values
+before analytics can initialize.
+
+Additional preview checks used current public county content at 1440 pixels in
+both themes, 390 pixels in dark mode, and 320 pixels in light mode. Screenshots
+were reviewed, with no page errors, horizontal overflow, or settled-theme
+accessibility violations in the finder. The Browser plugin is unavailable;
+validation used the repository's installed Playwright Chromium. No form or
+subscription was submitted, and no production content was written.
+
+Implementation and local verification are complete. The preview is available
+at `http://localhost:4175/counties`. A final production-preview build reused only
+the Supabase configuration already visible on the public website, without
+writing an environment file. Its real published-content request returned 200
+with all seven county documents; lookups from each county passed, and the
+Merchantville result opened, expanded, and received focus. No page errors,
+overflow, or denied-consent analytics events occurred. The owner approved the
+preview and authorized committing and pushing on October 17. Production release
+verification is pending.
+The original roadmap remains complete.
+
 ## Owner-selected September 4 Maintenance
 
 - [x] Implement the seven confirmed audit corrections in source:

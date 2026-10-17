@@ -333,8 +333,29 @@ writing an environment file. Its real published-content request returned 200
 with all seven county documents; lookups from each county passed, and the
 Merchantville result opened, expanded, and received focus. No page errors,
 overflow, or denied-consent analytics events occurred. The owner approved the
-preview and authorized committing and pushing on October 17. Production release
-verification is pending.
+preview and authorized committing and pushing on October 17. The production
+release was verified the same day:
+
+- Implementation commit `0426c6d8c8920806ae6f23f07387a381c07f2b11` passed the
+  [GitHub test workflow](https://github.com/piskooooo/southjerseyreal.estate/actions/runs/39059818260):
+  214 unit tests, the Edge Function checks, and 122 browser/compliance checks.
+- [Cloudflare deployment `510db7d9`](https://510db7d9.southjerseyreal-estate.pages.dev)
+  succeeded for the exact commit and became the canonical/latest production
+  deployment, with all five stages successful.
+- Canonical `/counties` and its actual published-content request returned 200.
+  The request included the expected nine keys and returned seven published
+  county rows. All 166 normalized destinations were findable by exact name in
+  the live finder; those 166 searches made only the initial content request.
+- Seven-county examples, duplicate Washington labels, clear/empty-result states,
+  the eight-result limit, keyboard activation, and a native Merchantville new
+  tab passed. Merchantville and Bass River destinations expanded and received
+  focus. Desktop at 1440 pixels in both themes, mobile at 390 pixels in light
+  mode, and mobile at 320 pixels in dark mode had no page/console errors,
+  horizontal overflow, query transmissions, or denied-consent analytics events
+  or requests. Targeted accessibility checks found no violations; inspected
+  screenshots retained the editorial design. Live smoke testing used Chromium.
+
+No form or subscription was submitted and no production content was written.
 The original roadmap remains complete.
 
 ## Owner-selected September 4 Maintenance

@@ -78,6 +78,60 @@ Salem County occupies New Jersey's southwestern corner along the Delaware River 
 
 Sources: [About Salem County](https://www.salemcountynj.gov/about-salem-county/) and [New Jersey Municipalities](https://www.nj.gov/infobank/revmuni.htm), accessed July 18, 2026.
 
+## County Directory Descriptions
+
+Status: **October 17 county-card rewrite approved for publication.**
+
+The owner selected seven distinct descriptions for `/counties`, preserving its
+existing maps and presentation. These short introductions summarize the
+published county material; the county pages retain their full introductions
+and source blocks. The owner approved the preview and authorized committing
+and pushing on October 17. The supporting references below were checked
+October 17, 2026. Stable geography and history are used without new market,
+school, safety, or travel-time claims.
+
+### Atlantic County Card
+
+Atlantic City's shoreline and mainland communities lead inland toward Hammonton and the Pinelands. Barrier-island neighborhoods, small cities and wooded townships give the county several distinct settings.
+
+Sources: [Atlantic City Environmental Health: barrier-island setting](https://www.acnj.gov/Departments/environmental-health), [New Jersey State Planning: Galloway mainland geography](https://nj.gov/state/bac/planning/documents/meeting-materials/PIC-Galloway-recommendation-report-2022-4-20.pdf), and [Hammonton 2025 adopted Housing Element: Pinelands, farms and forests](https://www.townofhammonton.org/wp-content/uploads/2025/06/2025-HEFSP-Full-Document-Hammonton.pdf).
+
+### Burlington County Card
+
+Delaware River towns such as Burlington and Bordentown share the county with established suburbs, farmland and Pinelands forests. Historic town centers and the Rancocas Creek add to its varied landscape.
+
+Sources: [Burlington County Profile](https://www.burlingtoncountynj.gov/691/County-Profile), [City of Burlington: Learn About Burlington](https://www.burlingtonnj.us/learn-about-burlington/), [Bordentown Historic Landmark Overlay District](https://ecode360.com/13834224), [Burlington County Parks Interactive Map](https://www.burlingtoncountynj.gov/552/Parks-Interactive-Map), and [Rancocas State Park](https://www.burlingtoncountynj.gov/1002/Rancocas-State-Park---Hainesport).
+
+### Camden County Card
+
+Camden's riverfront, the older downtowns of Collingswood and Haddonfield, and wooded townships farther east give the county a mix of city neighborhoods, boroughs and suburbs.
+
+Sources: [Camden County Attractions: waterfront](https://www.camdencounty.com/attractions-in-camden-county/), [Collingswood Historic Preservation Plan](https://cms6.revize.com/revize/collingswoodnj/document_center/Municipal%20Documents/Master%20Plan/Master%20Plan_11.%20Historic%20Preservation%20Plan%20Element.pdf), [New Jersey DCA: Haddonfield Main Street district](https://www.nj.gov/dca/news/news/2024/20241121_2.shtml), and [Camden County Open Space Plan: eastern forest lands](https://www.camdencounty.com/wp-content/uploads/files/Open%20Space%20plan.pdf).
+
+### Cape May County Card
+
+Ocean City, the Wildwoods and Cape May line the county's coastal edge. Back bays and mainland townships add a different setting beyond its beaches, boardwalks and barrier-island neighborhoods.
+
+Sources: [Cape May County Comprehensive Plan: physical environment and land use](https://capemaycountynj.gov/DocumentCenter/View/422) and [Cape May County Transportation Plan: barrier-island and mainland communities](https://capemaycountynj.gov/DocumentCenter/View/423/Transportation-Planning-2006-PDF). Only stable geographic descriptions are used from these historical plans.
+
+### Cumberland County Card
+
+Bridgeton, Millville and Vineland sit among farmland, forests and smaller Delaware Bay communities. The Maurice River and Millville's glassmaking history connect the county's natural landscape with its industrial past.
+
+Sources: [Cumberland County Municipalities](https://www.cumberlandcountynj.gov/municipalities), [About Cumberland County](https://cumberlandcountynj.gov/About), and [U.S. Fish and Wildlife Service: Maurice River culture and ecology](https://www.fws.gov/rivers/river/maurice).
+
+### Gloucester County Card
+
+Historic centers such as Woodbury and Pitman sit among suburban townships and Delaware River communities. Farmland and smaller towns shape much of the county farther south.
+
+Sources: [Woodbury History](https://www.woodbury.nj.us/1202/History), [Pitman Historic Guidelines](https://cms5.revize.com/revize/pitman/Historic%20guidelines.pdf), [Elk Township: agricultural setting in southern Gloucester County](https://www.elktownshipnj.gov/), and [Franklin Township: southeastern rural setting](https://www.franklintownshipnj.org/161/About-Franklin-Township).
+
+### Salem County Card
+
+At New Jersey's southwestern corner, Salem County follows the Delaware River and Bay through farms, wetlands and small town centers. The historic City of Salem sits within this broader rural landscape.
+
+Sources: [About Salem County](https://www.salemcountynj.gov/about-salem-county/), [City of Salem: history](https://cityofsalemnj.gov/about/), [Salem County Open Space and Recreation Plan: fields, forests and tidal wetlands](https://www.salemcountynj.gov/wp-content/uploads/filebase/planning_board/Open%20Space%20Preservation%20Program/Open%20Space%20and%20Recreation%20Plan%202006.pdf), and [NJDOT Bayshore Heritage Scenic Byway](https://www.nj.gov/transportation/community/scenic/bayshore.shtm).
+
 ## Gloucester County Draft
 
 ### Clayton

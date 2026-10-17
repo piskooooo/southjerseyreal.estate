@@ -295,8 +295,9 @@ The original roadmap remains complete.
 ## Owner-selected October 17 Town Finder
 
 The owner selected the first proposed improvement: a discreet town-name finder
-on the Counties page. County-description rewrites and additional guide contact
-links remain proposals, not selected work.
+on the Counties page. The owner subsequently selected county-description
+rewrites below. Additional guide contact links remain a proposal, not selected
+work.
 
 - [x] Add a small search field above the existing county directory, using the
   current typography, square controls, and approved light/dark colors.
@@ -357,6 +358,46 @@ release was verified the same day:
 
 No form or subscription was submitted and no production content was written.
 The original roadmap remains complete.
+
+## Owner-selected October 17 County Directory Descriptions
+
+The owner selected distinct descriptions for the seven county cards on the
+Counties page, with the explicit requirement to keep the existing look.
+
+- [x] Replace the repeated generic sentence with concise geographic descriptions
+  and recognizable communities, using existing county writing and checked
+  primary sources. Record the wording and references in
+  [the community writing record](community-profile-drafts.md#county-directory-descriptions).
+- [x] Preserve the maps, card order, typography, styles, county destinations,
+  town finder, and full county-page introductions. Upgrade only exact legacy
+  paragraphs on matching stored county cards, preserving custom wording,
+  removed cards/paragraphs, and owner ordering.
+- [x] Complete the existing unit and browser/compliance checks and inspect the
+  Counties page on desktop/mobile in both themes. Make the local preview
+  available for owner review.
+
+All 215 unit tests and 122 browser/compliance checks passed, including the
+production build and prerendering. The compatibility test verifies owner
+changes, removals, ordering, input immutability, and repeat normalization.
+Additional browser checks at 1440 pixels in both themes, 390 pixels in light
+mode, and 320 pixels in dark mode found all seven maps loaded, no clipped
+paragraphs, no horizontal overflow, no page/console errors, and no targeted
+accessibility violations. County links opened the correct pages. Screenshots
+retain the current card design; no layout, stylesheet, or component changes
+were needed. The Browser plugin is unavailable, so validation used the
+repository's installed Playwright Chromium.
+
+The production-style local preview at `http://localhost:4175/counties` was
+rebuilt with the existing public browser configuration. Its real published
+content request returned 200, all seven new descriptions rendered, and the
+Merchantville finder result opened and focused the expected town profile.
+The stylesheet hash is unchanged. No inquiry/subscription was submitted and
+no production content was written.
+
+This selection covers the seven hub descriptions. Implementation and local
+verification are complete. The owner approved the preview and authorized
+committing and pushing the work on October 17. The original roadmap remains
+complete.
 
 ## Owner-selected September 4 Maintenance
 

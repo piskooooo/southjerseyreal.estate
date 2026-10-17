@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import legacySummaries from "./legacyCommunitySummaries.json";
+import { countyNav } from "./navigation";
 import {
   managedContentSeeds,
   normalizeManagedContent,
@@ -332,6 +333,40 @@ describe("website editor content normalization", () => {
     customCounty.seo.description = "Owner-customized Atlantic County description.";
     const normalizedCustom = normalizeManagedContent("/atlantic-county", customCounty) as ManagedPageDocument;
     expect(normalizedCustom.seo.description).toBe("Owner-customized Atlantic County description.");
+  });
+
+  it("upgrades only unchanged county hub descriptions while preserving owner card changes", () => {
+    const seed = managedContentSeeds.get("/counties") as ManagedPageDocument;
+    const legacy = structuredClone(seed);
+    const cards = countyNav.map((county) => {
+      const card = legacy.page.sections.find((section) => (
+        section.blocks.some((block) => block.tag === "A" && block.href === county.path)
+      ))!;
+      card.blocks.find((block) => block.tag === "P")!.text =
+        `Explore towns, cities, and local real estate information across ${county.label} County.`;
+      return card;
+    });
+    cards[0].blocks.find((block) => block.tag === "H2")!.text = "Owner's Atlantic heading";
+    cards[0].images[0].alt = "Owner's map description.";
+    cards[0].blocks.reverse();
+    cards[1].blocks.find((block) => block.tag === "P")!.text = "Owner's Burlington description.";
+    cards[3].blocks.find((block) => block.tag === "A")!.href = "/contact";
+    cards[4].id = "owner-custom-county-card";
+    cards[5].blocks = cards[5].blocks.filter((block) => block.tag !== "P");
+    legacy.page.sections = legacy.page.sections.filter((section) => section !== cards[2]).reverse();
+    const original = structuredClone(legacy);
+    const expected = structuredClone(legacy);
+    for (const id of [cards[0].id, cards[6].id]) {
+      const seedCard = seed.page.sections.find((section) => section.id === id)!;
+      expected.page.sections.find((section) => section.id === id)!
+        .blocks.find((block) => block.tag === "P")!.text =
+        seedCard.blocks.find((block) => block.tag === "P")!.text;
+    }
+
+    const normalized = normalizeManagedContent("/counties", legacy) as ManagedPageDocument;
+    expect(normalized).toEqual(expected);
+    expect(legacy).toEqual(original);
+    expect(normalizeManagedContent("/counties", normalized)).toEqual(normalized);
   });
 
   it("keeps both navigation hubs editable with their complete destination sets", () => {

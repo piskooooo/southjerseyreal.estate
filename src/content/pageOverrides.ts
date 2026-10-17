@@ -41,6 +41,16 @@ const countyHubImages: Record<string, { src: string; alt: string }> = {
   "/salem-county": { src: "/assets/live/salem-county-map-png.webp", alt: "Salem County, New Jersey locator map." },
 };
 
+const countyHubDescriptions: Record<string, string> = {
+  "/atlantic-county": "Atlantic City's shoreline and mainland communities lead inland toward Hammonton and the Pinelands. Barrier-island neighborhoods, small cities and wooded townships give the county several distinct settings.",
+  "/burlington-county": "Delaware River towns such as Burlington and Bordentown share the county with established suburbs, farmland and Pinelands forests. Historic town centers and the Rancocas Creek add to its varied landscape.",
+  "/camden-county": "Camden's riverfront, the older downtowns of Collingswood and Haddonfield, and wooded townships farther east give the county a mix of city neighborhoods, boroughs and suburbs.",
+  "/cape-may-county": "Ocean City, the Wildwoods and Cape May line the county's coastal edge. Back bays and mainland townships add a different setting beyond its beaches, boardwalks and barrier-island neighborhoods.",
+  "/cumberland-county": "Bridgeton, Millville and Vineland sit among farmland, forests and smaller Delaware Bay communities. The Maurice River and Millville's glassmaking history connect the county's natural landscape with its industrial past.",
+  "/gloucester-county": "Historic centers such as Woodbury and Pitman sit among suburban townships and Delaware River communities. Farmland and smaller towns shape much of the county farther south.",
+  "/salem-county": "At New Jersey's southwestern corner, Salem County follows the Delaware River and Bay through farms, wetlands and small town centers. The historic City of Salem sits within this broader rural landscape.",
+};
+
 const countyHubSections = countyNav.map((county) => ({
   id: `counties-${county.label.toLowerCase().replace(/\s+/g, "-")}`,
   kind: "support" as const,
@@ -48,7 +58,7 @@ const countyHubSections = countyNav.map((county) => ({
     { tag: "H2", text: `${county.label} County` },
     {
       tag: "P",
-      text: `Explore towns, cities, and local real estate information across ${county.label} County.`,
+      text: countyHubDescriptions[county.path],
     },
     { tag: "A", text: `Explore ${county.label} County`, href: county.path },
   ],

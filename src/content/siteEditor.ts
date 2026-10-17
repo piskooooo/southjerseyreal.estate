@@ -547,6 +547,25 @@ export function normalizeManagedContent(pageKey: string, value: unknown): Manage
       action.blocks = structuredClone(seedAction.blocks);
     }
   }
+  if (pageKey === "/counties") {
+    const document = normalized as ManagedPageDocument;
+    const seedDocument = seed as ManagedPageDocument;
+    for (const county of countyNav) {
+      const seedCard = seedDocument.page.sections.find((section) => (
+        section.blocks.some((block) => block.tag === "A" && block.href === county.path)
+      ));
+      const card = document.page.sections.find((section) => (
+        section.id === seedCard?.id
+        && section.blocks.some((block) => block.tag === "A" && block.href === county.path)
+      ));
+      const legacyParagraph = card?.blocks.find((block) => (
+        block.tag === "P"
+        && block.text === `Explore towns, cities, and local real estate information across ${county.label} County.`
+      ));
+      const seedParagraph = seedCard?.blocks.find((block) => block.tag === "P");
+      if (legacyParagraph && seedParagraph) legacyParagraph.text = seedParagraph.text;
+    }
+  }
   const legacySeoDescription = legacySeoDescriptions.get(pageKey);
   if (legacySeoDescription) {
     const document = normalized as ManagedPageDocument;

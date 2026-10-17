@@ -106,9 +106,9 @@ production release is recorded in `docs/project-todo.md` (commit `547bc43`).
 The owner then selected the directory in recommendation 2, requiring preservation
 of the existing aesthetic, and chose to omit the preview's copy-link control.
 Its implementation and verified production release are recorded
-in the same checklist. The owner also selected recommendation 3; its local
-implementation and verification are complete. The owner approved publication
-on October 17; release verification is pending. Recommendation 4 remains proposed. Preserve
+in the same checklist. The owner also selected recommendation 3; its
+implementation, verification, and owner-authorized production release are
+complete as of October 17. Recommendation 4 remains proposed. Preserve
 structured editable content, existing disclosures, source notes, approved imagery, and working
 deep links. The observations below describe the audit before that release.
 
@@ -151,7 +151,7 @@ deep links. The observations below describe the audit before that release.
    Compare observed town opens and town-context contact actions; do not call
    an anchor opening proof of an external share.
 3. **Link county readers directly to relevant existing guides. Selected
-   October 16; implemented and verified locally, unpublished.** At audit time,
+   October 16; completed and published October 17.** At audit time,
    neither county page linked to an individual Insights article. Use the
    [seller guide](https://southjerseyreal.estate/insights/preparing-to-sell-a-new-jersey-home),
    [coastal due-diligence guide](https://southjerseyreal.estate/insights/coastal-property-due-diligence),
@@ -164,7 +164,11 @@ deep links. The observations below describe the audit before that release.
    available in initial HTML. All 185 unit tests and 110 browser/compliance
    checks passed, with additional desktop/mobile visual, keyboard, and
    accessibility review. Existing guidance CTAs and consent behavior remain
-   intact. See `docs/project-todo.md` for validation and publication status.
+   intact. The owner-authorized `850b420` release passed GitHub tests and
+   Cloudflare deployment. Live checks verified all three initial-HTML,
+   no-JavaScript, and interactive article destinations, including real
+   published content and desktop/mobile styling. No inquiry or subscription
+   was submitted. See `docs/project-todo.md` for release evidence.
    Measure county-to-article clicks and subsequent contact actions as exploratory evidence,
    retaining the consent and small-sample limits.
 4. **Correct the identified summary defects before adding more copy.**
@@ -215,7 +219,7 @@ There is no remaining GA4 setup blocker. Report processing and real consented
 activity are still needed to evaluate the new dimensions. Recommendation 1
 is implemented and published; recommendation 2 is also implemented and
 published, with the copy-link action omitted at the owner's request.
-Recommendation 3 is selected for the Camden/Atlantic guide links;
+Recommendation 3 is implemented and published for the Camden/Atlantic guide links;
 recommendation 4 still requires owner selection.
 The completed original roadmap remains closed.
 

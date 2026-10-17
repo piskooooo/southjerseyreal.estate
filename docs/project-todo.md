@@ -218,12 +218,23 @@ Insights articles, preserving the current aesthetic.
   introductions and adjacent guidance sections. Guide links have visible
   keyboard focus. Visual review and `git diff --check` passed. Browser
   validation used bundled Chromium because the Browser plugin is unavailable.
-- [ ] Publish the owner-authorized release, then verify GitHub tests,
-  Cloudflare Pages deployment, and live guide navigation.
+- [x] Publish the owner-authorized release, then verify GitHub tests,
+  Cloudflare Pages deployment, and live guide navigation. Implementation
+  commit `850b420` is on `origin/main`; the
+  [GitHub test workflow](https://github.com/piskooooo/southjerseyreal.estate/actions/runs/39002711990)
+  and [Cloudflare production deployment](https://7e3626e3.southjerseyreal-estate.pages.dev)
+  succeeded for that exact revision, including the production build with
+  published-content prerendering.
 
 The owner approved the preview and authorized committing and pushing on
-October 17. Publication verification is pending. Recommendation 4 and the
-completed original roadmap are outside this task.
+October 17. Production verification completed the same day: all three guide
+links are present in the initial county HTML and open the correct articles
+without JavaScript. Live Camden desktop/light and Atlantic mobile/dark checks
+confirmed real published-content responses, the new quiet link styling,
+unchanged guidance buttons, and working article navigation, with no page
+errors, horizontal overflow, failed requests, or Google Analytics requests
+while consent is denied. No inquiry or subscription was submitted.
+Recommendation 4 remains unselected, and the original roadmap remains closed.
 
 ## Owner-selected September 4 Maintenance
 

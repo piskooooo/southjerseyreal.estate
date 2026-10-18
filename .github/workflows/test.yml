@@ -48,3 +48,12 @@ jobs:
         run: npm run test:compliance
         env:
           VITE_GA_MEASUREMENT_ID: G-TEST123
+
+      - name: Save browser failure evidence
+        if: failure()
+        uses: actions/upload-artifact@v7.0.2
+        with:
+          name: browser-failure-evidence-${{ github.run_attempt }}
+          path: test-results/
+          if-no-files-found: ignore
+          retention-days: 7

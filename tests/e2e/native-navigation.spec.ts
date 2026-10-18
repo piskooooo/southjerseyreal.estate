@@ -33,6 +33,7 @@ async function openNatively(
   method: "modified" | "middle",
   inspect?: (opened: Page) => Promise<void>,
 ) {
+  await page.bringToFront();
   await link.scrollIntoViewIfNeeded();
   const href = await link.getAttribute("href");
   expect(href).toBeTruthy();
@@ -44,6 +45,7 @@ async function openNatively(
     method === "middle" ? link.click({ button: "middle" }) : link.click({ modifiers: ["ControlOrMeta"] }),
   ]);
   try {
+    await opened.bringToFront();
     // Check the destination UI rather than waiting on a popup lifecycle event.
     await expect(opened).toHaveURL(destination);
     await expectReady(opened);
@@ -53,6 +55,7 @@ async function openNatively(
     await inspect?.(opened);
   } finally {
     await opened.close();
+    await page.bringToFront();
   }
 }
 

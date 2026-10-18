@@ -45,7 +45,7 @@ const newGuideDate = "2026-08-10";
 const arthurByline = "Arthur Pisko Jr.";
 
 export const insightIndex: InsightIndexContent = {
-  eyebrow: "Evergreen real-estate guidance",
+  eyebrow: "Real estate guidance",
   title: "South Jersey Real Estate Guides",
   introduction: "Practical, sourced guides for buying, selling, and researching property. South Jersey is the focus, and Arthur works with clients throughout New Jersey. Each guide shows when its underlying information was last substantively reviewed.",
   articles: [

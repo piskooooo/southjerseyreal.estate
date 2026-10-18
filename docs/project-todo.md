@@ -546,6 +546,16 @@ The owner confirmed that a guide opened in a new tab and approved committing
 and publishing this selection on October 17. The original roadmap remains
 complete.
 
+## Owner-selected October 17 Insights Label
+
+- [x] Simplify the Insights eyebrow to “Real estate guidance,” preserving the
+  existing layout and styling. The public-config preview build and all 140
+  browser/compliance checks passed. Desktop and mobile preview checks confirmed
+  the new label with no application errors or horizontal overflow.
+
+The owner reviewed the local preview and approved committing and publishing
+this wording update on October 17.
+
 ## Owner-selected September 4 Maintenance
 
 - [x] Implement the seven confirmed audit corrections in source:

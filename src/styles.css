@@ -3736,13 +3736,13 @@ p {
 
   .county-intro {
     grid-template-areas: "copy" "media";
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
 
   .county-intro h1,
   .county-intro h2 {
     width: auto;
-    font-size: clamp(3.75rem, 14vw, 6.75rem);
+    font-size: clamp(2.5rem, calc(15vw - 0.5rem), 6.75rem);
   }
 
   .county-intro .county-media img {
@@ -3912,11 +3912,6 @@ p {
   .guide-hero-section h1,
   .contact-copy h1 {
     font-size: clamp(3.25rem, 16vw, 5rem);
-  }
-
-  .county-intro h1,
-  .county-intro h2 {
-    font-size: clamp(3.25rem, 15vw, 5rem);
   }
 
   .hub-card {

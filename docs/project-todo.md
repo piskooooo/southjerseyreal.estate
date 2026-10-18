@@ -479,6 +479,40 @@ dates, contact links, forms, and analytics are unchanged. No inquiry/subscriptio
 was submitted and no production content was written. The original roadmap
 remains complete.
 
+## Owner-selected October 17 Remaining County Guide Links
+
+The owner selected relevant guide links for the five remaining county
+introductions, preserving the discreet treatment already used on Camden and
+Atlantic.
+
+- [x] Add coastal due diligence to Cape May; property research and municipal
+  records to Burlington and Gloucester; and property research plus questions
+  about homes with wells, septic, or acreage to Cumberland and Salem. Keep
+  property-specific wording and the two existing county link sets.
+- [x] Reuse the existing one-time content upgrade and version 1 so newly mapped
+  counties receive their links while saved Camden/Atlantic edits and removals
+  remain intact. Preserve custom labels, ordering, and removed introductions.
+- [x] Verify initial HTML, saved content, destinations, mobile appearance,
+  consent behavior, and the existing callouts. Run the unit/build/browser
+  checks and provide the local preview for owner review.
+
+This selection adds nine links using the existing underlined treatment. Narrow
+screen checks exposed an existing long-heading overflow: the stacked county
+introduction now has a shrinkable grid column and a continuous heading size
+that fits the page margins. The typeface, weight, colors, and desktop design
+are preserved. County and guide wording, source notes, review dates, town
+profiles, images, forms, and analytics behavior are unchanged.
+
+Completed locally on October 17: all 216 unit tests and 136 browser checks
+passed, including initial HTML links, destinations, consent behavior, and
+saved owner edits. The final public-config build prerendered all 30 public
+routes. Manual checks used published content on all five pages at desktop
+width in light mode and mobile width in dark mode, opened all nine links,
+and verified the longest headings at narrow and intermediate widths. No
+application errors were observed. The owner reviewed the local preview and
+approved committing and publishing this selection on October 17. The original
+roadmap remains complete.
+
 ## Owner-selected September 4 Maintenance
 
 - [x] Implement the seven confirmed audit corrections in source:

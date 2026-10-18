@@ -207,6 +207,25 @@ const countyGuideLinks = new Map<string, ContentBlock[]>([
   ["/atlantic-county", [
     { tag: "A", text: "Coastal property due diligence for a shore home", href: "/insights/coastal-property-due-diligence" },
   ]],
+  ["/burlington-county", [
+    { tag: "A", text: "Researching a property beyond the listing", href: "/insights/researching-a-south-jersey-property" },
+    { tag: "A", text: "Researching municipal records, permits, and zoning", href: "/insights/municipal-records-permits-and-zoning" },
+  ]],
+  ["/cape-may-county", [
+    { tag: "A", text: "Coastal property due diligence for a shore home", href: "/insights/coastal-property-due-diligence" },
+  ]],
+  ["/cumberland-county", [
+    { tag: "A", text: "Researching a property beyond the listing", href: "/insights/researching-a-south-jersey-property" },
+    { tag: "A", text: "Researching a home with wells, septic, or acreage", href: "/insights/wells-septic-acreage-and-environmental-constraints" },
+  ]],
+  ["/gloucester-county", [
+    { tag: "A", text: "Researching a property beyond the listing", href: "/insights/researching-a-south-jersey-property" },
+    { tag: "A", text: "Researching municipal records, permits, and zoning", href: "/insights/municipal-records-permits-and-zoning" },
+  ]],
+  ["/salem-county", [
+    { tag: "A", text: "Researching a property beyond the listing", href: "/insights/researching-a-south-jersey-property" },
+    { tag: "A", text: "Researching a home with wells, septic, or acreage", href: "/insights/wells-septic-acreage-and-environmental-constraints" },
+  ]],
 ]);
 
 const countyGuidanceSection = (page: SitePage): PageSection => ({

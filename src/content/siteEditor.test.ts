@@ -103,12 +103,32 @@ const selectedCountyGuides = {
   "/atlantic-county": [
     { tag: "A", text: "Coastal property due diligence for a shore home", href: "/insights/coastal-property-due-diligence" },
   ],
+  "/burlington-county": [
+    { tag: "A", text: "Researching a property beyond the listing", href: "/insights/researching-a-south-jersey-property" },
+    { tag: "A", text: "Researching municipal records, permits, and zoning", href: "/insights/municipal-records-permits-and-zoning" },
+  ],
+  "/cape-may-county": [
+    { tag: "A", text: "Coastal property due diligence for a shore home", href: "/insights/coastal-property-due-diligence" },
+  ],
+  "/cumberland-county": [
+    { tag: "A", text: "Researching a property beyond the listing", href: "/insights/researching-a-south-jersey-property" },
+    { tag: "A", text: "Researching a home with wells, septic, or acreage", href: "/insights/wells-septic-acreage-and-environmental-constraints" },
+  ],
+  "/gloucester-county": [
+    { tag: "A", text: "Researching a property beyond the listing", href: "/insights/researching-a-south-jersey-property" },
+    { tag: "A", text: "Researching municipal records, permits, and zoning", href: "/insights/municipal-records-permits-and-zoning" },
+  ],
+  "/salem-county": [
+    { tag: "A", text: "Researching a property beyond the listing", href: "/insights/researching-a-south-jersey-property" },
+    { tag: "A", text: "Researching a home with wells, septic, or acreage", href: "/insights/wells-septic-acreage-and-environmental-constraints" },
+  ],
 } as const;
 
 describe("selected county contextual guide links", () => {
   const guideHrefs = new Set<string>(Object.values(selectedCountyGuides).flat().map((link) => link.href));
 
-  it("seeds the selected links only in Camden and Atlantic introductions", () => {
+  it("seeds the selected links in all seven county introductions", () => {
+    expect(Object.keys(selectedCountyGuides).sort()).toEqual(countyNav.map((county) => county.path).sort());
     for (const [pageKey, seed] of managedContentSeeds) {
       if (!pageKey.endsWith("-county")) continue;
       const document = seed as ManagedPageDocument;
@@ -117,7 +137,7 @@ describe("selected county contextual guide links", () => {
       expect(intro.blocks.filter((block) => guideHrefs.has(block.href || ""))).toEqual(expected);
       expect(document.page.sections.slice(1).flatMap((section) => section.blocks)
         .filter((block) => guideHrefs.has(block.href || ""))).toEqual([]);
-      expect(document.countyGuideLinksVersion).toBe(expected.length ? 1 : undefined);
+      expect(document.countyGuideLinksVersion).toBe(1);
       expect(normalizeManagedContent(pageKey, structuredClone(document))).toEqual(document);
       expect(() => validateManagedContentForPublish(pageKey, document)).not.toThrow();
     }
@@ -165,8 +185,6 @@ describe("selected county contextual guide links", () => {
       draft.countyGuideLinksVersion = 1;
       const normalized = normalizeManagedContent(pageKey, draft) as ManagedPageDocument;
       expect(normalized).toEqual(draft);
-      expect(normalized.page.sections.flatMap((section) => section.blocks)
-        .filter((block) => guideHrefs.has(block.href || ""))).toEqual([]);
       expect(normalizeManagedContent(pageKey, structuredClone(normalized))).toEqual(normalized);
     }
   });

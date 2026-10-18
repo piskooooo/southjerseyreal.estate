@@ -6,6 +6,7 @@ const counties = [
     path: "/camden-county",
     town: "Camden City",
     communityId: "camden-city",
+    hasGuidance: true,
     links: [
       { label: "Preparing to sell a New Jersey home", href: "/insights/preparing-to-sell-a-new-jersey-home", title: "Preparing to Sell a New Jersey Home" },
       { label: "Researching municipal records, permits, and zoning", href: "/insights/municipal-records-permits-and-zoning", title: "Using Municipal Records, Permits, and Zoning Information in a Home Search" },
@@ -15,8 +16,58 @@ const counties = [
     path: "/atlantic-county",
     town: "Atlantic City",
     communityId: "atlantic-city",
+    hasGuidance: true,
     links: [
       { label: "Coastal property due diligence for a shore home", href: "/insights/coastal-property-due-diligence", title: "Coastal-Property Due Diligence in South Jersey" },
+    ],
+  },
+  {
+    path: "/burlington-county",
+    town: "Bass River Township",
+    communityId: "bass-river-township",
+    hasGuidance: true,
+    links: [
+      { label: "Researching a property beyond the listing", href: "/insights/researching-a-south-jersey-property", title: "Researching a South Jersey Property Beyond the Listing" },
+      { label: "Researching municipal records, permits, and zoning", href: "/insights/municipal-records-permits-and-zoning", title: "Using Municipal Records, Permits, and Zoning Information in a Home Search" },
+    ],
+  },
+  {
+    path: "/cape-may-county",
+    town: "Avalon",
+    communityId: "avalon",
+    hasGuidance: true,
+    links: [
+      { label: "Coastal property due diligence for a shore home", href: "/insights/coastal-property-due-diligence", title: "Coastal-Property Due Diligence in South Jersey" },
+    ],
+  },
+  {
+    path: "/cumberland-county",
+    town: "Bridgeton",
+    communityId: "bridgeton",
+    hasGuidance: true,
+    links: [
+      { label: "Researching a property beyond the listing", href: "/insights/researching-a-south-jersey-property", title: "Researching a South Jersey Property Beyond the Listing" },
+      { label: "Researching a home with wells, septic, or acreage", href: "/insights/wells-septic-acreage-and-environmental-constraints", title: "Homes with Wells, Septic Systems, Acreage, or Environmental Constraints" },
+    ],
+  },
+  {
+    path: "/gloucester-county",
+    town: "Clayton",
+    communityId: "clayton",
+    hasGuidance: false,
+    links: [
+      { label: "Researching a property beyond the listing", href: "/insights/researching-a-south-jersey-property", title: "Researching a South Jersey Property Beyond the Listing" },
+      { label: "Researching municipal records, permits, and zoning", href: "/insights/municipal-records-permits-and-zoning", title: "Using Municipal Records, Permits, and Zoning Information in a Home Search" },
+    ],
+  },
+  {
+    path: "/salem-county",
+    town: "Alloway Township",
+    communityId: "alloway-township",
+    hasGuidance: false,
+    links: [
+      { label: "Researching a property beyond the listing", href: "/insights/researching-a-south-jersey-property", title: "Researching a South Jersey Property Beyond the Listing" },
+      { label: "Researching a home with wells, septic, or acreage", href: "/insights/wells-septic-acreage-and-environmental-constraints", title: "Homes with Wells, Septic Systems, Acreage, or Environmental Constraints" },
     ],
   },
 ] as const;
@@ -43,7 +94,7 @@ async function analyticsEvents(page: Page, name: string) {
 }
 
 for (const county of counties) {
-  test(`${county.path} exposes crawlable guide links and preserves discreet mobile styling and guidance CTAs`, async ({ browser, page, baseURL }) => {
+  test(`${county.path} exposes crawlable guide links and preserves discreet mobile styling and its guidance layout`, async ({ browser, page, baseURL }) => {
     const noScript = await browser.newContext({ baseURL, javaScriptEnabled: false });
     try {
       const initial = await noScript.newPage();
@@ -82,13 +133,17 @@ for (const county of counties) {
         };
       })).toEqual({ background: "rgba(0, 0, 0, 0)", underlined: true, fitsViewport: true });
       const guidance = page.locator(".county-support-section-guidance");
-      await expect(guidance.locator("a.button")).toHaveCount(2);
-      await expect(guidance.getByRole("link", { name: "Read Buyer and Seller Guides", exact: true })).toHaveAttribute("href", "/insights");
-      await expect(guidance.getByRole("link", { name: "Contact Arthur", exact: true })).toHaveAttribute("href", "/contact");
-      expect(await guidance.locator("a.button").evaluateAll((elements) => elements.every((element) => (
-        getComputedStyle(element).backgroundColor !== "rgba(0, 0, 0, 0)"
-        && element.getBoundingClientRect().height >= 44
-      )))).toBe(true);
+      if (county.hasGuidance) {
+        await expect(guidance.locator("a.button")).toHaveCount(2);
+        await expect(guidance.getByRole("link", { name: "Read Buyer and Seller Guides", exact: true })).toHaveAttribute("href", "/insights");
+        await expect(guidance.getByRole("link", { name: "Contact Arthur", exact: true })).toHaveAttribute("href", "/contact");
+        expect(await guidance.locator("a.button").evaluateAll((elements) => elements.every((element) => (
+          getComputedStyle(element).backgroundColor !== "rgba(0, 0, 0, 0)"
+          && element.getBoundingClientRect().height >= 44
+        )))).toBe(true);
+      } else {
+        await expect(guidance).toHaveCount(0);
+      }
       expect(await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth)).toBeLessThanOrEqual(1);
       await contextual.click();
       await expect(page).toHaveURL(link.href);

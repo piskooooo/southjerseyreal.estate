@@ -282,18 +282,19 @@ describe("consent-gated GA4 tracking", () => {
     expect(JSON.stringify(events)).not.toContain("person@example.com");
   });
 
-  it("tracks provider and advertising inquiries as separate lead types", async () => {
+  it("tracks provider, advertising and property inquiries as separate lead types", async () => {
     const { setAnalyticsConsent, trackFormSuccess } = await import("./analytics");
 
     setAnalyticsConsent("granted");
     trackFormSuccess("contact", "Provider directory inquiry");
     trackFormSuccess("contact", "Advertising inquiry");
+    trackFormSuccess("contact", "Property or real estate question");
 
     const contactLeadTypes = queuedCommands()
       .filter((entry) => entry[0] === "event" && entry[1] === "contact_lead")
       .map((entry) => (entry[2] as { lead_type: string }).lead_type);
 
-    expect(contactLeadTypes).toEqual(["provider_directory", "advertising"]);
+    expect(contactLeadTypes).toEqual(["provider_directory", "advertising", "property_question"]);
   });
 
   it("drops potentially identifying values from generic event parameters", async () => {

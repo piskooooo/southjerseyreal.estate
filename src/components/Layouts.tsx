@@ -1300,6 +1300,7 @@ export function ContactPage({ page, navigate }: PageProps) {
               <option>Sell a home</option>
               <option>Buy a home</option>
               <option>Buy and sell</option>
+              <option>Property or real estate question</option>
               <option>Provider directory inquiry</option>
               <option>Advertising inquiry</option>
             </select>

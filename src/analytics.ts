@@ -41,6 +41,7 @@ const contactLeadTypes = new Map([
   ["buy and sell", "buy_and_sell"],
   ["advertising inquiry", "advertising"],
   ["partnership or advertising inquiry", "partnership_or_advertising"],
+  ["property or real estate question", "property_question"],
   ["provider directory inquiry", "provider_directory"],
   ["sell a home", "sell_home"],
 ]);

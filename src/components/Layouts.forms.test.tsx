@@ -102,7 +102,10 @@ describe("public cloud forms", () => {
     expect(fakeTurnstile.reset).toHaveBeenCalled();
   });
 
-  it("renders required contact controls and submits a complete inquiry", async () => {
+  it.each([
+    ["Buy a home", "I would like help finding a home."],
+    ["Property or real estate question", "I have a question about researching a property."],
+  ])("renders required contact controls and submits a complete %s inquiry", async (interest, inquiryMessage) => {
     const user = userEvent.setup();
     vi.mocked(fetch).mockResolvedValue(jsonResponse({
       ok: true,
@@ -131,9 +134,9 @@ describe("public cloud forms", () => {
     await user.type(phone, "856-555-0100");
     await user.selectOptions(
       screen.getByRole("combobox", { name: /What can I help with/ }),
-      "Buy a home",
+      interest,
     );
-    await user.type(message, "I would like help finding a home.");
+    await user.type(message, inquiryMessage);
     await completeTurnstile("contact-test-token");
     expect(submit).toBeEnabled();
 
@@ -145,8 +148,8 @@ describe("public cloud forms", () => {
       name: "Test Visitor",
       email: "visitor@example.com",
       phone: "856-555-0100",
-      interest: "Buy a home",
-      message: "I would like help finding a home.",
+      interest,
+      message: inquiryMessage,
       source: "contact_page",
       turnstileToken: "contact-test-token",
     });

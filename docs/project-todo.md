@@ -1,6 +1,6 @@
 # South Jersey Real Estate Project Checklist
 
-Last reviewed: October 17, 2026
+Last reviewed: October 18, 2026
 
 **Roadmap status: Complete.** The selected roadmap closed on August 7, 2026.
 The owner separately selected the September 4 audit corrections below. Their
@@ -555,6 +555,31 @@ complete.
 
 The owner reviewed the local preview and approved committing and publishing
 this wording update on October 17.
+
+## Owner-selected October 18 Contact Question Topic
+
+- [x] Add “Property or real estate question” to the existing Contact topic
+  dropdown, preserving its styling and all required fields, disclosures,
+  and submission behavior. Record successful consented inquiries under the
+  fixed `property_question` analytics category.
+- [x] Verify the new topic's complete form payload and analytics classification
+  while retaining buying coverage. All 240 unit tests, 140 browser/compliance
+  checks, and four frozen Edge Function entrypoint checks passed. The latter
+  used the existing cached Deno 2.9.6 runtime. The public-config preview build
+  passed; desktop and mobile checks found no application errors or overflow.
+- [x] Complete a labeled preview submission, confirm notification delivery,
+  and remove its exact inquiry and rate-limit records.
+
+Completed locally on October 18. The owner submitted the labeled test through
+an isolated local QA preview that accommodates the app's forwarded localhost
+address. The real form service verified Turnstile, retained the selected topic,
+and sent the notification in one attempt; the routed mailbox receipt was
+independently confirmed. Exact-request cleanup left zero inquiry and rate-limit
+rows. The QA proxy configuration and build remained outside the repository;
+production origin rules and backend configuration were preserved. No backend
+deployment or database migration is needed. The owner reviewed the preview
+and successful delivery test and approved committing and publishing this
+update on October 18.
 
 ## Owner-selected September 4 Maintenance
 

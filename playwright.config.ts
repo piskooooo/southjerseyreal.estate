@@ -14,7 +14,8 @@ export default defineConfig({
   reporter: [["list"]],
   use: {
     baseURL: testBaseUrl,
-    channel: process.env.CI ? undefined : "chrome",
+    // Full Chromium preserves real browser tab behavior in headless CI.
+    channel: process.env.CI ? "chromium" : "chrome",
     colorScheme: "dark",
     screenshot: "only-on-failure",
     trace: "retain-on-failure",

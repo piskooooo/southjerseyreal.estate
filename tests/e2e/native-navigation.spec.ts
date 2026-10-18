@@ -3,8 +3,12 @@ import { expect, test, type Locator, type Page } from "@playwright/test";
 // Browser plugin not available; use the repository's bundled Playwright Chromium.
 test.beforeEach(async ({ context }) => {
   await context.addInitScript(() => {
-    localStorage.setItem("analytics-consent", "granted");
-    localStorage.setItem("site-theme", "light");
+    try {
+      localStorage.setItem("analytics-consent", "granted");
+      localStorage.setItem("site-theme", "light");
+    } catch {
+      // New tabs can briefly have an opaque document before navigation.
+    }
   });
   await context.route("**/rest/v1/site_pages?*", (route) => route.fulfill({ contentType: "application/json", body: "[]" }));
   await context.route("https://www.googletagmanager.com/**", (route) => route.fulfill({ contentType: "application/javascript", body: "" }));

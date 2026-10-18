@@ -1,5 +1,6 @@
 import { trackLinkClick } from "../analytics";
 import { communityInformationNote, compliance } from "../content/compliance";
+import { shouldHandleInternalNavigation } from "../internalNavigation";
 
 type Navigate = (path: string) => void;
 
@@ -8,8 +9,9 @@ function InternalLink({ children, href, navigate }: { children: string; href: st
     <a
       href={href}
       onClick={(event) => {
-        event.preventDefault();
         trackLinkClick(href, children, "compliance_disclosure");
+        if (!shouldHandleInternalNavigation(event)) return;
+        event.preventDefault();
         navigate(href);
       }}
     >

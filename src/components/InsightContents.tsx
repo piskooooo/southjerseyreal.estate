@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useLayoutEffect, useRef, type MouseEvent } from "react";
+import { shouldHandleInternalNavigation } from "../internalNavigation";
 
 type ContentsEntry = { id: string; heading: string };
 
@@ -111,7 +112,7 @@ export function InsightContents({ entries }: { entries: ContentsEntry[] }) {
   }, []);
 
   const selectSection = (event: MouseEvent<HTMLAnchorElement>, id: string) => {
-    if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+    if (!shouldHandleInternalNavigation(event)) return;
     if (dropdown.current) dropdown.current.open = false;
     focusSection(id);
   };

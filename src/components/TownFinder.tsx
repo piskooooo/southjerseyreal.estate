@@ -1,6 +1,7 @@
 import { useRef, useState } from "react";
 import { ArrowRight, Search } from "lucide-react";
 import { findTownFinderEntries, type TownFinderEntry } from "../content/townFinder";
+import { shouldHandleInternalNavigation } from "../internalNavigation";
 
 const RESULT_LIMIT = 8;
 
@@ -76,7 +77,7 @@ export function TownFinder({
                   ref={index === 0 ? firstResult : undefined}
                   href={entry.href}
                   onClick={(event) => {
-                    if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+                    if (!shouldHandleInternalNavigation(event)) return;
                     event.preventDefault();
                     navigate(entry.href);
                   }}

@@ -1,5 +1,6 @@
 import { trackLinkClick } from "../analytics";
 import type { SitewideContent } from "../content/siteEditor";
+import { shouldHandleInternalNavigation } from "../internalNavigation";
 import { BrokerageDisclosure, FairHousingNotice } from "./Compliance";
 
 type FooterProps = {
@@ -24,7 +25,7 @@ export function Footer({ content, navigate, onManagePrivacy }: FooterProps) {
                     href={item.path}
                     onClick={(event) => {
                       trackLinkClick(item.path, item.label, "footer_nav");
-                      if (item.path.startsWith("/")) {
+                      if (item.path.startsWith("/") && shouldHandleInternalNavigation(event)) {
                         event.preventDefault();
                         navigate(item.path);
                       }

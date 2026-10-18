@@ -11,6 +11,7 @@ import {
 } from "./content/siteEditor";
 import { getAnalyticsConsent, setAnalyticsConsent, trackPageView, type AnalyticsConsent } from "./analytics";
 import { buildTownFinderEntries } from "./content/townFinder";
+import { shouldHandleInternalNavigation } from "./internalNavigation";
 
 type SiteTheme = "dark" | "light";
 
@@ -301,6 +302,7 @@ export default function App() {
             <a
               href="/privacy-policy"
               onClick={(event) => {
+                if (!shouldHandleInternalNavigation(event)) return;
                 event.preventDefault();
                 navigate("/privacy-policy");
               }}

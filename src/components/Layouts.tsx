@@ -1,5 +1,6 @@
 import { useEffect, useLayoutEffect, useRef, useState, type MouseEvent, type ReactNode } from "react";
 import { trackCommunityProfileOpen, trackFormSuccess, trackLinkClick } from "../analytics";
+import { shouldHandleInternalNavigation } from "../internalNavigation";
 import { getCommunityAnalyticsId } from "../content/communityAnalytics";
 import { isActionSection, isTownSection, townSectionAnchor, townSectionKey } from "../content/countySections";
 import {
@@ -275,7 +276,7 @@ function TownGrid({
   }, [countyPath, sections]);
   const expandAll = () => setExpandedCards(new Set(expandableSections.map(({ section, index }) => townSectionKey(section, index))));
   const jumpToTown = (event: MouseEvent<HTMLAnchorElement>, key: string, anchor: string, section: PageSection) => {
-    if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+    if (!shouldHandleInternalNavigation(event)) return;
     event.preventDefault();
     if (directory.current) directory.current.open = false;
     if (section.blocks.length > 2) {
@@ -457,7 +458,7 @@ function InsightLink({
       href={href}
       onClick={(event) => {
         trackLinkClick(href, label, source);
-        if (href.startsWith("/")) {
+        if (href.startsWith("/") && shouldHandleInternalNavigation(event)) {
           event.preventDefault();
           navigate(href);
         }
@@ -629,8 +630,9 @@ function GuideInternalLink({ guide, navigate }: { guide: ComparisonGuide; naviga
       href={guide.closingLink.href}
       className="button"
       onClick={(event) => {
-        event.preventDefault();
         trackLinkClick(guide.closingLink.href, guide.closingLink.label, "comparison_guide");
+        if (!shouldHandleInternalNavigation(event)) return;
+        event.preventDefault();
         navigate(guide.closingLink.href);
       }}
     >
@@ -714,7 +716,7 @@ function ResourceInternalLink({ resource, navigate }: { resource: ResourcePage; 
       className="button"
       onClick={(event) => {
         trackLinkClick(link.href, link.label, "resource_page");
-        if (link.href.startsWith("/")) {
+        if (link.href.startsWith("/") && shouldHandleInternalNavigation(event)) {
           event.preventDefault();
           navigate(link.href);
         }
@@ -1014,8 +1016,9 @@ export function NotFoundPage({ navigate }: { navigate: (path: string) => void })
             href="/"
             className="button"
             onClick={(event) => {
-              event.preventDefault();
               trackLinkClick("/", "Return Home", "not_found");
+              if (!shouldHandleInternalNavigation(event)) return;
+              event.preventDefault();
               navigate("/");
             }}
           >
@@ -1174,8 +1177,9 @@ export function NewsletterPage({ content = DEFAULT_NEWSLETTER_CONTENT, navigate 
             href={content.followupPath}
             className="button"
             onClick={(event) => {
-              event.preventDefault();
               trackLinkClick(content.followupPath, content.followupLabel, "newsletter_page");
+              if (!shouldHandleInternalNavigation(event)) return;
+              event.preventDefault();
               navigate(content.followupPath);
             }}
           >

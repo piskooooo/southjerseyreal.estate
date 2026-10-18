@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { ChevronDown } from "lucide-react";
 import { trackLinkClick } from "../analytics";
 import type { SitewideContent } from "../content/siteEditor";
+import { shouldHandleInternalNavigation } from "../internalNavigation";
 
 type HeaderProps = {
   brandName: string;
@@ -116,8 +117,9 @@ export function Header({ brandName, content, currentPath, navigate, onToggleThem
         href="/"
         className="brand"
         onClick={(event) => {
-          event.preventDefault();
           trackLinkClick("/", brandName, "header_brand");
+          if (!shouldHandleInternalNavigation(event)) return;
+          event.preventDefault();
           go("/");
         }}
       >
@@ -139,8 +141,9 @@ export function Header({ brandName, content, currentPath, navigate, onToggleThem
               className={currentPath === countiesPath || countyLinks.some((item) => item.path === currentPath) ? "is-active" : ""}
               aria-current={currentPath === countiesPath ? "page" : undefined}
               onClick={(event) => {
-                event.preventDefault();
                 trackLinkClick(countiesPath, countiesLabel, "header_hub");
+                if (!shouldHandleInternalNavigation(event)) return;
+                event.preventDefault();
                 go(countiesPath);
               }}
               onFocus={() => setOpenFolder("counties")}
@@ -169,7 +172,7 @@ export function Header({ brandName, content, currentPath, navigate, onToggleThem
                 aria-current={currentPath === item.path ? "page" : undefined}
                 onClick={(event) => {
                   trackLinkClick(item.path, item.label, "header_nav");
-                  if (isInternal(item.path)) {
+                  if (isInternal(item.path) && shouldHandleInternalNavigation(event)) {
                     event.preventDefault();
                     go(item.path);
                   }
@@ -188,8 +191,9 @@ export function Header({ brandName, content, currentPath, navigate, onToggleThem
               className={currentPath === connectPath || connectLinks.some((item) => item.path === currentPath) ? "is-active" : ""}
               aria-current={currentPath === connectPath ? "page" : undefined}
               onClick={(event) => {
-                event.preventDefault();
                 trackLinkClick(connectPath, connectLabel, "header_hub");
+                if (!shouldHandleInternalNavigation(event)) return;
+                event.preventDefault();
                 go(connectPath);
               }}
               onFocus={() => setOpenFolder("connect")}
@@ -218,7 +222,7 @@ export function Header({ brandName, content, currentPath, navigate, onToggleThem
                 aria-current={currentPath === item.path ? "page" : undefined}
                 onClick={(event) => {
                   trackLinkClick(item.path, item.label, "header_nav");
-                  if (isInternal(item.path)) {
+                  if (isInternal(item.path) && shouldHandleInternalNavigation(event)) {
                     event.preventDefault();
                     go(item.path);
                   }
@@ -259,8 +263,9 @@ export function Header({ brandName, content, currentPath, navigate, onToggleThem
           href="/contact"
           className="button button-small"
           onClick={(event) => {
-            event.preventDefault();
             trackLinkClick("/contact", "Contact", "header_cta");
+            if (!shouldHandleInternalNavigation(event)) return;
+            event.preventDefault();
             go("/contact");
           }}
         >
@@ -286,14 +291,15 @@ export function Header({ brandName, content, currentPath, navigate, onToggleThem
       <div id="mobile-menu" className={`mobile-menu ${menuOpen ? "is-open" : ""}`}>
         <div>
           <a className="mobile-menu-heading" href={countiesPath} onClick={(event) => {
-            event.preventDefault();
             trackLinkClick(countiesPath, countiesLabel, "mobile_hub");
+            if (!shouldHandleInternalNavigation(event)) return;
+            event.preventDefault();
             go(countiesPath);
           }}>{countiesLabel}</a>
           {countyLinks.map((item) => (
             <a key={item.path} href={item.path} onClick={(event) => {
               trackLinkClick(item.path, item.label, "mobile_nav");
-              if (isInternal(item.path)) {
+              if (isInternal(item.path) && shouldHandleInternalNavigation(event)) {
                 event.preventDefault();
                 go(item.path);
               }
@@ -304,14 +310,15 @@ export function Header({ brandName, content, currentPath, navigate, onToggleThem
         </div>
         <div>
           <a className="mobile-menu-heading" href={connectPath} onClick={(event) => {
-            event.preventDefault();
             trackLinkClick(connectPath, connectLabel, "mobile_hub");
+            if (!shouldHandleInternalNavigation(event)) return;
+            event.preventDefault();
             go(connectPath);
           }}>{connectLabel}</a>
           {connectLinks.map((item) => (
             <a key={item.path} href={item.path} onClick={(event) => {
               trackLinkClick(item.path, item.label, "mobile_nav");
-              if (isInternal(item.path)) {
+              if (isInternal(item.path) && shouldHandleInternalNavigation(event)) {
                 event.preventDefault();
                 go(item.path);
               }

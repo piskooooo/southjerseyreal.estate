@@ -2,6 +2,7 @@ import type { ContentBlock } from "../content/types";
 import { trackLinkClick } from "../analytics";
 import { compliance } from "../content/compliance";
 import { cleanSourceHref } from "../content/sourceNotes";
+import { shouldHandleInternalNavigation } from "../internalNavigation";
 
 type BlocksProps = {
   blocks: ContentBlock[];
@@ -104,7 +105,7 @@ const renderTextLink = (href: string, children: string, key: string, navigate?: 
       rel={isExternalPage ? "noreferrer" : undefined}
       onClick={(event) => {
         trackLinkClick(href, children, "content");
-        if (isLocal && navigate) {
+        if (isLocal && navigate && shouldHandleInternalNavigation(event)) {
           event.preventDefault();
           navigate(href);
         }
@@ -282,9 +283,9 @@ export function Blocks({
               rel={isExternalPage ? "noreferrer" : undefined}
               onClick={(event) => {
                 trackLinkClick(href || "#", block.text, "content_button");
-                if (isLocal) {
+                if (isLocal && navigate && shouldHandleInternalNavigation(event)) {
                   event.preventDefault();
-                  navigate?.(href);
+                  navigate(href);
                 }
               }}
             >

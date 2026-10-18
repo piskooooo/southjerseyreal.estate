@@ -513,6 +513,39 @@ application errors were observed. The owner reviewed the local preview and
 approved committing and publishing this selection on October 17. The original
 roadmap remains complete.
 
+## Owner-selected October 17 Native Link Navigation
+
+The owner selected consistent browser new-tab behavior across the public site,
+with the existing appearance preserved.
+
+- [x] Use a shared click rule for all public links that perform client-side
+  navigation. Leave Command/Ctrl/Shift/Alt clicks, non-primary buttons,
+  explicit other targets, downloads, and already-cancelled events to the
+  browser. Keep protocol-relative external destinations native.
+- [x] Preserve ordinary click and keyboard navigation, menu cleanup, town
+  expansion, section focus, and existing consent-gated analytics. Leave
+  native external, source, phone, and email links intact. Allow content links
+  rendered without a navigation callback to follow their normal destination.
+- [x] Verify new tabs retain the original page and reading state, check normal
+  navigation and both themes at desktop/mobile widths, and complete the unit,
+  build, and browser/compliance checks.
+
+No layout, styling, copy, form-submission, or storage behavior is changed.
+Completed locally on October 17: all 239 unit tests across 28 files and 140
+browser/compliance checks passed. These include native modified and middle
+clicks, unchanged original scroll/expanded-town/menu state, ordinary click and
+Enter navigation, existing analytics behavior, and town/article hash links.
+The final public-config build prerendered 30 public routes. Manual checks
+with published content at 1440 × 1000 in light mode and 390 × 844 in dark mode
+confirmed actual Command-click popups and ordinary/keyboard navigation, with
+no application errors or framework overlays. The desktop screenshot matched
+the prior build exactly; mobile appearance was also reviewed. Stylesheet and
+layout markup are unchanged. Browser validation used bundled Playwright
+Chromium because the Browser plugin is not available. No form was submitted.
+The owner confirmed that a guide opened in a new tab and approved committing
+and publishing this selection on October 17. The original roadmap remains
+complete.
+
 ## Owner-selected September 4 Maintenance
 
 - [x] Implement the seven confirmed audit corrections in source:

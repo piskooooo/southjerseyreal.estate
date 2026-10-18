@@ -129,6 +129,14 @@ test("content, guide, footer and disclosure links retain their native destinatio
 test("native town and article hash links preserve the origin menu and expand or focus only in the new tab", async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await openRoute(page, "/camden-county");
+  const toolbar = page.locator(".town-grid-toolbar");
+  await toolbar.evaluate((element) => window.scrollTo({
+    top: element.getBoundingClientRect().top + window.scrollY + 180,
+    behavior: "instant",
+  }));
+  await expect.poll(() => toolbar.evaluate((element) => Math.abs(
+    element.getBoundingClientRect().top - document.querySelector(".site-header")!.getBoundingClientRect().bottom,
+  ))).toBeLessThanOrEqual(1);
   const directory = page.locator(".town-directory");
   await directory.locator("summary").click();
   const town = directory.getByRole("link", { name: "Cherry Hill", exact: true });

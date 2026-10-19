@@ -1,6 +1,6 @@
 # Cloudflare Pages, Supabase, and Brevo
 
-Last reviewed: October 16, 2026 (analytics setup and county prerendering)
+Last reviewed: October 18, 2026 (complete Insights prerendering)
 
 This is the production deployment guide for `southjerseyreal.estate`. It intentionally records resource names and public identifiers, but never secret values, contact submissions, or subscriber data.
 
@@ -149,6 +149,15 @@ section key as the interactive page. It uses the normalized published page
 document; it must not restore towns or overwrite edits from a separate seed
 list. The text fallback omits historical detail paragraphs, images, and inert
 expand/collapse controls. The interactive app replaces the fallback at startup.
+
+Insights route HTML uses the existing directory and article components at build
+time. It includes every accepted guide card and the complete article headings,
+paragraphs, working checklists, sources, review dates, and related links. The
+build uses the normalized published documents, preserving owner edits, ordering,
+and intentional removals. Native links and section anchors remain readable
+without JavaScript; the interactive app replaces this markup at startup using
+the same components and stylesheet. The renderer is build-only and is not
+imported into the browser bundle.
 
 The owner-selected October 17 introduction rewrite uses a guarded, versioned
 upgrade in the shared normalizer. For older county documents, a paragraph is

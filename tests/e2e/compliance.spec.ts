@@ -109,7 +109,14 @@ test.describe("compliance route crawl", () => {
       expect(prerenderedHtml).not.toContain("brokerage-disclosure-header");
       expect(prerenderedHtml).toContain("brokerage-disclosure-footer");
       expect(prerenderedHtml).toMatch(/<h1>[^<]+<\/h1>/);
-      expect(prerenderedHtml).toMatch(/<nav aria-label="Related pages">/);
+      if (entry.path === "/insights") {
+        expect(prerenderedHtml).toContain('class="insights-index-page"');
+      } else if (entry.path.startsWith("/insights/")) {
+        expect(prerenderedHtml).toContain('class="insight-article-page"');
+        expect(prerenderedHtml).toContain('class="insight-sources"');
+      } else {
+        expect(prerenderedHtml).toMatch(/<nav aria-label="Related pages">/);
+      }
       expect(structuredDataFromHtml(prerenderedHtml)).toEqual(parsedStructuredData);
 
       const overflow = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);

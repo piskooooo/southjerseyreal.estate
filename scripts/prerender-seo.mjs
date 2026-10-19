@@ -32,14 +32,16 @@ let responsiveImagesModule;
 let prerenderContentModule;
 let prerenderCommunitiesModule;
 let countySectionsModule;
+let prerenderInsightsModule;
 try {
-  [seoModule, siteEditorModule, responsiveImagesModule, prerenderContentModule, prerenderCommunitiesModule, countySectionsModule] = await Promise.all([
+  [seoModule, siteEditorModule, responsiveImagesModule, prerenderContentModule, prerenderCommunitiesModule, countySectionsModule, prerenderInsightsModule] = await Promise.all([
     vite.ssrLoadModule("/src/content/seo.ts"),
     vite.ssrLoadModule("/src/content/siteEditor.ts"),
     vite.ssrLoadModule("/src/content/responsiveImages.ts"),
     vite.ssrLoadModule("/src/content/prerenderContent.ts"),
     vite.ssrLoadModule("/src/content/prerenderCommunities.ts"),
     vite.ssrLoadModule("/src/content/countySections.ts"),
+    vite.ssrLoadModule("/src/content/prerenderInsights.tsx"),
   ]);
 } finally {
   await vite.close();
@@ -59,6 +61,7 @@ const { buildHomeHeroPreloadScript, LIGHT_HOME_HERO_SRC } = responsiveImagesModu
 const { loadPublishedBuildRows, requiresPublishedBuildContent } = prerenderContentModule;
 const { renderCountyCommunities } = prerenderCommunitiesModule;
 const { isTownSection } = countySectionsModule;
+const { renderInsights } = prerenderInsightsModule;
 
 const htmlEscape = (value) => String(value)
   .replaceAll("&", "&amp;")
@@ -245,6 +248,7 @@ const renderBrokerageDisclosure = () => `
 const renderPublicShell = (document, seo) => {
   const links = prerenderLinks(seo.canonicalPath, document);
   const paragraphs = prerenderParagraphs(document, seo.description);
+  const insightContent = renderInsights(document);
   return `<header class="site-header">
         <a class="brand" href="/">${htmlEscape(siteName)}</a>
         <nav class="desktop-nav" aria-label="Primary navigation">
@@ -252,7 +256,7 @@ const renderPublicShell = (document, seo) => {
         </nav>
       </header>
       <main id="page" data-seo-prerendered="true">
-        <div class="standard-page">
+        ${insightContent || `<div class="standard-page">
           <section class="section text-section">
             <div>
               <p class="section-eyebrow">${htmlEscape(siteName)}</p>
@@ -263,7 +267,7 @@ const renderPublicShell = (document, seo) => {
             </div>
           </section>
           ${renderCountyCommunities(document.page)}
-        </div>
+        </div>`}
       </main>
       <footer class="site-footer">
         <div class="site-footer-brand">${renderBrokerageDisclosure()}</div>

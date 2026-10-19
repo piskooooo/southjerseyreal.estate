@@ -581,6 +581,32 @@ deployment or database migration is needed. The owner reviewed the preview
 and successful delivery test and approved committing and publishing this
 update on October 18.
 
+## Owner-selected October 18 Complete Insights HTML
+
+- [x] Include the complete eight-guide directory and all article text in the
+  initial route HTML, using the existing public components and stylesheet.
+  Include headings, paragraphs, working checklists, sources, dates, related
+  links, and readable section anchors.
+- [x] Use accepted normalized published content, preserving owner edits,
+  ordering, and intentional removals. Keep this renderer in the build path
+  and retain the existing browser startup and navigation behavior.
+- [x] Complete unit, build, browser/compliance, no-JavaScript navigation,
+  and desktop/mobile appearance checks.
+
+Completed locally on October 18: all 256 unit tests across 29 files and all 144
+browser/compliance checks passed. The public-config build prerendered 30 public
+routes. All nine Insights routes were checked against their complete structured
+content, including native guide links, article anchors, and related next steps
+with JavaScript disabled. Additional mobile native-dropdown navigation passed.
+Desktop/light and mobile/dark preview checks confirmed the existing guide
+appearance, with no application errors, duplicate headings, or overflow. The
+browser JavaScript and stylesheet are unchanged; this renderer runs only during
+the build. Browser validation used the repository's Playwright runtime because
+the Browser plugin is not available.
+
+The owner reviewed the preview and approved committing and publishing this
+update on October 18. The original roadmap remains complete.
+
 ## Owner-selected September 4 Maintenance
 
 - [x] Implement the seven confirmed audit corrections in source:

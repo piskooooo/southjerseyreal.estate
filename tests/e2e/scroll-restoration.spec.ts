@@ -291,7 +291,7 @@ test("restoration waits for accepted content and a later navigation cancels an o
   let indexRequests = 0;
   await context.route("**/rest/v1/site_pages?*", async (route) => {
     const requested = new URL(route.request().url()).searchParams.get("page_key") || "";
-    const isIndex = requested.endsWith(",/insights)");
+    const isIndex = requested.split(/[(),]/).includes("/insights");
     if (isIndex) {
       const gate = gates[indexRequests - 1];
       indexRequests += 1;
@@ -328,7 +328,7 @@ test("restoration waits for accepted content and a later navigation cancels an o
   await expectY(page, 0);
   const delayedResponse = page.waitForResponse((response) => {
     const requested = new URL(response.url()).searchParams.get("page_key") || "";
-    return requested.endsWith(",/insights)");
+    return requested.split(/[(),]/).includes("/insights");
   });
   gates[1].release();
   await delayedResponse;

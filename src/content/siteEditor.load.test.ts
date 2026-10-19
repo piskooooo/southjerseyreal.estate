@@ -18,6 +18,53 @@ afterEach(() => {
 });
 
 describe("public content availability", () => {
+  it("loads the guide index and all eight full article documents in one request", async () => {
+    vi.stubEnv("VITE_SUPABASE_URL", "https://test-project.supabase.co");
+    vi.stubEnv("VITE_SUPABASE_PUBLISHABLE_KEY", "fixture-public-key");
+    const fetchContent = vi.fn(async (_url: string) => ({ ok: true, json: async () => [] }));
+    vi.stubGlobal("fetch", fetchContent);
+    const articlePaths = Array.from(seedPublicSiteContent().pages.values())
+      .filter((document) => document.insightArticle).map((document) => document.page.path);
+
+    expect(await loadPublishedSiteContent("/insights")).toEqual(seedPublicSiteContent());
+
+    expect(articlePaths).toHaveLength(8);
+    expect(fetchContent).toHaveBeenCalledTimes(1);
+    expect(new URL(fetchContent.mock.calls[0][0]).searchParams.get("page_key"))
+      .toBe(`in.(${[SITEWIDE_CONTENT_KEY, "/insights", ...articlePaths].join(",")})`);
+  });
+
+  it("accepts published guide body edits and the index's removed cards and owner order together", async () => {
+    vi.stubEnv("VITE_SUPABASE_URL", "https://test-project.supabase.co");
+    vi.stubEnv("VITE_SUPABASE_PUBLISHABLE_KEY", "fixture-public-key");
+    const published = structuredClone(seedPublicSiteContent());
+    const index = published.pages.get("/insights")!.insightIndex!;
+    index.articles = [index.articles.at(-1)!, index.articles[0]];
+    const articles = Array.from(published.pages.values()).filter((document) => document.insightArticle);
+    articles.forEach((document, index) => {
+      document.insightArticle!.sections[0].paragraphs = [`Published guide topic number ${index + 1}.`];
+    });
+    const documents = [published.pages.get("/insights")!, ...articles];
+    vi.stubGlobal("fetch", vi.fn(async () => ({
+      ok: true,
+      json: async () => documents.map((document) => ({
+        page_key: document.page.path,
+        published_content: document,
+        published_at: "2026-10-19T12:00:00Z",
+      })),
+    })));
+
+    const result = await loadPublishedSiteContent("/insights");
+
+    expect(result.pages.get("/insights")!.insightIndex!.articles.map((card) => card.href))
+      .toEqual(index.articles.map((card) => card.href));
+    articles.forEach((document) => {
+      expect(result.pages.get(document.page.path)!.insightArticle!.sections[0].paragraphs)
+        .toEqual(document.insightArticle!.sections[0].paragraphs);
+    });
+    expect(fetch).toHaveBeenCalledTimes(1);
+  });
+
   it("loads the Counties hub, sitewide content, and all seven county documents in one request", async () => {
     vi.stubEnv("VITE_SUPABASE_URL", "https://test-project.supabase.co");
     vi.stubEnv("VITE_SUPABASE_PUBLISHABLE_KEY", "fixture-public-key");

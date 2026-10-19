@@ -3994,6 +3994,20 @@ p {
   padding-bottom: clamp(3.5rem, 6vw, 6rem);
 }
 
+.guide-finder {
+  max-width: 42rem;
+  margin-bottom: clamp(1.75rem, 3vw, 2.5rem);
+}
+
+.guide-finder > label {
+  display: block;
+  margin-bottom: 0.65rem;
+  font-size: 1rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+}
+
 .insight-card-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -4001,6 +4015,16 @@ p {
   overflow: hidden;
   background: var(--card-border);
   border: 1px solid var(--card-border);
+}
+
+.insight-card-grid[data-result-count="1"] {
+  grid-template-columns: minmax(0, 1fr);
+  max-width: calc((100% + 2px) / 3);
+}
+
+.insight-card-grid[data-result-count="2"] {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  max-width: calc((200% + 1px) / 3);
 }
 
 .insight-card {
@@ -4314,8 +4338,10 @@ p {
     grid-row: auto;
   }
 
-  .insight-card-grid {
+  .insight-card-grid,
+  .insight-card-grid[data-result-count] {
     grid-template-columns: 1fr;
+    max-width: none;
   }
 
   .insight-card {

@@ -11,6 +11,7 @@ import {
 } from "./content/siteEditor";
 import { getAnalyticsConsent, setAnalyticsConsent, trackPageView, type AnalyticsConsent } from "./analytics";
 import { buildTownFinderEntries } from "./content/townFinder";
+import { buildGuideFinderEntries } from "./content/guideFinder";
 import { shouldHandleInternalNavigation } from "./internalNavigation";
 import { isHistoryScrollRestoration, pushHistoryEntry, usePageScrollRestoration } from "./scrollRestoration";
 
@@ -96,6 +97,12 @@ export default function App() {
       ? buildTownFinderEntries(Array.from(siteContent.pages.values(), (document) => document.page))
       : [],
     [path, siteContent.pages],
+  );
+  const guideEntries = useMemo(
+    () => path === "/insights" && pageDocument.insightIndex
+      ? buildGuideFinderEntries(pageDocument.insightIndex.articles, siteContent.pages.values())
+      : [],
+    [path, pageDocument.insightIndex, siteContent.pages],
   );
 
   useEffect(() => {
@@ -273,7 +280,14 @@ export default function App() {
     }
     if (path === "/contact") return <ContactPage page={currentPage} navigate={navigate} />;
     if (path === "/newsletter") return <NewsletterPage content={current.newsletter} navigate={navigate} />;
-    if (current.insightIndex) return <InsightsIndexPage content={current.insightIndex} navigate={navigate} />;
+    if (current.insightIndex) return (
+      <InsightsIndexPage
+        content={current.insightIndex}
+        navigate={navigate}
+        searchEntries={guideEntries}
+        contentResolved={resolvedContentPath === path}
+      />
+    );
     if (current.insightArticle) return (
       <InsightArticlePage
         key={current.page.path}

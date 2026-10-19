@@ -1,4 +1,5 @@
 import { useEffect, useLayoutEffect, useRef, useState, type MouseEvent, type ReactNode } from "react";
+import { Search } from "lucide-react";
 import { trackCommunityProfileOpen, trackFormSuccess, trackLinkClick } from "../analytics";
 import { shouldHandleInternalNavigation } from "../internalNavigation";
 import { getCommunityAnalyticsId } from "../content/communityAnalytics";
@@ -33,6 +34,7 @@ import { AboutReviewsSection } from "./Reviews";
 import { getResponsiveImageProps } from "../content/responsiveImages";
 import type { TownFinderEntry } from "../content/townFinder";
 import { TownFinder } from "./TownFinder";
+import { findGuideFinderEntries, type GuideFinderEntry } from "../content/guideFinder";
 import { isHistoryScrollRestoration, pushHistoryEntry, rememberTownExpansions, restoredTownExpansions } from "../scrollRestoration";
 
 type SiteTheme = "dark" | "light";
@@ -476,14 +478,58 @@ function InsightLink({
   );
 }
 
+const GUIDE_QUERY_KEY = "sjreGuideFinderQuery";
+const readGuideQuery = () => {
+  try {
+    const query = window.history.state?.[GUIDE_QUERY_KEY];
+    return typeof query === "string" ? query : "";
+  } catch {
+    return "";
+  }
+};
+
 export function InsightsIndexPage({
   content,
   navigate,
+  searchEntries,
+  contentResolved = false,
 }: {
   content?: InsightIndexContent;
   navigate: (path: string) => void;
+  searchEntries?: readonly GuideFinderEntry[];
+  contentResolved?: boolean;
 }) {
+  const [query, setQuery] = useState(readGuideQuery);
+  const input = useRef<HTMLInputElement>(null);
+  const results = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    const restoreQuery = () => setQuery(readGuideQuery());
+    window.addEventListener("popstate", restoreQuery);
+    return () => window.removeEventListener("popstate", restoreQuery);
+  }, []);
+  const updateQuery = (value: string) => {
+    setQuery(value);
+    try {
+      window.history.replaceState({ ...window.history.state, [GUIDE_QUERY_KEY]: value }, "");
+    } catch {
+      // Filtering remains available when the browser cannot update history state.
+    }
+  };
+  const clearSearch = () => {
+    updateQuery("");
+    input.current?.focus();
+  };
   if (!content) return <NotFoundPage navigate={navigate} />;
+  const visibleEntries = searchEntries && contentResolved
+    ? findGuideFinderEntries(searchEntries, query)
+    : content.articles.map((card, index) => ({ card, index }));
+  const status = !contentResolved
+    ? "Loading guides…"
+    : !query.trim()
+      ? "Search titles and full article text."
+      : visibleEntries.length === 0
+        ? "No guides found. Try another topic or clear your search."
+        : `${visibleEntries.length} ${visibleEntries.length === 1 ? "guide" : "guides"} found.`;
 
   return (
     <div className="insights-index-page">
@@ -494,8 +540,44 @@ export function InsightsIndexPage({
       </section>
 
       <section className="section insights-directory" aria-label="Insight articles">
-        <div className="insight-card-grid">
-          {content.articles.map((article, index) => (
+        {searchEntries && (
+          <div className="guide-finder" role="search" aria-label="Guide library">
+            <label htmlFor="guide-finder-query">Find a guide</label>
+            <div className="town-finder-field">
+              <Search size={20} aria-hidden="true" />
+              <input
+                ref={input}
+                id="guide-finder-query"
+                type="search"
+                aria-describedby="guide-finder-status"
+                aria-controls="guide-finder-results"
+                placeholder="Enter a topic or keyword"
+                autoComplete="off"
+                spellCheck={false}
+                maxLength={200}
+                disabled={!contentResolved}
+                value={query}
+                onChange={(event) => updateQuery(event.target.value)}
+                onKeyDown={(event) => {
+                  if (event.key === "Escape" && query) {
+                    event.preventDefault();
+                    clearSearch();
+                  } else if (event.key === "ArrowDown" || event.key === "Enter") {
+                    const first = results.current?.querySelector<HTMLAnchorElement>(".insight-card h2 a");
+                    if (first) {
+                      event.preventDefault();
+                      first.focus();
+                    }
+                  }
+                }}
+              />
+              {query && <button type="button" onClick={clearSearch}>Clear</button>}
+            </div>
+            <p id="guide-finder-status" className="town-finder-status" role="status" aria-atomic="true">{status}</p>
+          </div>
+        )}
+        <div id="guide-finder-results" ref={results} data-result-count={visibleEntries.length} className={visibleEntries.length ? "insight-card-grid" : undefined}>
+          {visibleEntries.map(({ card: article, index }) => (
             <article className="insight-card" key={article.href}>
               <div className="insight-card-number" aria-hidden="true">{String(index + 1).padStart(2, "0")}</div>
               <div className="insight-card-body">

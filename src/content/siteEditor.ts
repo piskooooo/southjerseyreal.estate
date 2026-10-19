@@ -910,7 +910,12 @@ export async function loadPublishedSiteContent(pageKey?: string): Promise<Public
   const timeout = setTimeout(() => controller.abort(), 10_000);
   try {
     const requestedKeys = pageKey && managedContentSeeds.has(pageKey)
-      ? [SITEWIDE_CONTENT_KEY, pageKey, ...(pageKey === "/counties" ? countyNav.map((county) => county.path) : [])]
+      ? [
+        SITEWIDE_CONTENT_KEY,
+        pageKey,
+        ...(pageKey === "/counties" ? countyNav.map((county) => county.path) : []),
+        ...(pageKey === "/insights" ? managedPageSeeds.filter((document) => document.insightArticle).map((document) => document.page.path) : []),
+      ]
       : managedContentKeys;
     const query = new URLSearchParams({
       select: "page_key,published_content,published_at",

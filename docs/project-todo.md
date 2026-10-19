@@ -810,6 +810,38 @@ reviewed outside the repository; no styles changed and no form was submitted.
 The owner confirmed the preview works and approved committing and publishing
 this change on October 19. The original roadmap remains complete.
 
+## Owner-selected October 19 Guide Finder
+
+The owner selected a `Find a guide` search across all eight guides' full text,
+with browser Back restoring the search and the existing appearance preserved.
+
+- [x] Search the current index cards and all accepted article headings,
+  paragraphs, checklists, source labels, and related-link labels. Load the
+  index and eight article documents together, respect published edits and
+  removed cards, and wait for accepted content before enabling search.
+- [x] Preserve the cards' order, numbering, destinations, typography, colors,
+  and responsive layout. Reuse the existing town-finder field styling; keep
+  one- and two-result desktop cards at their usual width without empty gray
+  columns. Keep all eight guides available in the initial HTML.
+- [x] Restore each history entry's query with Back and Forward while retaining
+  the existing reading-position behavior. Support Clear, Escape, and keyboard
+  movement to the first result. Queries stay in browser history state; typing
+  adds no history steps, URL parameters, storage entries, or Analytics events.
+- [x] Finish unit, build, browser/compliance, and responsive preview checks.
+
+Completed locally on October 19: all 290 unit tests and 168 browser/compliance
+checks passed, including seven new guide-finder cases. After refining the
+sparse-result spacing, rebuilt and passed 20 focused guide-search, Insights
+initial-HTML, and reading-position checks. Additional 1440-pixel light and
+390-pixel dark preview checks confirmed full-body matches and restored search
+and reading position, with no page errors, horizontal overflow, denied-consent
+Analytics requests, or form submissions. Card widths were also checked at
+320, 390, 768, 980, 981, and 1440 pixels. Screenshots were reviewed outside the
+repository. Browser plugin not available; validation used the repository's
+configured Playwright Chrome browser. The owner confirmed the preview works
+and authorized committing and publishing the change on October 19. The
+original roadmap remains complete.
+
 ## Owner-selected September 4 Maintenance
 
 - [x] Implement the seven confirmed audit corrections in source:

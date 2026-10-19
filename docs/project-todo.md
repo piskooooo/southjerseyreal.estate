@@ -775,6 +775,41 @@ sent no form requests. The owner approved the preview and authorized committing
 and publishing this navigation change on October 19. The original roadmap
 remains complete.
 
+## Owner-selected October 19 Back and Forward Reading Positions
+
+The owner selected restoring reading positions with browser Back and Forward,
+keeping the existing appearance.
+
+- [x] Keep separate positions for each history entry, preserve the town
+  finder's saved search, and retain top-of-page behavior for fresh visits.
+- [x] Restore positions after accepted content and layout are ready. Keep
+  links to specific towns and guide sections working, and cancel an obsolete
+  restoration when another navigation or user interaction takes over.
+- [x] Restore expanded town profiles and open FAQ, provider, advertising, and
+  comparison panels before restoring their reading position.
+- [x] Finish unit, build, browser/compliance, and desktop/mobile preview checks.
+
+Coordinates and open-section identifiers stay in memory for the current
+loaded visit; history state carries only an entry identifier alongside existing
+state such as the town search. No new local/session storage, form data storage,
+or analytics events are introduced. A full reload starts fresh in-memory state;
+positions are bounded by the content actually available on return.
+
+Completed locally on October 19: all 271 unit tests, the production build, and
+161 browser/compliance checks passed. Nine new browser cases cover exact
+desktop/mobile Back/Forward positions, separate visits to one route, saved
+town searches, expanded county profiles, FAQ/comparison panels, native guide
+section history, click-only town activation, and delayed content with obsolete
+restoration cancellation. Browser plugin not available; validation used the
+repository's configured Playwright Chrome browser. Additional 1440-pixel light
+and 390-pixel dark preview checks restored the guide list to exactly 1847 and
+3456 pixels respectively and the article to 1400 pixels, with no page errors,
+horizontal overflow, or denied-consent Analytics requests. A mobile FAQ check
+retained all four panels and restored its 1050-pixel position. Screenshots were
+reviewed outside the repository; no styles changed and no form was submitted.
+The owner confirmed the preview works and approved committing and publishing
+this change on October 19. The original roadmap remains complete.
+
 ## Owner-selected September 4 Maintenance
 
 - [x] Implement the seven confirmed audit corrections in source:

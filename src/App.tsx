@@ -12,6 +12,7 @@ import {
 import { getAnalyticsConsent, setAnalyticsConsent, trackPageView, type AnalyticsConsent } from "./analytics";
 import { buildTownFinderEntries } from "./content/townFinder";
 import { shouldHandleInternalNavigation } from "./internalNavigation";
+import { isHistoryScrollRestoration, pushHistoryEntry, usePageScrollRestoration } from "./scrollRestoration";
 
 type SiteTheme = "dark" | "light";
 
@@ -82,6 +83,7 @@ export default function App() {
   const [analyticsConsentChoice, setAnalyticsConsentChoice] = useState<AnalyticsConsent | null>(getAnalyticsConsent);
   const [siteContent, setSiteContent] = useState<PublicSiteContent>(seedPublicSiteContent);
   const [resolvedContentPath, setResolvedContentPath] = useState("");
+  usePageScrollRestoration(path, resolvedContentPath === path);
 
   const pageDocument = useMemo(
     () => siteContent.pages.get(path) || siteContent.pages.get("/")!,
@@ -118,7 +120,7 @@ export default function App() {
         });
 
     if (rawPath !== seo.canonicalPath) {
-      window.history.replaceState({}, "", `${seo.canonicalPath}${window.location.search}${window.location.hash}`);
+      window.history.replaceState(window.history.state, "", `${seo.canonicalPath}${window.location.search}${window.location.hash}`);
     }
 
     document.title = seo.title;
@@ -164,6 +166,7 @@ export default function App() {
   }, [isKnownPath, pageDocument.insightArticle, pageDocument.seo, page, path, siteContent.sitewide.brandName]);
 
   useEffect(() => {
+    if (isHistoryScrollRestoration()) return;
     if (!window.location.hash) {
       window.scrollTo({ top: 0, behavior: "instant" });
       return;
@@ -219,7 +222,7 @@ export default function App() {
     const normalized = normalizeRoutePath(destination.pathname);
     const nextLocation = `${normalized}${destination.search}${destination.hash}`;
     if (nextLocation !== `${window.location.pathname}${window.location.search}${window.location.hash}`) {
-      window.history.pushState({}, "", nextLocation);
+      pushHistoryEntry(nextLocation);
     } else if (!destination.hash) {
       return;
     }

@@ -33,6 +33,7 @@ import { AboutReviewsSection } from "./Reviews";
 import { getResponsiveImageProps } from "../content/responsiveImages";
 import type { TownFinderEntry } from "../content/townFinder";
 import { TownFinder } from "./TownFinder";
+import { isHistoryScrollRestoration, pushHistoryEntry, rememberTownExpansions, restoredTownExpansions } from "../scrollRestoration";
 
 type SiteTheme = "dark" | "light";
 
@@ -77,7 +78,7 @@ const scrollTownCardIntoView = (key: string, { focus = false, block = "nearest" 
   window.requestAnimationFrame(() => {
     const card = Array.from(document.querySelectorAll<HTMLElement>("[data-town-card-key]")).find((element) => element.dataset.townCardKey === key);
     if (focus) card?.focus({ preventScroll: true });
-    card?.scrollIntoView({ block });
+    if (!isHistoryScrollRestoration()) card?.scrollIntoView({ block });
   });
 };
 
@@ -239,8 +240,12 @@ function TownGrid({
   const initialHash = readTownHash();
   const linkedTown = rows.flat().find(({ anchor, key }) => initialHash === anchor || initialHash === key.toLowerCase());
   const [expandedCards, setExpandedCards] = useState<Set<string>>(() => (
-    linkedTown && linkedTown.section.blocks.length > 2 ? new Set([linkedTown.key]) : new Set()
+    new Set(restoredTownExpansions(countyPath)
+      ?? (linkedTown && linkedTown.section.blocks.length > 2 ? [linkedTown.key] : []))
   ));
+  useLayoutEffect(() => {
+    rememberTownExpansions(countyPath, expandedCards);
+  }, [countyPath, expandedCards]);
   const allExpanded = expandableSections.length > 0 && expandableSections.every(({ section, index }) => (
     expandedCards.has(townSectionKey(section, index))
   ));
@@ -260,7 +265,8 @@ function TownGrid({
         if (communityId) trackCommunityProfileOpen(countyPath, communityId, "anchor");
       }
       appliedHash.current = { hash, targetKey: target?.key };
-      setExpandedCards(target && target.section.blocks.length > 2 ? new Set([target.key]) : new Set());
+      setExpandedCards(new Set(restoredTownExpansions(countyPath)
+        ?? (target && target.section.blocks.length > 2 ? [target.key] : [])));
       if (target) scrollTownCardIntoView(target.key, { focus: true, block: "start" });
     };
 
@@ -286,7 +292,7 @@ function TownGrid({
     }
     setExpandedCards(section.blocks.length > 2 ? new Set([key]) : new Set());
     if (readTownHash() !== anchor) {
-      window.history.pushState({}, "", `${window.location.pathname}${window.location.search}#${anchor}`);
+      pushHistoryEntry(`${window.location.pathname}${window.location.search}#${anchor}`);
     }
     appliedHash.current = { hash: anchor, targetKey: key };
     scrollTownCardIntoView(key, { focus: true, block: "start" });
@@ -295,7 +301,7 @@ function TownGrid({
     setExpandedCards(new Set());
     appliedHash.current = { hash: "" };
     if (window.location.hash) {
-      window.history.pushState({}, "", `${window.location.pathname}${window.location.search}`);
+      pushHistoryEntry(`${window.location.pathname}${window.location.search}`);
     }
   };
   const toggleCard = (key: string, anchor: string) => {
@@ -317,11 +323,11 @@ function TownGrid({
       const section = sections.find((item) => townSectionKey(item.section, item.index) === key)?.section;
       const communityId = section && getCommunityAnalyticsId(countyPath, section.id);
       if (communityId) trackCommunityProfileOpen(countyPath, communityId, "manual");
-      window.history.pushState({}, "", `${window.location.pathname}${window.location.search}#${anchor}`);
+      pushHistoryEntry(`${window.location.pathname}${window.location.search}#${anchor}`);
       appliedHash.current = { hash: anchor, targetKey: key };
       scrollTownCardIntoView(key);
     } else if (readTownHash() === anchor) {
-      window.history.pushState({}, "", `${window.location.pathname}${window.location.search}`);
+      pushHistoryEntry(`${window.location.pathname}${window.location.search}`);
       appliedHash.current = { hash: "" };
     }
   };
@@ -668,7 +674,7 @@ export function ComparisonGuidePage({ page, guide, navigate }: PageProps & { gui
       <section className="section guide-accordion-section">
         <div className="guide-accordion">
           {guide.panels.map((panel) => (
-            <details key={panel.id} className="guide-panel">
+            <details key={panel.id} className="guide-panel" data-scroll-panel={panel.id}>
               <summary>
                 <span className="guide-panel-title">{panel.title}</span>
                 <span className="guide-panel-summary">{panel.summary}</span>
@@ -756,7 +762,7 @@ export function ResourceAccordionPage({ page, resource, navigate }: PageProps & 
       <section className="section guide-accordion-section">
         <div className="guide-accordion">
           {resource.panels.map((panel) => (
-            <details key={panel.id} id={panel.id} className="guide-panel resource-panel">
+            <details key={panel.id} id={panel.id} className="guide-panel resource-panel" data-scroll-panel={panel.id}>
               <summary>
                 <span className="guide-panel-title">{panel.title}</span>
                 <span className="guide-panel-summary">{panel.summary}</span>

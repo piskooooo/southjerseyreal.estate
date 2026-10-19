@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useLayoutEffect, useRef, type MouseEvent } from "react";
 import { shouldHandleInternalNavigation } from "../internalNavigation";
+import { isHistoryScrollRestoration } from "../scrollRestoration";
 
 type ContentsEntry = { id: string; heading: string };
 
@@ -59,7 +60,7 @@ export function InsightContents({ entries }: { entries: ContentsEntry[] }) {
     window.cancelAnimationFrame(frame.current);
     frame.current = window.requestAnimationFrame(() => {
       const section = document.getElementById(id);
-      section?.scrollIntoView({ block: "start", behavior: "instant" });
+      if (!isHistoryScrollRestoration()) section?.scrollIntoView({ block: "start", behavior: "instant" });
       section?.focus({ preventScroll: true });
     });
   }, []);

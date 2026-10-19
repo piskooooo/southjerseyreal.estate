@@ -38,6 +38,18 @@ describe("public page navigation and content refresh", () => {
     expect(window.scrollTo).not.toHaveBeenCalled();
   });
 
+  it("retains the town search and unrelated history state while assigning a scroll entry", async () => {
+    window.history.replaceState({ sjreTownFinderQuery: "Mt. Laurel", unrelated: { retained: true } }, "", "/counties/");
+    render(<App />);
+    await waitFor(() => expect(loadPublishedSiteContent).toHaveBeenCalledWith("/counties"));
+    expect(window.history.state).toMatchObject({
+      sjreTownFinderQuery: "Mt. Laurel",
+      unrelated: { retained: true },
+      sjreScrollEntry: expect.any(String),
+    });
+    expect(screen.getByRole("searchbox", { name: "Find a town" })).toHaveValue("Mt. Laurel");
+  });
+
   it("keeps expanded towns when changing theme", async () => {
     const user = userEvent.setup();
     render(<App />);

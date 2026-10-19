@@ -1,6 +1,6 @@
 # South Jersey Real Estate Project Checklist
 
-Last reviewed: October 18, 2026
+Last reviewed: October 19, 2026
 
 **Roadmap status: Complete.** The selected roadmap closed on August 7, 2026.
 The owner separately selected the September 4 audit corrections below. Their
@@ -640,6 +640,57 @@ analytics events occurred. Browser validation used the repository's Playwright
 Chromium because the Browser plugin is not available. No inquiry or subscription
 was submitted. The owner tested the preview, confirmed the restored search works,
 and approved committing and publishing this update on October 18.
+
+## Owner-selected October 19 Printable Insights Guides
+
+The owner selected clean browser printing and Save as PDF for all eight guides,
+with the onscreen appearance preserved.
+
+- [x] Add article-scoped print styles with a single readable column, white
+  paper, compact typography, checkboxes, visible source addresses, review and
+  access dates, and the existing article notice and footer disclosures.
+  Keep headings with their text and avoid splitting individual checklist items.
+  Suppress navigation and interactive controls only when printing.
+- [x] Verify all eight guides on US Letter and A4, from both light and dark
+  modes, using real PDF exports and rendered page inspection. Check complete
+  text, links, pagination, disclosures, and unchanged desktop/mobile screens.
+  Complete the unit, build, and browser/compliance checks and provide a preview.
+
+This uses the browser's existing Print command. No separate PDF content model,
+download service, onscreen control, or new processor is introduced. The original
+roadmap remains complete.
+
+The owner requested a clear website attribution after reviewing the sample.
+Each printed guide now starts with `southjerseyreal.estate`, linked to the
+canonical homepage in saved PDFs, so a reader can return to the site later.
+This attribution is hidden on normal screens. The revised 32-PDF review
+confirmed the address appears once on each first page with a working canonical
+homepage link; all 16 screen comparisons still matched the original.
+
+Local checks on October 19 passed all 261 unit tests and 148 browser/compliance
+checks. The two new all-guide print cases were repeated after the final
+pagination refinements and passed: readable Letter/light and A4/dark copies,
+complete content and source addresses, source typography, paper bounds, footer
+disclosures, real PDF output, and restoration of the original screen layouts.
+The public-config preview build prerendered all 30 public routes using current
+published content. All 16 before/after desktop/light and mobile/dark screenshots
+across the eight guides matched pixel for pixel. Initial article printing with
+JavaScript disabled also passed on all eight routes. No page errors, overflow,
+or denied-consent analytics events were observed; no form was submitted.
+
+Final PDF review covered 32 exports and 96 pages: all eight guides on both paper
+sizes in each theme. Every paragraph, checklist item, source title and visible
+URL, review/access date, and disclosure was retained, with working PDF source
+links. The light and dark exports matched pixel for pixel. Rendered page
+inspection found no clipping, blank pages, orphaned section headings, split
+checklist items, or pages containing only the disclosure footer. The last
+citation stays with the compact text-only brokerage and fair-housing footer.
+Normal screens keep the existing credential graphics. Print validation used
+local Chrome exports and the repository's Playwright Chromium because the
+Browser plugin is not available. A sample PDF and the local preview are ready
+for owner review; no production content was written during verification.
+The owner reviewed the updated sample with website attribution and approved
+committing and publishing this update on October 19.
 
 ## Owner-selected September 4 Maintenance
 

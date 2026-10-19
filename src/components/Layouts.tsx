@@ -16,6 +16,7 @@ import {
 import type { ComparisonGuide } from "../content/comparisonGuides";
 import { compliance } from "../content/compliance";
 import type { InsightArticleContent, InsightIndexContent } from "../content/insights";
+import { siteUrl } from "../content/seo";
 import type { ResourcePage } from "../content/resourcePages";
 import type { NewsletterContent } from "../content/siteEditor";
 import type { ContentBlock, ImageAsset, PageSection, SitePage } from "../content/types";
@@ -533,6 +534,7 @@ export function InsightArticlePage({
   return (
     <article className="insight-article-page">
       <header className="section insight-article-hero">
+        <a className="insight-print-site" href={siteUrl}>{new URL(siteUrl).hostname}</a>
         <InsightLink
           className="insight-back-link"
           href="/insights"

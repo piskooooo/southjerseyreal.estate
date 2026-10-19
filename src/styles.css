@@ -4780,3 +4780,256 @@ p {
     animation-iteration-count: 1 !important;
   }
 }
+
+.insight-print-site {
+  display: none;
+}
+
+/* The browser's Print / Save as PDF view; screen layouts remain independent. */
+@media print {
+  @page insight-guide {
+    size: auto;
+    margin: 15mm;
+  }
+
+  html:has(.insight-article-page) {
+    color-scheme: light;
+    background: #fff;
+    overflow: visible;
+  }
+
+  body:has(.insight-article-page) {
+    page: insight-guide;
+    --bg: #fff;
+    --text: #111;
+    --muted: #333;
+    --brand: #111;
+    --link: #111;
+    --surface: #fff;
+    --surface-note: #fff;
+    --surface-note-border: #aaa;
+    --section-line: #aaa;
+    --card-border: #aaa;
+    --footer-bg: #fff;
+    --footer-text: #111;
+    --footer-muted: #333;
+    --footer-accent: #111;
+    margin: 0;
+    background: #fff;
+    color: #111;
+    font-size: 10.5pt;
+    line-height: 1.5;
+    overflow: visible;
+  }
+
+  body:has(.insight-article-page),
+  body:has(.insight-article-page) *,
+  body:has(.insight-article-page) *::before,
+  body:has(.insight-article-page) *::after {
+    transition: none !important;
+    animation: none !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  body:has(.insight-article-page) :is(.site-header, .skip-link, .privacy-banner,
+    .insight-back-link, .insight-table-of-contents, .insight-related-section,
+    .site-footer-top, .site-footer-meta, .footer-credential-logos) {
+    display: none !important;
+  }
+
+  body:has(.insight-article-page) :is(#page, .section, .insight-article-body, .site-footer) {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  /* Share one page flow so the last citation can stay with the disclosure footer. */
+  body:has(.insight-article-page) :is(#page, .insight-article-page, .insight-article-layout,
+    .insight-article-body, .insight-sources, .insight-sources > div) {
+    display: contents;
+  }
+
+  body:has(.insight-article-page) .insight-article-hero {
+    margin-bottom: 5mm;
+    break-inside: avoid;
+  }
+
+  body:has(.insight-article-page) .insight-print-site {
+    display: block;
+    margin-bottom: 3mm;
+    color: #111;
+    font-size: 10pt;
+    font-weight: 800;
+    text-decoration: none;
+  }
+
+  body:has(.insight-article-page) .insight-article-hero .section-eyebrow {
+    margin-bottom: 2mm;
+    color: #111;
+    font-size: 8pt;
+  }
+
+  body:has(.insight-article-page) h1 {
+    max-width: none;
+    margin: 0;
+    font-size: 24pt;
+    line-height: 1.05;
+  }
+
+  body:has(.insight-article-page) .insight-article-summary {
+    margin: 3mm 0;
+    font-size: 11pt;
+    line-height: 1.45;
+  }
+
+  body:has(.insight-article-page) .insight-article-meta {
+    gap: 2mm 4mm;
+    padding-top: 2mm;
+    font-size: 8.5pt;
+  }
+
+  body:has(.insight-article-page) .insight-article-notice {
+    margin-bottom: 5mm;
+    padding: 2.5mm 3mm;
+    font-size: 9pt;
+    line-height: 1.45;
+    break-inside: avoid;
+  }
+
+  body:has(.insight-article-page) .insight-article-body > section {
+    margin-top: 4mm;
+    padding: 4mm 0 0;
+  }
+
+  body:has(.insight-article-page) .insight-article-body > section:first-of-type {
+    margin-top: 0;
+    padding-top: 0;
+  }
+
+  body:has(.insight-article-page) :is(h1, h2, h3, .insight-section-number) {
+    break-after: avoid;
+  }
+
+  body:has(.insight-article-page) :is(p, li) {
+    orphans: 3;
+    widows: 3;
+  }
+
+  body:has(.insight-article-page) .insight-section-number {
+    margin-bottom: 2mm;
+    font-size: 8pt;
+  }
+
+  body:has(.insight-article-page) .insight-article-body h2 {
+    margin-bottom: 3mm;
+    font-size: 15pt;
+    line-height: 1.15;
+  }
+
+  body:has(.insight-article-page) .insight-sources > h2 {
+    margin-top: 5mm;
+  }
+
+  body:has(.insight-article-page) .insight-article-body > section > p:not(.insight-section-number):not(.content-source-note) {
+    margin-bottom: 2.5mm;
+    font-size: 10.5pt;
+    line-height: 1.45;
+  }
+
+  body:has(.insight-article-page) .insight-checklist {
+    margin-top: 3mm;
+    padding: 3mm 4mm;
+    box-decoration-break: clone;
+  }
+
+  body:has(.insight-article-page) .insight-checklist h3 {
+    margin-bottom: 2mm;
+    font-size: 9pt;
+  }
+
+  body:has(.insight-article-page) .insight-checklist ul {
+    display: block;
+  }
+
+  body:has(.insight-article-page) .insight-checklist li {
+    margin-bottom: 2mm;
+    padding-left: 4mm;
+    line-height: 1.45;
+    break-inside: avoid;
+  }
+
+  body:has(.insight-article-page) .insight-checklist li:last-child {
+    margin-bottom: 0;
+  }
+
+  body:has(.insight-article-page) .insight-checklist li::before {
+    top: 0.45em;
+    width: 7pt;
+    height: 7pt;
+  }
+
+  body:has(.insight-article-page) .insight-sources .content-source-note {
+    margin-top: 2mm;
+    padding: 2mm 3mm;
+    font-size: 8.5pt;
+    line-height: 1.4;
+    break-inside: avoid;
+    overflow-wrap: anywhere;
+  }
+
+  body:has(.insight-article-page) .insight-sources .content-source-note:last-child {
+    break-after: avoid;
+  }
+
+  body:has(.insight-article-page) .content-source-note a[href^="http"]::after {
+    display: block;
+    content: attr(href);
+    font-size: 8pt;
+    font-weight: 400;
+    overflow-wrap: anywhere;
+  }
+
+  body:has(.insight-article-page) .site-footer {
+    margin-top: 5mm;
+    padding-top: 3mm;
+    border-top: 1px solid #aaa;
+    break-before: avoid;
+    break-inside: avoid;
+  }
+
+  body:has(.insight-article-page) :is(.site-footer-main, .site-footer-compliance, .site-footer-brand) {
+    display: block;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    border: 0;
+  }
+
+  body:has(.insight-article-page) .site-footer .brokerage-disclosure-primary {
+    display: block;
+    font-size: 8pt;
+  }
+
+  body:has(.insight-article-page) .site-footer .brokerage-legal-name {
+    display: block;
+    font-size: 10pt;
+  }
+
+  body:has(.insight-article-page) .site-footer .brokerage-descriptor {
+    display: block;
+  }
+
+  body:has(.insight-article-page) .site-footer :is(.brokerage-descriptor, .agent-license-disclosure,
+    .brokerage-disclosure-primary a[href^="tel"], .fair-housing-notice p, .fair-housing-notice a) {
+    font-size: 8pt;
+    line-height: 1.4;
+  }
+
+  body:has(.insight-article-page) .fair-housing-notice {
+    margin-top: 3mm;
+    gap: 3mm;
+  }
+
+}

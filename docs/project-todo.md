@@ -749,6 +749,32 @@ analytics requests. No form was submitted. The owner confirmed the preview
 works and approved committing and publishing this addition on October 19.
 The original roadmap remains complete.
 
+## Owner-selected October 19 Form Disclosure Tabs
+
+The owner selected opening Privacy Policy and Terms of Service from the
+Contact and Newsletter forms in a new tab, preserving the current appearance.
+
+- [x] Set native new-tab destinations on only those four links, retain the
+  existing click tracking, and announce the new tab to screen readers without
+  changing visible link text or styling.
+- [x] Verify ordinary clicks and keyboard activation reach the legal pages
+  without replacing the original form document or losing entered values.
+  Preserve both checked and unchecked newsletter consent states.
+- [x] Check desktop/light and mobile/dark rendering, isolated new tabs without
+  an opener, and continued same-tab behavior for other disclosure links.
+
+Completed locally on October 19: all 270 unit tests, the production build, and
+152 browser/compliance checks passed. The 150 existing browser checks passed
+in the full run; both new cases passed on a targeted rerun after correcting
+test setup for Turnstile's dynamically inserted hidden field and opaque popup
+documents. Additional public-config preview checks at 1440 and 390 pixels
+found no page errors or horizontal overflow. The visible consent copy and
+form styling are unchanged. No real inquiry or subscription was sent for this
+navigation-only pass; the browser tests confirmed that following these links
+sent no form requests. The owner approved the preview and authorized committing
+and publishing this navigation change on October 19. The original roadmap
+remains complete.
+
 ## Owner-selected September 4 Maintenance
 
 - [x] Implement the seven confirmed audit corrections in source:

@@ -4,10 +4,18 @@ import { shouldHandleInternalNavigation } from "../internalNavigation";
 
 type Navigate = (path: string) => void;
 
-function InternalLink({ children, href, navigate }: { children: string; href: string; navigate: Navigate }) {
+function InternalLink({ children, href, navigate, newTab = false }: {
+  children: string;
+  href: string;
+  navigate: Navigate;
+  newTab?: boolean;
+}) {
   return (
     <a
       href={href}
+      target={newTab ? "_blank" : undefined}
+      rel={newTab ? "noopener noreferrer" : undefined}
+      aria-label={newTab ? `${children} (opens in a new tab)` : undefined}
       onClick={(event) => {
         trackLinkClick(href, children, "compliance_disclosure");
         if (!shouldHandleInternalNavigation(event)) return;
@@ -108,9 +116,9 @@ export function ContactConsent({ navigate }: { navigate: Navigate }) {
       By submitting this form, you authorize {compliance.agentLicensedName} and {compliance.brokerLegalName} to
       contact you by phone or email about this inquiry. This is not consent to receive automated or prerecorded
       marketing calls or texts. Submitting this form does not subscribe you to newsletters.{" "}
-      <InternalLink href="/privacy-policy" navigate={navigate}>Privacy Policy</InternalLink>
+      <InternalLink href="/privacy-policy" navigate={navigate} newTab>Privacy Policy</InternalLink>
       {" | "}
-      <InternalLink href="/terms-of-service" navigate={navigate}>Terms of Service</InternalLink>
+      <InternalLink href="/terms-of-service" navigate={navigate} newTab>Terms of Service</InternalLink>
     </p>
   );
 }
@@ -120,9 +128,9 @@ export function NewsletterConsent({ navigate }: { navigate: Navigate }) {
     <span>
       By subscribing, you agree to receive real-estate and local-information emails from {compliance.agentLicensedName}
       {" and "}{compliance.brokerLegalName}. You may unsubscribe at any time.{" "}
-      <InternalLink href="/privacy-policy" navigate={navigate}>Privacy Policy</InternalLink>
+      <InternalLink href="/privacy-policy" navigate={navigate} newTab>Privacy Policy</InternalLink>
       {" | "}
-      <InternalLink href="/terms-of-service" navigate={navigate}>Terms of Service</InternalLink>
+      <InternalLink href="/terms-of-service" navigate={navigate} newTab>Terms of Service</InternalLink>
     </span>
   );
 }

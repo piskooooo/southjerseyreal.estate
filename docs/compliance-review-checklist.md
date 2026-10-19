@@ -12,6 +12,17 @@ only the seven South Jersey counties as service areas. There is no active
 current-site compliance remediation. Quarterly reviews and review of any future
 feature remain ongoing safeguards, not open launch blockers.
 
+## October 19 Form Disclosure Navigation
+
+The owner selected new-tab Privacy Policy and Terms of Service links beside
+the Contact and Newsletter forms, with their current visible wording and
+appearance preserved. Local desktop/mobile checks confirm the original form
+and entered details remain intact, including newsletter consent state.
+Screen-reader labels announce the new tab. This is a navigation change;
+consent terms, submission handlers, and Turnstile behavior are unchanged.
+Implementation checks passed. The owner approved the preview and authorized
+committing and publishing this navigation change on October 19.
+
 ## Verified Public Facts
 
 Codex checked these values on July 18, 2026. They are centralized in `src/content/complianceData.json`.

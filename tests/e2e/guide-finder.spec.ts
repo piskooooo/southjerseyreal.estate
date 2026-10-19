@@ -4,6 +4,8 @@ import { insightArticles, insightIndex } from "../../src/content/insights";
 // Browser plugin not available; use the repository's configured Playwright browser.
 const guidePaths = insightIndex.articles.map((card) => card.href);
 const inspectionPath = "/insights/home-inspections-and-repair-questions";
+const agentGuidePath = "/insights/working-with-a-real-estate-agent-in-new-jersey";
+const inspectionNumber = String(guidePaths.indexOf(inspectionPath) + 1).padStart(2, "0");
 const cards = (page: Page) => page.locator("#guide-finder-results .insight-card");
 const titleLinks = (page: Page) => cards(page).locator("h2 a");
 const inputFor = (page: Page) => page.getByRole("searchbox", { name: "Find a guide", exact: true });
@@ -63,7 +65,7 @@ async function expectArticle(page: Page, path: string) {
 }
 
 // Partial published documents follow the same accepted merge path as the editor.
-function publishedLibrary() {
+function publishedLibrary(version = 2) {
   const index = structuredClone(insightIndex);
   const markers = guidePaths.map((_path, index) => `reviewedarchive${index + 1}record`);
   const articles = guidePaths.map((path, index) => {
@@ -77,7 +79,7 @@ function publishedLibrary() {
     return { path, article };
   });
   const rows = () => [
-    { page_key: "/insights", published_at: "2026-10-19T12:00:00Z", published_content: { insightIndex: index, insightIndexVersion: 1 } },
+    { page_key: "/insights", published_at: "2026-10-19T12:00:00Z", published_content: { insightIndex: index, insightIndexVersion: version } },
     ...articles.map(({ path, article }) => ({
       page_key: path, published_at: "2026-10-19T12:00:00Z",
       published_content: { insightArticle: article, insightContactLinksVersion: 1 },
@@ -89,15 +91,16 @@ function publishedLibrary() {
 test("finds full-article topics while preserving the existing cards and their original numbers", async ({ page }) => {
   await page.setViewportSize({ width: 1440, height: 1000 });
   const input = await openFinder(page);
-  await expect(cards(page)).toHaveCount(8);
+  await expect(cards(page)).toHaveCount(guidePaths.length);
+  expect(guidePaths).toContain(agentGuidePath);
   await expect(titleLinks(page)).toHaveText(insightIndex.articles.map((card) => card.title));
-  await expect(cards(page).locator(".insight-card-number")).toHaveText(["01", "02", "03", "04", "05", "06", "07", "08"]);
+  await expect(cards(page).locator(".insight-card-number")).toHaveText(guidePaths.map((_path, index) => String(index + 1).padStart(2, "0")));
   const originalCardWidth = await cards(page).first().evaluate((card) => card.getBoundingClientRect().width);
 
   await input.fill("radon");
   await expect(titleLinks(page)).toHaveCount(1);
   await expect(titleLinks(page)).toHaveAttribute("href", inspectionPath);
-  await expect(cards(page).locator(".insight-card-number")).toHaveText("04");
+  await expect(cards(page).locator(".insight-card-number")).toHaveText(inspectionNumber);
   const singleResult = await cards(page).evaluate((card) => ({
     cardWidth: card.getBoundingClientRect().width,
     gridWidth: card.closest("#guide-finder-results")!.getBoundingClientRect().width,
@@ -113,10 +116,10 @@ test("finds full-article topics while preserving the existing cards and their or
   expect(numbers).toEqual([...numbers].sort());
   await searchFor(page).getByRole("button", { name: "Clear", exact: true }).click();
   await expect(input).toBeFocused();
-  await expect(cards(page)).toHaveCount(8);
+  await expect(cards(page)).toHaveCount(guidePaths.length);
 });
 
-test("waits for one accepted library request and searches all eight published article bodies", async ({ page }) => {
+test("waits for one accepted library request and searches every published article body", async ({ page }) => {
   const library = publishedLibrary();
   let release!: () => void;
   const ready = new Promise<void>((resolve) => { release = resolve; });
@@ -129,7 +132,7 @@ test("waits for one accepted library request and searches all eight published ar
   await page.goto("/insights", { waitUntil: "domcontentloaded" });
   const input = inputFor(page);
   await expect(input).toBeDisabled();
-  await expect(cards(page)).toHaveCount(8);
+  await expect(cards(page)).toHaveCount(guidePaths.length);
   release();
   await expect(input).toBeEnabled();
   expect(requestedKeys).toHaveLength(1);
@@ -148,7 +151,7 @@ test("respects owner-removed cards and replaces retired body text with accepted 
   library.index.articles = library.index.articles.filter((card) => card.href !== inspectionPath);
   await page.route("**/rest/v1/site_pages?*", (route) => route.fulfill({ contentType: "application/json", body: JSON.stringify(library.rows()) }));
   const input = await openFinder(page);
-  await expect(cards(page)).toHaveCount(7);
+  await expect(cards(page)).toHaveCount(guidePaths.length - 1);
   await expect(page.locator(`#guide-finder-results .insight-card h2 a[href="${inspectionPath}"]`)).toHaveCount(0);
   for (const query of [library.markers[3], "radon", "post-closing reserves"]) {
     await input.fill(query);
@@ -158,6 +161,29 @@ test("respects owner-removed cards and replaces retired body text with accepted 
   await input.fill(library.markers[0]);
   await expect(titleLinks(page)).toHaveCount(1);
   await expect(titleLinks(page)).toHaveAttribute("href", guidePaths[0]);
+});
+
+test("upgrades version-one libraries with the agent guide while retaining owner order, edits and removals", async ({ page }) => {
+  const library = publishedLibrary(1);
+  const legacyCards = structuredClone(insightIndex.articles.filter((card) => card.href !== agentGuidePath));
+  [legacyCards[0], legacyCards[2]] = [legacyCards[2], legacyCards[0]];
+  legacyCards[0].title = "Owner's reviewed property research guide";
+  await page.route("**/rest/v1/site_pages?*", (route) => route.fulfill({ contentType: "application/json", body: JSON.stringify(library.rows()) }));
+  for (const removeInspection of [false, true]) {
+    library.index.articles = legacyCards.filter((card) => !removeInspection || card.href !== inspectionPath);
+    const input = await openFinder(page);
+    await input.fill("");
+    const expectedPaths = [...library.index.articles.map((card) => card.href), agentGuidePath];
+    await expect(cards(page)).toHaveCount(expectedPaths.length);
+    expect(await titleLinks(page).evaluateAll((links) => links.map((link) => link.getAttribute("href")))).toEqual(expectedPaths);
+    await expect(titleLinks(page).first()).toHaveText(legacyCards[0].title);
+    if (removeInspection) {
+      await expect(page.locator(`#guide-finder-results .insight-card h2 a[href="${inspectionPath}"]`)).toHaveCount(0);
+    }
+    await input.fill(library.markers[guidePaths.indexOf(agentGuidePath)]);
+    await expect(titleLinks(page)).toHaveCount(1);
+    await expect(titleLinks(page)).toHaveAttribute("href", agentGuidePath);
+  }
 });
 
 test("keeps queries local, preserves history state, and supports keyboard and Clear at 320px", async ({ page }) => {
@@ -187,7 +213,7 @@ test("keeps queries local, preserves history state, and supports keyboard and Cl
   await input.press("Escape");
   await expect(input).toHaveValue("");
   await expect(input).toBeFocused();
-  await expect(cards(page)).toHaveCount(8);
+  await expect(cards(page)).toHaveCount(guidePaths.length);
   const query = "SJRE private guide search fixture 27386";
   await input.fill(query);
   await expect(cards(page)).toHaveCount(0);
@@ -206,7 +232,7 @@ test("keeps queries local, preserves history state, and supports keyboard and Cl
   await searchFor(page).getByRole("button", { name: "Clear", exact: true }).click();
   await expect(input).toHaveValue("");
   await expect(input).toBeFocused();
-  await expect(cards(page)).toHaveCount(8);
+  await expect(cards(page)).toHaveCount(guidePaths.length);
 });
 
 for (const scenario of [
@@ -244,7 +270,7 @@ for (const scenario of [
     await page.locator(".insight-back-link").click();
     await expect(input).toBeEnabled();
     await expect(input).toHaveValue("");
-    await expect(cards(page)).toHaveCount(8);
+    await expect(cards(page)).toHaveCount(guidePaths.length);
     await input.fill("radon");
     await titleLinks(page).click();
     await expectArticle(page, inspectionPath);
@@ -291,5 +317,5 @@ test("modified and middle clicks open the original guide while leaving its searc
   await openNatively(page, titleLinks(page), "modified");
   await openNatively(page, cards(page).locator(".insight-read-link"), "middle");
   await expect(input).toHaveValue("radon");
-  await expect(cards(page).locator(".insight-card-number")).toHaveText("04");
+  await expect(cards(page).locator(".insight-card-number")).toHaveText(inspectionNumber);
 });

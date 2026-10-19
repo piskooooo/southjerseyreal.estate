@@ -19,8 +19,9 @@ describe("guide finder full-text coverage", () => {
     ["daytime showing", "/insights/questions-before-choosing-a-community"],
     ["back-bay", "/insights/coastal-property-due-diligence"],
     ["untreated-water", "/insights/wells-septic-acreage-and-environmental-constraints"],
+    ["exclusivity", "/insights/working-with-a-real-estate-agent-in-new-jersey"],
   ])("finds %s inside the complete guide text", (query, expectedHref) => {
-    expect(entries).toHaveLength(8);
+    expect(entries).toHaveLength(9);
     expect(resultHrefs(query)).toEqual([expectedHref]);
   });
 

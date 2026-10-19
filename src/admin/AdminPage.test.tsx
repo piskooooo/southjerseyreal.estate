@@ -44,7 +44,7 @@ describe("administrator article navigation", () => {
     const navigation = await screen.findByRole("navigation", { name: "Website editor sections" });
     const articles = managedPageSeeds.filter((document) => document.insightArticle);
 
-    expect(articles).toHaveLength(8);
+    expect(articles).toHaveLength(9);
     for (const article of articles) {
       await user.click(within(navigation).getByRole("button", { name: article.insightArticle!.title }));
       expect(screen.getByTestId("selected-document")).toHaveTextContent(article.page.path);

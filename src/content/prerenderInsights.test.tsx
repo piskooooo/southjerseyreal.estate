@@ -82,9 +82,9 @@ function expectArticle(element: HTMLElement, article: InsightArticleContent) {
 }
 
 describe("Insights prerender", () => {
-  it("renders the complete eight-guide directory with its accepted card content", () => {
+  it("renders the complete nine-guide directory with its accepted card content", () => {
     const value = seed("/insights");
-    expect(value.insightIndex!.articles).toHaveLength(8);
+    expect(value.insightIndex!.articles).toHaveLength(9);
     expectIndex(parse(value), value.insightIndex!);
   });
 

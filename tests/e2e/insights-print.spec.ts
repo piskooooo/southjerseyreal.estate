@@ -1,10 +1,11 @@
 import { expect, test, type Page } from "@playwright/test";
 import { readFileSync } from "node:fs";
-import { insightArticles } from "../../src/content/insights";
+import { insightArticles, insightIndex } from "../../src/content/insights";
 
 // Browser plugin not available; use the repository's configured Playwright browser.
 // Flow: open any guide -> browser Print / Save as PDF -> complete paper copy -> return to the same screen layout.
-const guidePaths = Object.keys(insightArticles);
+const guidePaths = insightIndex.articles.map((card) => card.href);
+const agentGuidePath = "/insights/working-with-a-real-estate-agent-in-new-jersey";
 const canonicalSiteUrl = "https://southjerseyreal.estate";
 const compliance = JSON.parse(readFileSync(
   new URL("../../src/content/complianceData.json", import.meta.url), "utf8",
@@ -115,17 +116,22 @@ for (const { width, theme, paper } of [
   { width: 1440, theme: "light", paper: "Letter" },
   { width: 390, theme: "dark", paper: "A4" },
 ] as const) {
-  test(`all eight guides print complete, readable ${paper} copies from ${theme} and restore their ${width}px screen layout`, async ({ page }) => {
+  test(`all published guides print complete, readable ${paper} copies from ${theme} and restore their ${width}px screen layout`, async ({ page }) => {
     const errors: string[] = [];
     page.on("pageerror", (error) => errors.push(error.message));
     await page.setViewportSize({ width, height: 1000 });
     await page.addInitScript((selectedTheme) => {
       localStorage.setItem("analytics-consent", "denied");
       localStorage.setItem("site-theme", selectedTheme);
+      const observed = window as Window & { guidePrintCalls: number };
+      observed.guidePrintCalls = 0;
+      observed.print = () => { observed.guidePrintCalls += 1; };
     }, theme);
     await page.route("**/rest/v1/site_pages?*", (route) => route.fulfill({ contentType: "application/json", body: "[]" }));
 
-    expect(guidePaths).toHaveLength(8);
+    expect(Object.keys(insightArticles)).toHaveLength(guidePaths.length);
+    expect(new Set(guidePaths)).toEqual(new Set(Object.keys(insightArticles)));
+    expect(guidePaths).toContain(agentGuidePath);
     for (const path of guidePaths) {
       await page.goto(path, { waitUntil: "domcontentloaded" });
       await expect(page.locator('[data-seo-prerendered="true"]')).toHaveCount(0);
@@ -133,6 +139,12 @@ for (const { width, theme, paper } of [
       await page.evaluate(() => document.fonts.ready);
       await expect(page.locator("body")).toHaveCSS("background-color", theme === "light" ? "rgb(255, 255, 255)" : "rgb(10, 14, 20)");
       await expect(page.locator(".insight-print-site")).toBeHidden();
+      const printAction = page.getByRole("button", { name: "Print / save PDF", exact: true });
+      await expect(printAction).toBeVisible();
+      if (path === agentGuidePath) {
+        await printAction.click();
+        expect(await page.evaluate(() => (window as Window & { guidePrintCalls: number }).guidePrintCalls)).toBe(1);
+      }
       const before = await screenSnapshot(page);
       await page.emulateMedia({ media: "print" });
       await expectPrintedContent(page, path);

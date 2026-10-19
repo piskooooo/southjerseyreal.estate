@@ -18,7 +18,7 @@ afterEach(() => {
 });
 
 describe("public content availability", () => {
-  it("loads the guide index and all eight full article documents in one request", async () => {
+  it("loads the guide index and all nine full article documents in one request", async () => {
     vi.stubEnv("VITE_SUPABASE_URL", "https://test-project.supabase.co");
     vi.stubEnv("VITE_SUPABASE_PUBLISHABLE_KEY", "fixture-public-key");
     const fetchContent = vi.fn(async (_url: string) => ({ ok: true, json: async () => [] }));
@@ -28,7 +28,7 @@ describe("public content availability", () => {
 
     expect(await loadPublishedSiteContent("/insights")).toEqual(seedPublicSiteContent());
 
-    expect(articlePaths).toHaveLength(8);
+    expect(articlePaths).toHaveLength(9);
     expect(fetchContent).toHaveBeenCalledTimes(1);
     expect(new URL(fetchContent.mock.calls[0][0]).searchParams.get("page_key"))
       .toBe(`in.(${[SITEWIDE_CONTENT_KEY, "/insights", ...articlePaths].join(",")})`);

@@ -842,6 +842,44 @@ configured Playwright Chrome browser. The owner confirmed the preview works
 and authorized committing and publishing the change on October 19. The
 original roadmap remains complete.
 
+## Owner-selected October 19 Ninth Insights Guide
+
+The owner selected `Working with a Real Estate Agent in New Jersey: Benefits,
+Costs, and Your Choices`, preserving the current article and directory design.
+
+- [x] Write eight structured sections explaining the choice to hire an agent,
+  concrete services, five brokerage relationships, written agreements,
+  negotiable compensation and payment shortfalls, tradeoffs, specialist roles,
+  and interview questions. Include nine dated primary sources and existing
+  buyer, seller, inspection, and Contact links without promising outcomes or
+  presenting an agent as a substitute for an attorney or inspector.
+- [x] Add the ninth card, complete full-text search coverage, private-editor
+  support, initial article HTML, metadata, Article schema, breadcrumbs, and
+  sitemap discovery. Reuse the existing mobile contents menu and Print / save
+  PDF action; no layout or stylesheet changes are required.
+- [x] Add only the new card when upgrading an eight-guide published index.
+  Preserve prior edits, order, and removals, and preserve removal of the ninth
+  card after the current version is saved. Correct only the buyer primer's
+  exact older agency paragraph and source note; preserve custom content,
+  removed sections/sources, and custom review dates.
+- [x] Finish local unit, build, browser/compliance, responsive, and print checks.
+
+Completed locally on October 19: all 305 unit tests and the production build
+passed, with complete initial HTML for 31 public routes. The browser run passed
+168 of 170 cases; two test expectations were updated for the buyer primer's
+new review date and the correctly retained search, then both passed a focused
+rerun. All 170 cases are verified, including the ninth guide's search, HTML,
+metadata, section links, printing, and saved-library behavior. Additional
+1440-pixel light and 390-pixel dark preview checks found no page errors or
+horizontal overflow. Mobile section navigation places the selected section
+below both sticky bars. All five pages of both Letter and A4 PDF previews were
+rendered and visually reviewed, including the website name and disclosures.
+Evidence remains outside the repository. Browser plugin not available;
+validation used configured Playwright Chrome. PDF review used macOS PDFKit
+because Poppler was unavailable. No form was submitted and no stylesheet was
+changed. The owner reviewed the actual preview and approved committing and
+publishing the guide on October 19. The original roadmap remains complete.
+
 ## Owner-selected September 4 Maintenance
 
 - [x] Implement the seven confirmed audit corrections in source:

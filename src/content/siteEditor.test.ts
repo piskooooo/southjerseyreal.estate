@@ -1,4 +1,13 @@
 import { describe, expect, it } from "vitest";
+import {
+  buyerAgencyParagraph,
+  buyerAgencyReviewDate,
+  buyerAgencySource,
+  buyerGuidePath,
+  legacyBuyerAgencyParagraph,
+  legacyBuyerAgencySource,
+  previousBuyerReviewDate,
+} from "./buyerAgencyRevision";
 import legacySummaries from "./legacyCommunitySummaries.json";
 import { countyNav } from "./navigation";
 import {
@@ -426,7 +435,7 @@ describe("website editor content normalization", () => {
       "/insights/new-jersey-homebuying-process",
     ) as ManagedPageDocument;
 
-    expect(hub.insightIndex?.articles).toHaveLength(8);
+    expect(hub.insightIndex?.articles).toHaveLength(9);
     expect(article.insightArticle?.sections.length).toBeGreaterThanOrEqual(5);
     expect(article.insightArticle?.author).toBe("Arthur Pisko Jr.");
     expect(article.insightArticle?.sources.every((source) => source.tag === "SOURCE")).toBe(true);
@@ -451,11 +460,99 @@ describe("website editor content normalization", () => {
     olderIndex.insightIndex!.articles[0].title = "Owner's guide title";
 
     const normalized = normalizeManagedContent("/insights", olderIndex) as ManagedPageDocument;
-    expect(normalized.insightIndex?.articles).toHaveLength(8);
+    expect(normalized.insightIndex?.articles).toHaveLength(9);
     expect(normalized.insightIndex?.articles.map((article) => article.href)).toContain(
       "/insights/coastal-property-due-diligence",
     );
     expect(normalized.insightIndex?.articles[0].title).toBe("Owner's guide title");
+  });
+
+  it("adds the ninth guide to the complete version-one library and updates its legacy buyer review date", () => {
+    const seed = managedContentSeeds.get("/insights") as ManagedPageDocument;
+    const legacy = structuredClone(seed);
+    legacy.insightIndexVersion = 1;
+    legacy.insightIndex!.articles = legacy.insightIndex!.articles.filter((card) => (
+      card.href !== "/insights/working-with-a-real-estate-agent-in-new-jersey"
+    ));
+    legacy.insightIndex!.articles.find((card) => card.href === buyerGuidePath)!.reviewedDate = previousBuyerReviewDate;
+    expect(legacy.insightIndex!.articles).toHaveLength(8);
+    const original = structuredClone(legacy);
+
+    const normalized = normalizeManagedContent("/insights", legacy) as ManagedPageDocument;
+    expect(normalized.insightIndex).toEqual(seed.insightIndex);
+    expect(normalized.insightIndexVersion).toBe(2);
+    expect(legacy).toEqual(original);
+    expect(normalizeManagedContent("/insights", structuredClone(normalized))).toEqual(normalized);
+  });
+
+  it("appends only the ninth card while retaining version-one custom cards, order, and old-guide removals", () => {
+    const legacy = structuredClone(managedContentSeeds.get("/insights")) as ManagedPageDocument;
+    legacy.insightIndexVersion = 1;
+    const cards = legacy.insightIndex!.articles;
+    const newCard = structuredClone(cards.find((card) => (
+      card.href === "/insights/working-with-a-real-estate-agent-in-new-jersey"
+    ))!);
+    legacy.insightIndex!.title = "Owner's selected reading library";
+    legacy.insightIndex!.articles = [
+      { ...cards[6], title: "Owner's coastal questions", summary: "Owner-reviewed coastal reading notes." },
+      { ...cards[1], reviewedDate: "2026-09-04" },
+      { ...cards[2], href: "/contact", title: "Ask about a property" },
+    ];
+    const original = structuredClone(legacy);
+
+    const normalized = normalizeManagedContent("/insights", legacy) as ManagedPageDocument;
+    expect(normalized.insightIndex).toEqual({
+      ...original.insightIndex,
+      articles: [...original.insightIndex!.articles, newCard],
+    });
+    expect(normalized.insightIndexVersion).toBe(2);
+    expect(legacy).toEqual(original);
+    expect(normalizeManagedContent("/insights", structuredClone(normalized))).toEqual(normalized);
+  });
+
+  it("keeps a version-one owner's existing ninth card without duplicating or replacing it", () => {
+    const legacy = structuredClone(managedContentSeeds.get("/insights")) as ManagedPageDocument;
+    legacy.insightIndexVersion = 1;
+    const cards = legacy.insightIndex!.articles;
+    const newCard = cards.find((card) => card.href === "/insights/working-with-a-real-estate-agent-in-new-jersey")!;
+    legacy.insightIndex!.articles = [
+      { ...newCard, title: "Owner's representation guide", reviewedDate: "2026-10-20" },
+      cards[3],
+    ];
+    const original = structuredClone(legacy);
+
+    const normalized = normalizeManagedContent("/insights", legacy) as ManagedPageDocument;
+    expect(normalized).toEqual({ ...original, insightIndexVersion: 2 });
+    expect(legacy).toEqual(original);
+    expect(normalizeManagedContent("/insights", structuredClone(normalized))).toEqual(normalized);
+  });
+
+  it.each(["ninth card", "entire library"])("preserves a version-two removal of the %s", (removal) => {
+    const draft = structuredClone(managedContentSeeds.get("/insights")) as ManagedPageDocument;
+    draft.insightIndexVersion = 2;
+    draft.insightIndex!.articles = removal === "entire library" ? [] : draft.insightIndex!.articles.filter((card) => (
+      card.href !== "/insights/working-with-a-real-estate-agent-in-new-jersey"
+    ));
+    const original = structuredClone(draft);
+
+    const normalized = normalizeManagedContent("/insights", draft) as ManagedPageDocument;
+    expect(normalized).toEqual(original);
+    expect(draft).toEqual(original);
+    expect(normalizeManagedContent("/insights", structuredClone(normalized))).toEqual(normalized);
+  });
+
+  it("makes the ninth sourced article publishable and keeps its contact link owner-editable", () => {
+    const path = "/insights/working-with-a-real-estate-agent-in-new-jersey";
+    const document = structuredClone(managedContentSeeds.get(path)) as ManagedPageDocument;
+    expect(document.page.path).toBe(path);
+    expect(document.insightArticle!.sections.length).toBeGreaterThanOrEqual(5);
+    expect(document.insightArticle!.sources.length).toBeGreaterThanOrEqual(2);
+    expect(document.insightArticle!.relatedLinks).toContainEqual(expect.objectContaining({ href: "/contact" }));
+    expect(() => validateManagedContentForPublish(path, document)).not.toThrow();
+    expect(normalizeManagedContent(path, structuredClone(document))).toEqual(document);
+
+    document.insightArticle!.relatedLinks = document.insightArticle!.relatedLinks.filter((link) => link.href !== "/contact");
+    expect(normalizeManagedContent(path, structuredClone(document))).toEqual(document);
   });
 
   it("adds contact links once to the six research guides while preserving owner reading links and later removals", () => {
@@ -695,5 +792,101 @@ describe("website editor content normalization", () => {
     const invalidDate = structuredClone(sourced);
     invalidDate.page.sections[1].blocks.at(-1)!.accessed = "2026-02-30";
     expect(() => validateManagedContentForPublish("/gloucester-county", invalidDate)).toThrow(/valid accessed date/i);
+  });
+});
+
+describe("buyer-guide agency correction", () => {
+  const legacyBuyerDocument = () => {
+    const document = structuredClone(managedContentSeeds.get(buyerGuidePath)) as ManagedPageDocument;
+    const article = document.insightArticle!;
+    const section = article.sections.find((section) => section.heading === "Understand who represents whom")!;
+    section.paragraphs[0] = legacyBuyerAgencyParagraph;
+    article.sources = article.sources.map((source) => source.href === buyerAgencySource.href
+      ? structuredClone(legacyBuyerAgencySource)
+      : source);
+    article.reviewedDate = previousBuyerReviewDate;
+    return document;
+  };
+
+  it("corrects exact legacy agency copy, source and review date while preserving the publication date and other details", () => {
+    const legacy = legacyBuyerDocument();
+    legacy.insightArticle!.sections[0].checklist.push("Owner's additional budget research detail.");
+    const original = structuredClone(legacy);
+    const expected = structuredClone(original);
+    const article = expected.insightArticle!;
+    article.sections.find((section) => section.heading === "Understand who represents whom")!.paragraphs[0] = buyerAgencyParagraph;
+    article.sources[article.sources.findIndex((source) => source.href === legacyBuyerAgencySource.href)] = structuredClone(buyerAgencySource);
+    article.reviewedDate = buyerAgencyReviewDate;
+
+    const normalized = normalizeManagedContent(buyerGuidePath, legacy) as ManagedPageDocument;
+    expect(normalized).toEqual(expected);
+    expect(normalized.insightArticle!.publishedDate).toBe(original.insightArticle!.publishedDate);
+    expect(legacy).toEqual(original);
+    expect(normalizeManagedContent(buyerGuidePath, structuredClone(normalized))).toEqual(normalized);
+  });
+
+  it("preserves custom agency prose, source labels and dates without relabeling them as newly reviewed", () => {
+    const draft = legacyBuyerDocument();
+    const article = draft.insightArticle!;
+    article.sections.find((section) => section.heading === "Understand who represents whom")!.paragraphs[0] =
+      "Owner's explanation of brokerage relationships and questions to discuss.";
+    const source = article.sources.find((source) => source.href === legacyBuyerAgencySource.href)!;
+    source.text = "Owner's selected agency reference";
+    source.accessed = "2026-09-04";
+    const original = structuredClone(draft);
+
+    expect(normalizeManagedContent(buyerGuidePath, draft)).toEqual(original);
+    expect(draft).toEqual(original);
+  });
+
+  it.each([
+    { field: "label", source: { ...legacyBuyerAgencySource, text: "Owner's agency source label" } },
+    { field: "access date", source: { ...legacyBuyerAgencySource, accessed: "2026-09-04" } },
+  ])("preserves a changed source $field when correcting otherwise exact legacy prose", ({ source }) => {
+    const draft = legacyBuyerDocument();
+    draft.insightArticle!.sources = draft.insightArticle!.sources.map((note) => note.href === legacyBuyerAgencySource.href
+      ? structuredClone(source)
+      : note);
+    const original = structuredClone(draft);
+
+    const normalized = normalizeManagedContent(buyerGuidePath, draft) as ManagedPageDocument;
+    expect(normalized.insightArticle!.sections.flatMap((section) => section.paragraphs)).toContain(buyerAgencyParagraph);
+    expect(normalized.insightArticle!.sources).toEqual(original.insightArticle!.sources);
+    expect(normalized.insightArticle!.reviewedDate).toBe(buyerAgencyReviewDate);
+    expect(draft).toEqual(original);
+  });
+
+  it("does not recreate an owner-removed agency section or change its remaining source notes", () => {
+    const draft = legacyBuyerDocument();
+    draft.insightArticle!.sections = draft.insightArticle!.sections.filter((section) => section.heading !== "Understand who represents whom");
+    const original = structuredClone(draft);
+
+    expect(normalizeManagedContent(buyerGuidePath, draft)).toEqual(original);
+    expect(draft).toEqual(original);
+  });
+
+  it("does not restore removed sources while correcting exact legacy agency prose", () => {
+    const draft = legacyBuyerDocument();
+    draft.insightArticle!.sources = [];
+    const original = structuredClone(draft);
+
+    const normalized = normalizeManagedContent(buyerGuidePath, draft) as ManagedPageDocument;
+    expect(normalized.insightArticle!.sections.flatMap((section) => section.paragraphs)).toContain(buyerAgencyParagraph);
+    expect(normalized.insightArticle!.sources).toEqual([]);
+    expect(draft).toEqual(original);
+    expect(normalizeManagedContent(buyerGuidePath, structuredClone(normalized))).toEqual(normalized);
+  });
+
+  it("preserves a custom review date when correcting the exact legacy paragraph and source", () => {
+    const draft = legacyBuyerDocument();
+    draft.insightArticle!.reviewedDate = "2026-10-20";
+    const original = structuredClone(draft);
+
+    const normalized = normalizeManagedContent(buyerGuidePath, draft) as ManagedPageDocument;
+    expect(normalized.insightArticle!.sections.flatMap((section) => section.paragraphs)).toContain(buyerAgencyParagraph);
+    expect(normalized.insightArticle!.sources).toContainEqual(buyerAgencySource);
+    expect(normalized.insightArticle!.reviewedDate).toBe("2026-10-20");
+    expect(normalized.insightArticle!.publishedDate).toBe(original.insightArticle!.publishedDate);
+    expect(draft).toEqual(original);
   });
 });

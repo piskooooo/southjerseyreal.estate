@@ -123,6 +123,7 @@ const breadcrumbParentByPath = new Map<string, string>([
   ["/insights/questions-before-choosing-a-community", "/insights"],
   ["/insights/coastal-property-due-diligence", "/insights"],
   ["/insights/wells-septic-acreage-and-environmental-constraints", "/insights"],
+  ["/insights/working-with-a-real-estate-agent-in-new-jersey", "/insights"],
 ]);
 
 const breadcrumbLabelByPath = new Map<string, string>([

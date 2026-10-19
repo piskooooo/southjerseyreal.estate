@@ -1,4 +1,6 @@
 import type { ContentBlock } from "./types";
+import { workingWithAgentGuide, workingWithAgentGuidePath } from "./workingWithAgentGuide";
+import { buyerAgencyParagraph, buyerAgencyReviewDate, buyerAgencySource } from "./buyerAgencyRevision";
 
 export type InsightCard = {
   category: string;
@@ -52,7 +54,7 @@ export const insightIndex: InsightIndexContent = {
     {
       category: "Buying",
       href: "/insights/new-jersey-homebuying-process",
-      reviewedDate: libraryReviewDate,
+      reviewedDate: buyerAgencyReviewDate,
       summary: "A step-by-step view of readiness, representation, offers, due diligence, financing documents, and closing.",
       title: "A First Look at the New Jersey Homebuying Process",
     },
@@ -105,6 +107,13 @@ export const insightIndex: InsightIndexContent = {
       summary: "A research guide for homes with private wells, septic systems, acreage, wetlands, Pinelands context, or other land-use questions.",
       title: "Homes with Wells, Septic Systems, Acreage, or Environmental Constraints",
     },
+    {
+      category: workingWithAgentGuide.category,
+      href: workingWithAgentGuidePath,
+      reviewedDate: workingWithAgentGuide.reviewedDate,
+      summary: workingWithAgentGuide.summary,
+      title: workingWithAgentGuide.title,
+    },
   ],
 };
 
@@ -116,7 +125,7 @@ export const insightArticles: Record<string, InsightArticleContent> = {
     notice: "This guide is general educational information, not legal, tax, insurance, inspection, lending, or financial advice. A particular transaction may require guidance from the appropriate licensed professionals.",
     publishedDate: originalLibraryDate,
     readingTime: "8 minute read",
-    reviewedDate: libraryReviewDate,
+    reviewedDate: buyerAgencyReviewDate,
     summary: "Buying a home is easier to follow when the financial, representation, property, contract, and closing decisions are treated as separate checkpoints.",
     title: "A First Look at the New Jersey Homebuying Process",
     sections: [
@@ -135,7 +144,7 @@ export const insightArticles: Record<string, InsightArticleContent> = {
       {
         heading: "Understand who represents whom",
         paragraphs: [
-          "The New Jersey Real Estate Commission identifies four brokerage relationships: seller's agent, buyer's agent, disclosed dual agent, and transaction broker. The Consumer Information Statement explains these roles and the duties attached to each one.",
+          buyerAgencyParagraph,
           "Read the relationship disclosure before sharing confidential negotiating information. Ask what services will be provided, how compensation works, what choices remain yours, and how any possible dual-agency situation would be handled.",
         ],
         checklist: [
@@ -183,7 +192,7 @@ export const insightArticles: Record<string, InsightArticleContent> = {
     ],
     sources: [
       { tag: "SOURCE", text: "Consumer Financial Protection Bureau — Your home loan toolkit", href: "https://www.consumerfinance.gov/owning-a-home/explore/home-loan-toolkit/", accessed: libraryReviewDate },
-      { tag: "SOURCE", text: "New Jersey Department of Banking and Insurance — Real Estate Consumer Information", href: "https://www.nj.gov/dobi/division_consumers/realestate/re_menu.htm", accessed: libraryReviewDate },
+      buyerAgencySource,
       { tag: "SOURCE", text: "Consumer Financial Protection Bureau — Review documents before closing", href: "https://www.consumerfinance.gov/owning-a-home/close/review-documents-before-closing/", accessed: libraryReviewDate },
     ],
     relatedLinks: [
@@ -714,4 +723,5 @@ export const insightArticles: Record<string, InsightArticleContent> = {
       { label: "Discuss your home search", href: "/contact" },
     ],
   },
+  [workingWithAgentGuidePath]: workingWithAgentGuide,
 };

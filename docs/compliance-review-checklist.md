@@ -12,6 +12,32 @@ only the seven South Jersey counties as service areas. There is no active
 current-site compliance remediation. Quarterly reviews and review of any future
 feature remain ongoing safeguards, not open launch blockers.
 
+## October 19 Representation Guide Preview
+
+The owner selected a ninth guide, `Working with a Real Estate Agent in New
+Jersey: Benefits, Costs, and Your Choices`, with a balanced explanation of
+services, compensation, representation, agreements, tradeoffs, and specialist
+roles. The draft uses dated New Jersey Legislature, Real Estate Commission,
+NAR, and CFPB sources checked October 19. The Commission's current guidance
+and its 2025 and 2026 bulletin indexes were checked; this is not a certification
+that every later legal development has been independently reviewed.
+
+The draft distinguishes choosing whether to hire representation from the
+obligations of a signed agreement, and New Jersey's agreement requirements
+from NAR's separate pre-tour rules. It explains five brokerage relationships,
+negotiable compensation and payment shortfalls, and the limits of an agent's
+role. It does not promise protection, savings, outcomes, or legal advice, and
+adds no new claim about the author's credentials or membership. The existing
+buyer primer's exact older four-relationship paragraph and untouched source
+note are corrected to the current five-relationship statement; custom wording,
+source edits, and removed sections are preserved.
+
+Status: source, implementation, and owner preview review complete. The owner
+approved committing and publishing the guide on October 19. No brokerage, office,
+license, form-consent, provider, or fair-housing disclosures are changed. This
+entry records the selected editorial work; it does not reopen the completed
+roadmap or assert a new broker/counsel approval.
+
 ## October 19 Form Disclosure Navigation
 
 The owner selected new-tab Privacy Policy and Terms of Service links beside

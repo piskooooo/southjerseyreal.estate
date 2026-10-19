@@ -1,6 +1,7 @@
 import AxeBuilder from "@axe-core/playwright";
 import { expect, test, type Page } from "@playwright/test";
 import { readFileSync } from "node:fs";
+import { insightIndex } from "../../src/content/insights";
 
 const readJson = <T,>(relativePath: string): T => JSON.parse(
   readFileSync(new URL(relativePath, import.meta.url), "utf8"),
@@ -231,7 +232,7 @@ test("prerendered breadcrumbs use the site hierarchy and omit a one-item home tr
 test("Insights publishes an editable guide library with article metadata and sources", async ({ page }) => {
   await openHydratedRoute(page, "/insights");
   await expect(page.getByRole("heading", { level: 1, name: "South Jersey Real Estate Guides" })).toBeVisible();
-  await expect(page.locator(".insight-card")).toHaveCount(8);
+  await expect(page.locator(".insight-card")).toHaveCount(insightIndex.articles.length);
 
   await page.getByRole("link", { name: "A First Look at the New Jersey Homebuying Process" }).click();
   await expect(page).toHaveURL(/\/insights\/new-jersey-homebuying-process$/);
@@ -239,13 +240,13 @@ test("Insights publishes an editable guide library with article metadata and sou
   await expect(page.locator(".content-source-note")).toHaveCount(3);
   await expect(page.locator('meta[property="og:type"]')).toHaveAttribute("content", "article");
   await expect(page.locator('meta[property="article:published_time"]')).toHaveAttribute("content", "2026-07-25");
-  await expect(page.locator('meta[property="article:modified_time"]')).toHaveAttribute("content", "2026-08-10");
+  await expect(page.locator('meta[property="article:modified_time"]')).toHaveAttribute("content", "2026-10-19");
 
   const structuredData = JSON.parse(await page.locator("#structured-data").textContent() || "{}") as Record<string, unknown>;
   const graph = structuredData["@graph"] as Array<Record<string, unknown>>;
   expect(graph.find((item) => item["@type"] === "Article")).toMatchObject({
     headline: "A First Look at the New Jersey Homebuying Process",
-    dateModified: "2026-08-10",
+    dateModified: "2026-10-19",
   });
 });
 

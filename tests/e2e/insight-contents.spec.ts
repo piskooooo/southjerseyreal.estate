@@ -1,5 +1,5 @@
 import { expect, test, type Locator, type Page } from "@playwright/test";
-import { insightArticles } from "../../src/content/insights";
+import { insightArticles, insightIndex } from "../../src/content/insights";
 
 // Browser plugin not available; use the repository's configured Playwright browser.
 const articlePath = "/insights/new-jersey-homebuying-process";
@@ -50,11 +50,13 @@ async function expectMenuContained(page: Page, menu: Locator) {
   expect(await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth)).toBeLessThanOrEqual(1);
 }
 
-test("all eight articles retain native section links and the full desktop contents list", async ({ page }) => {
+test("all published articles retain native section links and the full desktop contents list", async ({ page }) => {
   await page.setViewportSize({ width: 1440, height: 1000 });
   const errors: string[] = [];
   page.on("pageerror", (error) => errors.push(error.message));
-  expect(Object.keys(insightArticles)).toHaveLength(8);
+  expect(Object.keys(insightArticles)).toHaveLength(insightIndex.articles.length);
+  expect(new Set(Object.keys(insightArticles))).toEqual(new Set(insightIndex.articles.map((card) => card.href)));
+  expect(Object.keys(insightArticles)).toContain("/insights/working-with-a-real-estate-agent-in-new-jersey");
   for (const [path, article] of Object.entries(insightArticles)) {
     const navigation = await openArticle(page, path);
     const desktop = navigation.locator(".insight-contents-desktop");

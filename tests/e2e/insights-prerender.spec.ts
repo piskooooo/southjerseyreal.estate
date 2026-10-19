@@ -3,6 +3,7 @@ import { insightArticles, insightIndex } from "../../src/content/insights";
 
 // Browser plugin not available; use the repository's configured Playwright browser.
 const buyerPath = "/insights/new-jersey-homebuying-process";
+const agentGuidePath = "/insights/working-with-a-real-estate-agent-in-new-jersey";
 const dateLabel = (stamp: string) => new Intl.DateTimeFormat("en-US", {
   day: "numeric", month: "long", year: "numeric", timeZone: "UTC",
 }).format(new Date(`${stamp}T00:00:00Z`));
@@ -96,12 +97,13 @@ async function expectSingleCompletePage(page: Page) {
   expect(new Set(ids).size).toBe(ids.length);
 }
 
-test("all nine Insights routes serve their complete accepted content in the initial HTML", async ({ browser, baseURL }) => {
+test("all published Insights routes serve their complete accepted content in the initial HTML", async ({ browser, baseURL }) => {
   const context = await browser.newContext({ baseURL, javaScriptEnabled: false });
   try {
     const page = await context.newPage();
-    expect(insightIndex.articles).toHaveLength(8);
-    expect(Object.keys(insightArticles)).toHaveLength(8);
+    expect(Object.keys(insightArticles)).toHaveLength(insightIndex.articles.length);
+    expect(new Set(Object.keys(insightArticles))).toEqual(new Set(insightIndex.articles.map((card) => card.href)));
+    expect(Object.keys(insightArticles)).toContain(agentGuidePath);
     for (const path of ["/insights", ...Object.keys(insightArticles)]) {
       const response = await page.goto(path, { waitUntil: "domcontentloaded" });
       expect(response?.status()).toBe(200);
@@ -110,10 +112,31 @@ test("all nine Insights routes serve their complete accepted content in the init
       expect(html).toContain(path === "/insights" ? 'class="insights-index-page"' : 'class="insight-article-page"');
       await expectCompleteContent(page, path);
       await expectSingleCompletePage(page);
+      if (path !== "/insights") {
+        const article = insightArticles[path];
+        const graph = JSON.parse(await page.locator("#structured-data").textContent() || "{}")["@graph"] as Array<Record<string, unknown>>;
+        expect(graph.find((item) => item["@type"] === "Article")).toMatchObject({
+          headline: article.title,
+          description: article.summary,
+          datePublished: article.publishedDate,
+          dateModified: article.reviewedDate,
+          author: expect.objectContaining({ name: article.author }),
+        });
+      }
       await expect(page.locator("#page script, #page iframe, #page object, #page embed")).toHaveCount(0);
       expect(await page.locator("#page *").evaluateAll((elements) => elements.every((element) => (
         Array.from(element.attributes).every((attribute) => !/^on/i.test(attribute.name))
       )))).toBe(true);
+      if (path === agentGuidePath) {
+        const link = page.locator(".insight-contents-desktop a").first();
+        const hash = await link.getAttribute("href");
+        await link.click();
+        await expect(page).toHaveURL(`${path}${hash}`);
+        await expect.poll(() => page.locator(`${hash} > h2`).evaluate((heading) => (
+          heading.getBoundingClientRect().top >= document.querySelector(".site-header")!.getBoundingClientRect().bottom - 1
+          && heading.getBoundingClientRect().top < window.innerHeight
+        ))).toBe(true);
+      }
     }
   } finally {
     await context.close();
@@ -160,7 +183,7 @@ for (const { width, theme } of [{ width: 1440, theme: "light" }, { width: 390, t
     await page.route("**/rest/v1/site_pages?*", (route) => route.fulfill({ contentType: "application/json", body: "[]" }));
     try {
       const initial = await context.newPage();
-      for (const path of ["/insights", buyerPath]) {
+      for (const path of ["/insights", buyerPath, agentGuidePath]) {
         await initial.goto(path, { waitUntil: "domcontentloaded" });
         const before = path === "/insights" ? await indexSnapshot(initial) : await articleSnapshot(initial);
         await page.goto(path, { waitUntil: "domcontentloaded" });
@@ -173,7 +196,7 @@ for (const { width, theme } of [{ width: 1440, theme: "light" }, { width: 390, t
           const bounds = element.getBoundingClientRect();
           return bounds.left >= -1 && bounds.right <= window.innerWidth + 1;
         }))).toBe(true);
-        if (path === buyerPath) {
+        if (path !== "/insights") {
           expect(await page.locator(".insight-article-layout").evaluate((element) => getComputedStyle(element).display))
             .toBe(width > 760 ? "grid" : "block");
           await expect(page.locator(".insight-contents-desktop")).toBeVisible({ visible: width > 760 });

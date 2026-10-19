@@ -19,9 +19,11 @@ import {
   type InsightIndexContent,
 } from "./insights";
 import type { ContentBlock, ImageAsset, PageSection, SitePage } from "./types";
+import { workingWithAgentGuidePath } from "./workingWithAgentGuide";
+import { buyerAgencyReviewDate, buyerGuidePath, previousBuyerReviewDate, upgradeBuyerAgencyParagraph } from "./buyerAgencyRevision";
 
 export const SITEWIDE_CONTENT_KEY = "__sitewide__";
-const INSIGHT_INDEX_VERSION = 1;
+const INSIGHT_INDEX_VERSION = 2;
 const INSIGHT_CONTACT_LINKS_VERSION = 1;
 const COUNTY_GUIDE_LINKS_VERSION = 1;
 const insightContactLinkPaths = new Set([
@@ -610,9 +612,9 @@ export function normalizeManagedContent(pageKey: string, value: unknown): Manage
     const document = normalized as ManagedPageDocument;
     const seedDocument = seed as ManagedPageDocument;
     const storedVersion = isObject(value) ? value.insightIndexVersion : undefined;
-    // Expand legacy libraries once. The saved marker distinguishes later
-    // intentional removals and reordering from an older three-guide index.
-    if (typeof storedVersion !== "number" || storedVersion < INSIGHT_INDEX_VERSION) {
+    // Keep the original three-guide expansion separate from later additions,
+    // so a new guide never restores an owner's previously removed cards.
+    if (typeof storedVersion !== "number" || storedVersion < 1) {
       const publishedCards = document.insightIndex?.articles || [];
       const seededCards = seedDocument.insightIndex?.articles || [];
       const publishedHrefs = new Set(publishedCards.map((card) => card.href));
@@ -620,8 +622,20 @@ export function normalizeManagedContent(pageKey: string, value: unknown): Manage
         ...document.insightIndex!,
         articles: [...publishedCards, ...seededCards.filter((card) => !publishedHrefs.has(card.href))],
       };
+    } else if (storedVersion < INSIGHT_INDEX_VERSION) {
+      const cards = document.insightIndex?.articles;
+      const newCard = seedDocument.insightIndex?.articles.find((card) => card.href === workingWithAgentGuidePath);
+      if (cards && newCard && !cards.some((card) => card.href === workingWithAgentGuidePath)) {
+        cards.push(structuredClone(newCard));
+      }
     }
+    const buyerCard = document.insightIndex?.articles.find((card) => card.href === buyerGuidePath);
+    if (buyerCard?.reviewedDate === previousBuyerReviewDate) buyerCard.reviewedDate = buyerAgencyReviewDate;
     document.insightIndexVersion = INSIGHT_INDEX_VERSION;
+  }
+  if (pageKey === buyerGuidePath) {
+    const article = (normalized as ManagedPageDocument).insightArticle;
+    if (article) upgradeBuyerAgencyParagraph(article);
   }
   if (insightContactLinkPaths.has(pageKey)) {
     const document = normalized as ManagedPageDocument;

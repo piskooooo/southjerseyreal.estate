@@ -692,6 +692,39 @@ for owner review; no production content was written during verification.
 The owner reviewed the updated sample with website attribution and approved
 committing and publishing this update on October 19.
 
+## Owner-selected October 19 Guide Print Action
+
+The owner selected a discreet `Print / save PDF` action on all eight guides,
+using the existing article details and visual style.
+
+- [x] Add a native text-style button beside the article metadata that opens
+  the browser's Print dialog. Supply the action from the interactive app so
+  the no-JavaScript article HTML does not contain an inert button.
+- [x] Reuse the existing link color, typography, underline, and keyboard focus
+  treatment. Keep the action usable at narrow widths and hide it when printing,
+  preserving the guide's website attribution and complete print layout.
+- [x] Complete the unit, build, and browser/compliance checks and provide a
+  local preview for owner review.
+
+Completed locally on October 19: all 261 unit tests and 148 browser/compliance
+checks passed, including complete Letter/light and A4/dark guide exports and
+screen restoration. Targeted interaction review passed all eight guides at
+1440, 390, and 320 pixels: clicking, keyboard Enter/Space, visible focus,
+unchanged route/content, print hiding, screen restoration, and no overflow.
+The review observed no page errors or denied-consent analytics requests and
+submitted no form. The action's browser call was verified with a local print
+spy; the existing PDF checks separately verified the print output. The owner
+reviewed the corrected preview and approved committing and publishing this
+addition on October 19. The original roadmap remains complete.
+
+The owner noticed a vertical text offset in the preview. The metadata row now
+aligns all of its text on a shared baseline above the mobile breakpoint,
+correcting the action's four-pixel offset without reducing its click target.
+Measured text positions match at 1440 and 1000 pixels; the 390- and 320-pixel
+mobile layout measurements are unchanged. The 24 targeted guide interaction
+checks and all 148 browser/compliance checks passed again after this correction.
+The production build also rendered all metadata labels on the same baseline.
+
 ## Owner-selected September 4 Maintenance
 
 - [x] Implement the seven confirmed audit corrections in source:

@@ -136,7 +136,7 @@ for (const { width, theme, paper } of [
       const before = await screenSnapshot(page);
       await page.emulateMedia({ media: "print" });
       await expectPrintedContent(page, path);
-      for (const selector of [".site-header", ".insight-back-link", ".insight-table-of-contents",
+      for (const selector of [".site-header", ".insight-back-link", ".insight-print-action", ".insight-table-of-contents",
         ".insight-related-section", ".site-footer-links", ".footer-privacy-button", ".privacy-banner"]) {
         await expect(page.locator(selector)).toBeHidden();
       }

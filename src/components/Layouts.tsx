@@ -525,9 +525,11 @@ export function InsightsIndexPage({
 export function InsightArticlePage({
   article,
   navigate,
+  onPrint,
 }: {
   article?: InsightArticleContent;
   navigate: (path: string) => void;
+  onPrint?: () => void;
 }) {
   if (!article) return <NotFoundPage navigate={navigate} />;
 
@@ -550,6 +552,11 @@ export function InsightArticlePage({
           <span>{article.category}</span>
           <span>{article.readingTime}</span>
           <span>Reviewed <time dateTime={article.reviewedDate}>{formatInsightDate(article.reviewedDate)}</time></span>
+          {onPrint && (
+            <button className="insight-print-action" type="button" onClick={onPrint}>
+              Print / save PDF
+            </button>
+          )}
         </div>
       </header>
 

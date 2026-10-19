@@ -9,13 +9,19 @@ const siteUrl = "https://southjerseyreal.estate";
 const defaultSiteName = "South Jersey Real Estate";
 const buildEnv = loadEnv("production", projectRoot, "VITE_");
 
-const [compliance, routeEntries, builtTemplate] = await Promise.all([
+const [compliance, routeEntries, builtTemplate, buildManifest] = await Promise.all([
   readFile(path.join(projectRoot, "src/content/complianceData.json"), "utf8").then(JSON.parse),
   readFile(path.join(projectRoot, "src/content/seoEntries.json"), "utf8").then(JSON.parse),
   readFile(path.join(distRoot, "index.html"), "utf8"),
+  readFile(path.join(distRoot, ".vite/manifest.json"), "utf8").then(JSON.parse),
 ]);
+const countyChunk = buildManifest["src/content/countySiteContent.ts"];
+if (!countyChunk?.isDynamicEntry || !countyChunk.file) {
+  throw new Error("The county-content build entry is missing.");
+}
 const template = builtTemplate
   .replace(/\s*<!-- seo-(?:prerendered|404|admin-entry) -->/g, "")
+  .replace(/<link\b[^>]*\bid="county-content-preload"[^>]*>\s*/g, "")
   .replace(/<script id="home-hero-preload">[\s\S]*?<\/script>\s*/g, "");
 
 const vite = await createServer({
@@ -276,6 +282,10 @@ const renderPublicShell = (document, seo) => {
 
 const applyPublicHead = (html, document, seo) => {
   let output = replaceTitle(html, seo.title);
+  // County visits need this data immediately. Other routes leave it on demand.
+  if (seo.canonicalPath === "/counties" || seo.canonicalPath.endsWith("-county")) {
+    output = output.replace("</head>", () => `<link id="county-content-preload" rel="modulepreload" crossorigin href="/${htmlEscape(countyChunk.file)}" />\n  </head>`);
+  }
   if (seo.canonicalPath === "/") {
     const hero = document.page.sections.find((section) => section.kind === "hero") || document.page.sections[0];
     const preload = buildHomeHeroPreloadScript({

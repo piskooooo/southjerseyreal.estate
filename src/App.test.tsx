@@ -7,15 +7,35 @@ import userEvent from "@testing-library/user-event";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import App from "./App";
 import { setAnalyticsConsent } from "./analytics";
-import { loadPublishedSiteContent, seedPublicSiteContent } from "./content/siteEditor";
+import { seedPublicSiteContent } from "./content/siteEditor";
+import {
+  isPublicContentReady,
+  loadPublishedSiteContent,
+  preparePublicContent,
+  seedPublicSiteContent as seedPreparedPublicContent,
+} from "./content/publicSiteContent";
 
-vi.mock("./content/siteEditor", async (importOriginal) => ({
-  ...await importOriginal<typeof import("./content/siteEditor")>(),
-  loadPublishedSiteContent: vi.fn(),
-}));
+vi.mock("./content/publicSiteContent", async (importOriginal) => {
+  const full = await import("./content/siteEditor");
+  return {
+    ...await importOriginal<typeof import("./content/publicSiteContent")>(),
+    loadPublishedSiteContent: vi.fn(),
+    isPublicContentReady: vi.fn(() => true),
+    preparePublicContent: vi.fn(async () => {}),
+    seedPublicSiteContent: vi.fn(full.seedPublicSiteContent),
+  };
+});
+
+const resetPublicContentMocks = () => {
+  vi.mocked(isPublicContentReady).mockReset().mockReturnValue(true);
+  vi.mocked(preparePublicContent).mockReset().mockResolvedValue(undefined);
+  vi.mocked(seedPreparedPublicContent).mockReset().mockImplementation(seedPublicSiteContent);
+  vi.mocked(loadPublishedSiteContent).mockReset().mockResolvedValue(seedPublicSiteContent());
+};
 
 describe("public page navigation and content refresh", () => {
   beforeEach(() => {
+    resetPublicContentMocks();
     const values = new Map([["analytics-consent", "denied"], ["site-theme", "light"]]);
     Object.defineProperty(window, "localStorage", { configurable: true, value: {
       getItem: (key: string) => values.get(key) ?? null,
@@ -24,7 +44,6 @@ describe("public page navigation and content refresh", () => {
     window.history.replaceState({}, "", "/atlantic-county");
     vi.stubGlobal("scrollTo", vi.fn());
     Element.prototype.scrollIntoView = vi.fn();
-    vi.mocked(loadPublishedSiteContent).mockResolvedValue(seedPublicSiteContent());
   });
 
   afterEach(() => { cleanup(); vi.unstubAllGlobals(); vi.clearAllMocks(); });
@@ -96,6 +115,64 @@ describe("public page navigation and content refresh", () => {
     await user.click(link);
     expect(Element.prototype.scrollIntoView).toHaveBeenCalled();
   });
+
+  it("waits for county preparation before changing the URL and renders newly prepared seeds while published content is pending", async () => {
+    window.history.replaceState({}, "", "/");
+    const complete = structuredClone(seedPublicSiteContent());
+    const base = structuredClone(complete);
+    for (const path of base.pages.keys()) if (path.endsWith("-county")) base.pages.delete(path);
+    base.sitewide.footer.linkGroups[0].links.push({ label: "Open Camden guide", path: "/camden-county" });
+    let prepared = base;
+    let finishPreparation!: () => void;
+    const preparation = new Promise<void>((resolve) => { finishPreparation = resolve; });
+    vi.mocked(seedPreparedPublicContent).mockImplementation(() => prepared);
+    vi.mocked(isPublicContentReady).mockImplementation((path) => path !== "/camden-county" || prepared === complete);
+    vi.mocked(preparePublicContent).mockReturnValue(preparation);
+    vi.mocked(loadPublishedSiteContent).mockImplementation((path) => (
+      path === "/camden-county" ? new Promise<ReturnType<typeof seedPublicSiteContent>>(() => {}) : Promise.resolve(base)
+    ));
+    const user = userEvent.setup();
+    render(<App />);
+    const previousHeading = document.querySelector("#page h1")!.textContent;
+    await user.click(await screen.findByRole("link", { name: "Open Camden guide" }));
+    expect(preparePublicContent).toHaveBeenCalledWith("/camden-county");
+    expect(window.location.pathname).toBe("/");
+    expect(document.querySelector("#page h1")).toHaveTextContent(previousHeading!);
+    expect(loadPublishedSiteContent).not.toHaveBeenCalledWith("/camden-county");
+
+    await act(async () => { prepared = complete; finishPreparation(); });
+    expect(window.location.pathname).toBe("/camden-county");
+    expect(await screen.findByRole("button", { name: "Expand Camden City details" })).toBeVisible();
+    expect(screen.queryByRole("heading", { name: /page not found/i })).not.toBeInTheDocument();
+    expect(screen.getByRole("link", { name: "Open Camden guide" })).toBeVisible();
+    expect(loadPublishedSiteContent).toHaveBeenCalledWith("/camden-county");
+  });
+
+  it("does not let a delayed county preparation overwrite a newer navigation", async () => {
+    window.history.replaceState({}, "", "/");
+    const content = structuredClone(seedPublicSiteContent());
+    content.sitewide.footer.linkGroups[0].links.push(
+      { label: "Open Camden guide", path: "/camden-county" },
+      { label: "Open Contact now", path: "/contact?test_navigation=delayed-county" },
+    );
+    vi.mocked(seedPreparedPublicContent).mockReturnValue(content);
+    vi.mocked(loadPublishedSiteContent).mockResolvedValue(content);
+    vi.mocked(isPublicContentReady).mockImplementation((path) => path !== "/camden-county");
+    let finishPreparation!: () => void;
+    vi.mocked(preparePublicContent).mockReturnValue(new Promise<void>((resolve) => { finishPreparation = resolve; }));
+    const user = userEvent.setup();
+    render(<App />);
+    await user.click(await screen.findByRole("link", { name: "Open Camden guide" }));
+    expect(window.location.pathname).toBe("/");
+    await user.click(screen.getByRole("link", { name: "Open Contact now" }));
+    expect(window.location.pathname).toBe("/contact");
+    const contactHeading = document.querySelector("#page h1")!.textContent;
+
+    await act(async () => { finishPreparation(); });
+    expect(window.location.pathname).toBe("/contact");
+    expect(document.querySelector("#page h1")).toHaveTextContent(contactHeading!);
+    expect(loadPublishedSiteContent).not.toHaveBeenCalledWith("/camden-county");
+  });
 });
 
 const communityOpenEvents = () => (window.dataLayer || [])
@@ -104,6 +181,7 @@ const communityOpenEvents = () => (window.dataLayer || [])
 
 describe("consented community profile measurement", () => {
   beforeEach(() => {
+    resetPublicContentMocks();
     const values = new Map([["site-theme", "light"]]);
     Object.defineProperty(window, "localStorage", { configurable: true, value: {
       get length() { return values.size; },

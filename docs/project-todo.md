@@ -946,6 +946,67 @@ stylesheet was changed, and no production content was written. The owner
 reviewed the actual preview and approved committing and publishing the
 changes on October 19. The original roadmap remains complete.
 
+## Owner-selected October 19 Mobile Loading Speed
+
+The owner selected a loading-speed pass on the homepage, Counties index, and
+one guide, preserving the approved appearance, search, and Back behavior.
+
+- [x] Load county profiles, detailed snapshots, image credits, and legacy
+  introduction comparisons only when a county route or the town finder needs
+  them. Share the original normalization, migrations, and published-content
+  loading through a common runtime; retain the complete synchronous API for
+  the editor and build. Keep all nine full guide bodies searchable.
+- [x] Prepare county data before replacing initial HTML or committing an
+  internal navigation. Share successful/pending imports, permit retries, and
+  cancel a late navigation after a newer route or Back. Preload the county
+  module in the initial HTML of only the Counties index and seven county
+  routes, using Vite's build manifest to resolve its current asset name.
+- [x] Generate the compact, reviewed analytics identity map from the image
+  ledger before each build, preserving all 166 stable county/town identities.
+- [x] Complete the production build, 366 unit tests, and 183 browser/compliance
+  checks. The new cases cover delayed county loading, retained initial text
+  and town anchors, superseded navigation, and preload scope. Existing checks
+  cover published edits/removals, both finders, saved searches, native links,
+  Back/Forward reading positions, printing, accessibility, and consent.
+- [x] Measure the original and final production builds under identical mobile
+  lab conditions and compare the rendered appearance.
+
+Completed locally October 19. Median results across three fresh visits per
+route, in seconds:
+
+| Route | Interactive controls before | After | Compressed JavaScript before | After |
+| --- | ---: | ---: | ---: | ---: |
+| Homepage | 1.484 | 1.087 | 200,976 bytes | 125,213 bytes |
+| Counties | 1.506 | 1.527 | 200,976 bytes | 205,176 bytes |
+| Coastal-property guide | 1.494 | 1.090 | 200,976 bytes | 125,213 bytes |
+
+Home and guide controls were available about 27% sooner, with 38% less
+Brotli-compressed JavaScript. Counties remained close to the baseline
+(21 milliseconds later); its script execution time decreased. Home LCP moved
+from 1.492 to 1.096 seconds. Counties LCP was 1.500 to 1.516 seconds, and guide
+LCP was 0.516 to 0.500 seconds. Counties first contentful paint moved from
+0.504 to 0.580 seconds as its data download now starts immediately; initial
+text remains available while it loads. Layout-shift measurements were
+unchanged: zero on Home/guide and 0.0119 on Counties.
+
+Measurements used installed Chrome 155 through Playwright/CDP at 390 × 844,
+4× CPU slowdown, 150 ms latency, 1.6 Mbps download, disabled browser cache,
+and identical Brotli compression. The owner explicitly approved this fallback
+because the web-performance skill's Chrome DevTools connector was unavailable.
+Each build used the same empty published-content fixture. These localhost lab
+results exclude production DNS/TLS, edge, and backend latency and do not claim
+field Core Web Vitals, INP, or a Lighthouse score. The initial county-only
+download waterfall was measured and corrected with route-specific preloading.
+
+All three routes have byte-identical before/after viewport screenshots at
+390-pixel light, 390-pixel dark, and 1440-pixel light/dark sizes. Browser checks
+found no page errors, horizontal overflow, or analytics requests during the
+performance/visual runs. The actual configured preview also loads all three
+routes and resolves `Mt. Laurel` in the town finder. Evidence and screenshots
+remain outside the repository. No form was submitted. The owner reviewed the
+actual preview and approved committing and publishing these changes on
+October 19. The original roadmap remains complete.
+
 ## Owner-selected September 4 Maintenance
 
 - [x] Implement the seven confirmed audit corrections in source:

@@ -1,14 +1,16 @@
-import { useEffect, useLayoutEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import { Header } from "./components/Header";
 import { Footer } from "./components/Footer";
 import { HomePage, CountyPage, ContactPage, ComparisonGuidePage, ResourceAccordionPage, AboutPage, HubPage, NewsletterPage, NotFoundPage, StandardPage, InsightArticlePage, InsightsIndexPage } from "./components/Layouts";
 import { buildStructuredData, getSeoForPath, normalizeRoutePath } from "./content/seo";
 import {
   loadPublishedSiteContent,
+  isPublicContentReady,
+  preparePublicContent,
   seedPublicSiteContent,
   type ManagedPageDocument,
   type PublicSiteContent,
-} from "./content/siteEditor";
+} from "./content/publicSiteContent";
 import { getAnalyticsConsent, setAnalyticsConsent, trackPageView, type AnalyticsConsent } from "./analytics";
 import { buildTownFinderEntries } from "./content/townFinder";
 import { buildGuideFinderEntries } from "./content/guideFinder";
@@ -84,7 +86,20 @@ export default function App() {
   const [analyticsConsentChoice, setAnalyticsConsentChoice] = useState<AnalyticsConsent | null>(getAnalyticsConsent);
   const [siteContent, setSiteContent] = useState<PublicSiteContent>(seedPublicSiteContent);
   const [resolvedContentPath, setResolvedContentPath] = useState("");
+  const navigationRequest = useRef(0);
   usePageScrollRestoration(path, resolvedContentPath === path);
+
+  const showPreparedPath = useCallback((nextPath: string) => {
+    const prepared = seedPublicSiteContent();
+    setSiteContent((current) => {
+      if ([...prepared.pages.keys()].every((key) => current.pages.has(key))) return current;
+      return {
+        sitewide: current.sitewide,
+        pages: new Map([...prepared.pages, ...current.pages]),
+      };
+    });
+    setPath(nextPath);
+  }, []);
 
   const pageDocument = useMemo(
     () => siteContent.pages.get(path) || siteContent.pages.get("/")!,
@@ -201,10 +216,25 @@ export default function App() {
   }, [isKnownPath, pageDocument.seo, page, path, resolvedContentPath]);
 
   useEffect(() => {
-    const onPopState = () => setPath(normalizeRoutePath(window.location.pathname));
+    const onPopState = () => {
+      const nextPath = normalizeRoutePath(window.location.pathname);
+      const request = ++navigationRequest.current;
+      if (isPublicContentReady(nextPath)) {
+        showPreparedPath(nextPath);
+        return;
+      }
+      void preparePublicContent(nextPath).then(() => {
+        if (request === navigationRequest.current) showPreparedPath(nextPath);
+      }).catch(() => {
+        if (request === navigationRequest.current) window.location.reload();
+      });
+    };
     window.addEventListener("popstate", onPopState);
-    return () => window.removeEventListener("popstate", onPopState);
-  }, []);
+    return () => {
+      navigationRequest.current += 1;
+      window.removeEventListener("popstate", onPopState);
+    };
+  }, [showPreparedPath]);
 
   useLayoutEffect(() => {
     document.documentElement.dataset.theme = theme;
@@ -228,21 +258,31 @@ export default function App() {
     if (destination.origin !== window.location.origin) return;
     const normalized = normalizeRoutePath(destination.pathname);
     const nextLocation = `${normalized}${destination.search}${destination.hash}`;
-    if (nextLocation !== `${window.location.pathname}${window.location.search}${window.location.hash}`) {
-      pushHistoryEntry(nextLocation);
-    } else if (!destination.hash) {
-      return;
-    }
-    setPath(normalized);
-    if (normalized === path) {
-      window.dispatchEvent(new PopStateEvent("popstate"));
-      if (destination.hash) {
-        try {
-          document.getElementById(decodeURIComponent(destination.hash.slice(1)))?.scrollIntoView({ block: "nearest" });
-        } catch {
-          // Invalid fragments do not prevent navigation.
+    const request = ++navigationRequest.current;
+    const commitNavigation = () => {
+      if (request !== navigationRequest.current) return;
+      if (nextLocation !== `${window.location.pathname}${window.location.search}${window.location.hash}`) {
+        pushHistoryEntry(nextLocation);
+      } else if (!destination.hash) {
+        return;
+      }
+      showPreparedPath(normalized);
+      if (normalized === path) {
+        window.dispatchEvent(new PopStateEvent("popstate"));
+        if (destination.hash) {
+          try {
+            document.getElementById(decodeURIComponent(destination.hash.slice(1)))?.scrollIntoView({ block: "nearest" });
+          } catch {
+            // Invalid fragments do not prevent navigation.
+          }
         }
       }
+    };
+    if (isPublicContentReady(normalized)) commitNavigation();
+    else {
+      void preparePublicContent(normalized).then(commitNavigation).catch(() => {
+        if (request === navigationRequest.current) window.location.assign(nextLocation);
+      });
     }
   };
 

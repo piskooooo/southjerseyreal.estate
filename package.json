@@ -8,6 +8,7 @@
   },
   "scripts": {
     "dev": "vite --host 0.0.0.0",
+    "prebuild": "node scripts/build-community-analytics.mjs",
     "build": "tsc && vite build",
     "postbuild": "node scripts/prerender-seo.mjs",
     "preview": "vite preview --host 0.0.0.0",

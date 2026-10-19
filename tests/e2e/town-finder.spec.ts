@@ -105,6 +105,51 @@ for (const scenario of [
   { name: "desktop light", theme: "light" as const, viewport: { width: 1440, height: 1000 } },
   { name: "mobile dark", theme: "dark" as const, viewport: { width: 390, height: 844 } },
 ]) {
+  test(`recognizes common town abbreviations and restores the typed query on ${scenario.name}`, async ({ page }) => {
+    await preparePage(page, scenario.theme);
+    await page.setViewportSize(scenario.viewport);
+    await page.route("**/rest/v1/site_pages?*", (route) => route.fulfill({ contentType: "application/json", body: "[]" }));
+    const errors: string[] = [];
+    page.on("pageerror", (error) => errors.push(error.message));
+    const input = await openFinder(page);
+    const search = page.getByRole("search", { name: "Town directory", exact: true });
+    const links = search.getByRole("list", { name: "Matching towns", exact: true }).getByRole("link");
+
+    for (const town of [
+      { query: "Mt. Laurel", title: "Mount Laurel Township", county: "Burlington County", href: "/burlington-county#mount-laurel-township" },
+      { query: "MT HOLLY", title: "Mount Holly Township", county: "Burlington County", href: "/burlington-county#mount-holly-township" },
+      { query: "Egg Harbor Twp.", title: "Egg Harbor Township", county: "Atlantic County", href: "/atlantic-county#egg-harbor-township" },
+    ]) {
+      await input.fill(town.query);
+      await expect(links).toHaveCount(1);
+      await expect(links).toContainText(town.title);
+      await expect(links).toContainText(town.county);
+      await expect(links).toHaveAttribute("href", town.href);
+      await input.press("ArrowDown");
+      await expect(links).toBeFocused();
+      await page.keyboard.press("Enter");
+      await expectOpenedTown(page, town.href, town.title);
+      await page.goBack();
+      await expect(page).toHaveURL("/counties");
+      await expect(input).toHaveValue(town.query);
+      await expect(links).toHaveCount(1);
+      await expect(links).toHaveAttribute("href", town.href);
+    }
+
+    await input.fill("Washington Twp");
+    await expect(links).toHaveCount(2);
+    await expect(links.filter({ hasText: "Burlington County" }))
+      .toHaveAttribute("href", "/burlington-county#washington-township-burlington-county");
+    await expect(links.filter({ hasText: "Gloucester County" }))
+      .toHaveAttribute("href", "/gloucester-county#washington-township");
+    await input.fill("Washington Twp Gloucester");
+    await expect(links).toHaveCount(1);
+    await expect(links).toHaveAttribute("href", "/gloucester-county#washington-township");
+    expect(await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth)).toBeLessThanOrEqual(1);
+    expect(await page.evaluate(() => window.dataLayer || [])).toEqual([]);
+    expect(errors).toEqual([]);
+  });
+
   test(`restores each town search with Back and Forward on ${scenario.name}`, async ({ page }) => {
     await preparePage(page, scenario.theme);
     await page.setViewportSize(scenario.viewport);

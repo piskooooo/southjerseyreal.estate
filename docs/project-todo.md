@@ -725,6 +725,30 @@ mobile layout measurements are unchanged. The 24 targeted guide interaction
 checks and all 148 browser/compliance checks passed again after this correction.
 The production build also rendered all metadata labels on the same baseline.
 
+## Owner-selected October 19 Town Finder Abbreviations
+
+The owner selected common town abbreviations in the existing finder, keeping
+its current appearance.
+
+- [x] Normalize whole `Mt`/`Mt.` and `Twp`/`Twp.` tokens to `Mount` and
+  `Township` during matching, for both queries and accepted town headings.
+  Retain the current case, accent, punctuation, and spacing handling.
+- [x] Preserve displayed names, county labels, destinations, exact/prefix
+  ranking, accepted-content indexing, and original typed history queries.
+  Keep the existing input, results, styling, and local-only search behavior.
+- [x] Verify abbreviation matches, county disambiguation, owner edits/removals,
+  ranking, whole-word boundaries, result navigation, and Back restoration.
+
+Completed locally on October 19: all 270 unit tests and 150 browser/compliance
+checks passed. The new browser cases cover desktop/light and mobile/dark
+abbreviated searches, existing profile destinations, and restoration of the
+original typed query. Additional review of the public-config preview at 1440,
+390, and 320 pixels confirmed the existing layout, working current-content
+results, county disambiguation, and no overflow, page errors, or denied-consent
+analytics requests. No form was submitted. The owner confirmed the preview
+works and approved committing and publishing this addition on October 19.
+The original roadmap remains complete.
+
 ## Owner-selected September 4 Maintenance
 
 - [x] Implement the seven confirmed audit corrections in source:

@@ -22,12 +22,20 @@ const compareEntries = (left: TownFinderEntry, right: TownFinderEntry) => (
   || compareText(left.key, right.key)
 );
 
+const townAbbreviations = new Map([
+  ["mt", "mount"],
+  ["twp", "township"],
+]);
+
 const normalizeSearch = (value: string) => value
   .normalize("NFKD")
   .replace(/\p{M}/gu, "")
   .toLowerCase()
   .replace(/[^\p{L}\p{N}]+/gu, " ")
-  .trim();
+  .trim()
+  .split(" ")
+  .map((token) => townAbbreviations.get(token) ?? token)
+  .join(" ");
 
 const compactSearch = (value: string) => value.replace(/ /g, "");
 

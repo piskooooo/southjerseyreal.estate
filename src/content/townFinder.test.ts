@@ -114,6 +114,62 @@ describe("town finder matching", () => {
     expect(findTownFinderEntries(entries, "cafepoint")).toEqual(entries);
   });
 
+  it.each([
+    { query: "Mt Laurel", name: "Mount Laurel Township", href: "/burlington-county#mount-laurel-township" },
+    { query: "MT. LAUREL", name: "Mount Laurel Township", href: "/burlington-county#mount-laurel-township" },
+    { query: "Mt. Holly", name: "Mount Holly Township", href: "/burlington-county#mount-holly-township" },
+    { query: "Egg Harbor Twp", name: "Egg Harbor Township", href: "/atlantic-county#egg-harbor-township" },
+    { query: "EGG HARBOR TWP.", name: "Egg Harbor Township", href: "/atlantic-county#egg-harbor-township" },
+  ])("finds the existing profile for $query", ({ query, name, href }) => {
+    expect(findTownFinderEntries(seededEntries, query)).toEqual([
+      expect.objectContaining({ name, href }),
+    ]);
+  });
+
+  it("matches full-form queries against accepted abbreviated headings without restoring renamed or removed towns", () => {
+    const page = county("/burlington-county", [town("laurel", "Mt. Laurel Twp.")]);
+    const entries = buildTownFinderEntries([page]);
+    const before = structuredClone(entries);
+    expect(findTownFinderEntries(entries, "Mount Laurel Township")).toEqual([
+      { key: "/burlington-county:laurel", name: "Mt. Laurel Twp.", county: "Burlington County", href: "/burlington-county#mt-laurel-twp" },
+    ]);
+    expect(entries).toEqual(before);
+
+    page.sections[0].blocks[0].text = "Reviewed Community";
+    expect(findTownFinderEntries(buildTownFinderEntries([page]), "Mt Laurel")).toEqual([]);
+    page.sections = [];
+    expect(findTownFinderEntries(buildTownFinderEntries([page]), "Mount Laurel Township")).toEqual([]);
+  });
+
+  it("keeps county disambiguation for abbreviated township queries", () => {
+    const matches = findTownFinderEntries(seededEntries, "Washington Twp.");
+    expect(matches).toEqual(findTownFinderEntries(seededEntries, "Washington Township"));
+    expect(matches.map((entry) => entry.county).sort()).toEqual(["Burlington County", "Gloucester County"]);
+    expect(findTownFinderEntries(seededEntries, "Washington Twp Gloucester")).toEqual([
+      expect.objectContaining({ county: "Gloucester County", href: "/gloucester-county#washington-township" }),
+    ]);
+  });
+
+  it("keeps exact, prefix and other result ranking for abbreviated queries", () => {
+    const entries: readonly TownFinderEntry[] = Object.freeze([
+      { key: "contains", name: "North Mount Laurel", county: "Camden County", href: "/camden-county#north-mount-laurel" },
+      { key: "prefix", name: "Mount Laurel Township", county: "Burlington County", href: "/burlington-county#mount-laurel-township" },
+      { key: "exact", name: "Mount Laurel", county: "Burlington County", href: "/burlington-county#mount-laurel" },
+    ]);
+    const before = structuredClone(entries);
+    expect(findTownFinderEntries(entries, "Mt. Laurel").map((entry) => entry.key))
+      .toEqual(["exact", "prefix", "contains"]);
+    expect(entries).toEqual(before);
+  });
+
+  it("does not expand abbreviation letters inside longer words", () => {
+    const entries = buildTownFinderEntries([county("/camden-county", [town("mt", "Mtville"), town("twp", "Twpville")])]);
+    expect(findTownFinderEntries(entries, "Mountville")).toEqual([]);
+    expect(findTownFinderEntries(entries, "Townshipville")).toEqual([]);
+    expect(findTownFinderEntries(entries, "Mtville").map((entry) => entry.name)).toEqual(["Mtville"]);
+    expect(findTownFinderEntries(entries, "Twpville").map((entry) => entry.name)).toEqual(["Twpville"]);
+  });
+
   it.each(["", " \n\t ", "— & / ...", "No Such Town", "Bass River Camden"])(
     "returns no matches for %j",
     (query) => expect(findTownFinderEntries(seededEntries, query)).toEqual([]),

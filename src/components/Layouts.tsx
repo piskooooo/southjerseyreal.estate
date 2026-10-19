@@ -34,7 +34,8 @@ import { AboutReviewsSection } from "./Reviews";
 import { getResponsiveImageProps } from "../content/responsiveImages";
 import type { TownFinderEntry } from "../content/townFinder";
 import { TownFinder } from "./TownFinder";
-import { findGuideFinderEntries, type GuideFinderEntry } from "../content/guideFinder";
+import { findGuideFinderEntries, getGuideFinderMatch, type GuideFinderEntry } from "../content/guideFinder";
+import { insightSectionId } from "../content/insightSections";
 import { isHistoryScrollRestoration, pushHistoryEntry, rememberTownExpansions, restoredTownExpansions } from "../scrollRestoration";
 
 type SiteTheme = "dark" | "light";
@@ -440,21 +441,15 @@ const formatInsightDate = (value: string) => {
   }).format(date);
 };
 
-const insightSectionId = (heading: string, index: number) => {
-  const slug = heading
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/^-|-$/g, "");
-  return slug || `section-${index + 1}`;
-};
-
 function InsightLink({
+  ariaLabel,
   className,
   href,
   label,
   navigate,
   source,
 }: {
+  ariaLabel?: string;
   className?: string;
   href: string;
   label: string;
@@ -463,6 +458,7 @@ function InsightLink({
 }) {
   return (
     <a
+      aria-label={ariaLabel}
       className={className}
       href={href}
       onClick={(event) => {
@@ -521,8 +517,12 @@ export function InsightsIndexPage({
   };
   if (!content) return <NotFoundPage navigate={navigate} />;
   const visibleEntries = searchEntries && contentResolved
-    ? findGuideFinderEntries(searchEntries, query)
-    : content.articles.map((card, index) => ({ card, index }));
+    ? findGuideFinderEntries(searchEntries, query).map((entry) => ({
+      card: entry.card,
+      index: entry.index,
+      match: getGuideFinderMatch(entry, query),
+    }))
+    : content.articles.map((card, index) => ({ card, index, match: undefined }));
   const status = !contentResolved
     ? "Loading guides…"
     : !query.trim()
@@ -577,7 +577,7 @@ export function InsightsIndexPage({
           </div>
         )}
         <div id="guide-finder-results" ref={results} data-result-count={visibleEntries.length} className={visibleEntries.length ? "insight-card-grid" : undefined}>
-          {visibleEntries.map(({ card: article, index }) => (
+          {visibleEntries.map(({ card: article, index, match }) => (
             <article className="insight-card" key={article.href}>
               <div className="insight-card-number" aria-hidden="true">{String(index + 1).padStart(2, "0")}</div>
               <div className="insight-card-body">
@@ -591,6 +591,21 @@ export function InsightsIndexPage({
                   />
                 </h2>
                 <p>{article.summary}</p>
+                {match && (
+                  <div className="insight-search-match">
+                    <p className="insight-match-excerpt">{match.excerpt}</p>
+                    {match.sectionHref && (
+                      <InsightLink
+                        ariaLabel={`Read matching section: ${match.sectionHeading} — ${article.title}`}
+                        className="insight-match-link"
+                        href={match.sectionHref}
+                        label="Read matching section"
+                        navigate={navigate}
+                        source="insights_search_match"
+                      />
+                    )}
+                  </div>
+                )}
                 <p className="insight-reviewed">
                   Reviewed <time dateTime={article.reviewedDate}>{formatInsightDate(article.reviewedDate)}</time>
                 </p>

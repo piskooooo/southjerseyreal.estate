@@ -1,5 +1,6 @@
 import { compliance } from "./content/compliance";
 import { isAllowedCommunityAnalyticsId } from "./content/communityAnalytics";
+import { containsPotentialPersonalData, isPublicFragmentId, safeDecode } from "./urlPrivacy";
 
 type GtagValue = string | number | boolean | Date | Record<string, unknown>;
 type Gtag = (command: string, target: string | Date, params?: Record<string, unknown>) => void;
@@ -35,7 +36,6 @@ const attributionParameterNames = new Set([
   "utm_term",
   "wbraid",
 ]);
-const emailPattern = /[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/i;
 const contactLeadTypes = new Map([
   ["buy a home", "buy_home"],
   ["buy and sell", "buy_and_sell"],
@@ -87,23 +87,6 @@ const touchCommunityActivity = () => {
 };
 
 const isBrowser = () => typeof window !== "undefined" && typeof document !== "undefined";
-
-const safeDecode = (value: string) => {
-  try {
-    return decodeURIComponent(value);
-  } catch {
-    return value;
-  }
-};
-
-const containsPotentialPersonalData = (value: string) => {
-  const decoded = safeDecode(value).trim();
-  if (!decoded) return false;
-  if (/\b(?:mailto|tel):/i.test(decoded) || emailPattern.test(decoded)) return true;
-
-  const digits = decoded.replace(/\D/g, "");
-  return digits.length >= 10 && digits.length <= 15;
-};
 
 const sanitizePathname = (pathname: string) => {
   const withLeadingSlash = pathname.startsWith("/") ? pathname : `/${pathname}`;
@@ -164,8 +147,7 @@ const replaceUnsafeBrowserLocation = (safeLocation: string, preservePendingFragm
       safeUrl.searchParams.set(tagAssistantDebugParameter, tagAssistantDebugValue);
     }
     const fragmentId = safeDecode(window.location.hash.slice(1));
-    const publicFragment = /^[a-z0-9][a-z0-9_-]{0,159}$/i.test(fragmentId)
-      && !containsPotentialPersonalData(fragmentId)
+    const publicFragment = isPublicFragmentId(fragmentId)
       && (preservePendingFragment || document.getElementById(fragmentId))
       ? window.location.hash
       : "";

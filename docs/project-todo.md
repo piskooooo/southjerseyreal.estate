@@ -880,6 +880,42 @@ because Poppler was unavailable. No form was submitted and no stylesheet was
 changed. The owner reviewed the actual preview and approved committing and
 publishing the guide on October 19. The original roadmap remains complete.
 
+## Owner-selected October 19 Guide Search Excerpts
+
+The owner selected matching excerpts and `Read matching section` links across
+all nine guides, preserving the existing appearance.
+
+- [x] Show a short, literal excerpt from accepted current article content for
+  active searches. Keep nearby query terms together when possible, retain
+  original wording and Unicode, and preserve the cards' order, numbering,
+  title links, and full-guide links. Blank searches retain the existing cards.
+- [x] Link directly to a matching section using the same heading-derived ID
+  as the article contents menu. Require all search terms within that section
+  and a unique ID allowed by the existing URL privacy rules. Metadata-only,
+  cross-section, duplicate-ID, and unsupported-fragment matches retain their
+  excerpt and full-guide link without inventing a section destination.
+- [x] Preserve published edits, removals, and destinations, native modified
+  and middle clicks, section focus below sticky navigation, and Back/Forward
+  search and reading positions. Keep search text local and use only the fixed
+  `insights_search_match` source in existing consent-gated link tracking.
+- [x] Complete unit, production-build, browser/compliance, accessibility, and
+  desktop/mobile preview checks.
+
+Completed locally on October 19: all 331 unit tests and the production build
+passed. The full browser run passed 175 of 179 cases; four new checks used the
+wrong inspection-section index. After correcting those test expectations, all
+seven matching-excerpt checks passed, verifying all 179 browser cases. Coverage
+includes real body matches in all nine guides, published heading changes,
+delayed content, literal-text rendering, native tabs, history restoration, and
+consented tracking without query, excerpt, or heading values in event payloads.
+Additional 1440-pixel light, 390-pixel dark, and 320-pixel dark previews found no
+page errors or horizontal overflow. Targeted accessibility checks found no
+violations, and screenshots were visually reviewed outside the repository.
+Browser plugin not available; validation used configured Playwright Chrome.
+No live inquiry or subscription was submitted. The owner reviewed the actual
+preview and approved committing and publishing the changes on October 19.
+The original roadmap remains complete.
+
 ## Owner-selected September 4 Maintenance
 
 - [x] Implement the seven confirmed audit corrections in source:

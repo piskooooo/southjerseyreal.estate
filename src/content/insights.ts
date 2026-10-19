@@ -197,6 +197,7 @@ export const insightArticles: Record<string, InsightArticleContent> = {
     ],
     relatedLinks: [
       { label: "Research a South Jersey property", href: "/insights/researching-a-south-jersey-property" },
+      { label: "Working with a real estate agent", href: workingWithAgentGuidePath },
       { label: "Contact Arthur", href: "/contact" },
     ],
   },
@@ -279,6 +280,7 @@ export const insightArticles: Record<string, InsightArticleContent> = {
     ],
     relatedLinks: [
       { label: "Read the buyer process guide", href: "/insights/new-jersey-homebuying-process" },
+      { label: "Working with a real estate agent", href: workingWithAgentGuidePath },
       { label: "Discuss selling a property", href: "/contact" },
     ],
   },

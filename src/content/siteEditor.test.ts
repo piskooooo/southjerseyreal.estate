@@ -10,6 +10,8 @@ import {
 } from "./buyerAgencyRevision";
 import legacySummaries from "./legacyCommunitySummaries.json";
 import { countyNav } from "./navigation";
+import { siteUrl } from "./seo";
+import { workingWithAgentGuidePath } from "./workingWithAgentGuide";
 import {
   managedContentSeeds,
   normalizeManagedContent,
@@ -602,6 +604,126 @@ describe("website editor content normalization", () => {
       normalized.insightArticle!.relatedLinks = [];
       expect(normalizeManagedContent(path, normalized)).toEqual(normalized);
     }
+  });
+
+  it("adds the agent-guide reading link only to the buyer and seller seeds, immediately before Contact", () => {
+    const paths = [buyerGuidePath, "/insights/preparing-to-sell-a-new-jersey-home"];
+    expect([...managedContentSeeds]
+      .filter(([, value]) => (value as ManagedPageDocument).insightAgentGuideLinksVersion !== undefined)
+      .map(([path]) => path).sort()).toEqual([...paths].sort());
+    for (const path of paths) {
+      const seed = managedContentSeeds.get(path) as ManagedPageDocument;
+      const links = seed.insightArticle!.relatedLinks;
+      expect(seed.insightAgentGuideLinksVersion).toBe(1);
+      expect(links).toHaveLength(3);
+      expect(links[1]).toEqual({ label: "Working with a real estate agent", href: workingWithAgentGuidePath });
+      expect(links[2].href).toBe("/contact");
+    }
+  });
+
+  it.each([buyerGuidePath, "/insights/preparing-to-sell-a-new-jersey-home"])("upgrades only the new reading link on %s while retaining owner content and link order", (path) => {
+    for (const version of [undefined, 0]) {
+      const legacy = structuredClone(managedContentSeeds.get(path)) as ManagedPageDocument;
+      if (version === undefined) delete legacy.insightAgentGuideLinksVersion;
+      else legacy.insightAgentGuideLinksVersion = version;
+      legacy.insightArticle!.title = "Owner's selected property notes";
+      legacy.insightArticle!.reviewedDate = "2026-09-10";
+      legacy.insightArticle!.sections[0].paragraphs[0] = "Owner's retained introduction.";
+      legacy.insightArticle!.relatedLinks = [
+        { label: "Owner's first reading", href: "/faq#planning" },
+        { label: "Owner's contact invitation", href: "/contact/?topic=planning#question" },
+        { label: "Owner's final reading", href: "/about" },
+      ];
+      const original = structuredClone(legacy);
+      const expected = structuredClone(legacy);
+      expected.insightAgentGuideLinksVersion = 1;
+      expected.insightArticle!.relatedLinks.splice(1, 0, { label: "Working with a real estate agent", href: workingWithAgentGuidePath });
+
+      const normalized = normalizeManagedContent(path, legacy) as ManagedPageDocument;
+      expect(normalized).toEqual(expected);
+      expect(legacy).toEqual(original);
+      expect(normalizeManagedContent(path, normalized)).toEqual(normalized);
+    }
+  });
+
+  it.each([
+    workingWithAgentGuidePath,
+    `${workingWithAgentGuidePath}/?from=owner#agreements`,
+    `${siteUrl}${workingWithAgentGuidePath}`,
+    `${siteUrl}${workingWithAgentGuidePath}/?from=owner#agreements`,
+  ])("retains an existing same-site agent-guide destination exactly: %s", (href) => {
+    for (const path of [buyerGuidePath, "/insights/preparing-to-sell-a-new-jersey-home"]) {
+      const legacy = structuredClone(managedContentSeeds.get(path)) as ManagedPageDocument;
+      delete legacy.insightAgentGuideLinksVersion;
+      legacy.insightArticle!.relatedLinks = [
+        { label: "Owner's contact invitation", href: "/contact" },
+        { label: "Owner's representation reading", href },
+        { label: "Owner's remaining reading", href: "/faq" },
+      ];
+      const original = structuredClone(legacy);
+      const normalized = normalizeManagedContent(path, legacy) as ManagedPageDocument;
+      expect(normalized).toEqual({ ...original, insightAgentGuideLinksVersion: 1 });
+      expect(legacy).toEqual(original);
+      expect(normalizeManagedContent(path, normalized)).toEqual(normalized);
+    }
+  });
+
+  it.each(["/contact#question", `${siteUrl}/contact/?from=guide#question`])("inserts before the first valid same-site Contact link: %s", (contactHref) => {
+    const legacy = structuredClone(managedContentSeeds.get(buyerGuidePath)) as ManagedPageDocument;
+    delete legacy.insightAgentGuideLinksVersion;
+    legacy.insightArticle!.relatedLinks = [
+      { label: "An outside contact page", href: "https://elsewhere.example/contact" },
+      { label: "A different local page", href: "/contact-details" },
+      { label: "Owner's first Contact", href: contactHref },
+      { label: "Owner's second Contact", href: "/contact" },
+    ];
+    const expected = structuredClone(legacy.insightArticle!.relatedLinks);
+    expected.splice(2, 0, { label: "Working with a real estate agent", href: workingWithAgentGuidePath });
+    expect((normalizeManagedContent(buyerGuidePath, legacy) as ManagedPageDocument).insightArticle!.relatedLinks).toEqual(expected);
+  });
+
+  it.each(["removed Contact", "removed all next steps"])("appends only the selected new link when the owner %s", (removal) => {
+    const legacy = structuredClone(managedContentSeeds.get(buyerGuidePath)) as ManagedPageDocument;
+    delete legacy.insightAgentGuideLinksVersion;
+    legacy.insightArticle!.relatedLinks = removal === "removed all next steps" ? [] : [
+      { label: "Owner's only next step", href: "/faq" },
+    ];
+    const original = structuredClone(legacy);
+    const normalized = normalizeManagedContent(buyerGuidePath, legacy) as ManagedPageDocument;
+    expect(normalized.insightArticle!.relatedLinks).toEqual([
+      ...original.insightArticle!.relatedLinks,
+      { label: "Working with a real estate agent", href: workingWithAgentGuidePath },
+    ]);
+    expect(normalized.insightArticle!.relatedLinks.some((link) => link.href === "/contact")).toBe(false);
+    expect(legacy).toEqual(original);
+  });
+
+  it.each([buyerGuidePath, "/insights/preparing-to-sell-a-new-jersey-home"])("honors current-version edits and removals on %s", (path) => {
+    const draft = structuredClone(managedContentSeeds.get(path)) as ManagedPageDocument;
+    draft.insightArticle!.relatedLinks = [
+      { label: "Owner's alternative representation reading", href: "/faq" },
+    ];
+    expect(normalizeManagedContent(path, draft)).toEqual(draft);
+    draft.insightArticle!.relatedLinks = [];
+    expect(normalizeManagedContent(path, draft)).toEqual(draft);
+  });
+
+  it.each([
+    `https://elsewhere.example${workingWithAgentGuidePath}`,
+    `https://reader@southjerseyreal.estate${workingWithAgentGuidePath}`,
+    `//southjerseyreal.estate${workingWithAgentGuidePath}`,
+    `${workingWithAgentGuidePath}-other`,
+    `${workingWithAgentGuidePath}\\`,
+    `${workingWithAgentGuidePath}\n`,
+  ])("does not confuse an external, unsafe, or different guide destination with the selected guide: %s", (href) => {
+    const legacy = structuredClone(managedContentSeeds.get(buyerGuidePath)) as ManagedPageDocument;
+    delete legacy.insightAgentGuideLinksVersion;
+    legacy.insightArticle!.relatedLinks = [{ label: "Owner's separate resource", href }];
+    const normalized = normalizeManagedContent(buyerGuidePath, legacy) as ManagedPageDocument;
+    expect(normalized.insightArticle!.relatedLinks).toEqual([
+      ...legacy.insightArticle!.relatedLinks,
+      { label: "Working with a real estate agent", href: workingWithAgentGuidePath },
+    ]);
   });
 
   it("preserves intentional guide order, removals, and additions after legacy migration", () => {

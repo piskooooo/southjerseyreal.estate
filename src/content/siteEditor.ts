@@ -11,7 +11,7 @@ import {
 } from "./navigation";
 import { pageOverrides } from "./pageOverrides";
 import { resourcePages, type ResourcePage } from "./resourcePages";
-import { defaultImage, seoEntries } from "./seo";
+import { defaultImage, normalizeRoutePath, seoEntries, siteUrl } from "./seo";
 import {
   insightArticles,
   insightIndex,
@@ -25,7 +25,12 @@ import { buyerAgencyReviewDate, buyerGuidePath, previousBuyerReviewDate, upgrade
 export const SITEWIDE_CONTENT_KEY = "__sitewide__";
 const INSIGHT_INDEX_VERSION = 2;
 const INSIGHT_CONTACT_LINKS_VERSION = 1;
+const INSIGHT_AGENT_GUIDE_LINKS_VERSION = 1;
 const COUNTY_GUIDE_LINKS_VERSION = 1;
+const insightAgentGuideLinkPaths = new Set([
+  buyerGuidePath,
+  "/insights/preparing-to-sell-a-new-jersey-home",
+]);
 const insightContactLinkPaths = new Set([
   "/insights/researching-a-south-jersey-property",
   "/insights/home-inspections-and-repair-questions",
@@ -104,6 +109,7 @@ export type ManagedPageDocument = {
   insightIndex?: InsightIndexContent;
   insightIndexVersion?: number;
   insightContactLinksVersion?: number;
+  insightAgentGuideLinksVersion?: number;
   countyGuideLinksVersion?: number;
   communitySummariesVersion?: number;
   resourcePage?: ResourcePage;
@@ -380,6 +386,9 @@ export const managedPageSeeds: ManagedPageDocument[] = seoEntries.map((entry) =>
     ...(insightContactLinkPaths.has(entry.path)
       ? { insightContactLinksVersion: INSIGHT_CONTACT_LINKS_VERSION }
       : {}),
+    ...(insightAgentGuideLinkPaths.has(entry.path)
+      ? { insightAgentGuideLinksVersion: INSIGHT_AGENT_GUIDE_LINKS_VERSION }
+      : {}),
     ...(guideLinks ? { countyGuideLinksVersion: COUNTY_GUIDE_LINKS_VERSION } : {}),
     ...(entry.path.endsWith("-county") ? { communitySummariesVersion: COMMUNITY_SUMMARIES_VERSION } : {}),
     ...(entry.path === "/newsletter"
@@ -402,6 +411,19 @@ export const managedContentKeys = [...managedContentSeeds.keys()];
 const isObject = (value: unknown): value is Record<string, unknown> => (
   Boolean(value) && typeof value === "object" && !Array.isArray(value)
 );
+
+function sameSiteDestination(href: string): string | undefined {
+  const candidate = href.trim();
+  if (/[\\\u0000-\u001f\u007f]/.test(href)) return undefined;
+  if ((!candidate.startsWith("/") || candidate.startsWith("//")) && !/^https?:\/\//i.test(candidate)) return undefined;
+  try {
+    const url = new URL(candidate, siteUrl);
+    if (url.origin !== siteUrl || url.username || url.password) return undefined;
+    return normalizeRoutePath(url.pathname);
+  } catch {
+    return undefined;
+  }
+}
 
 function mergeSeedValues(values: unknown[]): unknown {
   const defined = values.filter((value) => value !== undefined);
@@ -649,6 +671,20 @@ export function normalizeManagedContent(pageKey: string, value: unknown): Manage
       }
     }
     document.insightContactLinksVersion = INSIGHT_CONTACT_LINKS_VERSION;
+  }
+  if (insightAgentGuideLinkPaths.has(pageKey)) {
+    const document = normalized as ManagedPageDocument;
+    const seedDocument = seed as ManagedPageDocument;
+    const storedVersion = isObject(value) ? value.insightAgentGuideLinksVersion : undefined;
+    if (typeof storedVersion !== "number" || !Number.isFinite(storedVersion) || storedVersion < INSIGHT_AGENT_GUIDE_LINKS_VERSION) {
+      const links = document.insightArticle?.relatedLinks;
+      const guideLink = seedDocument.insightArticle?.relatedLinks.find((link) => link.href === workingWithAgentGuidePath);
+      if (links && guideLink && !links.some((link) => sameSiteDestination(link.href) === workingWithAgentGuidePath)) {
+        const contactIndex = links.findIndex((link) => sameSiteDestination(link.href) === "/contact");
+        links.splice(contactIndex < 0 ? links.length : contactIndex, 0, structuredClone(guideLink));
+      }
+    }
+    document.insightAgentGuideLinksVersion = INSIGHT_AGENT_GUIDE_LINKS_VERSION;
   }
   return normalized;
 }

@@ -916,6 +916,36 @@ No live inquiry or subscription was submitted. The owner reviewed the actual
 preview and approved committing and publishing the changes on October 19.
 The original roadmap remains complete.
 
+## Owner-selected October 19 Agent Guide Reading Links
+
+The owner selected adding the new agent guide to `Related next steps` on the
+buyer and seller guides, preserving their existing appearance.
+
+- [x] Add `Working with a real estate agent` immediately before Contact in
+  both guides' structured related links. Reuse the current button renderer
+  and styling without changing article prose, review dates, or other guides.
+- [x] Upgrade older published buyer/seller documents once by adding only the
+  new link. Preserve custom wording, destinations, reading order, and removed
+  steps; recognize existing same-site agent links with canonical URLs,
+  trailing slashes, queries, or fragments. Honor later edits and removals,
+  and hide the internal version marker from the private editor.
+- [x] Complete unit, production-build, browser/compliance, and responsive
+  preview verification.
+
+Completed locally on October 19: all 352 unit tests and 181 browser/compliance
+checks passed, including the production build and two new published-content
+browser cases. Verification covers initial HTML, legacy upgrades, custom
+reading links, current-version removals, real navigation, and Back restoring
+the reading position. Additional 1440-pixel light, 390-pixel dark, and
+320-pixel light previews confirmed the existing styling, clean wrapping, and
+no page errors or horizontal overflow. Targeted accessibility checks found
+no violations in the modified related-reading section. Screenshots and check
+outputs remain outside the repository. Browser plugin not available;
+validation used configured Playwright Chrome. No form was submitted, no
+stylesheet was changed, and no production content was written. The owner
+reviewed the actual preview and approved committing and publishing the
+changes on October 19. The original roadmap remains complete.
+
 ## Owner-selected September 4 Maintenance
 
 - [x] Implement the seven confirmed audit corrections in source:

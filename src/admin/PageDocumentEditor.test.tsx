@@ -57,6 +57,16 @@ describe("navigation destinations", () => {
     expect(container.querySelector("#site-content-page-path")).toBeNull();
     expect(container.querySelector("#site-content-insightIndexVersion")).toBeNull();
   });
+
+  it.each([
+    "/insights/new-jersey-homebuying-process",
+    "/insights/preparing-to-sell-a-new-jersey-home",
+  ])("hides the agent-link migration marker while keeping the selected link editable on %s", (path) => {
+    const { container } = render(<EditorHarness initialRecord={seedContentRecord(path)} />);
+    expect(container.querySelector("#site-content-insightAgentGuideLinksVersion")).toBeNull();
+    expect(screen.getByDisplayValue("Working with a real estate agent")).toBeVisible();
+    expect(screen.getByDisplayValue("/insights/working-with-a-real-estate-agent-in-new-jersey")).toBeVisible();
+  });
 });
 
 describe("page document source controls", () => {

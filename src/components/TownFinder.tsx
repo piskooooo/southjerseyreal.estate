@@ -1,9 +1,19 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ArrowRight, Search } from "lucide-react";
 import { findTownFinderEntries, type TownFinderEntry } from "../content/townFinder";
 import { shouldHandleInternalNavigation } from "../internalNavigation";
 
 const RESULT_LIMIT = 8;
+const HISTORY_QUERY_KEY = "sjreTownFinderQuery";
+
+const getHistoryQuery = (): string => {
+  try {
+    const query = window.history.state?.[HISTORY_QUERY_KEY];
+    return typeof query === "string" ? query : "";
+  } catch {
+    return "";
+  }
+};
 
 export function TownFinder({
   entries,
@@ -14,7 +24,7 @@ export function TownFinder({
   ready: boolean;
   navigate: (path: string) => void;
 }) {
-  const [query, setQuery] = useState("");
+  const [query, setQuery] = useState(getHistoryQuery);
   const input = useRef<HTMLInputElement>(null);
   const firstResult = useRef<HTMLAnchorElement>(null);
   const matches = ready ? findTownFinderEntries(entries, query) : [];
@@ -30,8 +40,24 @@ export function TownFinder({
           ? `${matches.length} towns found. Showing the first ${RESULT_LIMIT}; keep typing to narrow the list.`
           : `${matches.length} ${matches.length === 1 ? "town" : "towns"} found.`;
 
+  useEffect(() => {
+    const restoreQuery = () => setQuery(getHistoryQuery());
+    window.addEventListener("popstate", restoreQuery);
+    return () => window.removeEventListener("popstate", restoreQuery);
+  }, []);
+
+  const updateQuery = (value: string) => {
+    setQuery(value);
+    try {
+      // Replace only this entry's search; typing never adds a Back step or URL text.
+      window.history.replaceState({ ...window.history.state, [HISTORY_QUERY_KEY]: value }, "");
+    } catch {
+      // Search still works when the browser cannot save history state.
+    }
+  };
+
   const clearSearch = () => {
-    setQuery("");
+    updateQuery("");
     input.current?.focus();
   };
 
@@ -55,7 +81,7 @@ export function TownFinder({
             spellCheck={false}
             disabled={!ready}
             value={query}
-            onChange={(event) => setQuery(event.target.value)}
+            onChange={(event) => updateQuery(event.target.value)}
             onKeyDown={(event) => {
               if (event.key === "Escape" && query) {
                 event.preventDefault();

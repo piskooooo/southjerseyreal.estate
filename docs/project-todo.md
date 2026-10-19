@@ -607,6 +607,40 @@ the Browser plugin is not available.
 The owner reviewed the preview and approved committing and publishing this
 update on October 18. The original roadmap remains complete.
 
+## Owner-selected October 18 Town Finder Search History
+
+The owner selected restoring the Counties town-finder search and results when
+using browser Back, preserving the current appearance.
+
+- [x] Save the query in its existing browser history entry and restore it when
+  returning, without adding history steps while typing. Keep separate visits
+  independent and retain Clear, keyboard controls, and native new-tab behavior.
+  Derive results from current accepted county content rather than saving cards.
+- [x] Verify real Back/Forward navigation, clearing, separate history entries,
+  history failures, local-only search text, and unchanged desktop/mobile styling.
+  Complete unit, build, and browser/compliance checks and provide the preview.
+
+Search text stays in browser history state; it is not added to the address,
+analytics, form requests, or server storage. This selection leaves the original
+roadmap complete.
+
+Completed locally on October 18: all 261 unit tests across 30 files passed.
+The full browser/compliance run passed all 144 existing checks; after correcting
+the expected Burlington Washington Township title in the two new history
+scenarios, the focused town-finder run passed all seven cases. Together these
+cover all 146 browser/compliance checks. The final public-config build
+prerendered 30 public routes and uses current published county content.
+
+Additional preview checks at 1440 × 1000 in light mode and 390 × 844 in dark
+mode confirmed restored Washington Township and Merchantville queries, working
+town destinations, and persistent clearing. The finder screenshots match the
+previous build pixel for pixel. No page errors, console warnings/errors,
+framework overlays, horizontal overflow, search transmissions, or denied-consent
+analytics events occurred. Browser validation used the repository's Playwright
+Chromium because the Browser plugin is not available. No inquiry or subscription
+was submitted. The owner tested the preview, confirmed the restored search works,
+and approved committing and publishing this update on October 18.
+
 ## Owner-selected September 4 Maintenance
 
 - [x] Implement the seven confirmed audit corrections in source:

@@ -101,6 +101,72 @@ test("disambiguates Washington townships and supports mobile keyboard navigation
   await expectOpenedTown(page, destination!, title);
 });
 
+for (const scenario of [
+  { name: "desktop light", theme: "light" as const, viewport: { width: 1440, height: 1000 } },
+  { name: "mobile dark", theme: "dark" as const, viewport: { width: 390, height: 844 } },
+]) {
+  test(`restores each town search with Back and Forward on ${scenario.name}`, async ({ page }) => {
+    await preparePage(page, scenario.theme);
+    await page.setViewportSize(scenario.viewport);
+    await page.route("**/rest/v1/site_pages?*", (route) => route.fulfill({ contentType: "application/json", body: "[]" }));
+    const errors: string[] = [];
+    page.on("pageerror", (error) => errors.push(error.message));
+    const input = await openFinder(page);
+    const search = page.getByRole("search", { name: "Town directory", exact: true });
+    const links = search.getByRole("list", { name: "Matching towns", exact: true }).getByRole("link");
+    const burlingtonTown = "/burlington-county#washington-township-burlington-county";
+    const gloucesterTown = "/gloucester-county#washington-township";
+    const expectWashingtonSearch = async () => {
+      await expect(page).toHaveURL("/counties");
+      await expect(input).toBeEnabled();
+      await expect(input).toHaveValue("Washington Township");
+      await expect(search.getByRole("status")).toHaveText("2 towns found.");
+      await expect(links).toHaveCount(2);
+      await expect(links.filter({ hasText: "Burlington County" })).toHaveAttribute("href", burlingtonTown);
+      await expect(links.filter({ hasText: "Gloucester County" })).toHaveAttribute("href", gloucesterTown);
+    };
+
+    await input.fill("Washington Township");
+    await expectWashingtonSearch();
+    await links.filter({ hasText: "Burlington County" }).click();
+    await expectOpenedTown(page, burlingtonTown, "Washington Township (Burlington County)");
+    await page.goBack();
+    await expectWashingtonSearch();
+    await links.filter({ hasText: "Gloucester County" }).click();
+    await expectOpenedTown(page, gloucesterTown, "Washington Township");
+    await page.goBack();
+    await expectWashingtonSearch();
+    await page.goForward();
+    await expectOpenedTown(page, gloucesterTown, "Washington Township");
+
+    await page.locator("footer").getByRole("link", { name: "Counties", exact: true }).click();
+    await expect(page).toHaveURL("/counties");
+    await expect(input).toBeEnabled();
+    await expect(input).toHaveValue("");
+    await expect(links).toHaveCount(0);
+    await input.fill("Merchantville");
+    await expect(links).toHaveCount(1);
+    await search.getByRole("button", { name: "Clear", exact: true }).click();
+    await expect(input).toHaveValue("");
+    await expect(input).toBeFocused();
+    await expect(search.getByRole("status")).toHaveText("");
+    const countyLink = page.locator(".hub-card").first().getByRole("link").first();
+    await expect(countyLink).toHaveAttribute("href", "/atlantic-county");
+    await countyLink.click();
+    await expect(page).toHaveURL("/atlantic-county");
+    await page.goBack();
+    await expect(page).toHaveURL("/counties");
+    await expect(input).toBeEnabled();
+    await expect(input).toHaveValue("");
+    await expect(links).toHaveCount(0);
+    await page.goBack();
+    await expectOpenedTown(page, gloucesterTown, "Washington Township");
+    await page.goBack();
+    await expectWashingtonSearch();
+    expect(errors).toEqual([]);
+  });
+}
+
 test("keeps searches local, caps broad results, and clears empty-state queries accessibly", async ({ page }) => {
   await preparePage(page);
   const apiRequests: string[] = [];

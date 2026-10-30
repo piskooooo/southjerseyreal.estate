@@ -12,6 +12,7 @@ import {
 } from "lucide-react";
 import {
   loadContactInquiries,
+  saveContactOutcome,
   type ContactInquiry,
 } from "./contactInquiryStore";
 
@@ -47,6 +48,27 @@ function statusLabel(value: string) {
 }
 
 function InquiryCard({ inquiry }: { inquiry: ContactInquiry }) {
+  const [outcome, setOutcome] = useState(inquiry.outcome || "unreviewed");
+  const [savedOutcome, setSavedOutcome] = useState(inquiry.outcome || "unreviewed");
+  const [saving, setSaving] = useState(false);
+  const [saveMessage, setSaveMessage] = useState("");
+  useEffect(() => {
+    setOutcome(inquiry.outcome || "unreviewed");
+    setSavedOutcome(inquiry.outcome || "unreviewed");
+    setSaveMessage("");
+  }, [inquiry.outcome]);
+  async function saveOutcome() {
+    if (saving) return;
+    setSaving(true);
+    setSaveMessage("");
+    try {
+      await saveContactOutcome(inquiry.id, outcome);
+      setSavedOutcome(outcome);
+      setSaveMessage("Outcome saved.");
+    } catch (error) {
+      setSaveMessage(error instanceof Error ? error.message : "Unable to save the outcome.");
+    } finally { setSaving(false); }
+  }
   const sourcePath = safeSourceUrl(inquiry.sourcePath, inquiry.sourceOrigin);
   const status = inquiry.notificationStatus.toLowerCase();
   return (
@@ -77,6 +99,22 @@ function InquiryCard({ inquiry }: { inquiry: ContactInquiry }) {
       <div className="admin-inquiry-message">
         <p><MessageSquareText size={16} /> Message</p>
         <div>{inquiry.message || "No message was included."}</div>
+      </div>
+
+      <div className="admin-inquiry-outcome">
+        <label htmlFor={`outcome-${inquiry.id}`}>Business outcome</label>
+        <select id={`outcome-${inquiry.id}`} aria-label={`Outcome for ${inquiry.name}`} value={outcome}
+          disabled={saving} onChange={event => { setOutcome(event.target.value); setSaveMessage(""); }}>
+          <option value="unreviewed">Not yet reviewed</option>
+          <option value="not_qualified">Not a suitable enquiry</option>
+          <option value="qualified">Qualified enquiry</option>
+          <option value="consultation_booked">Consultation booked</option>
+          <option value="test">Test — exclude from results</option>
+        </select>
+        <button type="button" aria-label={`Save outcome for ${inquiry.name}`} disabled={saving || outcome === savedOutcome} onClick={saveOutcome}>
+          {saving ? "Saving…" : "Save outcome"}
+        </button>
+        <p role="status">{saveMessage}</p>
       </div>
 
       {inquiry.expiresAt ? (

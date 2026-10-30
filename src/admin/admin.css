@@ -1377,3 +1377,27 @@ body.is-admin-route textarea {
     animation-duration: 1.5s;
   }
 }
+
+.admin-inquiry-outcome {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-top: 0.9rem;
+  font-size: 0.8rem;
+}
+
+.admin-inquiry-outcome select {
+  max-width: 100%;
+  min-height: 2.5rem;
+  padding: 0.45rem;
+  color: var(--admin-ink);
+  background: #fff;
+  border: 1px solid var(--admin-line);
+  font: inherit;
+}
+
+.admin-inquiry-outcome p {
+  flex-basis: 100%;
+  margin: 0;
+}

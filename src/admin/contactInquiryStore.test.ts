@@ -6,9 +6,18 @@ vi.mock("./supabase", () => ({
   supabase: { rpc },
 }));
 
-import { loadContactInquiries } from "./contactInquiryStore";
+import { loadContactInquiries, saveContactOutcome } from "./contactInquiryStore";
 
 describe("contact inquiry pagination", () => {
+  it("saves an explicit business outcome without sending a notification", async () => {
+    rpc.mockResolvedValue({ data: true, error: null });
+    await saveContactOutcome("test-id", "qualified");
+    expect(rpc).toHaveBeenCalledExactlyOnceWith("set_contact_inquiry_outcome", { p_inquiry_id: "test-id", p_outcome: "qualified" });
+  });
+  it("does not report a missing record as saved", async () => {
+    rpc.mockResolvedValue({ data: false, error: null });
+    await expect(saveContactOutcome("missing", "qualified")).rejects.toThrow();
+  });
   it("retains the recorded origin and leaves historical origins unknown", async () => {
     rpc.mockResolvedValue({ data: [{ inquiry_source_origin: "https://arthurpisko.realtor" }, {}], error: null });
     const rows = await loadContactInquiries();

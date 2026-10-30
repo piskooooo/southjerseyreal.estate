@@ -21,7 +21,7 @@ data, or other secrets in this file.
 
 ## Completed Roadmap
 
-### October 30 selected audit improvements — approved for publication
+### October 30 selected audit improvements — published
 
 Arthur selected both audit recommendations together: a local municipal-records
 example and a dated newsletter excerpt beside signup. After reviewing both
@@ -55,10 +55,21 @@ deployment on October 30. The completed roadmap remains closed.
   errors. Screenshots were inspected. No form was submitted. The browser
   connector failed to attach to Chrome; the repository's bundled Chromium
   was used. Independent exact-tree review passed with no actionable findings.
-  Owner preview and commit/push approval are complete; deployment verification
-  remains a release step.
+  Owner preview and commit/push approval are complete.
 - No form handler, consent wording, analytics event, provider setting, sending
   action is changed by this release.
+
+Publication evidence: implementation commit `abbccecc6e6040a5dace298156e9f2d932933b85`
+is pushed to `origin/main`; [Cloudflare production deployment](https://55153282.southjerseyreal-estate.pages.dev)
+succeeded for that exact revision. Its [GitHub release checks](https://github.com/piskooooo/southjerseyreal.estate/actions/runs/41133474718)
+are the canonical CI record. Live browser checks at 1440/light, 390/dark, and
+320/light confirmed the dated newsletter excerpt, unchanged input/consent state,
+the guide example and source destination, and working Contact navigation with
+no console/page errors or horizontal overflow. Canonical and deployment URLs
+returned 200 in Chromium, included the complete example and directory link in
+initial HTML, shared bundle `index-DtTtqElr.js`, and declared the correct apex
+canonical URL. A separate Python HTTP probe received 403; ordinary Chromium
+navigation succeeded. No forms were submitted or messages sent for verification.
 
 Newsletter excerpt source: [261020 Weekly Newsletter](https://docs.google.com/document/d/1PA6boxt6Eu8h7xC85o2GcWCJvvdw5jGpqia4aoKHv0M/edit),
 the two paragraphs beginning "For buyers, compare the full payment" and

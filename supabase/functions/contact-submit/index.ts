@@ -168,7 +168,9 @@ async function verifyTurnstile(
     "TURNSTILE_EXPECTED_HOSTNAMES",
     DEFAULT_EXPECTED_HOSTNAMES,
   );
-  return Boolean(result.hostname && expectedHostnames.has(result.hostname));
+  const origin = request.headers.get("origin");
+  return Boolean(origin && result.hostname && expectedHostnames.has(result.hostname)
+    && result.hostname === new URL(origin).hostname);
 }
 
 async function hmacHex(value: string): Promise<string> {
@@ -437,7 +439,7 @@ Deno.serve(async (request) => {
       hmacHex(`contact-email:v1\0${validation.value.email}`),
       hmacHex(`contact-client:v1\0${clientIp(request)}`),
     ]);
-    const { data, error } = await admin.rpc("begin_contact_inquiry", {
+    const { data, error } = await admin.rpc("begin_contact_inquiry_from_site", {
       p_request_id: validation.value.requestId,
       p_name: validation.value.name,
       p_email: validation.value.email,
@@ -445,6 +447,7 @@ Deno.serve(async (request) => {
       p_interest: validation.value.interest,
       p_message: validation.value.message,
       p_source_path: validation.value.sourcePath,
+      p_source_origin: allowedOrigin,
       p_email_hash: emailHash,
       p_client_hash: clientHash,
     });

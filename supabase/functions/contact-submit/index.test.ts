@@ -132,6 +132,27 @@ describe("contact request and notification safety", () => {
     expect(send).not.toHaveBeenCalled();
   });
 
+  it.each([
+    ["arthurpisko.realtor", "arthurpisko.realtor", 201],
+    ["southjerseyreal.estate", "southjerseyreal.estate", 201],
+    ["arthurpisko.realtor", "southjerseyreal.estate", 403],
+  ])("binds source %s to verified hostname %s", async (host, verifiedHost, status) => {
+    environment.CONTACT_ALLOWED_ORIGINS = "https://arthurpisko.realtor,https://southjerseyreal.estate";
+    environment.TURNSTILE_EXPECTED_HOSTNAMES = "arthurpisko.realtor,southjerseyreal.estate";
+    environment.TURNSTILE_SECRET = "local-test-secret";
+    environment.CONTACT_AUDIT_HMAC_KEY = "local-test-hmac-key-at-least-32-characters";
+    expectedSiteverifyCalls = 1;
+    vi.mocked(fetch).mockResolvedValue(Response.json({ success: true, action: "turnstile-spin-v2", hostname: verifiedHost }));
+    rpc.mockResolvedValue({ data: { accepted: true, created: true, inquiryId, notificationStatus: "sent" }, error: null });
+    const response = await handleRequest(new Request("https://example.invalid/contact-submit", {
+      method: "POST", headers: { origin: `https://${host}`, "content-type": "application/json" },
+      body: JSON.stringify({ requestId: inquiryId, source: "contact_page", sourceOrigin: "https://spoof.example", name: "Test", email: "test@example.com", phone: "555-0100", interest: "Buying", message: "Test", sourcePath: "/", turnstileToken: "test-token" }),
+    }));
+    expect(response.status).toBe(status);
+    if (status === 201) expect(rpc).toHaveBeenCalledWith("begin_contact_inquiry_from_site", expect.objectContaining({ p_source_origin: `https://${host}` }));
+    else expect(rpc).not.toHaveBeenCalled();
+  });
+
   async function process(work: ContactNotificationWork) {
     let claimed = false;
     rpc.mockImplementation(async (name: string) => {

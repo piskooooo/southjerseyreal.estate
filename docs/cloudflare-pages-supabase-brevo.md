@@ -351,6 +351,26 @@ as a database-test failure.
 
 ## View Private Contact Inquiries
 
+### Source attribution and delivery evidence
+
+The contact handler records the allowed request origin only after its hostname
+matches the verified Turnstile hostname. The private `source_origin` field
+distinguishes the personal `arthurpisko.realtor` site from the regional guide.
+Historical entries remain unattributed; do not infer their site from `/`.
+The admin inbox links only the two canonical production origins and labels
+unknown origins explicitly. Notification emails include the recorded website.
+
+Database `notification_status = 'sent'` means Brevo accepted the notification,
+not that it reached a mailbox. The inbox labels this **Accepted by email
+provider**. Verify provider delivery events and recipient receipt separately;
+never requeue an accepted message merely because a mailbox search is empty.
+
+Deploy `20261030191000_record_contact_source.sql` before deploying the updated
+`contact-submit` handler and admin frontend. The old acceptance RPC remains
+available for backward compatibility. Run the rollback-only SQL checks in
+`supabase/tests/contact-source-regression.sql` with an authorised SQL connection;
+they are separate from the pgTAP suite and send no email.
+
 Use `/admin`, open **Contact**, and select **Manage inquiries**. Access is granted only when the signed-in Auth user UUID owns the private administrator slot. For recovery or database auditing, the Supabase Dashboard SQL Editor remains available while signed in to the project-owner account with MFA.
 
 Do not create shared accounts, expose the `private` schema through the Data API, export inquiries to an unmanaged file, or add a service-role key to the browser.

@@ -9,6 +9,11 @@ vi.mock("./supabase", () => ({
 import { loadContactInquiries } from "./contactInquiryStore";
 
 describe("contact inquiry pagination", () => {
+  it("retains the recorded origin and leaves historical origins unknown", async () => {
+    rpc.mockResolvedValue({ data: [{ inquiry_source_origin: "https://arthurpisko.realtor" }, {}], error: null });
+    const rows = await loadContactInquiries();
+    expect(rows.map(row => row.sourceOrigin)).toEqual(["https://arthurpisko.realtor", ""]);
+  });
   beforeEach(() => {
     rpc.mockReset();
     rpc.mockResolvedValue({ data: [], error: null });

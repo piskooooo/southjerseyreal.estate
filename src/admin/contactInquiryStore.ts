@@ -8,6 +8,7 @@ export type ContactInquiry = {
   interest: string;
   message: string;
   sourcePath: string;
+  sourceOrigin: string;
   notificationStatus: string;
   createdAt: string;
   expiresAt: string;
@@ -34,6 +35,7 @@ export async function loadContactInquiries({
     interest: String(row.inquiry_interest || ""),
     message: String(row.inquiry_message || ""),
     sourcePath: String(row.inquiry_source_path || ""),
+    sourceOrigin: String(row.inquiry_source_origin || ""),
     notificationStatus: String(row.inquiry_notification_status || "pending"),
     createdAt: String(row.inquiry_created_at || ""),
     expiresAt: String(row.inquiry_expires_at || ""),

@@ -26,11 +26,12 @@ function formatDate(value: string) {
   }).format(date);
 }
 
-function safeSourcePath(value: string) {
-  if (!value.startsWith("/")) return "";
+export function safeSourceUrl(value: string, origin: string) {
+  if (!["https://arthurpisko.realtor", "https://southjerseyreal.estate"].includes(origin)
+    || !value.startsWith("/") || value.startsWith("//") || value.includes("\\")) return "";
   try {
-    const url = new URL(value, window.location.origin);
-    return url.origin === window.location.origin ? `${url.pathname}${url.search}` : "";
+    const url = new URL(value, origin);
+    return url.origin === origin ? url.href : "";
   } catch {
     return "";
   }
@@ -39,13 +40,14 @@ function safeSourcePath(value: string) {
 function statusLabel(value: string) {
   const normalized = value.trim().toLowerCase();
   if (!normalized) return "Pending";
+  if (normalized === "sent") return "Accepted by email provider";
   return normalized
     .replaceAll("_", " ")
     .replace(/\b\w/g, (letter) => letter.toUpperCase());
 }
 
 function InquiryCard({ inquiry }: { inquiry: ContactInquiry }) {
-  const sourcePath = safeSourcePath(inquiry.sourcePath);
+  const sourcePath = safeSourceUrl(inquiry.sourcePath, inquiry.sourceOrigin);
   const status = inquiry.notificationStatus.toLowerCase();
   return (
     <article className="admin-inquiry-card">
@@ -69,7 +71,7 @@ function InquiryCard({ inquiry }: { inquiry: ContactInquiry }) {
         ) : <span><Phone size={15} /> No phone supplied</span>}
         {sourcePath ? (
           <a href={sourcePath} target="_blank" rel="noreferrer"><MapPin size={15} /> {sourcePath} <ExternalLink size={13} /></a>
-        ) : null}
+        ) : <span><MapPin size={15} /> Website not recorded or unavailable · {inquiry.sourcePath}</span>}
       </div>
 
       <div className="admin-inquiry-message">

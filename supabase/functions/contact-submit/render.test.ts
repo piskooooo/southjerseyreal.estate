@@ -19,6 +19,16 @@ function work(overrides: Record<string, unknown> = {}) {
 }
 
 describe("renderContactNotification", () => {
+  it("identifies the personal site from stored origin, not visitor text", () => {
+    const rendered = renderContactNotification(work({ sourceOrigin: "https://arthurpisko.realtor" }));
+    expect(rendered.textContent).toContain("A new arthurpisko.realtor website inquiry was received.");
+    expect(rendered.textContent).toContain("Website: https://arthurpisko.realtor");
+  });
+
+  it("does not invent a website for historical records", () => {
+    expect(renderContactNotification(work()).textContent).toContain("Website: Not recorded");
+    expect(renderContactNotification(work()).textContent).not.toContain("A new South Jersey Real Estate");
+  });
   it("renders every operational field as plain text", () => {
     const rendered = renderContactNotification(work());
 

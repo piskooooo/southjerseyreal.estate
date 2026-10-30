@@ -7,6 +7,7 @@ export type ContactNotificationWork = {
   interest: string;
   message: string;
   sourcePath: string;
+  sourceOrigin?: string | null;
   createdAt: string;
   firstAttemptAt: string;
   attemptCount: number;
@@ -30,8 +31,11 @@ export function renderContactNotification(work: ContactNotificationWork): {
     0,
     180,
   );
+  const site = work.sourceOrigin === "https://arthurpisko.realtor"
+    ? "arthurpisko.realtor"
+    : work.sourceOrigin === "https://southjerseyreal.estate" ? "South Jersey Real Estate" : "website";
   const lines = [
-    "A new South Jersey Real Estate website inquiry was received.",
+    `A new ${site}${site === "website" ? "" : " website"} inquiry was received.`,
     "",
     `Name: ${work.name}`,
     `Email: ${work.email}`,
@@ -39,6 +43,7 @@ export function renderContactNotification(work: ContactNotificationWork): {
     `Interest: ${work.interest}`,
     `Submitted: ${submissionTime(work.createdAt)}`,
     `Source: ${work.sourcePath}`,
+    `Website: ${work.sourceOrigin || "Not recorded"}`,
     `Inquiry ID: ${work.inquiryId}`,
     "",
     "Message:",

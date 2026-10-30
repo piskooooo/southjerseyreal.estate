@@ -1,6 +1,6 @@
 # South Jersey Real Estate Project Checklist
 
-Last reviewed: October 19, 2026
+Last reviewed: October 30, 2026
 
 **Roadmap status: Complete.** The selected roadmap closed on August 7, 2026.
 The owner separately selected the September 4 audit corrections below. Their
@@ -1538,3 +1538,10 @@ Completion date: July 25, 2026
 - [x] Add 100 Vitest tests, 66 rendered browser compliance checks, and a 43-check transactional Supabase pgTAP suite, and keep the GitHub test workflow on every push.
 - [x] Build and publish the private website-editor frontend, database migration, image/inbox support, managed public-content adapter, and SEO rebuild implementation while keeping production access fail-closed until provisioning is complete.
 - [x] Document private inquiry access, production test cleanup, Pages recovery, retired NAS resources, and the final human compliance handoff.
+## October 30, 2026 selected maintenance closeout
+
+- [x] Preserve verified source attribution for the shared contact receiver, including the separate `arthurpisko.realtor` site.
+- [x] Add administrator-reviewed business outcomes to the existing private contact inbox and exclude controlled tests from business results.
+- [x] Verify deployed behavior, one notification attempt and one mailbox receipt for the post-fix controlled enquiry, and the live inbox's saved test outcomes.
+
+Completed under Arthur's explicit authorisation for the personal-site audit opportunities. Canonical release and measurement evidence is in [Enquiry outcomes](./cloudflare-pages-supabase-brevo.md#enquiry-outcomes-2026-10-30). The regional roadmap remains closed; personal seller copy and the personal Google Business Profile are separate-project changes.

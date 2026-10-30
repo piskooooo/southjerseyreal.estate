@@ -1,5 +1,6 @@
 import { useEffect, useLayoutEffect, useRef, useState, type MouseEvent, type ReactNode } from "react";
 import { Search } from "lucide-react";
+import { newsletterSample } from "../content/auditContent";
 import { trackCommunityProfileOpen, trackFormSuccess, trackLinkClick } from "../analytics";
 import { shouldHandleInternalNavigation } from "../internalNavigation";
 import { getCommunityAnalyticsId } from "../content/communityAnalytics";
@@ -51,6 +52,7 @@ const LIGHT_MODE_HOME_HERO_IMAGE: ImageAsset = {
 };
 
 const DEFAULT_NEWSLETTER_CONTENT: NewsletterContent = {
+  sample: newsletterSample,
   eyebrow: "South Jersey market updates",
   heading: "Newsletter",
   introduction: "A weekly real estate email for South New Jersey homeowners, buyers, and locals who want to keep an eye on the market without digging through scattered reports.",
@@ -1163,6 +1165,15 @@ export function NewsletterPage({ content = DEFAULT_NEWSLETTER_CONTENT, navigate 
             {content.topics.map((topic, index) => <span key={`${topic}-${index}`}>{topic}</span>)}
           </div>
           <p className="newsletter-note">{content.note}</p>
+          {content.sample?.visible && (
+            <section className="newsletter-sample" aria-labelledby="newsletter-sample-heading">
+              <h2 id="newsletter-sample-heading">{content.sample.heading}</h2>
+              <p className="newsletter-note">{content.sample.dateLabel}</p>
+              <blockquote>
+                {content.sample.paragraphs.map((paragraph, index) => <p key={index}>{paragraph}</p>)}
+              </blockquote>
+            </section>
+          )}
           {isConfirmed && (
             <p className="newsletter-confirmed" role="status">
               {content.confirmationMessage}

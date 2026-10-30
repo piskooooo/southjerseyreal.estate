@@ -1,6 +1,7 @@
 import type { ContentBlock } from "./types";
 import { workingWithAgentGuide, workingWithAgentGuidePath } from "./workingWithAgentGuide";
 import { buyerAgencyParagraph, buyerAgencyReviewDate, buyerAgencySource } from "./buyerAgencyRevision";
+import { municipalExample, municipalExampleSources, zoningDirectorySource } from "./auditContent";
 
 export type InsightCard = {
   category: string;
@@ -499,11 +500,13 @@ export const insightArticles: Record<string, InsightArticleContent> = {
           "Recheck any material answer that was informal or not tied to the exact parcel.",
         ],
       },
+      municipalExample,
     ],
     sources: [
-      { tag: "SOURCE", text: "New Jersey Department of Community Affairs — Zoning Map and Ordinance Directory", href: "https://www.nj.gov/dca/", accessed: newGuideDate },
+      zoningDirectorySource,
       { tag: "SOURCE", text: "State of New Jersey — New Jersey Municipalities directory", href: "https://www.nj.gov/infobank/revmuni.htm", accessed: newGuideDate },
       { tag: "SOURCE", text: "State of New Jersey Transparency Center — Property Tax and Property Explorer", href: "https://nj.gov/transparency/property/", accessed: newGuideDate },
+      ...municipalExampleSources,
     ],
     relatedLinks: [
       { label: "Research a South Jersey property", href: "/insights/researching-a-south-jersey-property" },

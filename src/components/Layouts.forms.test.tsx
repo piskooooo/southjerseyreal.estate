@@ -49,6 +49,15 @@ async function completeTurnstile(token: string) {
 }
 
 describe("public cloud forms", () => {
+  it("shows a dated newsletter excerpt without requiring signup", () => {
+    render(<NewsletterPage navigate={vi.fn()} />);
+    expect(screen.getByRole("heading", { name: "A taste of the newsletter" })).toBeVisible();
+    expect(screen.getByText("Excerpt · October 20, 2026")).toBeVisible();
+    expect(screen.getByText(/For buyers, compare the full payment/)).toBeVisible();
+    expect(screen.getByRole("textbox", { name: /Email/ })).toHaveValue("");
+    expect(fetch).not.toHaveBeenCalled();
+  });
+
   beforeEach(() => {
     turnstileOptions = [];
     vi.clearAllMocks();

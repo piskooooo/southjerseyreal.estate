@@ -18,6 +18,7 @@ import {
 import type { ContentBlock, ImageAsset, PageSection, SitePage } from "./types";
 import { workingWithAgentGuidePath } from "./workingWithAgentGuide";
 import { buyerAgencyReviewDate, buyerGuidePath, previousBuyerReviewDate, upgradeBuyerAgencyParagraph } from "./buyerAgencyRevision";
+import { municipalExample, municipalExampleSources, municipalGuidePath, newsletterSample, zoningDirectorySource } from "./auditContent";
 
 export const SITEWIDE_CONTENT_KEY = "__sitewide__";
 const INSIGHT_INDEX_VERSION = 2;
@@ -80,6 +81,7 @@ export type SitewideContent = {
 };
 
 export type NewsletterContent = {
+  sample?: typeof newsletterSample;
   eyebrow: string;
   heading: string;
   introduction: string;
@@ -109,6 +111,7 @@ export type ManagedPageDocument = {
   insightAgentGuideLinksVersion?: number;
   countyGuideLinksVersion?: number;
   communitySummariesVersion?: number;
+  municipalExampleVersion?: number;
   resourcePage?: ResourcePage;
   newsletter?: NewsletterContent;
 };
@@ -171,6 +174,7 @@ export const sitewideSeed: SitewideContent = {
 };
 
 const newsletterSeed: NewsletterContent = {
+  sample: newsletterSample,
   eyebrow: "South Jersey market updates",
   heading: "Newsletter",
   introduction: "A weekly real estate email for South Jersey homeowners, buyers, and locals who want to keep an eye on the market without digging through scattered reports.",
@@ -393,6 +397,7 @@ export function createManagedContentRuntime(countyContent?: CountySiteContent) {
       ...(insightArticle
         ? { insightArticle: structuredClone(insightArticle) }
         : {}),
+      ...(entry.path === municipalGuidePath ? { municipalExampleVersion: 1 } : {}),
       ...(isInsightIndex
         ? { insightIndex: structuredClone(insightIndex), insightIndexVersion: INSIGHT_INDEX_VERSION }
         : {}),
@@ -698,6 +703,27 @@ export function createManagedContentRuntime(countyContent?: CountySiteContent) {
         }
       }
       document.insightAgentGuideLinksVersion = INSIGHT_AGENT_GUIDE_LINKS_VERSION;
+    }
+    if (pageKey === municipalGuidePath) {
+      const document = normalized as ManagedPageDocument;
+      const storedVersion = isObject(value) ? value.municipalExampleVersion : undefined;
+      const article = document.insightArticle;
+      if (article && (typeof storedVersion !== "number" || !Number.isFinite(storedVersion) || storedVersion < 1)) {
+        if (!article.sections.some(section => section.heading === municipalExample.heading)) {
+          article.sections.push(structuredClone(municipalExample));
+        }
+        article.sources = article.sources.map(source => (
+          source.tag === "SOURCE"
+          && source.text === "New Jersey Department of Community Affairs — Zoning Map and Ordinance Directory"
+          && source.href === "https://www.nj.gov/dca/"
+          && source.accessed === "2026-08-10"
+            ? structuredClone(zoningDirectorySource) : source
+        ));
+        for (const source of municipalExampleSources) {
+          if (!article.sources.some(existing => existing.href === source.href)) article.sources.push(structuredClone(source));
+        }
+      }
+      document.municipalExampleVersion = 1;
     }
     return normalized;
   }

@@ -1484,6 +1484,23 @@ p a:focus-visible {
   color: var(--muted);
 }
 
+.newsletter-sample {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--card-border);
+}
+
+.newsletter-sample h2 {
+  font-size: clamp(1.35rem, 3vw, 1.8rem);
+  margin-bottom: 0.75rem;
+}
+
+.newsletter-sample blockquote {
+  margin: 0;
+  padding-left: 1rem;
+  border-left: 2px solid var(--brand);
+}
+
 .newsletter-confirmed {
   max-width: 34rem;
   padding: 0.9rem 1rem;

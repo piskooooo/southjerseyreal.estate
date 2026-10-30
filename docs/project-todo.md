@@ -21,6 +21,58 @@ data, or other secrets in this file.
 
 ## Completed Roadmap
 
+### October 30 selected audit improvements — approved for publication
+
+Arthur selected both audit recommendations together: a local municipal-records
+example and a dated newsletter excerpt beside signup. After reviewing both
+previews, Arthur approved committing and pushing both changes and verifying
+deployment on October 30. The completed roadmap remains closed.
+
+- Prepared an illustrative Cherry Hill deck/shed research exercise in the
+  existing municipal-records guide, with official mapping, zoning, and permit
+  starting pages checked October 30. The permit portal's login requirement is
+  stated; no private parcel, client experience, approval, or legal conclusion
+  is asserted. The example has its own check date; the earlier guide review
+  date is preserved rather than implying every underlying source was rereviewed.
+- Replaced the guide's exact unchanged DCA homepage source with the actual
+  Excel directory, clearly labelled as a download. A direct GET returned 200
+  with the Excel content type. Existing custom source notes remain intact.
+- Added a short exact excerpt from the October 20 newsletter Drive document
+  beside signup, without its internal handoff, market figures, or private
+  reader data. The heading, date label, paragraphs, and visibility are editable.
+  Prior editorial approval/delivery of that issue could not be established:
+  the proof tool permits only the current issue and the read-only delivery
+  connector returned an availability error. Owner review of this excerpt
+  was therefore part of the website preview approval, now granted; the issue
+  is not labelled as sent.
+- RED: the new saved-guide upgrade and excerpt-rendering tests failed before
+  implementation. GREEN: all 383 unit tests and the production build passed.
+  All 183 rendered compliance checks passed, including complete initial guide
+  HTML, no-JavaScript navigation, mobile contents, and existing form checks.
+  Additional Playwright checks at 1440/light, 390/dark, and 320/light verified
+  the excerpt, unchanged input/consent state, guide-to-contact navigation,
+  correct source destination, no horizontal overflow, and no console/page
+  errors. Screenshots were inspected. No form was submitted. The browser
+  connector failed to attach to Chrome; the repository's bundled Chromium
+  was used. Independent exact-tree review passed with no actionable findings.
+  Owner preview and commit/push approval are complete; deployment verification
+  remains a release step.
+- No form handler, consent wording, analytics event, provider setting, sending
+  action is changed by this release.
+
+Newsletter excerpt source: [261020 Weekly Newsletter](https://docs.google.com/document/d/1PA6boxt6Eu8h7xC85o2GcWCJvvdw5jGpqia4aoKHv0M/edit),
+the two paragraphs beginning "For buyers, compare the full payment" and
+"A little more flexibility". The public page contains only those excerpts,
+not a link to the source document or its internal notes.
+
+Acceptance: verify the example and official destinations, initial and interactive
+guide content, saved edits/removals, newsletter preview and unchanged signup
+controls at desktop/mobile widths. These checks and owner approval are complete.
+Business evaluation uses confirmed double-opt-in subscriptions and regional-site
+qualified enquiries/booked consultations. Exclude tests and unknown historical
+origins; clicks and signup requests are supporting signals, not confirmed outcomes.
+The small audit baseline does not establish expected uplift or a conversion rate.
+
 - [x] 1. Complete the Pages cutover and retire the legacy NAS code path
 - [x] 2. Confirm the production URL in Google Search Console
 - [x] 3. Finish the GA4 lead-conversion setup

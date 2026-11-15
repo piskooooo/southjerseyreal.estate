@@ -1,6 +1,6 @@
 # South Jersey Real Estate Project Checklist
 
-Last reviewed: November 15, 2026 (selected GCL article release)
+Last reviewed: November 15, 2026 (selected navigation and consent preview)
 
 **Roadmap status: Complete.** The selected roadmap closed on August 7, 2026.
 The owner separately selected the September 4 audit corrections below. Their
@@ -18,6 +18,47 @@ Use this file as the source of truth for project status and any future selected
 work on `southjerseyreal.estate`. Check an item only after completing its
 **Done when** test. Never place passwords, SMTP credentials, webhook URLs, lead
 data, or other secrets in this file.
+
+## Owner-selected November 15 Navigation and Consent Usability — Approved for Release
+
+Arthur selected all four recommendations from the read-only Modern Web
+Guidance review. This is a bounded public usability update; the original
+website roadmap remains complete. Arthur approved the prepared preview and
+explicitly authorized committing and pushing it on November 15, 2026.
+
+- [x] Move focus to the new page heading after an explicit cross-page visit,
+  preserving fragment destinations, initial-load focus, Back/Forward reading
+  positions, and focus during theme/content refreshes. Make the main landmark
+  programmatically focusable for the skip link and heading fallback.
+- [x] Return focus to the mobile menu button when Escape closes a focused
+  navigation link. Use desktop disclosure controls with explicit Enter/Space
+  activation and repeat-click closing, preserving mouse hover, hub links,
+  outside dismissal, and native modified/middle clicks.
+- [x] Reduce the mobile privacy notice through spacing and side-by-side
+  choices, retaining the exact message, categories, policy link, button labels,
+  and analytics behavior. Observed heights were about 175px at 390px and 194px
+  at 320px, versus about 282px before the update. Enlarged content can scroll
+  inside the notice on short screens.
+- [x] Enlarge the mobile theme/menu buttons to 48px square and adjust header
+  spacing to retain the two-line brand at 320px. No palette change, new
+  dependency, backend change, form submission, or external message is included.
+- [x] Demonstrate failing browser regressions before implementation; pass
+  391 unit tests and the production build. All 193 browser/compliance checks
+  passed. After the mobile-header spacing-only adjustment, rebuilt and passed
+  all 15 targeted navigation, screenshot, mobile contents, sticky county
+  controls, and history checks against the final build. Independent source
+  review found no actionable findings. Desktop light, mobile dark, and 320px
+  light screenshots were inspected; settled-page targeted accessibility checks
+  found no violations or page errors. Browser plugin was not available, so QA
+  used the repository's bundled Chromium. No live forms were submitted.
+- [x] Obtain owner preview acceptance and explicit commit/push authorization.
+- [ ] Commit/push the reviewed tree when authorized; verify GitHub checks and
+  the exact Cloudflare Pages deployment before reporting production completion.
+
+Local preview: <http://127.0.0.1:5173/>. The read-only review also identified
+an inaccurate browser-support claim in the external guide; no installed plugin
+files were changed. Release verification is pending; this entry does not yet
+claim production completion.
 
 ## Owner-selected November 15 GCL Article — Published
 

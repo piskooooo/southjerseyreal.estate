@@ -552,6 +552,8 @@ test("desktop folders switch without overlap and support keyboard dismissal", as
   await page.mouse.move(0, 0);
   await page.locator(".brand").focus();
   await counties.focus();
+  await expect(counties).toHaveAttribute("aria-expanded", "false");
+  await page.keyboard.press("Enter");
   await expect(counties).toHaveAttribute("aria-expanded", "true");
   await expect(connect).toHaveAttribute("aria-expanded", "false");
   await page.keyboard.press("Escape");

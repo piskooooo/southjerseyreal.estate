@@ -68,6 +68,8 @@ export function Header({ brandName, content, currentPath, navigate, onToggleThem
   const headerRef = useRef<HTMLElement>(null);
   const countiesButtonRef = useRef<HTMLButtonElement>(null);
   const connectButtonRef = useRef<HTMLButtonElement>(null);
+  const mobileButtonRef = useRef<HTMLButtonElement>(null);
+  const hoverPreview = useRef<"counties" | "connect" | null>(null);
   const {
     connectLinks,
     connectLabel,
@@ -84,6 +86,7 @@ export function Header({ brandName, content, currentPath, navigate, onToggleThem
       if (!headerRef.current?.contains(event.target as Node)) {
         setOpenFolder(null);
         setMenuOpen(false);
+        hoverPreview.current = null;
       }
     };
     const closeFromEscape = (event: globalThis.KeyboardEvent) => {
@@ -91,6 +94,10 @@ export function Header({ brandName, content, currentPath, navigate, onToggleThem
       const folderToFocus = openFolder;
       setOpenFolder(null);
       setMenuOpen(false);
+      hoverPreview.current = null;
+      if (menuOpen && document.getElementById("mobile-menu")?.contains(document.activeElement)) {
+        mobileButtonRef.current?.focus();
+      }
       if (folderToFocus === "counties") countiesButtonRef.current?.focus();
       if (folderToFocus === "connect") connectButtonRef.current?.focus();
     };
@@ -101,12 +108,27 @@ export function Header({ brandName, content, currentPath, navigate, onToggleThem
       document.removeEventListener("pointerdown", closeFromOutside);
       document.removeEventListener("keydown", closeFromEscape);
     };
-  }, [openFolder]);
+  }, [menuOpen, openFolder]);
+
+  const previewFolder = (folder: "counties" | "connect", pointerType: string) => {
+    if (pointerType === "touch" || !window.matchMedia?.("(hover: hover)").matches) return;
+    hoverPreview.current = folder;
+    setOpenFolder(folder);
+  };
+  const toggleFolder = (folder: "counties" | "connect") => {
+    if (hoverPreview.current === folder) {
+      hoverPreview.current = null;
+      return;
+    }
+    hoverPreview.current = null;
+    setOpenFolder((open) => open === folder ? null : folder);
+  };
 
   const go = (path: string) => {
     navigate(path);
     setMenuOpen(false);
     setOpenFolder(null);
+    hoverPreview.current = null;
   };
 
   const linkClass = (path: string) => (currentPath === path ? "is-active" : "");
@@ -129,12 +151,22 @@ export function Header({ brandName, content, currentPath, navigate, onToggleThem
       <nav
         className="desktop-nav"
         aria-label="Primary navigation"
-        onMouseLeave={() => setOpenFolder(null)}
+        onPointerLeave={() => {
+          if (hoverPreview.current) setOpenFolder(null);
+          hoverPreview.current = null;
+        }}
         onBlur={(event) => {
           if (!event.currentTarget.contains(event.relatedTarget)) setOpenFolder(null);
         }}
       >
-        <div className={`nav-folder ${openFolder === "counties" ? "is-open" : ""}`} onMouseEnter={() => setOpenFolder("counties")}>
+        <div className={`nav-folder ${openFolder === "counties" ? "is-open" : ""}`}
+          onPointerEnter={(event) => previewFolder("counties", event.pointerType)}
+          onBlur={(event) => {
+            if (event.relatedTarget && !event.currentTarget.contains(event.relatedTarget)) {
+              setOpenFolder(null);
+              hoverPreview.current = null;
+            }
+          }}>
           <div className="nav-folder-control">
             <a
               href={countiesPath}
@@ -146,7 +178,6 @@ export function Header({ brandName, content, currentPath, navigate, onToggleThem
                 event.preventDefault();
                 go(countiesPath);
               }}
-              onFocus={() => setOpenFolder("counties")}
             >
               {countiesLabel}
             </a>
@@ -154,11 +185,9 @@ export function Header({ brandName, content, currentPath, navigate, onToggleThem
               ref={countiesButtonRef}
               type="button"
               aria-label={`${countiesLabel} menu`}
-              aria-haspopup="true"
               aria-expanded={openFolder === "counties"}
               aria-controls="counties-menu"
-              onClick={() => setOpenFolder("counties")}
-              onFocus={() => setOpenFolder("counties")}
+              onClick={() => toggleFolder("counties")}
             >
               <ChevronDown aria-hidden="true" size={16} strokeWidth={2} />
             </button>
@@ -184,7 +213,14 @@ export function Header({ brandName, content, currentPath, navigate, onToggleThem
           </div>
         </div>
 
-        <div className={`nav-folder ${openFolder === "connect" ? "is-open" : ""}`} onMouseEnter={() => setOpenFolder("connect")}>
+        <div className={`nav-folder ${openFolder === "connect" ? "is-open" : ""}`}
+          onPointerEnter={(event) => previewFolder("connect", event.pointerType)}
+          onBlur={(event) => {
+            if (event.relatedTarget && !event.currentTarget.contains(event.relatedTarget)) {
+              setOpenFolder(null);
+              hoverPreview.current = null;
+            }
+          }}>
           <div className="nav-folder-control">
             <a
               href={connectPath}
@@ -196,7 +232,6 @@ export function Header({ brandName, content, currentPath, navigate, onToggleThem
                 event.preventDefault();
                 go(connectPath);
               }}
-              onFocus={() => setOpenFolder("connect")}
             >
               {connectLabel}
             </a>
@@ -204,11 +239,9 @@ export function Header({ brandName, content, currentPath, navigate, onToggleThem
               ref={connectButtonRef}
               type="button"
               aria-label={`${connectLabel} menu`}
-              aria-haspopup="true"
               aria-expanded={openFolder === "connect"}
               aria-controls="connect-menu"
-              onClick={() => setOpenFolder("connect")}
-              onFocus={() => setOpenFolder("connect")}
+              onClick={() => toggleFolder("connect")}
             >
               <ChevronDown aria-hidden="true" size={16} strokeWidth={2} />
             </button>
@@ -274,6 +307,7 @@ export function Header({ brandName, content, currentPath, navigate, onToggleThem
         <button
           type="button"
           className="menu-button"
+          ref={mobileButtonRef}
           aria-label={menuOpen ? "Close navigation menu" : "Open navigation menu"}
           aria-expanded={menuOpen}
           aria-controls="mobile-menu"

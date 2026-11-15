@@ -87,7 +87,19 @@ export default function App() {
   const [siteContent, setSiteContent] = useState<PublicSiteContent>(seedPublicSiteContent);
   const [resolvedContentPath, setResolvedContentPath] = useState("");
   const navigationRequest = useRef(0);
+  const pendingPageFocus = useRef<number | null>(null);
+  const mainRef = useRef<HTMLElement>(null);
   usePageScrollRestoration(path, resolvedContentPath === path);
+
+  useLayoutEffect(() => {
+    if (pendingPageFocus.current !== navigationRequest.current) return;
+    pendingPageFocus.current = null;
+    const target = mainRef.current?.querySelector<HTMLElement>("h1") || mainRef.current;
+    if (target) {
+      target.tabIndex = -1;
+      target.focus({ preventScroll: true });
+    }
+  }, [path]);
 
   const showPreparedPath = useCallback((nextPath: string) => {
     const prepared = seedPublicSiteContent();
@@ -217,6 +229,7 @@ export default function App() {
 
   useEffect(() => {
     const onPopState = () => {
+      pendingPageFocus.current = null;
       const nextPath = normalizeRoutePath(window.location.pathname);
       const request = ++navigationRequest.current;
       if (isPublicContentReady(nextPath)) {
@@ -259,6 +272,7 @@ export default function App() {
     const normalized = normalizeRoutePath(destination.pathname);
     const nextLocation = `${normalized}${destination.search}${destination.hash}`;
     const request = ++navigationRequest.current;
+    pendingPageFocus.current = null;
     const commitNavigation = () => {
       if (request !== navigationRequest.current) return;
       if (nextLocation !== `${window.location.pathname}${window.location.search}${window.location.hash}`) {
@@ -266,6 +280,7 @@ export default function App() {
       } else if (!destination.hash) {
         return;
       }
+      if (normalized !== path && !destination.hash) pendingPageFocus.current = request;
       showPreparedPath(normalized);
       if (normalized === path) {
         window.dispatchEvent(new PopStateEvent("popstate"));
@@ -352,7 +367,7 @@ export default function App() {
         theme={theme}
         onToggleTheme={() => setTheme((current) => (current === "dark" ? "light" : "dark"))}
       />
-      <main id="page">{renderPage(pageDocument)}</main>
+      <main id="page" ref={mainRef} tabIndex={-1}>{renderPage(pageDocument)}</main>
       <Footer content={siteContent.sitewide.footer} navigate={navigate} onManagePrivacy={() => setAnalyticsConsentChoice(null)} />
       {analyticsConsentChoice === null && (
         <section className="privacy-banner" aria-label="Privacy choices">

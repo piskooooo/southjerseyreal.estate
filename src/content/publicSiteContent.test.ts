@@ -31,7 +31,7 @@ describe("public content preparation", () => {
     expect(loader).not.toHaveBeenCalled();
     const seeded = client.seedPublicSiteContent();
     expect([...seeded.pages.values()]).toEqual(managedPageSeeds.filter((document) => !countyPaths.includes(document.page.path)));
-    expect([...seeded.pages.values()].filter((document) => document.insightArticle)).toHaveLength(9);
+    expect([...seeded.pages.values()].filter((document) => document.insightArticle)).toHaveLength(10);
     for (const path of countyPaths) {
       expect(seeded.pages.has(path)).toBe(false);
       expect(client.isPublicContentReady(path)).toBe(false);
@@ -147,7 +147,7 @@ describe("prepared public content loading", () => {
     expect(countyPaths.every((path) => content.pages.has(path))).toBe(true);
   });
 
-  it("keeps all nine accepted full articles searchable without a county import", async () => {
+  it("keeps all ten accepted full articles searchable without a county import", async () => {
     configure();
     const loader = vi.fn(async () => countySiteContent);
     const client = createPublicSiteContent({ loadCountyContent: loader });
@@ -163,7 +163,7 @@ describe("prepared public content loading", () => {
     vi.stubGlobal("fetch", fetchContent);
     const content = await client.loadPublishedSiteContent("/insights");
     const articlePaths = [...seeded.pages.values()].filter((document) => document.insightArticle).map((document) => document.page.path);
-    expect(articlePaths).toHaveLength(9);
+    expect(articlePaths).toHaveLength(10);
     expect(new URL(fetchContent.mock.calls[0][0]).searchParams.get("page_key"))
       .toBe(`in.(${[SITEWIDE_CONTENT_KEY, "/insights", ...articlePaths].join(",")})`);
     const entries = buildGuideFinderEntries(content.pages.get("/insights")!.insightIndex!.articles, content.pages.values());

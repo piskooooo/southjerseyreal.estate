@@ -4295,6 +4295,61 @@ p {
   border: 1px solid var(--card-border);
 }
 
+.insight-ordered-list {
+  padding-left: 1.8rem;
+  line-height: 1.8;
+}
+
+.insight-ordered-list li::marker {
+  color: var(--brand);
+  font-weight: 700;
+}
+
+.insight-map {
+  margin-top: 2rem;
+  padding: clamp(1rem, 3vw, 1.5rem);
+  border: 1px solid var(--card-border);
+  background: var(--surface);
+}
+
+.insight-map > p {
+  font-size: 0.9rem;
+  line-height: 1.65;
+}
+
+.insight-map-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem;
+  margin: 1.25rem 0;
+}
+
+.insight-map-frame {
+  display: grid;
+  place-items: center;
+  min-height: 28rem;
+  background: var(--surface-note);
+  border: 1px solid var(--section-line);
+}
+
+.insight-map-frame > p {
+  max-width: 32rem;
+  padding: 2rem;
+  text-align: center;
+}
+
+.insight-map-frame iframe {
+  display: block;
+  width: 100%;
+  height: 28rem;
+  border: 0;
+}
+
+.insight-map-fallback {
+  margin: 1rem 0 0;
+}
+
 .insight-checklist h3 {
   margin-bottom: 1rem;
   color: var(--brand);
@@ -4865,6 +4920,17 @@ p {
 
 /* The browser's Print / Save as PDF view; screen layouts remain independent. */
 @media print {
+  .insight-map-frame,
+  .insight-map button,
+  .insight-map > p {
+    display: none !important;
+  }
+
+  .insight-map {
+    padding: 0;
+    border: 0;
+  }
+
   @page insight-guide {
     size: auto;
     margin: 15mm;

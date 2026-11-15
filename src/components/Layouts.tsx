@@ -24,6 +24,7 @@ import type { NewsletterContent } from "../content/siteEditor";
 import type { ContentBlock, ImageAsset, PageSection, SitePage } from "../content/types";
 import { Blocks } from "./Blocks";
 import { InsightContents } from "./InsightContents";
+import { GclMap } from "./GclMap";
 import {
   CommunityInformationDisclaimer,
   ContactConsent,
@@ -680,6 +681,12 @@ export function InsightArticlePage({
               {section.paragraphs.map((paragraph, paragraphIndex) => (
                 <p key={`${section.heading}-paragraph-${paragraphIndex}`}>{paragraph}</p>
               ))}
+              {section.map === "gcl" ? <GclMap key={`${index}-${section.heading}`} /> : null}
+              {section.orderedList && section.orderedList.length > 0 ? (
+                <ol className="insight-ordered-list">
+                  {section.orderedList.map((item, itemIndex) => <li key={itemIndex}>{item}</li>)}
+                </ol>
+              ) : null}
               {section.checklist.length > 0 ? (
                 <div className="insight-checklist">
                   <h3>Working checklist</h3>

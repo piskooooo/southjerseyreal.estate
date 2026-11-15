@@ -90,7 +90,7 @@ export function buildGuideFinderEntries(
       articleMetadata(article).forEach((text) => addPassage(text));
       const sectionIds = article.sections.map((section, sectionIndex) => insightSectionId(section.heading, sectionIndex));
       article.sections.forEach((section, sectionIndex) => {
-        const text = [section.heading, ...section.paragraphs, ...section.checklist];
+        const text = [section.heading, ...section.paragraphs, ...section.checklist, ...(section.orderedList || [])];
         text.forEach((passage) => addPassage(passage, sectionIndex));
         sections.push({
           heading: section.heading,

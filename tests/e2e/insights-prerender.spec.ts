@@ -82,7 +82,9 @@ async function expectCompleteContent(page: Page, path: string) {
     })),
     related: article.relatedLinks,
   });
-  expect(sections.map(({ anchor: _anchor, ...section }) => section)).toEqual(article.sections);
+  expect(sections.map(({ anchor: _anchor, ...section }) => section)).toEqual(
+    article.sections.map(({ heading, paragraphs, checklist }) => ({ heading, paragraphs, checklist })),
+  );
   expect(sections.every((section) => section.anchor)).toBe(true);
   for (const list of contents) {
     expect(list).toEqual(sections.map((section) => ({ label: section.heading, href: `#${section.anchor}` })));

@@ -22,6 +22,7 @@ const deepMatches = [
   { path: "/insights/coastal-property-due-diligence", query: "bulkheads docks", section: 2 },
   { path: "/insights/wells-septic-acreage-and-environmental-constraints", query: "pumping records", section: 2 },
   { path: "/insights/working-with-a-real-estate-agent-in-new-jersey", query: "designated agency", section: 2 },
+  { path: "/insights/glassboro-camden-line", query: "Lanning Square", section: 2 },
 ];
 
 test.beforeEach(async ({ context, page }) => {
@@ -98,7 +99,7 @@ function publishedRows(article: InsightArticleContent, index = structuredClone(i
   ];
 }
 
-test("all nine guide body topics expose real excerpts and matching sections without replacing full-guide links", async ({ page }) => {
+test("all guide body topics expose real excerpts and matching sections without replacing full-guide links", async ({ page }) => {
   await page.setViewportSize({ width: 1440, height: 1000 });
   const input = await openFinder(page);
   expect(new Set(deepMatches.map((match) => match.path))).toEqual(new Set(insightIndex.articles.map((card) => card.href)));
@@ -106,7 +107,7 @@ test("all nine guide body topics expose real excerpts and matching sections with
     const section = insightArticles[match.path].sections[match.section];
     await input.fill(match.query);
     const card = cardFor(page, match.path);
-    await expectExcerpt(card, match.query, [section.heading, ...section.paragraphs, ...section.checklist]);
+    await expectExcerpt(card, match.query, [section.heading, ...section.paragraphs, ...section.checklist, ...(section.orderedList || [])]);
     await expect(card.locator(".insight-match-link"))
       .toHaveAttribute("href", `${match.path}#${insightSectionId(section.heading, match.section)}`);
     await expectOriginalLinks(card, match.path);

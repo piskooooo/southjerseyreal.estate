@@ -437,7 +437,7 @@ describe("website editor content normalization", () => {
       "/insights/new-jersey-homebuying-process",
     ) as ManagedPageDocument;
 
-    expect(hub.insightIndex?.articles).toHaveLength(9);
+    expect(hub.insightIndex?.articles).toHaveLength(10);
     expect(article.insightArticle?.sections.length).toBeGreaterThanOrEqual(5);
     expect(article.insightArticle?.author).toBe("Arthur Pisko Jr.");
     expect(article.insightArticle?.sources.every((source) => source.tag === "SOURCE")).toBe(true);
@@ -462,19 +462,19 @@ describe("website editor content normalization", () => {
     olderIndex.insightIndex!.articles[0].title = "Owner's guide title";
 
     const normalized = normalizeManagedContent("/insights", olderIndex) as ManagedPageDocument;
-    expect(normalized.insightIndex?.articles).toHaveLength(9);
+    expect(normalized.insightIndex?.articles).toHaveLength(10);
     expect(normalized.insightIndex?.articles.map((article) => article.href)).toContain(
       "/insights/coastal-property-due-diligence",
     );
     expect(normalized.insightIndex?.articles[0].title).toBe("Owner's guide title");
   });
 
-  it("adds the ninth guide to the complete version-one library and updates its legacy buyer review date", () => {
+  it("adds the newer guides to the complete version-one library and updates its legacy buyer review date", () => {
     const seed = managedContentSeeds.get("/insights") as ManagedPageDocument;
     const legacy = structuredClone(seed);
     legacy.insightIndexVersion = 1;
     legacy.insightIndex!.articles = legacy.insightIndex!.articles.filter((card) => (
-      card.href !== "/insights/working-with-a-real-estate-agent-in-new-jersey"
+      card.href !== "/insights/working-with-a-real-estate-agent-in-new-jersey" && card.href !== "/insights/glassboro-camden-line"
     ));
     legacy.insightIndex!.articles.find((card) => card.href === buyerGuidePath)!.reviewedDate = previousBuyerReviewDate;
     expect(legacy.insightIndex!.articles).toHaveLength(8);
@@ -482,12 +482,12 @@ describe("website editor content normalization", () => {
 
     const normalized = normalizeManagedContent("/insights", legacy) as ManagedPageDocument;
     expect(normalized.insightIndex).toEqual(seed.insightIndex);
-    expect(normalized.insightIndexVersion).toBe(2);
+    expect(normalized.insightIndexVersion).toBe(3);
     expect(legacy).toEqual(original);
     expect(normalizeManagedContent("/insights", structuredClone(normalized))).toEqual(normalized);
   });
 
-  it("appends only the ninth card while retaining version-one custom cards, order, and old-guide removals", () => {
+  it("appends only the newer cards while retaining version-one custom cards, order, and old-guide removals", () => {
     const legacy = structuredClone(managedContentSeeds.get("/insights")) as ManagedPageDocument;
     legacy.insightIndexVersion = 1;
     const cards = legacy.insightIndex!.articles;
@@ -505,9 +505,10 @@ describe("website editor content normalization", () => {
     const normalized = normalizeManagedContent("/insights", legacy) as ManagedPageDocument;
     expect(normalized.insightIndex).toEqual({
       ...original.insightIndex,
-      articles: [...original.insightIndex!.articles, newCard],
+      articles: [...original.insightIndex!.articles, newCard,
+        (managedContentSeeds.get("/insights") as ManagedPageDocument).insightIndex!.articles.find((card) => card.href === "/insights/glassboro-camden-line")!],
     });
-    expect(normalized.insightIndexVersion).toBe(2);
+    expect(normalized.insightIndexVersion).toBe(3);
     expect(legacy).toEqual(original);
     expect(normalizeManagedContent("/insights", structuredClone(normalized))).toEqual(normalized);
   });
@@ -524,14 +525,18 @@ describe("website editor content normalization", () => {
     const original = structuredClone(legacy);
 
     const normalized = normalizeManagedContent("/insights", legacy) as ManagedPageDocument;
-    expect(normalized).toEqual({ ...original, insightIndexVersion: 2 });
+    expect(normalized).toEqual({ ...original, insightIndexVersion: 3, insightIndex: {
+      ...original.insightIndex,
+      articles: [...original.insightIndex!.articles,
+        (managedContentSeeds.get("/insights") as ManagedPageDocument).insightIndex!.articles.find((card) => card.href === "/insights/glassboro-camden-line")!],
+    } });
     expect(legacy).toEqual(original);
     expect(normalizeManagedContent("/insights", structuredClone(normalized))).toEqual(normalized);
   });
 
-  it.each(["ninth card", "entire library"])("preserves a version-two removal of the %s", (removal) => {
+  it.each(["ninth card", "entire library"])("preserves a current-version removal of the %s", (removal) => {
     const draft = structuredClone(managedContentSeeds.get("/insights")) as ManagedPageDocument;
-    draft.insightIndexVersion = 2;
+    draft.insightIndexVersion = 3;
     draft.insightIndex!.articles = removal === "entire library" ? [] : draft.insightIndex!.articles.filter((card) => (
       card.href !== "/insights/working-with-a-real-estate-agent-in-new-jersey"
     ));

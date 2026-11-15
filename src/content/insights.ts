@@ -2,6 +2,7 @@ import type { ContentBlock } from "./types";
 import { workingWithAgentGuide, workingWithAgentGuidePath } from "./workingWithAgentGuide";
 import { buyerAgencyParagraph, buyerAgencyReviewDate, buyerAgencySource } from "./buyerAgencyRevision";
 import { municipalExample, municipalExampleSources, zoningDirectorySource } from "./auditContent";
+import { gclGuide, gclGuidePath } from "./gclGuide";
 
 export type InsightCard = {
   category: string;
@@ -22,6 +23,8 @@ export type InsightSection = {
   heading: string;
   paragraphs: string[];
   checklist: string[];
+  orderedList?: string[];
+  map?: string;
 };
 
 export type InsightArticleContent = {
@@ -114,6 +117,13 @@ export const insightIndex: InsightIndexContent = {
       reviewedDate: workingWithAgentGuide.reviewedDate,
       summary: workingWithAgentGuide.summary,
       title: workingWithAgentGuide.title,
+    },
+    {
+      category: gclGuide.category,
+      href: gclGuidePath,
+      reviewedDate: gclGuide.reviewedDate,
+      summary: gclGuide.summary,
+      title: gclGuide.title,
     },
   ],
 };
@@ -729,4 +739,5 @@ export const insightArticles: Record<string, InsightArticleContent> = {
     ],
   },
   [workingWithAgentGuidePath]: workingWithAgentGuide,
+  [gclGuidePath]: gclGuide,
 };

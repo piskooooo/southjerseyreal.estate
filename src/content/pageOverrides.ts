@@ -4,6 +4,7 @@ import {
 } from "./compliance";
 import { countyNav } from "./navigation";
 import type { ContentBlock, SitePage } from "./types";
+import { googleMapsDisclosure } from "./gclGuide";
 
 const actionBlocks: ContentBlock[] = [
   { tag: "H2", text: "Have a real estate question?" },
@@ -369,7 +370,7 @@ export const pageOverrides: SitePage[] = [
         id: "privacy-policy",
         blocks: [
           { tag: "H1", text: "Privacy Policy" },
-          { tag: "P", text: "Last updated: July 19, 2026" },
+          { tag: "P", text: "Last updated: November 15, 2026" },
           { tag: "P", text: operatorDisclosureText },
           { tag: "H2", text: "Information collected" },
           {
@@ -392,7 +393,7 @@ export const pageOverrides: SitePage[] = [
           },
           {
             tag: "P",
-            text: "Google Maps Platform supplies public Google review content on the About page. When a visitor chooses to load those reviews, review data and reviewer profile images may be requested from Google. Google's handling of information is described in the Google Privacy Policy.",
+            text: googleMapsDisclosure,
           },
           { tag: "H2", text: "Cookies and analytics choices" },
           {

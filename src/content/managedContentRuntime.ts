@@ -17,11 +17,12 @@ import {
 } from "./insights";
 import type { ContentBlock, ImageAsset, PageSection, SitePage } from "./types";
 import { workingWithAgentGuidePath } from "./workingWithAgentGuide";
+import { gclGuidePath, googleMapsDisclosure, legacyGoogleMapsDisclosure } from "./gclGuide";
 import { buyerAgencyReviewDate, buyerGuidePath, previousBuyerReviewDate, upgradeBuyerAgencyParagraph } from "./buyerAgencyRevision";
 import { municipalExample, municipalExampleSources, municipalGuidePath, newsletterSample, zoningDirectorySource } from "./auditContent";
 
 export const SITEWIDE_CONTENT_KEY = "__sitewide__";
-const INSIGHT_INDEX_VERSION = 2;
+const INSIGHT_INDEX_VERSION = 3;
 const INSIGHT_CONTACT_LINKS_VERSION = 1;
 const INSIGHT_AGENT_GUIDE_LINKS_VERSION = 1;
 const COUNTY_GUIDE_LINKS_VERSION = 1;
@@ -539,6 +540,27 @@ export function createManagedContentRuntime(countyContent?: CountySiteContent) {
     if (pageKey !== SITEWIDE_CONTENT_KEY) {
       (normalized as ManagedPageDocument).page.path = pageKey;
     }
+    if (pageKey === "/privacy-policy") {
+      const document = normalized as ManagedPageDocument;
+      let updated = false;
+      for (const section of document.page.sections) {
+        for (const block of section.blocks) {
+          if (block.tag === "P" && block.text === legacyGoogleMapsDisclosure) {
+            block.text = googleMapsDisclosure;
+            updated = true;
+          }
+        }
+      }
+      if (updated) {
+        for (const section of document.page.sections) {
+          for (const block of section.blocks) {
+            if (block.tag === "P" && block.text === "Last updated: July 19, 2026") {
+              block.text = "Last updated: November 15, 2026";
+            }
+          }
+        }
+      }
+    }
     if (pageKey.endsWith("-county") && countyContent) {
       const document = normalized as ManagedPageDocument;
       const seedDocument = seed as ManagedPageDocument;
@@ -662,10 +684,17 @@ export function createManagedContentRuntime(countyContent?: CountySiteContent) {
           ...document.insightIndex!,
           articles: [...publishedCards, ...seededCards.filter((card) => !publishedHrefs.has(card.href))],
         };
-      } else if (storedVersion < INSIGHT_INDEX_VERSION) {
+      } else if (storedVersion < 2) {
         const cards = document.insightIndex?.articles;
         const newCard = seedDocument.insightIndex?.articles.find((card) => card.href === workingWithAgentGuidePath);
         if (cards && newCard && !cards.some((card) => card.href === workingWithAgentGuidePath)) {
+          cards.push(structuredClone(newCard));
+        }
+      }
+      if (typeof storedVersion === "number" && storedVersion >= 1 && storedVersion < 3) {
+        const cards = document.insightIndex?.articles;
+        const newCard = seedDocument.insightIndex?.articles.find((card) => card.href === gclGuidePath);
+        if (cards && newCard && !cards.some((card) => card.href === gclGuidePath)) {
           cards.push(structuredClone(newCard));
         }
       }
@@ -879,6 +908,9 @@ export function createManagedContentRuntime(countyContent?: CountySiteContent) {
       }
       if (article.sources.length < 2 || !article.sources.every(isValidSourceBlock)) {
         throw new Error("Insight articles need at least two complete, dated HTTPS source notes.");
+      }
+      if (article.sections.some((section) => section.map && section.map !== "gcl")) {
+        throw new Error("Only the approved GCL map can be embedded in an Insight article.");
       }
     }
 

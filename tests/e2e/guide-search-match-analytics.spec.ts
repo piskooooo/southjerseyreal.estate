@@ -58,7 +58,7 @@ test("a consented matching-section visit keeps published anchors and Back state 
       published_content: { insightArticle: article, insightContactLinksVersion: 1 },
     };
   });
-  expect(articles).toHaveLength(9);
+  expect(articles).toHaveLength(insightIndex.articles.length);
   const libraryRows = [{
     page_key: "/insights",
     published_at: "2026-10-19T12:00:00Z",
@@ -84,7 +84,7 @@ test("a consented matching-section visit keeps published anchors and Back state 
     await page.goto("/insights", { waitUntil: "domcontentloaded" });
     const input = page.getByRole("searchbox", { name: "Find a guide", exact: true });
     await expect(input).toBeEnabled();
-    await expect(page.locator("#guide-finder-results .insight-card")).toHaveCount(9);
+    await expect(page.locator("#guide-finder-results .insight-card")).toHaveCount(insightIndex.articles.length);
     await expect.poll(async () => (await analyticsEvents(page)).filter((entry) => entry[1] === "page_view").length).toBe(1);
     await settleLayout(page);
     const beforeTyping = await analyticsEvents(page);

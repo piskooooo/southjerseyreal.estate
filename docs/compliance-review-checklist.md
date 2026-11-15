@@ -12,6 +12,27 @@ only the seven South Jersey counties as service areas. There is no active
 current-site compliance remediation. Quarterly reviews and review of any future
 feature remain ongoing safeguards, not open launch blockers.
 
+## November 15 GCL Article Preview
+
+The owner selected an evergreen guide to proposed Glassboro–Camden Line stops
+and supplied the Google My Maps reference. The local article labels the line
+and station locations as proposed, distinguishes map pins from final station
+entrances and surveyed property information, dates the official-source status
+check, and avoids opening-date, commute-time, appreciation, or investment-return
+promises. Its property-research questions do not rank or target communities.
+
+The optional Google My Maps frame loads only after an explicit reader action;
+an adjacent explanation describes the Google connection and links its privacy
+policy. The reader can unload it, use the Google viewer, or read the full station
+list without the map. Analytics consent stays separate. The Privacy Policy's
+Google paragraph and date are updated through an exact-text guard that preserves
+owner-written policy wording. No form or existing consent language is changed.
+
+Status: implementation and local validation complete; independent review and
+owner preview/release status are recorded with the selected task in
+`docs/project-todo.md`. This is not a new legal certification, broker approval,
+or production publication record.
+
 ## October 19 Representation Guide Preview
 
 The owner selected a ninth guide, `Working with a Real Estate Agent in New

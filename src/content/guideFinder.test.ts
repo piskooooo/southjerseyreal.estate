@@ -37,7 +37,7 @@ describe("guide finder full-text coverage", () => {
     ["untreated-water", "/insights/wells-septic-acreage-and-environmental-constraints"],
     ["exclusivity", "/insights/working-with-a-real-estate-agent-in-new-jersey"],
   ])("finds %s inside the complete guide text", (query, expectedHref) => {
-    expect(entries).toHaveLength(9);
+    expect(entries).toHaveLength(10);
     expect(resultHrefs(query)).toEqual([expectedHref]);
   });
 

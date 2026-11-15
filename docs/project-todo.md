@@ -1,6 +1,6 @@
 # South Jersey Real Estate Project Checklist
 
-Last reviewed: October 30, 2026
+Last reviewed: November 15, 2026 (selected GCL article preview)
 
 **Roadmap status: Complete.** The selected roadmap closed on August 7, 2026.
 The owner separately selected the September 4 audit corrections below. Their
@@ -18,6 +18,59 @@ Use this file as the source of truth for project status and any future selected
 work on `southjerseyreal.estate`. Check an item only after completing its
 **Done when** test. Never place passwords, SMTP credentials, webhook URLs, lead
 data, or other secrets in this file.
+
+## Owner-selected November 15 GCL Article — Local Preview
+
+Arthur selected an evergreen Insights guide built around his supplied Google
+My Maps reference. The original website roadmap remains complete. This selected
+addition is prepared locally. Arthur approved the rendered preview and then
+explicitly authorized committing and pushing it on November 15, 2026.
+
+- [x] Add `/insights/glassboro-camden-line`, a guide-library card, article
+  metadata, sitemap entry, source dates, related research/county links, and
+  an editable ordered list of all 14 proposed stops from Camden to Glassboro.
+  Station labels/order and the proposed 18-mile corridor match the official
+  [project overview](https://glassborocamdenline.com/), checked November 15.
+  The [station information](https://glassborocamdenline.com/stations/) and
+  [timeline](https://glassborocamdenline.com/project-timeline/) still describe
+  incomplete station designs and preliminary engineering. The article dates
+  those observations and promises no opening date or property-value effect.
+- [x] Embed the supplied map only after a reader selects **Load interactive
+  map**, with an unload control, Google privacy explanation, a viewer link,
+  and a station list usable without JavaScript or Google. The fixed embed
+  address is the only supported map; the public frame policy permits its
+  Google Maps embed path. No key, new dependency, backend, form, analytics
+  event, or provider setting is added. Print copies retain the list/link
+  and omit the map frame and activation controls.
+- [x] Preserve owner edits and removals while upgrading older Insights
+  indexes to version 3. Version-two indexes receive only the new GCL card;
+  current-version removals stay removed. Extend local guide search to station
+  names. Update the Maps privacy explanation and its date only when the
+  exact prior explanation is unchanged; preserve custom policy text.
+- [x] Demonstrate failing tests before implementation, then pass 391 unit
+  tests and the production build. The first full 188-case browser run passed
+  183 cases and identified three test-backend CSP mismatches plus two older
+  nine-guide fixture assumptions. Corrected those fixtures; all 8 affected
+  map/source-HTML checks and all 9 search checks passed on rerun.
+  Desktop/mobile map activation,
+  denied-analytics behavior, keyboard controls, no-JavaScript content, print
+  output, and targeted accessibility checks pass. The separate real Google
+  map loaded with HTTP 200, rendered its basemap and markers, and produced
+  no failed requests in the observed session. Light desktop and dark mobile
+  screenshots were inspected; mobile had no horizontal overflow. Browser
+  checks used bundled Chromium after the Mac Chrome connector could not
+  connect. No inquiry or newsletter request was submitted.
+  Independent review is required before committing; its exact-tree evidence
+  is retained in the current task's review conversation.
+- [x] Complete owner preview and obtain commit/push authorization. Independent
+  review of the prepared 24-file tree found no actionable findings.
+- [ ] Commit/push the reviewed tree when authorized, then verify GitHub checks,
+  the exact Cloudflare Pages deployment, and the canonical article.
+
+Local preview: <http://127.0.0.1:5173/insights/glassboro-camden-line>.
+The supplied map was checked in its public viewer and native embed; Google
+My Maps content can change independently of this dated article. Ongoing source
+reviews are maintenance, not an automatically scheduled task.
 
 ## Completed Roadmap
 

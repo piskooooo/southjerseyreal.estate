@@ -57,7 +57,7 @@ function expectArticle(element: HTMLElement, article: InsightArticleContent) {
     heading: section.querySelector(":scope > h2")?.textContent,
     paragraphs: texts(section.querySelectorAll(":scope > p:not(.insight-section-number)")),
     checklist: texts(section.querySelectorAll(".insight-checklist li")),
-  }))).toEqual(article.sections);
+  }))).toEqual(article.sections.map(({ heading, paragraphs, checklist }) => ({ heading, paragraphs, checklist })));
   expect(new Set(sections.map((section) => section.id)).size).toBe(sections.length);
   for (const selector of [".insight-contents-desktop a", ".insight-contents-dropdown a"]) {
     expect(links(element.querySelectorAll(selector))).toEqual(article.sections.map((section, index) => ({
@@ -82,9 +82,9 @@ function expectArticle(element: HTMLElement, article: InsightArticleContent) {
 }
 
 describe("Insights prerender", () => {
-  it("renders the complete nine-guide directory with its accepted card content", () => {
+  it("renders the complete ten-guide directory with its accepted card content", () => {
     const value = seed("/insights");
-    expect(value.insightIndex!.articles).toHaveLength(9);
+    expect(value.insightIndex!.articles).toHaveLength(10);
     expectIndex(parse(value), value.insightIndex!);
   });
 

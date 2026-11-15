@@ -12,7 +12,7 @@ only the seven South Jersey counties as service areas. There is no active
 current-site compliance remediation. Quarterly reviews and review of any future
 feature remain ongoing safeguards, not open launch blockers.
 
-## November 15 GCL Article Preview
+## November 15 GCL Article Release
 
 The owner selected an evergreen guide to proposed Glassboro–Camden Line stops
 and supplied the Google My Maps reference. The local article labels the line
@@ -28,10 +28,11 @@ list without the map. Analytics consent stays separate. The Privacy Policy's
 Google paragraph and date are updated through an exact-text guard that preserves
 owner-written policy wording. No form or existing consent language is changed.
 
-Status: implementation and local validation complete; independent review and
-owner preview/release status are recorded with the selected task in
-`docs/project-todo.md`. This is not a new legal certification, broker approval,
-or production publication record.
+Status: implementation, local validation, independent exact-tree review, owner
+preview approval, authorized publication, and live desktop/mobile checks are
+complete. Release evidence and the GitHub workflow are recorded with the selected
+task in `docs/project-todo.md`. This is not a new legal certification or exact-wording
+broker approval.
 
 ## October 19 Representation Guide Preview
 

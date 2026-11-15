@@ -1,6 +1,6 @@
 # South Jersey Real Estate Project Checklist
 
-Last reviewed: November 15, 2026 (selected GCL article preview)
+Last reviewed: November 15, 2026 (selected GCL article release)
 
 **Roadmap status: Complete.** The selected roadmap closed on August 7, 2026.
 The owner separately selected the September 4 audit corrections below. Their
@@ -19,11 +19,11 @@ work on `southjerseyreal.estate`. Check an item only after completing its
 **Done when** test. Never place passwords, SMTP credentials, webhook URLs, lead
 data, or other secrets in this file.
 
-## Owner-selected November 15 GCL Article — Local Preview
+## Owner-selected November 15 GCL Article — Published
 
 Arthur selected an evergreen Insights guide built around his supplied Google
 My Maps reference. The original website roadmap remains complete. This selected
-addition is prepared locally. Arthur approved the rendered preview and then
+addition is published. Arthur approved the rendered preview and then
 explicitly authorized committing and pushing it on November 15, 2026.
 
 - [x] Add `/insights/glassboro-camden-line`, a guide-library card, article
@@ -64,10 +64,25 @@ explicitly authorized committing and pushing it on November 15, 2026.
   is retained in the current task's review conversation.
 - [x] Complete owner preview and obtain commit/push authorization. Independent
   review of the prepared 24-file tree found no actionable findings.
-- [ ] Commit/push the reviewed tree when authorized, then verify GitHub checks,
-  the exact Cloudflare Pages deployment, and the canonical article.
+- [x] Commit/push the reviewed tree and verify the exact Cloudflare Pages
+  deployment and canonical article. Source commit
+  `12f91f31a14d8eaeac3dba7b7b94455f82bd53e2` is on `origin/main`.
+  [Production deployment `d09b0acd`](https://d09b0acd.southjerseyreal-estate.pages.dev)
+  succeeded for that exact revision. The corresponding
+  [GitHub test workflow](https://github.com/piskooooo/southjerseyreal.estate/actions/runs/43744246523)
+  is the release-check record. Independent exact-tree review passed before
+  committing; owner preview and release authorization are complete.
 
-Local preview: <http://127.0.0.1:5173/insights/glassboro-camden-line>.
+Live article: <https://southjerseyreal.estate/insights/glassboro-camden-line>.
+The deployment and canonical URLs both returned 200, contained all 14 station
+names before JavaScript, declared the canonical article URL and Article metadata,
+and served bundle `index-BR5ux9fp.js`. Live checks at 1440/light, 390/dark, and
+320/light verified guide search and navigation, station-list content, print
+behavior, the Maps privacy paragraph, no horizontal overflow, no page errors,
+and no GA4 requests with analytics denied. The real Google map loaded on explicit
+activation with HTTP 200 and was removed by the unload control. Screenshots
+were captured; no forms were submitted.
+
 The supplied map was checked in its public viewer and native embed; Google
 My Maps content can change independently of this dated article. Ongoing source
 reviews are maintenance, not an automatically scheduled task.

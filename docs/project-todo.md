@@ -19,7 +19,7 @@ work on `southjerseyreal.estate`. Check an item only after completing its
 **Done when** test. Never place passwords, SMTP credentials, webhook URLs, lead
 data, or other secrets in this file.
 
-## Owner-selected November 15 Navigation and Consent Usability — Approved for Release
+## Owner-selected November 15 Navigation and Consent Usability — Published
 
 Arthur selected all four recommendations from the read-only Modern Web
 Guidance review. This is a bounded public usability update; the original
@@ -52,13 +52,27 @@ explicitly authorized committing and pushing it on November 15, 2026.
   found no violations or page errors. Browser plugin was not available, so QA
   used the repository's bundled Chromium. No live forms were submitted.
 - [x] Obtain owner preview acceptance and explicit commit/push authorization.
-- [ ] Commit/push the reviewed tree when authorized; verify GitHub checks and
+- [x] Commit/push the reviewed tree when authorized; verify GitHub checks and
   the exact Cloudflare Pages deployment before reporting production completion.
 
 Local preview: <http://127.0.0.1:5173/>. The read-only review also identified
 an inaccurate browser-support claim in the external guide; no installed plugin
-files were changed. Release verification is pending; this entry does not yet
-claim production completion.
+files were changed.
+
+Release evidence: source commit `f085e74a69e0644e8a565f25ece0b8bbe0408451`
+is pushed to `origin/main`.
+[Cloudflare production deployment `afda25a9`](https://afda25a9.southjerseyreal-estate.pages.dev)
+succeeded for that exact revision. The matching
+[GitHub test workflow](https://github.com/piskooooo/southjerseyreal.estate/actions/runs/43746444019)
+succeeded for that exact revision. Source, hosted checks, production deployment,
+and the live verification below are complete.
+
+The deployment and canonical hostname returned 200 and served matching bundle
+`index-L_haNzQa.js`. Live checks verified explicit desktop disclosure activation
+and closing, page-heading focus, mobile Escape focus restoration, 48px controls,
+and compact notices at 390px/dark and 320px/light, with no horizontal overflow,
+page errors, denied-consent GA4 requests, or form requests. A live mobile
+screenshot was inspected. No inquiry, subscription, or external message was sent.
 
 ## Owner-selected November 15 GCL Article — Published
 
